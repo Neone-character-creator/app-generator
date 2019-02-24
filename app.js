@@ -16,7 +16,7 @@ if (fs.existsSync(projectDirectory)) {
 async function duplicateTemplateFiles() {
     console.log("Generating project directory.");
     return new Promise((resolve, reject) => {
-        ncp("template", projectDirectory, (err) => {
+        ncp("project-template", projectDirectory, (err) => {
             if (err) {
                 return reject(err);
             }
