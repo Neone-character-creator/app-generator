@@ -1,0 +1,12 @@
+<plugin>
+    <description>
+        <creator>{authorName}</creator>
+        <game>{gameSystem}</game>
+        <version>{version}</version>
+    </description>
+    <resources>
+        <character-view>templates/sheet.html</character-view>
+        <description-view>templates/plugin-description.html</description-view>
+        <pdf>character-sheet.pdf</pdf>
+    </resources>
+</plugin>
