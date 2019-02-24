@@ -35,28 +35,25 @@ function replaceStrings(file) {
                 reject(err)
             }
             data = data.replace(/\{projectName\}/g, argv.projectName);
-            fs.writeFile(file, data);
+            fs.writeFileSync(file, data);
         })
     }))
 }
 
 function traverseProjectFiles(filePath) {
-    const originalPath = path.resolve(__dirname, filePath);
+    const originalPath = filePath;
     const updatedPath = originalPath.replace(/\{projectName\}/g, argv.projectName);
     fs.renameSync(originalPath, updatedPath);
-    fs.readdir(updatedPath, (err, files) => {
-        if (err) {
-            throw new Error(err)
-        }
-        files.forEach(name => {
-            const fullPath = path.resolve(__dirname, filePath, name);
+    const files = fs.readdirSync(updatedPath);
+    files.forEach(name => {
+            const fullPath = path.resolve(__dirname, updatedPath, name);
             if (fs.lstatSync(fullPath).isDirectory()) {
-                traverseProjectFiles(path.join(filePath, name));
+                traverseProjectFiles(path.join(updatedPath, name));
             } else {
                 replaceStrings(fullPath);
             }
-        });
-    });
+        }
+    );
 }
 
 duplicateTemplateFiles().then(traverseProjectFiles.bind(null, projectDirectory));
