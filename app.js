@@ -2,6 +2,7 @@ const ncp = require('ncp');
 const argv = require('yargs').argv;
 const fs = require('fs');
 const path = require('path');
+const del = require('del');
 
 if (!argv.projectName) {
     throw new Error("--projectName missing");
@@ -9,8 +10,10 @@ if (!argv.projectName) {
 
 const projectDirectory = argv.projectName;
 
-if (fs.existsSync(projectDirectory)) {
-    throw new Error('Output directory already exists.');
+const clean = !fs.existsSync(projectDirectory);
+
+if (!clean) {
+    throw new Error('Output directory already exists. Delete it or use --force to overwrite it.');
 }
 
 async function duplicateTemplateFiles() {
@@ -34,7 +37,7 @@ function replaceStrings(file) {
             if (err) {
                 reject(err)
             }
-            data = data.replace(/\{projectName\}/g, argv.projectName);
+            data = data.replace(/%projectName%/g, argv.projectName);
             fs.writeFileSync(file, data);
         })
     }))
@@ -42,7 +45,7 @@ function replaceStrings(file) {
 
 function traverseProjectFiles(filePath) {
     const originalPath = filePath;
-    const updatedPath = originalPath.replace(/\{projectName\}/g, argv.projectName);
+    const updatedPath = originalPath.replace(/projectName%/g, argv.projectName);
     fs.renameSync(originalPath, updatedPath);
     const files = fs.readdirSync(updatedPath);
     files.forEach(name => {
