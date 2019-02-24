@@ -4,7 +4,8 @@
   "description": "Creates a NEOne character creator webapp scaffold from a configuration file.\r  # Requires\r  * Node\r  * Gradle",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "schema:compile" : "npx ajv compile -s schemas/component.schema.json -s schemas/view.schema.json -s schemas/app.schema.json"
   },
   "repository": {
     "type": "git",
