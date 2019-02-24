@@ -1,0 +1,9 @@
+{
+  "$id" : "view.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title" : "view",
+  "additionalProperties" : {
+    "description": "The components in this view",
+    "$ref" : "component.schema.json"
+  }
+}

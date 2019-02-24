@@ -1,0 +1,10 @@
+{
+  "views": {
+    "summary" : {
+      "demographics" : {
+        "type" : "container",
+        "direction" : "horizontal"
+      }
+    }
+  }
+}

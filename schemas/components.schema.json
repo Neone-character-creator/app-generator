@@ -1,0 +1,23 @@
+{
+  "$id" : "component.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title" : "component",
+  "properties": {
+    "type" : {
+      "type" : "string",
+      "enum" : ["container"]
+    }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "type" : {
+          "enum" : ["container"]
+        },
+        "direction" : {
+          "enum" : ["horizontal", "vertical"]
+        }
+      }
+    }
+  ]
+}
