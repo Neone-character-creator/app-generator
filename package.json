@@ -1,0 +1,23 @@
+{
+  "name": "app-generator",
+  "version": "1.0.0",
+  "description": "Creates a NEOne character creator webapp scaffold from a configuration file.\r  # Requires\r  * Node\r  * Gradle",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neone-character-creator/app-generator.git"
+  },
+  "author": "ThisIsNoZaku (damienmarble@gmail.com)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Neone-character-creator/app-generator/issues"
+  },
+  "homepage": "https://github.com/Neone-character-creator/app-generator#readme",
+  "dependencies": {
+    "ncp": "^2.0.0",
+    "yargs": "^13.2.1"
+  }
+}
