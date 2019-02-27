@@ -10,17 +10,16 @@ describe("App component generator", ()=>{
     };
     it("changes the name of the component", async (done) => {
         const generatedComponent = await generateComponent(config);
-        expect(generatedComponent).toEqual(expect.stringContaining(`const TestApp =`));
-        expect(generatedComponent).toEqual(expect.not.stringContaining(`%name%`));
-        done()
-    });
-    it("changes the name of the component", async (done) => {
-        const generatedComponent = await generateComponent(config);
-        expect(generatedComponent).toEqual(expect.stringContaining(`const TestApp =`));
-        expect(generatedComponent).toEqual(expect.not.stringContaining(`%name%`));
         expect(generatedComponent).toEqual(expect.stringContaining(`<SummaryView>`));
         expect(generatedComponent).toEqual(expect.stringContaining(`<OneView>`));
         expect(generatedComponent).toEqual(expect.stringContaining(`<TwoView>`));
+        done()
+    });
+    it("adds imports for each child component", async (done) => {
+        const generatedComponent = await generateComponent(config);
+        expect(generatedComponent).toEqual(expect.stringContaining(`import * as SummaryView from "../components/SummaryView"`));
+        expect(generatedComponent).toEqual(expect.stringContaining(`import * as OneView from "../components/OneView"`));
+        expect(generatedComponent).toEqual(expect.stringContaining(`import * as TwoView from "../components/TwoView"`));
         done()
     });
 });
