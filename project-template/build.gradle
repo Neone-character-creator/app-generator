@@ -19,7 +19,7 @@ jar {
     manifest {
         instruction 'Bundle-Category', 'plugin'
         instruction 'Bundle-Description', 'API bundle for NEOne character creator plugins.'
-        instruction 'Export-Package', 'neone.app.{projectName}; version=1.0.0'
+        instruction 'Export-Package', 'neone.app.%projectName%; version=1.0.0'
     }
-    baseName = "{projectName}-plugin"
+    baseName = "%projectName%-plugin"
 }

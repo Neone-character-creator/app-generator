@@ -1,4 +1,4 @@
-package neone.app.{projectName};
+package neone.app.%projectName%;
 
 import org.apache.felix.scr.annotations.Component;
 
