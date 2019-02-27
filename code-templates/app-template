@@ -1,0 +1,12 @@
+import React from "react";
+
+const %name%App = () => (
+    function renderViews(){
+        return(
+            %views%
+        )
+    };
+    <div id="%appName%-app">
+        {renderViews()}
+    </div>
+);
