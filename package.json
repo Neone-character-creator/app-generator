@@ -4,8 +4,7 @@
   "description": "Creates a NEOne character creator webapp scaffold from a configuration file.\r  # Requires\r  * Node\r  * Gradle",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "schema:compile" : "npx ajv compile -s schemas/component.schema.json -s schemas/view.schema.json -s schemas/app.schema.json"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,7 +17,11 @@
   },
   "homepage": "https://github.com/Neone-character-creator/app-generator#readme",
   "dependencies": {
+    "js-yaml": "^3.12.1",
     "ncp": "^2.0.0",
     "yargs": "^13.2.1"
+  },
+  "devDependencies": {
+    "jest": "^24.1.0"
   }
 }
