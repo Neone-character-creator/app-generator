@@ -4,7 +4,19 @@ describe("App component generator", ()=>{
         const generatedComponent = generateComponent({
             name: "Test"
         });
-        expect(/const TestApp = /.test(generatedComponent)).toBeTruthy();
-        expect(/%name%/.test(generatedComponent)).toBeFalsy();
+        expect(generatedComponent).toEqual(expect.stringContaining(`const TestApp =`));
+        expect(generatedComponent).toEqual(expect.not.stringContaining(`%name%`));
+    });
+    it("changes the name of the component", () => {
+        const generatedComponent = generateComponent({
+            name: "Test",
+            views: {
+                "summary":{},
+                "one":{},
+                "two":{}
+            }
+        });
+        expect(generatedComponent).toEqual(expect.stringContaining(`const TestApp =`));
+        expect(generatedComponent).toEqual(expect.not.stringContaining(`%name%`));
     });
 });
