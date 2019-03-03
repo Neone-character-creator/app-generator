@@ -7,12 +7,22 @@ if (!argv.projectName) {
 
 const projectDirectory = argv.projectName;
 
-const clean = !fs.existsSync(projectDirectory);
+const clean = !fs.existsSync(`plugin-${projectDirectory}`);
 
 if (!clean) {
     throw new Error('Output directory already exists. Delete it or choose a different project name.');
 }
 require('./lib/duplicateProjectTemplateDirectory')(argv.projectName)
     .then(tmpDir => {
-        fs.copy(tmpDir, `./plugin-${argv.projectName}`);
+        return require("./lib/extractProjectFilePaths")(tmpDir)
+            .then(paths => {
+                Promise.all(paths.map(p => {
+                    return require('./lib/replacePlaceholderStrings')(p, {
+                        appName: argv.projectName
+                    })
+                }))
+            })
+            .then(() => {
+                fs.copy(tmpDir, `./plugin-${argv.projectName}`);
+            });
     });
