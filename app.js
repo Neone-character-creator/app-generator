@@ -29,6 +29,9 @@ require('./lib/duplicateProjectTemplateDirectory')(argv.projectName)
                 ])
             })
             .then(() => {
+                require('./lib/cleanupEmptyDirectories')(tmpDir)
+            })
+            .then(() => {
                 fs.copy(tmpDir, `./plugin-${argv.projectName}`);
             });
     });
