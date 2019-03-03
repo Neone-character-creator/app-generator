@@ -33,5 +33,7 @@ require('./lib/duplicateProjectTemplateDirectory')(argv.projectName)
             })
             .then(() => {
                 fs.copy(tmpDir, `./plugin-${argv.projectName}`);
+            }).then(() => {
+                console.log(`Your newly generated app is available at plugin-${argv.projectName}. Enter that directory and run 'npm start' to get a demo of your new app.`)
             });
     });
