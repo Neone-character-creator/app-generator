@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+
+    <link rel="stylesheet"
+          href="https://raw.githubusercontent.com/Neone-character-creator/neone-character-creator-core/master/src/main/resources/static/css/character-page.css"/>
+    <script src="https://apis.google.com/js/platform.js" id="gap"></script>
+
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid" id="character-page-container">
+    <div id="login-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        Login with one of the following services:
+                    </div>
+                    <div class="row">
+                        <a class="btn btn-block btn-social btn-google google-login">
+                            <span class="fa fa-google"></span>Sign in with Google
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loading-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div id="modal-content" class="modal-body">
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="navbar-nav nav text-center">
+                <li>
+                    <button class="btn btn-default" type="button" id="new-character"
+                            attr="data-url="
+                    /games/%authorName%/%appName%/%appVersion%"><span
+                        class="glyphicon glyphicon-file"/>
+                    New Character
+                    </button>
+                </li>
+                <li>
+                    <button class="btn btn-default" type="button" id="save-character"
+                    ><span
+                            class="glyphicon glyphicon-floppy-save"/>
+                        Save Character
+                    </button>
+                </li>
+                <li>
+                    <button class="btn btn-default" type="button" id="open-character"
+                            data-toggle='modal' ,
+                            data-target='#loading-modal'
+                    ">
+                    <span class="glyphicon glyphicon-floppy-open"/>
+                    Open Character
+                    </button>
+                </li>
+                <li>
+                    <button class="btn btn-default" type="button" id="delete-character"
+                            class="glyphicon glyphicon-floppy-remove"
+                    />
+                    Delete Character
+                    </button>
+                </li>
+                <li>
+                    <button class="btn btn-default" type="button" id="export-character">
+                        <span class="glyphicon glyphicon-download-alt"/>
+                        Export to PDF
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row text-center" id="signin-warning">
+        <button class="btn btn-link login-menu" type="button" id="login">
+            You're not logged in. Login here to save, load and delete characters.
+        </button>
+    </div>
+    <div class="row text-center" id="signout">
+        <button class="btn btn-link logout" type="button" id="logout">
+            Click here to logout.
+        </button>
+    </div>
+    <iframe src="/src/resources/templates/sheet.html" id="content" style="width: 100%;padding: 2%">
+
+    </iframe>
+</div>
+</body>
+</html>
