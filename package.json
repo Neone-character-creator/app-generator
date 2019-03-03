@@ -17,11 +17,19 @@
   },
   "homepage": "https://github.com/Neone-character-creator/app-generator#readme",
   "dependencies": {
+    "fs-extra": "^7.0.1",
     "js-yaml": "^3.12.1",
     "ncp": "^2.0.0",
-    "yargs": "^13.2.1"
+    "tmp": "0.0.33",
+    "yargs": "^13.2.1",
+    "yup": "^0.26.10"
   },
   "devDependencies": {
     "jest": "^24.1.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "./lib/**/*.{js, jsx}"
+    ]
   }
 }
