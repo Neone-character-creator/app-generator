@@ -17,7 +17,7 @@ require('./lib/duplicateProjectTemplateDirectory')(argv.projectName)
         return require("./lib/extractProjectFilePaths")(tmpDir)
             .then(paths => {
                 Promise.all(paths.map(p => {
-                    return require('./lib/replacePlaceholderStrings')(p, {
+                    return require('./lib/replacePlaceholderStringsInFileContent')(p, {
                         appName: argv.projectName
                     })
                 }))
