@@ -1,4 +1,4 @@
-package neone.app.%projectName%;
+package neone.app;
 
 /**
  * Created by Damien on 11/25/2015.

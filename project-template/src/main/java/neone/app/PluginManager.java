@@ -1,4 +1,4 @@
-package neone.app.%projectName%;
+package neone.app;
 
 
 import java.net.URI;
