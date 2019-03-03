@@ -14,5 +14,5 @@ if (!clean) {
 }
 require('./lib/duplicateProjectTemplateDirectory')(argv.projectName)
     .then(tmpDir => {
-        fs.copy(tmpDir, `./${argv.projectName}`);
+        fs.copy(tmpDir, `./plugin-${argv.projectName}`);
     });
