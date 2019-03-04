@@ -9,21 +9,34 @@ describe("the configuration schema", () => {
             done();
         });
     });
+    it("requires views to contain at least the summary view", done => {
+        const config = {
+            views: {
+                summary: {}
+            }
+        };
+        expect.assertions(1);
+        return configSchema(config).validate(config, {
+            strict: true
+        }).then(validated => {
+            expect(validated).toBeTruthy();
+            done();
+        }).catch(e => console.log(e));
+    });
     describe("the summary view", () => {
-        it("requires views to contain at least the summary view", done => {
-            const config = {
-                views: {
-                    summary: {}
-                }
-            };
-            expect.assertions(1);
-            configSchema(config).validate(config, {
-                strict: true
-            }).then(validated => {
-                expect(validated).toBeTruthy();
-                done();
-            });
-        });
+       it("has a default 'name' of Character", done => {
+           const config = {
+               views: {
+                   summary: {}
+               }
+           };
+           expect.assertions(2);
+           configSchema(config).validate(config).then(validated => {
+               expect(validated.views.summary).toBeTruthy();
+               expect(validated.views.summary.name).toBe("Character");
+               done();
+           });
+       }) ;
     });
     describe("the non-summary views", () => {
         it("must have a name field", done => {
