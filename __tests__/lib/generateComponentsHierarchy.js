@@ -5,6 +5,7 @@ describe("the component generator", () => {
             views: {
                 children: {
                     "summary": {
+                        type: "container",
                         direction: "vertical",
                         children: {
                             "name": {
@@ -38,6 +39,7 @@ describe("the component generator", () => {
                 children: ["summary"]
             },
             "summary": {
+                type: "container",
                 direction: "vertical",
                 children: [
                     "name",
