@@ -8,6 +8,10 @@ describe("View component generator", () => {
             }
         },
         components: {
+            summary: {
+                type: "view",
+                children: ["foo"],
+            },
             foo: {
                 type: "textfield"
             }
@@ -46,6 +50,10 @@ describe("View component generator", () => {
                 }
             },
             components: {
+                summary: {
+                    type: "view",
+                    children: ["foo", "bar"]
+                },
                 foo: {
                     type: "textfield"
                 },

@@ -1,0 +1,17 @@
+import React from "react";
+import { connect } from "react-redux";
+%imports%
+
+function render(){
+        return(
+            %children%
+        )
+    };
+
+const Component = () => (
+    <Grid id="%componentName%-container" direction={"%direction%" == "vertical" ? "column" : "row"}>
+        {render()}
+    </Grid>
+);
+
+module.exports = Component;

@@ -17,6 +17,9 @@ describe("component generator module", () =>{
                 }
             },
             components: {
+                one: {
+                    children: ["foo"]
+                },
                 foo: {
                     type: "textfield"
                 }

@@ -2,6 +2,7 @@
   "views": {
     "children": {
       "summary": {
+        "name" : "Summary",
         "type": "container",
         "direction": "vertical",
         "children": {

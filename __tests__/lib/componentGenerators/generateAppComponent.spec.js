@@ -6,6 +6,17 @@ describe("App component generator", ()=>{
             "summary":{},
             "one":{},
             "two":{}
+        },
+        components: {
+            summary: {
+                type: "view"
+            },
+            one: {
+                type: "view"
+            },
+            two: {
+                type: "view"
+            }
         }
     };
     it("changes the name of the component", async (done) => {
