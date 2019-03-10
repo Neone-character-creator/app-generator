@@ -37,4 +37,24 @@ describe("View component generator", () => {
         };
         expect(()=>{const generatedComponent = generateComponent("view")("summary")(config);}).toThrow();
     });
+    it("doesn't duplicate imports", () => {
+        const config = {
+            name: "Test",
+            views: {
+                summary: {
+                    children: ["foo", "bar"]
+                }
+            },
+            components: {
+                foo: {
+                    type: "textfield"
+                },
+                bar : {
+                    type: "textfield"
+                }
+            }
+        };
+        const generatedComponent = generateComponent("view")("summary")(config);
+        expect(generatedComponent.match(/import TextField from "@material-ui\/core\/TextField";/g).length).toBe(1);
+    });
 });
