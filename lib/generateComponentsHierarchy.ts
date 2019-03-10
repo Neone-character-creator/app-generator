@@ -31,10 +31,11 @@ function extractComponentDefinitions(components: {
                 extractComponentDefinitions(components, child, children[child]);
             })
         }
-        if (element.children) {
-            element.children = Object.keys(element.children);
-        }
     }
+    if (element.children) {
+        element.children = Object.keys(element.children);
+    }
+    components.components[componentId] = element;
     return components;
 }
 

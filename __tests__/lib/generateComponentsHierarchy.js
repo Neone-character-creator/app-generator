@@ -904,6 +904,16 @@ describe("the component generator", () => {
                 }
             },
             components: {
+                "summary": {
+                    type: "container",
+                    direction: "vertical",
+                    children: [
+                        "biography",
+                        "combat",
+                        "characteristics",
+                        "skills",
+                    ]
+                },
                 biography: {
                     type: "container",
                     direction: "vertical",
