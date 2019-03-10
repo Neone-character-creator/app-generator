@@ -21,4 +21,20 @@ describe("View component generator", () => {
         const generatedComponent = generateComponent("view")("summary")(config);
         expect(generatedComponent).toEqual(expect.stringContaining(`import TextField from "@material-ui/core/TextField";`));
     });
+    it("throws an error if a child has an invalid type", () => {
+        const config = {
+            name: "Test",
+            views: {
+                summary: {
+                    children: ["foo"]
+                }
+            },
+            components: {
+                foo: {
+                    type: "invalid"
+                }
+            }
+        };
+        expect(()=>{const generatedComponent = generateComponent("view")("summary")(config);}).toThrow();
+    });
 });
