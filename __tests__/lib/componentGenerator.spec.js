@@ -11,11 +11,9 @@ describe("component generator module", () =>{
     it("writes an app component", async () => {
         const hierarchy = {
             appName: "test",
-            views: {
-                one: {
-                    children: ["foo"]
-                }
-            },
+            views: [
+                "one"
+            ],
             components: {
                 one: {
                     type: "view",

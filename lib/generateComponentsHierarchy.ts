@@ -3,7 +3,7 @@ import _ from "lodash";
 export default function (appConfiguration: any) {
     return {
         ...appConfiguration, ...extractComponentDefinitions({
-            views: {},
+            views: [],
             components: {}
         }, "views", appConfiguration.views)
     };
@@ -46,7 +46,6 @@ function extractViewDefinition(components: {
     if (components.views[componentId]) {
         throw new Error("Duplicate component found");
     }
-    components.views[componentId] = element;
     const children = element.children;
     if (!_.isEmpty(children)) {
         Object.keys(children).forEach(child => {
@@ -56,5 +55,6 @@ function extractViewDefinition(components: {
     if (element.children) {
         element.children = Object.keys(element.children);
     }
+    components.views.push(componentId);
     return components;
 }

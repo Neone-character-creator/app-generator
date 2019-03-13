@@ -891,20 +891,9 @@ describe("the component generator", () => {
         };
         const componentModel = generateComponentsHierarchy(config);
         expect(componentModel).toEqual({
-            views: {
-                "summary": {
-                    type: "container",
-                    direction: "vertical",
-                    children: [
-                        "biography",
-                        "combat",
-                        "characteristics",
-                        "skills",
-                    ]
-                }
-            },
+            views: ["summary"],
             components: {
-                "summary": {
+                summary: {
                     type: "container",
                     direction: "vertical",
                     children: [
