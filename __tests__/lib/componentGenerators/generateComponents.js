@@ -2,15 +2,17 @@ const generateComponent = require("../../../lib/components/generateComponent");
 
 describe("component generation module", () => {
     it("throws an error when an unsupported type is given", () => {
-        expect(()=>{generateComponent('random')}).toThrow();
+        expect(() => {
+            generateComponent('random')
+        }).toThrow();
     });
     describe("app components", () => {
         const config = {
             appName: "Test",
             views: {
-                "summary":{},
-                "one":{},
-                "two":{}
+                "summary": {},
+                "one": {},
+                "two": {}
             },
             components: {
                 summary: {
@@ -28,18 +30,23 @@ describe("component generation module", () => {
             const generatedComponent = generateComponent('app')('app')(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`<div id="${config.appName}-app">`));
         });
-        it("changes the name of the component",  () => {
+        it("changes the name of the component", () => {
             const generatedComponent = generateComponent('app')('app')(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`<SummaryView>`));
             expect(generatedComponent).toEqual(expect.stringContaining(`<OneView>`));
             expect(generatedComponent).toEqual(expect.stringContaining(`<TwoView>`));
         });
-        it("adds imports for each child component",  () => {
+        it("adds imports for each child component", () => {
             const generatedComponent = generateComponent('app')('app')(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`import * as SummaryView from "../views/SummaryView"`));
             expect(generatedComponent).toEqual(expect.stringContaining(`import * as OneView from "../views/OneView"`));
             expect(generatedComponent).toEqual(expect.stringContaining(`import * as TwoView from "../views/TwoView"`));
         });
+        it("throws an error if creating an app that isn't named 'app'", () => {
+            expect(()=>{
+                generateComponent("app")("notApp");
+            }).toThrow();
+        })
     });
     describe("textfield components", () => {
         it("generates the component", () => {
@@ -66,23 +73,23 @@ describe("component generation module", () => {
             expect(generated).toEqual(expect.stringContaining("<TextField id=\"textfield-textfield\" label=\"Label\" />"));
         });
     });
-    describe("Container compoents", ()=>{
+    describe("Container compoents", () => {
         const config = {
             name: "Test",
             views: {
-                "summary":{}
+                "summary": {}
             },
             components: {
                 summary: {
                     children: ["container"]
                 },
-                "container" : {
+                "container": {
                     type: "container",
                     direction: "vertical"
                 }
             }
         };
-        it("renders the container inside in the parent", () =>{
+        it("renders the container inside in the parent", () => {
             const generatedComponent = generateComponent('view')('summary')(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`<ContainerContainer />`));
         });
@@ -133,7 +140,9 @@ describe("component generation module", () => {
                     }
                 }
             };
-            expect(()=>{generateComponent("view")("summary")(config);}).toThrow();
+            expect(() => {
+                generateComponent("view")("summary")(config);
+            }).toThrow();
         });
         it("throws an error if a view has no children", () => {
             const config = {
@@ -166,7 +175,7 @@ describe("component generation module", () => {
                     foo: {
                         type: "textfield"
                     },
-                    bar : {
+                    bar: {
                         type: "textfield"
                     }
                 }
