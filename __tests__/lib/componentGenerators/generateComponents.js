@@ -1,6 +1,9 @@
 const generateComponent = require("../../../lib/components/generateComponent");
 
 describe("component generation module", () => {
+    it("throws an error when an unsupported type is given", () => {
+        expect(()=>{generateComponent('random')}).toThrow();
+    });
     describe("app components", () => {
         const config = {
             name: "Test",
