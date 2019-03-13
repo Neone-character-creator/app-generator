@@ -135,6 +135,21 @@ describe("component generation module", () => {
             };
             expect(()=>{generateComponent("view")("summary")(config);}).toThrow();
         });
+        it("throws an error if a view has no children", () => {
+            const config = {
+                name: "Test",
+                views: {
+                    summary: {}
+                },
+                components: {
+                    summary: {
+                    },
+                }
+            };
+            expect(() => {
+                generateComponent("view")("summary")(config);
+            }).toThrow();
+        });
         it("doesn't duplicate imports", () => {
             const config = {
                 name: "Test",
