@@ -1,0 +1,10 @@
+import React from "react";
+import { connect } from "react-redux";
+import Textfield from "@material-ui/core/TextField";
+%imports%
+
+const Component = () => (
+    <TextField id="%componentName%-number" label="%label%" type="number" />
+);
+
+module.exports = Component;

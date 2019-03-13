@@ -184,4 +184,30 @@ describe("component generation module", () => {
             expect(generatedComponent.match(/import TextField from "@material-ui\/core\/TextField";/g).length).toBe(1);
         });
     });
+    describe("number components", () => {
+        it("generates the component", () => {
+            const config = {
+                name: "Test",
+                views: {
+                    "summary": {
+                    },
+                },
+                components: {
+                    summary: {
+                        type: "view",
+                        children: [
+                            "foo"
+                        ]
+                    },
+                    foo: {
+                        type: "number",
+                        label: "Number",
+                        value: 1
+                    }
+                }
+            };
+            const generated = generateComponent("number")("foo")(config);
+            expect(generated).toEqual(expect.stringContaining("<TextField id=\"foo-number\" label=\"Number\" type=\"number\" />"));
+        });
+    });
 });
