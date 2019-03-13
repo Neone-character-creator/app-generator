@@ -144,7 +144,7 @@
                     "direction": "horizontal",
                     "children": {
                       "astrogationLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Astrogation"
                       },
                       "astrogationCareerFlag": {
@@ -162,7 +162,7 @@
                     "direction": "horizontal",
                     "children": {
                       "athleticsLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Athletics"
                       },
                       "athleticsCareerFlag": {
@@ -180,7 +180,7 @@
                     "direction": "horizontal",
                     "children": {
                       "charmLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Charm"
                       },
                       "charmCareerFlag": {
@@ -198,7 +198,7 @@
                     "direction": "horizontal",
                     "children": {
                       "coercionLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Coercion"
                       },
                       "coercionCareerFlag": {
@@ -216,7 +216,7 @@
                     "direction": "horizontal",
                     "children": {
                       "computersLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Computers"
                       },
                       "computersCareerFlag": {
@@ -234,7 +234,7 @@
                     "direction": "horizontal",
                     "children": {
                       "coolLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Cool"
                       },
                       "coolCareerFlag": {
@@ -252,7 +252,7 @@
                     "direction": "horizontal",
                     "children": {
                       "coordinationLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Coordination"
                       },
                       "coordinationCareerFlag": {
@@ -270,7 +270,7 @@
                     "direction": "horizontal",
                     "children": {
                       "deceptionLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Deception"
                       },
                       "deceptionCareerFlag": {
@@ -288,7 +288,7 @@
                     "direction": "horizontal",
                     "children": {
                       "disciplineLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Discipline"
                       },
                       "disciplineCareerFlag": {
@@ -306,7 +306,7 @@
                     "direction": "horizontal",
                     "children": {
                       "leadershipLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Leadership"
                       },
                       "leadershipCareerFlag": {
@@ -324,7 +324,7 @@
                     "direction": "horizontal",
                     "children": {
                       "mechanicsLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Mechanics"
                       },
                       "mechanicsCareerFlag": {
@@ -342,7 +342,7 @@
                     "direction": "horizontal",
                     "children": {
                       "medicineLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Medicine"
                       },
                       "medicineCareerFlag": {
@@ -360,7 +360,7 @@
                     "direction": "horizontal",
                     "children": {
                       "negotiationLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Negotiation"
                       },
                       "negotiationCareerFlag": {
@@ -378,7 +378,7 @@
                     "direction": "horizontal",
                     "children": {
                       "perceptionLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Perception"
                       },
                       "perceptionCareerFlag": {
@@ -396,7 +396,7 @@
                     "direction": "horizontal",
                     "children": {
                       "pilotingPlanetaryLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "PilotingPlanetary"
                       },
                       "pilotingPlanetaryCareerFlag": {
@@ -414,7 +414,7 @@
                     "direction": "horizontal",
                     "children": {
                       "pilotingSpaceLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "PilotingSpace"
                       },
                       "pilotingSpaceCareerFlag": {
@@ -432,7 +432,7 @@
                     "direction": "horizontal",
                     "children": {
                       "resilienceLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Resilience"
                       },
                       "resilienceCareerFlag": {
@@ -450,7 +450,7 @@
                     "direction": "horizontal",
                     "children": {
                       "skulduggeryLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Skulduggery"
                       },
                       "skulduggeryCareerFlag": {
@@ -468,7 +468,7 @@
                     "direction": "horizontal",
                     "children": {
                       "stealthLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Stealth"
                       },
                       "stealthCareerFlag": {
@@ -486,7 +486,7 @@
                     "direction": "horizontal",
                     "children": {
                       "streetwiseLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Streetwise"
                       },
                       "streetwiseCareerFlag": {
@@ -504,7 +504,7 @@
                     "direction": "horizontal",
                     "children": {
                       "survivalLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Survival"
                       },
                       "survivalCareerFlag": {
@@ -522,7 +522,7 @@
                     "direction": "horizontal",
                     "children": {
                       "vigilanceLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Vigilance"
                       },
                       "vigilanceCareerFlag": {
@@ -546,7 +546,7 @@
                     "direction": "horizontal",
                     "children": {
                       "brawlLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Brawl"
                       },
                       "brawlCareerFlag": {
@@ -564,7 +564,7 @@
                     "direction": "horizontal",
                     "children": {
                       "gunneryLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Gunnery"
                       },
                       "gunneryCareerFlag": {
@@ -582,7 +582,7 @@
                     "direction": "horizontal",
                     "children": {
                       "meleeLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Melee"
                       },
                       "meleeCareerFlag": {
@@ -600,7 +600,7 @@
                     "direction": "horizontal",
                     "children": {
                       "rangedLightLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Ranged - Light"
                       },
                       "rangedLightCareerFlag": {
@@ -618,7 +618,7 @@
                     "direction": "horizontal",
                     "children": {
                       "rangedHeavyLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Ranged - Heavy"
                       },
                       "rangedHeavyCareerFlag": {
@@ -643,7 +643,7 @@
                     "direction": "horizontal",
                     "children": {
                       "coreWorldsLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "CoreWorlds"
                       },
                       "coreWorldsCareerFlag": {
@@ -661,7 +661,7 @@
                     "direction": "horizontal",
                     "children": {
                       "educationLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Education"
                       },
                       "educationCareerFlag": {
@@ -679,7 +679,7 @@
                     "direction": "horizontal",
                     "children": {
                       "loreLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Lore"
                       },
                       "loreCareerFlag": {
@@ -697,7 +697,7 @@
                     "direction": "horizontal",
                     "children": {
                       "outerRimLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "OuterRim"
                       },
                       "outerRimCareerFlag": {
@@ -715,7 +715,7 @@
                     "direction": "horizontal",
                     "children": {
                       "underworldLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Underworld"
                       },
                       "underworldCareerFlag": {
@@ -733,7 +733,7 @@
                     "direction": "horizontal",
                     "children": {
                       "xenologyLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Xenology"
                       },
                       "xenologyCareerFlag": {
@@ -751,7 +751,7 @@
                     "direction": "horizontal",
                     "children": {
                       "otherLabel": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Other"
                       },
                       "otherCareerFlag": {
@@ -775,7 +775,7 @@
                     "direction": "horizontal",
                     "children": {
                       "custom1Label": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Custom1"
                       },
                       "custom1CareerFlag": {
@@ -793,7 +793,7 @@
                     "direction": "horizontal",
                     "children": {
                       "custom2Label": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Custom2"
                       },
                       "custom2CareerFlag": {
@@ -811,7 +811,7 @@
                     "direction": "horizontal",
                     "children": {
                       "custom3Label": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Custom3"
                       },
                       "custom3CareerFlag": {
@@ -829,7 +829,7 @@
                     "direction": "horizontal",
                     "children": {
                       "custom4Label": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Custom4"
                       },
                       "custom4CareerFlag": {
@@ -847,7 +847,7 @@
                     "direction": "horizontal",
                     "children": {
                       "custom5Label": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Custom5"
                       },
                       "custom5CareerFlag": {
@@ -865,7 +865,7 @@
                     "direction": "horizontal",
                     "children": {
                       "custom6Label": {
-                        "type": "text",
+                        "type": "label",
                         "value": "Custom6"
                       },
                       "custom6CareerFlag": {

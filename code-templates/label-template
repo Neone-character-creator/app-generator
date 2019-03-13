@@ -1,0 +1,8 @@
+import React from "react";
+import { connect } from "react-redux";
+
+const Component = () => (
+    <p>%value%</p>
+);
+
+module.exports = Component;
