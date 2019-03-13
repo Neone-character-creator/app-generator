@@ -31,11 +31,11 @@ function extractComponentDefinitions(components: {
                 extractComponentDefinitions(components, child, children[child]);
             })
         }
+        components.components[componentId] = element;
     }
     if (element.children) {
         element.children = Object.keys(element.children);
     }
-    components.components[componentId] = element;
     return components;
 }
 
@@ -56,5 +56,6 @@ function extractViewDefinition(components: {
         element.children = Object.keys(element.children);
     }
     components.views.push(componentId);
+    components.components[componentId] = element;
     return components;
 }

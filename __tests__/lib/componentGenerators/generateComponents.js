@@ -9,11 +9,11 @@ describe("component generation module", () => {
     describe("app components", () => {
         const config = {
             appName: "Test",
-            views: {
-                "summary": {},
-                "one": {},
-                "two": {}
-            },
+            views: [
+                "summary",
+                "one",
+                "two"
+            ],
             components: {
                 summary: {
                     type: "view"
@@ -43,7 +43,7 @@ describe("component generation module", () => {
             expect(generatedComponent).toEqual(expect.stringContaining(`import * as TwoView from "../views/TwoView"`));
         });
         it("throws an error if creating an app that isn't named 'app'", () => {
-            expect(()=>{
+            expect(() => {
                 generateComponent("app")("notApp");
             }).toThrow();
         })
@@ -52,13 +52,8 @@ describe("component generation module", () => {
         it("generates the component", () => {
             const config = {
                 name: "Test",
-                views: {
-                    "summary": {
-                        children: [
-                            "textfield"
-                        ]
-                    },
-                },
+                views: [
+                    "summary"],
                 components: {
                     summary: {
                         type: "view"
@@ -76,9 +71,7 @@ describe("component generation module", () => {
     describe("Container compoents", () => {
         const config = {
             name: "Test",
-            views: {
-                "summary": {}
-            },
+            views: ["summary"],
             components: {
                 summary: {
                     children: ["container"]
@@ -103,11 +96,7 @@ describe("component generation module", () => {
     describe("view components", () => {
         const config = {
             name: "Test",
-            views: {
-                summary: {
-                    children: ["foo"]
-                }
-            },
+            views: ["summary"],
             components: {
                 summary: {
                     type: "view",
@@ -129,11 +118,7 @@ describe("component generation module", () => {
         it("throws an error if a child has an invalid type", () => {
             const config = {
                 name: "Test",
-                views: {
-                    summary: {
-                        children: ["foo"]
-                    }
-                },
+                views: ["summary"],
                 components: {
                     foo: {
                         type: "invalid"
@@ -147,12 +132,10 @@ describe("component generation module", () => {
         it("throws an error if a view has no children", () => {
             const config = {
                 name: "Test",
-                views: {
-                    summary: {}
-                },
+                views:
+                    ["aummary"],
                 components: {
-                    summary: {
-                    },
+                    summary: {},
                 }
             };
             expect(() => {
@@ -162,11 +145,7 @@ describe("component generation module", () => {
         it("doesn't duplicate imports", () => {
             const config = {
                 name: "Test",
-                views: {
-                    summary: {
-                        children: ["foo", "bar"]
-                    }
-                },
+                views: ["summary"],
                 components: {
                     summary: {
                         type: "view",
@@ -188,10 +167,8 @@ describe("component generation module", () => {
         it("generates the component", () => {
             const config = {
                 name: "Test",
-                views: {
-                    "summary": {
-                    },
-                },
+                views:
+                    ["summary"],
                 components: {
                     summary: {
                         type: "view",
@@ -214,10 +191,7 @@ describe("component generation module", () => {
         it("generates the component", () => {
             const config = {
                 name: "Test",
-                views: {
-                    "summary": {
-                    },
-                },
+                views: ["summary"],
                 components: {
                     summary: {
                         type: "view",
@@ -239,10 +213,7 @@ describe("component generation module", () => {
         it("generates the component", () => {
             const config = {
                 name: "Test",
-                views: {
-                    "summary": {
-                    },
-                },
+                views: ["summary"],
                 components: {
                     summary: {
                         type: "view",
