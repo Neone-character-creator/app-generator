@@ -235,4 +235,29 @@ describe("component generation module", () => {
             expect(generated).toEqual(expect.stringContaining("<p>foo</p>"));
         });
     });
+    describe("checkbox components", () => {
+        it("generates the component", () => {
+            const config = {
+                name: "Test",
+                views: {
+                    "summary": {
+                    },
+                },
+                components: {
+                    summary: {
+                        type: "view",
+                        children: [
+                            "foo"
+                        ]
+                    },
+                    foo: {
+                        type: "checkbox",
+                        value: "foo"
+                    }
+                }
+            };
+            const generated = generateComponent("checkbox")("foo")(config);
+            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" />"));
+        });
+    });
 });

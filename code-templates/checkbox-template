@@ -1,0 +1,9 @@
+import React from "react";
+import { connect } from "react-redux";
+import Checkbox from "@material-ui/core/Checkbox";
+
+const Component = () => (
+    <Checkbox id="%componentName%-checkbox" />
+);
+
+module.exports = Component;
