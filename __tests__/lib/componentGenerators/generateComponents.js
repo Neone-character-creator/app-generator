@@ -210,4 +210,29 @@ describe("component generation module", () => {
             expect(generated).toEqual(expect.stringContaining("<TextField id=\"foo-number\" label=\"Number\" type=\"number\" />"));
         });
     });
+    describe("label components", () => {
+        it("generates the component", () => {
+            const config = {
+                name: "Test",
+                views: {
+                    "summary": {
+                    },
+                },
+                components: {
+                    summary: {
+                        type: "view",
+                        children: [
+                            "foo"
+                        ]
+                    },
+                    foo: {
+                        type: "label",
+                        value: "foo"
+                    }
+                }
+            };
+            const generated = generateComponent("label")("foo")(config);
+            expect(generated).toEqual(expect.stringContaining("<p>foo</p>"));
+        });
+    });
 });
