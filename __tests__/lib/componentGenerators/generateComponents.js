@@ -6,7 +6,7 @@ describe("component generation module", () => {
     });
     describe("app components", () => {
         const config = {
-            name: "Test",
+            appName: "Test",
             views: {
                 "summary":{},
                 "one":{},
@@ -24,19 +24,21 @@ describe("component generation module", () => {
                 }
             }
         };
-        it("changes the name of the component", async (done) => {
+        it("names the app based on the appName", () => {
+            const generatedComponent = generateComponent('app')('app')(config);
+            expect(generatedComponent).toEqual(expect.stringContaining(`<div id="${config.appName}-app">`));
+        });
+        it("changes the name of the component",  () => {
             const generatedComponent = generateComponent('app')('app')(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`<SummaryView>`));
             expect(generatedComponent).toEqual(expect.stringContaining(`<OneView>`));
             expect(generatedComponent).toEqual(expect.stringContaining(`<TwoView>`));
-            done()
         });
-        it("adds imports for each child component", async (done) => {
+        it("adds imports for each child component",  () => {
             const generatedComponent = generateComponent('app')('app')(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`import * as SummaryView from "../views/SummaryView"`));
             expect(generatedComponent).toEqual(expect.stringContaining(`import * as OneView from "../views/OneView"`));
             expect(generatedComponent).toEqual(expect.stringContaining(`import * as TwoView from "../views/TwoView"`));
-            done()
         });
     });
     describe("textfield components", () => {
