@@ -80,11 +80,16 @@ describe("component generation module", () => {
                 }
             }
         };
+        it("renders the container inside in the parent", () =>{
+            const generatedComponent = generateComponent('view')('summary')(config);
+            expect(generatedComponent).toEqual(expect.stringContaining(`<ContainerContainer />`));
+        });
         it("changes the name of the component", async (done) => {
             const generatedComponent = generateComponent('container')('container')(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`<Grid id="container-container" direction={"vertical" == "vertical" ? "column" : "row"}>`));
             done()
         });
+
     });
     describe("view components", () => {
         const config = {
