@@ -1,4 +1,5 @@
 {
+  "appName" : "test",
   "views": {
     "children": {
       "summary": {
