@@ -11,11 +11,13 @@ describe("the configuration schema", () => {
                 }
             };
             expect.assertions(3);
-            return configSchema(config).catch(e => {
+            try {
+                configSchema(config)
+            } catch (e) {
                 expect(e.errors.length).toEqual(2);
                 expect(e.errors[0]).toBe("views.children.summary.name is a required field");
                 expect(e.errors[1]).toBe("views.children.one.name is a required field");
-            });
+            }
         });
     });
 });
