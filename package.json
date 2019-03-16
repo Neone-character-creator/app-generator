@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Neone-character-creator/app-generator#readme",
   "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
     "@types/lodash": "^4.14.122",
     "fs-extra": "^7.0.1",
     "js-yaml": "^3.12.1",
