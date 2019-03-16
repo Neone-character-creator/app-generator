@@ -2,16 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 %imports%
 
-function render(){
-        return(
-            %children%
-        )
-    };
-
 const Component = () => (
     <div id="%componentName%-view">
-        {render()}
+        %children%
     </div>
 );
 
-module.exports = Component;
+export default Component;

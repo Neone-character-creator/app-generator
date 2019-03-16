@@ -7,4 +7,4 @@ const Component = () => (
     <TextField id="%componentName%-number" label="%label%" type="number" />
 );
 
-module.exports = Component;
+export default Component;

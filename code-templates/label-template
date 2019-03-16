@@ -5,4 +5,4 @@ const Component = () => (
     <p>%value%</p>
 );
 
-module.exports = Component;
+export default Component;

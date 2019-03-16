@@ -2,16 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 %imports%
 
-function renderViews(){
-        return(
-            %views%
-        )
-    };
-
 const Component = () => (
     <div id="%appName%-app">
-        {renderViews()}
+        %views%
     </div>
 );
 
-module.exports = Component;
+export default Component;
