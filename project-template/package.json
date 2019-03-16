@@ -4,12 +4,27 @@
   "description": "",
   "main": "serve.js",
   "scripts": {
-    "start": "npm i && node serve.js"
+    "start": "npm run webpack:dev && node serve.js",
+    "webpack:dev": "npm i && webpack-cli"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "ejs": "^2.6.1",
     "express": "^4.16.4"
+  },
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@material-ui/core": "^3.9.2",
+    "babel-loader": "^8.0.5",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
   }
 }
