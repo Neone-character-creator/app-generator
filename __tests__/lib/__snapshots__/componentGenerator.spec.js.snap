@@ -3,21 +3,15 @@
 exports[`component generator module writes an app component 1`] = `
 "import React from \\"react\\";
 import { connect } from \\"react-redux\\";
-import * as OneView from \\"../views/OneView\\"
-
-function renderViews(){
-        return(
-            <OneView>
-        )
-    };
+import OneView from \\"./components/OneView\\"
 
 const Component = () => (
     <div id=\\"test-app\\">
-        {renderViews()}
+        <OneView/>
     </div>
 );
 
-module.exports = Component;"
+export default Component;"
 `;
 
 exports[`component generator module writes an app component 2`] = `
@@ -25,17 +19,11 @@ exports[`component generator module writes an app component 2`] = `
 import { connect } from \\"react-redux\\";
 import TextField from \\"@material-ui/core/TextField\\";
 
-function render(){
-        return(
-<TextField id=\\"foo\\" value=\\"\\" />
-        )
-    };
-
 const Component = () => (
     <div id=\\"one-view\\">
-        {render()}
+<TextField label=\\"foo\\" id=\\"foo\\" value=\\"\\" />
     </div>
 );
 
-module.exports = Component;"
+export default Component;"
 `;

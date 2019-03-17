@@ -32,15 +32,15 @@ describe("component generation module", () => {
         });
         it("changes the name of the component", () => {
             const generatedComponent = generateComponent('app')('app')(config);
-            expect(generatedComponent).toEqual(expect.stringContaining(`<SummaryView>`));
-            expect(generatedComponent).toEqual(expect.stringContaining(`<OneView>`));
-            expect(generatedComponent).toEqual(expect.stringContaining(`<TwoView>`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`<SummaryView/>`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`<OneView/>`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`<TwoView/>`));
         });
         it("adds imports for each child component", () => {
             const generatedComponent = generateComponent('app')('app')(config);
-            expect(generatedComponent).toEqual(expect.stringContaining(`import * as SummaryView from "../views/SummaryView"`));
-            expect(generatedComponent).toEqual(expect.stringContaining(`import * as OneView from "../views/OneView"`));
-            expect(generatedComponent).toEqual(expect.stringContaining(`import * as TwoView from "../views/TwoView"`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`import SummaryView from "./components/SummaryView"`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`import OneView from "./components/OneView"`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`import TwoView from "./components/TwoView"`));
         });
         it("throws an error if creating an app that isn't named 'app'", () => {
             expect(() => {
@@ -78,7 +78,11 @@ describe("component generation module", () => {
                 },
                 "container": {
                     type: "container",
-                    direction: "vertical"
+                    direction: "vertical",
+                    children: ["foo"]
+                },
+                "foo" : {
+                    type: "textfield",
                 }
             }
         };
@@ -88,7 +92,7 @@ describe("component generation module", () => {
         });
         it("changes the name of the component", async (done) => {
             const generatedComponent = generateComponent('container')('container')(config);
-            expect(generatedComponent).toEqual(expect.stringContaining(`<Grid id="container-container" direction={"vertical" == "vertical" ? "column" : "row"}>`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`<Grid id="container-container" container direction={"vertical" == "vertical" ? "column" : "row"}>`));
             done()
         });
 
@@ -109,7 +113,7 @@ describe("component generation module", () => {
         };
         it("renders the child components", () => {
             const generatedComponent = generateComponent("view")("summary")(config);
-            expect(generatedComponent).toEqual(expect.stringContaining(`<TextField id="foo" value="" />`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`<TextField label="foo" id="foo" value="" />`));
         });
         it("adds imports for each child component", () => {
             const generatedComponent = generateComponent("view")("summary")(config);

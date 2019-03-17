@@ -25,10 +25,10 @@ describe("component generator module", () =>{
             }
         };
         const components = await componentGenerator(hierarchy);
-        expect(components.app.path).toBe('app.js');
+        expect(components.app.path).toBe('components/App.js');
         expect(renderer.create(components.app.content).toJSON()).toMatchSnapshot();
 
-        expect(components.views.one.path).toBe('views/one.js');
+        expect(components.views.one.path).toBe('components/OneView.js');
         expect(renderer.create(components.views.one.content).toJSON()).toMatchSnapshot();
     });
 });
