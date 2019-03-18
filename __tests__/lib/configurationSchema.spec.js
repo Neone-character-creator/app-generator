@@ -1,12 +1,16 @@
 const configSchema = require('../../lib/configurationSchema');
 describe("the configuration schema", () => {
-    describe("the non-summary views", () => {
+    describe("the views", () => {
         it("must have a name field", () => {
             const config = {
                 views: {
                     children: {
-                        summary: {},
-                        one: {}
+                        summary: {
+                            children: {}
+                        },
+                        one: {
+                            children: {}
+                        }
                     }
                 }
             };
@@ -19,5 +23,27 @@ describe("the configuration schema", () => {
                 expect(e.errors[1]).toBe("views.children.one.name is a required field");
             }
         });
+        it("must have children", () => {
+            const config = {
+                views: {
+                    children: {
+                        summary: {
+                            name: "Summary"
+                        },
+                        one: {
+                            name: "One"
+                        }
+                    }
+                }
+            };
+            expect.assertions(3);
+            try {
+                configSchema(config)
+            } catch (e) {
+                expect(e.errors.length).toEqual(2);
+                expect(e.errors[0]).toBe("views.children.summary.children is a required field");
+                expect(e.errors[1]).toBe("views.children.one.children is a required field");
+            }
+        })
     });
 });
