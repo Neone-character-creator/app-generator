@@ -38,9 +38,9 @@ describe("component generation module", () => {
         });
         it("adds imports for each child component", () => {
             const generatedComponent = generateComponent('app')('app')(config);
-            expect(generatedComponent).toEqual(expect.stringContaining(`import SummaryView from "./components/SummaryView"`));
-            expect(generatedComponent).toEqual(expect.stringContaining(`import OneView from "./components/OneView"`));
-            expect(generatedComponent).toEqual(expect.stringContaining(`import TwoView from "./components/TwoView"`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`import SummaryView from "./SummaryView"`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`import OneView from "./OneView"`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`import TwoView from "./TwoView"`));
         });
         it("throws an error if creating an app that isn't named 'app'", () => {
             expect(() => {
