@@ -1,4 +1,4 @@
-const templateReplacter = require('../../lib/replacePlaceholderStrings');
+const templateReplacter = require('../../lib/replacePlaceholders');
 describe("the string replacer", () => {
     it("leaves the string unmodified if it contains no templates", () => {
         const inputString = "This is a string that shouldn't be changed.";
