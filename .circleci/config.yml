@@ -42,7 +42,7 @@ jobs:
     - run: npm test
   scan:
     docker:
-    - image: circleci/node:10
+    - image: node:10
 
     working_directory: ~/repo
 
@@ -67,6 +67,8 @@ workflows:
               only:
                 - master
       - scan:
+          required:
+            - build
           filters:
             branches:
               only:
