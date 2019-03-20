@@ -62,7 +62,7 @@ worflows:
     jobs:
       - build
       - scan
-    filters:
-      branches:
-        only:
-          - master
+        filters:
+          branches:
+            only:
+            - master
