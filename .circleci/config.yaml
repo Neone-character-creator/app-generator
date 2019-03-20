@@ -49,7 +49,13 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - run: npx sonar-scanner
+      - run: |
+          npx sonar-scanner \
+          -Dsonar.projectKey=Neone-character-creator_app-generator \
+          -Dsonar.organization=neone-character-creator \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=07e83862e644b1c3d12c8b13b8c154f5843d0878
 worflows:
   version: 2
   production:
