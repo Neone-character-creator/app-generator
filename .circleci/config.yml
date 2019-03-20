@@ -61,6 +61,10 @@ worflows:
   production:
     jobs:
       - build
+          filters:
+            branches:
+              only:
+                - master
       - scan:
           filters:
             branches:
