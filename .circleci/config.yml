@@ -50,7 +50,7 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: |
-          npx sonar-scanner \
+          sudo npx sonar-scanner \
           -Dsonar.projectKey=Neone-character-creator_app-generator \
           -Dsonar.organization=neone-character-creator \
           -Dsonar.sources=. \
