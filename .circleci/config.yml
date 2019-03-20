@@ -60,7 +60,7 @@ worflows:
   version: 2
   production:
     jobs:
-      - build
+      - build:
           filters:
             branches:
               only:
