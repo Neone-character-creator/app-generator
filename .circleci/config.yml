@@ -67,7 +67,7 @@ workflows:
               only:
                 - master
       - scan:
-          required:
+          requires:
             - build
           filters:
             branches:
