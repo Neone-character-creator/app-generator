@@ -6,6 +6,26 @@ describe("component generation module", () => {
             generateComponent('random')
         }).toThrow();
     });
+    it("throws an error when an object is given", () => {
+        expect(() => {
+            generateComponent({})
+        }).toThrow();
+    });
+    it("throws an error when null is given", () => {
+        expect(() => {
+            generateComponent(null)
+        }).toThrow();
+    });
+    it("throws an error when undefined is given", () => {
+        expect(() => {
+            generateComponent(undefined)
+        }).toThrow();
+    });
+    it("throws an error when a number is given", () => {
+        expect(() => {
+            generateComponent(1)
+        }).toThrow();
+    });
     describe("app components", () => {
         const config = {
             appName: "Test",
