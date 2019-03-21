@@ -42,7 +42,7 @@ jobs:
     - run: npm test
   scan:
     docker:
-    - image: circleci/java
+    - image: circleci/java-node
 
     working_directory: ~/repo
 
