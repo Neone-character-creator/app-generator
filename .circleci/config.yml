@@ -59,7 +59,8 @@ jobs:
             -Dsonar.organization=neone-character-creator \
             -Dsonar.sources=lib \
             -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=$SONAR_AUTH_TOKEN
+            -Dsonar.login=$SONAR_AUTH_TOKEN \
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
 
 workflows:
   version: 2
