@@ -4,7 +4,8 @@
   "description": "Creates a NEOne character creator webapp scaffold from a configuration file.\r  # Requires\r  * Node\r  * Gradle",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "scan": "node_modules/sonar-scanner/bin/sonar-scanner"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,13 @@
   "homepage": "https://github.com/Neone-character-creator/app-generator#readme",
   "dependencies": {
     "fs-extra": "^7.0.1",
+    "jest-sonar-reporter": "^2.0.0",
     "js-yaml": "^3.12.1",
     "lodash": "^4.17.11",
     "ncp": "^2.0.0",
     "react": "^16.8.4",
     "recursive-readdir": "^2.2.2",
+    "sonar-scanner": "^3.1.0",
     "tmp": "0.0.33",
     "yargs": "^13.2.1",
     "yup": "^0.26.10"
@@ -36,6 +39,7 @@
   "jest": {
     "collectCoverageFrom": [
       "./lib/**/*.{js, jsx}"
-    ]
+    ],
+    "testResultsProcessor": "jest-sonar-reporter"
   }
 }
