@@ -59,7 +59,7 @@ jobs:
             -Dsonar.organization=neone-character-creator \
             -Dsonar.sources=lib \
             -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=8043dfe146746b50ed05a60f3645b4e1d7eef71c
+            -Dsonar.login=$SONAR_AUTH_TOKEN
 
 workflows:
   version: 2
