@@ -39,7 +39,7 @@ jobs:
           - ./
 
     # run tests!
-    - run: npm test
+    - run: npm test -- --coverage
   scan:
     docker:
     - image: circleci/openjdk:8-node
