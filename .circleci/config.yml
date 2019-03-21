@@ -33,13 +33,13 @@ jobs:
         - node_modules
         key: v1-dependencies-{{ checksum "package.json" }}
 
+    # run tests!
+    - run: npm test -- --coverage
+
     - persist_to_workspace:
         root: ~/repo
         paths:
           - ./
-
-    # run tests!
-    - run: npm test -- --coverage
   scan:
     docker:
     - image: circleci/openjdk:8-node
@@ -62,6 +62,7 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_AUTH_TOKEN \
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+            -Dsonar.testExecutionReportPaths=test-report.xml \
             -Dsonar.tests=__tests__
 
 workflows:
