@@ -56,10 +56,10 @@ jobs:
 
           sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner \
           -Dsonar.projectKey=Neone-character-creator_app-generator \
-          -Dsonar.organization=neone-character-creator \
-          -Dsonar.sources=. \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=07e83862e644b1c3d12c8b13b8c154f5843d0878
+            -Dsonar.organization=neone-character-creator \
+            -Dsonar.sources=lib \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=8043dfe146746b50ed05a60f3645b4e1d7eef71c
 
 workflows:
   version: 2
