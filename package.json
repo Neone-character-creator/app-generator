@@ -4,7 +4,8 @@
   "description": "Creates a NEOne character creator webapp scaffold from a configuration file.\r  # Requires\r  * Node\r  * Gradle",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "scan" : "node_modules/sonar-scanner/bin/sonar-scanner"
   },
   "repository": {
     "type": "git",
