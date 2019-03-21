@@ -42,7 +42,7 @@ jobs:
     - run: npm test
   scan:
     docker:
-    - image: circleci/node:10
+    - image: circleci/java
 
     working_directory: ~/repo
 
@@ -50,7 +50,11 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: |
-          sudo chmod -R 777 node_modules && sudo npm run scan -- \
+          curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip -o sonar.zip
+          unzip sonar.zip
+          export PATH=$PATH:sonar/bin
+
+          sonar-scanner \
           -Dsonar.projectKey=Neone-character-creator_app-generator \
           -Dsonar.organization=neone-character-creator \
           -Dsonar.sources=. \
