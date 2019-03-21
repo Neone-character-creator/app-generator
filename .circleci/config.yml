@@ -54,7 +54,7 @@ jobs:
           unzip sonar.zip
           export PATH=$PATH:sonar/bin
 
-          sonar/bin/sonar-scanner \
+          sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner \
           -Dsonar.projectKey=Neone-character-creator_app-generator \
           -Dsonar.organization=neone-character-creator \
           -Dsonar.sources=. \
