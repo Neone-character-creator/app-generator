@@ -2,21 +2,19 @@ import _ from "lodash";
 
 export default function (appConfiguration: any) {
     return {
-        ...appConfiguration, ...extractComponentDefinitions({
-            views: [],
+        ...extractComponentDefinitions({
             components: {}
-        }, "views", appConfiguration.views)
+        }, "app", appConfiguration.views)
     };
 };
 
 function extractComponentDefinitions(components: {
-    components: { [s: string]: any },
-    views: { [s: string]: any }
+    components: { [s: string]: any }
 }, componentId: string, element: any) {
-    if (componentId === "views") {
-        if (components.views[componentId]) {
-            throw new Error(`Duplicate view found: ${componentId}`);
-        }
+    if (componentId === "app") {
+        element.type = "app";
+    }
+    if (componentId === "view") {
         Object.keys(element.children).forEach(child => {
             extractViewDefinition(components, child, element.children[child]);
         })
@@ -40,12 +38,8 @@ function extractComponentDefinitions(components: {
 }
 
 function extractViewDefinition(components: {
-    components: { [s: string]: any },
-    views: { [s: string]: any }
+    components: { [s: string]: any }
 }, componentId: string, element: any) {
-    if (components.views[componentId]) {
-        throw new Error("Duplicate component found");
-    }
     const children = element.children;
     if (!_.isEmpty(children)) {
         Object.keys(children).forEach(child => {
@@ -55,7 +49,6 @@ function extractViewDefinition(components: {
     if (element.children) {
         element.children = Object.keys(element.children);
     }
-    components.views.push(componentId);
     components.components[componentId] = element;
     return components;
 }

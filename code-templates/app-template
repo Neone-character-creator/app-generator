@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 const Component = () => (
     <div id="%appName%-app">
-        %views%
+        %children%
     </div>
 );
 
