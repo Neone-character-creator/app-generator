@@ -33,13 +33,13 @@ describe("model generation", () => {
     });
     describe("complex type", () => {
         describe("properties", () => {
-            it("may be a string specifying their type", () => {
+            it("may be a simple type without error", () => {
                 const configuration = {
                     model: {
                         character: {
                             properties: {
-                                name: "string",
-                                age: "number"
+                                string: "string",
+                                number: "number"
                             }
                         }
                     }
@@ -51,23 +51,28 @@ describe("model generation", () => {
                     model: {
                         character: {
                             properties: {
-                                career: "career"
+                                complex: "complex"
                             }
                         },
-                        career: {
+                        complex: {
                             properties: {}
                         }
                     }
                 };
                 modelValidation(configuration)
             });
-            it("may be an array of 'number'", () => {
+            it("may be an array of a valid type", () => {
                 const configuration = {
                     model: {
                         character: {
                             properties: {
-                                age: "number"
+                                arrayOfString: ["string"],
+                                arrayOfNumber: ["number"],
+                                arrayOfComplex: ["type"]
                             }
+                        },
+                        type: {
+                            properties: {}
                         }
                     }
                 };
@@ -77,14 +82,20 @@ describe("model generation", () => {
                 const configuration = {
                     model: {
                         character: {
-                            career: "fake"
+                            properties: {
+                                career: "fake"
+                            }
                         },
-                        real: {}
+                        real: {
+                            properties: {
+
+                            }
+                        }
                     }
                 };
                 expect(() => {
                     modelValidation(configuration)
-                }).toMatchSnapshot();
+                }).toThrowErrorMatchingSnapshot();
             });
 
         });
