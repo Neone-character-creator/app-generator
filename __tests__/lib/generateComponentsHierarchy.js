@@ -891,8 +891,11 @@ describe("the component generator", () => {
         };
         const componentModel = generateComponentsHierarchy(config);
         expect(componentModel).toEqual({
-            views: ["summary"],
             components: {
+                app: {
+                    type: "app",
+                    children: ["summary"]
+                },
                 summary: {
                     type: "container",
                     direction: "vertical",

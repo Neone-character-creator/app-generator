@@ -886,5 +886,28 @@
         }
       }
     }
+  },
+  "model" : {
+    "character" : {
+      "properties": {
+        "name": "string",
+        "species" : "species",
+        "career" : "career",
+        "specializations" : ["specialization"]
+      }
+    },
+    "species" : {
+      "properties" : {
+        "name" : "string",
+        "plural" : "string",
+        "source" : "string",
+        "baseAttributes" : "attributes"
+      }
+    },
+    "career" : {
+      "properties" : {
+
+      }
+    }
   }
 }

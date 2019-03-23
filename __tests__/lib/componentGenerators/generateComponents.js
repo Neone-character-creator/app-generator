@@ -1,20 +1,20 @@
 const generateComponent = require("../../../lib/components/generateComponent");
 
 describe("component generation module", () => {
-    it("throws an error when an unsupported type is given", () => {
+    it("throws an error when creating a generator for an unsupported type", () => {
         expect(() => {
             generateComponent('random')
-        }).toThrow();
+        }).toThrowErrorMatchingSnapshot();
     });
     it("throws an error when an object is given", () => {
         expect(() => {
             generateComponent({})
-        }).toThrow();
+        }).toThrowErrorMatchingSnapshot();
     });
     it("throws an error when null is given", () => {
         expect(() => {
             generateComponent(null)
-        }).toThrow();
+        }).toThrowErrorMatchingSnapshot();
     });
     it("throws an error when undefined is given", () => {
         expect(() => {
@@ -26,15 +26,69 @@ describe("component generation module", () => {
             generateComponent(1)
         }).toThrow();
     });
+    it("throws an error when a view has a child of an invalid type", () => {
+        const config = {
+            name: "Test",
+            views: [
+                "summary"],
+            components: {
+                summary: {
+                    type: "view",
+                    children: [
+                        "bad"
+                    ]
+                },
+                bad: {
+                    type: "notAValidType",
+                    label: "Label"
+                }
+            }
+        };
+        expect(() => {
+            generateComponent("view")("summary")(config);
+        }).toThrowErrorMatchingSnapshot();
+    });
+    it("throws an error when a component has a child of an invalid type", () => {
+        const config = {
+            name: "Test",
+            views: [
+                "summary"],
+            components: {
+                summary: {
+                    type: "view",
+                    children: [
+                        "parent"
+                    ]
+                },
+                parent: {
+                    type: "container",
+                    label: "Label",
+                    children: [
+                        "badChild"
+                    ]
+                },
+                badChild: {
+                    type: "bad",
+                }
+            }
+        };
+        expect(() => {
+            generateComponent("container")("parent")(config);
+            fail();
+        }).toThrowErrorMatchingSnapshot();
+    });
     describe("app components", () => {
         const config = {
             appName: "Test",
-            views: [
-                "summary",
-                "one",
-                "two"
-            ],
             components: {
+                app: {
+                    type: "app",
+                    children: [
+                        "summary",
+                        "one",
+                        "two"
+                    ]
+                },
                 summary: {
                     type: "view"
                 },
@@ -101,7 +155,7 @@ describe("component generation module", () => {
                     direction: "vertical",
                     children: ["foo"]
                 },
-                "foo" : {
+                "foo": {
                     type: "textfield",
                 }
             }
@@ -142,7 +196,6 @@ describe("component generation module", () => {
         it("throws an error if a child has an invalid type", () => {
             const config = {
                 name: "Test",
-                views: ["summary"],
                 components: {
                     foo: {
                         type: "invalid"
@@ -156,10 +209,14 @@ describe("component generation module", () => {
         it("throws an error if a view has no children", () => {
             const config = {
                 name: "Test",
-                views:
-                    ["aummary"],
                 components: {
-                    summary: {},
+                    app: {
+                        type: "app",
+                        children: ["summary"]
+                    },
+                    summary: {
+                        type: "view"
+                    },
                 }
             };
             expect(() => {
