@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`model generation character model must be defined, with at least one property 1`] = `"received is not a function"`;
+
+exports[`model generation character model must have at least one property 1`] = `"Element missing required properties object"`;
+
+exports[`model generation complex type properties throws an error if a complex type has no properties object 1`] = `"Element missing required properties object"`;
+
+exports[`model generation complex type properties throws an error if a non-existent type is referenced 1`] = `"Type was fake but must be one one character, real, number, string"`;
+
+exports[`model generation complex type properties throws an error if a property is not a string 1`] = `"Properties can only be strings"`;
+
+exports[`model generation requires a model property 1`] = `"model is a required field"`;

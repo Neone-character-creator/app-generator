@@ -16,7 +16,7 @@ describe("model generation", () => {
                 };
                 modelValidation(configuration)
             } catch (e) {
-                expect(e).toMatchSnapshot();
+                expect(e).toThrowErrorMatchingSnapshot();
             }
         });
         it("must have at least one property", () => {
@@ -28,7 +28,7 @@ describe("model generation", () => {
             };
             expect(() => {
                 modelValidation(configuration);
-            }).toMatchSnapshot();
+            }).toThrowErrorMatchingSnapshot();
         });
     });
     describe("complex type", () => {
@@ -97,7 +97,41 @@ describe("model generation", () => {
                     modelValidation(configuration)
                 }).toThrowErrorMatchingSnapshot();
             });
+            it("throws an error if a property is not a string", () => {
+                const configuration = {
+                    model: {
+                        character: {
+                            properties: {
+                                bad: {}
+                            }
+                        },
+                        real: {
+                            properties: {
 
+                            }
+                        }
+                    }
+                };
+                expect(() => {
+                    modelValidation(configuration)
+                }).toThrowErrorMatchingSnapshot();
+            });
+            it("throws an error if a complex type has no properties object", () => {
+                const configuration = {
+                    model: {
+                        character: {
+                            properties: {
+                                bad: "bad"
+                            }
+                        },
+                        bad: {
+                        }
+                    }
+                };
+                expect(() => {
+                    modelValidation(configuration)
+                }).toThrowErrorMatchingSnapshot();
+            });
         });
     });
 });
