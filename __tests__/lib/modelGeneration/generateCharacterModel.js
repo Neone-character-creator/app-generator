@@ -19,7 +19,7 @@ describe("model generation", () => {
                 expect(e).toThrowErrorMatchingSnapshot();
             }
         });
-        it("must have at least one property", () => {
+        it("must have a properties object", () => {
             const configuration = {
                 model: {
                     character: {
