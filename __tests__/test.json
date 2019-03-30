@@ -892,16 +892,14 @@
       "properties": {
         "name": "string",
         "species" : "species",
-        "career" : "career",
-        "specializations" : ["specialization"]
+        "career" : "career"
       }
     },
     "species" : {
       "properties" : {
         "name" : "string",
         "plural" : "string",
-        "source" : "string",
-        "baseAttributes" : "attributes"
+        "source" : "string"
       }
     },
     "career" : {
