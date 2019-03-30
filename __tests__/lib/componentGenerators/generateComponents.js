@@ -77,6 +77,29 @@ describe("component generation module", () => {
             fail();
         }).toThrowErrorMatchingSnapshot();
     });
+    it("throws an error when a component has a key but is undefined", () => {
+        const config = {
+            name: "Test",
+            views: [
+                "summary"],
+            components: {
+                summary: {
+                    type: "view",
+                    children: [
+                        "parent"
+                    ]
+                },
+                parent: undefined,
+                badChild: {
+                    type: "bad",
+                }
+            }
+        };
+        expect(() => {
+            generateComponent("container")("parent")(config);
+            fail();
+        }).toThrowErrorMatchingSnapshot();
+    });
     describe("app components", () => {
         const config = {
             appName: "Test",
