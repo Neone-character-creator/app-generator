@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component generation module throws an error when a component has a child of an invalid type 1`] = `"Import for type bad not supported."`;
+
+exports[`component generation module throws an error when a view has a child of an invalid type 1`] = `"Import for type notAValidType not supported."`;
+
+exports[`component generation module throws an error when an object is given 1`] = `"Component type must be a string, was object"`;
+
+exports[`component generation module throws an error when creating a generator for an unsupported type 1`] = `"component type random not supported"`;
+
+exports[`component generation module throws an error when null is given 1`] = `"Component type must be a string, was object"`;
