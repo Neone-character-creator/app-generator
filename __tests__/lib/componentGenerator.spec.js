@@ -15,6 +15,12 @@ describe("component generator module", () =>{
                 "one"
             ],
             components: {
+                app : {
+                    type: "app",
+                    children: [
+                        "one"
+                    ]
+                },
                 one: {
                     type: "view",
                     children: ["foo"]
