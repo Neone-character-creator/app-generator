@@ -86,7 +86,26 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("textfield")("textfield")(config);
-            expect(generated).toEqual(expect.stringContaining("<TextField id=\"textfield-textfield\" label=\"Label\" />"));
+            expect(generated).toEqual(expect.stringContaining("<TextField id=\"textfield-textfield\" label=\"Label\" value=\"{props.boundValue}\" />"));
+        });
+        it("can be bound to a model property", () => {
+            const config = {
+                name: "Test",
+                views: [
+                    "summary"],
+                components: {
+                    summary: {
+                        type: "view"
+                    },
+                    textfield: {
+                        type: "textfield",
+                        label: "Label",
+                        bind: "model.string"
+                    }
+                }
+            };
+            const generated = generateComponent("textfield")("textfield")(config);
+            expect(generated).toEqual(expect.stringContaining("const boundPropertyName = \"model.string\".split(\".\");"));
         });
     });
     describe("Container compoents", () => {
