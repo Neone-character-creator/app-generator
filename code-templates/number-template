@@ -4,7 +4,7 @@ import Textfield from "@material-ui/core/TextField";
 %imports%
 
 const Component = () => (
-    <TextField id="%componentName%-number" label="%label%" type="number" />
+    <TextField id="%name%-number" label="%label%" type="number" />
 );
 
 export default Component;

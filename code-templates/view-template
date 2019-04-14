@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 %imports%
 
 const Component = () => (
-    <div id="%componentName%-view">
+    <div id="%name%-view">
         %children%
     </div>
 );

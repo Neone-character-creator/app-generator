@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Checkbox from "@material-ui/core/Checkbox";
 
 const Component = () => (
-    <Checkbox id="%componentName%-checkbox" />
+    <Checkbox id="%name%-checkbox" />
 );
 
 export default Component;

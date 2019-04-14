@@ -1,4 +1,5 @@
 const generateComponent = require("../../../lib/componentGenerators/genericGenerator")();
+const appGenerator = require("../../../lib/componentGenerators/appGenerator");
 
 describe("component generation module", () => {
     it("throws an error when an unsupported type is given", () => {
@@ -47,17 +48,17 @@ describe("component generation module", () => {
             }
         };
         it("names the app based on the appName", () => {
-            const generatedComponent = generateComponent('app')('app')(config);
+            const generatedComponent = appGenerator(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`<div id="${config.appName}-app">`));
         });
         it("changes the name of the component", () => {
-            const generatedComponent = generateComponent('app')('app')(config);
+            const generatedComponent = appGenerator(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`<SummaryView/>`));
             expect(generatedComponent).toEqual(expect.stringContaining(`<OneView/>`));
             expect(generatedComponent).toEqual(expect.stringContaining(`<TwoView/>`));
         });
         it("adds imports for each child component", () => {
-            const generatedComponent = generateComponent('app')('app')(config);
+            const generatedComponent = appGenerator(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`import SummaryView from "./SummaryView"`));
             expect(generatedComponent).toEqual(expect.stringContaining(`import OneView from "./OneView"`));
             expect(generatedComponent).toEqual(expect.stringContaining(`import TwoView from "./TwoView"`));
