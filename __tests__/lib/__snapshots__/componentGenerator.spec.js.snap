@@ -18,7 +18,7 @@ exports[`component generator module writes an app component 2`] = `
 "import React from \\"react\\";
 import { connect } from \\"react-redux\\";
 import Grid from \\"@material-ui/core/Grid\\";
-import TextField from \\"@material-ui/core/TextField\\";
+import FooTextfield from './FooTextfield';
 
 const Component = () => (
     <div id=\\"one-view\\">

@@ -19,7 +19,7 @@ describe("view component generator", () => {
     });
     it("adds imports for each child component", () => {
         const generatedComponent = generateComponent("view")("summary")(config);
-        expect(generatedComponent).toEqual(expect.stringContaining(`import TextField from "@material-ui/core/TextField";`));
+        expect(generatedComponent).toEqual(expect.stringContaining(`import FooTextfield from './FooTextfield';`));
     });
     it("throws an error if a child has an invalid type", () => {
         const config = {
@@ -48,7 +48,7 @@ describe("view component generator", () => {
             generateComponent("view")("summary")(config);
         }).toThrow();
     });
-    it("doesn't duplicate imports", () => {
+    it("throws an error for unsupported child type", () => {
         const config = {
             name: "Test",
             views: ["summary"],
@@ -58,14 +58,12 @@ describe("view component generator", () => {
                     children: ["foo", "bar"]
                 },
                 foo: {
-                    type: "textfield"
-                },
-                bar: {
-                    type: "textfield"
+                    type: "some nonsense"
                 }
             }
         };
-        const generatedComponent = generateComponent("view")("summary")(config);
-        expect(generatedComponent.match(/import TextField from "@material-ui\/core\/TextField";/g).length).toBe(1);
+        expect(() => {
+            generateComponent("view")("summary")(config)
+        }).toThrowErrorMatchingSnapshot();
     });
 });
