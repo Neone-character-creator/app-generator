@@ -16,6 +16,6 @@ const connected = connect((state) => {
     return {
         boundValue
     };
-})
+});
 
 export default Component;

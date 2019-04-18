@@ -4,7 +4,18 @@ import Textfield from "@material-ui/core/TextField";
 %imports%
 
 const Component = () => (
-    <TextField id="%name%-number" label="%label%" type="number" />
+    <TextField id="%name%-number" label="%label%" type="number" value={props.boundValue} />
 );
+
+const boundPropertyName = "%bind%".split(".");
+
+const connected = connect((state) => {
+    const boundValue = boundPropertyName.reduce((currentValue, nextSegment) => {
+        return currentValue[nextSegment];
+    });
+    return {
+        boundValue
+    };
+});
 
 export default Component;
