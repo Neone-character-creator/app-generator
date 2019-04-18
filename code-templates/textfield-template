@@ -4,7 +4,7 @@ import Textfield from "@material-ui/core/TextField";
 %imports%
 
 const Component = () => (
-    <TextField id="%name%-textfield" label="%label%" value="{props.boundValue}" />
+    <Textfield id="%name%-textfield" label="%label%" value="{props.boundValue}" />
 );
 
 const boundPropertyName = "%bind%".split(".");
