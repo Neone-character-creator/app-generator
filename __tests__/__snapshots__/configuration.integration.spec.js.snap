@@ -10,20 +10,12 @@ import CharacteristicsContainer from './CharacteristicsContainer';
 import SkillsContainer from './SkillsContainer';
 
 const Component = () => (
-    <Grid id=\\"summary-container\\" container direction={\\"vertical\\" == \\"vertical\\" ? \\"column\\" : \\"row\\"}>
-<Grid item xs>
+    <div id=\\"summary-view\\">
 <BiographyContainer />
-</Grid>
-<Grid item xs>
 <CombatContainer />
-</Grid>
-<Grid item xs>
 <CharacteristicsContainer />
-</Grid>
-<Grid item xs>
 <SkillsContainer />
-</Grid>
-    </Grid>
+    </div>
 );
 
 export default Component;"
