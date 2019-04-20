@@ -15,7 +15,7 @@ describe("view component generator", () => {
     };
     it("renders the child components", () => {
         const generatedComponent = generateComponent("view")("summary")(config);
-        expect(generatedComponent).toEqual(expect.stringContaining(`<TextField label="foo" id="foo" value="" />`));
+        expect(generatedComponent).toEqual(expect.stringContaining(`<FooTextfield />`));
     });
     it("adds imports for each child component", () => {
         const generatedComponent = generateComponent("view")("summary")(config);

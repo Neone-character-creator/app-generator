@@ -22,7 +22,7 @@ import FooTextfield from './FooTextfield';
 
 const Component = () => (
     <div id=\\"one-view\\">
-<TextField label=\\"foo\\" id=\\"foo\\" value=\\"\\" />
+<FooTextfield />
     </div>
 );
 
