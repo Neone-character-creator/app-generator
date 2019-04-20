@@ -86,7 +86,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("textfield")("textfield")(config);
-            expect(generated).toEqual(expect.stringContaining("<TextField id=\"textfield-textfield\" label=\"Label\" value=\"{props.boundValue}\" />"));
+            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"textfield-textfield\" label=\"Label\" value={props.boundValue} />"));
         });
         it("can be bound to a model property", () => {
             const config = {
@@ -105,7 +105,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("textfield")("textfield")(config);
-            expect(generated).toEqual(expect.stringContaining("const boundPropertyName = \"model.string\".split(\".\");"));
+            expect(generated).toEqual(expect.stringContaining("const boundPropertyName = \"model.string\""));
         });
     });
     describe("Container compoents", () => {
@@ -158,7 +158,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("number")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<TextField id=\"foo-number\" label=\"Number\" type=\"number\" />"));
+            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"foo-number\" label=\"Number\" type=\"number\" value={props.boundValue} />"));
         });
     });
     describe("label components", () => {
@@ -202,7 +202,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("checkbox")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" />"));
+            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" checked={props.boundValue} />"));
         });
     });
 });
