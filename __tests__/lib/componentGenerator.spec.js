@@ -8,6 +8,28 @@ describe("component generator module", () =>{
         componentWriter = sinon.stub()
     });
 
+    it("throws an error if views are undefined", () => {
+        const hierarchy = {
+            appName: "test",
+            components: {
+                app : {
+                    type: "app",
+                    children: [
+                        "one"
+                    ]
+                },
+                one: {
+                    type: "view",
+                    children: ["foo"]
+                },
+                foo: {
+                    type: "textfield"
+                }
+            }
+        };
+        expect(componentGenerator(hierarchy)).rejects.toThrowErrorMatchingSnapshot();
+    });
+
     it("writes an app component", async () => {
         const hierarchy = {
             appName: "test",

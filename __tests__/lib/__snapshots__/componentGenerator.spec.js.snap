@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`component generator module throws an error if views are undefined 1`] = `"No views to extract"`;
+
 exports[`component generator module writes an app component 1`] = `
 "import React from \\"react\\";
 import { connect } from \\"react-redux\\";
