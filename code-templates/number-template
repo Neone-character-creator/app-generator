@@ -1,21 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import Textfield from "@material-ui/core/TextField";
+import * as _ from "lodash";
 %imports%
 
-const Component = () => (
+const Component = (props) => (
     <Textfield id="%name%-number" label="%label%" type="number" value={props.boundValue} />
 );
 
-const boundPropertyName = "%bind%".split(".");
+const boundPropertyName = "%bind%";
 
 const connected = connect((state) => {
-    const boundValue = boundPropertyName.reduce((currentValue, nextSegment) => {
-        return currentValue[nextSegment];
-    });
+    const boundValue = _.get(boundPropertyName, state);
     return {
         boundValue
     };
-});
+})(Component);
 
-export default Component;
+export default connected;

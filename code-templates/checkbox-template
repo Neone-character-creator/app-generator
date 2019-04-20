@@ -1,21 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import Checkbox from "@material-ui/core/Checkbox";
+import * as _ from "lodash";
 
-const Component = () => (
+const Component = (props) => (
     <Checkbox id="%name%-checkbox" checked={props.boundValue} />
 );
 
-const boundPropertyName = "%bind%".split(".");
+const boundPropertyName = "%bind%";
 
 const connected = connect((state) => {
-    const boundValue = boundPropertyName.reduce((currentValue, nextSegment) => {
-        return currentValue[nextSegment];
-    });
+    const boundValue = _.get(boundPropertyName, state);
     return {
         boundValue
     };
-});
+})(Component);
 
-
-export default Component;
+export default connected;
