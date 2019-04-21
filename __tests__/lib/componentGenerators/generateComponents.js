@@ -1,4 +1,5 @@
 const generateComponent = require("../../../lib/componentGenerators/genericGenerator")();
+const generateSelect = require("../../../lib/componentGenerators/selectGenerator");
 const appGenerator = require("../../../lib/componentGenerators/appGenerator");
 
 describe("component generation module", () => {
@@ -90,6 +91,51 @@ describe("component generation module", () => {
             };
             const generated = generateComponent("textfield")("textfield")(config);
             expect(generated).toEqual(expect.stringContaining("<Textfield id=\"textfield-textfield\" label=\"Label\" value={props.boundValue} />"));
+        });
+        it("can be bound to a model property", () => {
+            const config = {
+                name: "Test",
+                views: [
+                    "summary"],
+                components: {
+                    summary: {
+                        type: "view"
+                    },
+                    textfield: {
+                        type: "textfield",
+                        label: "Label",
+                        bind: "model.string"
+                    }
+                }
+            };
+            const generated = generateComponent("textfield")("textfield")(config);
+            expect(generated).toEqual(expect.stringContaining("const boundPropertyName = \"model.string\""));
+        });
+    });
+    describe("select components", () => {
+        it("generates the component", () => {
+            const config = {
+                name: "Test",
+                views: [
+                    "summary"],
+                components: {
+                    summary: {
+                        type: "view"
+                    },
+                    select: {
+                        type: "select",
+                        label: "Label",
+                        values: [0,1,2]
+                    }
+                }
+            };
+            const generated = generateSelect("select")(config);
+            expect(generated).toEqual(expect.stringContaining("<Select id=\"select-select\" value={props.boundValue}>"));
+            expect(generated).toEqual(expect.stringContaining("<InputLabel id=\"select-select-label\">Label</InputLabel>"));
+            expect(generated).toEqual(expect.stringContaining("<MenuItem id=\"select-select-value-0\" value=0>0</MenuItem>"));
+            expect(generated).toEqual(expect.stringContaining("<MenuItem id=\"select-select-value-1\" value=1>1</MenuItem>"));
+            expect(generated).toEqual(expect.stringContaining("<MenuItem id=\"select-select-value-2\" value=2>2</MenuItem>"));
+            expect(generated).toEqual(expect.stringContaining("</Select>"));
         });
         it("can be bound to a model property", () => {
             const config = {
