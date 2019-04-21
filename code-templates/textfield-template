@@ -5,7 +5,7 @@ import * as _ from "lodash";
 %imports%
 
 const Component = (props) => (
-    <Textfield id="%name%-textfield" label="%label%" value={props.boundValue} />
+    <Textfield id="%componentName%-textfield" label="%label%" value={props.boundValue} />
 );
 
 const boundPropertyName = "%bind%";

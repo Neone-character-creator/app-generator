@@ -36,6 +36,9 @@ describe("component generation module", () => {
                 "two"
             ],
             components: {
+                app : {
+                    type: "app"
+                },
                 summary: {
                     type: "view"
                 },
@@ -114,6 +117,7 @@ describe("component generation module", () => {
             views: ["summary"],
             components: {
                 summary: {
+                    type: "view",
                     children: ["container"]
                 },
                 "container": {

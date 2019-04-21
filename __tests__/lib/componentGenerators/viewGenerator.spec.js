@@ -1,7 +1,7 @@
 const generateComponent = require("../../../lib/componentGenerators/genericGenerator")();
 describe("view component generator", () => {
     const config = {
-        name: "Test",
+        componentName: "Test",
         views: ["summary"],
         components: {
             summary: {
@@ -23,7 +23,7 @@ describe("view component generator", () => {
     });
     it("throws an error if a child has an invalid type", () => {
         const config = {
-            name: "Test",
+            componentName: "Test",
             views: ["summary"],
             components: {
                 foo: {
@@ -37,7 +37,7 @@ describe("view component generator", () => {
     });
     it("throws an error if a view has no children", () => {
         const config = {
-            name: "Test",
+            componentName: "Test",
             views:
                 ["aummary"],
             components: {
@@ -50,7 +50,7 @@ describe("view component generator", () => {
     });
     it("throws an error for unsupported child type", () => {
         const config = {
-            name: "Test",
+            componentName: "Test",
             views: ["summary"],
             components: {
                 summary: {

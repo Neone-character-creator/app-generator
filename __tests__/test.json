@@ -4,7 +4,7 @@
     "children": {
       "summary": {
         "name" : "Summary",
-        "type": "container",
+        "type": "view",
         "direction": "vertical",
         "children": {
           "biography": {
