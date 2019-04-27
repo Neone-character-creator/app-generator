@@ -137,7 +137,7 @@ describe("component generation module", () => {
             expect(generated).toEqual(expect.stringContaining("<MenuItem id=\"select-select-value-2\" value=2>2</MenuItem>"));
             expect(generated).toEqual(expect.stringContaining("</Select>"));
         });
-        it("can be bound to a model property", () => {
+        it("throws an error if values is undefined", () => {
             const config = {
                 name: "Test",
                 views: [
@@ -146,15 +146,13 @@ describe("component generation module", () => {
                     summary: {
                         type: "view"
                     },
-                    textfield: {
-                        type: "textfield",
-                        label: "Label",
-                        bind: "model.string"
+                    select: {
+                        type: "select",
+                        label: "Label"
                     }
                 }
             };
-            const generated = generateComponent("textfield")("textfield")(config);
-            expect(generated).toEqual(expect.stringContaining("const boundPropertyName = \"model.string\""));
+            expect(()=>generateSelect("select")(config)).toThrowErrorMatchingSnapshot();
         });
     });
     describe("Container compoents", () => {
