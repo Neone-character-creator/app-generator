@@ -1,4 +1,4 @@
-const configSchema = require('../../lib/configurationSchema');
+const configSchema = require('../../lib/schema/configuration');
 describe("the configuration schema", () => {
     describe("the views", () => {
         it("must have a name field", () => {

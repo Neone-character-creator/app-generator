@@ -5,7 +5,7 @@ if (!argv.configFile) {
     throw new Error("--configFile is missing.");
 }
 
-const configFile = require("./lib/configurationSchema")(JSON.parse(fs.readFileSync(argv.configFile, 'utf-8')));
+const configFile = require("./lib/schema/configuration")(JSON.parse(fs.readFileSync(argv.configFile, 'utf-8')));
 const configuration = require('./lib/generateComponentsHierarchy').default(configFile);
 
 const clean = !fs.existsSync(`plugin-${configuration.appName}`);
