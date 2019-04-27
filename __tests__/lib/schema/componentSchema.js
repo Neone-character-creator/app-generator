@@ -56,4 +56,9 @@ describe("the configuration schema", () => {
         const textfieldSchema = require("../../../lib/schema/component/textfield");
         expect(textfieldSchema.mock.calls.length).toBe(1);
     });
+    it("throws an error for an unknown type", () => {
+        expect(()=>componentSchema({
+            type: "asdfasdjiofiojasdf"
+        })).toThrow();
+    })
 });
