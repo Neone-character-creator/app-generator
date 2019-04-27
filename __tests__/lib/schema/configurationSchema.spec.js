@@ -2,7 +2,7 @@ const configSchema = require('../../../lib/schema/configuration');
 const textfieldSchema = require("../../../lib/schema/component/textfield");
 const checkboxSchema = require("../../../lib/schema/component/checkbox");
 const containerSchema = require("../../../lib/schema/component/container");
-
+const numberSchema = require("../../../lib/schema/component/number");
 describe("the configuration schema", () => {
     describe("textfield", () => {
         it("must have a type", () => {
@@ -146,6 +146,47 @@ describe("the configuration schema", () => {
             expect.assertions(2);
             try {
                 containerSchema(config).validateSync(config);
+            } catch(e) {
+                expect(e.errors.length).toEqual(1);
+                expect(e.errors[0]).toBe("this field cannot have keys not specified in the object shape");
+            }
+        });
+    });
+    describe("number", () => {
+        it("must have a type", () => {
+            const config = {};
+            expect.assertions(2);
+            try {
+                numberSchema(config).validateSync(config, {
+                    abortEarly: false
+                });
+            } catch(e) {
+                expect(e.errors.length).toBeGreaterThanOrEqual(1);
+                expect(e.errors).toContain("type is a required field");
+            }
+        });
+        it("type must be container", () => {
+            const config = {
+                type: "foobar"
+            };
+            expect.assertions(2);
+            try {
+                numberSchema(config).validateSync(config, {
+                    abortEarly: false
+                });
+            } catch(e) {
+                expect(e.errors.length).toBeGreaterThanOrEqual(1);
+                expect(e.errors).toContain("type must be one of the following values: number");
+            }
+        });
+        it("may not have unknown properties", () => {
+            const config = {
+                type: "number",
+                foo: "bar"
+            };
+            expect.assertions(2);
+            try {
+                numberSchema(config).validateSync(config);
             } catch(e) {
                 expect(e.errors.length).toEqual(1);
                 expect(e.errors[0]).toBe("this field cannot have keys not specified in the object shape");
