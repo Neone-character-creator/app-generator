@@ -3,6 +3,8 @@ const textfieldSchema = require("../../../lib/schema/component/textfield");
 const checkboxSchema = require("../../../lib/schema/component/checkbox");
 const containerSchema = require("../../../lib/schema/component/container");
 const numberSchema = require("../../../lib/schema/component/number");
+const labelSchema = require("../../../lib/schema/component/label");
+
 describe("the configuration schema", () => {
     describe("textfield", () => {
         it("must have a type", () => {
@@ -190,6 +192,46 @@ describe("the configuration schema", () => {
             } catch(e) {
                 expect(e.errors.length).toEqual(1);
                 expect(e.errors[0]).toBe("this field cannot have keys not specified in the object shape");
+            }
+        });
+    });
+    describe("label", () => {
+        it("must have a type", () => {
+            const config = {};
+            expect.assertions(2);
+            try {
+                labelSchema(config).validateSync(config, {
+                    abortEarly: false
+                });
+            } catch(e) {
+                expect(e.errors.length).toBeGreaterThanOrEqual(1);
+                expect(e.errors).toContain("type is a required field");
+            }
+        });
+        it("type must be container", () => {
+            const config = {
+                type: "foobar"
+            };
+            expect.assertions(2);
+            try {
+                labelSchema(config).validateSync(config, {
+                    abortEarly: false
+                });
+            } catch(e) {
+                expect(e.errors.length).toBeGreaterThanOrEqual(1);
+                expect(e.errors).toContain("type must be one of the following values: label");
+            }
+        });
+        it("must have a value property", () => {
+            const config = {
+                type: "label",
+            };
+            expect.assertions(2);
+            try {
+                labelSchema(config).validateSync(config);
+            } catch(e) {
+                expect(e.errors.length).toEqual(1);
+                expect(e.errors).toContain("value is a required field");
             }
         });
     });
