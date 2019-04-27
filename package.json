@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "scan": "node_modules/sonar-scanner/bin/sonar-scanner"
+    "scan": "node_modules/sonar-scanner/bin/sonar-scanner",
+    "build" : "node app.js"
   },
   "repository": {
     "type": "git",
