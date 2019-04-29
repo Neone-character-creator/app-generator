@@ -178,7 +178,7 @@
                       {
                         "name": "astrogationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.astrogation."
+                        "bind": "character.skills.astrogation"
                       },
                       {
                         "name": "astrogationRating",
