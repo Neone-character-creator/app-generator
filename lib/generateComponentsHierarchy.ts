@@ -17,24 +17,26 @@ function extractComponentDefinitions(components: {
         if (components.views[componentId]) {
             throw new Error(`Duplicate view found: ${componentId}`);
         }
-        Object.keys(element.children).forEach(child => {
-            extractViewDefinition(components, child, element.children[child]);
+        element.children.forEach((child:any)=> {
+            extractViewDefinition(components, child.name, child);
         })
     } else {
         if (components.components[componentId]) {
-            throw new Error("Duplicate component found");
+            throw new Error(`Duplicate component ${componentId} found`);
         }
         components.components[componentId] = element;
-        const children = element.children;
+        const children : Array<any> = element.children;
         if (!_.isEmpty(children)) {
-            Object.keys(children).forEach(child => {
-                extractComponentDefinitions(components, child, children[child]);
+            children.forEach(child => {
+                extractComponentDefinitions(components, child.name, child);
             })
         }
         components.components[componentId] = element;
     }
     if (element.children) {
-        element.children = Object.keys(element.children);
+        element.children = element.children.map((child:any) => {
+            return child.name;
+        });
     }
     return components;
 }
@@ -43,19 +45,22 @@ function extractViewDefinition(components: {
     components: { [s: string]: any },
     views: { [s: string]: any }
 }, componentId: string, element: any) {
-    if (components.views[componentId]) {
-        throw new Error("Duplicate component found");
+    if (components.views[element.name]) {
+        throw new Error(`Duplicate component ${element.name} found`);
     }
     const children = element.children;
     if (!_.isEmpty(children)) {
-        Object.keys(children).forEach(child => {
-            extractComponentDefinitions(components, child, children[child]);
+        children.forEach((child:any) => {
+            extractComponentDefinitions(components, child.name, child);
         })
     }
     if (element.children) {
-        element.children = Object.keys(element.children);
+        element.children = element.children.map((child:any) => {
+            return child.name;
+        })
     }
-    components.views.push(componentId);
-    components.components[componentId] = element;
+    components.views.push(element.name);
+    components.components[element.name] = element;
+
     return components;
 }

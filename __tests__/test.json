@@ -1,888 +1,1095 @@
 {
-  "appName" : "test",
+  "appName": "test",
   "views": {
-    "children": {
-      "summary": {
-        "name" : "Summary",
+    "children": [
+      {
+        "name": "Summary",
         "type": "view",
         "direction": "vertical",
-        "children": {
-          "biography": {
+        "children": [
+          {
+            "name": "biography",
             "type": "container",
             "direction": "vertical",
-            "children": {
-              "name": {
+            "children": [
+              {
+                "name": "name",
                 "type": "textfield",
                 "label": "Character Name",
                 "bind": "character.name"
               },
-              "species": {
+              {
+                "name": "species",
                 "type": "textfield",
                 "label": "Species",
                 "bind": "character.species.name"
               },
-              "career": {
+              {
+                "name": "career",
                 "type": "textfield",
                 "label": "Career",
                 "bind": "character.career.name"
               },
-              "specializations": {
+              {
+                "name": "specializations",
                 "type": "textfield",
                 "label": "Specialization Trees",
                 "bind": "character.specializations | map(name) | join(, )"
               }
-            }
+            ]
           },
-          "combat": {
+          {
+            "name": "combat",
             "type": "container",
             "direction": "horizontal",
-            "children": {
-              "soak": {
+            "children": [
+              {
+                "name": "soak",
                 "type": "number",
                 "label": "Soak Value",
                 "bind": "character.soak"
               },
-              "wounds": {
+              {
+                "name": "wounds",
                 "type": "container",
                 "direction": "horizontal",
                 "label": "Wounds",
-                "children": {
-                  "currentWounds": {
+                "children": [
+                  {
+                    "name": "currentWounds",
                     "type": "number",
                     "label": "Current",
                     "bind": "character.wounds.current"
                   },
-                  "thresholdWounds": {
+                  {
+                    "name": "thresholdWounds",
                     "type": "number",
                     "label": "Threshold",
                     "bind": "character.wounds.threshold"
                   }
-                }
+                ]
               },
-              "strain": {
+              {
+                "name": "strain",
                 "type": "container",
                 "direction": "horizontal",
                 "label": "Strain",
-                "children": {
-                  "thresholdStrain": {
+                "children": [
+                  {
+                    "name": "strainThreshold",
                     "type": "number",
                     "label": "Threshold",
                     "bind": "character.strain.threshold"
                   },
-                  "currentStrain": {
+                  {
+                    "name": "strainCurrent",
                     "type": "number",
                     "label": "Current",
                     "bind": "character.strain.current"
                   }
-                }
+                ]
               },
-              "defense": {
+              {
+                "name": "defense",
                 "type": "container",
                 "direction": "horizontal",
-                "children": {
-                  "rangedDefense": {
+                "children": [
+                  {
+                    "name": "rangedDefense",
                     "type": "number",
                     "label": "Ranged",
                     "bind": "character.defense.ranged"
                   },
-                  "meleeDefense": {
+                  {
+                    "name": "meleeDefense",
                     "type": "number",
                     "label": "Melee",
                     "bind": "character.defense.melee"
                   }
-                }
+                ]
               }
-            }
+            ]
           },
-          "characteristics": {
+          {
+            "name" : "characteristics",
             "type": "container",
             "direction": "horizontal",
-            "children": {
-              "brawn": {
+            "children": [
+              {
+                "name": "brawn",
                 "type": "number",
                 "label": "Brawn",
                 "bind": "character.characteristics.brawn"
               },
-              "agility": {
+              {
+                "name": "agility",
                 "type": "number",
                 "label": "Agility",
                 "bind": "character.characteristics.agility"
               },
-              "intellect": {
+              {
+                "name": "intellect",
                 "type": "number",
                 "label": "Intellect",
                 "bind": "character.characteristics.intellect"
               },
-              "cunning": {
+              {
+                "name": "cunning",
                 "type": "number",
                 "label": "Cunning",
                 "bind": "character.characteristics.cunning"
               },
-              "willpower": {
+              {
+                "name": "willpower",
                 "type": "number",
                 "label": "Willpower",
                 "bind": "character.characteristics.willpower"
               },
-              "presence": {
+              {
+                "name": "presence",
                 "type": "number",
                 "label": "Presence",
                 "bind": "character.characteristics.presence"
               }
-            }
+            ]
           },
-          "skills": {
+          {
+            "name" : "skills",
             "type": "container",
             "direction": "horizontal",
             "label": "Skills",
-            "children": {
-              "generalSkills": {
+            "children": [
+              {
+                "name": "generalSkills",
                 "type": "container",
                 "direction": "vertical",
                 "label": "General Skills",
-                "children": {
-                  "astrogation": {
+                "children": [
+                  {
+                    "name": "astrogation",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "astrogationLabel": {
+                    "children": [
+                      {
+                        "name": "astrogationLabel",
                         "type": "label",
                         "value": "Astrogation"
                       },
-                      "astrogationCareerFlag": {
+                      {
+                        "name": "astrogationCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.astrogation."
                       },
-                      "astrogationRating": {
+                      {
+                        "name": "astrogationRating",
                         "type": "number",
                         "bind": "character.skills.astrogation"
                       }
-                    }
+                    ]
                   },
-                  "athletics": {
+                  {
+                    "name": "athletics",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "athleticsLabel": {
+                    "children": [
+                      {
+                        "name": "athleticsLabel",
                         "type": "label",
                         "value": "Athletics"
                       },
-                      "athleticsCareerFlag": {
+                      {
+                        "name": "athleticsCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.athletics."
                       },
-                      "athleticsRating": {
+                      {
+                        "name": "athleticsRating",
                         "type": "number",
                         "bind": "character.skills.athletics"
                       }
-                    }
+                    ]
                   },
-                  "charm": {
+                  {
+                    "name": "charm",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "charmLabel": {
+                    "children": [
+                      {
+                        "name": "charmLabel",
                         "type": "label",
                         "value": "Charm"
                       },
-                      "charmCareerFlag": {
+                      {
+                        "name": "charmCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.charm."
                       },
-                      "charmRating": {
+                      {
+                        "name": "charmRating",
                         "type": "number",
                         "bind": "character.skills.charm"
                       }
-                    }
+                    ]
                   },
-                  "coercion": {
+                  {
+                    "name": "coercion",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "coercionLabel": {
+                    "children": [
+                      {
+                        "name": "coercionLabel",
                         "type": "label",
                         "value": "Coercion"
                       },
-                      "coercionCareerFlag": {
+                      {
+                        "name": "coercionCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.coercion."
                       },
-                      "coercionRating": {
+                      {
+                        "name": "coercionRating",
                         "type": "number",
                         "bind": "character.skills.coercion"
                       }
-                    }
+                    ]
                   },
-                  "computers": {
+                  {
+                    "name": "computers",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "computersLabel": {
+                    "children": [
+                      {
+                        "name": "computersLabel",
                         "type": "label",
                         "value": "Computers"
                       },
-                      "computersCareerFlag": {
+                      {
+                        "name": "computersCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.computers."
                       },
-                      "computersRating": {
+                      {
+                        "name": "computersRating",
                         "type": "number",
                         "bind": "character.skills.computers"
                       }
-                    }
+                    ]
                   },
-                  "cool": {
+                  {
+                    "name": "cool",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "coolLabel": {
+                    "children": [
+                      {
+                        "name": "coolLabel",
                         "type": "label",
                         "value": "Cool"
                       },
-                      "coolCareerFlag": {
+                      {
+                        "name": "coolCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.cool."
                       },
-                      "coolRating": {
+                      {
+                        "name": "coolRating",
                         "type": "number",
                         "bind": "character.skills.cool"
                       }
-                    }
+                    ]
                   },
-                  "coordination": {
+                  {
+                    "name": "coordination",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "coordinationLabel": {
+                    "children": [
+                      {
+                        "name": "coordinationLabel",
                         "type": "label",
                         "value": "Coordination"
                       },
-                      "coordinationCareerFlag": {
+                      {
+                        "name": "coordinationCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.coordination."
                       },
-                      "coordinationRating": {
+                      {
+                        "name": "coordinationRating",
                         "type": "number",
                         "bind": "character.skills.coordination"
                       }
-                    }
+                    ]
                   },
-                  "deception": {
+                  {
+                    "name": "deception",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "deceptionLabel": {
+                    "children": [
+                      {
+                        "name": "deceptionLabel",
                         "type": "label",
                         "value": "Deception"
                       },
-                      "deceptionCareerFlag": {
+                      {
+                        "name": "deceptionCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.deception."
                       },
-                      "deceptionRating": {
+                      {
+                        "name": "deceptionRating",
                         "type": "number",
                         "bind": "character.skills.deception"
                       }
-                    }
+                    ]
                   },
-                  "discipline": {
+                  {
+                    "name": "discipline",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "disciplineLabel": {
+                    "children": [
+                      {
+                        "name": "disciplineLabel",
                         "type": "label",
                         "value": "Discipline"
                       },
-                      "disciplineCareerFlag": {
+                      {
+                        "name": "disciplineCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.discipline."
                       },
-                      "disciplineRating": {
+                      {
+                        "name": "disciplineRating",
                         "type": "number",
                         "bind": "character.skills.discipline"
                       }
-                    }
+                    ]
                   },
-                  "leadership": {
+                  {
+                    "name": "leadership",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "leadershipLabel": {
+                    "children": [
+                      {
+                        "name": "leadershipLabel",
                         "type": "label",
                         "value": "Leadership"
                       },
-                      "leadershipCareerFlag": {
+                      {
+                        "name": "leadershipCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.leadership."
                       },
-                      "leadershipRating": {
+                      {
+                        "name": "leadershipRating",
                         "type": "number",
                         "bind": "character.skills.leadership"
                       }
-                    }
+                    ]
                   },
-                  "mechanics": {
+                  {
+                    "name": "mechanics",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "mechanicsLabel": {
+                    "children": [
+                      {
+                        "name": "mechanicsLabel",
                         "type": "label",
                         "value": "Mechanics"
                       },
-                      "mechanicsCareerFlag": {
+                      {
+                        "name": "mechanicsCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.mechanics."
                       },
-                      "mechanicsRating": {
+                      {
+                        "name": "mechanicsRating",
                         "type": "number",
                         "bind": "character.skills.mechanics"
                       }
-                    }
+                    ]
                   },
-                  "medicine": {
+                  {
+                    "name": "medicine",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "medicineLabel": {
+                    "children": [
+                      {
+                        "name": "medicineLabel",
                         "type": "label",
                         "value": "Medicine"
                       },
-                      "medicineCareerFlag": {
+                      {
+                        "name": "medicineCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.medicine."
                       },
-                      "medicineRating": {
+                      {
+                        "name": "medicineRating",
                         "type": "number",
                         "bind": "character.skills.medicine"
                       }
-                    }
+                    ]
                   },
-                  "negotiation": {
+                  {
+                    "name": "negotiation",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "negotiationLabel": {
+                    "children": [
+                      {
+                        "name": "negotiationLabel",
                         "type": "label",
                         "value": "Negotiation"
                       },
-                      "negotiationCareerFlag": {
+                      {
+                        "name": "negotiationCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.negotiation."
                       },
-                      "negotiationRating": {
+                      {
+                        "name": "negotiationRating",
                         "type": "number",
                         "bind": "character.skills.negotiation"
                       }
-                    }
+                    ]
                   },
-                  "perception": {
+                  {
+                    "name": "perception",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "perceptionLabel": {
+                    "children": [
+                      {
+                        "name": "perceptionLabel",
                         "type": "label",
                         "value": "Perception"
                       },
-                      "perceptionCareerFlag": {
+                      {
+                        "name": "perceptionCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.perception."
                       },
-                      "perceptionRating": {
+                      {
+                        "name": "perceptionRating",
                         "type": "number",
                         "bind": "character.skills.perception"
                       }
-                    }
+                    ]
                   },
-                  "pilotingPlanetary": {
+                  {
+                    "name": "pilotingPlanetary",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "pilotingPlanetaryLabel": {
+                    "children": [
+                      {
+                        "name": "pilotingPlanetaryLabel",
                         "type": "label",
                         "value": "PilotingPlanetary"
                       },
-                      "pilotingPlanetaryCareerFlag": {
+                      {
+                        "name": "pilotingPlanetaryCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.pilotingPlanetary."
                       },
-                      "pilotingPlanetaryRating": {
+                      {
+                        "name": "pilotingPlanetaryRating",
                         "type": "number",
                         "bind": "character.skills.pilotingPlanetary"
                       }
-                    }
+                    ]
                   },
-                  "pilotingSpace": {
+                  {
+                    "name": "pilotingSpace",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "pilotingSpaceLabel": {
+                    "children": [
+                      {
+                        "name": "pilotingSpaceLabel",
                         "type": "label",
                         "value": "PilotingSpace"
                       },
-                      "pilotingSpaceCareerFlag": {
+                      {
+                        "name": "pilotingSpaceCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.pilotingSpace."
                       },
-                      "pilotingSpaceRating": {
+                      {
+                        "name": "pilotingSpaceRating",
                         "type": "number",
                         "bind": "character.skills.pilotingSpace"
                       }
-                    }
+                    ]
                   },
-                  "resilience": {
+                  {
+                    "name": "resilience",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "resilienceLabel": {
+                    "children": [
+                      {
+                        "name": "resilienceLabel",
                         "type": "label",
                         "value": "Resilience"
                       },
-                      "resilienceCareerFlag": {
+                      {
+                        "name": "resilienceCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.resilience."
                       },
-                      "resilienceRating": {
+                      {
+                        "name": "resilienceRating",
                         "type": "number",
                         "bind": "character.skills.resilience"
                       }
-                    }
+                    ]
                   },
-                  "skulduggery": {
+                  {
+                    "name": "skulduggery",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "skulduggeryLabel": {
+                    "children": [
+                      {
+                        "name": "skulduggeryLabel",
                         "type": "label",
                         "value": "Skulduggery"
                       },
-                      "skulduggeryCareerFlag": {
+                      {
+                        "name": "skulduggeryCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.skulduggery."
                       },
-                      "skulduggeryRating": {
+                      {
+                        "name": "skulduggeryRating",
                         "type": "number",
                         "bind": "character.skills.skulduggery"
                       }
-                    }
+                    ]
                   },
-                  "stealth": {
+                  {
+                    "name": "stealth",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "stealthLabel": {
+                    "children": [
+                      {
+                        "name": "stealthLabel",
                         "type": "label",
                         "value": "Stealth"
                       },
-                      "stealthCareerFlag": {
+                      {
+                        "name": "stealthCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.stealth."
                       },
-                      "stealthRating": {
+                      {
+                        "name": "stealthRating",
                         "type": "number",
                         "bind": "character.skills.stealth"
                       }
-                    }
+                    ]
                   },
-                  "streetwise": {
+                  {
+                    "name": "streetwise",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "streetwiseLabel": {
+                    "children": [
+                      {
+                        "name": "streetwiseLabel",
                         "type": "label",
                         "value": "Streetwise"
                       },
-                      "streetwiseCareerFlag": {
+                      {
+                        "name": "streetwiseCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.streetwise."
                       },
-                      "streetwiseRating": {
+                      {
+                        "name": "streetwiseRating",
                         "type": "number",
                         "bind": "character.skills.streetwise"
                       }
-                    }
+                    ]
                   },
-                  "survival": {
+                  {
+                    "name": "survival",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "survivalLabel": {
+                    "children": [
+                      {
+                        "name": "survivalLabel",
                         "type": "label",
                         "value": "Survival"
                       },
-                      "survivalCareerFlag": {
+                      {
+                        "name": "survivalCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.survival."
                       },
-                      "survivalRating": {
+                      {
+                        "name": "survivalRating",
                         "type": "number",
                         "bind": "character.skills.survival"
                       }
-                    }
+                    ]
                   },
-                  "vigilance": {
+                  {
+                    "name": "vigilance",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "vigilanceLabel": {
+                    "children": [
+                      {
+                        "name": "vigilanceLabel",
                         "type": "label",
                         "value": "Vigilance"
                       },
-                      "vigilanceCareerFlag": {
+                      {
+                        "name": "vigilanceCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.vigilance."
                       },
-                      "vigilanceRating": {
+                      {
+                        "name": "vigilanceRating",
                         "type": "number",
                         "bind": "character.skills.vigilance"
                       }
-                    }
+                    ]
                   }
-                }
+                ]
               },
-              "combatSkills": {
+              {
+                "name": "combatSkills",
                 "type": "container",
                 "direction": "vertical",
-                "children": {
-                  "brawl": {
+                "children": [
+                  {
+                    "name": "brawl",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "brawlLabel": {
+                    "children": [
+                      {
+                        "name": "brawlLabel",
                         "type": "label",
                         "value": "Brawl"
                       },
-                      "brawlCareerFlag": {
+                      {
+                        "name": "brawlCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.brawl."
                       },
-                      "brawlRating": {
+                      {
+                        "name": "brawlRating",
                         "type": "number",
                         "bind": "character.skills.brawl"
                       }
-                    }
+                    ]
                   },
-                  "gunnery": {
+                  {
+                    "name": "gunnery",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "gunneryLabel": {
+                    "children": [
+                      {
+                        "name": "gunneryLabel",
                         "type": "label",
                         "value": "Gunnery"
                       },
-                      "gunneryCareerFlag": {
+                      {
+                        "name": "gunneryCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.gunnery."
                       },
-                      "gunneryRating": {
+                      {
+                        "name": "gunneryRating",
                         "type": "number",
                         "bind": "character.skills.gunnery"
                       }
-                    }
+                    ]
                   },
-                  "melee": {
+                  {
+                    "name": "melee",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "meleeLabel": {
+                    "children": [
+                      {
+                        "name": "meleeLabel",
                         "type": "label",
                         "value": "Melee"
                       },
-                      "meleeCareerFlag": {
+                      {
+                        "name": "meleeCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.melee."
                       },
-                      "meleeRating": {
+                      {
+                        "name": "meleeRating",
                         "type": "number",
                         "bind": "character.skills.melee"
                       }
-                    }
+                    ]
                   },
-                  "rangedLight": {
+                  {
+                    "name": "rangedLight",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "rangedLightLabel": {
+                    "children": [
+                      {
+                        "name": "rangedLightLabel",
                         "type": "label",
                         "value": "Ranged - Light"
                       },
-                      "rangedLightCareerFlag": {
+                      {
+                        "name": "rangedLightCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.rangedLight."
                       },
-                      "rangedLightRating": {
+                      {
+                        "name": "rangedLightRating",
                         "type": "number",
                         "bind": "character.skills.rangedLight"
                       }
-                    }
+                    ]
                   },
-                  "rangedHeavy": {
+                  {
+                    "name": "rangedHeavy",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "rangedHeavyLabel": {
+                    "children": [
+                      {
+                        "name": "rangedHeavyLabel",
                         "type": "label",
                         "value": "Ranged - Heavy"
                       },
-                      "rangedHeavyCareerFlag": {
+                      {
+                        "name": "rangedHeavyCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.rangedHeavy."
                       },
-                      "rangedHeavyRating": {
+                      {
+                        "name": "rangedHeavyRating",
                         "type": "number",
                         "bind": "character.skills.rangedHeavy"
                       }
-                    }
+                    ]
                   }
-                }
+                ]
               },
-              "knowledgeSkills": {
+              {
+                "name": "knowledgeSkills",
                 "type": "container",
                 "direction": "vertical",
                 "label": "Knowledge Skills",
-                "children": {
-                  "coreWorlds": {
+                "children": [
+                  {
+                    "name": "coreWorlds",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "coreWorldsLabel": {
+                    "children": [
+                      {
+                        "name": "coreWorldsLabel",
                         "type": "label",
                         "value": "CoreWorlds"
                       },
-                      "coreWorldsCareerFlag": {
+                      {
+                        "name": "coreWorldsCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.coreWorlds."
                       },
-                      "coreWorldsRating": {
+                      {
+                        "name": "coreWorldsRating",
                         "type": "number",
                         "bind": "character.skills.coreWorlds"
                       }
-                    }
+                    ]
                   },
-                  "education": {
+                  {
+                    "name": "education",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "educationLabel": {
+                    "children": [
+                      {
+                        "name": "educationLabel",
                         "type": "label",
                         "value": "Education"
                       },
-                      "educationCareerFlag": {
+                      {
+                        "name": "educationCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.education."
                       },
-                      "educationRating": {
+                      {
+                        "name": "educationRating",
                         "type": "number",
                         "bind": "character.skills.education"
                       }
-                    }
+                    ]
                   },
-                  "lore": {
+                  {
+                    "name": "lore",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "loreLabel": {
+                    "children": [
+                      {
+                        "name": "loreLabel",
                         "type": "label",
                         "value": "Lore"
                       },
-                      "loreCareerFlag": {
+                      {
+                        "name": "loreCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.lore."
                       },
-                      "loreRating": {
+                      {
+                        "name": "loreRating",
                         "type": "number",
                         "bind": "character.skills.lore"
                       }
-                    }
+                    ]
                   },
-                  "outerRim": {
+                  {
+                    "name": "outerRim",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "outerRimLabel": {
+                    "children": [
+                      {
+                        "name": "outerRimLabel",
                         "type": "label",
                         "value": "OuterRim"
                       },
-                      "outerRimCareerFlag": {
+                      {
+                        "name": "outerRimCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.outerRim."
                       },
-                      "outerRimRating": {
+                      {
+                        "name": "outerRimRating",
                         "type": "number",
                         "bind": "character.skills.outerRim"
                       }
-                    }
+                    ]
                   },
-                  "underworld": {
+                  {
+                    "name": "underworld",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "underworldLabel": {
+                    "children": [
+                      {
+                        "name": "underworldLabel",
                         "type": "label",
                         "value": "Underworld"
                       },
-                      "underworldCareerFlag": {
+                      {
+                        "name": "underworldCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.underworld."
                       },
-                      "underworldRating": {
+                      {
+                        "name": "underworldRating",
                         "type": "number",
                         "bind": "character.skills.underworld"
                       }
-                    }
+                    ]
                   },
-                  "xenology": {
+                  {
+                    "name": "xenology",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "xenologyLabel": {
+                    "children": [
+                      {
+                        "name": "xenologyLabel",
                         "type": "label",
                         "value": "Xenology"
                       },
-                      "xenologyCareerFlag": {
+                      {
+                        "name": "xenologyCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.xenology."
                       },
-                      "xenologyRating": {
+                      {
+                        "name": "xenologyRating",
                         "type": "number",
                         "bind": "character.skills.xenology"
                       }
-                    }
+                    ]
                   },
-                  "other": {
+                  {
+                    "name": "other",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "otherLabel": {
+                    "children": [
+                      {
+                        "name": "otherLabel",
                         "type": "label",
                         "value": "Other"
                       },
-                      "otherCareerFlag": {
+                      {
+                        "name": "otherCareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.other."
                       },
-                      "otherRating": {
+                      {
+                        "name": "otherRating",
                         "type": "number",
                         "bind": "character.skills.other"
                       }
-                    }
+                    ]
                   }
-                }
+                ]
               },
-              "customSkills": {
+              {
+                "name": "customSkills",
                 "type": "container",
                 "direction": "vertical",
-                "children": {
-                  "custom1": {
+                "children": [
+                  {
+                    "name": "custom1",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom1Label": {
+                    "children": [
+                      {
+                        "name": "custom1Label",
                         "type": "label",
                         "value": "Custom1"
                       },
-                      "custom1CareerFlag": {
+                      {
+                        "name": "custom1CareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.custom1."
                       },
-                      "custom1Rating": {
+                      {
+                        "name": "custom1Rating",
                         "type": "number",
                         "bind": "character.skills.custom1"
                       }
-                    }
+                    ]
                   },
-                  "custom2": {
+                  {
+                    "name": "custom2",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom2Label": {
+                    "children": [
+                      {
+                        "name": "custom2Label",
                         "type": "label",
                         "value": "Custom2"
                       },
-                      "custom2CareerFlag": {
+                      {
+                        "name": "custom2CareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.custom2."
                       },
-                      "custom2Rating": {
+                      {
+                        "name": "custom2Rating",
                         "type": "number",
                         "bind": "character.skills.custom2"
                       }
-                    }
+                    ]
                   },
-                  "custom3": {
+                  {
+                    "name": "custom3",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom3Label": {
+                    "children": [
+                      {
+                        "name": "custom3Label",
                         "type": "label",
                         "value": "Custom3"
                       },
-                      "custom3CareerFlag": {
+                      {
+                        "name": "custom3CareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.custom3."
                       },
-                      "custom3Rating": {
+                      {
+                        "name": "custom3Rating",
                         "type": "number",
                         "bind": "character.skills.custom3"
                       }
-                    }
+                    ]
                   },
-                  "custom4": {
+                  {
+                    "name": "custom4",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom4Label": {
+                    "children": [
+                      {
+                        "name": "custom4Label",
                         "type": "label",
                         "value": "Custom4"
                       },
-                      "custom4CareerFlag": {
+                      {
+                        "name": "custom4CareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.custom4."
                       },
-                      "custom4Rating": {
+                      {
+                        "name": "custom4Rating",
                         "type": "number",
                         "bind": "character.skills.custom4"
                       }
-                    }
+                    ]
                   },
-                  "custom5": {
+                  {
+                    "name": "custom5",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom5Label": {
+                    "children": [
+                      {
+                        "name": "custom5Label",
                         "type": "label",
                         "value": "Custom5"
                       },
-                      "custom5CareerFlag": {
+                      {
+                        "name": "custom5CareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.custom5."
                       },
-                      "custom5Rating": {
+                      {
+                        "name": "custom5Rating",
                         "type": "number",
                         "bind": "character.skills.custom5"
                       }
-                    }
+                    ]
                   },
-                  "custom6": {
+                  {
+                    "name": "custom6",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom6Label": {
+                    "children": [
+                      {
+                        "name": "custom6Label",
                         "type": "label",
                         "value": "Custom6"
                       },
-                      "custom6CareerFlag": {
+                      {
+                        "name": "custom6CareerFlag",
                         "type": "checkbox",
                         "bind": "character.skills.custom6."
                       },
-                      "custom6Rating": {
+                      {
+                        "name": "custom6Rating",
                         "type": "number",
                         "bind": "character.skills.custom6"
                       }
-                    }
+                    ]
                   }
-                }
+                ]
               }
-            }
+            ]
           }
+        ]
+      }
+    ]
+  },
+  "model": {
+    "character": {
+      "properties": {
+        "name": "string",
+        "species": "species",
+        "career": "career",
+        "specializations": "[specialization]",
+        "soak": "number",
+        "wounds": {
+          "threshold": "number",
+          "current": "number"
+        },
+        "strain": {
+          "threshold": "number",
+          "current": "number"
         }
       }
     }

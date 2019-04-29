@@ -5,46 +5,58 @@ describe("the configuration schema", () => {
         it("must have a name field", () => {
             const config = {
                 views: {
-                    children: {
-                        summary: {
-                            children: {}
-                        },
-                        one: {
-                            children: {}
-                        }
-                    }
+                    children: [
+                        {},
+                        {}
+                    ]
                 }
             };
-            expect.assertions(3);
+            expect.assertions(2);
             try {
                 configSchema(config)
             } catch (e) {
-                expect(e.errors.length).toEqual(2);
-                expect(e.errors[0]).toBe("views.children.summary.name is a required field");
-                expect(e.errors[1]).toBe("views.children.one.name is a required field");
+                expect(e.errors).toContain("views.children[0].name is a required field");
+                expect(e.errors).toContain("views.children[1].name is a required field");
             }
         });
         it("must have children", () => {
             const config = {
-                views: {
-                    children: {
-                        summary: {
-                            name: "Summary"
-                        },
-                        one: {
-                            name: "One"
-                        }
-                    }
-                }
+                views: {}
             };
-            expect.assertions(3);
+            expect.assertions(1);
             try {
-                configSchema(config)
+                configSchema(config);
             } catch (e) {
-                expect(e.errors.length).toEqual(2);
-                expect(e.errors[0]).toBe("views.children.summary.children is a required field");
-                expect(e.errors[1]).toBe("views.children.one.children is a required field");
+                expect(e.errors).toContain("views.children is a required field");
             }
         })
+    });
+    describe("the models", () => {
+        it("must have a character field", () => {
+            const config = {
+                model: {}
+            };
+            expect.assertions(1);
+            try {
+                configSchema(config);
+            } catch (e) {
+                expect(e.errors).toContain("model.character is a required field");
+            }
+        });
+        it("must have a character field", () => {
+            const config = {
+                views: {
+                    children: []
+                },
+                model: {}
+            };
+            expect.assertions(2);
+            try {
+                configSchema(config);
+            } catch (e) {
+                expect(e.errors.length).toEqual(2);
+                expect(e.errors).toContain("model.character is a required field");
+            }
+        });
     });
 });

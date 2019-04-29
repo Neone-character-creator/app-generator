@@ -7,8 +7,8 @@ describe("plugin generation chain", () => {
            const configFile = await require("../lib/schema/configuration")(JSON.parse(fs.readFileSync(path.resolve(__dirname, `test.json`), 'utf-8')));
            const hierarchy = require('../lib/generateComponentsHierarchy').default(configFile);
            const components = await require('../lib/componentGenerator')(hierarchy);
-           expect(components.summary.path).toEqual("components/SummaryView.js");
-           expect(components.summary.content).toMatchSnapshot();
+           expect(components.Summary.path).toEqual("components/SummaryView.js");
+           expect(components.Summary.content).toMatchSnapshot();
            done();
        } catch (e) {
            done(e);

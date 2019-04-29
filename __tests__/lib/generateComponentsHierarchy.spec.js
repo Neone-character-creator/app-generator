@@ -1,900 +1,16 @@
 const generateComponentsHierarchy = require("../../lib/generateComponentsHierarchy").default;
+const fs = require("fs");
 describe("the component generator", () => {
     it("generates components based on the views in the config", () => {
-        const config = {
-            views: {
-                children: {
-                    "summary": {
-                        type: "container",
-                        direction: "vertical",
-                        children: {
-                            biography: {
-                                type: "container",
-                                direction: "vertical",
-                                children: {
-                                    "name": {
-                                        type: "textfield",
-                                        label: "Character Name",
-                                        bind: "character.name"
-                                    },
-                                    "species": {
-                                        type: "textfield",
-                                        label: "Species",
-                                        bind: "character.species.name"
-                                    },
-                                    "career": {
-                                        type: "textfield",
-                                        label: "Career",
-                                        bind: "character.career.name"
-                                    },
-                                    "specializations": {
-                                        type: "textfield",
-                                        label: "Specialization Trees",
-                                        bind: "character.specializations | map(name) | join(, )"
-                                    }
-                                }
-                            },
-                            combat: {
-                                type: "container",
-                                direction: "horizontal",
-                                children: {
-                                    soak: {
-                                        type: "number",
-                                        label: "Soak Value",
-                                        bind: "character.soak"
-                                    },
-                                    wounds: {
-                                        type: "container",
-                                        direction: "horizontal",
-                                        label: "Wounds",
-                                        children: {
-                                            currentWounds: {
-                                                type: "number",
-                                                label: "Current",
-                                                bind: "character.wounds.current"
-                                            },
-                                            thresholdWounds: {
-                                                type: "number",
-                                                label: "Threshold",
-                                                bind: "character.wounds.threshold"
-                                            }
-                                        }
-                                    },
-                                    strain: {
-                                        type: "container",
-                                        direction: "horizontal",
-                                        label: "Strain",
-                                        children: {
-                                            thresholdStrain: {
-                                                type: "number",
-                                                label: "Threshold",
-                                                bind: "character.strain.threshold"
-                                            },
-                                            currentStrain: {
-                                                type: "number",
-                                                label: "Current",
-                                                bind: "character.strain.current"
-                                            },
-                                        }
-                                    },
-                                    defense: {
-                                        type: "container",
-                                        direction: "horizontal",
-                                        children: {
-                                            rangedDefense: {
-                                                type: "number",
-                                                label: "Ranged",
-                                                bind: "character.defense.ranged"
-                                            },
-                                            meleeDefense: {
-                                                type: "number",
-                                                label: "Melee",
-                                                bind: "character.defense.melee"
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            characteristics: {
-                                type: "container",
-                                direction: "horizontal",
-                                children: {
-                                    brawn: {
-                                        type: "number",
-                                        label: "Brawn",
-                                        bind: "character.characteristics.brawn"
-                                    },
-                                    agility: {
-                                        type: "number",
-                                        label: "Agility",
-                                        bind: "character.characteristics.agility"
-                                    },
-                                    intellect: {
-                                        type: "number",
-                                        label: "Intellect",
-                                        bind: "character.characteristics.intellect"
-                                    },
-                                    cunning: {
-                                        type: "number",
-                                        label: "Cunning",
-                                        bind: "character.characteristics.cunning"
-                                    },
-                                    willpower: {
-                                        type: "number",
-                                        label: "Willpower",
-                                        bind: "character.characteristics.willpower"
-                                    },
-                                    presence: {
-                                        type: "number",
-                                        label: "Presence",
-                                        bind: "character.characteristics.presence"
-                                    }
-                                }
-                            },
-                            skills: {
-                                type: "container",
-                                direction: "horizontal",
-                                label: "Skills",
-                                children: {
-                                    generalSkills: {
-                                        type: "container",
-                                        direction: "vertical",
-                                        label: "General Skills",
-                                        children: {
-                                            astrogation: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    astrogationLabel: {
-                                                        type: "text",
-                                                        value: "Astrogation"
-                                                    },
-                                                    astrogationCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.astrogation."
-                                                    },
-                                                    astrogationRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.astrogation"
-                                                    }
-                                                }
-                                            },
-                                            athletics: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    athleticsLabel: {
-                                                        type: "text",
-                                                        value: "Athletics"
-                                                    },
-                                                    athleticsCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.athletics."
-                                                    },
-                                                    athleticsRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.athletics"
-                                                    }
-                                                }
-                                            },
-                                            charm: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    charmLabel: {
-                                                        type: "text",
-                                                        value: "Charm"
-                                                    },
-                                                    charmCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.charm."
-                                                    },
-                                                    charmRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.charm"
-                                                    }
-                                                }
-                                            },
-                                            coercion: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    coercionLabel: {
-                                                        type: "text",
-                                                        value: "Coercion"
-                                                    },
-                                                    coercionCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.coercion."
-                                                    },
-                                                    coercionRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.coercion"
-                                                    }
-                                                }
-                                            },
-                                            computers: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    computersLabel: {
-                                                        type: "text",
-                                                        value: "Computers"
-                                                    },
-                                                    computersCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.computers."
-                                                    },
-                                                    computersRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.computers"
-                                                    }
-                                                }
-                                            },
-                                            cool: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    coolLabel: {
-                                                        type: "text",
-                                                        value: "Cool"
-                                                    },
-                                                    coolCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.cool."
-                                                    },
-                                                    coolRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.cool"
-                                                    }
-                                                }
-                                            },
-                                            coordination: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    coordinationLabel: {
-                                                        type: "text",
-                                                        value: "Coordination"
-                                                    },
-                                                    coordinationCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.coordination."
-                                                    },
-                                                    coordinationRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.coordination"
-                                                    }
-                                                }
-                                            },
-                                            deception: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    deceptionLabel: {
-                                                        type: "text",
-                                                        value: "Deception"
-                                                    },
-                                                    deceptionCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.deception."
-                                                    },
-                                                    deceptionRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.deception"
-                                                    }
-                                                }
-                                            },
-                                            discipline: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    disciplineLabel: {
-                                                        type: "text",
-                                                        value: "Discipline"
-                                                    },
-                                                    disciplineCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.discipline."
-                                                    },
-                                                    disciplineRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.discipline"
-                                                    }
-                                                }
-                                            },
-                                            leadership: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    leadershipLabel: {
-                                                        type: "text",
-                                                        value: "Leadership"
-                                                    },
-                                                    leadershipCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.leadership."
-                                                    },
-                                                    leadershipRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.leadership"
-                                                    }
-                                                }
-                                            },
-                                            mechanics: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    mechanicsLabel: {
-                                                        type: "text",
-                                                        value: "Mechanics"
-                                                    },
-                                                    mechanicsCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.mechanics."
-                                                    },
-                                                    mechanicsRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.mechanics"
-                                                    }
-                                                }
-                                            },
-                                            medicine: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    medicineLabel: {
-                                                        type: "text",
-                                                        value: "Medicine"
-                                                    },
-                                                    medicineCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.medicine."
-                                                    },
-                                                    medicineRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.medicine"
-                                                    }
-                                                }
-                                            },
-                                            negotiation: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    negotiationLabel: {
-                                                        type: "text",
-                                                        value: "Negotiation"
-                                                    },
-                                                    negotiationCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.negotiation."
-                                                    },
-                                                    negotiationRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.negotiation"
-                                                    }
-                                                }
-                                            },
-                                            perception: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    perceptionLabel: {
-                                                        type: "text",
-                                                        value: "Perception"
-                                                    },
-                                                    perceptionCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.perception."
-                                                    },
-                                                    perceptionRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.perception"
-                                                    }
-                                                }
-                                            },
-                                            pilotingPlanetary: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    pilotingPlanetaryLabel: {
-                                                        type: "text",
-                                                        value: "PilotingPlanetary"
-                                                    },
-                                                    pilotingPlanetaryCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.pilotingPlanetary."
-                                                    },
-                                                    pilotingPlanetaryRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.pilotingPlanetary"
-                                                    }
-                                                }
-                                            },
-                                            pilotingSpace: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    pilotingSpaceLabel: {
-                                                        type: "text",
-                                                        value: "PilotingSpace"
-                                                    },
-                                                    pilotingSpaceCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.pilotingSpace."
-                                                    },
-                                                    pilotingSpaceRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.pilotingSpace"
-                                                    }
-                                                }
-                                            },
-                                            resilience: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    resilienceLabel: {
-                                                        type: "text",
-                                                        value: "Resilience"
-                                                    },
-                                                    resilienceCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.resilience."
-                                                    },
-                                                    resilienceRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.resilience"
-                                                    }
-                                                }
-                                            },
-                                            skulduggery: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    skulduggeryLabel: {
-                                                        type: "text",
-                                                        value: "Skulduggery"
-                                                    },
-                                                    skulduggeryCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.skulduggery."
-                                                    },
-                                                    skulduggeryRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.skulduggery"
-                                                    }
-                                                }
-                                            },
-                                            stealth: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    stealthLabel: {
-                                                        type: "text",
-                                                        value: "Stealth"
-                                                    },
-                                                    stealthCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.stealth."
-                                                    },
-                                                    stealthRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.stealth"
-                                                    }
-                                                }
-                                            },
-                                            streetwise: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    streetwiseLabel: {
-                                                        type: "text",
-                                                        value: "Streetwise"
-                                                    },
-                                                    streetwiseCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.streetwise."
-                                                    },
-                                                    streetwiseRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.streetwise"
-                                                    }
-                                                }
-                                            },
-                                            survival: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    survivalLabel: {
-                                                        type: "text",
-                                                        value: "Survival"
-                                                    },
-                                                    survivalCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.survival."
-                                                    },
-                                                    survivalRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.survival"
-                                                    }
-                                                }
-                                            },
-                                            vigilance: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    vigilanceLabel: {
-                                                        type: "text",
-                                                        value: "Vigilance"
-                                                    },
-                                                    vigilanceCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.vigilance."
-                                                    },
-                                                    vigilanceRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.vigilance"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    combatSkills: {
-                                        type: "container",
-                                        direction: "vertical",
-                                        children: {
-                                            brawl: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    brawlLabel: {
-                                                        type: "text",
-                                                        value: "Brawl"
-                                                    },
-                                                    brawlCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.brawl."
-                                                    },
-                                                    brawlRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.brawl"
-                                                    }
-                                                }
-                                            },
-                                            gunnery: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    gunneryLabel: {
-                                                        type: "text",
-                                                        value: "Gunnery"
-                                                    },
-                                                    gunneryCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.gunnery."
-                                                    },
-                                                    gunneryRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.gunnery"
-                                                    }
-                                                }
-                                            },
-                                            melee: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    meleeLabel: {
-                                                        type: "text",
-                                                        value: "Melee"
-                                                    },
-                                                    meleeCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.melee."
-                                                    },
-                                                    meleeRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.melee"
-                                                    }
-                                                }
-                                            },
-                                            rangedLight: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    rangedLightLabel: {
-                                                        type: "text",
-                                                        value: "Ranged - Light"
-                                                    },
-                                                    rangedLightCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.rangedLight."
-                                                    },
-                                                    rangedLightRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.rangedLight"
-                                                    }
-                                                }
-                                            },
-                                            rangedHeavy: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    rangedHeavyLabel: {
-                                                        type: "text",
-                                                        value: "Ranged - Heavy"
-                                                    },
-                                                    rangedHeavyCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.rangedHeavy."
-                                                    },
-                                                    rangedHeavyRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.rangedHeavy"
-                                                    }
-                                                }
-                                            },
-                                        }
-                                    },
-                                    knowledgeSkills: {
-                                        type: "container",
-                                        direction: "vertical",
-                                        label: "Knowledge Skills",
-                                        children: {
-                                            coreWorlds: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    coreWorldsLabel: {
-                                                        type: "text",
-                                                        value: "CoreWorlds"
-                                                    },
-                                                    coreWorldsCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.coreWorlds."
-                                                    },
-                                                    coreWorldsRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.coreWorlds"
-                                                    }
-                                                }
-                                            },
-                                            education: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    educationLabel: {
-                                                        type: "text",
-                                                        value: "Education"
-                                                    },
-                                                    educationCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.education."
-                                                    },
-                                                    educationRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.education"
-                                                    }
-                                                }
-                                            },
-                                            lore: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    loreLabel: {
-                                                        type: "text",
-                                                        value: "Lore"
-                                                    },
-                                                    loreCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.lore."
-                                                    },
-                                                    loreRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.lore"
-                                                    }
-                                                }
-                                            },
-                                            outerRim: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    outerRimLabel: {
-                                                        type: "text",
-                                                        value: "OuterRim"
-                                                    },
-                                                    outerRimCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.outerRim."
-                                                    },
-                                                    outerRimRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.outerRim"
-                                                    }
-                                                }
-                                            },
-                                            underworld: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    underworldLabel: {
-                                                        type: "text",
-                                                        value: "Underworld"
-                                                    },
-                                                    underworldCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.underworld."
-                                                    },
-                                                    underworldRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.underworld"
-                                                    }
-                                                }
-                                            },
-                                            xenology: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    xenologyLabel: {
-                                                        type: "text",
-                                                        value: "Xenology"
-                                                    },
-                                                    xenologyCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.xenology."
-                                                    },
-                                                    xenologyRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.xenology"
-                                                    }
-                                                }
-                                            },
-                                            other: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    otherLabel: {
-                                                        type: "text",
-                                                        value: "Other"
-                                                    },
-                                                    otherCareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.other."
-                                                    },
-                                                    otherRating: {
-                                                        type: "number",
-                                                        bind: "character.skills.other"
-                                                    }
-                                                }
-                                            },
-                                        }
-                                    },
-                                    customSkills: {
-                                        type: "container",
-                                        direction: "vertical",
-                                        children: {
-                                            custom1: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    custom1Label: {
-                                                        type: "text",
-                                                        value: "Custom1"
-                                                    },
-                                                    custom1CareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.custom1."
-                                                    },
-                                                    custom1Rating: {
-                                                        type: "number",
-                                                        bind: "character.skills.custom1"
-                                                    }
-                                                }
-                                            },
-                                            custom2: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    custom2Label: {
-                                                        type: "text",
-                                                        value: "Custom2"
-                                                    },
-                                                    custom2CareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.custom2."
-                                                    },
-                                                    custom2Rating: {
-                                                        type: "number",
-                                                        bind: "character.skills.custom2"
-                                                    }
-                                                }
-                                            },
-                                            custom3: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    custom3Label: {
-                                                        type: "text",
-                                                        value: "Custom3"
-                                                    },
-                                                    custom3CareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.custom3."
-                                                    },
-                                                    custom3Rating: {
-                                                        type: "number",
-                                                        bind: "character.skills.custom3"
-                                                    }
-                                                }
-                                            },
-                                            custom4: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    custom4Label: {
-                                                        type: "text",
-                                                        value: "Custom4"
-                                                    },
-                                                    custom4CareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.custom4."
-                                                    },
-                                                    custom4Rating: {
-                                                        type: "number",
-                                                        bind: "character.skills.custom4"
-                                                    }
-                                                }
-                                            },
-                                            custom5: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    custom5Label: {
-                                                        type: "text",
-                                                        value: "Custom5"
-                                                    },
-                                                    custom5CareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.custom5."
-                                                    },
-                                                    custom5Rating: {
-                                                        type: "number",
-                                                        bind: "character.skills.custom5"
-                                                    }
-                                                }
-                                            },
-                                            custom6: {
-                                                type: "container",
-                                                direction: "horizontal",
-                                                children: {
-                                                    custom6Label: {
-                                                        type: "text",
-                                                        value: "Custom6"
-                                                    },
-                                                    custom6CareerFlag: {
-                                                        type: "checkbox",
-                                                        bind: "character.skills.custom6."
-                                                    },
-                                                    custom6Rating: {
-                                                        type: "number",
-                                                        bind: "character.skills.custom6"
-                                                    }
-                                                }
-                                            },
-                                        }
-                                    }
-                                }
-                            },
-                        }
-                    }
-                }
-            }
-        };
+       const config = JSON.parse(fs.readFileSync(__dirname + "/../test.json", "UTF-8"));
         const componentModel = generateComponentsHierarchy(config);
         expect(componentModel).toEqual({
-            views: ["summary"],
+            appName: "test",
+            views: ["Summary"],
             components: {
-                summary: {
-                    type: "container",
+                Summary: {
+                    name: "Summary",
+                    type: "view",
                     direction: "vertical",
                     children: [
                         "biography",
@@ -904,6 +20,7 @@ describe("the component generator", () => {
                     ]
                 },
                 biography: {
+                    name: "biography",
                     type: "container",
                     direction: "vertical",
                     children: [
@@ -914,27 +31,32 @@ describe("the component generator", () => {
                     ]
                 },
                 name: {
+                    name: "name",
                     bind: "character.name",
                     label: "Character Name",
                     type: "textfield",
                 },
                 species: {
+                    name: "species",
                     bind: "character.species.name",
                     label: "Species",
                     type: "textfield",
                 },
                 career: {
+                    name: "career",
                     bind: "character.career.name",
                     label: "Career",
                     type: "textfield"
 
                 },
                 specializations: {
+                    name: "specializations",
                     bind: "character.specializations | map(name) | join(, )",
                     label: "Specialization Trees",
                     type: "textfield",
                 },
                 combat: {
+                    name: "combat",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -945,11 +67,13 @@ describe("the component generator", () => {
                     ]
                 },
                 soak: {
+                    name: "soak",
                     type: "number",
                     label: "Soak Value",
                     bind: "character.soak"
                 },
                 wounds: {
+                    name: "wounds",
                     type: "container",
                     direction: "horizontal",
                     label: "Wounds",
@@ -959,35 +83,41 @@ describe("the component generator", () => {
                     ]
                 },
                 thresholdWounds: {
+                    name: "thresholdWounds",
                     type: "number",
                     label: "Threshold",
                     bind: "character.wounds.threshold"
                 },
                 currentWounds: {
+                    name: "currentWounds",
                     type: "number",
                     label: "Current",
                     bind: "character.wounds.current"
                 },
                 strain: {
+                    name: "strain",
                     type: "container",
                     direction: "horizontal",
                     label: "Strain",
                     children: [
-                        "thresholdStrain",
-                        "currentStrain"
+                        "strainThreshold",
+                        "strainCurrent"
                     ]
                 },
-                thresholdStrain: {
+                strainThreshold: {
+                    name: "strainThreshold",
                     type: "number",
                     label: "Threshold",
                     bind: "character.strain.threshold"
                 },
-                currentStrain: {
+                strainCurrent: {
+                    name: "strainCurrent",
                     type: "number",
                     label: "Current",
                     bind: "character.strain.current"
                 },
                 defense: {
+                    name: "defense",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -996,16 +126,19 @@ describe("the component generator", () => {
                     ]
                 },
                 rangedDefense: {
+                    name: "rangedDefense",
                     type: "number",
                     label: "Ranged",
                     bind: "character.defense.ranged"
                 },
                 meleeDefense: {
+                    name: "meleeDefense",
                     type: "number",
                     label: "Melee",
                     bind: "character.defense.melee"
                 },
                 characteristics: {
+                    name: "characteristics",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1018,36 +151,43 @@ describe("the component generator", () => {
                     ]
                 },
                 brawn: {
+                    name: "brawn",
                     type: "number",
                     label: "Brawn",
                     bind: "character.characteristics.brawn"
                 },
                 agility: {
+                    name: "agility",
                     type: "number",
                     label: "Agility",
                     bind: "character.characteristics.agility"
                 },
                 intellect: {
+                    name: "intellect",
                     type: "number",
                     label: "Intellect",
                     bind: "character.characteristics.intellect"
                 },
                 cunning: {
+                    name: "cunning",
                     type: "number",
                     label: "Cunning",
                     bind: "character.characteristics.cunning"
                 },
                 willpower: {
+                    name: "willpower",
                     type: "number",
                     label: "Willpower",
                     bind: "character.characteristics.willpower"
                 },
                 presence: {
+                    name: "presence",
                     type: "number",
                     label: "Presence",
                     bind: "character.characteristics.presence"
                 },
                 skills: {
+                    name: "skills",
                     type: "container",
                     label: "Skills",
                     direction: "horizontal",
@@ -1059,6 +199,7 @@ describe("the component generator", () => {
                     ]
                 },
                 generalSkills: {
+                    name: "generalSkills",
                     type: "container",
                     label: "General Skills",
                     direction: "vertical",
@@ -1088,23 +229,28 @@ describe("the component generator", () => {
                     ]
                 },
                 astrogation: {
+                    name: "astrogation",
                     type: "container",
                     direction: "horizontal",
                     children: ["astrogationLabel", "astrogationCareerFlag", "astrogationRating"]
                 },
                 astrogationLabel: {
-                    type: "text",
+                    name: "astrogationLabel",
+                    type: "label",
                     value: "Astrogation"
                 },
                 astrogationCareerFlag: {
+                    name: "astrogationCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.astrogation."
                 },
                 astrogationRating: {
+                    name: "astrogationRating",
                     type: "number",
                     bind: "character.skills.astrogation"
                 },
                 athletics: {
+                    name: "athletics",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1114,18 +260,22 @@ describe("the component generator", () => {
                     ]
                 },
                 athleticsLabel: {
-                    type: "text",
+                    name: "athleticsLabel",
+                    type: "label",
                     value: "Athletics"
                 },
                 athleticsCareerFlag: {
+                    name: "athleticsCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.athletics."
                 },
                 athleticsRating: {
+                    name: "athleticsRating",
                     type: "number",
                     bind: "character.skills.athletics"
                 },
                 charm: {
+                    name: "charm",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1135,18 +285,22 @@ describe("the component generator", () => {
                     ]
                 },
                 charmLabel: {
-                    type: "text",
+                    name: "charmLabel",
+                    type: "label",
                     value: "Charm"
                 },
                 charmCareerFlag: {
+                    name: "charmCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.charm."
                 },
                 charmRating: {
+                    name: "charmRating",
                     type: "number",
                     bind: "character.skills.charm"
                 },
                 coercion: {
+                    name: "coercion",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1156,18 +310,22 @@ describe("the component generator", () => {
                     ]
                 },
                 coercionLabel: {
-                    type: "text",
+                    name: "coercionLabel",
+                    type: "label",
                     value: "Coercion"
                 },
                 coercionCareerFlag: {
+                    name: "coercionCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.coercion."
                 },
                 coercionRating: {
+                    name: "coercionRating",
                     type: "number",
                     bind: "character.skills.coercion"
                 },
                 computers: {
+                    name: "computers",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1177,18 +335,22 @@ describe("the component generator", () => {
                     ]
                 },
                 computersLabel: {
-                    type: "text",
+                    name: "computersLabel",
+                    type: "label",
                     value: "Computers"
                 },
                 computersCareerFlag: {
+                    name: "computersCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.computers."
                 },
                 computersRating: {
+                    name: "computersRating",
                     type: "number",
                     bind: "character.skills.computers"
                 },
                 cool: {
+                    name: "cool",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1198,18 +360,22 @@ describe("the component generator", () => {
                     ]
                 },
                 coolLabel: {
-                    type: "text",
+                    name: "coolLabel",
+                    type: "label",
                     value: "Cool"
                 },
                 coolCareerFlag: {
+                    name: "coolCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.cool."
                 },
                 coolRating: {
+                    name: "coolRating",
                     type: "number",
                     bind: "character.skills.cool"
                 },
                 coordination: {
+                    name: "coordination",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1219,18 +385,22 @@ describe("the component generator", () => {
                     ]
                 },
                 coordinationLabel: {
-                    type: "text",
+                    name: "coordinationLabel",
+                    type: "label",
                     value: "Coordination"
                 },
                 coordinationCareerFlag: {
+                    name: "coordinationCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.coordination."
                 },
                 coordinationRating: {
+                    name: "coordinationRating",
                     type: "number",
                     bind: "character.skills.coordination"
                 },
                 deception: {
+                    name: "deception",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1240,18 +410,22 @@ describe("the component generator", () => {
                     ]
                 },
                 deceptionLabel: {
-                    type: "text",
+                    name: "deceptionLabel",
+                    type: "label",
                     value: "Deception"
                 },
                 deceptionCareerFlag: {
+                    name: "deceptionCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.deception."
                 },
                 deceptionRating: {
+                    name: "deceptionRating",
                     type: "number",
                     bind: "character.skills.deception"
                 },
                 discipline: {
+                    name: "discipline",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1261,18 +435,22 @@ describe("the component generator", () => {
                     ]
                 },
                 disciplineLabel: {
-                    type: "text",
+                    name: "disciplineLabel",
+                    type: "label",
                     value: "Discipline"
                 },
                 disciplineCareerFlag: {
+                    name: "disciplineCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.discipline."
                 },
                 disciplineRating: {
+                    name: "disciplineRating",
                     type: "number",
                     bind: "character.skills.discipline"
                 },
                 leadership: {
+                    name: "leadership",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1282,18 +460,22 @@ describe("the component generator", () => {
                     ]
                 },
                 leadershipLabel: {
-                    type: "text",
+                    name: "leadershipLabel",
+                    type: "label",
                     value: "Leadership"
                 },
                 leadershipCareerFlag: {
+                    name: "leadershipCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.leadership."
                 },
                 leadershipRating: {
+                    name: "leadershipRating",
                     type: "number",
                     bind: "character.skills.leadership"
                 },
                 mechanics: {
+                    name: "mechanics",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1303,18 +485,22 @@ describe("the component generator", () => {
                     ]
                 },
                 mechanicsLabel: {
-                    type: "text",
+                    name: "mechanicsLabel",
+                    type: "label",
                     value: "Mechanics"
                 },
                 mechanicsCareerFlag: {
+                    name: "mechanicsCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.mechanics."
                 },
                 mechanicsRating: {
+                    name: "mechanicsRating",
                     type: "number",
                     bind: "character.skills.mechanics"
                 },
                 medicine: {
+                    name: "medicine",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1324,18 +510,22 @@ describe("the component generator", () => {
                     ]
                 },
                 medicineLabel: {
-                    type: "text",
+                    name: "medicineLabel",
+                    type: "label",
                     value: "Medicine"
                 },
                 medicineCareerFlag: {
+                    name: "medicineCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.medicine."
                 },
                 medicineRating: {
+                    name: "medicineRating",
                     type: "number",
                     bind: "character.skills.medicine"
                 },
                 negotiation: {
+                    name: "negotiation",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1345,18 +535,22 @@ describe("the component generator", () => {
                     ]
                 },
                 negotiationLabel: {
-                    type: "text",
+                    name: "negotiationLabel",
+                    type: "label",
                     value: "Negotiation"
                 },
                 negotiationCareerFlag: {
+                    name: "negotiationCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.negotiation."
                 },
                 negotiationRating: {
+                    name: "negotiationRating",
                     type: "number",
                     bind: "character.skills.negotiation"
                 },
                 perception: {
+                    name: "perception",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1366,18 +560,22 @@ describe("the component generator", () => {
                     ]
                 },
                 perceptionLabel: {
-                    type: "text",
+                    name: "perceptionLabel",
+                    type: "label",
                     value: "Perception"
                 },
                 perceptionCareerFlag: {
+                    name: "perceptionCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.perception."
                 },
                 perceptionRating: {
+                    name: "perceptionRating",
                     type: "number",
                     bind: "character.skills.perception"
                 },
                 pilotingPlanetary: {
+                    name: "pilotingPlanetary",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1387,18 +585,22 @@ describe("the component generator", () => {
                     ]
                 },
                 pilotingPlanetaryLabel: {
-                    type: "text",
+                    name: "pilotingPlanetaryLabel",
+                    type: "label",
                     value: "PilotingPlanetary"
                 },
                 pilotingPlanetaryCareerFlag: {
+                    name: "pilotingPlanetaryCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.pilotingPlanetary."
                 },
                 pilotingPlanetaryRating: {
+                    name: "pilotingPlanetaryRating",
                     type: "number",
                     bind: "character.skills.pilotingPlanetary"
                 },
                 pilotingSpace: {
+                    name: "pilotingSpace",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1408,18 +610,22 @@ describe("the component generator", () => {
                     ]
                 },
                 pilotingSpaceLabel: {
-                    type: "text",
+                    name: "pilotingSpaceLabel",
+                    type: "label",
                     value: "PilotingSpace"
                 },
                 pilotingSpaceCareerFlag: {
+                    name: "pilotingSpaceCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.pilotingSpace."
                 },
                 pilotingSpaceRating: {
+                    name: "pilotingSpaceRating",
                     type: "number",
                     bind: "character.skills.pilotingSpace"
                 },
                 resilience: {
+                    name: "resilience",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1429,18 +635,22 @@ describe("the component generator", () => {
                     ]
                 },
                 resilienceLabel: {
-                    type: "text",
+                    name: "resilienceLabel",
+                    type: "label",
                     value: "Resilience"
                 },
                 resilienceCareerFlag: {
+                    name: "resilienceCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.resilience."
                 },
                 resilienceRating: {
+                    name: "resilienceRating",
                     type: "number",
                     bind: "character.skills.resilience"
                 },
                 skulduggery: {
+                    name: "skulduggery",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1450,18 +660,22 @@ describe("the component generator", () => {
                     ]
                 },
                 skulduggeryLabel: {
-                    type: "text",
+                    name: "skulduggeryLabel",
+                    type: "label",
                     value: "Skulduggery"
                 },
                 skulduggeryCareerFlag: {
+                    name: "skulduggeryCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.skulduggery."
                 },
                 skulduggeryRating: {
+                    name: "skulduggeryRating",
                     type: "number",
                     bind: "character.skills.skulduggery"
                 },
                 stealth: {
+                    name: "stealth",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1471,18 +685,22 @@ describe("the component generator", () => {
                     ]
                 },
                 stealthLabel: {
-                    type: "text",
+                    name: "stealthLabel",
+                    type: "label",
                     value: "Stealth"
                 },
                 stealthCareerFlag: {
+                    name: "stealthCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.stealth."
                 },
                 stealthRating: {
+                    name: "stealthRating",
                     type: "number",
                     bind: "character.skills.stealth"
                 },
                 streetwise: {
+                    name: "streetwise",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1492,18 +710,22 @@ describe("the component generator", () => {
                     ]
                 },
                 streetwiseLabel: {
-                    type: "text",
+                    name: "streetwiseLabel",
+                    type: "label",
                     value: "Streetwise"
                 },
                 streetwiseCareerFlag: {
+                    name: "streetwiseCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.streetwise."
                 },
                 streetwiseRating: {
+                    name: "streetwiseRating",
                     type: "number",
                     bind: "character.skills.streetwise"
                 },
                 survival: {
+                    name: "survival",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1513,18 +735,22 @@ describe("the component generator", () => {
                     ]
                 },
                 survivalLabel: {
-                    type: "text",
+                    name: "survivalLabel",
+                    type: "label",
                     value: "Survival"
                 },
                 survivalCareerFlag: {
+                    name: "survivalCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.survival."
                 },
                 survivalRating: {
+                    name: "survivalRating",
                     type: "number",
                     bind: "character.skills.survival"
                 },
                 vigilance: {
+                    name: "vigilance",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1534,18 +760,22 @@ describe("the component generator", () => {
                     ]
                 },
                 vigilanceLabel: {
-                    type: "text",
+                    name: "vigilanceLabel",
+                    type: "label",
                     value: "Vigilance"
                 },
                 vigilanceCareerFlag: {
+                    name: "vigilanceCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.vigilance."
                 },
                 vigilanceRating: {
+                    name: "vigilanceRating",
                     type: "number",
                     bind: "character.skills.vigilance"
                 },
                 combatSkills: {
+                    name: "combatSkills",
                     type: "container",
                     direction: "vertical",
                     children: [
@@ -1557,6 +787,7 @@ describe("the component generator", () => {
                     ]
                 },
                 brawl: {
+                    name: "brawl",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1566,18 +797,22 @@ describe("the component generator", () => {
                     ]
                 },
                 brawlLabel: {
-                    type: "text",
+                    name: "brawlLabel",
+                    type: "label",
                     value: "Brawl"
                 },
                 brawlCareerFlag: {
+                    name: "brawlCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.brawl."
                 },
                 brawlRating: {
+                    name: "brawlRating",
                     type: "number",
                     bind: "character.skills.brawl"
                 },
                 gunnery: {
+                    name: "gunnery",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1587,18 +822,22 @@ describe("the component generator", () => {
                     ]
                 },
                 gunneryLabel: {
-                    type: "text",
+                    name: "gunneryLabel",
+                    type: "label",
                     value: "Gunnery"
                 },
                 gunneryCareerFlag: {
+                    name: "gunneryCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.gunnery."
                 },
                 gunneryRating: {
+                    name: "gunneryRating",
                     type: "number",
                     bind: "character.skills.gunnery"
                 },
                 melee: {
+                    name: "melee",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1608,18 +847,22 @@ describe("the component generator", () => {
                     ]
                 },
                 meleeLabel: {
-                    type: "text",
+                    name: "meleeLabel",
+                    type: "label",
                     value: "Melee"
                 },
                 meleeCareerFlag: {
+                    name: "meleeCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.melee."
                 },
                 meleeRating: {
+                    name: "meleeRating",
                     type: "number",
                     bind: "character.skills.melee"
                 },
                 rangedLight: {
+                    name: "rangedLight",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1629,18 +872,22 @@ describe("the component generator", () => {
                     ]
                 },
                 rangedLightLabel: {
-                    type: "text",
+                    name: "rangedLightLabel",
+                    type: "label",
                     value: "Ranged - Light"
                 },
                 rangedLightCareerFlag: {
+                    name: "rangedLightCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.rangedLight."
                 },
                 rangedLightRating: {
+                    name: "rangedLightRating",
                     type: "number",
                     bind: "character.skills.rangedLight"
                 },
                 rangedHeavy: {
+                    name: "rangedHeavy",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1650,18 +897,22 @@ describe("the component generator", () => {
                     ]
                 },
                 rangedHeavyLabel: {
-                    type: "text",
+                    name: "rangedHeavyLabel",
+                    type: "label",
                     value: "Ranged - Heavy"
                 },
                 rangedHeavyCareerFlag: {
+                    name: "rangedHeavyCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.rangedHeavy."
                 },
                 rangedHeavyRating: {
+                    name: "rangedHeavyRating",
                     type: "number",
                     bind: "character.skills.rangedHeavy"
                 },
                 knowledgeSkills: {
+                    name: "knowledgeSkills",
                     type: "container",
                     label: "Knowledge Skills",
                     direction: "vertical",
@@ -1676,6 +927,7 @@ describe("the component generator", () => {
                     ]
                 },
                 coreWorlds: {
+                    name: "coreWorlds",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1685,18 +937,22 @@ describe("the component generator", () => {
                     ]
                 },
                 coreWorldsLabel: {
-                    type: "text",
+                    name: "coreWorldsLabel",
+                    type: "label",
                     value: "CoreWorlds"
                 },
                 coreWorldsCareerFlag: {
+                    name: "coreWorldsCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.coreWorlds."
                 },
                 coreWorldsRating: {
+                    name: "coreWorldsRating",
                     type: "number",
                     bind: "character.skills.coreWorlds"
                 },
                 education: {
+                    name: "education",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1706,18 +962,22 @@ describe("the component generator", () => {
                     ]
                 },
                 educationLabel: {
-                    type: "text",
+                    name: "educationLabel",
+                    type: "label",
                     value: "Education"
                 },
                 educationCareerFlag: {
+                    name: "educationCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.education."
                 },
                 educationRating: {
+                    name: "educationRating",
                     type: "number",
                     bind: "character.skills.education"
                 },
                 lore: {
+                    name: "lore",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1727,18 +987,22 @@ describe("the component generator", () => {
                     ]
                 },
                 loreLabel: {
-                    type: "text",
+                    name: "loreLabel",
+                    type: "label",
                     value: "Lore"
                 },
                 loreCareerFlag: {
+                    name: "loreCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.lore."
                 },
                 loreRating: {
+                    name: "loreRating",
                     type: "number",
                     bind: "character.skills.lore"
                 },
                 outerRim: {
+                    name: "outerRim",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1748,18 +1012,22 @@ describe("the component generator", () => {
                     ]
                 },
                 outerRimLabel: {
-                    type: "text",
+                    name: "outerRimLabel",
+                    type: "label",
                     value: "OuterRim"
                 },
                 outerRimCareerFlag: {
+                    name: "outerRimCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.outerRim."
                 },
                 outerRimRating: {
+                    name: "outerRimRating",
                     type: "number",
                     bind: "character.skills.outerRim"
                 },
                 underworld: {
+                    name: "underworld",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1769,18 +1037,22 @@ describe("the component generator", () => {
                     ]
                 },
                 underworldLabel: {
-                    type: "text",
+                    name: "underworldLabel",
+                    type: "label",
                     value: "Underworld"
                 },
                 underworldCareerFlag: {
+                    name: "underworldCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.underworld."
                 },
                 underworldRating: {
+                    name: "underworldRating",
                     type: "number",
                     bind: "character.skills.underworld"
                 },
                 xenology: {
+                    name: "xenology",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1790,37 +1062,44 @@ describe("the component generator", () => {
                     ]
                 },
                 xenologyLabel: {
-                    type: "text",
+                    name: "xenologyLabel",
+                    type: "label",
                     value: "Xenology"
                 },
                 xenologyCareerFlag: {
+                    name: "xenologyCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.xenology."
                 },
                 xenologyRating: {
+                    name: "xenologyRating",
                     type: "number",
                     bind: "character.skills.xenology"
                 },
-
                 other: {
+                    name: "other",
                     type: "container",
                     direction: "horizontal",
                     children: ["otherLabel", "otherCareerFlag", "otherRating"]
                 },
                 otherLabel: {
-                    type: "text",
+                    name: "otherLabel",
+                    type: "label",
                     value: "Other"
                 },
                 otherCareerFlag: {
+                    name: "otherCareerFlag",
                     type: "checkbox",
                     bind: "character.skills.other."
                 },
                 otherRating: {
+                    name: "otherRating",
                     type: "number",
                     bind: "character.skills.other"
                 },
 
                 customSkills: {
+                    name: "customSkills",
                     type: "container",
                     direction: "vertical",
                     children: [
@@ -1833,6 +1112,7 @@ describe("the component generator", () => {
                     ]
                 },
                 custom1: {
+                    name: "custom1",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1842,18 +1122,22 @@ describe("the component generator", () => {
                     ]
                 },
                 custom1Label: {
-                    type: "text",
+                    name: "custom1Label",
+                    type: "label",
                     value: "Custom1"
                 },
                 custom1CareerFlag: {
+                    name: "custom1CareerFlag",
                     type: "checkbox",
                     bind: "character.skills.custom1."
                 },
                 custom1Rating: {
+                    name: "custom1Rating",
                     type: "number",
                     bind: "character.skills.custom1"
                 },
                 custom2: {
+                    name: "custom2",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1863,18 +1147,22 @@ describe("the component generator", () => {
                     ]
                 },
                 custom2Label: {
-                    type: "text",
+                    name: "custom2Label",
+                    type: "label",
                     value: "Custom2"
                 },
                 custom2CareerFlag: {
+                    name: "custom2CareerFlag",
                     type: "checkbox",
                     bind: "character.skills.custom2."
                 },
                 custom2Rating: {
+                    name: "custom2Rating",
                     type: "number",
                     bind: "character.skills.custom2"
                 },
                 custom3: {
+                    name: "custom3",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1884,18 +1172,22 @@ describe("the component generator", () => {
                     ]
                 },
                 custom3Label: {
-                    type: "text",
+                    name: "custom3Label",
+                    type: "label",
                     value: "Custom3"
                 },
                 custom3CareerFlag: {
+                    name: "custom3CareerFlag",
                     type: "checkbox",
                     bind: "character.skills.custom3."
                 },
                 custom3Rating: {
+                    name: "custom3Rating",
                     type: "number",
                     bind: "character.skills.custom3"
                 },
                 custom4: {
+                    name: "custom4",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1905,18 +1197,22 @@ describe("the component generator", () => {
                     ]
                 },
                 custom4Label: {
-                    type: "text",
+                    name: "custom4Label",
+                    type: "label",
                     value: "Custom4"
                 },
                 custom4CareerFlag: {
+                    name: "custom4CareerFlag",
                     type: "checkbox",
                     bind: "character.skills.custom4."
                 },
                 custom4Rating: {
+                    name: "custom4Rating",
                     type: "number",
                     bind: "character.skills.custom4"
                 },
                 custom5: {
+                    name: "custom5",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1926,18 +1222,22 @@ describe("the component generator", () => {
                     ]
                 },
                 custom5Label: {
-                    type: "text",
+                    name: "custom5Label",
+                    type: "label",
                     value: "Custom5"
                 },
                 custom5CareerFlag: {
+                    name: "custom5CareerFlag",
                     type: "checkbox",
                     bind: "character.skills.custom5."
                 },
                 custom5Rating: {
+                    name: "custom5Rating",
                     type: "number",
                     bind: "character.skills.custom5"
                 },
                 custom6: {
+                    name: "custom6",
                     type: "container",
                     direction: "horizontal",
                     children: [
@@ -1947,18 +1247,42 @@ describe("the component generator", () => {
                     ]
                 },
                 custom6Label: {
-                    type: "text",
+                    name: "custom6Label",
+                    type: "label",
                     value: "Custom6"
                 },
                 custom6CareerFlag: {
+                    name: "custom6CareerFlag",
                     type: "checkbox",
                     bind: "character.skills.custom6."
                 },
                 custom6Rating: {
+                    name: "custom6Rating",
                     type: "number",
                     bind: "character.skills.custom6"
                 },
+            },
+            model: {
+                character: {
+                    properties: {
+                        career: "career",
+                        species: "species",
+                        name: "string",
+                        soak: "number",
+                        specializations: "[specialization]",
+                        strain: {
+                            current: "number",
+                            threshold: "number"
+                        },
+                        wounds: {
+                            current: "number",
+                            threshold: "number"
+                        }
+                    }
+                }
             }
         });
-    });
-});
+    })
+    ;
+})
+;

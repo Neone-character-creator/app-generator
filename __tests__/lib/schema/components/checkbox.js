@@ -1,4 +1,4 @@
-const checkboxSchema = require("../../../../lib/schema/component/checkbox");
+const checkboxSchema = require("../../../../lib/schema/component/component");
 
 describe("checkbox", () => {
     it("must have a type", () => {
@@ -20,11 +20,12 @@ describe("checkbox", () => {
             checkboxSchema(config).validateSync(config);
         } catch(e) {
             expect(e.errors.length).toEqual(1);
-            expect(e.errors[0]).toBe("type must be one of the following values: checkbox");
+            expect(e.errors[0]).toBe("type must be one of the following values: checkbox, container, label, number, select, textfield");
         }
     });
     it("may not have unknown properties", () => {
         const config = {
+            name: "checkbox",
             type: "checkbox",
             foo: "bar"
         };
@@ -38,6 +39,7 @@ describe("checkbox", () => {
     });
     it("may have a binding expression", () => {
         const config = {
+            "name" : "checkbox",
             type: "checkbox",
             bind: "to something"
         };
