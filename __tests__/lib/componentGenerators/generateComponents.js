@@ -250,7 +250,8 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("checkbox")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" checked={props.boundValue} />"));
+            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" checked={props.boundValue}"));
+            expect(generated).toEqual(expect.stringContaining("onChange={(event, newValue)=>{props.dispatch({type: \"set\", path: boundPropertyName, value: newValue})}} />"));
         });
     });
 });
