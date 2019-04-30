@@ -242,7 +242,7 @@ describe("the component generator", () => {
                 astrogationCareerFlag: {
                     name: "astrogationCareerFlag",
                     type: "checkbox",
-                    bind: "character.skills.astrogation."
+                    bind: "character.skills.astrogation"
                 },
                 astrogationRating: {
                     name: "astrogationRating",
