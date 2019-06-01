@@ -9,7 +9,7 @@ import * as _ from "lodash";
 const Component = (props) => (\
     <FormControl>
     <InputLabel id="%componentName%-select-label">%label%</InputLabel>
-    <Select id="%componentName%-select" value={props.boundValue}>
+    <Select id="%componentName%-select" value={props.boundValue} onChange={props.set}>
         %children%
     </Select>
     </FormControl>
@@ -22,6 +22,12 @@ const connected = connect((state) => {
     return {
         boundValue
     };
+}, dispatch => {
+    return {
+        set: (event) => {
+            dispatch({type: "SET", path: boundPropertyName, value: event.target.value});
+        }
+    }
 })(Component);
 
 export default connected;

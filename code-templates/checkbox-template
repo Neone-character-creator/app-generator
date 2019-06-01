@@ -4,7 +4,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import * as _ from "lodash";
 
 const Component = (props) => (
-    <Checkbox id="%componentName%-checkbox" checked={props.boundValue} />
+    <Checkbox id="%componentName%-checkbox" checked={props.boundValue} onChange={props.set} />
 );
 
 const boundPropertyName = "%bind%";
@@ -14,6 +14,12 @@ const connected = connect((state) => {
     return {
         boundValue
     };
+}, dispatch => {
+    return {
+        set: (event) => {
+            dispatch({type: "SET", path: boundPropertyName, value: event.target.value});
+        }
+    }
 })(Component);
 
 export default connected;

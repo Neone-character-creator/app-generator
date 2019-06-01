@@ -90,7 +90,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("textfield")("textfield")(config);
-            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"textfield-textfield\" label=\"Label\" value={props.boundValue} />"));
+            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"textfield-textfield\" label=\"Label\" value={props.boundValue} onChange={props.set} />"));
         });
         it("can be bound to a model property", () => {
             const config = {
@@ -130,7 +130,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateSelect("select")(config);
-            expect(generated).toEqual(expect.stringContaining("<Select id=\"select-select\" value={props.boundValue}>"));
+            expect(generated).toEqual(expect.stringContaining("<Select id=\"select-select\" value={props.boundValue} onChange={props.set}>"));
             expect(generated).toEqual(expect.stringContaining("<InputLabel id=\"select-select-label\">Label</InputLabel>"));
             expect(generated).toEqual(expect.stringContaining("<MenuItem id=\"select-select-value-0\" value=0>0</MenuItem>"));
             expect(generated).toEqual(expect.stringContaining("<MenuItem id=\"select-select-value-1\" value=1>1</MenuItem>"));
@@ -206,7 +206,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("number")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"foo-number\" label=\"Number\" type=\"number\" value={props.boundValue} />"));
+            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"foo-number\" label=\"Number\" type=\"number\" value={props.boundValue} onChange={props.set} />"));
         });
     });
     describe("label components", () => {
@@ -250,8 +250,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("checkbox")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" checked={props.boundValue}"));
-            expect(generated).toEqual(expect.stringContaining("onChange={(event, newValue)=>{props.dispatch({type: \"set\", path: boundPropertyName, value: newValue})}} />"));
+            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" checked={props.boundValue} onChange={props.set}"));
         });
     });
 });
