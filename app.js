@@ -16,7 +16,11 @@ try {
 
     require('./lib/pluginGenerator')(configuration, argv.scaffold).catch(e => console.error(e));
 } catch (e) {
-    e.errors.forEach(error => {
-        console.error(error);
-    })
+    if (e.errors) {
+        e.errors.forEach(error => {
+            console.error(error);
+        })
+    } else {
+        console.error(e);
+    }
 }
