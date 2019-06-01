@@ -5,7 +5,7 @@ import * as _ from "lodash";
 %imports%
 
 const Component = (props) => (
-    <Textfield id="%componentName%-number" label="%label%" type="number" value={props.boundValue} onChange={props.set} />
+    <Textfield id="%componentName%-number" label="%label%" type="number" value={props.boundValue} onChange={props.update} />
 );
 
 const boundPropertyName = "%bind%";
@@ -16,11 +16,14 @@ const connected = connect((state) => {
         boundValue
     };
 }, dispatch => {
+    const update: _.debounce((value) => {
+        dispatch({ type: "SET", path: boundPropertyName, value: value});
+    });
     return {
-        set: (event) => {
-            dispatch({type: "SET", path: boundPropertyName, value: event.target.value});
+        update: (event) => {
+            update(event.target.value);
         }
-    }
+    };
 })(Component);
 
 export default connected;
