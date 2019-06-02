@@ -111,6 +111,25 @@ describe("component generation module", () => {
             const generated = generateComponent("textfield")("textfield")(config);
             expect(generated).toEqual(expect.stringContaining("const boundPropertyName = \"model.string\""));
         });
+        it("can be bound to an action", () => {
+            const config = {
+                name: "Test",
+                views: [
+                    "summary"],
+                components: {
+                    summary: {
+                        type: "view"
+                    },
+                    textfield: {
+                        type: "textfield",
+                        label: "Label",
+                        click: "open.popup"
+                    }
+                }
+            };
+            const generated = generateComponent("textfield")("textfield")(config);
+            expect(generated).toEqual(expect.stringContaining("const boundPropertyName = \"model.string\""));
+        });
     });
     describe("select components", () => {
         it("generates the component", () => {

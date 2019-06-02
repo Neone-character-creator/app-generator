@@ -111,7 +111,7 @@
             ]
           },
           {
-            "name" : "characteristics",
+            "name": "characteristics",
             "type": "container",
             "direction": "horizontal",
             "children": [
@@ -154,7 +154,7 @@
             ]
           },
           {
-            "name" : "skills",
+            "name": "skills",
             "type": "container",
             "direction": "horizontal",
             "label": "Skills",
@@ -1072,6 +1072,20 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Species",
+        "type": "view",
+        "direction": "vertical",
+        "children": [
+          {
+            "name": "speciesSelect",
+            "type": "select",
+            "items": {
+              "text": "name"
+            }
+          }
+        ]
       }
     ]
   },
@@ -1083,14 +1097,14 @@
         "career": "career",
         "specializations": "[specialization]",
         "soak": "number",
-        "wounds": {
-          "threshold": "number",
-          "current": "number"
-        },
-        "strain": {
-          "threshold": "number",
-          "current": "number"
-        }
+        "wounds": "woundsOrStrain",
+        "strain": "woundsOrStrain"
+      }
+    },
+    "woundsAndStrain": {
+      "properties": {
+        "current": "number",
+        "threshold": "number"
       }
     }
   }

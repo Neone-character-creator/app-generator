@@ -1,13 +1,3 @@
-const propertyDefaults = ${ defaults };
-const validators = $(validators};
-function ModelConstructor(){
-    propertyDefaults.forEach(property => {
-        this[property] = propertyDefaults[property];
-    });
-
+function ${name}Model(){
     ${ properties }
 }
-
-
-
-module.exports = ModelConstructor;

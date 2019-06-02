@@ -7,16 +7,16 @@ const Component = (props) => (
     <Checkbox id="%componentName%-checkbox" checked={props.boundValue} onChange={_.debounce(props.update, 1000)} />
 );
 
-const boundPropertyName = "%bind%";
+const boundExpression = "%bind%";
 
 const connected = connect((state) => {
-    const boundValue = _.get(boundPropertyName, state);
+    const boundValue = _.get(boundExpression, state);
     return {
         boundValue
     };
 }, dispatch => {
     const update = _.debounce((value) => {
-        dispatch({ type: "SET", path: boundPropertyName, value: value});
+        dispatch({ type: "SET", path: boundExpression, value: value});
     });
     return {
         update: (event) => {

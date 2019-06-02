@@ -1,4 +1,5 @@
 const _ = require("lodash");
+const models = require("./models");
 module.exports = function(previousState, action) {
     if (action.type === "SET") {
         _.set(previousState, action.path, action.value);
@@ -20,5 +21,5 @@ module.exports = function(previousState, action) {
         array.push(action.value);
         return {...previousState};
     }
-    return previousState || {};
+    return previousState || new models.character();
 };
