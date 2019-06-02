@@ -10,10 +10,4 @@ function ModelConstructor(){
 
 
 
-module.exports = new Proxy(ModelConstructor, {
-    construct(target, args){
-        return new Proxy(new ModelConstructor(), {
-
-        });
-    }
-});
+module.exports = ModelConstructor;
