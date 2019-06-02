@@ -1,0 +1,19 @@
+const propertyDefaults = ${ defaults };
+const validators = $(validators};
+function ModelConstructor(){
+    propertyDefaults.forEach(property => {
+        this[property] = propertyDefaults[property];
+    });
+
+    ${ properties }
+}
+
+
+
+module.exports = new Proxy(ModelConstructor, {
+    construct(target, args){
+        return new Proxy(new ModelConstructor(), {
+
+        });
+    }
+});

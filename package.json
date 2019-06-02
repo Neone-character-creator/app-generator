@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "scan": "node_modules/sonar-scanner/bin/sonar-scanner",
-    "build": "node app.js"
+    "build": "node app.js",
+    "generate" : "npm run build',",
+    "generate:classes" : "npm run build -- --only classes"
   },
   "repository": {
     "type": "git",
