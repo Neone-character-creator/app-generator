@@ -6,6 +6,7 @@ const ModelClassGenerator = require("./lib/classGenerator");
 const ModelClassWriter = require("./lib/model/writer");
 const tmp = require("tmp");
 const configTransformer = require("./lib/model/transformers/app");
+const configValidator = require("./lib/schema/configuration");
 
 if (!argv.configFile) {
     throw new Error("--configFile is missing.");

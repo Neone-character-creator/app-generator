@@ -1101,10 +1101,75 @@
         "strain": "woundsOrStrain"
       }
     },
-    "woundsAndStrain": {
+    "woundsOrStrain": {
       "properties": {
         "current": "number",
         "threshold": "number"
+      }
+    },
+    "woundOrStrainThresholdBasis": {
+      "properties": {
+        "base": "number",
+        "attribute": "string"
+      }
+    },
+    "species": {
+      "properties": {
+        "name": "string",
+        "plural": "string",
+        "source": "string",
+        "baseAttributes": "attributes",
+        "woundThreshold": "woundOrStrainThresholdBasis",
+        "strainThreshold": "woundOrStrainThresholdBasis",
+        "startingExperience": "number",
+        "startingSkills": "[string]",
+        "startingTalents": "[talent]",
+        "startingCareerSkillChoices": {
+          "type": "number",
+          "default": 4
+        },
+        "firstSpecialtyTrainedSkills": {
+          "type": "number",
+          "default": 3
+        },
+        "specialAbilities": "[specialAbility]"
+      }
+    },
+    "attributes": {
+      "properties": {
+        "Brawn": "number",
+        "Agility": "number",
+        "Intellect": "number",
+        "Cunning": "number",
+        "Willpower": "number",
+        "Presence": "number"
+      }
+    },
+    "specialAbility": {
+      "properties": {
+        "name": "string",
+        "description": "string"
+      }
+    },
+    "career": {
+      "properties": {
+        "name": "string",
+        "careerSkills": "[string]",
+        "specializations": "[specialization]"
+      }
+    },
+    "specialization": {
+      "properties": {
+        "name": "string",
+        "careerSkills": "[skill]",
+        "talents": "[specializationTalent]"
+      }
+    },
+    "specializationTalent": {
+      "properties": {
+        "id": "string",
+        "tier": "number",
+        "requires": "[specializationTalent]"
       }
     }
   }
