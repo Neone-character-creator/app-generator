@@ -6,7 +6,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import * as _ from "lodash";
 
-const Component = (props) => (\
+const Component = (props) => (
     <FormControl>
     <InputLabel id="%componentName%-select-label">%label%</InputLabel>
     <Select id="%componentName%-select" value={props.boundValue} onChange={props.update}>
