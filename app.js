@@ -1,20 +1,18 @@
 const argv = require('yargs').argv;
 const fs = require('fs-extra');
+const _ = require("lodash");
+const PluginGenerator = require("./lib/pluginGenerator");
 
 if (!argv.configFile) {
     throw new Error("--configFile is missing.");
 }
 try {
-    const configFile = require("./lib/schema/configuration")(JSON.parse(fs.readFileSync(argv.configFile, 'utf-8')));
-    const configuration = require('./lib/generateComponentsHierarchy').default(configFile);
+    const rawConfiguraiton = require("./lib/schema/configuration")(JSON.parse(fs.readFileSync(argv.configFile, 'utf-8')));
+    const componentConfiguration = Object.assign(rawConfiguraiton, require('./lib/generateComponentsHierarchy').default(rawConfiguraiton));
+    const modelConfiguration = _.pick(rawConfiguraiton, "model");
 
-    const clean = !fs.existsSync(`plugin-${configuration.appName}`);
-
-    if (!clean) {
-        throw new Error('Output directory already exists. Delete it or choose a different project name.');
-    }
-
-    require('./lib/pluginGenerator')(configuration, argv.scaffold).catch(e => console.error(e));
+    var pluginGenerator = new PluginGenerator(Object.assign({}, componentConfiguration, modelConfiguration));
+    pluginGenerator.generate().catch(e => console.error(e));
 } catch (e) {
     if (e.errors) {
         e.errors.forEach(error => {
