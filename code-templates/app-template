@@ -1,10 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import 'react-tabs/style/react-tabs.css';
 %imports%
 
 const Component = () => (
     <div id="%appName%-app">
+    <Tabs>
+        <TabList>
+            %viewNames%
+        </TabList>
         %children%
+    </Tabs>
     </div>
 );
 
