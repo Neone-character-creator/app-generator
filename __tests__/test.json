@@ -1081,6 +1081,7 @@
           {
             "name": "speciesSelect",
             "type": "select",
+            "bind": "model.species.values",
             "items": {
               "text": "name"
             }
@@ -1133,7 +1134,1062 @@
           "default": 3
         },
         "specialAbilities": "[specialAbility]"
-      }
+      },
+      "values": [
+        {
+          "name": "Bothan",
+          "plural": "Bothans",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 3,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 11,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Streetwise"
+          ],
+          "startingTalents": [
+            "Convincing Demeanor"
+          ]
+        },
+        {
+          "name": "Droid",
+          "plural": "Droids",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 1,
+            "Intellect": 1,
+            "Cunning": 1,
+            "Willpower": 1,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 175,
+          "startingCareerSkillChoices": 6,
+          "firstSpecialtyTrainedSkills": 4,
+          "specialAbilities": [
+            {
+              "name": "Droid",
+              "description": "Droids do not need to east, sleep or breath and are unaffected by toxins or poisons. Droids have a cybernetic implant cap of 6 instead of their Brawn."
+            },
+            {
+              "name": "Inorganic",
+              "description": "Since droids are inorganic, they do not gain the benefits of recovering with bacta tank, stimpack or Medicine care."
+            },
+            {
+              "name": "Mechanical Being",
+              "description": "Droids cannot become force sensitive, nor acquire a Force Rating by any means. Droids cannot use Force Powers and also cannot be affected by mind altering powers."
+            }
+          ]
+        },
+        {
+          "name": "Gand - Lunged",
+          "plural": "Gand",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 110,
+          "startingSkills": [
+            "Discipline"
+          ],
+          "specialAbilities" : [
+            {
+              "name" : "Lunged Gand",
+              "description" : "Gand with lungs breathe an ammonia mixture. They start with 10xp, breathing apparatus and treat oxygen as a dangerous atmosphere with rating 8."
+            }
+          ]
+        },
+        {
+          "name": "Gand - Lungless",
+          "plural": "Gand",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Discipline"
+          ],
+          "specialAbilities" : [
+            {
+              "name" : "Lungless Gand",
+              "description" : "Gand without lungs gain all metabolic requirements from food. They cannot suffocate but suffer the normal effects from exposure to vacuum."
+            }
+          ]
+        },
+        {
+          "name": "Human",
+          "plural": "Humans",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 110,
+          "startingNonCareerSkillChoices": 2
+        },
+        {
+          "name": "Rodian",
+          "plural": "Rodians",
+          "source": "source",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 3,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 1,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Survival"
+          ]
+        },
+        {
+          "name": "Trandoshan",
+          "plural": "Trandoshans",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 1,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 12,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 9,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Perception"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Regeneration",
+              "description": "Whenever a Trandoshan would recover one or more wounds from natural healing or bacta tank treatment, they recover one additional Wound. They do not gain any additional wounds when receiving first aid or medical care from a character or when using a stimpack. Trandoshans may regrow lost limbs though it may take up to a month for the limb to be usable again."
+            },
+            {
+              "name": "Claws",
+              "description": "When a Trandoshan makes Brawl checks to deal damage to an opponent, they deal +1 damage and have a critical range of 3."
+            }
+          ]
+        },
+        {
+          "name": "Twi'Lek",
+          "plural": "Twi'Leks",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 3
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 11,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            {
+              "options": [
+                "Charm",
+                "Deception"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Twi'Lek",
+              "description": "When making skill checks, Twi'leks may remove ■ due to arid or hot conditions."
+            }
+          ]
+        },
+        {
+          "name": "Wookie",
+          "plural": "Wookies",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 1,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 14,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Brawl"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Wookie Rage",
+              "description": "When a Wookie has suffered any wounds, they deal +1 damage with Brawl and Melee attacks"
+            }
+          ]
+        },
+        {
+          "name": "Aqualish - Aquala",
+          "plural": "Aqualish",
+          "source": "dangerous-covenants",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 1,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Brawl",
+            "Resilience"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Aquala",
+              "description": "Aquala may remove ■ due to any cold or wet condititions."
+            }
+          ]
+        },
+        {
+          "name": "Aqualish -  Ualaq",
+          "plural": "Aqualish",
+          "source": "dangerous-covenants",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 1,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Brawl",
+            {
+              "options": [
+                "Survival",
+                "Perception"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Ualaq",
+              "description": "Aquala may remove ■ due to dark condititions but suffer ■ in brightly lit environments."
+            }
+          ]
+        },
+        {
+          "name": "Aqualish - Quara",
+          "plural": "Aqualish",
+          "source": "dangerous-covenants",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 1,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Brawl",
+            {
+              "options": [
+                "Athletics",
+                "Coercion"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Quara",
+              "description": "Quara may remove ■ when attempting to track through a natural environment."
+            }
+          ]
+        },
+        {
+          "name": "Klatoonian",
+          "plural": "Klatoonian",
+          "source": "dangerous-covenants",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 3,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 1,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            {
+              "options": [
+                "Brawl",
+                "Ranged - Heavy",
+                "Ranged - Light"
+              ],
+              "choices": 1
+            }
+          ],
+          "startingNonCareerSkillChoices": 1
+        },
+        {
+          "name": "Weequay",
+          "plural": "Weequay",
+          "source": "dangerous-covenants",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 1,
+            "Cunning": 3,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 9,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            {
+              "options": [
+                "Resilience",
+                "Athletics"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Pheromones",
+              "description": "Weequay can communicate with each other using pheremones. This is completely non-verbal and undetectable to any other species. Weequays can only communicate like this if they are within short range of each other."
+            }
+          ]
+        },
+        {
+          "name": "Chiss",
+          "plural": "Chiss",
+          "source": "enter-the-unknown",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 3,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Cool"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Infravision",
+              "description": "Chiss have adapted to be able to see in both the infrared and normal visible spectrum. Chiss remove up to ■ added to checks by lighting connections."
+            }
+          ]
+        },
+        {
+          "name": "Duro",
+          "plural": "Duros",
+          "source": "enter-the-unknown",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 2,
+            "Intellect": 3,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Piloting - Space"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Infravision",
+              "description": "Chiss have adapted to be able to see in both the infrared and normal visible spectrum. Chiss remove up to ■ added to checks by lighting connections."
+            }
+          ]
+        },
+        {
+          "name": "Toydarian",
+          "plural": "Toydarians",
+          "source": "enter-the-unknown",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 1,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 3
+          },
+          "woundsThreshold": {
+            "base": 9,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 12,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "specialAbilities": [
+            {
+              "name": "Small",
+              "description": "Toydarians are smaller than average and count as silhouette 1."
+            },
+            {
+              "name": "Hover",
+              "description": "Toydarians have wings that allow them to hover slightly off the ground. Toydarians do not have to spend additional maneuvers when navigating difficult terrain."
+            }
+          ]
+        },
+        {
+          "name": "Arcona",
+          "plural": "Arcona",
+          "source": "far-horizons",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Vigilance"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Arcona",
+              "description": "Arcona may remove ■ due to arid or hot environmental conditions."
+            },
+            {
+              "name": "Mood Readers",
+              "description": "Arcona add [Triumph] to any Charm or Negotiation checks they make."
+            }
+          ]
+        },
+        {
+          "name": "Chevin",
+          "plural": "Chevin",
+          "source": "far-horizons",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 1,
+            "Intellect": 2,
+            "Cunning": 3,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 11,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 80,
+          "startingSkills": [
+            "Negotiation"
+          ],
+          "startingTalents": [
+            "Durable"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Advanced Olfaction",
+              "description": "A Chevin's keen sense of smell adds □ to Perception checks involving the sense of smell."
+            }
+          ]
+        },
+        {
+          "name": "Gran",
+          "plural": "Gran",
+          "source": "far-horizons",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 1,
+            "Willpower": 2,
+            "Presence": 3
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 9,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            {
+              "options": [
+                "Charm",
+                "Negotiation"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Enhanced Vision",
+              "description": "When making ranged combat or Perception checks, Gran remove up to ■ ■ due to environmental conditions or concealment, but not defense."
+            }
+          ]
+        },
+        {
+          "name": "Faleen",
+          "plural": "Faleen",
+          "source": "fly-casual",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 3
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 12,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Charm"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Beguiling Pheromones",
+              "description": "Once per check as an incidental, a Faleen may suffer 2 strain to upgrade the ability of a Charm, Deception or Negotiation check against a living sentient being within a short range once. This ability has no effect on targets wearing breath masks or without respiratory systems."
+            }
+          ]
+        },
+        {
+          "name": "Gotal",
+          "plural": "Gotals",
+          "source": "fly-casual",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 3,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 9,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Perception"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Energy Sensitivity",
+              "description": "The head cones of a Gotal are finely tuned sensory organs used to detect almost the entirety of the electromagnetic spectrum. Once per encounter as a maneuver, a Gotal may sense and current emotional states of all living things within short range of himself."
+            }
+          ]
+        },
+        {
+          "name": "Quarren",
+          "plural": "Quarren",
+          "source": "fly-casual",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 1,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 95,
+          "startingSkills": [
+            "Negotiation"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Amphibious",
+              "description": "Quarren can breathe underwater without penalty and never suffer movement penalties for traveling through water."
+            },
+            {
+              "name": "Ink Spray",
+              "description": "Quarren can spit ink from a specialized sac within their gills that disperses in water, creating a brief murk. Once per counter, as an out-of-turn incidental, a Quarren may suffer 2 strain to add ■  to a combat check made by a character within short range (under water, it adds ■ ■ ■ to the combat check instead.)"
+            }
+          ]
+        },
+        {
+          "name": "Hutt",
+          "plural": "Hutts",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 1,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 13,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 11,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 70,
+          "startingSkills": [
+            {
+              "options": [
+                "Coercion",
+                "Discipline"
+              ],
+              "choices": 1
+            }
+          ],
+          "startingTalents": [
+            "Enduring",
+            "Nobody's Fool"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Ponderous",
+              "description": "A Hutt can never spend more than one maneuver moving per turn."
+            }
+          ]
+        },
+        {
+          "name": "Gank",
+          "plural": "Ganks",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 110,
+          "startingSkills": [
+            {
+              "options": [
+                "Coercion",
+                "Vigilance"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Cyborg",
+              "description": "All Ganks are cyborgs and each one often possesses several different cybernetic implants. A Gank beings play with up to two cybernetics that cost a total of up to 5,000 credits. If the character taks on additonal Obligation for credits at character creation, he may apply these extra funds to the 5,000 credit budgest to purchase cybernetics. Ganks have a cybernetic implant cap of 3 plus Brawn rating."
+            }
+          ]
+        },
+        {
+          "name": "Nikto - Red",
+          "plural": "Niktos",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "specialAbilities": [
+            {
+              "name": "Red Nikto",
+              "description": "When making skill checks, Red Niktos may remove ■ due to arid or hot environmental conditions."
+            }
+          ],
+          "startingSkills" : [
+            "Resilience"
+          ]
+        },
+        {
+          "name": "Nikto - Green",
+          "plural": "Niktos",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills" : [
+            "Coordination"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Red Nikto",
+              "description": "Green Niktos gain □ to Atheltics checks made to climb trees and other surfaces their claws can pierce."
+            },
+            {
+              "name": "Claws",
+              "description": "When a Green Nikto makes Brawl checks to deal damage to an opponent, they deal +1 damage and have a Critical Rating of 3."
+            }
+          ]
+        },
+        {
+          "name": "Nikto - Mountain",
+          "plural": "Niktos",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Survival"
+          ],
+          "startingTalents": [
+            "Natural Outdoorsman"
+          ]
+        },
+        {
+          "name": "Nikto - Pale",
+          "plural": "Niktos",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Athletics"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Swimmer",
+              "description": "A Pale Nikto never suffers movement penalties for travelling through water and can hold their breath for a number of rounds equal to twice their Brawn rating before beginning to drown."
+            }
+          ]
+        },
+        {
+          "name": "Nikto - Southern",
+          "plural": "Niktos",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Athletics"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Perceptive",
+              "description": "Southern Niktos may add □ to Perception and Vigilance checks to detect sounds."
+            }
+          ]
+        },
+        {
+          "name": "Sakiyan",
+          "plural": "Sakiyans",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 3,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 8,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingSkills": [
+            {
+              "options": [
+                "Perception",
+                "Vigilance"
+              ],
+              "choices": 1
+            }
+          ],
+          "startingExperience" : 80,
+          "startingTalents": [
+            "Expert Tracker"
+          ]
+        },
+        {
+          "name": "Drall",
+          "plural": "Drall",
+          "source": "loads-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 1,
+            "Intellect": 4,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "attribute": "Brawn",
+            "base": 8
+          },
+          "strainThreshold": {
+            "attribute": "Willpower",
+            "base": 12
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Knowledge - Education"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Drall",
+              "description": "Drall have a mind for problems and their solutions. In addition to using his skill or characteristic rating, a Drall adds □ to the dicepool when providing skilled assistance."
+            }
+          ]
+        }
+      ]
     },
     "attributes": {
       "properties": {
