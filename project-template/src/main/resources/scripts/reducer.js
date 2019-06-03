@@ -21,5 +21,7 @@ module.exports = function(previousState, action) {
         array.push(action.value);
         return {...previousState};
     }
-    return previousState || new models.character();
+    return previousState || {
+        character: new models.character()
+    };
 };
