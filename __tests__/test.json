@@ -1081,9 +1081,10 @@
           {
             "name": "speciesSelect",
             "type": "select",
-            "bind": "model.species.values",
+            "bind": "character.species",
             "items": {
-              "text": "name"
+              "text": "name",
+              "values": "model.species.values"
             }
           }
         ]
