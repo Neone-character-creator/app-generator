@@ -4,13 +4,16 @@ import Textfield from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 import * as _ from "lodash";
+
+import models from "../models";
 
 const Component = (props) => (
     <FormControl>
     <InputLabel id="%componentName%-select-label">%label%</InputLabel>
     <Select id="%componentName%-select" value={props.boundValue} onChange={props.update}>
-        {props.boundValue.map((item, index) => (<MenuItem value={index}>{_.get(item, itemTextPath)</MenuItem>}</MenuItem>)}
+        {props.boundValue.map((item, index) => (<MenuItem value={index}>{_.get(item, itemTextPath)}</MenuItem>))}
     </Select>
     </FormControl>
 );
@@ -18,6 +21,12 @@ const Component = (props) => (
 const boundExpression = "%bind%";
 const itemTextPath = "%itemText%";
 const connected = connect((state) => {
+    if(boundExpression.startsWith("model.")){
+        const tokens = boundExpression.split(".");
+        return {
+            boundValue: models[tokens[1]].values
+        }
+    }
     const boundValue = _.get(boundExpression, state);
     return {
         boundValue
