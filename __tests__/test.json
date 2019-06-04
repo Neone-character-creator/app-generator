@@ -16,25 +16,25 @@
                 "name": "name",
                 "type": "textfield",
                 "label": "Character Name",
-                "bind": "character.name"
+                "bind": "<%= character.name %>"
               },
               {
                 "name": "species",
                 "type": "textfield",
                 "label": "Species",
-                "bind": "character.species.name"
+                "bind": "<%= character.species.name %>"
               },
               {
                 "name": "career",
                 "type": "textfield",
                 "label": "Career",
-                "bind": "character.career.name"
+                "bind": "<%= character.career.name %>"
               },
               {
                 "name": "specializations",
                 "type": "textfield",
                 "label": "Specialization Trees",
-                "bind": "character.specializations | map(name) | join(, )"
+                "bind": "<%= character.specializations.map(s => s.name).join(', ') %>"
               }
             ]
           },
@@ -47,7 +47,7 @@
                 "name": "soak",
                 "type": "number",
                 "label": "Soak Value",
-                "bind": "character.soak"
+                "bind": "<%= character.soak %>"
               },
               {
                 "name": "wounds",
@@ -59,13 +59,13 @@
                     "name": "currentWounds",
                     "type": "number",
                     "label": "Current",
-                    "bind": "character.wounds.current"
+                    "bind": "<%= character.wounds.current %>"
                   },
                   {
                     "name": "thresholdWounds",
                     "type": "number",
                     "label": "Threshold",
-                    "bind": "character.wounds.threshold"
+                    "bind": "<%= character.wounds.threshold %>"
                   }
                 ]
               },
@@ -79,13 +79,13 @@
                     "name": "strainThreshold",
                     "type": "number",
                     "label": "Threshold",
-                    "bind": "character.strain.threshold"
+                    "bind": "<%= character.strain.threshold %>"
                   },
                   {
                     "name": "strainCurrent",
                     "type": "number",
                     "label": "Current",
-                    "bind": "character.strain.current"
+                    "bind": "<%= character.strain.current %>"
                   }
                 ]
               },
@@ -98,13 +98,13 @@
                     "name": "rangedDefense",
                     "type": "number",
                     "label": "Ranged",
-                    "bind": "character.defense.ranged"
+                    "bind": "<%= character.defense.ranged %>"
                   },
                   {
                     "name": "meleeDefense",
                     "type": "number",
                     "label": "Melee",
-                    "bind": "character.defense.melee"
+                    "bind": "<%= character.defense.melee %>"
                   }
                 ]
               }
@@ -119,37 +119,37 @@
                 "name": "brawn",
                 "type": "number",
                 "label": "Brawn",
-                "bind": "character.characteristics.brawn"
+                "bind": "<%= character.characteristics.brawn %>"
               },
               {
                 "name": "agility",
                 "type": "number",
                 "label": "Agility",
-                "bind": "character.characteristics.agility"
+                "bind": "<%= character.characteristics.agility %>"
               },
               {
                 "name": "intellect",
                 "type": "number",
                 "label": "Intellect",
-                "bind": "character.characteristics.intellect"
+                "bind": "<%= character.characteristics.intellect %>"
               },
               {
                 "name": "cunning",
                 "type": "number",
                 "label": "Cunning",
-                "bind": "character.characteristics.cunning"
+                "bind": "<%= character.characteristics.cunning %>"
               },
               {
                 "name": "willpower",
                 "type": "number",
                 "label": "Willpower",
-                "bind": "character.characteristics.willpower"
+                "bind": "<%= character.characteristics.willpower %>"
               },
               {
                 "name": "presence",
                 "type": "number",
                 "label": "Presence",
-                "bind": "character.characteristics.presence"
+                "bind": "<%= character.characteristics.presence %>"
               }
             ]
           },
@@ -178,12 +178,12 @@
                       {
                         "name": "astrogationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.astrogation"
+                        "bind": "<%= character.skills.astrogation %>"
                       },
                       {
                         "name": "astrogationRating",
                         "type": "number",
-                        "bind": "character.skills.astrogation"
+                        "bind": "<%= character.skills.astrogation %>"
                       }
                     ]
                   },
@@ -200,12 +200,12 @@
                       {
                         "name": "athleticsCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.athletics."
+                        "bind": "<%= character.skills.athletics. %>"
                       },
                       {
                         "name": "athleticsRating",
                         "type": "number",
-                        "bind": "character.skills.athletics"
+                        "bind": "<%= character.skills.athletics %>"
                       }
                     ]
                   },
@@ -222,12 +222,12 @@
                       {
                         "name": "charmCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.charm."
+                        "bind": "<%= character.skills.charm. %>"
                       },
                       {
                         "name": "charmRating",
                         "type": "number",
-                        "bind": "character.skills.charm"
+                        "bind": "<%= character.skills.charm %>"
                       }
                     ]
                   },
@@ -244,12 +244,12 @@
                       {
                         "name": "coercionCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.coercion."
+                        "bind": "<%= character.skills.coercion. %>"
                       },
                       {
                         "name": "coercionRating",
                         "type": "number",
-                        "bind": "character.skills.coercion"
+                        "bind": "<%= character.skills.coercion %>"
                       }
                     ]
                   },
@@ -266,12 +266,12 @@
                       {
                         "name": "computersCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.computers."
+                        "bind": "<%= character.skills.computers. %>"
                       },
                       {
                         "name": "computersRating",
                         "type": "number",
-                        "bind": "character.skills.computers"
+                        "bind": "<%= character.skills.computers %>"
                       }
                     ]
                   },
@@ -288,12 +288,12 @@
                       {
                         "name": "coolCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.cool."
+                        "bind": "<%= character.skills.cool. %>"
                       },
                       {
                         "name": "coolRating",
                         "type": "number",
-                        "bind": "character.skills.cool"
+                        "bind": "<%= character.skills.cool %>"
                       }
                     ]
                   },
@@ -310,12 +310,12 @@
                       {
                         "name": "coordinationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.coordination."
+                        "bind": "<%= character.skills.coordination. %>"
                       },
                       {
                         "name": "coordinationRating",
                         "type": "number",
-                        "bind": "character.skills.coordination"
+                        "bind": "<%= character.skills.coordination %>"
                       }
                     ]
                   },
@@ -332,12 +332,12 @@
                       {
                         "name": "deceptionCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.deception."
+                        "bind": "<%= character.skills.deception. %>"
                       },
                       {
                         "name": "deceptionRating",
                         "type": "number",
-                        "bind": "character.skills.deception"
+                        "bind": "<%= character.skills.deception %>"
                       }
                     ]
                   },
@@ -354,12 +354,12 @@
                       {
                         "name": "disciplineCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.discipline."
+                        "bind": "<%= character.skills.discipline. %>"
                       },
                       {
                         "name": "disciplineRating",
                         "type": "number",
-                        "bind": "character.skills.discipline"
+                        "bind": "<%= character.skills.discipline %>"
                       }
                     ]
                   },
@@ -376,12 +376,12 @@
                       {
                         "name": "leadershipCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.leadership."
+                        "bind": "<%= character.skills.leadership. %>"
                       },
                       {
                         "name": "leadershipRating",
                         "type": "number",
-                        "bind": "character.skills.leadership"
+                        "bind": "<%= character.skills.leadership %>"
                       }
                     ]
                   },
@@ -398,12 +398,12 @@
                       {
                         "name": "mechanicsCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.mechanics."
+                        "bind": "<%= character.skills.mechanics. %>"
                       },
                       {
                         "name": "mechanicsRating",
                         "type": "number",
-                        "bind": "character.skills.mechanics"
+                        "bind": "<%= character.skills.mechanics %>"
                       }
                     ]
                   },
@@ -420,12 +420,12 @@
                       {
                         "name": "medicineCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.medicine."
+                        "bind": "<%= character.skills.medicine. %>"
                       },
                       {
                         "name": "medicineRating",
                         "type": "number",
-                        "bind": "character.skills.medicine"
+                        "bind": "<%= character.skills.medicine %>"
                       }
                     ]
                   },
@@ -442,12 +442,12 @@
                       {
                         "name": "negotiationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.negotiation."
+                        "bind": "<%= character.skills.negotiation. %>"
                       },
                       {
                         "name": "negotiationRating",
                         "type": "number",
-                        "bind": "character.skills.negotiation"
+                        "bind": "<%= character.skills.negotiation %>"
                       }
                     ]
                   },
@@ -464,12 +464,12 @@
                       {
                         "name": "perceptionCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.perception."
+                        "bind": "<%= character.skills.perception. %>"
                       },
                       {
                         "name": "perceptionRating",
                         "type": "number",
-                        "bind": "character.skills.perception"
+                        "bind": "<%= character.skills.perception %>"
                       }
                     ]
                   },
@@ -486,12 +486,12 @@
                       {
                         "name": "pilotingPlanetaryCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.pilotingPlanetary."
+                        "bind": "<%= character.skills.pilotingPlanetary. %>"
                       },
                       {
                         "name": "pilotingPlanetaryRating",
                         "type": "number",
-                        "bind": "character.skills.pilotingPlanetary"
+                        "bind": "<%= character.skills.pilotingPlanetary %>"
                       }
                     ]
                   },
@@ -508,12 +508,12 @@
                       {
                         "name": "pilotingSpaceCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.pilotingSpace."
+                        "bind": "<%= character.skills.pilotingSpace. %>"
                       },
                       {
                         "name": "pilotingSpaceRating",
                         "type": "number",
-                        "bind": "character.skills.pilotingSpace"
+                        "bind": "<%= character.skills.pilotingSpace %>"
                       }
                     ]
                   },
@@ -530,12 +530,12 @@
                       {
                         "name": "resilienceCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.resilience."
+                        "bind": "<%= character.skills.resilience. %>"
                       },
                       {
                         "name": "resilienceRating",
                         "type": "number",
-                        "bind": "character.skills.resilience"
+                        "bind": "<%= character.skills.resilience %>"
                       }
                     ]
                   },
@@ -552,12 +552,12 @@
                       {
                         "name": "skulduggeryCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.skulduggery."
+                        "bind": "<%= character.skills.skulduggery. %>"
                       },
                       {
                         "name": "skulduggeryRating",
                         "type": "number",
-                        "bind": "character.skills.skulduggery"
+                        "bind": "<%= character.skills.skulduggery %>"
                       }
                     ]
                   },
@@ -574,12 +574,12 @@
                       {
                         "name": "stealthCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.stealth."
+                        "bind": "<%= character.skills.stealth. %>"
                       },
                       {
                         "name": "stealthRating",
                         "type": "number",
-                        "bind": "character.skills.stealth"
+                        "bind": "<%= character.skills.stealth %>"
                       }
                     ]
                   },
@@ -596,12 +596,12 @@
                       {
                         "name": "streetwiseCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.streetwise."
+                        "bind": "<%= character.skills.streetwise. %>"
                       },
                       {
                         "name": "streetwiseRating",
                         "type": "number",
-                        "bind": "character.skills.streetwise"
+                        "bind": "<%= character.skills.streetwise %>"
                       }
                     ]
                   },
@@ -618,12 +618,12 @@
                       {
                         "name": "survivalCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.survival."
+                        "bind": "<%= character.skills.survival. %>"
                       },
                       {
                         "name": "survivalRating",
                         "type": "number",
-                        "bind": "character.skills.survival"
+                        "bind": "<%= character.skills.survival %>"
                       }
                     ]
                   },
@@ -640,12 +640,12 @@
                       {
                         "name": "vigilanceCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.vigilance."
+                        "bind": "<%= character.skills.vigilance. %>"
                       },
                       {
                         "name": "vigilanceRating",
                         "type": "number",
-                        "bind": "character.skills.vigilance"
+                        "bind": "<%= character.skills.vigilance %>"
                       }
                     ]
                   }
@@ -669,12 +669,12 @@
                       {
                         "name": "brawlCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.brawl."
+                        "bind": "<%= character.skills.brawl. %>"
                       },
                       {
                         "name": "brawlRating",
                         "type": "number",
-                        "bind": "character.skills.brawl"
+                        "bind": "<%= character.skills.brawl %>"
                       }
                     ]
                   },
@@ -691,12 +691,12 @@
                       {
                         "name": "gunneryCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.gunnery."
+                        "bind": "<%= character.skills.gunnery. %>"
                       },
                       {
                         "name": "gunneryRating",
                         "type": "number",
-                        "bind": "character.skills.gunnery"
+                        "bind": "<%= character.skills.gunnery %>"
                       }
                     ]
                   },
@@ -713,12 +713,12 @@
                       {
                         "name": "meleeCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.melee."
+                        "bind": "<%= character.skills.melee. %>"
                       },
                       {
                         "name": "meleeRating",
                         "type": "number",
-                        "bind": "character.skills.melee"
+                        "bind": "<%= character.skills.melee %>"
                       }
                     ]
                   },
@@ -735,12 +735,12 @@
                       {
                         "name": "rangedLightCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.rangedLight."
+                        "bind": "<%= character.skills.rangedLight. %>"
                       },
                       {
                         "name": "rangedLightRating",
                         "type": "number",
-                        "bind": "character.skills.rangedLight"
+                        "bind": "<%= character.skills.rangedLight %>"
                       }
                     ]
                   },
@@ -757,12 +757,12 @@
                       {
                         "name": "rangedHeavyCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.rangedHeavy."
+                        "bind": "<%= character.skills.rangedHeavy. %>"
                       },
                       {
                         "name": "rangedHeavyRating",
                         "type": "number",
-                        "bind": "character.skills.rangedHeavy"
+                        "bind": "<%= character.skills.rangedHeavy %>"
                       }
                     ]
                   }
@@ -787,12 +787,12 @@
                       {
                         "name": "coreWorldsCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.coreWorlds."
+                        "bind": "<%= character.skills.coreWorlds. %>"
                       },
                       {
                         "name": "coreWorldsRating",
                         "type": "number",
-                        "bind": "character.skills.coreWorlds"
+                        "bind": "<%= character.skills.coreWorlds %>"
                       }
                     ]
                   },
@@ -809,12 +809,12 @@
                       {
                         "name": "educationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.education."
+                        "bind": "<%= character.skills.education. %>"
                       },
                       {
                         "name": "educationRating",
                         "type": "number",
-                        "bind": "character.skills.education"
+                        "bind": "<%= character.skills.education %>"
                       }
                     ]
                   },
@@ -831,12 +831,12 @@
                       {
                         "name": "loreCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.lore."
+                        "bind": "<%= character.skills.lore. %>"
                       },
                       {
                         "name": "loreRating",
                         "type": "number",
-                        "bind": "character.skills.lore"
+                        "bind": "<%= character.skills.lore %>"
                       }
                     ]
                   },
@@ -853,12 +853,12 @@
                       {
                         "name": "outerRimCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.outerRim."
+                        "bind": "<%= character.skills.outerRim. %>"
                       },
                       {
                         "name": "outerRimRating",
                         "type": "number",
-                        "bind": "character.skills.outerRim"
+                        "bind": "<%= character.skills.outerRim %>"
                       }
                     ]
                   },
@@ -875,12 +875,12 @@
                       {
                         "name": "underworldCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.underworld."
+                        "bind": "<%= character.skills.underworld. %>"
                       },
                       {
                         "name": "underworldRating",
                         "type": "number",
-                        "bind": "character.skills.underworld"
+                        "bind": "<%= character.skills.underworld %>"
                       }
                     ]
                   },
@@ -897,12 +897,12 @@
                       {
                         "name": "xenologyCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.xenology."
+                        "bind": "<%= character.skills.xenology. %>"
                       },
                       {
                         "name": "xenologyRating",
                         "type": "number",
-                        "bind": "character.skills.xenology"
+                        "bind": "<%= character.skills.xenology %>"
                       }
                     ]
                   },
@@ -919,12 +919,12 @@
                       {
                         "name": "otherCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.other."
+                        "bind": "<%= character.skills.other. %>"
                       },
                       {
                         "name": "otherRating",
                         "type": "number",
-                        "bind": "character.skills.other"
+                        "bind": "<%= character.skills.other %>"
                       }
                     ]
                   }
@@ -948,12 +948,12 @@
                       {
                         "name": "custom1CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom1."
+                        "bind": "<%= character.skills.custom1. %>"
                       },
                       {
                         "name": "custom1Rating",
                         "type": "number",
-                        "bind": "character.skills.custom1"
+                        "bind": "<%= character.skills.custom1 %>"
                       }
                     ]
                   },
@@ -970,12 +970,12 @@
                       {
                         "name": "custom2CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom2."
+                        "bind": "<%= character.skills.custom2. %>"
                       },
                       {
                         "name": "custom2Rating",
                         "type": "number",
-                        "bind": "character.skills.custom2"
+                        "bind": "<%= character.skills.custom2 %>"
                       }
                     ]
                   },
@@ -992,12 +992,12 @@
                       {
                         "name": "custom3CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom3."
+                        "bind": "<%= character.skills.custom3. %>"
                       },
                       {
                         "name": "custom3Rating",
                         "type": "number",
-                        "bind": "character.skills.custom3"
+                        "bind": "<%= character.skills.custom3 %>"
                       }
                     ]
                   },
@@ -1014,12 +1014,12 @@
                       {
                         "name": "custom4CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom4."
+                        "bind": "<%= character.skills.custom4. %>"
                       },
                       {
                         "name": "custom4Rating",
                         "type": "number",
-                        "bind": "character.skills.custom4"
+                        "bind": "<%= character.skills.custom4 %>"
                       }
                     ]
                   },
@@ -1036,12 +1036,12 @@
                       {
                         "name": "custom5CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom5."
+                        "bind": "<%= character.skills.custom5. %>"
                       },
                       {
                         "name": "custom5Rating",
                         "type": "number",
-                        "bind": "character.skills.custom5"
+                        "bind": "<%= character.skills.custom5 %>"
                       }
                     ]
                   },
@@ -1058,12 +1058,12 @@
                       {
                         "name": "custom6CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom6."
+                        "bind": "<%= character.skills.custom6. %>"
                       },
                       {
                         "name": "custom6Rating",
                         "type": "number",
-                        "bind": "character.skills.custom6"
+                        "bind": "<%= character.skills.custom6 %>"
                       }
                     ]
                   }
@@ -1081,7 +1081,7 @@
           {
             "name": "speciesSelect",
             "type": "select",
-            "bind": "character.species",
+            "bind": "<%= character.species %>",
             "items": {
               "text": "name",
               "values": "model.species.values"
@@ -1096,37 +1096,51 @@
                 "name": "speciesBaseAbilityBrawn",
                 "type": "textfield",
                 "label": "Brawn",
-                "bind": "character.species.baseAttributes.Brawn"
+                "bind": "<%= character.species.baseAttributes.Brawn %>"
               },
               {
                 "name": "speciesBaseAbilityAgility",
                 "type": "textfield",
                 "label": "Agility",
-                "bind": "character.species.baseAttributes.Agility"
+                "bind": "<%= character.species.baseAttributes.Agility %>"
               },
               {
                 "name": "speciesBaseAbilityIntellect",
                 "type": "textfield",
                 "label": "Intellect",
-                "bind": "character.species.baseAttributes.Intellect"
+                "bind": "<%= character.species.baseAttributes.Intellect %>"
               },
               {
                 "name": "speciesBaseAbilityCunning",
                 "type": "textfield",
                 "label": "Cunning",
-                "bind": "character.species.baseAttributes.Cunning"
+                "bind": "<%= character.species.baseAttributes.Cunning %>"
               },
               {
                 "name": "speciesBaseAbilityWillpower",
                 "type": "textfield",
                 "label": "Willpower",
-                "bind": "character.species.baseAttributes.Willpower"
+                "bind": "<%= character.species.baseAttributes.Willpower %>"
               },
               {
                 "name": "speciesBaseAbilityPresence",
                 "type": "textfield",
                 "label": "Presence",
-                "bind": "character.species.baseAttributes.Presence"
+                "bind": "<%= character.species.baseAttributes.Presence %>"
+              }
+            ]
+          },
+          {
+            "name": "SpeciesProperties",
+            "type": "container",
+            "direction": "vertical",
+            "children": [
+              {
+                "name": "specieswoundsThreshold",
+                "type": "textfield",
+                "label": "Wounds Threshold",
+                "bind": "<%= character.species.woundsThreshold.attribute %> + <%= character.species.woundsThreshold.base %> (<%= character.attributes[character.species.woundsThreshold.attribute] %>)",
+                "readonly": true
               }
             ]
           }
@@ -1142,8 +1156,9 @@
         "career": "career",
         "specializations": "[specialization]",
         "soak": "number",
-        "wounds": "woundsOrStrain",
-        "strain": "woundsOrStrain"
+        "wounds": "woundsThreshold",
+        "strain": "strainThreshold",
+        "attributes": "attributes"
       }
     },
     "woundsOrStrain": {
@@ -1152,10 +1167,22 @@
         "threshold": "number"
       }
     },
-    "woundOrStrainThresholdBasis": {
+    "woundsThreshold": {
       "properties": {
         "base": "number",
-        "attribute": "string"
+        "attribute": {
+          "type":"string",
+          "default": "Brawn"
+        }
+      }
+    },
+    "strainThreshold": {
+      "properties": {
+        "base": "number",
+        "attribute": {
+          "type": "string",
+          "default": "Willpower"
+        }
       }
     },
     "species": {
@@ -1164,8 +1191,8 @@
         "plural": "string",
         "source": "string",
         "baseAttributes": "attributes",
-        "woundThreshold": "woundOrStrainThresholdBasis",
-        "strainThreshold": "woundOrStrainThresholdBasis",
+        "woundsThreshold": "woundsThreshold",
+        "strainThreshold": "strainThreshold",
         "startingExperience": "number",
         "startingSkills": "[string]",
         "startingTalents": "[talent]",
