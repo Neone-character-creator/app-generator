@@ -2,15 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
-%imports%
+${imports}
 
 const Component = () => (
-    <div id="%appName%-app">
+    <div id="${appName}-app">
     <Tabs>
         <TabList>
-            %viewNames%
+            ${viewNames}
         </TabList>
-        %children%
+        ${children}
     </Tabs>
     </div>
 );

@@ -11,16 +11,16 @@ import models from "../models";
 
 const Component = (props) => (
     <FormControl>
-    <InputLabel id="%componentName%-select-label">%label%</InputLabel>
-    <Select id="%componentName%-select" children value={props.boundValue} onChange={props.update} children={props.options.map((item, index) => (<MenuItem value={item}>{_.get(item, itemTextPath)}</MenuItem>))} />
+    <InputLabel id="${componentName}-select-label">${label}</InputLabel>
+    <Select id="${componentName}-select" children value={props.boundValue} onChange={props.update} children={props.options.map((item, index) => (<MenuItem value={item}>{_.get(item, itemTextPath)}</MenuItem>))} />
     </FormControl>
 );
 
 // The path of the bound portion of the state.
-const boundPropertyPath = "%bind%";
+const boundPropertyPath = "${bind}";
 // The path of the select values.
-const boundValuesPath = "%values%";
-const itemTextPath = "%itemText%";
+const boundValuesPath = "${values}";
+const itemTextPath = "${itemText}";
 const connected = connect((state) => {
     const boundValue = _.get(state, boundPropertyPath, "");
     const options = determineValues(boundValuesPath);

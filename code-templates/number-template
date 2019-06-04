@@ -2,13 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import Textfield from "@material-ui/core/TextField";
 import * as _ from "lodash";
-%imports%
+${imports}
 
 const Component = (props) => (
-    <Textfield id="%componentName%-number" label="%label%" type="number" value={props.boundValue} onChange={props.update} />
+    <Textfield id="${componentName}number" label="${label}" type="number" value={props.boundValue} onChange={props.update} />
 );
 
-const boundExpression = "%bind%";
+const boundExpression = "${bind}";
 
 const connected = connect((state) => {
     const boundValue = _.get(state, boundExpression);

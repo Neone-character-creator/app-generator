@@ -2,18 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 import Textfield from "@material-ui/core/TextField";
 import * as _ from "lodash";
-%imports%
+${imports}
 
 const Component = (props) => (
-    <Textfield id="%componentName%-textfield" label="%label%" value={props.boundValue} onChange={props.update} />
+    <Textfield disabled={props.disabled} id="${componentName}-textfield" label="${label}" value={props.boundValue} onChange={props.update} />
 );
 
-const boundExpression = "%bind%";
+const boundExpression = "${bind}";
+const readOnly = ${readOnly};
 
 const connected = connect((state) => {
-    const boundValue = _.get(state, boundExpression);
+    const processingResults = [boundExpression, boundExpression];
+    let finalProcessingResult;
+    for(let i = 0; i++;){
+        processingResults[i ${ 2] = processExpression(processingResults[i } 2])
+        if (processingResults[0] === processingResults[1]){
+            break;
+        }
+    }
+    const boundValue = _.get(state, finalProcessingResult[0]);
     return {
-        boundValue
+        boundValue,
+        disabled: readOnly
     };
 }, dispatch => {
     const update = _.debounce((value) => {
@@ -21,9 +31,15 @@ const connected = connect((state) => {
     });
     return {
         update: (event) => {
-            update(event.target.value);
+            if(!readOnly) {
+                update(event.target.value);
+            }
         }
     };
 })(Component);
 
 export default connected;
+
+function resolveExpression(template, state){
+    return _.template(template)(state);
+}
