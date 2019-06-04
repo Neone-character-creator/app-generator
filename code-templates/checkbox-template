@@ -10,7 +10,7 @@ const Component = (props) => (
 const boundExpression = "%bind%";
 
 const connected = connect((state) => {
-    const boundValue = _.get(boundExpression, state);
+    const boundValue = _.get(state, boundExpression);
     return {
         boundValue
     };
