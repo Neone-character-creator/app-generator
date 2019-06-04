@@ -1086,6 +1086,49 @@
               "text": "name",
               "values": "model.species.values"
             }
+          },
+          {
+            "name": "speciesAbilitiesContainer",
+            "direction": "horizontal",
+            "type": "container",
+            "children": [
+              {
+                "name": "speciesBaseAbilityBrawn",
+                "type": "textfield",
+                "label": "Brawn",
+                "bind": "character.species.baseAttributes.Brawn"
+              },
+              {
+                "name": "speciesBaseAbilityAgility",
+                "type": "textfield",
+                "label": "Agility",
+                "bind": "character.species.baseAttributes.Agility"
+              },
+              {
+                "name": "speciesBaseAbilityIntellect",
+                "type": "textfield",
+                "label": "Intellect",
+                "bind": "character.species.baseAttributes.Intellect"
+              },
+              {
+                "name": "speciesBaseAbilityCunning",
+                "type": "textfield",
+                "label": "Cunning",
+                "bind": "character.species.baseAttributes.Cunning"
+              },
+              {
+                "name": "speciesBaseAbilityWillpower",
+                "type": "textfield",
+                "label": "Willpower",
+                "bind": "character.species.baseAttributes.Willpower"
+              },
+              {
+                "name": "speciesBaseAbilityPresence",
+                "type": "textfield",
+                "label": "Presence",
+                "bind": "character.species.baseAttributes.Presence"
+              }
+            ]
           }
         ]
       }
@@ -1227,10 +1270,10 @@
           "startingSkills": [
             "Discipline"
           ],
-          "specialAbilities" : [
+          "specialAbilities": [
             {
-              "name" : "Lunged Gand",
-              "description" : "Gand with lungs breathe an ammonia mixture. They start with 10xp, breathing apparatus and treat oxygen as a dangerous atmosphere with rating 8."
+              "name": "Lunged Gand",
+              "description": "Gand with lungs breathe an ammonia mixture. They start with 10xp, breathing apparatus and treat oxygen as a dangerous atmosphere with rating 8."
             }
           ]
         },
@@ -1258,10 +1301,10 @@
           "startingSkills": [
             "Discipline"
           ],
-          "specialAbilities" : [
+          "specialAbilities": [
             {
-              "name" : "Lungless Gand",
-              "description" : "Gand without lungs gain all metabolic requirements from food. They cannot suffocate but suffer the normal effects from exposure to vacuum."
+              "name": "Lungless Gand",
+              "description": "Gand without lungs gain all metabolic requirements from food. They cannot suffocate but suffer the normal effects from exposure to vacuum."
             }
           ]
         },
@@ -1996,7 +2039,7 @@
               "description": "When making skill checks, Red Niktos may remove ■ due to arid or hot environmental conditions."
             }
           ],
-          "startingSkills" : [
+          "startingSkills": [
             "Resilience"
           ]
         },
@@ -2021,7 +2064,7 @@
             "attribute": "Willpower"
           },
           "startingExperience": 100,
-          "startingSkills" : [
+          "startingSkills": [
             "Coordination"
           ],
           "specialAbilities": [
@@ -2154,7 +2197,7 @@
               "choices": 1
             }
           ],
-          "startingExperience" : 80,
+          "startingExperience": 80,
           "startingTalents": [
             "Expert Tracker"
           ]
