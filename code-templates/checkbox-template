@@ -4,7 +4,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import * as _ from "lodash";
 
 const Component = (props) => (
-    <Checkbox id="${componentName}-checkbox" checked={props.boundValue} onChange={_.debounce(props.update, 1000)} />
+    <Checkbox id="${componentName}-checkbox" checked={props.boundValue} onChange={props.update} />
 );
 
 const boundExpression = "${bind}";
