@@ -43,20 +43,5 @@ describe("the configuration schema", () => {
                 expect(e.errors).toContain("model.character is a required field");
             }
         });
-        it("must have a character field", () => {
-            const config = {
-                views: {
-                    children: []
-                },
-                model: {}
-            };
-            expect.assertions(2);
-            try {
-                configSchema(config);
-            } catch (e) {
-                expect(e.errors.length).toEqual(2);
-                expect(e.errors).toContain("model.character is a required field");
-            }
-        });
     });
 });

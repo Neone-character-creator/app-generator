@@ -5,11 +5,22 @@ exports[`component generator module throws an error if views are undefined 1`] =
 exports[`component generator module writes an app component 1`] = `
 "import React from \\"react\\";
 import { connect } from \\"react-redux\\";
+import { Tab, Tabs, TabList, TabPanel } from \\"react-tabs\\";
+import 'react-tabs/style/react-tabs.css';
 import OneView from \\"./OneView\\"
 
 const Component = () => (
     <div id=\\"test-app\\">
+    <Tabs>
+        <TabList>
+            <Tab>
+One
+</Tab>
+        </TabList>
+        <TabPanel>
         <OneView/>
+        </TabPanel>
+    </Tabs>
     </div>
 );
 
