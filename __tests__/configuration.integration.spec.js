@@ -1,6 +1,5 @@
 const fs = require("fs-extra");
 const path = require("path");
-const configTransformer = require("../lib/model/transformers/app");
 
 describe("plugin generation chain", () => {
    it("completes", async done => {

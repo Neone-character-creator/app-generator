@@ -164,7 +164,10 @@ describe("component generation module", () => {
                     },
                     select: {
                         type: "select",
-                        label: "Label"
+                        label: "Label",
+                        items: {
+
+                        }
                     }
                 }
             };
