@@ -90,7 +90,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("textfield")("textfield")(config);
-            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"textfield-textfield\" label=\"Label\" value={props.boundValue} onChange={props.set} />"));
+            expect(generated).toMatchSnapshot();
         });
         it("can be bound to a model property", () => {
             const config = {
@@ -109,7 +109,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("textfield")("textfield")(config);
-            expect(generated).toEqual(expect.stringContaining("const boundPropertyName = \"model.string\""));
+            expect(generated).toMatchSnapshot();
         });
         it("can be bound to an action", () => {
             const config = {
@@ -128,7 +128,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("textfield")("textfield")(config);
-            expect(generated).toEqual(expect.stringContaining("const boundPropertyName = \"model.string\""));
+            expect(generated).toMatchSnapshot();
         });
     });
     describe("select components", () => {
@@ -144,17 +144,14 @@ describe("component generation module", () => {
                     select: {
                         type: "select",
                         label: "Label",
-                        values: [0,1,2]
+                        items: {
+                            values: [0, 1, 2]
+                        }
                     }
                 }
             };
             const generated = generateSelect("select")(config);
-            expect(generated).toEqual(expect.stringContaining("<Select id=\"select-select\" value={props.boundValue} onChange={props.set}>"));
-            expect(generated).toEqual(expect.stringContaining("<InputLabel id=\"select-select-label\">Label</InputLabel>"));
-            expect(generated).toEqual(expect.stringContaining("<MenuItem id=\"select-select-value-0\" value=0>0</MenuItem>"));
-            expect(generated).toEqual(expect.stringContaining("<MenuItem id=\"select-select-value-1\" value=1>1</MenuItem>"));
-            expect(generated).toEqual(expect.stringContaining("<MenuItem id=\"select-select-value-2\" value=2>2</MenuItem>"));
-            expect(generated).toEqual(expect.stringContaining("</Select>"));
+            expect(generated).toMatchSnapshot();
         });
         it("throws an error if values is undefined", () => {
             const config = {
@@ -199,7 +196,7 @@ describe("component generation module", () => {
         });
         it("changes the name of the component", async (done) => {
             const generatedComponent = generateComponent('container')('container')(config);
-            expect(generatedComponent).toEqual(expect.stringContaining(`<Grid id="container-container" container direction={"vertical" == "vertical" ? "column" : "row"}>`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`<Grid id="container-container" container justify="space-around" direction={"vertical" == "vertical" ? "column" : "row"}>`));
             done()
         });
 
@@ -225,7 +222,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("number")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"foo-number\" label=\"Number\" type=\"number\" value={props.boundValue} onChange={props.set} />"));
+            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"foo-number\" label=\"Number\" type=\"number\" value={props.boundValue} onChange={props.update} />"));
         });
     });
     describe("label components", () => {
@@ -269,7 +266,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("checkbox")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" checked={props.boundValue} onChange={props.set}"));
+            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" checked={props.boundValue} onChange={props.update} />"));
         });
     });
 });
