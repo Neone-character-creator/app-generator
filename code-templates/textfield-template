@@ -5,7 +5,7 @@ import * as _ from "lodash";
 ${imports}
 
 const Component = (props) => (
-    <Textfield disabled={props.disabled} id="${componentName}-textfield" label="${label}" value={props.boundValue} onChange={props.update} />
+    <Textfield disabled={props.disabled} id="${componentName}-textfield" fullWidth label="${label}" value={props.boundValue} onChange={props.update} />
 );
 
 const boundExpression = "${bind}";
