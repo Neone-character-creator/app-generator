@@ -5,7 +5,7 @@ describe("model schema", () => {
         const config = {};
         expect.assertions(2);
         try {
-            modelSchema(config).validateSync(config);
+            modelSchema(config)(config).validateSync(config);
         } catch (e) {
             expect(e.errors.length).toEqual(1);
             expect(e.errors).toContain("properties is a required field");
@@ -18,8 +18,8 @@ describe("model schema", () => {
             }
         };
         try {
-            const validated = modelSchema(config).validateSync(config);
-            expect(validated.properties.string).toBe("string");
+            const validated = modelSchema(config)(config).validateSync(config);
+            expect(validated.properties.string).toEqual({type: "string"});
         } catch (e) {
             fail(e);
         }
@@ -32,8 +32,8 @@ describe("model schema", () => {
                 }
             };
             try {
-                const validated = modelSchema(config).validateSync(config);
-                expect(validated.properties.number).toBe("number");
+                const validated = modelSchema(config)(config).validateSync(config);
+                expect(validated.properties.number).toEqual({type: "number"});
             } catch (e) {
                 fail(e);
             }
