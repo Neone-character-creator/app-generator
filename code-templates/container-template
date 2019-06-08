@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 ${imports}
 
 const Component = () => (
-    <Grid id="${componentName}-container" container justify="space-around" direction={"${direction}" == "vertical" ? "column" : "row"}>
+    <Grid id="${componentName}-container" container spacing={8} justify="space-around" direction={"${direction}" == "vertical" ? "column" : "row"}>
         ${children}
     </Grid>
 );
