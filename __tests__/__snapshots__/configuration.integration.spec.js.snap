@@ -4,26 +4,18 @@ exports[`plugin generation chain completes 1`] = `
 "import React from \\"react\\";
 import { connect } from \\"react-redux\\";
 import Grid from \\"@material-ui/core/Grid\\";
-import BiographyContainer from \\"./BiographyContainer\\";
-import CombatContainer from \\"./CombatContainer\\";
-import CharacteristicsContainer from \\"./CharacteristicsContainer\\";
-import SkillsContainer from \\"./SkillsContainer\\";
+import BiographyContainer from './BiographyContainer';
+import CombatContainer from './CombatContainer';
+import CharacteristicsContainer from './CharacteristicsContainer';
+import SkillsContainer from './SkillsContainer';
 
 const Component = () => (
-    <Grid id=\\"summary-container\\" container direction={\\"vertical\\" == \\"vertical\\" ? \\"column\\" : \\"row\\"}>
-<Grid item xs>
+    <div id=\\"Summary-view\\">
 <BiographyContainer />
-</Grid>
-<Grid item xs>
 <CombatContainer />
-</Grid>
-<Grid item xs>
 <CharacteristicsContainer />
-</Grid>
-<Grid item xs>
 <SkillsContainer />
-</Grid>
-    </Grid>
+    </div>
 );
 
 export default Component;"

@@ -1,5 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component generator module writes an app component 1`] = `null`;
+exports[`component generator module throws an error if views are undefined 1`] = `"No views to extract"`;
 
-exports[`component generator module writes an app component 2`] = `null`;
+exports[`component generator module writes an app component 1`] = `
+"import React from \\"react\\";
+import { connect } from \\"react-redux\\";
+import { Tab, Tabs, TabList, TabPanel } from \\"react-tabs\\";
+import 'react-tabs/style/react-tabs.css';
+import OneView from \\"./OneView\\"
+
+const Component = () => (
+    <div id=\\"test-app\\">
+    <Tabs>
+        <TabList>
+            <Tab>
+One
+</Tab>
+        </TabList>
+        <TabPanel>
+        <OneView/>
+        </TabPanel>
+    </Tabs>
+    </div>
+);
+
+export default Component;"
+`;
+
+exports[`component generator module writes an app component 2`] = `
+"import React from \\"react\\";
+import { connect } from \\"react-redux\\";
+import Grid from \\"@material-ui/core/Grid\\";
+import FooTextfield from './FooTextfield';
+
+const Component = () => (
+    <div id=\\"one-view\\">
+<FooTextfield />
+    </div>
+);
+
+export default Component;"
+`;

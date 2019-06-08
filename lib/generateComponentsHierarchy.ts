@@ -3,51 +3,53 @@ import _ from "lodash";
 export default function (appConfiguration: any) {
     return {
         ...extractComponentDefinitions({
-            components: {}
+            components: {},
+            views: []
         }, "app", appConfiguration.views)
     };
 };
 
 function extractComponentDefinitions(components: {
-    components: { [s: string]: any }
+    components: { [s: string]: any },
+    views: string[]
 }, componentId: string, element: any) {
-    if (componentId === "app") {
-        element.type = "app";
+
+    if (components.components[componentId]) {
+        throw new Error(`Duplicate component ${componentId} found`);
     }
-    if (componentId === "view") {
-        Object.keys(element.children).forEach(child => {
-            extractViewDefinition(components, child, element.children[child]);
+    if (element.type == "view") {
+        components.views.push(componentId);
+    }
+    components.components[componentId] = element;
+    const children: Array<any> = element.children;
+    if (!_.isEmpty(children)) {
+        children.forEach(child => {
+            extractComponentDefinitions(components, child.name, child);
         })
-    } else {
-        if (components.components[componentId]) {
-            throw new Error("Duplicate component found");
-        }
-        components.components[componentId] = element;
-        const children = element.children;
-        if (!_.isEmpty(children)) {
-            Object.keys(children).forEach(child => {
-                extractComponentDefinitions(components, child, children[child]);
-            })
-        }
-        components.components[componentId] = element;
     }
+    components.components[componentId] = element;
     if (element.children) {
-        element.children = Object.keys(element.children);
+        element.children = element.children.map((child: any) => {
+            return child.name;
+        });
     }
     return components;
 }
 
 function extractViewDefinition(components: {
-    components: { [s: string]: any }
+    components: { [s: string]: any },
+    views: string[]
 }, componentId: string, element: any) {
     const children = element.children;
     if (!_.isEmpty(children)) {
-        Object.keys(children).forEach(child => {
-            extractComponentDefinitions(components, child, children[child]);
+        children.forEach((child: any) => {
+            extractComponentDefinitions(components, child.name, child);
         })
     }
     if (element.children) {
-        element.children = Object.keys(element.children);
+        element.children = element.children.map((child: any) => {
+            return child.name;
+        })
     }
     components.components[componentId] = element;
     return components;

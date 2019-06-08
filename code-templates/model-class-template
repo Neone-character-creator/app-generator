@@ -1,0 +1,3 @@
+function ${name}Model = JSON.parse(`${schema}`);
+
+${name}Model.values = JSON.parse(`${values}`);

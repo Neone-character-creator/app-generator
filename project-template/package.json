@@ -4,8 +4,7 @@
   "description": "",
   "main": "serve.js",
   "scripts": {
-    "start": "npm run webpack:dev && node serve.js",
-    "webpack:dev": "npm i && webpack-cli"
+    "start": "npm i && webpack-cli && webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
@@ -22,9 +21,12 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
+    "react-tabs": "3.0.0",
     "redux": "^4.0.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.2.1",
+    "css-loader": "^2.1.1",
+    "style-loader": "0.23.1"
   }
 }

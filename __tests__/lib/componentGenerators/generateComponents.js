@@ -1,4 +1,6 @@
-const generateComponent = require("../../../lib/components/generateComponent");
+const generateComponent = require("../../../lib/componentGenerators/genericGenerator")();
+const generateSelect = require("../../../lib/componentGenerators/selectGenerator");
+const appGenerator = require("../../../lib/componentGenerators/appGenerator");
 
 describe("component generation module", () => {
     it("throws an error when creating a generator for an unsupported type", () => {
@@ -103,14 +105,10 @@ describe("component generation module", () => {
     describe("app components", () => {
         const config = {
             appName: "Test",
+            views: ["summary", "one", "two"],
             components: {
-                app: {
-                    type: "app",
-                    children: [
-                        "summary",
-                        "one",
-                        "two"
-                    ]
+                app : {
+                    type: "app"
                 },
                 summary: {
                     type: "view"
@@ -124,17 +122,17 @@ describe("component generation module", () => {
             }
         };
         it("names the app based on the appName", () => {
-            const generatedComponent = generateComponent('app')('app')(config);
+            const generatedComponent = appGenerator(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`<div id="${config.appName}-app">`));
         });
         it("changes the name of the component", () => {
-            const generatedComponent = generateComponent('app')('app')(config);
+            const generatedComponent = appGenerator(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`<SummaryView/>`));
             expect(generatedComponent).toEqual(expect.stringContaining(`<OneView/>`));
             expect(generatedComponent).toEqual(expect.stringContaining(`<TwoView/>`));
         });
         it("adds imports for each child component", () => {
-            const generatedComponent = generateComponent('app')('app')(config);
+            const generatedComponent = appGenerator(config);
             expect(generatedComponent).toEqual(expect.stringContaining(`import SummaryView from "./SummaryView"`));
             expect(generatedComponent).toEqual(expect.stringContaining(`import OneView from "./OneView"`));
             expect(generatedComponent).toEqual(expect.stringContaining(`import TwoView from "./TwoView"`));
@@ -162,7 +160,88 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("textfield")("textfield")(config);
-            expect(generated).toEqual(expect.stringContaining("<TextField id=\"textfield-textfield\" label=\"Label\" />"));
+            expect(generated).toMatchSnapshot();
+        });
+        it("can be bound to a model property", () => {
+            const config = {
+                name: "Test",
+                views: [
+                    "summary"],
+                components: {
+                    summary: {
+                        type: "view"
+                    },
+                    textfield: {
+                        type: "textfield",
+                        label: "Label",
+                        bind: "model.string"
+                    }
+                }
+            };
+            const generated = generateComponent("textfield")("textfield")(config);
+            expect(generated).toMatchSnapshot();
+        });
+        it("can be bound to an action", () => {
+            const config = {
+                name: "Test",
+                views: [
+                    "summary"],
+                components: {
+                    summary: {
+                        type: "view"
+                    },
+                    textfield: {
+                        type: "textfield",
+                        label: "Label",
+                        click: "open.popup"
+                    }
+                }
+            };
+            const generated = generateComponent("textfield")("textfield")(config);
+            expect(generated).toMatchSnapshot();
+        });
+    });
+    describe("select components", () => {
+        it("generates the component", () => {
+            const config = {
+                name: "Test",
+                views: [
+                    "summary"],
+                components: {
+                    summary: {
+                        type: "view"
+                    },
+                    select: {
+                        type: "select",
+                        label: "Label",
+                        items: {
+                            values: [0, 1, 2]
+                        }
+                    }
+                }
+            };
+            const generated = generateSelect("select")(config);
+            expect(generated).toMatchSnapshot();
+        });
+        it("throws an error if values is undefined", () => {
+            const config = {
+                name: "Test",
+                views: [
+                    "summary"],
+                components: {
+                    summary: {
+                        type: "view"
+                    },
+                    select: {
+                        type: "select",
+                        label: "Label",
+                        items: {
+
+                        }
+                    }
+                }
+            };
+            expect(()=>generateSelect("select")(config)).toThrowErrorMatchingSnapshot();
         });
     });
     describe("Container compoents", () => {
@@ -171,6 +250,7 @@ describe("component generation module", () => {
             views: ["summary"],
             components: {
                 summary: {
+                    type: "view",
                     children: ["container"]
                 },
                 "container": {
@@ -189,7 +269,7 @@ describe("component generation module", () => {
         });
         it("changes the name of the component", async (done) => {
             const generatedComponent = generateComponent('container')('container')(config);
-            expect(generatedComponent).toEqual(expect.stringContaining(`<Grid id="container-container" container direction={"vertical" == "vertical" ? "column" : "row"}>`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`<Grid id="container-container" container spacing={8} justify="space-around" direction={"vertical" == "vertical" ? "column" : "row"}>`));
             done()
         });
 
@@ -210,11 +290,7 @@ describe("component generation module", () => {
         };
         it("renders the child components", () => {
             const generatedComponent = generateComponent("view")("summary")(config);
-            expect(generatedComponent).toEqual(expect.stringContaining(`<TextField label="foo" id="foo" value="" />`));
-        });
-        it("adds imports for each child component", () => {
-            const generatedComponent = generateComponent("view")("summary")(config);
-            expect(generatedComponent).toEqual(expect.stringContaining(`import TextField from "@material-ui/core/TextField";`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`<FooTextfield />`));
         });
         it("throws an error if a child has an invalid type", () => {
             const config = {
@@ -246,26 +322,6 @@ describe("component generation module", () => {
                 generateComponent("view")("summary")(config);
             }).toThrow();
         });
-        it("doesn't duplicate imports", () => {
-            const config = {
-                name: "Test",
-                views: ["summary"],
-                components: {
-                    summary: {
-                        type: "view",
-                        children: ["foo", "bar"]
-                    },
-                    foo: {
-                        type: "textfield"
-                    },
-                    bar: {
-                        type: "textfield"
-                    }
-                }
-            };
-            const generatedComponent = generateComponent("view")("summary")(config);
-            expect(generatedComponent.match(/import TextField from "@material-ui\/core\/TextField";/g).length).toBe(1);
-        });
     });
     describe("number components", () => {
         it("generates the component", () => {
@@ -288,7 +344,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("number")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<TextField id=\"foo-number\" label=\"Number\" type=\"number\" />"));
+            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"foo-number\" label=\"Number\" type=\"number\" value={props.boundValue} onChange={props.update} />"));
         });
     });
     describe("label components", () => {
@@ -332,7 +388,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("checkbox")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" />"));
+            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" checked={props.boundValue} onChange={props.update} />"));
         });
     });
 });

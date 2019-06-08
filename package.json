@@ -5,7 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "scan": "node_modules/sonar-scanner/bin/sonar-scanner"
+    "scan": "node_modules/sonar-scanner/bin/sonar-scanner",
+    "build": "node app.js",
+    "generate": "npm run build',",
+    "generate:classes": "npm run build -- --only classes"
   },
   "repository": {
     "type": "git",
@@ -25,6 +28,7 @@
     "lodash": "^4.17.11",
     "ncp": "^2.0.0",
     "react": "^16.8.4",
+    "react-tabs": "^3.0.0",
     "recursive-readdir": "^2.2.2",
     "sonar-scanner": "^3.1.0",
     "tmp": "0.0.33",
@@ -43,6 +47,8 @@
       "./lib/**/*.{js, jsx}"
     ],
     "testResultsProcessor": "jest-sonar-reporter",
-    "setupFilesAfterEnv": ["jest-expect-message"]
+    "setupFilesAfterEnv": [
+      "jest-expect-message"
+    ]
   }
 }

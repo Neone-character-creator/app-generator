@@ -1,889 +1,2302 @@
 {
-  "appName" : "test",
+  "appName": "test",
   "views": {
-    "children": {
-      "summary": {
-        "name" : "Summary",
-        "type": "container",
+    "children": [
+      {
+        "name": "Summary",
+        "type": "view",
         "direction": "vertical",
-        "children": {
-          "biography": {
+        "children": [
+          {
+            "name": "biography",
             "type": "container",
             "direction": "vertical",
-            "children": {
-              "name": {
+            "children": [
+              {
+                "name": "name",
                 "type": "textfield",
                 "label": "Character Name",
-                "bind": "character.name"
+                "bind": "<%= character.name %>"
               },
-              "species": {
+              {
+                "name": "species",
                 "type": "textfield",
                 "label": "Species",
-                "bind": "character.species.name"
+                "bind": "<%= character.species.name %>"
               },
-              "career": {
+              {
+                "name": "career",
                 "type": "textfield",
                 "label": "Career",
-                "bind": "character.career.name"
+                "bind": "<%= character.career.name %>"
               },
-              "specializations": {
+              {
+                "name": "specializations",
                 "type": "textfield",
                 "label": "Specialization Trees",
-                "bind": "character.specializations | map(name) | join(, )"
+                "bind": "<%= character.specializations.map(s => s.name).join(', ') %>"
               }
-            }
+            ]
           },
-          "combat": {
+          {
+            "name": "combat",
             "type": "container",
             "direction": "horizontal",
-            "children": {
-              "soak": {
+            "children": [
+              {
+                "name": "soak",
                 "type": "number",
                 "label": "Soak Value",
-                "bind": "character.soak"
+                "bind": "<%= character.soak %>"
               },
-              "wounds": {
+              {
+                "name": "wounds",
                 "type": "container",
                 "direction": "horizontal",
                 "label": "Wounds",
-                "children": {
-                  "currentWounds": {
+                "children": [
+                  {
+                    "name": "currentWounds",
                     "type": "number",
                     "label": "Current",
-                    "bind": "character.wounds.current"
+                    "bind": "<%= character.wounds.current %>"
                   },
-                  "thresholdWounds": {
+                  {
+                    "name": "thresholdWounds",
                     "type": "number",
                     "label": "Threshold",
-                    "bind": "character.wounds.threshold"
+                    "bind": "<%= character.wounds.threshold %>"
                   }
-                }
+                ]
               },
-              "strain": {
+              {
+                "name": "strain",
                 "type": "container",
                 "direction": "horizontal",
                 "label": "Strain",
-                "children": {
-                  "thresholdStrain": {
+                "children": [
+                  {
+                    "name": "strainThreshold",
                     "type": "number",
                     "label": "Threshold",
-                    "bind": "character.strain.threshold"
+                    "bind": "<%= character.strain.threshold %>"
                   },
-                  "currentStrain": {
+                  {
+                    "name": "strainCurrent",
                     "type": "number",
                     "label": "Current",
-                    "bind": "character.strain.current"
+                    "bind": "<%= character.strain.current %>"
                   }
-                }
+                ]
               },
-              "defense": {
+              {
+                "name": "defense",
                 "type": "container",
                 "direction": "horizontal",
-                "children": {
-                  "rangedDefense": {
+                "children": [
+                  {
+                    "name": "rangedDefense",
                     "type": "number",
                     "label": "Ranged",
-                    "bind": "character.defense.ranged"
+                    "bind": "<%= character.defense.ranged %>"
                   },
-                  "meleeDefense": {
+                  {
+                    "name": "meleeDefense",
                     "type": "number",
                     "label": "Melee",
-                    "bind": "character.defense.melee"
+                    "bind": "<%= character.defense.melee %>"
                   }
-                }
+                ]
               }
-            }
+            ]
           },
-          "characteristics": {
+          {
+            "name": "characteristics",
             "type": "container",
             "direction": "horizontal",
-            "children": {
-              "brawn": {
+            "children": [
+              {
+                "name": "brawn",
                 "type": "number",
                 "label": "Brawn",
-                "bind": "character.characteristics.brawn"
+                "bind": "<%= character.characteristics.brawn %>"
               },
-              "agility": {
+              {
+                "name": "agility",
                 "type": "number",
                 "label": "Agility",
-                "bind": "character.characteristics.agility"
+                "bind": "<%= character.characteristics.agility %>"
               },
-              "intellect": {
+              {
+                "name": "intellect",
                 "type": "number",
                 "label": "Intellect",
-                "bind": "character.characteristics.intellect"
+                "bind": "<%= character.characteristics.intellect %>"
               },
-              "cunning": {
+              {
+                "name": "cunning",
                 "type": "number",
                 "label": "Cunning",
-                "bind": "character.characteristics.cunning"
+                "bind": "<%= character.characteristics.cunning %>"
               },
-              "willpower": {
+              {
+                "name": "willpower",
                 "type": "number",
                 "label": "Willpower",
-                "bind": "character.characteristics.willpower"
+                "bind": "<%= character.characteristics.willpower %>"
               },
-              "presence": {
+              {
+                "name": "presence",
                 "type": "number",
                 "label": "Presence",
-                "bind": "character.characteristics.presence"
+                "bind": "<%= character.characteristics.presence %>"
               }
-            }
+            ]
           },
-          "skills": {
+          {
+            "name": "skills",
             "type": "container",
             "direction": "horizontal",
             "label": "Skills",
-            "children": {
-              "generalSkills": {
+            "children": [
+              {
+                "name": "generalSkills",
                 "type": "container",
                 "direction": "vertical",
                 "label": "General Skills",
-                "children": {
-                  "astrogation": {
+                "children": [
+                  {
+                    "name": "astrogation",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "astrogationLabel": {
+                    "children": [
+                      {
+                        "name": "astrogationLabel",
                         "type": "label",
                         "value": "Astrogation"
                       },
-                      "astrogationCareerFlag": {
+                      {
+                        "name": "astrogationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.astrogation."
+                        "bind": "<%= character.skills.astrogation %>"
                       },
-                      "astrogationRating": {
+                      {
+                        "name": "astrogationRating",
                         "type": "number",
-                        "bind": "character.skills.astrogation"
+                        "bind": "<%= character.skills.astrogation %>"
                       }
-                    }
+                    ]
                   },
-                  "athletics": {
+                  {
+                    "name": "athletics",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "athleticsLabel": {
+                    "children": [
+                      {
+                        "name": "athleticsLabel",
                         "type": "label",
                         "value": "Athletics"
                       },
-                      "athleticsCareerFlag": {
+                      {
+                        "name": "athleticsCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.athletics."
+                        "bind": "<%= character.skills.athletics. %>"
                       },
-                      "athleticsRating": {
+                      {
+                        "name": "athleticsRating",
                         "type": "number",
-                        "bind": "character.skills.athletics"
+                        "bind": "<%= character.skills.athletics %>"
                       }
-                    }
+                    ]
                   },
-                  "charm": {
+                  {
+                    "name": "charm",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "charmLabel": {
+                    "children": [
+                      {
+                        "name": "charmLabel",
                         "type": "label",
                         "value": "Charm"
                       },
-                      "charmCareerFlag": {
+                      {
+                        "name": "charmCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.charm."
+                        "bind": "<%= character.skills.charm. %>"
                       },
-                      "charmRating": {
+                      {
+                        "name": "charmRating",
                         "type": "number",
-                        "bind": "character.skills.charm"
+                        "bind": "<%= character.skills.charm %>"
                       }
-                    }
+                    ]
                   },
-                  "coercion": {
+                  {
+                    "name": "coercion",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "coercionLabel": {
+                    "children": [
+                      {
+                        "name": "coercionLabel",
                         "type": "label",
                         "value": "Coercion"
                       },
-                      "coercionCareerFlag": {
+                      {
+                        "name": "coercionCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.coercion."
+                        "bind": "<%= character.skills.coercion. %>"
                       },
-                      "coercionRating": {
+                      {
+                        "name": "coercionRating",
                         "type": "number",
-                        "bind": "character.skills.coercion"
+                        "bind": "<%= character.skills.coercion %>"
                       }
-                    }
+                    ]
                   },
-                  "computers": {
+                  {
+                    "name": "computers",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "computersLabel": {
+                    "children": [
+                      {
+                        "name": "computersLabel",
                         "type": "label",
                         "value": "Computers"
                       },
-                      "computersCareerFlag": {
+                      {
+                        "name": "computersCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.computers."
+                        "bind": "<%= character.skills.computers. %>"
                       },
-                      "computersRating": {
+                      {
+                        "name": "computersRating",
                         "type": "number",
-                        "bind": "character.skills.computers"
+                        "bind": "<%= character.skills.computers %>"
                       }
-                    }
+                    ]
                   },
-                  "cool": {
+                  {
+                    "name": "cool",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "coolLabel": {
+                    "children": [
+                      {
+                        "name": "coolLabel",
                         "type": "label",
                         "value": "Cool"
                       },
-                      "coolCareerFlag": {
+                      {
+                        "name": "coolCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.cool."
+                        "bind": "<%= character.skills.cool. %>"
                       },
-                      "coolRating": {
+                      {
+                        "name": "coolRating",
                         "type": "number",
-                        "bind": "character.skills.cool"
+                        "bind": "<%= character.skills.cool %>"
                       }
-                    }
+                    ]
                   },
-                  "coordination": {
+                  {
+                    "name": "coordination",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "coordinationLabel": {
+                    "children": [
+                      {
+                        "name": "coordinationLabel",
                         "type": "label",
                         "value": "Coordination"
                       },
-                      "coordinationCareerFlag": {
+                      {
+                        "name": "coordinationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.coordination."
+                        "bind": "<%= character.skills.coordination. %>"
                       },
-                      "coordinationRating": {
+                      {
+                        "name": "coordinationRating",
                         "type": "number",
-                        "bind": "character.skills.coordination"
+                        "bind": "<%= character.skills.coordination %>"
                       }
-                    }
+                    ]
                   },
-                  "deception": {
+                  {
+                    "name": "deception",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "deceptionLabel": {
+                    "children": [
+                      {
+                        "name": "deceptionLabel",
                         "type": "label",
                         "value": "Deception"
                       },
-                      "deceptionCareerFlag": {
+                      {
+                        "name": "deceptionCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.deception."
+                        "bind": "<%= character.skills.deception. %>"
                       },
-                      "deceptionRating": {
+                      {
+                        "name": "deceptionRating",
                         "type": "number",
-                        "bind": "character.skills.deception"
+                        "bind": "<%= character.skills.deception %>"
                       }
-                    }
+                    ]
                   },
-                  "discipline": {
+                  {
+                    "name": "discipline",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "disciplineLabel": {
+                    "children": [
+                      {
+                        "name": "disciplineLabel",
                         "type": "label",
                         "value": "Discipline"
                       },
-                      "disciplineCareerFlag": {
+                      {
+                        "name": "disciplineCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.discipline."
+                        "bind": "<%= character.skills.discipline. %>"
                       },
-                      "disciplineRating": {
+                      {
+                        "name": "disciplineRating",
                         "type": "number",
-                        "bind": "character.skills.discipline"
+                        "bind": "<%= character.skills.discipline %>"
                       }
-                    }
+                    ]
                   },
-                  "leadership": {
+                  {
+                    "name": "leadership",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "leadershipLabel": {
+                    "children": [
+                      {
+                        "name": "leadershipLabel",
                         "type": "label",
                         "value": "Leadership"
                       },
-                      "leadershipCareerFlag": {
+                      {
+                        "name": "leadershipCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.leadership."
+                        "bind": "<%= character.skills.leadership. %>"
                       },
-                      "leadershipRating": {
+                      {
+                        "name": "leadershipRating",
                         "type": "number",
-                        "bind": "character.skills.leadership"
+                        "bind": "<%= character.skills.leadership %>"
                       }
-                    }
+                    ]
                   },
-                  "mechanics": {
+                  {
+                    "name": "mechanics",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "mechanicsLabel": {
+                    "children": [
+                      {
+                        "name": "mechanicsLabel",
                         "type": "label",
                         "value": "Mechanics"
                       },
-                      "mechanicsCareerFlag": {
+                      {
+                        "name": "mechanicsCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.mechanics."
+                        "bind": "<%= character.skills.mechanics. %>"
                       },
-                      "mechanicsRating": {
+                      {
+                        "name": "mechanicsRating",
                         "type": "number",
-                        "bind": "character.skills.mechanics"
+                        "bind": "<%= character.skills.mechanics %>"
                       }
-                    }
+                    ]
                   },
-                  "medicine": {
+                  {
+                    "name": "medicine",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "medicineLabel": {
+                    "children": [
+                      {
+                        "name": "medicineLabel",
                         "type": "label",
                         "value": "Medicine"
                       },
-                      "medicineCareerFlag": {
+                      {
+                        "name": "medicineCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.medicine."
+                        "bind": "<%= character.skills.medicine. %>"
                       },
-                      "medicineRating": {
+                      {
+                        "name": "medicineRating",
                         "type": "number",
-                        "bind": "character.skills.medicine"
+                        "bind": "<%= character.skills.medicine %>"
                       }
-                    }
+                    ]
                   },
-                  "negotiation": {
+                  {
+                    "name": "negotiation",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "negotiationLabel": {
+                    "children": [
+                      {
+                        "name": "negotiationLabel",
                         "type": "label",
                         "value": "Negotiation"
                       },
-                      "negotiationCareerFlag": {
+                      {
+                        "name": "negotiationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.negotiation."
+                        "bind": "<%= character.skills.negotiation. %>"
                       },
-                      "negotiationRating": {
+                      {
+                        "name": "negotiationRating",
                         "type": "number",
-                        "bind": "character.skills.negotiation"
+                        "bind": "<%= character.skills.negotiation %>"
                       }
-                    }
+                    ]
                   },
-                  "perception": {
+                  {
+                    "name": "perception",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "perceptionLabel": {
+                    "children": [
+                      {
+                        "name": "perceptionLabel",
                         "type": "label",
                         "value": "Perception"
                       },
-                      "perceptionCareerFlag": {
+                      {
+                        "name": "perceptionCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.perception."
+                        "bind": "<%= character.skills.perception. %>"
                       },
-                      "perceptionRating": {
+                      {
+                        "name": "perceptionRating",
                         "type": "number",
-                        "bind": "character.skills.perception"
+                        "bind": "<%= character.skills.perception %>"
                       }
-                    }
+                    ]
                   },
-                  "pilotingPlanetary": {
+                  {
+                    "name": "pilotingPlanetary",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "pilotingPlanetaryLabel": {
+                    "children": [
+                      {
+                        "name": "pilotingPlanetaryLabel",
                         "type": "label",
                         "value": "PilotingPlanetary"
                       },
-                      "pilotingPlanetaryCareerFlag": {
+                      {
+                        "name": "pilotingPlanetaryCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.pilotingPlanetary."
+                        "bind": "<%= character.skills.pilotingPlanetary. %>"
                       },
-                      "pilotingPlanetaryRating": {
+                      {
+                        "name": "pilotingPlanetaryRating",
                         "type": "number",
-                        "bind": "character.skills.pilotingPlanetary"
+                        "bind": "<%= character.skills.pilotingPlanetary %>"
                       }
-                    }
+                    ]
                   },
-                  "pilotingSpace": {
+                  {
+                    "name": "pilotingSpace",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "pilotingSpaceLabel": {
+                    "children": [
+                      {
+                        "name": "pilotingSpaceLabel",
                         "type": "label",
                         "value": "PilotingSpace"
                       },
-                      "pilotingSpaceCareerFlag": {
+                      {
+                        "name": "pilotingSpaceCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.pilotingSpace."
+                        "bind": "<%= character.skills.pilotingSpace. %>"
                       },
-                      "pilotingSpaceRating": {
+                      {
+                        "name": "pilotingSpaceRating",
                         "type": "number",
-                        "bind": "character.skills.pilotingSpace"
+                        "bind": "<%= character.skills.pilotingSpace %>"
                       }
-                    }
+                    ]
                   },
-                  "resilience": {
+                  {
+                    "name": "resilience",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "resilienceLabel": {
+                    "children": [
+                      {
+                        "name": "resilienceLabel",
                         "type": "label",
                         "value": "Resilience"
                       },
-                      "resilienceCareerFlag": {
+                      {
+                        "name": "resilienceCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.resilience."
+                        "bind": "<%= character.skills.resilience. %>"
                       },
-                      "resilienceRating": {
+                      {
+                        "name": "resilienceRating",
                         "type": "number",
-                        "bind": "character.skills.resilience"
+                        "bind": "<%= character.skills.resilience %>"
                       }
-                    }
+                    ]
                   },
-                  "skulduggery": {
+                  {
+                    "name": "skulduggery",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "skulduggeryLabel": {
+                    "children": [
+                      {
+                        "name": "skulduggeryLabel",
                         "type": "label",
                         "value": "Skulduggery"
                       },
-                      "skulduggeryCareerFlag": {
+                      {
+                        "name": "skulduggeryCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.skulduggery."
+                        "bind": "<%= character.skills.skulduggery. %>"
                       },
-                      "skulduggeryRating": {
+                      {
+                        "name": "skulduggeryRating",
                         "type": "number",
-                        "bind": "character.skills.skulduggery"
+                        "bind": "<%= character.skills.skulduggery %>"
                       }
-                    }
+                    ]
                   },
-                  "stealth": {
+                  {
+                    "name": "stealth",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "stealthLabel": {
+                    "children": [
+                      {
+                        "name": "stealthLabel",
                         "type": "label",
                         "value": "Stealth"
                       },
-                      "stealthCareerFlag": {
+                      {
+                        "name": "stealthCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.stealth."
+                        "bind": "<%= character.skills.stealth. %>"
                       },
-                      "stealthRating": {
+                      {
+                        "name": "stealthRating",
                         "type": "number",
-                        "bind": "character.skills.stealth"
+                        "bind": "<%= character.skills.stealth %>"
                       }
-                    }
+                    ]
                   },
-                  "streetwise": {
+                  {
+                    "name": "streetwise",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "streetwiseLabel": {
+                    "children": [
+                      {
+                        "name": "streetwiseLabel",
                         "type": "label",
                         "value": "Streetwise"
                       },
-                      "streetwiseCareerFlag": {
+                      {
+                        "name": "streetwiseCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.streetwise."
+                        "bind": "<%= character.skills.streetwise. %>"
                       },
-                      "streetwiseRating": {
+                      {
+                        "name": "streetwiseRating",
                         "type": "number",
-                        "bind": "character.skills.streetwise"
+                        "bind": "<%= character.skills.streetwise %>"
                       }
-                    }
+                    ]
                   },
-                  "survival": {
+                  {
+                    "name": "survival",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "survivalLabel": {
+                    "children": [
+                      {
+                        "name": "survivalLabel",
                         "type": "label",
                         "value": "Survival"
                       },
-                      "survivalCareerFlag": {
+                      {
+                        "name": "survivalCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.survival."
+                        "bind": "<%= character.skills.survival. %>"
                       },
-                      "survivalRating": {
+                      {
+                        "name": "survivalRating",
                         "type": "number",
-                        "bind": "character.skills.survival"
+                        "bind": "<%= character.skills.survival %>"
                       }
-                    }
+                    ]
                   },
-                  "vigilance": {
+                  {
+                    "name": "vigilance",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "vigilanceLabel": {
+                    "children": [
+                      {
+                        "name": "vigilanceLabel",
                         "type": "label",
                         "value": "Vigilance"
                       },
-                      "vigilanceCareerFlag": {
+                      {
+                        "name": "vigilanceCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.vigilance."
+                        "bind": "<%= character.skills.vigilance. %>"
                       },
-                      "vigilanceRating": {
+                      {
+                        "name": "vigilanceRating",
                         "type": "number",
-                        "bind": "character.skills.vigilance"
+                        "bind": "<%= character.skills.vigilance %>"
                       }
-                    }
+                    ]
                   }
-                }
+                ]
               },
-              "combatSkills": {
+              {
+                "name": "combatSkills",
                 "type": "container",
                 "direction": "vertical",
-                "children": {
-                  "brawl": {
+                "children": [
+                  {
+                    "name": "brawl",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "brawlLabel": {
+                    "children": [
+                      {
+                        "name": "brawlLabel",
                         "type": "label",
                         "value": "Brawl"
                       },
-                      "brawlCareerFlag": {
+                      {
+                        "name": "brawlCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.brawl."
+                        "bind": "<%= character.skills.brawl. %>"
                       },
-                      "brawlRating": {
+                      {
+                        "name": "brawlRating",
                         "type": "number",
-                        "bind": "character.skills.brawl"
+                        "bind": "<%= character.skills.brawl %>"
                       }
-                    }
+                    ]
                   },
-                  "gunnery": {
+                  {
+                    "name": "gunnery",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "gunneryLabel": {
+                    "children": [
+                      {
+                        "name": "gunneryLabel",
                         "type": "label",
                         "value": "Gunnery"
                       },
-                      "gunneryCareerFlag": {
+                      {
+                        "name": "gunneryCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.gunnery."
+                        "bind": "<%= character.skills.gunnery. %>"
                       },
-                      "gunneryRating": {
+                      {
+                        "name": "gunneryRating",
                         "type": "number",
-                        "bind": "character.skills.gunnery"
+                        "bind": "<%= character.skills.gunnery %>"
                       }
-                    }
+                    ]
                   },
-                  "melee": {
+                  {
+                    "name": "melee",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "meleeLabel": {
+                    "children": [
+                      {
+                        "name": "meleeLabel",
                         "type": "label",
                         "value": "Melee"
                       },
-                      "meleeCareerFlag": {
+                      {
+                        "name": "meleeCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.melee."
+                        "bind": "<%= character.skills.melee. %>"
                       },
-                      "meleeRating": {
+                      {
+                        "name": "meleeRating",
                         "type": "number",
-                        "bind": "character.skills.melee"
+                        "bind": "<%= character.skills.melee %>"
                       }
-                    }
+                    ]
                   },
-                  "rangedLight": {
+                  {
+                    "name": "rangedLight",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "rangedLightLabel": {
+                    "children": [
+                      {
+                        "name": "rangedLightLabel",
                         "type": "label",
                         "value": "Ranged - Light"
                       },
-                      "rangedLightCareerFlag": {
+                      {
+                        "name": "rangedLightCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.rangedLight."
+                        "bind": "<%= character.skills.rangedLight. %>"
                       },
-                      "rangedLightRating": {
+                      {
+                        "name": "rangedLightRating",
                         "type": "number",
-                        "bind": "character.skills.rangedLight"
+                        "bind": "<%= character.skills.rangedLight %>"
                       }
-                    }
+                    ]
                   },
-                  "rangedHeavy": {
+                  {
+                    "name": "rangedHeavy",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "rangedHeavyLabel": {
+                    "children": [
+                      {
+                        "name": "rangedHeavyLabel",
                         "type": "label",
                         "value": "Ranged - Heavy"
                       },
-                      "rangedHeavyCareerFlag": {
+                      {
+                        "name": "rangedHeavyCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.rangedHeavy."
+                        "bind": "<%= character.skills.rangedHeavy. %>"
                       },
-                      "rangedHeavyRating": {
+                      {
+                        "name": "rangedHeavyRating",
                         "type": "number",
-                        "bind": "character.skills.rangedHeavy"
+                        "bind": "<%= character.skills.rangedHeavy %>"
                       }
-                    }
+                    ]
                   }
-                }
+                ]
               },
-              "knowledgeSkills": {
+              {
+                "name": "knowledgeSkills",
                 "type": "container",
                 "direction": "vertical",
                 "label": "Knowledge Skills",
-                "children": {
-                  "coreWorlds": {
+                "children": [
+                  {
+                    "name": "coreWorlds",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "coreWorldsLabel": {
+                    "children": [
+                      {
+                        "name": "coreWorldsLabel",
                         "type": "label",
                         "value": "CoreWorlds"
                       },
-                      "coreWorldsCareerFlag": {
+                      {
+                        "name": "coreWorldsCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.coreWorlds."
+                        "bind": "<%= character.skills.coreWorlds. %>"
                       },
-                      "coreWorldsRating": {
+                      {
+                        "name": "coreWorldsRating",
                         "type": "number",
-                        "bind": "character.skills.coreWorlds"
+                        "bind": "<%= character.skills.coreWorlds %>"
                       }
-                    }
+                    ]
                   },
-                  "education": {
+                  {
+                    "name": "education",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "educationLabel": {
+                    "children": [
+                      {
+                        "name": "educationLabel",
                         "type": "label",
                         "value": "Education"
                       },
-                      "educationCareerFlag": {
+                      {
+                        "name": "educationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.education."
+                        "bind": "<%= character.skills.education. %>"
                       },
-                      "educationRating": {
+                      {
+                        "name": "educationRating",
                         "type": "number",
-                        "bind": "character.skills.education"
+                        "bind": "<%= character.skills.education %>"
                       }
-                    }
+                    ]
                   },
-                  "lore": {
+                  {
+                    "name": "lore",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "loreLabel": {
+                    "children": [
+                      {
+                        "name": "loreLabel",
                         "type": "label",
                         "value": "Lore"
                       },
-                      "loreCareerFlag": {
+                      {
+                        "name": "loreCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.lore."
+                        "bind": "<%= character.skills.lore. %>"
                       },
-                      "loreRating": {
+                      {
+                        "name": "loreRating",
                         "type": "number",
-                        "bind": "character.skills.lore"
+                        "bind": "<%= character.skills.lore %>"
                       }
-                    }
+                    ]
                   },
-                  "outerRim": {
+                  {
+                    "name": "outerRim",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "outerRimLabel": {
+                    "children": [
+                      {
+                        "name": "outerRimLabel",
                         "type": "label",
                         "value": "OuterRim"
                       },
-                      "outerRimCareerFlag": {
+                      {
+                        "name": "outerRimCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.outerRim."
+                        "bind": "<%= character.skills.outerRim. %>"
                       },
-                      "outerRimRating": {
+                      {
+                        "name": "outerRimRating",
                         "type": "number",
-                        "bind": "character.skills.outerRim"
+                        "bind": "<%= character.skills.outerRim %>"
                       }
-                    }
+                    ]
                   },
-                  "underworld": {
+                  {
+                    "name": "underworld",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "underworldLabel": {
+                    "children": [
+                      {
+                        "name": "underworldLabel",
                         "type": "label",
                         "value": "Underworld"
                       },
-                      "underworldCareerFlag": {
+                      {
+                        "name": "underworldCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.underworld."
+                        "bind": "<%= character.skills.underworld. %>"
                       },
-                      "underworldRating": {
+                      {
+                        "name": "underworldRating",
                         "type": "number",
-                        "bind": "character.skills.underworld"
+                        "bind": "<%= character.skills.underworld %>"
                       }
-                    }
+                    ]
                   },
-                  "xenology": {
+                  {
+                    "name": "xenology",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "xenologyLabel": {
+                    "children": [
+                      {
+                        "name": "xenologyLabel",
                         "type": "label",
                         "value": "Xenology"
                       },
-                      "xenologyCareerFlag": {
+                      {
+                        "name": "xenologyCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.xenology."
+                        "bind": "<%= character.skills.xenology. %>"
                       },
-                      "xenologyRating": {
+                      {
+                        "name": "xenologyRating",
                         "type": "number",
-                        "bind": "character.skills.xenology"
+                        "bind": "<%= character.skills.xenology %>"
                       }
-                    }
+                    ]
                   },
-                  "other": {
+                  {
+                    "name": "other",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "otherLabel": {
+                    "children": [
+                      {
+                        "name": "otherLabel",
                         "type": "label",
                         "value": "Other"
                       },
-                      "otherCareerFlag": {
+                      {
+                        "name": "otherCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.other."
+                        "bind": "<%= character.skills.other. %>"
                       },
-                      "otherRating": {
+                      {
+                        "name": "otherRating",
                         "type": "number",
-                        "bind": "character.skills.other"
+                        "bind": "<%= character.skills.other %>"
                       }
-                    }
+                    ]
                   }
-                }
+                ]
               },
-              "customSkills": {
+              {
+                "name": "customSkills",
                 "type": "container",
                 "direction": "vertical",
-                "children": {
-                  "custom1": {
+                "children": [
+                  {
+                    "name": "custom1",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom1Label": {
+                    "children": [
+                      {
+                        "name": "custom1Label",
                         "type": "label",
                         "value": "Custom1"
                       },
-                      "custom1CareerFlag": {
+                      {
+                        "name": "custom1CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom1."
+                        "bind": "<%= character.skills.custom1. %>"
                       },
-                      "custom1Rating": {
+                      {
+                        "name": "custom1Rating",
                         "type": "number",
-                        "bind": "character.skills.custom1"
+                        "bind": "<%= character.skills.custom1 %>"
                       }
-                    }
+                    ]
                   },
-                  "custom2": {
+                  {
+                    "name": "custom2",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom2Label": {
+                    "children": [
+                      {
+                        "name": "custom2Label",
                         "type": "label",
                         "value": "Custom2"
                       },
-                      "custom2CareerFlag": {
+                      {
+                        "name": "custom2CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom2."
+                        "bind": "<%= character.skills.custom2. %>"
                       },
-                      "custom2Rating": {
+                      {
+                        "name": "custom2Rating",
                         "type": "number",
-                        "bind": "character.skills.custom2"
+                        "bind": "<%= character.skills.custom2 %>"
                       }
-                    }
+                    ]
                   },
-                  "custom3": {
+                  {
+                    "name": "custom3",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom3Label": {
+                    "children": [
+                      {
+                        "name": "custom3Label",
                         "type": "label",
                         "value": "Custom3"
                       },
-                      "custom3CareerFlag": {
+                      {
+                        "name": "custom3CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom3."
+                        "bind": "<%= character.skills.custom3. %>"
                       },
-                      "custom3Rating": {
+                      {
+                        "name": "custom3Rating",
                         "type": "number",
-                        "bind": "character.skills.custom3"
+                        "bind": "<%= character.skills.custom3 %>"
                       }
-                    }
+                    ]
                   },
-                  "custom4": {
+                  {
+                    "name": "custom4",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom4Label": {
+                    "children": [
+                      {
+                        "name": "custom4Label",
                         "type": "label",
                         "value": "Custom4"
                       },
-                      "custom4CareerFlag": {
+                      {
+                        "name": "custom4CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom4."
+                        "bind": "<%= character.skills.custom4. %>"
                       },
-                      "custom4Rating": {
+                      {
+                        "name": "custom4Rating",
                         "type": "number",
-                        "bind": "character.skills.custom4"
+                        "bind": "<%= character.skills.custom4 %>"
                       }
-                    }
+                    ]
                   },
-                  "custom5": {
+                  {
+                    "name": "custom5",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom5Label": {
+                    "children": [
+                      {
+                        "name": "custom5Label",
                         "type": "label",
                         "value": "Custom5"
                       },
-                      "custom5CareerFlag": {
+                      {
+                        "name": "custom5CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom5."
+                        "bind": "<%= character.skills.custom5. %>"
                       },
-                      "custom5Rating": {
+                      {
+                        "name": "custom5Rating",
                         "type": "number",
-                        "bind": "character.skills.custom5"
+                        "bind": "<%= character.skills.custom5 %>"
                       }
-                    }
+                    ]
                   },
-                  "custom6": {
+                  {
+                    "name": "custom6",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": {
-                      "custom6Label": {
+                    "children": [
+                      {
+                        "name": "custom6Label",
                         "type": "label",
                         "value": "Custom6"
                       },
-                      "custom6CareerFlag": {
+                      {
+                        "name": "custom6CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom6."
+                        "bind": "<%= character.skills.custom6. %>"
                       },
-                      "custom6Rating": {
+                      {
+                        "name": "custom6Rating",
                         "type": "number",
-                        "bind": "character.skills.custom6"
+                        "bind": "<%= character.skills.custom6 %>"
                       }
-                    }
+                    ]
                   }
-                }
+                ]
               }
-            }
+            ]
           }
+        ]
+      },
+      {
+        "name": "Species",
+        "type": "view",
+        "direction": "vertical",
+        "children": [
+          {
+            "name": "speciesSelect",
+            "type": "select",
+            "bind": "<%= character.species %>",
+            "items": {
+              "text": "name",
+              "values": "model.species.values"
+            }
+          },
+          {
+            "name": "speciesAbilitiesContainer",
+            "direction": "horizontal",
+            "type": "container",
+            "children": [
+              {
+                "name": "speciesBaseAbilityBrawn",
+                "type": "textfield",
+                "label": "Brawn",
+                "bind": "<%= character.species.baseAttributes.Brawn %>"
+              },
+              {
+                "name": "speciesBaseAbilityAgility",
+                "type": "textfield",
+                "label": "Agility",
+                "bind": "<%= character.species.baseAttributes.Agility %>"
+              },
+              {
+                "name": "speciesBaseAbilityIntellect",
+                "type": "textfield",
+                "label": "Intellect",
+                "bind": "<%= character.species.baseAttributes.Intellect %>"
+              },
+              {
+                "name": "speciesBaseAbilityCunning",
+                "type": "textfield",
+                "label": "Cunning",
+                "bind": "<%= character.species.baseAttributes.Cunning %>"
+              },
+              {
+                "name": "speciesBaseAbilityWillpower",
+                "type": "textfield",
+                "label": "Willpower",
+                "bind": "<%= character.species.baseAttributes.Willpower %>"
+              },
+              {
+                "name": "speciesBaseAbilityPresence",
+                "type": "textfield",
+                "label": "Presence",
+                "bind": "<%= character.species.baseAttributes.Presence %>"
+              }
+            ]
+          },
+          {
+            "name": "SpeciesProperties",
+            "type": "container",
+            "direction": "vertical",
+            "children": [
+              {
+                "name": "specieswoundsThreshold",
+                "type": "textfield",
+                "label": "Wounds Threshold",
+                "bind": "<%= character.species.woundsThreshold.attribute %> + <%= character.species.woundsThreshold.base %> (<%= character.attributes[character.species.woundsThreshold.attribute] %>)",
+                "readonly": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "model": {
+    "character": {
+      "properties": {
+        "name": "string",
+        "species": "species",
+        "career": "career",
+        "specializations": "[specialization]",
+        "soak": "number",
+        "wounds": "woundsThreshold",
+        "strain": "strainThreshold",
+        "attributes": "attributes"
+      }
+    },
+    "woundsOrStrain": {
+      "properties": {
+        "current": "number",
+        "threshold": "number"
+      }
+    },
+    "woundsThreshold": {
+      "properties": {
+        "base": "number",
+        "attribute": {
+          "type":"string",
+          "default": "Brawn"
         }
+      }
+    },
+    "strainThreshold": {
+      "properties": {
+        "base": "number",
+        "attribute": {
+          "type": "string",
+          "default": "Willpower"
+        }
+      }
+    },
+    "species": {
+      "properties": {
+        "name": "string",
+        "plural": "string",
+        "source": "string",
+        "baseAttributes": "attributes",
+        "woundsThreshold": "woundsThreshold",
+        "strainThreshold": "strainThreshold",
+        "startingExperience": "number",
+        "startingSkills": "[string]",
+        "startingTalents": "[talent]",
+        "startingCareerSkillChoices": {
+          "type": "number",
+          "default": 4
+        },
+        "firstSpecialtyTrainedSkills": {
+          "type": "number",
+          "default": 3
+        },
+        "specialAbilities": "[specialAbility]"
+      },
+      "values": [
+        {
+          "name": "Bothan",
+          "plural": "Bothans",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 3,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 11,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Streetwise"
+          ],
+          "startingTalents": [
+            "Convincing Demeanor"
+          ]
+        },
+        {
+          "name": "Droid",
+          "plural": "Droids",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 1,
+            "Intellect": 1,
+            "Cunning": 1,
+            "Willpower": 1,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 175,
+          "startingCareerSkillChoices": 6,
+          "firstSpecialtyTrainedSkills": 4,
+          "specialAbilities": [
+            {
+              "name": "Droid",
+              "description": "Droids do not need to east, sleep or breath and are unaffected by toxins or poisons. Droids have a cybernetic implant cap of 6 instead of their Brawn."
+            },
+            {
+              "name": "Inorganic",
+              "description": "Since droids are inorganic, they do not gain the benefits of recovering with bacta tank, stimpack or Medicine care."
+            },
+            {
+              "name": "Mechanical Being",
+              "description": "Droids cannot become force sensitive, nor acquire a Force Rating by any means. Droids cannot use Force Powers and also cannot be affected by mind altering powers."
+            }
+          ]
+        },
+        {
+          "name": "Gand - Lunged",
+          "plural": "Gand",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 110,
+          "startingSkills": [
+            "Discipline"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Lunged Gand",
+              "description": "Gand with lungs breathe an ammonia mixture. They start with 10xp, breathing apparatus and treat oxygen as a dangerous atmosphere with rating 8."
+            }
+          ]
+        },
+        {
+          "name": "Gand - Lungless",
+          "plural": "Gand",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Discipline"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Lungless Gand",
+              "description": "Gand without lungs gain all metabolic requirements from food. They cannot suffocate but suffer the normal effects from exposure to vacuum."
+            }
+          ]
+        },
+        {
+          "name": "Human",
+          "plural": "Humans",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 110,
+          "startingNonCareerSkillChoices": 2
+        },
+        {
+          "name": "Rodian",
+          "plural": "Rodians",
+          "source": "source",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 3,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 1,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Survival"
+          ]
+        },
+        {
+          "name": "Trandoshan",
+          "plural": "Trandoshans",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 1,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 12,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 9,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Perception"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Regeneration",
+              "description": "Whenever a Trandoshan would recover one or more wounds from natural healing or bacta tank treatment, they recover one additional Wound. They do not gain any additional wounds when receiving first aid or medical care from a character or when using a stimpack. Trandoshans may regrow lost limbs though it may take up to a month for the limb to be usable again."
+            },
+            {
+              "name": "Claws",
+              "description": "When a Trandoshan makes Brawl checks to deal damage to an opponent, they deal +1 damage and have a critical range of 3."
+            }
+          ]
+        },
+        {
+          "name": "Twi'Lek",
+          "plural": "Twi'Leks",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 3
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 11,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            {
+              "options": [
+                "Charm",
+                "Deception"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Twi'Lek",
+              "description": "When making skill checks, Twi'leks may remove ■ due to arid or hot conditions."
+            }
+          ]
+        },
+        {
+          "name": "Wookie",
+          "plural": "Wookies",
+          "source": "core",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 1,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 14,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Brawl"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Wookie Rage",
+              "description": "When a Wookie has suffered any wounds, they deal +1 damage with Brawl and Melee attacks"
+            }
+          ]
+        },
+        {
+          "name": "Aqualish - Aquala",
+          "plural": "Aqualish",
+          "source": "dangerous-covenants",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 1,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Brawl",
+            "Resilience"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Aquala",
+              "description": "Aquala may remove ■ due to any cold or wet condititions."
+            }
+          ]
+        },
+        {
+          "name": "Aqualish -  Ualaq",
+          "plural": "Aqualish",
+          "source": "dangerous-covenants",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 1,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Brawl",
+            {
+              "options": [
+                "Survival",
+                "Perception"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Ualaq",
+              "description": "Aquala may remove ■ due to dark condititions but suffer ■ in brightly lit environments."
+            }
+          ]
+        },
+        {
+          "name": "Aqualish - Quara",
+          "plural": "Aqualish",
+          "source": "dangerous-covenants",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 1,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Brawl",
+            {
+              "options": [
+                "Athletics",
+                "Coercion"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Quara",
+              "description": "Quara may remove ■ when attempting to track through a natural environment."
+            }
+          ]
+        },
+        {
+          "name": "Klatoonian",
+          "plural": "Klatoonian",
+          "source": "dangerous-covenants",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 3,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 1,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            {
+              "options": [
+                "Brawl",
+                "Ranged - Heavy",
+                "Ranged - Light"
+              ],
+              "choices": 1
+            }
+          ],
+          "startingNonCareerSkillChoices": 1
+        },
+        {
+          "name": "Weequay",
+          "plural": "Weequay",
+          "source": "dangerous-covenants",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 1,
+            "Cunning": 3,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 9,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            {
+              "options": [
+                "Resilience",
+                "Athletics"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Pheromones",
+              "description": "Weequay can communicate with each other using pheremones. This is completely non-verbal and undetectable to any other species. Weequays can only communicate like this if they are within short range of each other."
+            }
+          ]
+        },
+        {
+          "name": "Chiss",
+          "plural": "Chiss",
+          "source": "enter-the-unknown",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 3,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Cool"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Infravision",
+              "description": "Chiss have adapted to be able to see in both the infrared and normal visible spectrum. Chiss remove up to ■ added to checks by lighting connections."
+            }
+          ]
+        },
+        {
+          "name": "Duro",
+          "plural": "Duros",
+          "source": "enter-the-unknown",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 2,
+            "Intellect": 3,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Piloting - Space"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Infravision",
+              "description": "Chiss have adapted to be able to see in both the infrared and normal visible spectrum. Chiss remove up to ■ added to checks by lighting connections."
+            }
+          ]
+        },
+        {
+          "name": "Toydarian",
+          "plural": "Toydarians",
+          "source": "enter-the-unknown",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 1,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 3
+          },
+          "woundsThreshold": {
+            "base": 9,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 12,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "specialAbilities": [
+            {
+              "name": "Small",
+              "description": "Toydarians are smaller than average and count as silhouette 1."
+            },
+            {
+              "name": "Hover",
+              "description": "Toydarians have wings that allow them to hover slightly off the ground. Toydarians do not have to spend additional maneuvers when navigating difficult terrain."
+            }
+          ]
+        },
+        {
+          "name": "Arcona",
+          "plural": "Arcona",
+          "source": "far-horizons",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Vigilance"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Arcona",
+              "description": "Arcona may remove ■ due to arid or hot environmental conditions."
+            },
+            {
+              "name": "Mood Readers",
+              "description": "Arcona add [Triumph] to any Charm or Negotiation checks they make."
+            }
+          ]
+        },
+        {
+          "name": "Chevin",
+          "plural": "Chevin",
+          "source": "far-horizons",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 1,
+            "Intellect": 2,
+            "Cunning": 3,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 11,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 80,
+          "startingSkills": [
+            "Negotiation"
+          ],
+          "startingTalents": [
+            "Durable"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Advanced Olfaction",
+              "description": "A Chevin's keen sense of smell adds □ to Perception checks involving the sense of smell."
+            }
+          ]
+        },
+        {
+          "name": "Gran",
+          "plural": "Gran",
+          "source": "far-horizons",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 1,
+            "Willpower": 2,
+            "Presence": 3
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 9,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            {
+              "options": [
+                "Charm",
+                "Negotiation"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Enhanced Vision",
+              "description": "When making ranged combat or Perception checks, Gran remove up to ■ ■ due to environmental conditions or concealment, but not defense."
+            }
+          ]
+        },
+        {
+          "name": "Faleen",
+          "plural": "Faleen",
+          "source": "fly-casual",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 3
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 12,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Charm"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Beguiling Pheromones",
+              "description": "Once per check as an incidental, a Faleen may suffer 2 strain to upgrade the ability of a Charm, Deception or Negotiation check against a living sentient being within a short range once. This ability has no effect on targets wearing breath masks or without respiratory systems."
+            }
+          ]
+        },
+        {
+          "name": "Gotal",
+          "plural": "Gotals",
+          "source": "fly-casual",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 3,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 9,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Perception"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Energy Sensitivity",
+              "description": "The head cones of a Gotal are finely tuned sensory organs used to detect almost the entirety of the electromagnetic spectrum. Once per encounter as a maneuver, a Gotal may sense and current emotional states of all living things within short range of himself."
+            }
+          ]
+        },
+        {
+          "name": "Quarren",
+          "plural": "Quarren",
+          "source": "fly-casual",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 1,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 8,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 95,
+          "startingSkills": [
+            "Negotiation"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Amphibious",
+              "description": "Quarren can breathe underwater without penalty and never suffer movement penalties for traveling through water."
+            },
+            {
+              "name": "Ink Spray",
+              "description": "Quarren can spit ink from a specialized sac within their gills that disperses in water, creating a brief murk. Once per counter, as an out-of-turn incidental, a Quarren may suffer 2 strain to add ■  to a combat check made by a character within short range (under water, it adds ■ ■ ■ to the combat check instead.)"
+            }
+          ]
+        },
+        {
+          "name": "Hutt",
+          "plural": "Hutts",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 1,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 3,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 13,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 11,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 70,
+          "startingSkills": [
+            {
+              "options": [
+                "Coercion",
+                "Discipline"
+              ],
+              "choices": 1
+            }
+          ],
+          "startingTalents": [
+            "Enduring",
+            "Nobody's Fool"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Ponderous",
+              "description": "A Hutt can never spend more than one maneuver moving per turn."
+            }
+          ]
+        },
+        {
+          "name": "Gank",
+          "plural": "Ganks",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 10,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 110,
+          "startingSkills": [
+            {
+              "options": [
+                "Coercion",
+                "Vigilance"
+              ],
+              "choices": 1
+            }
+          ],
+          "specialAbilities": [
+            {
+              "name": "Cyborg",
+              "description": "All Ganks are cyborgs and each one often possesses several different cybernetic implants. A Gank beings play with up to two cybernetics that cost a total of up to 5,000 credits. If the character taks on additonal Obligation for credits at character creation, he may apply these extra funds to the 5,000 credit budgest to purchase cybernetics. Ganks have a cybernetic implant cap of 3 plus Brawn rating."
+            }
+          ]
+        },
+        {
+          "name": "Nikto - Red",
+          "plural": "Niktos",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "specialAbilities": [
+            {
+              "name": "Red Nikto",
+              "description": "When making skill checks, Red Niktos may remove ■ due to arid or hot environmental conditions."
+            }
+          ],
+          "startingSkills": [
+            "Resilience"
+          ]
+        },
+        {
+          "name": "Nikto - Green",
+          "plural": "Niktos",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Coordination"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Red Nikto",
+              "description": "Green Niktos gain □ to Atheltics checks made to climb trees and other surfaces their claws can pierce."
+            },
+            {
+              "name": "Claws",
+              "description": "When a Green Nikto makes Brawl checks to deal damage to an opponent, they deal +1 damage and have a Critical Rating of 3."
+            }
+          ]
+        },
+        {
+          "name": "Nikto - Mountain",
+          "plural": "Niktos",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Survival"
+          ],
+          "startingTalents": [
+            "Natural Outdoorsman"
+          ]
+        },
+        {
+          "name": "Nikto - Pale",
+          "plural": "Niktos",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Athletics"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Swimmer",
+              "description": "A Pale Nikto never suffers movement penalties for travelling through water and can hold their breath for a number of rounds equal to twice their Brawn rating before beginning to drown."
+            }
+          ]
+        },
+        {
+          "name": "Nikto - Southern",
+          "plural": "Niktos",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 3,
+            "Agility": 2,
+            "Intellect": 2,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 1
+          },
+          "woundsThreshold": {
+            "base": 11,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingExperience": 100,
+          "startingSkills": [
+            "Athletics"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Perceptive",
+              "description": "Southern Niktos may add □ to Perception and Vigilance checks to detect sounds."
+            }
+          ]
+        },
+        {
+          "name": "Sakiyan",
+          "plural": "Sakiyans",
+          "source": "lords-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 2,
+            "Agility": 2,
+            "Intellect": 3,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "base": 8,
+            "attribute": "Brawn"
+          },
+          "strainThreshold": {
+            "base": 10,
+            "attribute": "Willpower"
+          },
+          "startingSkills": [
+            {
+              "options": [
+                "Perception",
+                "Vigilance"
+              ],
+              "choices": 1
+            }
+          ],
+          "startingExperience": 80,
+          "startingTalents": [
+            "Expert Tracker"
+          ]
+        },
+        {
+          "name": "Drall",
+          "plural": "Drall",
+          "source": "loads-of-nal-hutta",
+          "baseAttributes": {
+            "Brawn": 1,
+            "Agility": 1,
+            "Intellect": 4,
+            "Cunning": 2,
+            "Willpower": 2,
+            "Presence": 2
+          },
+          "woundsThreshold": {
+            "attribute": "Brawn",
+            "base": 8
+          },
+          "strainThreshold": {
+            "attribute": "Willpower",
+            "base": 12
+          },
+          "startingExperience": 90,
+          "startingSkills": [
+            "Knowledge - Education"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Drall",
+              "description": "Drall have a mind for problems and their solutions. In addition to using his skill or characteristic rating, a Drall adds □ to the dicepool when providing skilled assistance."
+            }
+          ]
+        }
+      ]
+    },
+    "attributes": {
+      "properties": {
+        "Brawn": "number",
+        "Agility": "number",
+        "Intellect": "number",
+        "Cunning": "number",
+        "Willpower": "number",
+        "Presence": "number"
+      }
+    },
+    "specialAbility": {
+      "properties": {
+        "name": "string",
+        "description": "string"
+      }
+    },
+    "career": {
+      "properties": {
+        "name": "string",
+        "careerSkills": "[string]",
+        "specializations": "[specialization]"
+      }
+    },
+    "specialization": {
+      "properties": {
+        "name": "string",
+        "careerSkills": "[skill]",
+        "talents": "[specializationTalent]"
+      }
+    },
+    "specializationTalent": {
+      "properties": {
+        "id": "string",
+        "tier": "number",
+        "requires": "[specializationTalent]"
       }
     }
   },

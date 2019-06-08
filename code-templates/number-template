@@ -1,10 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
 import Textfield from "@material-ui/core/TextField";
-%imports%
+import * as _ from "lodash";
+${imports}
 
-const Component = () => (
-    <TextField id="%componentName%-number" label="%label%" type="number" />
+const Component = (props) => (
+    <Textfield id="${componentName}-number" label="${label}" type="number" value={props.boundValue} onChange={props.update} />
 );
 
-export default Component;
+const boundExpression = "${bind}";
+
+const connected = connect((state) => {
+    const boundValue = _.get(state, boundExpression);
+    return {
+        boundValue
+    };
+}, dispatch => {
+    const update = _.debounce((value) => {
+        dispatch({ type: "SET", path: boundExpression, value: value});
+    });
+    return {
+        update: (event) => {
+            update(event.target.value);
+        }
+    };
+})(Component);
+
+export default connected;
