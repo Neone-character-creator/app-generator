@@ -13,14 +13,13 @@ const readOnly = ${readOnly};
 
 const connected = connect((state) => {
     const processingResults = [boundExpression, boundExpression];
-    let finalProcessingResult;
-    for(let i = 0; i++;){
-        processingResults[i ${ 2] = processExpression(processingResults[i } 2])
+    for(let i = 0;;i++){
+        processingResults[i % 2] = resolveExpression(processingResults[i % 2], state)
         if (processingResults[0] === processingResults[1]){
             break;
         }
     }
-    const boundValue = _.get(state, finalProcessingResult[0]);
+    const boundValue = processingResults[0];
     return {
         boundValue,
         disabled: readOnly
