@@ -1,3 +1,14 @@
-function ${name}Model = JSON.parse(`${schema}`);
+function ${name}Model(){
+    Object.getOwnPropertyNames(this.__proto__.definition).forEach((property)=>{
+        const propertyDef = this.__proto__.definition[property];
+        if (propertyDef.type.match(/\[.*\]/)){
+            this[property] = [];
+        } else {
+            this[property] = propertyDef.default !== undefined ? propertyDef.default : new module.exports[propertyDef.type]();
+        }
+    });
+}
 
 ${name}Model.values = JSON.parse(`${values}`);
+
+${name}Model.prototype.definition = JSON.parse(`${schema}`);

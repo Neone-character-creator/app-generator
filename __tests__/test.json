@@ -2299,26 +2299,5 @@
         "requires": "[specializationTalent]"
       }
     }
-  },
-  "model" : {
-    "character" : {
-      "properties": {
-        "name": "string",
-        "species" : "species",
-        "career" : "career"
-      }
-    },
-    "species" : {
-      "properties" : {
-        "name" : "string",
-        "plural" : "string",
-        "source" : "string"
-      }
-    },
-    "career" : {
-      "properties" : {
-
-      }
-    }
   }
 }
