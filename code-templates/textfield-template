@@ -12,17 +12,9 @@ const boundExpression = "${bind}";
 const readOnly = ${readOnly};
 
 const connected = connect((state) => {
-    const processingResults = [boundExpression, boundExpression];
-    for(let i = 0;;i++){
-        processingResults[i % 2] = resolveExpression(processingResults[i % 2], state)
-        if (processingResults[0] === processingResults[1]){
-            break;
-        }
-    }
-    const boundValue = processingResults[0];
+    const boundValue = _.get(state, boundExpression);
     return {
-        boundValue,
-        disabled: readOnly
+        boundValue
     };
 }, dispatch => {
     const update = _.debounce((value) => {
@@ -30,15 +22,9 @@ const connected = connect((state) => {
     });
     return {
         update: (event) => {
-            if(!readOnly) {
-                update(event.target.value);
-            }
+            update(event.target.value);
         }
     };
 })(Component);
 
 export default connected;
-
-function resolveExpression(template, state){
-    return _.template(template)(state);
-}
