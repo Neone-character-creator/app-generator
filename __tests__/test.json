@@ -120,37 +120,37 @@
                 "name": "Brawn",
                 "type": "number",
                 "label": "Brawn",
-                "bind": "character.attributes.Brawn"
+                "bind": "character.attributes.brawn"
               },
               {
                 "name": "Agility",
                 "type": "number",
                 "label": "Agility",
-                "bind": "character.attributes.Agility"
+                "bind": "character.attributes.agility"
               },
               {
                 "name": "Intellect",
                 "type": "number",
                 "label": "Intellect",
-                "bind": "character.attributes.Intellect"
+                "bind": "character.attributes.intellect"
               },
               {
                 "name": "Cunning",
                 "type": "number",
                 "label": "Cunning",
-                "bind": "character.attributes.Cunning"
+                "bind": "character.attributes.cunning"
               },
               {
                 "name": "Willpower",
                 "type": "number",
                 "label": "Willpower",
-                "bind": "character.attributes.Willpower"
+                "bind": "character.attributes.willpower"
               },
               {
                 "name": "Presence",
                 "type": "number",
                 "label": "Presence",
-                "bind": "character.attributes.Presence"
+                "bind": "character.attributes.presence"
               }
             ]
           },
