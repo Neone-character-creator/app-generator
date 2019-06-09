@@ -1148,6 +1148,27 @@
                 "label": "Wounds Threshold",
                 "value": "<%= character.species.woundsThreshold.attribute %> (<%= character.attributes[character.species.woundsThreshold.attribute] %>) + <%= character.species.woundsThreshold.base %>",
                 "readOnly": true
+              },
+              {
+                "name": "speciesstraintThreshold",
+                "type": "textfield",
+                "label": "Wounds Threshold",
+                "value": "<%= character.species.strainThreshold.attribute %> + <%= character.species.strainThreshold.base %> (<%= character.attributes[character.species.strainThreshold.attribute] %>)",
+                "readonly": true
+              },
+              {
+                "name": "speciesStartingExperience",
+                "type": "textfield",
+                "label": "Starting Experience",
+                "value": "<%= character.species.startingExperience %>)",
+                "readonly": true
+              },
+              {
+                "name": "speciesSpecialAbilities",
+                "type": "textfield",
+                "label": "Special Abilities",
+                "value": "<%= character.species.specialAbilities.map(sa=>as.name).join(', ') %>)",
+                "readonly": true
               }
             ]
           }

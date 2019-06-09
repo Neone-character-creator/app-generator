@@ -6,7 +6,9 @@ function ${name}Model(){
         } else {
             this[property] = propertyDef.default !== undefined ? propertyDef.default : new module.exports[propertyDef.type]();
         }
-        if (typeof this[property] === "object"){
+        if (_.isArray(this[property])){
+            // TODO: Add always present values perhaps?
+        } else if (_.isObject(this[property])) {
             this[property] = {...this[property], ...propertyDef.value};
         }
     });
