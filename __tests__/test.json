@@ -1160,14 +1160,14 @@
                 "name": "speciesStartingExperience",
                 "type": "textfield",
                 "label": "Starting Experience",
-                "value": "<%= character.species.startingExperience %>)",
+                "value": "<%= character.species.startingExperience %>",
                 "readonly": true
               },
               {
                 "name": "speciesSpecialAbilities",
                 "type": "textfield",
                 "label": "Special Abilities",
-                "value": "<%= character.species.specialAbilities.map(sa=>as.name).join(', ') %>)",
+                "value": "<%= character.species.specialAbilities.map(sa=>as.name).join(', ') %>",
                 "readonly": true
               }
             ]
