@@ -3,11 +3,15 @@ const models = require("./models");
 
 function setCalculatedProperties(modelDefinition, state, statePath){
     if (modelDefinition.derivedFrom) {
-        let value = _.template(modelDefinition.derivedFrom)(state);
+        let value = _.template(modelDefinition.derivedFrom)({...state, models});
         switch (modelDefinition.type) {
             case "number":
                 value = Number.parseInt(value);
                 break;
+            case "string":
+                break;
+            default:
+                value = JSON.parse(value);
         }
         _.set(state, statePath, value);
     }

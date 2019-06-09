@@ -6,6 +6,9 @@ function ${name}Model(){
         } else {
             this[property] = propertyDef.default !== undefined ? propertyDef.default : new module.exports[propertyDef.type]();
         }
+        if (typeof this[property] === "object"){
+            this[property] = {...this[property], ...propertyDef.value};
+        }
     });
 }
 

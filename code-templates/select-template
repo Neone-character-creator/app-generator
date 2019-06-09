@@ -19,8 +19,8 @@ const Component = (props) => (
 // The path of the bound portion of the state.
 const boundPropertyPath = ${bind};
 // The path of the select values.
-const boundValuesPath = "${values}";
-const itemTextPath = "${itemText}";
+const boundValuesPath = ${values};
+const itemTextPath = ${itemText};
 const readOnly = ${readOnly};
 const connected = connect((state) => {
     const boundValue = _.get(state, boundPropertyPath, "");

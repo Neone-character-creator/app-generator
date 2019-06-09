@@ -179,12 +179,12 @@
                       {
                         "name": "astrogationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.astrogation"
+                        "bind": "character.skills.astrogation.isCareerSkill"
                       },
                       {
                         "name": "astrogationRating",
                         "type": "number",
-                        "bind": "character.skills.astrogation"
+                        "bind": "character.skills.astrogation.rank"
                       }
                     ]
                   },
@@ -201,12 +201,12 @@
                       {
                         "name": "athleticsCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.athletics."
+                        "bind": "character.skills.athletics.isCareerSkill"
                       },
                       {
                         "name": "athleticsRating",
                         "type": "number",
-                        "bind": "character.skills.athletics"
+                        "bind": "character.skills.athletics.rank"
                       }
                     ]
                   },
@@ -223,12 +223,12 @@
                       {
                         "name": "charmCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.charm."
+                        "bind": "character.skills.charm.isCareerSkill"
                       },
                       {
                         "name": "charmRating",
                         "type": "number",
-                        "bind": "character.skills.charm"
+                        "bind": "character.skills.charm.rank"
                       }
                     ]
                   },
@@ -245,12 +245,12 @@
                       {
                         "name": "coercionCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.coercion."
+                        "bind": "character.skills.coercion.isCareerSkill"
                       },
                       {
                         "name": "coercionRating",
                         "type": "number",
-                        "bind": "character.skills.coercion"
+                        "bind": "character.skills.coercion.rank"
                       }
                     ]
                   },
@@ -267,12 +267,12 @@
                       {
                         "name": "computersCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.computers."
+                        "bind": "character.skills.computers.isCareerSkill"
                       },
                       {
                         "name": "computersRating",
                         "type": "number",
-                        "bind": "character.skills.computers"
+                        "bind": "character.skills.computers.rank"
                       }
                     ]
                   },
@@ -289,12 +289,12 @@
                       {
                         "name": "coolCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.cool."
+                        "bind": "character.skills.cool.isCareerSkill"
                       },
                       {
                         "name": "coolRating",
                         "type": "number",
-                        "bind": "character.skills.cool"
+                        "bind": "character.skills.cool.rank"
                       }
                     ]
                   },
@@ -311,12 +311,12 @@
                       {
                         "name": "coordinationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.coordination."
+                        "bind": "character.skills.coordination.isCareerSkill"
                       },
                       {
                         "name": "coordinationRating",
                         "type": "number",
-                        "bind": "character.skills.coordination"
+                        "bind": "character.skills.coordination.rank"
                       }
                     ]
                   },
@@ -333,12 +333,12 @@
                       {
                         "name": "deceptionCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.deception."
+                        "bind": "character.skills.deception.isCareerSkill"
                       },
                       {
                         "name": "deceptionRating",
                         "type": "number",
-                        "bind": "character.skills.deception"
+                        "bind": "character.skills.deception.rank"
                       }
                     ]
                   },
@@ -355,12 +355,12 @@
                       {
                         "name": "disciplineCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.discipline."
+                        "bind": "character.skills.discipline.isCareerSkill"
                       },
                       {
                         "name": "disciplineRating",
                         "type": "number",
-                        "bind": "character.skills.discipline"
+                        "bind": "character.skills.discipline.rank"
                       }
                     ]
                   },
@@ -377,12 +377,12 @@
                       {
                         "name": "leadershipCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.leadership."
+                        "bind": "character.skills.leadership.isCareerSkill"
                       },
                       {
                         "name": "leadershipRating",
                         "type": "number",
-                        "bind": "character.skills.leadership"
+                        "bind": "character.skills.leadership.rank"
                       }
                     ]
                   },
@@ -399,12 +399,12 @@
                       {
                         "name": "mechanicsCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.mechanics."
+                        "bind": "character.skills.mechanics.isCareerSkill"
                       },
                       {
                         "name": "mechanicsRating",
                         "type": "number",
-                        "bind": "character.skills.mechanics"
+                        "bind": "character.skills.mechanics.rank"
                       }
                     ]
                   },
@@ -421,12 +421,12 @@
                       {
                         "name": "medicineCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.medicine."
+                        "bind": "character.skills.medicine.isCareerSkill"
                       },
                       {
                         "name": "medicineRating",
                         "type": "number",
-                        "bind": "character.skills.medicine"
+                        "bind": "character.skills.medicine.rank"
                       }
                     ]
                   },
@@ -443,12 +443,12 @@
                       {
                         "name": "negotiationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.negotiation."
+                        "bind": "character.skills.negotiation.isCareerSkill"
                       },
                       {
                         "name": "negotiationRating",
                         "type": "number",
-                        "bind": "character.skills.negotiation"
+                        "bind": "character.skills.negotiation.rank"
                       }
                     ]
                   },
@@ -465,12 +465,12 @@
                       {
                         "name": "perceptionCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.perception."
+                        "bind": "character.skills.perception.isCareerSkill"
                       },
                       {
                         "name": "perceptionRating",
                         "type": "number",
-                        "bind": "character.skills.perception"
+                        "bind": "character.skills.perception.rank"
                       }
                     ]
                   },
@@ -487,12 +487,12 @@
                       {
                         "name": "pilotingPlanetaryCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.pilotingPlanetary."
+                        "bind": "character.skills.pilotingPlanetary.isCareerSkill"
                       },
                       {
                         "name": "pilotingPlanetaryRating",
                         "type": "number",
-                        "bind": "character.skills.pilotingPlanetary"
+                        "bind": "character.skills.pilotingPlanetary.rank"
                       }
                     ]
                   },
@@ -509,12 +509,12 @@
                       {
                         "name": "pilotingSpaceCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.pilotingSpace."
+                        "bind": "character.skills.pilotingSpace.isCareerSkill"
                       },
                       {
                         "name": "pilotingSpaceRating",
                         "type": "number",
-                        "bind": "character.skills.pilotingSpace"
+                        "bind": "character.skills.pilotingSpace.rank"
                       }
                     ]
                   },
@@ -531,12 +531,12 @@
                       {
                         "name": "resilienceCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.resilience."
+                        "bind": "character.skills.resilience.isCareerSkill"
                       },
                       {
                         "name": "resilienceRating",
                         "type": "number",
-                        "bind": "character.skills.resilience"
+                        "bind": "character.skills.resilience.rank"
                       }
                     ]
                   },
@@ -553,12 +553,12 @@
                       {
                         "name": "skulduggeryCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.skulduggery."
+                        "bind": "character.skills.skulduggery.isCareerSkill"
                       },
                       {
                         "name": "skulduggeryRating",
                         "type": "number",
-                        "bind": "character.skills.skulduggery"
+                        "bind": "character.skills.skulduggery.rank"
                       }
                     ]
                   },
@@ -575,12 +575,12 @@
                       {
                         "name": "stealthCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.stealth."
+                        "bind": "character.skills.stealth.isCareerSkill"
                       },
                       {
                         "name": "stealthRating",
                         "type": "number",
-                        "bind": "character.skills.stealth"
+                        "bind": "character.skills.stealth.rank"
                       }
                     ]
                   },
@@ -597,12 +597,12 @@
                       {
                         "name": "streetwiseCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.streetwise."
+                        "bind": "character.skills.streetwise.isCareerSkill"
                       },
                       {
                         "name": "streetwiseRating",
                         "type": "number",
-                        "bind": "character.skills.streetwise"
+                        "bind": "character.skills.streetwise.rank"
                       }
                     ]
                   },
@@ -619,12 +619,12 @@
                       {
                         "name": "survivalCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.survival."
+                        "bind": "character.skills.survival.isCareerSkill"
                       },
                       {
                         "name": "survivalRating",
                         "type": "number",
-                        "bind": "character.skills.survival"
+                        "bind": "character.skills.survival.rank"
                       }
                     ]
                   },
@@ -641,12 +641,12 @@
                       {
                         "name": "vigilanceCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.vigilance."
+                        "bind": "character.skills.vigilance.isCareerSkill"
                       },
                       {
                         "name": "vigilanceRating",
                         "type": "number",
-                        "bind": "character.skills.vigilance"
+                        "bind": "character.skills.vigilance.rank"
                       }
                     ]
                   }
@@ -670,12 +670,12 @@
                       {
                         "name": "brawlCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.brawl."
+                        "bind": "character.skills.brawl.isCareerSkill"
                       },
                       {
                         "name": "brawlRating",
                         "type": "number",
-                        "bind": "character.skills.brawl"
+                        "bind": "character.skills.brawl.rank"
                       }
                     ]
                   },
@@ -692,12 +692,12 @@
                       {
                         "name": "gunneryCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.gunnery."
+                        "bind": "character.skills.gunnery.isCareerSkill"
                       },
                       {
                         "name": "gunneryRating",
                         "type": "number",
-                        "bind": "character.skills.gunnery"
+                        "bind": "character.skills.gunnery.rank"
                       }
                     ]
                   },
@@ -714,12 +714,12 @@
                       {
                         "name": "meleeCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.melee."
+                        "bind": "character.skills.melee.isCareerSkill"
                       },
                       {
                         "name": "meleeRating",
                         "type": "number",
-                        "bind": "character.skills.melee"
+                        "bind": "character.skills.melee.rank"
                       }
                     ]
                   },
@@ -736,12 +736,12 @@
                       {
                         "name": "rangedLightCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.rangedLight."
+                        "bind": "character.skills.rangedLight.isCareerSkill"
                       },
                       {
                         "name": "rangedLightRating",
                         "type": "number",
-                        "bind": "character.skills.rangedLight"
+                        "bind": "character.skills.rangedLight.rank"
                       }
                     ]
                   },
@@ -758,12 +758,12 @@
                       {
                         "name": "rangedHeavyCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.rangedHeavy."
+                        "bind": "character.skills.rangedHeavy.isCareerSkill"
                       },
                       {
                         "name": "rangedHeavyRating",
                         "type": "number",
-                        "bind": "character.skills.rangedHeavy"
+                        "bind": "character.skills.rangedHeavy.rank"
                       }
                     ]
                   }
@@ -788,12 +788,12 @@
                       {
                         "name": "coreWorldsCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.coreWorlds."
+                        "bind": "character.skills.coreWorlds.isCareerSkill"
                       },
                       {
                         "name": "coreWorldsRating",
                         "type": "number",
-                        "bind": "character.skills.coreWorlds"
+                        "bind": "character.skills.coreWorlds.rank"
                       }
                     ]
                   },
@@ -810,12 +810,12 @@
                       {
                         "name": "educationCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.education."
+                        "bind": "character.skills.education.isCareerSkill"
                       },
                       {
                         "name": "educationRating",
                         "type": "number",
-                        "bind": "character.skills.education"
+                        "bind": "character.skills.education.rank"
                       }
                     ]
                   },
@@ -832,12 +832,12 @@
                       {
                         "name": "loreCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.lore."
+                        "bind": "character.skills.lore.isCareerSkill"
                       },
                       {
                         "name": "loreRating",
                         "type": "number",
-                        "bind": "character.skills.lore"
+                        "bind": "character.skills.lore.rank"
                       }
                     ]
                   },
@@ -854,12 +854,12 @@
                       {
                         "name": "outerRimCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.outerRim."
+                        "bind": "character.skills.outerRim.isCareerSkill"
                       },
                       {
                         "name": "outerRimRating",
                         "type": "number",
-                        "bind": "character.skills.outerRim"
+                        "bind": "character.skills.outerRim.rank"
                       }
                     ]
                   },
@@ -876,12 +876,12 @@
                       {
                         "name": "underworldCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.underworld."
+                        "bind": "character.skills.underworld.isCareerSkill"
                       },
                       {
                         "name": "underworldRating",
                         "type": "number",
-                        "bind": "character.skills.underworld"
+                        "bind": "character.skills.underworld.rank"
                       }
                     ]
                   },
@@ -898,12 +898,12 @@
                       {
                         "name": "xenologyCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.xenology."
+                        "bind": "character.skills.xenology.isCareerSkill"
                       },
                       {
                         "name": "xenologyRating",
                         "type": "number",
-                        "bind": "character.skills.xenology"
+                        "bind": "character.skills.xenology.rank"
                       }
                     ]
                   },
@@ -920,12 +920,12 @@
                       {
                         "name": "otherCareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.other."
+                        "bind": "character.skills.other.isCareerSkill"
                       },
                       {
                         "name": "otherRating",
                         "type": "number",
-                        "bind": "character.skills.other"
+                        "bind": "character.skills.other.rank"
                       }
                     ]
                   }
@@ -949,7 +949,7 @@
                       {
                         "name": "custom1CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom1."
+                        "bind": "character.skills.custom1.isCareerSkill"
                       },
                       {
                         "name": "custom1Rating",
@@ -971,7 +971,7 @@
                       {
                         "name": "custom2CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom2."
+                        "bind": "character.skills.custom2.isCareerSkill"
                       },
                       {
                         "name": "custom2Rating",
@@ -993,7 +993,7 @@
                       {
                         "name": "custom3CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom3."
+                        "bind": "character.skills.custom3.isCareerSkill"
                       },
                       {
                         "name": "custom3Rating",
@@ -1015,7 +1015,7 @@
                       {
                         "name": "custom4CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom4."
+                        "bind": "character.skills.custom4.isCareerSkill"
                       },
                       {
                         "name": "custom4Rating",
@@ -1037,7 +1037,7 @@
                       {
                         "name": "custom5CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom5."
+                        "bind": "character.skills.custom5.isCareerSkill"
                       },
                       {
                         "name": "custom5Rating",
@@ -1059,7 +1059,7 @@
                       {
                         "name": "custom6CareerFlag",
                         "type": "checkbox",
-                        "bind": "character.skills.custom6."
+                        "bind": "character.skills.custom6.isCareerSkill"
                       },
                       {
                         "name": "custom6Rating",
@@ -1165,7 +1165,251 @@
         "soak": "number",
         "wounds": "woundsThreshold",
         "strain": "strainThreshold",
-        "attributes": "attributes"
+        "attributes": "attributes",
+        "skills": "skills"
+      }
+    },
+    "skills": {
+      "properties": {
+        "astrogation": {
+          "type": "skill",
+          "value": {
+            "name": "Astrogation",
+            "characteristic": "Intellect"
+          }
+        },
+        "athletics": {
+          "type": "skill",
+          "value": {
+            "name": "Athletics",
+            "characteristic": "Brawn"
+          }
+        },
+        "charm": {
+          "type": "skill",
+          "value": {
+            "name": "Charm",
+            "characteristics": "Presence"
+          }
+        },
+        "coercion": {
+          "type": "skill",
+          "value": {
+            "name": "Coercion",
+            "characteristics": "Willpower"
+          }
+        },
+        "computers": {
+          "type": "skill",
+          "value": {
+            "name": "Computers",
+            "characteristics": "Intellect"
+          }
+        },
+        "cool": {
+          "type": "skill",
+          "value": {
+            "name": "Cool",
+            "characteristic": "Presence"
+          }
+        },
+        "coordination": {
+          "type": "skill",
+          "value": {
+            "name": "Coordination",
+            "characteristic": "Agility"
+          }
+        },
+        "deception": {
+          "type": "skill",
+          "value": {
+            "name": "Deception",
+            "characteristic": "Cunning"
+          }
+        },
+        "discipline": {
+          "type": "skill",
+          "value": {
+            "name": "Discipline",
+            "characteristic": "Willpower"
+          }
+        },
+        "leadership": {
+          "type": "skill",
+          "value": {
+            "name": "Leadership",
+            "characteristic": "Presence"
+          }
+        },
+        "mechanics": {
+          "type": "skill",
+          "value": {
+            "name": "Mechanics",
+            "characteristic": "Intellect"
+          }
+        },
+        "medicine": {
+          "type": "skill",
+          "value": {
+            "name": "Medicine",
+            "characteristic": "Intellect"
+          }
+        },
+        "negotiation": {
+          "type": "skill",
+          "value": {
+            "name": "Negotiation",
+            "characteristic": "Presence"
+          }
+        },
+        "perception": {
+          "type": "skill",
+          "value": {
+            "name": "Perception",
+            "characteristic": "Cunning"
+          }
+        },
+        "pilotingPlanetary": {
+          "type": "skill",
+          "value": {
+            "name": "Piloting - Planetary ",
+            "characteristic": "Agility"
+          }
+        },
+        "pilotingSpace": {
+          "type": "skill",
+          "value": {
+            "name": "Piloting - Space",
+            "characteristic": "Agility"
+          }
+        },
+        "resilience": {
+          "type": "skill",
+          "value": {
+            "name": "Resilience",
+            "characteristic": "Brawn"
+          }
+        },
+        "skulduggery": {
+          "type": "skill",
+          "value": {
+            "name": "Skulduggery",
+            "characteristic": "Cunning"
+          }
+        },
+        "stealth": {
+          "type": "skill",
+          "value": {
+            "name": "Stealth",
+            "characteristic": "Agility"
+          }
+        },
+        "streetwise": {
+          "type": "skill",
+          "value": {
+            "name": "Streetwise",
+            "characteristic": "Cunning"
+          }
+        },
+        "survival": {
+          "type": "skill",
+          "value": {
+            "name": "Survival",
+            "characteristic": "Cunning"
+          }
+        },
+        "vigilance": {
+          "type": "skill",
+          "value": {
+            "name": "Vigilance",
+            "characteristic": "Willpower"
+          }
+        },
+        "brawl": {
+          "type": "skill",
+          "value": {
+            "name": "Brawl",
+            "characteristic": "Brawn"
+          }
+        },
+        "gunnery": {
+          "type": "skill",
+          "value": {
+            "name": "Gunnery",
+            "characteristic": "Agility"
+          }
+        },
+        "melee": {
+          "type": "skill",
+          "value": {
+            "name": "Melee",
+            "characteristic": "Brawn"
+          }
+        },
+        "rangedLight": {
+          "type": "skill",
+          "value": {
+            "name": "Cool",
+            "characteristic": "Agility"
+          }
+        },
+        "rangedHeavy": {
+          "type": "skill",
+          "value": {
+            "name": "Cool",
+            "characteristic": "Agility"
+          }
+        },
+        "knowledgeCoreWorlds": {
+          "type": "skill",
+          "value": {
+            "name": "Cool",
+            "characteristic": "Intellect"
+          }
+        },
+        "knowledgeEducation": {
+          "type": "skill",
+          "value": {
+            "name": "Cool",
+            "characteristic": "Intellect"
+          }
+        },
+        "knowledgeLore": {
+          "type": "skill",
+          "value": {
+            "name": "Cool",
+            "characteristic": "Intellect"
+          }
+        },
+        "knowledgeOuterRim": {
+          "type": "skill",
+          "value": {
+            "name": "Cool",
+            "characteristic": "Intellect"
+          }
+        },
+        "knowledgeUnderworld": {
+          "type": "skill",
+          "value": {
+            "name": "Cool",
+            "characteristic": "Intellect"
+          }
+        },
+        "knowledgeXenology": {
+          "type": "skill",
+          "value": {
+            "name": "Cool",
+            "characteristic": "Intellect"
+          }
+        }
+      }
+    },
+    "skill": {
+      "properties": {
+        "name": "string",
+        "isCareerSkill": "boolean",
+        "attribute": "string",
+        "rank": "number"
       }
     },
     "woundsOrStrain": {
@@ -1178,7 +1422,7 @@
       "properties": {
         "base": "number",
         "attribute": {
-          "type":"string",
+          "type": "string",
           "default": "Brawn"
         }
       }
@@ -1203,7 +1447,7 @@
         "startingExperience": "number",
         "startingSkills": "[string]",
         "startingTalents": "[talent]",
-        "startingCareerSkillChoices": {
+        "startingisCareerSkillChoices": {
           "type": "number",
           "default": 4
         },
@@ -1263,7 +1507,7 @@
             "attribute": "Willpower"
           },
           "startingExperience": 175,
-          "startingCareerSkillChoices": 6,
+          "startingisCareerSkillChoices": 6,
           "firstSpecialtyTrainedSkills": 4,
           "specialAbilities": [
             {
@@ -1363,7 +1607,7 @@
             "attribute": "Willpower"
           },
           "startingExperience": 110,
-          "startingNonCareerSkillChoices": 2
+          "startingNonisCareerSkillChoices": 2
         },
         {
           "name": "Rodian",
@@ -1632,7 +1876,7 @@
               "choices": 1
             }
           ],
-          "startingNonCareerSkillChoices": 1
+          "startingNonisCareerSkillChoices": 1
         },
         {
           "name": "Weequay",
@@ -2306,14 +2550,14 @@
     "career": {
       "properties": {
         "name": "string",
-        "careerSkills": "[string]",
+        "isCareerSkills": "[string]",
         "specializations": "[specialization]"
       }
     },
     "specialization": {
       "properties": {
         "name": "string",
-        "careerSkills": "[skill]",
+        "isCareerSkills": "[skill]",
         "talents": "[specializationTalent]"
       }
     },
