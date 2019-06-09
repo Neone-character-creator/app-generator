@@ -35,7 +35,9 @@ const connected = connect((state) => {
     });
     return {
         update: (event) => {
-            update(event.target.value);
+            if(!readOnly) {
+                update(event.target.value);
+           }
         }
     };
 })(Component);
