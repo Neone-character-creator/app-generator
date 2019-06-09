@@ -8,11 +8,20 @@ const Component = (props) => (
     <Textfield disabled={props.disabled} id="${componentName}-textfield" fullWidth label="${label}" value={props.boundValue} onChange={props.update} />
 );
 
-const boundExpression = "${bind}";
+// The property on the state object that the component is bound to.
+const boundProperty =  ${bind};
+// The optional expression to set the value of the component.
+const boundExpression = ${value};
 const readOnly = ${readOnly};
 
 const connected = connect((state) => {
-    const boundValue = _.get(state, boundExpression);
+    const boundValue = (()=>{
+        if (boundProperty){
+            return _.get(state, boundProperty);
+        } else {
+            return _.template(boundExpression)(state);
+        }
+    })();
     return {
         boundValue
     };
@@ -22,7 +31,9 @@ const connected = connect((state) => {
     });
     return {
         update: (event) => {
-            update(event.target.value);
+            if (!readOnly){
+                update(event.target.value);
+            }
         }
     };
 })(Component);

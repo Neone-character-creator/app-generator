@@ -22,7 +22,8 @@
                 "name": "species",
                 "type": "textfield",
                 "label": "Species",
-                "bind": "character.species.name"
+                "bind": "character.species.name",
+                "readOnly": true
               },
               {
                 "name": "career",
