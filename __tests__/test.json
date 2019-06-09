@@ -1153,7 +1153,7 @@
                 "name": "speciesstraintThreshold",
                 "type": "textfield",
                 "label": "Wounds Threshold",
-                "value": "<%= character.species.strainThreshold.attribute %> + <%= character.species.strainThreshold.base %> (<%= character.attributes[character.species.strainThreshold.attribute] %>)",
+                "value": "<%= character.species.strainThreshold.attribute %> (<%= character.attributes[character.species.strainThreshold.attribute] %>) + <%= character.species.strainThreshold.base %>",
                 "readonly": true
               },
               {
@@ -1167,7 +1167,7 @@
                 "name": "speciesSpecialAbilities",
                 "type": "textfield",
                 "label": "Special Abilities",
-                "value": "<%= character.species.specialAbilities.map(sa=>as.name).join(', ') %>",
+                "value": "<%= character.species.specialAbilities.map(sa=>sa.name).join(', ') %>",
                 "readonly": true
               }
             ]
@@ -1505,6 +1505,12 @@
           ],
           "startingTalents": [
             "Convincing Demeanor"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Streetwise",
+              "description": "Bothans begin the game with one rank in Streetwise. They still may not train Streetwise above rank 2 during character creation. They also start with one rank in the Convincing Demeanor talent."
+            }
           ]
         },
         {
@@ -1628,7 +1634,13 @@
             "attribute": "Willpower"
           },
           "startingExperience": 110,
-          "startingNonisCareerSkillChoices": 2
+          "startingNonisCareerSkillChoices": 2,
+          "specialAbilities": [
+            {
+              "name": "Starting Skills",
+              "description": "Humans start the game with one rank in two non-career skills of their choice."
+            }
+          ]
         },
         {
           "name": "Rodian",
@@ -1653,6 +1665,12 @@
           "startingExperience": 100,
           "startingSkills": [
             "Survival"
+          ],
+          "specialAbilities": [
+            {
+              "name": "Survival Training",
+              "description": "Rodians begin with 1 rank of Survival"
+            }
           ]
         },
         {
@@ -1897,7 +1915,8 @@
               "choices": 1
             }
           ],
-          "startingNonisCareerSkillChoices": 1
+          "startingNonisCareerSkillChoices": 1,
+          "specialAbilities": []
         },
         {
           "name": "Weequay",
@@ -2368,7 +2387,7 @@
           ],
           "specialAbilities": [
             {
-              "name": "Red Nikto",
+              "name": "Green Nikto",
               "description": "Green Niktos gain □ to Atheltics checks made to climb trees and other surfaces their claws can pierce."
             },
             {
@@ -2403,7 +2422,8 @@
           ],
           "startingTalents": [
             "Natural Outdoorsman"
-          ]
+          ],
+          "specialAbilities": []
         },
         {
           "name": "Nikto - Pale",
@@ -2499,7 +2519,8 @@
           "startingExperience": 80,
           "startingTalents": [
             "Expert Tracker"
-          ]
+          ],
+          "specialAbilities": []
         },
         {
           "name": "Drall",
