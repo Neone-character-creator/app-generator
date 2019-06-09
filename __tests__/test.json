@@ -1097,42 +1097,42 @@
                 "name": "speciesBaseAbilityBrawn",
                 "type": "textfield",
                 "label": "Brawn",
-                "bind": "character.species.baseAttributes.Brawn",
+                "bind": "character.species.baseAttributes.brawn",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityAgility",
                 "type": "textfield",
                 "label": "Agility",
-                "bind": "character.species.baseAttributes.Agility",
+                "bind": "character.species.baseAttributes.agility",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityIntellect",
                 "type": "textfield",
                 "label": "Intellect",
-                "bind": "character.species.baseAttributes.Intellect",
+                "bind": "character.species.baseAttributes.intellect",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityCunning",
                 "type": "textfield",
                 "label": "Cunning",
-                "bind": "character.species.baseAttributes.Cunning",
+                "bind": "character.species.baseAttributes.cunning",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityWillpower",
                 "type": "textfield",
                 "label": "Willpower",
-                "bind": "character.species.baseAttributes.Willpower",
+                "bind": "character.species.baseAttributes.willpower",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityPresence",
                 "type": "textfield",
                 "label": "Presence",
-                "bind": "character.species.baseAttributes.Presence",
+                "bind": "character.species.baseAttributes.presence",
                 "readOnly": true
               }
             ]
@@ -1484,12 +1484,12 @@
           "plural": "Bothans",
           "source": "core",
           "baseAttributes": {
-            "Brawn": 1,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 3,
-            "Willpower": 2,
-            "Presence": 2
+            "brawn": 1,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 3,
+            "willpower": 2,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 10,
@@ -1518,12 +1518,12 @@
           "plural": "Droids",
           "source": "core",
           "baseAttributes": {
-            "Brawn": 1,
-            "Agility": 1,
-            "Intellect": 1,
-            "Cunning": 1,
-            "Willpower": 1,
-            "Presence": 1
+            "brawn": 1,
+            "agility": 1,
+            "intellect": 1,
+            "cunning": 1,
+            "willpower": 1,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 10,
@@ -1534,8 +1534,8 @@
             "attribute": "Willpower"
           },
           "startingExperience": 175,
-          "startingisCareerSkillChoices": 6,
-          "firstSpecialtyTrainedSkills": 4,
+          "startingiscareerskillchoices": 6,
+          "firstspecialtytrainedskills": 4,
           "specialAbilities": [
             {
               "name": "Droid",
@@ -1556,12 +1556,12 @@
           "plural": "Gand",
           "source": "core",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 3,
-            "Presence": 1
+            "brawn": 2,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 3,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 10,
@@ -1587,12 +1587,12 @@
           "plural": "Gand",
           "source": "core",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 3,
-            "Presence": 1
+            "brawn": 2,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 3,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 10,
@@ -1618,12 +1618,12 @@
           "plural": "Humans",
           "source": "core",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 2
+            "brawn": 2,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 10,
@@ -1634,7 +1634,7 @@
             "attribute": "Willpower"
           },
           "startingExperience": 110,
-          "startingNonisCareerSkillChoices": 2,
+          "startingnoniscareerskillchoices": 2,
           "specialAbilities": [
             {
               "name": "Starting Skills",
@@ -1647,12 +1647,12 @@
           "plural": "Rodians",
           "source": "source",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 3,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 1,
-            "Presence": 2
+            "brawn": 2,
+            "agility": 3,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 1,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 10,
@@ -1678,12 +1678,12 @@
           "plural": "Trandoshans",
           "source": "core",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 1,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 2
+            "brawn": 3,
+            "agility": 1,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 12,
@@ -1713,12 +1713,12 @@
           "plural": "Twi'Leks",
           "source": "core",
           "baseAttributes": {
-            "Brawn": 1,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 3
+            "brawn": 1,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 3
           },
           "woundsThreshold": {
             "base": 10,
@@ -1750,12 +1750,12 @@
           "plural": "Wookies",
           "source": "core",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 1,
-            "Presence": 2
+            "brawn": 3,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 1,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 14,
@@ -1781,12 +1781,12 @@
           "plural": "Aqualish",
           "source": "dangerous-covenants",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 2,
-            "Intellect": 1,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 2
+            "brawn": 3,
+            "agility": 2,
+            "intellect": 1,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 11,
@@ -1813,12 +1813,12 @@
           "plural": "Aqualish",
           "source": "dangerous-covenants",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 2,
-            "Intellect": 1,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 2
+            "brawn": 3,
+            "agility": 2,
+            "intellect": 1,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 11,
@@ -1851,12 +1851,12 @@
           "plural": "Aqualish",
           "source": "dangerous-covenants",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 2,
-            "Intellect": 1,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 2
+            "brawn": 3,
+            "agility": 2,
+            "intellect": 1,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 11,
@@ -1889,12 +1889,12 @@
           "plural": "Klatoonian",
           "source": "dangerous-covenants",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 3,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 1,
-            "Presence": 2
+            "brawn": 2,
+            "agility": 3,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 1,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 10,
@@ -1915,7 +1915,7 @@
               "choices": 1
             }
           ],
-          "startingNonisCareerSkillChoices": 1,
+          "startingnoniscareerskillchoices": 1,
           "specialAbilities": []
         },
         {
@@ -1923,12 +1923,12 @@
           "plural": "Weequay",
           "source": "dangerous-covenants",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 2,
-            "Intellect": 1,
-            "Cunning": 3,
-            "Willpower": 2,
-            "Presence": 1
+            "brawn": 3,
+            "agility": 2,
+            "intellect": 1,
+            "cunning": 3,
+            "willpower": 2,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 10,
@@ -1960,12 +1960,12 @@
           "plural": "Chiss",
           "source": "enter-the-unknown",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 2,
-            "Intellect": 3,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 1
+            "brawn": 2,
+            "agility": 2,
+            "intellect": 3,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 10,
@@ -1991,12 +1991,12 @@
           "plural": "Duros",
           "source": "enter-the-unknown",
           "baseAttributes": {
-            "Brawn": 1,
-            "Agility": 2,
-            "Intellect": 3,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 2
+            "brawn": 1,
+            "agility": 2,
+            "intellect": 3,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 11,
@@ -2022,12 +2022,12 @@
           "plural": "Toydarians",
           "source": "enter-the-unknown",
           "baseAttributes": {
-            "Brawn": 1,
-            "Agility": 1,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 3,
-            "Presence": 3
+            "brawn": 1,
+            "agility": 1,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 3,
+            "presence": 3
           },
           "woundsThreshold": {
             "base": 9,
@@ -2054,12 +2054,12 @@
           "plural": "Arcona",
           "source": "far-horizons",
           "baseAttributes": {
-            "Brawn": 1,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 3,
-            "Presence": 2
+            "brawn": 1,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 3,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 10,
@@ -2089,12 +2089,12 @@
           "plural": "Chevin",
           "source": "far-horizons",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 1,
-            "Intellect": 2,
-            "Cunning": 3,
-            "Willpower": 2,
-            "Presence": 1
+            "brawn": 3,
+            "agility": 1,
+            "intellect": 2,
+            "cunning": 3,
+            "willpower": 2,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 11,
@@ -2123,12 +2123,12 @@
           "plural": "Gran",
           "source": "far-horizons",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 1,
-            "Willpower": 2,
-            "Presence": 3
+            "brawn": 2,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 1,
+            "willpower": 2,
+            "presence": 3
           },
           "woundsThreshold": {
             "base": 10,
@@ -2160,12 +2160,12 @@
           "plural": "Faleen",
           "source": "fly-casual",
           "baseAttributes": {
-            "Brawn": 1,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 3
+            "brawn": 1,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 3
           },
           "woundsThreshold": {
             "base": 10,
@@ -2191,12 +2191,12 @@
           "plural": "Gotals",
           "source": "fly-casual",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 3,
-            "Willpower": 2,
-            "Presence": 1
+            "brawn": 2,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 3,
+            "willpower": 2,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 9,
@@ -2222,12 +2222,12 @@
           "plural": "Quarren",
           "source": "fly-casual",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 2,
-            "Intellect": 1,
-            "Cunning": 2,
-            "Willpower": 3,
-            "Presence": 2
+            "brawn": 2,
+            "agility": 2,
+            "intellect": 1,
+            "cunning": 2,
+            "willpower": 3,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 10,
@@ -2257,12 +2257,12 @@
           "plural": "Hutts",
           "source": "lords-of-nal-hutta",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 1,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 3,
-            "Presence": 2
+            "brawn": 3,
+            "agility": 1,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 3,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 13,
@@ -2298,12 +2298,12 @@
           "plural": "Ganks",
           "source": "lords-of-nal-hutta",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 1
+            "brawn": 2,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 10,
@@ -2335,12 +2335,12 @@
           "plural": "Niktos",
           "source": "lords-of-nal-hutta",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 1
+            "brawn": 3,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 11,
@@ -2366,12 +2366,12 @@
           "plural": "Niktos",
           "source": "lords-of-nal-hutta",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 1
+            "brawn": 3,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 11,
@@ -2401,12 +2401,12 @@
           "plural": "Niktos",
           "source": "lords-of-nal-hutta",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 1
+            "brawn": 3,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 11,
@@ -2430,12 +2430,12 @@
           "plural": "Niktos",
           "source": "lords-of-nal-hutta",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 1
+            "brawn": 3,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 11,
@@ -2452,7 +2452,7 @@
           "specialAbilities": [
             {
               "name": "Swimmer",
-              "description": "A Pale Nikto never suffers movement penalties for travelling through water and can hold their breath for a number of rounds equal to twice their Brawn rating before beginning to drown."
+              "description": "A Pale Nikto never suffers movement penalties for travelling through water and can hold their breath for a number of rounds = to twice their Brawn rating before beginning to drown."
             }
           ]
         },
@@ -2461,12 +2461,12 @@
           "plural": "Niktos",
           "source": "lords-of-nal-hutta",
           "baseAttributes": {
-            "Brawn": 3,
-            "Agility": 2,
-            "Intellect": 2,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 1
+            "brawn": 3,
+            "agility": 2,
+            "intellect": 2,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 1
           },
           "woundsThreshold": {
             "base": 11,
@@ -2492,12 +2492,12 @@
           "plural": "Sakiyans",
           "source": "lords-of-nal-hutta",
           "baseAttributes": {
-            "Brawn": 2,
-            "Agility": 2,
-            "Intellect": 3,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 2
+            "brawn": 2,
+            "agility": 2,
+            "intellect": 3,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 2
           },
           "woundsThreshold": {
             "base": 8,
@@ -2527,12 +2527,12 @@
           "plural": "Drall",
           "source": "loads-of-nal-hutta",
           "baseAttributes": {
-            "Brawn": 1,
-            "Agility": 1,
-            "Intellect": 4,
-            "Cunning": 2,
-            "Willpower": 2,
-            "Presence": 2
+            "brawn": 1,
+            "agility": 1,
+            "intellect": 4,
+            "cunning": 2,
+            "willpower": 2,
+            "presence": 2
           },
           "woundsThreshold": {
             "attribute": "Brawn",
@@ -2557,29 +2557,41 @@
     },
     "attributes": {
       "properties": {
-        "Brawn": {
+        "brawn": {
           "type": "number",
-          "derivedFrom": "<%= character.species.baseAttributes.Brawn %>"
+          "derivedFrom": [
+            "= $character.species.baseAttributes.brawn"
+          ]
         },
-        "Agility": {
+        "agility": {
           "type": "number",
-          "derivedFrom": "<%= character.species.baseAttributes.Agility %>"
+          "derivedFrom": [
+            "= $character.species.baseAttributes.agility"
+          ]
         },
-        "Intellect": {
+        "intellect": {
           "type": "number",
-          "derivedFrom": "<%= character.species.baseAttributes.Intellect %>"
+          "derivedFrom": [
+            "= $character.species.baseAttributes.intellect"
+          ]
         },
-        "Cunning": {
+        "cunning": {
           "type": "number",
-          "derivedFrom": "<%= character.species.baseAttributes.Cunning %>"
+          "derivedFrom": [
+            "= $character.species.baseAttributes.cunning"
+          ]
         },
-        "Willpower": {
+        "willpower": {
           "type": "number",
-          "derivedFrom": "<%= character.species.baseAttributes.Willpower %>"
+          "derivedFrom": [
+            "= $character.species.baseAttributes.willpower"
+          ]
         },
-        "Presence": {
+        "presence": {
           "type": "number",
-          "derivedFrom": "<%= character.species.baseAttributes.Presence %>"
+          "derivedFrom": [
+            "= $character.species.baseAttributes.presence"
+          ]
         }
       }
     },
