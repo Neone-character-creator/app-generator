@@ -1096,37 +1096,43 @@
                 "name": "speciesBaseAbilityBrawn",
                 "type": "textfield",
                 "label": "Brawn",
-                "bind": "character.species.baseAttributes.Brawn"
+                "bind": "character.species.baseAttributes.Brawn",
+                "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityAgility",
                 "type": "textfield",
                 "label": "Agility",
-                "bind": "character.species.baseAttributes.Agility"
+                "bind": "character.species.baseAttributes.Agility",
+                "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityIntellect",
                 "type": "textfield",
                 "label": "Intellect",
-                "bind": "character.species.baseAttributes.Intellect"
+                "bind": "character.species.baseAttributes.Intellect",
+                "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityCunning",
                 "type": "textfield",
                 "label": "Cunning",
-                "bind": "character.species.baseAttributes.Cunning"
+                "bind": "character.species.baseAttributes.Cunning",
+                "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityWillpower",
                 "type": "textfield",
                 "label": "Willpower",
-                "bind": "character.species.baseAttributes.Willpower"
+                "bind": "character.species.baseAttributes.Willpower",
+                "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityPresence",
                 "type": "textfield",
                 "label": "Presence",
-                "bind": "character.species.baseAttributes.Presence"
+                "bind": "character.species.baseAttributes.Presence",
+                "readOnly": true
               }
             ]
           },
@@ -1139,8 +1145,8 @@
                 "name": "specieswoundsThreshold",
                 "type": "textfield",
                 "label": "Wounds Threshold",
-                "bind": "<%= character.species.woundsThreshold.attribute %> + <%= character.species.woundsThreshold.base %> (<%= character.attributes[character.species.woundsThreshold.attribute] %>)",
-                "readonly": true
+                "value": "<%= character.species.woundsThreshold.attribute %> (<%= character.attributes[character.species.woundsThreshold.attribute] %>) + <%= character.species.woundsThreshold.base %>",
+                "readOnly": true
               }
             ]
           }
