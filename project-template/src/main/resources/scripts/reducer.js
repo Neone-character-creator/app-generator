@@ -1,18 +1,12 @@
 const _ = require("lodash");
 const models = require("./models");
+const interpreter = require("./interpreter");
 
 function setCalculatedProperties(modelDefinition, state, statePath){
     if (modelDefinition.derivedFrom) {
-        let value = _.template(modelDefinition.derivedFrom)({...state, models});
-        switch (modelDefinition.type) {
-            case "number":
-                value = Number.parseInt(value);
-                break;
-            case "string":
-                break;
-            default:
-                value = JSON.parse(value);
-        }
+        let value = modelDefinition.derivedFrom.reduce((valueSoFar, nextExpression) =>
+            interpreter.resolve(nextExpression, {},{state, models, accumulator: valueSoFar})
+            , null);
         _.set(state, statePath, value);
     }
     Object.getOwnPropertyNames(modelDefinition).reduce((updated, nextPropertyName) => {
