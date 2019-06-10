@@ -22,7 +22,7 @@
                 "name": "species",
                 "type": "textfield",
                 "label": "Species",
-                "bind": "character.species.name",
+                "bind": "<%= character.species.name %>",
                 "readOnly": true
               },
               {
@@ -59,13 +59,13 @@
                   {
                     "name": "currentWounds",
                     "type": "number",
-                    "label": "Current",
+                    "label": "Current Wounds",
                     "bind": "character.wounds.current"
                   },
                   {
                     "name": "thresholdWounds",
                     "type": "number",
-                    "label": "Threshold",
+                    "label": "Threshold Wounds",
                     "bind": "character.wounds.threshold"
                   }
                 ]
@@ -79,13 +79,13 @@
                   {
                     "name": "strainThreshold",
                     "type": "number",
-                    "label": "Threshold",
+                    "label": "Threshold Straint",
                     "bind": "character.strain.threshold"
                   },
                   {
                     "name": "strainCurrent",
                     "type": "number",
-                    "label": "Current",
+                    "label": "Current Straint",
                     "bind": "character.strain.current"
                   }
                 ]
@@ -98,13 +98,13 @@
                   {
                     "name": "rangedDefense",
                     "type": "number",
-                    "label": "Ranged",
+                    "label": "Ranged Defense",
                     "bind": "character.defense.ranged"
                   },
                   {
                     "name": "meleeDefense",
                     "type": "number",
-                    "label": "Melee",
+                    "label": "Melee Defense",
                     "bind": "character.defense.melee"
                   }
                 ]
@@ -117,40 +117,46 @@
             "direction": "horizontal",
             "children": [
               {
-                "name": "Brawn",
+                "name": "BrawnCharacteristics",
                 "type": "number",
                 "label": "Brawn",
-                "bind": "character.attributes.brawn"
+                "readOnly": true,
+                "bind": "<%= character.attributes.brawn %>"
               },
               {
-                "name": "Agility",
+                "name": "AgilityCharacteristics",
                 "type": "number",
                 "label": "Agility",
-                "bind": "character.attributes.agility"
+                "readOnly": true,
+                "bind": "<%= character.attributes.agility %>"
               },
               {
-                "name": "Intellect",
+                "name": "IntellectCharacteristics",
                 "type": "number",
                 "label": "Intellect",
-                "bind": "character.attributes.intellect"
+                "readOnly": true,
+                "bind": "<%= character.attributes.intellect %>"
               },
               {
-                "name": "Cunning",
+                "name": "CunningCharacteristics",
                 "type": "number",
                 "label": "Cunning",
-                "bind": "character.attributes.cunning"
+                "readOnly": true,
+                "bind": "<%= character.attributes.cunning %>"
               },
               {
-                "name": "Willpower",
+                "name": "WillpowerCharacteristics",
                 "type": "number",
                 "label": "Willpower",
-                "bind": "character.attributes.willpower"
+                "readOnly": true,
+                "bind": "<%= character.attributes.willpower %>"
               },
               {
-                "name": "Presence",
+                "name": "PresenceCharacteristics",
                 "type": "number",
                 "label": "Presence",
-                "bind": "character.attributes.presence"
+                "readOnly": true,
+                "bind": "<%= character.attributes.presence %>"
               }
             ]
           },
@@ -174,7 +180,7 @@
                       {
                         "name": "astrogationLabel",
                         "type": "label",
-                        "value": "Astrogation"
+                        "text": "Astrogation"
                       },
                       {
                         "name": "astrogationCareerFlag",
@@ -183,7 +189,8 @@
                       },
                       {
                         "name": "astrogationRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.astrogation.rank"
                       }
                     ]
@@ -196,7 +203,7 @@
                       {
                         "name": "athleticsLabel",
                         "type": "label",
-                        "value": "Athletics"
+                        "text": "Athletics"
                       },
                       {
                         "name": "athleticsCareerFlag",
@@ -205,7 +212,8 @@
                       },
                       {
                         "name": "athleticsRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.athletics.rank"
                       }
                     ]
@@ -218,7 +226,7 @@
                       {
                         "name": "charmLabel",
                         "type": "label",
-                        "value": "Charm"
+                        "text": "Charm"
                       },
                       {
                         "name": "charmCareerFlag",
@@ -227,7 +235,8 @@
                       },
                       {
                         "name": "charmRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.charm.rank"
                       }
                     ]
@@ -240,7 +249,7 @@
                       {
                         "name": "coercionLabel",
                         "type": "label",
-                        "value": "Coercion"
+                        "text": "Coercion"
                       },
                       {
                         "name": "coercionCareerFlag",
@@ -249,7 +258,8 @@
                       },
                       {
                         "name": "coercionRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.coercion.rank"
                       }
                     ]
@@ -262,7 +272,7 @@
                       {
                         "name": "computersLabel",
                         "type": "label",
-                        "value": "Computers"
+                        "text": "Computers"
                       },
                       {
                         "name": "computersCareerFlag",
@@ -271,7 +281,8 @@
                       },
                       {
                         "name": "computersRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.computers.rank"
                       }
                     ]
@@ -284,7 +295,7 @@
                       {
                         "name": "coolLabel",
                         "type": "label",
-                        "value": "Cool"
+                        "text": "Cool"
                       },
                       {
                         "name": "coolCareerFlag",
@@ -293,7 +304,8 @@
                       },
                       {
                         "name": "coolRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.cool.rank"
                       }
                     ]
@@ -306,7 +318,7 @@
                       {
                         "name": "coordinationLabel",
                         "type": "label",
-                        "value": "Coordination"
+                        "text": "Coordination"
                       },
                       {
                         "name": "coordinationCareerFlag",
@@ -315,7 +327,8 @@
                       },
                       {
                         "name": "coordinationRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.coordination.rank"
                       }
                     ]
@@ -328,7 +341,7 @@
                       {
                         "name": "deceptionLabel",
                         "type": "label",
-                        "value": "Deception"
+                        "text": "Deception"
                       },
                       {
                         "name": "deceptionCareerFlag",
@@ -337,7 +350,8 @@
                       },
                       {
                         "name": "deceptionRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.deception.rank"
                       }
                     ]
@@ -350,7 +364,7 @@
                       {
                         "name": "disciplineLabel",
                         "type": "label",
-                        "value": "Discipline"
+                        "text": "Discipline"
                       },
                       {
                         "name": "disciplineCareerFlag",
@@ -359,7 +373,8 @@
                       },
                       {
                         "name": "disciplineRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.discipline.rank"
                       }
                     ]
@@ -372,7 +387,7 @@
                       {
                         "name": "leadershipLabel",
                         "type": "label",
-                        "value": "Leadership"
+                        "text": "Leadership"
                       },
                       {
                         "name": "leadershipCareerFlag",
@@ -381,7 +396,8 @@
                       },
                       {
                         "name": "leadershipRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.leadership.rank"
                       }
                     ]
@@ -394,7 +410,7 @@
                       {
                         "name": "mechanicsLabel",
                         "type": "label",
-                        "value": "Mechanics"
+                        "text": "Mechanics"
                       },
                       {
                         "name": "mechanicsCareerFlag",
@@ -403,7 +419,8 @@
                       },
                       {
                         "name": "mechanicsRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.mechanics.rank"
                       }
                     ]
@@ -416,7 +433,7 @@
                       {
                         "name": "medicineLabel",
                         "type": "label",
-                        "value": "Medicine"
+                        "text": "Medicine"
                       },
                       {
                         "name": "medicineCareerFlag",
@@ -425,7 +442,8 @@
                       },
                       {
                         "name": "medicineRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.medicine.rank"
                       }
                     ]
@@ -438,7 +456,7 @@
                       {
                         "name": "negotiationLabel",
                         "type": "label",
-                        "value": "Negotiation"
+                        "text": "Negotiation"
                       },
                       {
                         "name": "negotiationCareerFlag",
@@ -447,7 +465,8 @@
                       },
                       {
                         "name": "negotiationRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.negotiation.rank"
                       }
                     ]
@@ -460,7 +479,7 @@
                       {
                         "name": "perceptionLabel",
                         "type": "label",
-                        "value": "Perception"
+                        "text": "Perception"
                       },
                       {
                         "name": "perceptionCareerFlag",
@@ -469,7 +488,8 @@
                       },
                       {
                         "name": "perceptionRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.perception.rank"
                       }
                     ]
@@ -482,7 +502,7 @@
                       {
                         "name": "pilotingPlanetaryLabel",
                         "type": "label",
-                        "value": "PilotingPlanetary"
+                        "text": "PilotingPlanetary"
                       },
                       {
                         "name": "pilotingPlanetaryCareerFlag",
@@ -491,7 +511,8 @@
                       },
                       {
                         "name": "pilotingPlanetaryRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.pilotingPlanetary.rank"
                       }
                     ]
@@ -504,7 +525,7 @@
                       {
                         "name": "pilotingSpaceLabel",
                         "type": "label",
-                        "value": "PilotingSpace"
+                        "text": "PilotingSpace"
                       },
                       {
                         "name": "pilotingSpaceCareerFlag",
@@ -513,7 +534,8 @@
                       },
                       {
                         "name": "pilotingSpaceRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.pilotingSpace.rank"
                       }
                     ]
@@ -526,7 +548,7 @@
                       {
                         "name": "resilienceLabel",
                         "type": "label",
-                        "value": "Resilience"
+                        "text": "Resilience"
                       },
                       {
                         "name": "resilienceCareerFlag",
@@ -535,7 +557,8 @@
                       },
                       {
                         "name": "resilienceRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.resilience.rank"
                       }
                     ]
@@ -548,7 +571,7 @@
                       {
                         "name": "skulduggeryLabel",
                         "type": "label",
-                        "value": "Skulduggery"
+                        "text": "Skulduggery"
                       },
                       {
                         "name": "skulduggeryCareerFlag",
@@ -557,7 +580,8 @@
                       },
                       {
                         "name": "skulduggeryRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.skulduggery.rank"
                       }
                     ]
@@ -570,7 +594,7 @@
                       {
                         "name": "stealthLabel",
                         "type": "label",
-                        "value": "Stealth"
+                        "text": "Stealth"
                       },
                       {
                         "name": "stealthCareerFlag",
@@ -579,7 +603,8 @@
                       },
                       {
                         "name": "stealthRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.stealth.rank"
                       }
                     ]
@@ -592,7 +617,7 @@
                       {
                         "name": "streetwiseLabel",
                         "type": "label",
-                        "value": "Streetwise"
+                        "text": "Streetwise"
                       },
                       {
                         "name": "streetwiseCareerFlag",
@@ -601,7 +626,8 @@
                       },
                       {
                         "name": "streetwiseRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.streetwise.rank"
                       }
                     ]
@@ -614,7 +640,7 @@
                       {
                         "name": "survivalLabel",
                         "type": "label",
-                        "value": "Survival"
+                        "text": "Survival"
                       },
                       {
                         "name": "survivalCareerFlag",
@@ -623,7 +649,8 @@
                       },
                       {
                         "name": "survivalRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.survival.rank"
                       }
                     ]
@@ -636,7 +663,7 @@
                       {
                         "name": "vigilanceLabel",
                         "type": "label",
-                        "value": "Vigilance"
+                        "text": "Vigilance"
                       },
                       {
                         "name": "vigilanceCareerFlag",
@@ -645,7 +672,8 @@
                       },
                       {
                         "name": "vigilanceRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.vigilance.rank"
                       }
                     ]
@@ -665,7 +693,7 @@
                       {
                         "name": "brawlLabel",
                         "type": "label",
-                        "value": "Brawl"
+                        "text": "Brawl"
                       },
                       {
                         "name": "brawlCareerFlag",
@@ -674,7 +702,8 @@
                       },
                       {
                         "name": "brawlRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.brawl.rank"
                       }
                     ]
@@ -687,7 +716,7 @@
                       {
                         "name": "gunneryLabel",
                         "type": "label",
-                        "value": "Gunnery"
+                        "text": "Gunnery"
                       },
                       {
                         "name": "gunneryCareerFlag",
@@ -696,7 +725,8 @@
                       },
                       {
                         "name": "gunneryRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.gunnery.rank"
                       }
                     ]
@@ -709,7 +739,7 @@
                       {
                         "name": "meleeLabel",
                         "type": "label",
-                        "value": "Melee"
+                        "text": "Melee"
                       },
                       {
                         "name": "meleeCareerFlag",
@@ -718,7 +748,8 @@
                       },
                       {
                         "name": "meleeRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.melee.rank"
                       }
                     ]
@@ -731,7 +762,7 @@
                       {
                         "name": "rangedLightLabel",
                         "type": "label",
-                        "value": "Ranged - Light"
+                        "text": "Ranged - Light"
                       },
                       {
                         "name": "rangedLightCareerFlag",
@@ -740,7 +771,8 @@
                       },
                       {
                         "name": "rangedLightRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.rangedLight.rank"
                       }
                     ]
@@ -753,7 +785,7 @@
                       {
                         "name": "rangedHeavyLabel",
                         "type": "label",
-                        "value": "Ranged - Heavy"
+                        "text": "Ranged - Heavy"
                       },
                       {
                         "name": "rangedHeavyCareerFlag",
@@ -762,7 +794,8 @@
                       },
                       {
                         "name": "rangedHeavyRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.rangedHeavy.rank"
                       }
                     ]
@@ -783,7 +816,7 @@
                       {
                         "name": "coreWorldsLabel",
                         "type": "label",
-                        "value": "CoreWorlds"
+                        "text": "CoreWorlds"
                       },
                       {
                         "name": "coreWorldsCareerFlag",
@@ -792,7 +825,8 @@
                       },
                       {
                         "name": "coreWorldsRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.coreWorlds.rank"
                       }
                     ]
@@ -805,7 +839,7 @@
                       {
                         "name": "educationLabel",
                         "type": "label",
-                        "value": "Education"
+                        "text": "Education"
                       },
                       {
                         "name": "educationCareerFlag",
@@ -814,7 +848,8 @@
                       },
                       {
                         "name": "educationRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.education.rank"
                       }
                     ]
@@ -827,7 +862,7 @@
                       {
                         "name": "loreLabel",
                         "type": "label",
-                        "value": "Lore"
+                        "text": "Lore"
                       },
                       {
                         "name": "loreCareerFlag",
@@ -836,7 +871,8 @@
                       },
                       {
                         "name": "loreRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.lore.rank"
                       }
                     ]
@@ -849,7 +885,7 @@
                       {
                         "name": "outerRimLabel",
                         "type": "label",
-                        "value": "OuterRim"
+                        "text": "OuterRim"
                       },
                       {
                         "name": "outerRimCareerFlag",
@@ -858,7 +894,8 @@
                       },
                       {
                         "name": "outerRimRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.outerRim.rank"
                       }
                     ]
@@ -871,7 +908,7 @@
                       {
                         "name": "underworldLabel",
                         "type": "label",
-                        "value": "Underworld"
+                        "text": "Underworld"
                       },
                       {
                         "name": "underworldCareerFlag",
@@ -880,7 +917,8 @@
                       },
                       {
                         "name": "underworldRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.underworld.rank"
                       }
                     ]
@@ -893,7 +931,7 @@
                       {
                         "name": "xenologyLabel",
                         "type": "label",
-                        "value": "Xenology"
+                        "text": "Xenology"
                       },
                       {
                         "name": "xenologyCareerFlag",
@@ -902,7 +940,8 @@
                       },
                       {
                         "name": "xenologyRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.xenology.rank"
                       }
                     ]
@@ -915,7 +954,7 @@
                       {
                         "name": "otherLabel",
                         "type": "label",
-                        "value": "Other"
+                        "text": "Other"
                       },
                       {
                         "name": "otherCareerFlag",
@@ -924,7 +963,8 @@
                       },
                       {
                         "name": "otherRating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.other.rank"
                       }
                     ]
@@ -944,7 +984,7 @@
                       {
                         "name": "custom1Label",
                         "type": "label",
-                        "value": "Custom1"
+                        "text": "Custom1"
                       },
                       {
                         "name": "custom1CareerFlag",
@@ -953,7 +993,8 @@
                       },
                       {
                         "name": "custom1Rating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.custom1"
                       }
                     ]
@@ -966,7 +1007,7 @@
                       {
                         "name": "custom2Label",
                         "type": "label",
-                        "value": "Custom2"
+                        "text": "Custom2"
                       },
                       {
                         "name": "custom2CareerFlag",
@@ -975,7 +1016,8 @@
                       },
                       {
                         "name": "custom2Rating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.custom2"
                       }
                     ]
@@ -988,7 +1030,7 @@
                       {
                         "name": "custom3Label",
                         "type": "label",
-                        "value": "Custom3"
+                        "text": "Custom3"
                       },
                       {
                         "name": "custom3CareerFlag",
@@ -997,7 +1039,8 @@
                       },
                       {
                         "name": "custom3Rating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.custom3"
                       }
                     ]
@@ -1010,7 +1053,7 @@
                       {
                         "name": "custom4Label",
                         "type": "label",
-                        "value": "Custom4"
+                        "text": "Custom4"
                       },
                       {
                         "name": "custom4CareerFlag",
@@ -1019,7 +1062,8 @@
                       },
                       {
                         "name": "custom4Rating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.custom4"
                       }
                     ]
@@ -1032,7 +1076,7 @@
                       {
                         "name": "custom5Label",
                         "type": "label",
-                        "value": "Custom5"
+                        "text": "Custom5"
                       },
                       {
                         "name": "custom5CareerFlag",
@@ -1041,7 +1085,8 @@
                       },
                       {
                         "name": "custom5Rating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.custom5"
                       }
                     ]
@@ -1054,7 +1099,7 @@
                       {
                         "name": "custom6Label",
                         "type": "label",
-                        "value": "Custom6"
+                        "text": "Custom6"
                       },
                       {
                         "name": "custom6CareerFlag",
@@ -1063,7 +1108,8 @@
                       },
                       {
                         "name": "custom6Rating",
-                        "type": "number",
+                        "label": "Rating",
+"type": "number",
                         "bind": "character.skills.custom6"
                       }
                     ]
@@ -1083,6 +1129,7 @@
             "name": "speciesSelect",
             "type": "select",
             "bind": "character.species",
+            "label": "Select Species",
             "items": {
               "text": "name",
               "values": "model.species.values"
@@ -1097,42 +1144,42 @@
                 "name": "speciesBaseAbilityBrawn",
                 "type": "textfield",
                 "label": "Brawn",
-                "bind": "character.species.baseAttributes.brawn",
+                "bind": "<%= character.species.baseAttributes.brawn %>",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityAgility",
                 "type": "textfield",
                 "label": "Agility",
-                "bind": "character.species.baseAttributes.agility",
+                "bind": "<%= character.species.baseAttributes.agility %>",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityIntellect",
                 "type": "textfield",
                 "label": "Intellect",
-                "bind": "character.species.baseAttributes.intellect",
+                "bind": "<%= character.species.baseAttributes.intellect %>",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityCunning",
                 "type": "textfield",
                 "label": "Cunning",
-                "bind": "character.species.baseAttributes.cunning",
+                "bind": "<%= character.species.baseAttributes.cunning %>",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityWillpower",
                 "type": "textfield",
                 "label": "Willpower",
-                "bind": "character.species.baseAttributes.willpower",
+                "bind": "<%= character.species.baseAttributes.willpower %>",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityPresence",
                 "type": "textfield",
                 "label": "Presence",
-                "bind": "character.species.baseAttributes.presence",
+                "bind": "<%= character.species.baseAttributes.presence %>",
                 "readOnly": true
               }
             ]
@@ -1150,9 +1197,9 @@
                 "readOnly": true
               },
               {
-                "name": "speciesstraintThreshold",
+                "name": "speciesstrainThreshold",
                 "type": "textfield",
-                "label": "Wounds Threshold",
+                "label": "Strain Threshold",
                 "value": "<%= character.species.strainThreshold.attribute %> (<%= character.attributes[character.species.strainThreshold.attribute] %>) + <%= character.species.strainThreshold.base %>",
                 "readonly": true
               },
@@ -1169,6 +1216,66 @@
                 "label": "Special Abilities",
                 "value": "<%= character.species.specialAbilities.map(sa=>sa.name).join(', ') %>",
                 "readonly": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Career",
+        "type": "view",
+        "children": [
+          {
+            "name": "careerSelect",
+            "type": "select",
+            "bind": "character.career",
+            "items": {
+              "text": "name",
+              "values": "model.career.values"
+            }
+          },
+          {
+            "name": "careerStartingSpecialization",
+            "type": "container",
+            "direction": "vertical",
+            "children": [
+              {
+                "name": "startingSpecializationSelect",
+                "type": "select",
+                "bind": "character.specializations[0]",
+                "items": {
+                  "text": "name",
+                  "values": "character.career.specializations"
+                }
+              },
+              {
+                "name": "startingSpecializationCareerSkills",
+                "type": "textfield",
+                "value": "<%= character.specializations[0] ? character.specializations[0].careerSkills.join(', ') : '' %>",
+                "label": "Specialization Career Skills"
+              },
+              {
+                "name": "startingSpecializationAvailableTalents",
+                "type": "list",
+                "bind": "character.specializations[0].talents",
+                "items": {
+                  "child": {
+                    "type": "container",
+                    "direction": "horizontal",
+                    "children": [
+                      {
+                        "type": "textfield",
+                        "label": "Talent",
+                        "bind": "$value.name"
+                      },
+                      {
+                        "type": "textfield",
+                        "label": "Talent",
+                        "bind": "$value.description"
+                      }
+                    ]
+                  }
+                }
               }
             ]
           }
@@ -2606,7 +2713,2801 @@
         "name": "string",
         "isCareerSkills": "[string]",
         "specializations": "[specialization]"
-      }
+      },
+      "values": [
+          {
+            "name": "Bounty Hunter",
+            "careerSkills": [
+              "Athletics",
+              "Brawl",
+              "Perception",
+              "Piloting - Planetary",
+              "Piloting - Space",
+              "Ranged - Heavy",
+              "Streetwise",
+              "Streetwise",
+              "Vigilance"
+            ],
+            "specializations": [
+              {
+                "name": "Assassin",
+                "careerSkills": [
+                  "Melee",
+                  "Ranged - Heavy",
+                  "Skulduggery",
+                  "Stealth"
+                ],
+                "talents": [
+                  {
+                    "talent": "Grit",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Lethal Blows",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Stalker",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Dodge",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Precise Aim",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5,
+                      8
+                    ]
+                  },
+                  {
+                    "talent": "Jump Up",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4,
+                      6,
+                      9
+                    ]
+                  },
+                  {
+                    "talent": "Quick Strike",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      5,
+                      7,
+                      10
+                    ]
+                  },
+                  {
+                    "talent": "Quick Draw",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6,
+                      11
+                    ]
+                  },
+                  {
+                    "talent": "Targeted Blow",
+                    "tier": 3,
+                    "requires": [
+                      4,
+                      12
+                    ]
+                  },
+                  {
+                    "talent": "Stalker",
+                    "tier": 3,
+                    "requires": [
+                      5,
+                      10,
+                      13
+                    ]
+                  },
+                  {
+                    "talent": "Lethal Blows",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9,
+                      14
+                    ]
+                  },
+                  {
+                    "talent": "Anatomy Lessons",
+                    "tier": 3,
+                    "requires": [
+                      7,
+                      15
+                    ]
+                  },
+                  {
+                    "talent": "Stalker",
+                    "tier": 4,
+                    "requires": [
+                      8,
+                      13
+                    ]
+                  },
+                  {
+                    "talent": "Sniper Shot",
+                    "tier": 4,
+                    "requires": [
+                      9,
+                      12
+                    ]
+                  },
+                  {
+                    "talent": "Dodge",
+                    "tier": 4,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent": "Lethal Blows",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent": "Precise Aim",
+                    "tier": 5,
+                    "requires": [
+                      12
+                    ]
+                  },
+                  {
+                    "talent": "Deadly Accuracy",
+                    "tier": 5,
+                    "requires": [
+                      13
+                    ]
+                  },
+                  {
+                    "talent": "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      14
+                    ]
+                  },
+                  {
+                    "talent": "Master of Shadows",
+                    "tier": 4,
+                    "requires": [
+                      15
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Gadgeteer",
+                "careerSkills": [
+                  "Brawl",
+                  "Coercion",
+                  "Mechanics",
+                  "Ranged - Light"
+                ],
+                "talents": [
+                  {
+                    "talent": "Brace",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Toughened",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Intimidating",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Defensive Stance",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Spare Clip",
+                    "tier": 2,
+                    "requires": [
+                      5
+                    ]
+                  },
+                  {
+                    "talent": "Jury Rigged",
+                    "tier": 2,
+                    "requires": [
+                      1
+                    ]
+                  },
+                  {
+                    "talent": "Point Blank",
+                    "tier": 2,
+                    "requires": [
+                      5
+                    ]
+                  },
+                  {
+                    "talent": "Disorient",
+                    "tier": 2,
+                    "requires": [
+                      3
+                    ]
+                  },
+                  {
+                    "talent": "Toughened",
+                    "tier": 3,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent": "Armor Master",
+                    "tier": 3,
+                    "requires": [
+                      5
+                    ]
+                  },
+                  {
+                    "talent": "Natural Enforcer",
+                    "tier": 3,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent": "Stunning Blow",
+                    "tier": 3,
+                    "requires": [
+                      7
+                    ]
+                  },
+                  {
+                    "talent": "Jury Rigged",
+                    "tier": 4,
+                    "requires": [
+                      13
+                    ]
+                  },
+                  {
+                    "talent": "Tinkerer",
+                    "tier": 4,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent": "Deadly Accuracy",
+                    "tier": 4,
+                    "requires": [
+                      13
+                    ]
+                  },
+                  {
+                    "talent": "Stunning Blow (Improved)",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent": "Intimidating",
+                    "tier": 5,
+                    "requires": [
+                      17
+                    ]
+                  },
+                  {
+                    "talent": "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      13
+                    ]
+                  },
+                  {
+                    "talent": "Armor Master (Improved)",
+                    "tier": 5,
+                    "requires": [
+                      17
+                    ]
+                  },
+                  {
+                    "talent": "Crippling Blow",
+                    "tier": 5,
+                    "requires": [
+                      15
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Survivalist",
+                "careerSkills": [
+                  "Knowledge - Xenology",
+                  "Perception",
+                  "Resilience",
+                  "Survival"
+                ],
+                "talents": [
+                  {
+                    "talent": "Forager",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Stalker",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Outdoorsman",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Expert Tracker",
+                    "tier": 1
+                  },
+                  {
+                    "talent": "Outdoorsman",
+                    "tier": 2,
+                    "requires": [
+                      0
+                    ]
+                  },
+                  {
+                    "talent": "Swift",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4,
+                      6
+                    ]
+                  },
+                  {
+                    "talent": "Hunter",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      5
+                    ]
+                  },
+                  {
+                    "talent": "Soft Spot",
+                    "tier": 2,
+                    "requires": [
+                      6
+                    ]
+                  },
+                  {
+                    "talent": "Toughened",
+                    "tier": 3,
+                    "requires": [
+                      4
+                    ]
+                  },
+                  {
+                    "talent": "Expert Tracker",
+                    "tier": 3,
+                    "requires": [
+                      5
+                    ]
+                  },
+                  {
+                    "talent": "Stalker",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9
+                    ]
+                  },
+                  {
+                    "talent": "Natural Outdoorsman",
+                    "tier": 3,
+                    "requires": [
+                      7,
+                      10
+                    ]
+                  },
+                  {
+                    "talent": "Toughened",
+                    "tier": 4,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent": "Hunter",
+                    "tier": 4,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent": "Expert Tracker",
+                    "tier": 4,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent": "Blooded",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent": "Enduring",
+                    "tier": 5,
+                    "requires": [
+                      12,
+                      17
+                    ]
+                  },
+                  {
+                    "talent": "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      16,
+                      18
+                    ]
+                  },
+                  {
+                    "talent": "Grit",
+                    "tier": 5,
+                    "requires": [
+                      14
+                    ]
+                  },
+                  {
+                    "talent": "Heroic Fortitude",
+                    "tier": 5,
+                    "requires": [
+                      15
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Colonist",
+            "careerSkills": [
+              "Charm",
+              "Deception",
+              "Knowledge - Core Worlds",
+              "Knowledge - Education",
+              "Knowledge - Lore",
+              "Leadership",
+              "Negotiation",
+              "Streetwise"
+            ],
+            "specializations": [
+              {
+                "name": "Doctor",
+                "careerSkills": [
+                  "Cool",
+                  "Knowledge - Education",
+                  "Medicine",
+                  "Resilience"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Surgeon",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Bacta Specialist",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Resolve",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Stim Application",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 2,
+                    "requires": [
+                      4,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Surgeon",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      5,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Resolve",
+                    "tier": 2,
+                    "requires": [
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Surgeon",
+                    "tier": 3,
+                    "requires": [
+                      4,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 3,
+                    "requires": [
+                      8,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Bacta Specialist",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Pressure Point",
+                    "tier": 3,
+                    "requires": [
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Stim Application (Improved)",
+                    "tier": 4,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Doctor",
+                    "tier": 4,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 4,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Anatomy Lessons",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Stim Application (Supreme)",
+                    "tier": 5,
+                    "requires": [
+                      12,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Master Doctor",
+                    "tier": 5,
+                    "requires": [
+                      13,
+                      16,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      14,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Dodge",
+                    "tier": 5,
+                    "requires": [
+                      15
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Politico",
+                "careerSkills": [
+                  "Charm",
+                  "Coercion",
+                  "Deception",
+                  "Knowledge - Core Worlds"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Kill With Kindness",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Plausible Deniability",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Inspiring Rhetoric",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Kill With Kindness",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Scathing Tirade",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Plausible Deniability",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Dodge",
+                    "tier": 3,
+                    "requires": [
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Inspiring Rhetoric (Improved)",
+                    "tier": 3,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Scathing Tirade (Improved)",
+                    "tier": 3,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Well Rounded",
+                    "tier": 3,
+                    "requires": [
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 4,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Inspiring Rhetoric (Supreme)",
+                    "tier": 4,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Scathing Tirade (Supreme)",
+                    "tier": 4,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Nobody's Fool",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Steely Nerves",
+                    "tier": 5,
+                    "requires": [
+                      12
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      16,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Charmer",
+                    "tier": 5,
+                    "requires": [
+                      17,
+                      19
+                    ]
+                  },
+                  {
+                    "talent" : "Intense Presence",
+                    "tier": 5,
+                    "requires": [
+                      15
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Scholar",
+                "careerSkills": [
+                  "Knowledge - Outer Rim",
+                  "Knowledge - Underworld",
+                  "Knowledge - Xenology",
+                  "Perception"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Respected Scholar",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Speaks Binary",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Brace",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Researcher",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Respected Scholar",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Resolve",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Researcher",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Codebreaker",
+                    "tier": 3,
+                    "requires": [
+                      4,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Knowledge Specialization",
+                    "tier": 3,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Scholar",
+                    "tier": 3,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Well Rounded",
+                    "tier": 3,
+                    "requires": [
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Knowledge Specialization",
+                    "tier": 4,
+                    "requires": [
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Intense Focus",
+                    "tier": 4,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Confidence",
+                    "tier": 4,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Resolve",
+                    "tier": 4,
+                    "requires": [
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Stroke of Genius",
+                    "tier": 5,
+                    "requires": [
+                      12
+                    ]
+                  },
+                  {
+                    "talent" : "Mental Fortress",
+                    "tier": 5,
+                    "requires": [
+                      16,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      17,
+                      19
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 4,
+                    "requires": [
+                      18,
+                      15
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Explorer",
+            "careerSkills": [
+              "Astrogation",
+              "Cool",
+              "Knowledge - Lore",
+              "Knowledge - Outer Rim",
+              "Knowledge - Xenology",
+              "Perception",
+              "Piloting - Space",
+              "Survival"
+            ],
+            "specializations": [
+              {
+                "name": "Fringer",
+                "careerSkills": [
+                  "Astrogation",
+                  "Coordination",
+                  "Negotiation",
+                  "Streetwise"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Galaxy Mapper",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Street Smarts",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Rapid Recovery",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Street Smarts",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Skilled Jockey",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Galaxy Mapper",
+                    "tier": 2,
+                    "requires": [
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Master Starhopper",
+                    "tier": 3,
+                    "requires": [
+                      4,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Defensive Driving",
+                    "tier": 3,
+                    "requires": [
+                      5,
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Rapid Recovery",
+                    "tier": 3,
+                    "requires": [
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Durable",
+                    "tier": 3,
+                    "requires": [
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Rapid Recovery",
+                    "tier": 4,
+                    "requires": [
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Jump Up",
+                    "tier": 4,
+                    "requires": [
+                      12,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 4,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Knockdown",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      12,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 5,
+                    "requires": [
+                      13,
+                      16
+                    ]
+                  },
+                  {
+                    "talent" : "Dodge",
+                    "tier": 5,
+                    "requires": [
+                      19
+                    ]
+                  },
+                  {
+                    "talent" : "Dodge",
+                    "tier": 5,
+                    "requires": [
+                      15
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Scout",
+                "careerSkills": [
+                  "Athletics",
+                  "Medicine",
+                  "Piloting - Planetary",
+                  "Survival"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Rapid Recovery",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Stalker",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Shortcut",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Forager",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Quick Strike",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Let's Ride",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      5,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Disorient",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Rapid Recovery",
+                    "tier": 3,
+                    "requires": [
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Hunter",
+                    "tier": 3,
+                    "requires": [
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Familiar Suns",
+                    "tier": 3,
+                    "requires": [
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Shortcut",
+                    "tier": 3,
+                    "requires": [
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 4,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Heightened Awareness",
+                    "tier": 4,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 4,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Quick Strike",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Utility Belt",
+                    "tier": 5,
+                    "requires": [
+                      12,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      16,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Stalker",
+                    "tier": 5,
+                    "requires": [
+                      14,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Disorient",
+                    "tier": 5,
+                    "requires": [
+                      15
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Trader",
+                "careerSkills": [
+                  "Deception",
+                  "Knowledge - Core Worlds",
+                  "Knowledge - Underworld",
+                  "Negotiation"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Know Somebody",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Convincing Demeanor",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Wheel and Deal",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Smooth Talker",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Wheel and Deal",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 2,
+                    "requires": [
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Spare Clip",
+                    "tier": 2,
+                    "requires": [
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 2,
+                    "requires": [
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Know Somebody",
+                    "tier": 3,
+                    "requires": [
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Nobody's Fool",
+                    "tier": 3,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Smooth Talker",
+                    "tier": 3,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Nobody's Fool",
+                    "tier": 3,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Wheel and Deal",
+                    "tier": 4,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Steely Nerves",
+                    "tier": 4,
+                    "requires": [
+                      12
+                    ]
+                  },
+                  {
+                    "talent" : "Black Market Contacts",
+                    "tier": 4,
+                    "requires": [
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Black Market Contacts",
+                    "tier": 4,
+                    "requires": [
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Know Somebody",
+                    "tier": 5,
+                    "requires": [
+                      12,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Negotiator",
+                    "tier": 5,
+                    "requires": [
+                      16,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      17,
+                      19
+                    ]
+                  },
+                  {
+                    "talent" : "Master Merchant",
+                    "tier": 5,
+                    "requires": [
+                      15,
+                      18
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Hired Gun",
+            "careerSkills": [
+              "Athletics",
+              "Brawl",
+              "Discipline",
+              "Melee",
+              "Piloting - Planetary",
+              "Ranged - Light",
+              "Resilience",
+              "Vigilance"
+            ],
+            "specializations": [
+              {
+                "name" : "Bodyguard",
+                "careerSkills": [
+                  "Gunnery",
+                  "Perception",
+                  "Piloting - Planetary",
+                  "Ranged - Heavy"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Toughened",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Barrage",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Durable",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Body Guard",
+                    "tier": 2,
+                    "requires": [
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Hard Headed",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Barrage",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Brace",
+                    "tier": 2,
+                    "requires": [
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Body Guard",
+                    "tier": 3,
+                    "requires": [
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Side Step",
+                    "tier": 3,
+                    "requires": [
+                      5,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Defensive Stance",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Brace",
+                    "tier": 3,
+                    "requires": [
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Enduring",
+                    "tier": 4,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Side Step",
+                    "tier": 4,
+                    "requires": [
+                      9,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Defensive Stance",
+                    "tier": 4,
+                    "requires": [
+                      10,
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Hard Headed",
+                    "tier": 4,
+                    "requires": [
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Barrage",
+                    "tier": 5,
+                    "requires": [
+                      13,
+                      16
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 5,
+                    "requires": [
+                      14,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Hard Headed (Improved)",
+                    "tier": 5,
+                    "requires": [
+                      15
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Marauder",
+                "careerSkills": [
+                  "Coercion",
+                  "Melee",
+                  "Resilience",
+                  "Survival"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Toughened",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Frenzied Attack",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Feral Strength",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Lethal Blows",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Feral Strength",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Heroic Fortitude",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      5,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Knockdown",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Enduring",
+                    "tier": 3,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Lethal Blows",
+                    "tier": 3,
+                    "requires": [
+                      5,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Frenzied Attack",
+                    "tier": 3,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 4,
+                    "requires": [
+                      8,
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Feral Strength",
+                    "tier": 4,
+                    "requires": [
+                      12,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Brawler",
+                    "tier": 4,
+                    "requires": [
+                      13,
+                      15
+                    ]
+                  },
+                  {
+                    "talent" : "Lethal Blows",
+                    "tier": 4,
+                    "requires": [
+                      11,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Frenzied Attack",
+                    "tier": 5,
+                    "requires": [
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Enduring",
+                    "tier": 5,
+                    "requires": [
+                      13,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Defensive Stance",
+                    "tier": 5,
+                    "requires": [
+                      14,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      18
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Mercenary Soldier",
+                "careerSkills": [
+                  "Discipline",
+                  "Gunnery",
+                  "Leadership",
+                  "Ranged - Heavy"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Command",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Second Wind",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Point Blank",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Side Step",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Second Wind",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Confidence",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Strong Arm",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Point Blank",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Field Commander",
+                    "tier": 3,
+                    "requires": [
+                      4,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Command",
+                    "tier": 3,
+                    "requires": [
+                      5,
+                      8,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Marksman",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Sniper Shot",
+                    "tier": 3,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Field Commander (Improved)",
+                    "tier": 4,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 4,
+                    "requires": [
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 4,
+                    "requires": [
+                      10,
+                      15
+                    ]
+                  },
+                  {
+                    "talent" : "Lethal Blows",
+                    "tier": 4,
+                    "requires": [
+                      11,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Deadly Accuracy",
+                    "tier": 5,
+                    "requires": [
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "True Aim",
+                    "tier": 5,
+                    "requires": [
+                      13,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      17,
+                      19
+                    ]
+                  },
+                  {
+                    "talent" : "True Aim",
+                    "tier": 5,
+                    "requires": [
+                      15,
+                      18
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Smuggler",
+            "careerSkills": [
+              "Coordination",
+              "Deception",
+              "Knowledge - Underworld",
+              "Perception",
+              "Piloting - Space",
+              "Skulduggery",
+              "Streetwise",
+              "Vigilance"
+            ],
+            "specializations": [
+              {
+                "name": "Pilot",
+                "careerSkills": [
+                  "Astrogation",
+                  "Gunnery",
+                  "Piloting - Planetary",
+                  "Piloting - Space"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Full Throttle",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Skilled Jockey",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Galaxy Mapper",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Let's Ride",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Skilled Jockey",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Dead to Rights",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Galaxy Mapper",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Rapid Recovery",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Full Throttle (Improved)",
+                    "tier": 3,
+                    "requires": [
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Dead to Rights (Improved)",
+                    "tier": 3,
+                    "requires": [
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Pilot",
+                    "tier": 3,
+                    "requires": [
+                      7,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 4,
+                    "requires": [
+                      8,
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Full Throttle (Supreme)",
+                    "tier": 4,
+                    "requires": [
+                      12
+                    ]
+                  },
+                  {
+                    "talent" : "Tricky Target",
+                    "tier": 4,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Defensive Driving",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Master Pilot",
+                    "tier": 5,
+                    "requires": [
+                      12,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      16,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 5,
+                    "requires": [
+                      14,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Brilliant Evasion",
+                    "tier": 5,
+                    "requires": [
+                      15,
+                      18
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Scoundrel",
+                "careerSkills": [
+                  "Charm",
+                  "Cool",
+                  "Deception",
+                  "Ranged - Light"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Black Market Contacts",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Convincing Demeanor",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Quick Draw",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Rapid Reaction",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Convincing Demeanor",
+                    "tier": 2,
+                    "requires": [
+                      0
+                    ]
+                  },
+                  {
+                    "talent" : "Black Market Contacts",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Convincing Demeanor",
+                    "tier": 2,
+                    "requires": [
+                      5,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Quick Strike",
+                    "tier": 2,
+                    "requires": [
+                      3
+                    ]
+                  },
+                  {
+                    "talent" : "Hidden Storage",
+                    "tier": 3,
+                    "requires": [
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 3,
+                    "requires": [
+                      5,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Black Market Contacts",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Side Step",
+                    "tier": 3,
+                    "requires": [
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 4,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Rapid Reaction",
+                    "tier": 4,
+                    "requires": [
+                      9,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Hidden Storage",
+                    "tier": 4,
+                    "requires": [
+                      10,
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Side Step",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      12
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Charmer",
+                    "tier": 5,
+                    "requires": [
+                      13,
+                      16,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Soft Spot",
+                    "tier": 5,
+                    "requires": [
+                      14,
+                      17,
+                      19
+                    ]
+                  },
+                  {
+                    "talent" : "Quick Strike",
+                    "tier": 5,
+                    "requires": [
+                      15,
+                      18
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Thief",
+                "careerSkills": [
+                  "Computers",
+                  "Skulduggery",
+                  "Stealth",
+                  "Vigilance"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Street Smarts",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Black Market Contacts",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Indistinguishable",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Bypass Security",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Black Market Contacts",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Dodge",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 2,
+                    "requires": [
+                      5,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Hidden Storage",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Stalker",
+                    "tier": 3,
+                    "requires": [
+                      4,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 3,
+                    "requires": [
+                      5,
+                      8,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Rapid Reaction",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9,
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Shortcut",
+                    "tier": 3,
+                    "requires": [
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Bypass Security",
+                    "tier": 4,
+                    "requires": [
+                      8
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Rogue",
+                    "tier": 4,
+                    "requires": [
+                      9,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Street Smarts",
+                    "tier": 4,
+                    "requires": [
+                      10,
+                      13,
+                      15
+                    ]
+                  },
+                  {
+                    "talent" : "Jump Up",
+                    "tier": 4,
+                    "requires": [
+                      11,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Master of Shadows",
+                    "tier": 5,
+                    "requires": [
+                      12
+                    ]
+                  },
+                  {
+                    "talent" : "Dodge",
+                    "tier": 5,
+                    "requires": [
+                      13,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Indistinguishable",
+                    "tier": 5,
+                    "requires": [
+                      14,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      15
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Technician",
+            "careerSkills": [
+              "Astrogation",
+              "Computers",
+              "Coordination",
+              "Discipline",
+              "Knowledge - Outer Rim",
+              "Mechanics",
+              "Perception",
+              "Piloting - Planetary"
+            ],
+            "specializations": [
+              {
+                "name": "Mechanic",
+                "careerSkills": [
+                  "Brawl",
+                  "Mechanics",
+                  "Piloting - Space",
+                  "Skulduggery"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Gearhead",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Fine Tuning",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Solid Repairs",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Redundant Systems",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Solid Repairs",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Gearhead",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      5,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Solid Repairs",
+                    "tier": 3,
+                    "requires": [
+                      4,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Enduring",
+                    "tier": 3,
+                    "requires": [
+                      5,
+                      8,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Bad Motivator",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9,
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 3,
+                    "requires": [
+                      7,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Contraption",
+                    "tier": 4,
+                    "requires": [
+                      8,
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Solid Repairs",
+                    "tier": 4,
+                    "requires": [
+                      9,
+                      12,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Fine Tuning",
+                    "tier": 4,
+                    "requires": [
+                      10,
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Hard Headed",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Tinkerer",
+                    "tier": 5,
+                    "requires": [
+                      12
+                    ]
+                  },
+                  {
+                    "talent" : "Hold Together",
+                    "tier": 5,
+                    "requires": [
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Hard Headed (Improved)",
+                    "tier": 5,
+                    "requires": [
+                      15
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Outlaw Tech",
+                "careerSkills": [
+                  "Knowledge - Education",
+                  "Knowledge - Underworld",
+                  "Mechanics",
+                  "Streetwise"
+                ],
+                "talents": [
+                  {
+                    "talent" : "Tinkerer",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Utinni!",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Speaks Binary",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Tinkerer",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Solid Repairs",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 2,
+                    "requires": [
+                      1,
+                      4,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Utinni!",
+                    "tier": 2,
+                    "requires": [
+                      2,
+                      5,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Toughened",
+                    "tier": 2,
+                    "requires": [
+                      3,
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Utility Belt",
+                    "tier": 3,
+                    "requires": [
+                      4,
+                      9
+                    ]
+                  },
+                  {
+                    "talent" : "Side Step",
+                    "tier": 3,
+                    "requires": [
+                      5,
+                      8,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Brace",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9,
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Defensive Stance",
+                    "tier": 3,
+                    "requires": [
+                      7,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Jury Rigged",
+                    "tier": 4,
+                    "requires": [
+                      8,
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Speaks Binary",
+                    "tier": 4,
+                    "requires": [
+                      9,
+                      12,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Inventor",
+                    "tier": 4,
+                    "requires": [
+                      10,
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Jury Rigged",
+                    "tier": 4,
+                    "requires": [
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Inventor",
+                    "tier": 5,
+                    "requires": [
+                      12,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      16
+                    ]
+                  },
+                  {
+                    "talent" : "Known Schematic",
+                    "tier": 5,
+                    "requires": [
+                      14,
+                      19
+                    ]
+                  },
+                  {
+                    "talent" : "Brace",
+                    "tier": 5,
+                    "requires": [
+                      15,
+                      18
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Slicer",
+                "careerSkills": [
+                  "Computers",
+                  "Skulduggery",
+                  "Stealth",
+                  "Vigilance"
+                ],
+                "talents": [
+                  {
+                    "talent": "Codebreaker",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Technical Aptitude",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Bypass Security",
+                    "tier": 1
+                  },
+                  {
+                    "talent" : "Defensive Slicing",
+                    "tier": 2,
+                    "requires": [
+                      0,
+                      5
+                    ]
+                  },
+                  {
+                    "talent" : "Technical Aptitude",
+                    "tier": 2,
+                    "requires": [
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 2,
+                    "requires": [
+                      5,
+                      7
+                    ]
+                  },
+                  {
+                    "talent" : "Bypass Security",
+                    "tier": 2,
+                    "requires": [
+                      6
+                    ]
+                  },
+                  {
+                    "talent" : "Natural Programmer",
+                    "tier": 3,
+                    "requires": [
+                      4
+                    ]
+                  },
+                  {
+                    "talent" : "Bypass Security",
+                    "tier": 3,
+                    "requires": [
+                      5,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Defensive Slicing",
+                    "tier": 3,
+                    "requires": [
+                      6,
+                      9,
+                      11
+                    ]
+                  },
+                  {
+                    "talent" : "Grit",
+                    "tier": 3,
+                    "requires": [
+                      7,
+                      10
+                    ]
+                  },
+                  {
+                    "talent" : "Defensive Slicing",
+                    "tier": 4,
+                    "requires": [
+                      8,
+                      13
+                    ]
+                  },
+                  {
+                    "talent" : "Defensive Slicing (Improved)",
+                    "tier": 4,
+                    "requires": [
+                      9,
+                      12,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Codebreaker",
+                    "tier": 4,
+                    "requires": [
+                      10,
+                      13,
+                      15
+                    ]
+                  },
+                  {
+                    "talent" : "Resolve",
+                    "tier": 4,
+                    "requires": [
+                      11,
+                      14
+                    ]
+                  },
+                  {
+                    "talent" : "Skilled Slicer",
+                    "tier": 5,
+                    "requires": [
+                      12,
+                      17
+                    ]
+                  },
+                  {
+                    "talent" : "Master Slicer",
+                    "tier": 5,
+                    "requires": [
+                      13,
+                      16,
+                      18
+                    ]
+                  },
+                  {
+                    "talent" : "Mental Fortress",
+                    "tier": 5,
+                    "requires": [
+                      14,
+                      17,
+                      19
+                    ]
+                  },
+                  {
+                    "talent" : "Dedication",
+                    "tier": 5,
+                    "requires": [
+                      15,
+                      18
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+
     },
     "specialization": {
       "properties": {
