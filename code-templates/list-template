@@ -1,0 +1,16 @@
+const Child = (props) => {
+
+    return (<ListItem>
+        ${childComponent}
+    </ListItem>)
+};
+
+const Component = (props) => (
+    <List>
+        {(props.value || []).map(i =>
+            <ListItem>
+                <Child value={i} />
+            </ListItem>)
+        }
+    </List>
+);
