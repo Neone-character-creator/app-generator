@@ -122,42 +122,42 @@
                 "type": "number",
                 "label": "Brawn",
                 "readOnly": true,
-                "bind": "<%= character.attributes.brawn %>"
+                "bind": "<%= character.characteristics.brawn %>"
               },
               {
                 "name": "AgilityCharacteristics",
                 "type": "number",
                 "label": "Agility",
                 "readOnly": true,
-                "bind": "<%= character.attributes.agility %>"
+                "bind": "<%= character.characteristics.agility %>"
               },
               {
                 "name": "IntellectCharacteristics",
                 "type": "number",
                 "label": "Intellect",
                 "readOnly": true,
-                "bind": "<%= character.attributes.intellect %>"
+                "bind": "<%= character.characteristics.intellect %>"
               },
               {
                 "name": "CunningCharacteristics",
                 "type": "number",
                 "label": "Cunning",
                 "readOnly": true,
-                "bind": "<%= character.attributes.cunning %>"
+                "bind": "<%= character.characteristics.cunning %>"
               },
               {
                 "name": "WillpowerCharacteristics",
                 "type": "number",
                 "label": "Willpower",
                 "readOnly": true,
-                "bind": "<%= character.attributes.willpower %>"
+                "bind": "<%= character.characteristics.willpower %>"
               },
               {
                 "name": "PresenceCharacteristics",
                 "type": "number",
                 "label": "Presence",
                 "readOnly": true,
-                "bind": "<%= character.attributes.presence %>"
+                "bind": "<%= character.characteristics.presence %>"
               }
             ]
           },
@@ -1145,42 +1145,42 @@
                 "name": "speciesBaseAbilityBrawn",
                 "type": "textfield",
                 "label": "Brawn",
-                "bind": "<%= character.species.baseAttributes.brawn %>",
+                "bind": "<%= character.species.baseCharacteristics.brawn %>",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityAgility",
                 "type": "textfield",
                 "label": "Agility",
-                "bind": "<%= character.species.baseAttributes.agility %>",
+                "bind": "<%= character.species.baseCharacteristics.agility %>",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityIntellect",
                 "type": "textfield",
                 "label": "Intellect",
-                "bind": "<%= character.species.baseAttributes.intellect %>",
+                "bind": "<%= character.species.baseCharacteristics.intellect %>",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityCunning",
                 "type": "textfield",
                 "label": "Cunning",
-                "bind": "<%= character.species.baseAttributes.cunning %>",
+                "bind": "<%= character.species.baseCharacteristics.cunning %>",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityWillpower",
                 "type": "textfield",
                 "label": "Willpower",
-                "bind": "<%= character.species.baseAttributes.willpower %>",
+                "bind": "<%= character.species.baseCharacteristics.willpower %>",
                 "readOnly": true
               },
               {
                 "name": "speciesBaseAbilityPresence",
                 "type": "textfield",
                 "label": "Presence",
-                "bind": "<%= character.species.baseAttributes.presence %>",
+                "bind": "<%= character.species.baseCharacteristics.presence %>",
                 "readOnly": true
               }
             ]
@@ -1194,14 +1194,14 @@
                 "name": "specieswoundsThreshold",
                 "type": "textfield",
                 "label": "Wounds Threshold",
-                "value": "<%= character.species.woundsThreshold.attribute %> (<%= character.attributes[character.species.woundsThreshold.attribute] %>) + <%= character.species.woundsThreshold.base %>",
+                "value": "<%= character.species.woundsThreshold.attribute %> (<%= character.characteristics[character.species.woundsThreshold.attribute] %>) + <%= character.species.woundsThreshold.base %>",
                 "readOnly": true
               },
               {
                 "name": "speciesstrainThreshold",
                 "type": "textfield",
                 "label": "Strain Threshold",
-                "value": "<%= character.species.strainThreshold.attribute %> (<%= character.attributes[character.species.strainThreshold.attribute] %>) + <%= character.species.strainThreshold.base %>",
+                "value": "<%= character.species.strainThreshold.attribute %> (<%= character.characteristics[character.species.strainThreshold.attribute] %>) + <%= character.species.strainThreshold.base %>",
                 "readonly": true
               },
               {
@@ -1297,7 +1297,7 @@
         "soak": "number",
         "wounds": "woundsThreshold",
         "strain": "strainThreshold",
-        "attributes": "attributes",
+        "characteristics": "characteristics",
         "skills": "skills"
       }
     },
@@ -1573,7 +1573,7 @@
         "name": "string",
         "plural": "string",
         "source": "string",
-        "baseAttributes": "attributes",
+        "baseCharacteristics": "characteristics",
         "woundsThreshold": "woundsThreshold",
         "strainThreshold": "strainThreshold",
         "startingExperience": "number",
@@ -1594,7 +1594,7 @@
           "name": "Bothan",
           "plural": "Bothans",
           "source": "core",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 1,
             "agility": 2,
             "intellect": 2,
@@ -1628,7 +1628,7 @@
           "name": "Droid",
           "plural": "Droids",
           "source": "core",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 1,
             "agility": 1,
             "intellect": 1,
@@ -1666,7 +1666,7 @@
           "name": "Gand - Lunged",
           "plural": "Gand",
           "source": "core",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 2,
             "intellect": 2,
@@ -1697,7 +1697,7 @@
           "name": "Gand - Lungless",
           "plural": "Gand",
           "source": "core",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 2,
             "intellect": 2,
@@ -1728,7 +1728,7 @@
           "name": "Human",
           "plural": "Humans",
           "source": "core",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 2,
             "intellect": 2,
@@ -1757,7 +1757,7 @@
           "name": "Rodian",
           "plural": "Rodians",
           "source": "source",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 3,
             "intellect": 2,
@@ -1788,7 +1788,7 @@
           "name": "Trandoshan",
           "plural": "Trandoshans",
           "source": "core",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 1,
             "intellect": 2,
@@ -1823,7 +1823,7 @@
           "name": "Twi'Lek",
           "plural": "Twi'Leks",
           "source": "core",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 1,
             "agility": 2,
             "intellect": 2,
@@ -1860,7 +1860,7 @@
           "name": "Wookie",
           "plural": "Wookies",
           "source": "core",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 2,
             "intellect": 2,
@@ -1891,7 +1891,7 @@
           "name": "Aqualish - Aquala",
           "plural": "Aqualish",
           "source": "dangerous-covenants",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 2,
             "intellect": 1,
@@ -1923,7 +1923,7 @@
           "name": "Aqualish -  Ualaq",
           "plural": "Aqualish",
           "source": "dangerous-covenants",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 2,
             "intellect": 1,
@@ -1961,7 +1961,7 @@
           "name": "Aqualish - Quara",
           "plural": "Aqualish",
           "source": "dangerous-covenants",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 2,
             "intellect": 1,
@@ -1999,7 +1999,7 @@
           "name": "Klatoonian",
           "plural": "Klatoonian",
           "source": "dangerous-covenants",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 3,
             "intellect": 2,
@@ -2033,7 +2033,7 @@
           "name": "Weequay",
           "plural": "Weequay",
           "source": "dangerous-covenants",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 2,
             "intellect": 1,
@@ -2070,7 +2070,7 @@
           "name": "Chiss",
           "plural": "Chiss",
           "source": "enter-the-unknown",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 2,
             "intellect": 3,
@@ -2101,7 +2101,7 @@
           "name": "Duro",
           "plural": "Duros",
           "source": "enter-the-unknown",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 1,
             "agility": 2,
             "intellect": 3,
@@ -2132,7 +2132,7 @@
           "name": "Toydarian",
           "plural": "Toydarians",
           "source": "enter-the-unknown",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 1,
             "agility": 1,
             "intellect": 2,
@@ -2164,7 +2164,7 @@
           "name": "Arcona",
           "plural": "Arcona",
           "source": "far-horizons",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 1,
             "agility": 2,
             "intellect": 2,
@@ -2199,7 +2199,7 @@
           "name": "Chevin",
           "plural": "Chevin",
           "source": "far-horizons",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 1,
             "intellect": 2,
@@ -2233,7 +2233,7 @@
           "name": "Gran",
           "plural": "Gran",
           "source": "far-horizons",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 2,
             "intellect": 2,
@@ -2270,7 +2270,7 @@
           "name": "Faleen",
           "plural": "Faleen",
           "source": "fly-casual",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 1,
             "agility": 2,
             "intellect": 2,
@@ -2301,7 +2301,7 @@
           "name": "Gotal",
           "plural": "Gotals",
           "source": "fly-casual",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 2,
             "intellect": 2,
@@ -2332,7 +2332,7 @@
           "name": "Quarren",
           "plural": "Quarren",
           "source": "fly-casual",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 2,
             "intellect": 1,
@@ -2367,7 +2367,7 @@
           "name": "Hutt",
           "plural": "Hutts",
           "source": "lords-of-nal-hutta",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 1,
             "intellect": 2,
@@ -2408,7 +2408,7 @@
           "name": "Gank",
           "plural": "Ganks",
           "source": "lords-of-nal-hutta",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 2,
             "intellect": 2,
@@ -2445,7 +2445,7 @@
           "name": "Nikto - Red",
           "plural": "Niktos",
           "source": "lords-of-nal-hutta",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 2,
             "intellect": 2,
@@ -2476,7 +2476,7 @@
           "name": "Nikto - Green",
           "plural": "Niktos",
           "source": "lords-of-nal-hutta",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 2,
             "intellect": 2,
@@ -2511,7 +2511,7 @@
           "name": "Nikto - Mountain",
           "plural": "Niktos",
           "source": "lords-of-nal-hutta",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 2,
             "intellect": 2,
@@ -2540,7 +2540,7 @@
           "name": "Nikto - Pale",
           "plural": "Niktos",
           "source": "lords-of-nal-hutta",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 2,
             "intellect": 2,
@@ -2571,7 +2571,7 @@
           "name": "Nikto - Southern",
           "plural": "Niktos",
           "source": "lords-of-nal-hutta",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 3,
             "agility": 2,
             "intellect": 2,
@@ -2602,7 +2602,7 @@
           "name": "Sakiyan",
           "plural": "Sakiyans",
           "source": "lords-of-nal-hutta",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 2,
             "agility": 2,
             "intellect": 3,
@@ -2637,7 +2637,7 @@
           "name": "Drall",
           "plural": "Drall",
           "source": "loads-of-nal-hutta",
-          "baseAttributes": {
+          "baseCharacteristics": {
             "brawn": 1,
             "agility": 1,
             "intellect": 4,
@@ -2666,42 +2666,42 @@
         }
       ]
     },
-    "attributes": {
+    "characteristics": {
       "properties": {
         "brawn": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseAttributes.brawn"
+            "= $character.species.baseCharacteristics.brawn"
           ]
         },
         "agility": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseAttributes.agility"
+            "= $character.species.baseCharacteristics.agility"
           ]
         },
         "intellect": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseAttributes.intellect"
+            "= $character.species.baseCharacteristics.intellect"
           ]
         },
         "cunning": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseAttributes.cunning"
+            "= $character.species.baseCharacteristics.cunning"
           ]
         },
         "willpower": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseAttributes.willpower"
+            "= $character.species.baseCharacteristics.willpower"
           ]
         },
         "presence": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseAttributes.presence"
+            "= $character.species.baseCharacteristics.presence"
           ]
         }
       }
