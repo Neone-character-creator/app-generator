@@ -1,4 +1,4 @@
-const Component = () => (
+const Component = (props) => (
     <div id="${appName}-app">
     <Tabs>
         <TabList>

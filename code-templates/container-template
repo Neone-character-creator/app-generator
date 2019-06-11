@@ -1,4 +1,4 @@
-const Component = () => (
+const Component = (props) => (
     <Grid id="${componentName}-container" container spacing={8} justify="space-around" direction={"${direction}" == "vertical" ? "column" : "row"}>
         ${children}
     </Grid>

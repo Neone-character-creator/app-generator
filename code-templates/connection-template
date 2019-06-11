@@ -1,18 +1,21 @@
 const boundProperty = ${boundProperty}; // The expression used to determine the value of binding.
 const readOnly = ${readOnly}; // If this component only calculates its value, or is bound and can update it.
 const valueExpression = "${values}";
-const connected = connect((state) => {
-    const boundValue = (()=>{
+const connected = connect((state, ownProps) => {
+    const value = (()=>{
+        if (boundProperty.startsWith("$value")) {
+            return _.get(ownProps.value, boundProperty.substring("$value.".length));
+        }
         if (readOnly){
             return _.template(boundProperty)(state);
         } else {
             return _.get(state, boundProperty);
         }
     })();
-    const options = determineValues(valueExpression);
+    const options = determineValues(valueExpression, state);
     return {
         options,
-        boundValue
+        value
     };
 }, dispatch => {
     const update = readOnly ? () => {} :
@@ -26,7 +29,7 @@ const connected = connect((state) => {
     };
 })(Component);
 
-function determineValues(expression){
+function determineValues(expression, state, value){
     if (!expression){
         return [];
     }
@@ -34,6 +37,8 @@ function determineValues(expression){
     switch(expressionTokens[0]){
         case "model":
             return _.get(models, expressionTokens.slice(1).join("."));
+        case "character":
+            return _.get(state, expression, []);
     }
 }
 

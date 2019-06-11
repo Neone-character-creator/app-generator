@@ -1,7 +1,7 @@
 const Component = (props) => (
     <FormControl>
     <InputLabel id="${componentName}-select-label">${label}</InputLabel>
-    <Select id="${componentName}-select" autoWidth value={props.boundValue} onChange={props.update} children={props.options.map((item, index) => (<MenuItem value={item}>{_.get(item, itemTextPath)}</MenuItem>))} />
+    <Select id="${componentName}-select" autoWidth value={props.value} onChange={props.update} children={props.options.map((item, index) => (<MenuItem value={item}>{_.get(item, itemTextPath)}</MenuItem>))} />
     </FormControl>
 )
 

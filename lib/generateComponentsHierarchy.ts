@@ -1,37 +1,38 @@
 import _ from "lodash";
 
-export default function (appConfiguration: any) {
+export default function (rootComponent: any) {
     return {
         ...extractComponentDefinitions({
             components: {},
             views: []
-        }, "app", appConfiguration.views)
+        }, rootComponent)
     };
 };
 
 function extractComponentDefinitions(components: {
     components: { [s: string]: any },
     views: string[]
-}, componentId: string, element: any) {
+}, element: any) {
 
-    if (components.components[componentId]) {
-        throw new Error(`Duplicate component ${componentId} found`);
+    if (components.components[element.name]) {
+        throw new Error(`Duplicate component ${element.name} found`);
     }
     if (element.type == "view") {
-        components.views.push(componentId);
+        components.views.push(element.name);
     }
-    components.components[componentId] = element;
+    components.components[element.name] = element;
     const children: Array<any> = element.children;
     if (!_.isEmpty(children)) {
         children.forEach(child => {
-            extractComponentDefinitions(components, child.name, child);
-        })
-    }
-    components.components[componentId] = element;
-    if (element.children) {
+            extractComponentDefinitions(components, child);
+        });
         element.children = element.children.map((child: any) => {
             return child.name;
         });
+    }
+    const listChild = _.get(element, "items.child");
+    if (!_.isNil(listChild)) {
+        extractComponentDefinitions(components, listChild);
     }
     return components;
 }
@@ -39,11 +40,11 @@ function extractComponentDefinitions(components: {
 function extractViewDefinition(components: {
     components: { [s: string]: any },
     views: string[]
-}, componentId: string, element: any) {
+}, element: any) {
     const children = element.children;
     if (!_.isEmpty(children)) {
         children.forEach((child: any) => {
-            extractComponentDefinitions(components, child.name, child);
+            extractComponentDefinitions(components, child);
         })
     }
     if (element.children) {
@@ -51,6 +52,6 @@ function extractViewDefinition(components: {
             return child.name;
         })
     }
-    components.components[componentId] = element;
+    components.components[element.name] = element;
     return components;
 }
