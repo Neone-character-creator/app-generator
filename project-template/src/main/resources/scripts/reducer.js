@@ -1,6 +1,7 @@
-const _ = require("lodash");
-const models = require("./models");
-const interpreter = require("./interpreter");
+import * as _ from "lodash";
+import models from "./models";
+import interpreter from "./interpreter";
+import rules from "!./rules.json";
 
 function setCalculatedProperties(modelDefinition, state, statePath){
     if (modelDefinition.derivedFrom) {
@@ -21,7 +22,36 @@ function setCalculatedProperties(modelDefinition, state, statePath){
     }, state);
 }
 
-module.exports = function(previousState, action) {
+function setAvailableAdvancements(state){
+    const sharedContext = {
+        $state: state,
+        $model: models,
+    };
+    state.availableAdvancements = rules.advancement.reduce((availableAdvancements, type) =>{
+        let concreteOptions;
+        if(typeof type.options === "string"){
+            concreteOptions = _.template(type.options)(sharedContext).split(",").map(x => x.trim());
+        } else {
+            concreteOptions = type.options;
+        }
+        const availabilityFilter = _.template(type.when);
+        const costEvaluator = _.template(type.cost);
+        concreteOptions = concreteOptions.map(option => {
+            const localContext = {...sharedContext, $this: option};
+            const isAvailable = availabilityFilter(localContext);
+            const cost = costEvaluator(localContext) <= _.get(sharedContext, type.uses)
+            return {
+                option,
+                cost,
+                isAvailable
+            }
+        });
+        availableAdvancements[type.description] = concreteOptions;
+        return availableAdvancements;
+    }, {});
+}
+
+export default function(previousState, action) {
     if(previousState) {
         previousState = {...previousState};
         if (action.type === "SET") {
@@ -45,5 +75,6 @@ module.exports = function(previousState, action) {
         previousState = {character: new models.character()};
     }
     setCalculatedProperties(models.character.prototype.definition, previousState, "character");
+    setAvailableAdvancements(previousState);
     return previousState;
 };
