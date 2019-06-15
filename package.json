@@ -40,7 +40,8 @@
     "jest-expect-message": "^1.0.2",
     "prettier": "^1.16.4",
     "react-test-renderer": "^16.8.4",
-    "sinon": "^7.2.7"
+    "sinon": "^7.2.7",
+    "antlr4": "4.7.2"
   },
   "jest": {
     "collectCoverageFrom": [

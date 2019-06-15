@@ -2672,37 +2672,37 @@
         "brawn": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseCharacteristics.brawn"
+            "$state.character.species.baseCharacteristics.brawn"
           ]
         },
         "agility": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseCharacteristics.agility"
+            "$state.character.species.baseCharacteristics.agility"
           ]
         },
         "intellect": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseCharacteristics.intellect"
+            "$state.character.species.baseCharacteristics.intellect"
           ]
         },
         "cunning": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseCharacteristics.cunning"
+            "$state.character.species.baseCharacteristics.cunning"
           ]
         },
         "willpower": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseCharacteristics.willpower"
+            "$state.character.species.baseCharacteristics.willpower"
           ]
         },
         "presence": {
           "type": "number",
           "derivedFrom": [
-            "= $character.species.baseCharacteristics.presence"
+            "$state.character.species.baseCharacteristics.presence"
           ]
         }
       }
