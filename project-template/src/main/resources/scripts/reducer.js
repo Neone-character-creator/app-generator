@@ -5,9 +5,9 @@ import rules from "!./rules.json";
 
 function setCalculatedProperties(modelDefinition, state, statePath){
     if (modelDefinition.derivedFrom) {
-        let value = modelDefinition.derivedFrom.reduce((valueSoFar, nextExpression) =>
-            interpreter.interpret(nextExpression, {},{state, models, accumulator: valueSoFar})
-            , null);
+        let value = modelDefinition.derivedFrom.reduce((valueSoFar, nextExpression) => {
+                return interpreter.interpret(nextExpression, {$state: state, $models: models, $this: valueSoFar})
+            }, null);
         _.set(state, statePath, value);
     }
     Object.getOwnPropertyNames(modelDefinition).reduce((updated, nextPropertyName) => {

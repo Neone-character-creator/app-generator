@@ -1,5 +1,5 @@
-const Parser = require("./ScriptParserParser").ScriptParserParser;
-const baseVisitor = require("./ScriptParserVisitor").ScriptParserVisitor;
+const Parser = require("./JavaScriptParser").JavaScriptParser;
+const JavaScriptParserVisitor = require("./JavaScriptParserVisitor").JavaScriptParserVisitor;
 const _ = require("lodash");
 
 // This class defines a complete generic visitor for a parse tree produced by ScriptParser.
@@ -8,81 +8,127 @@ function Visitor(scriptContext) {
     this.scriptContext = scriptContext;
 }
 
-Visitor.prototype = baseVisitor.prototype;
+Visitor.prototype = JavaScriptParserVisitor.prototype;
 
 Visitor.prototype.constructor = Visitor;
 
 Visitor.prototype.visitProgram = function (ctx) {
     const children = this.visitChildren(ctx);
+    return children.length ? children[0] : undefined;
+};
+
+Visitor.prototype.visitExpressionStatement = function (ctx) {
+    const children = this.visitChildren(ctx);
+    return _.get(this.scriptContext, children[0]);
+};
+
+Visitor.prototype.visitLiteralExpression = function (ctx) {
+    const children = this.visitChildren(ctx);
     return children[0];
 };
 
-Visitor.prototype.visitExpression_sequence = function (ctx) {
+Visitor.prototype.visitExpressionSequence = function (ctx) {
     const children = this.visitChildren(ctx);
-    return children[children.length - 1];
+    return children[0];
 };
 
-Visitor.prototype.visitExpression = function (ctx) {
+Visitor.prototype.visitNumericLiteral = function (ctx) {
     const children = this.visitChildren(ctx);
-    if (children.length === 3) {
-        switch (children[1].type) {
-            case Parser.PLUS_LITERAL:
-                return children[0] + children[2];
-            case Parser.MULTIPLY_LITERAL:
-                return children[0] * children[2];
-            case Parser.DIVIDE_LITERAL:
-                return Math.floor(children[0] / children[2]);
-            case Parser.SUBTRACT_LITERAL:
-                return children[0] - children[2];
-        }
-    } else if (children.length === 1) {
-        return children[0];
+    return children[0];
+};
+
+Visitor.prototype.visitLiteral = function (ctx) {
+    const children = this.visitChildren(ctx);
+    return children[0];
+};
+
+Visitor.prototype.visitAdditiveExpression = function (ctx) {
+    const children = this.visitChildren(ctx);
+    switch (children[1].type) {
+        case Parser.Plus:
+            return children[0] + children[2];
+        case Parser.Minus:
+            return children[0] - children[2];
     }
 };
 
-Visitor.prototype.visitContext_reference_expression = function(ctx){
+Visitor.prototype.visitMultiplicativeExpression = function (ctx) {
     const children = this.visitChildren(ctx);
-    children.splice(1, 1);
-    const path = children.join(".");
-    const value = _.get(this.scriptContext, path );
-    return value;
+    switch (children[1].type) {
+        case Parser.Divide:
+            return children[0] / children[2];
+        case Parser.Multiply:
+            return children[0] * children[2];
+    }
 };
-
-Visitor.prototype.visitContext_reference_path = function(ctx){
-    const children = this.visitChildren(ctx);
-    return children.filter(x => typeof x === "string").join(".");
-};
-
-Visitor.prototype.visitContext_reference_prefix = function(ctx) {
-    return this.visitChildren(ctx)[0];
-};
-
-Visitor.prototype.visitNumeric_expression = function(ctx){
-    return this.visitChildren(ctx)[0];
-};
-
-// Visitor.prototype.visitLiteral_expression = function (ctx) {
-//     let value;
-//     switch (ctx.children[0].symbol.type) {
-//         case Parser.STRING_LITERAL:
-//             value = ctx.children[0].getText();
-//         case Parser.NUMBER_LITERAL:
-//             value = Number.parseInt(ctx.children[0].getText());
-//     }
-//     return visit;
-// };
 
 Visitor.prototype.visitTerminal = function (ctx) {
     switch (ctx.symbol.type) {
-        case Parser.NUMBER_LITERAL:
-            return Number.parseInt(ctx.getText());
-        case Parser.STRING_LITERAL:
-        case Parser.CONTEXT_STATE_PREFIX:
-        case Parser.CONTEXT_MODEL_PREFIX:
+        case Parser.DecimalLiteral:
+            return Number.parseFloat(ctx.getText());
+        case Parser.StringLiteral:
+        case Parser.Identifier:
+        case Parser.Dot:
             return ctx.getText();
         default:
             return ctx.symbol;
     }
-}
+};
+Visitor.prototype.visitStatement = function (ctx) {
+    const children = this.visitChildren(ctx).filter(x => x !== undefined);
+    return children.length ? children[0] : undefined;
+};
+
+Visitor.prototype.visitReturnStatement = function (ctx) {
+    const children = this.visitChildren(ctx);
+    return children[1];
+};
+
+Visitor.prototype.visitSourceElement = function (ctx) {
+    const children = this.visitChildren(ctx);
+    return children[0];
+};
+
+Visitor.prototype.visitSourceElements = function (ctx) {
+    const children = this.visitChildren(ctx);
+    return children[0];
+};
+
+Visitor.prototype.visitMemberDotExpression = function (ctx) {
+    const children = this.visitChildren(ctx);
+    const path = children.slice(2).join("");
+    const value = _.get(children[0], path);
+    if (typeof value === "function") {
+        return {
+            boundThis: children[0],
+            func: value
+        }
+    }
+    return value;
+};
+
+Visitor.prototype.visitIdentifierName = function (ctx) {
+    const children = this.visitChildren(ctx);
+    return children[0];
+};
+
+Visitor.prototype.visitIdentifierExpression = function (ctx) {
+    const children = this.visitChildren(ctx);
+    return _.get(this.scriptContext, children[0]);
+};
+
+Visitor.prototype.visitArgumentsExpression = function (ctx) {
+    const children = this.visitChildren(ctx);
+    if (_.isObject(children[0]) && children[0].func) {
+        const funcArguments = children[1].slice(1, children[1].length - 1).map(x => {
+            if (x.startsWith("'") && x.endsWith("'")){
+                return x.substring(1, x.length-1);
+            }
+            return x;
+        });
+        return children[0].func.apply(children[0].boundThis, funcArguments);
+    }
+    return children[0];
+};
 
 module.exports = Visitor;

@@ -3,14 +3,11 @@ const readOnly = ${readOnly}; // If this component only calculates its value, or
 const valueExpression = "${values}";
 const connected = connect((state, ownProps) => {
     const value = (()=>{
-        if (boundProperty.startsWith("$value")) {
-            return _.get(ownProps.value, boundProperty.substring("$value.".length));
-        }
-        if (readOnly){
-            return _.template(boundProperty)(state);
-        } else {
-            return _.get(state, boundProperty);
-        }
+        return interpreter.interpret(`return ` + boundProperty, {
+            $state: state,
+            $model: models,
+            $this: null
+        })
     })();
     const options = determineValues(valueExpression, state);
     return {
