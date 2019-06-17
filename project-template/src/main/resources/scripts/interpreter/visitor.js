@@ -2,6 +2,8 @@ const Parser = require("./JavaScriptParser").JavaScriptParser;
 const JavaScriptParserVisitor = require("./JavaScriptParserVisitor").JavaScriptParserVisitor;
 const _ = require("lodash");
 
+const globals = global || window;
+
 // This class defines a complete generic visitor for a parse tree produced by ScriptParser.
 
 function Visitor(scriptContext) {
@@ -96,14 +98,25 @@ Visitor.prototype.visitSourceElements = function (ctx) {
 
 Visitor.prototype.visitMemberDotExpression = function (ctx) {
     const children = this.visitChildren(ctx);
-    const path = children.slice(2).join("");
-    const value = _.get(children[0], path);
-    if (typeof value === "function") {
-        return {
-            boundThis: children[0],
-            func: value
+    let value = children.reduce((intermediate, next, index, array)=>{
+        switch (typeof intermediate) {
+            case "object":
+                if(next === "."){
+                    return intermediate;
+                }
+                const nextValue = _.get(intermediate, next);
+                if (typeof nextValue === "function") {
+                    return {
+                        func: nextValue,
+                        boundThis: intermediate
+                    }
+                }
+                return nextValue;
+            case "string":
+                return _.get(this.scriptContext, intermediate);
         }
-    }
+        return intermediate;
+    });
     return value;
 };
 
@@ -113,22 +126,49 @@ Visitor.prototype.visitIdentifierName = function (ctx) {
 };
 
 Visitor.prototype.visitIdentifierExpression = function (ctx) {
-    const children = this.visitChildren(ctx);
-    return _.get(this.scriptContext, children[0]);
+    return this.visitChildren(ctx)[0];
 };
+
+Visitor.prototype.visitArguments = function(ctx){
+    return this.visitChildren(ctx).filter(arg => {
+        if (arg.type) {
+            switch (arg.type) {
+                case Parser.OpenParen:
+                case Parser.CloseParen:
+                    return false;
+                default:
+                    return true;
+            }
+        }
+        return true;
+    })
+}
 
 Visitor.prototype.visitArgumentsExpression = function (ctx) {
     const children = this.visitChildren(ctx);
     if (_.isObject(children[0]) && children[0].func) {
-        const funcArguments = children[1].slice(1, children[1].length - 1).map(x => {
-            if (x.startsWith("'") && x.endsWith("'")){
+        const funcArguments = children[1].map(x => {
+            if (typeof x === "string" && x.startsWith("'") && x.endsWith("'")){
                 return x.substring(1, x.length-1);
             }
             return x;
         });
-        return children[0].func.apply(children[0].boundThis, funcArguments);
+        const func = children[0].func;
+        return func.apply(children[0].boundThis, funcArguments);
     }
     return children[0];
 };
+
+Visitor.prototype.visitFunctionExpression = function(ctx){
+    const children = this.visitChildren(ctx);
+    const args = children[2];
+    const method = children[5];
+};
+
+Visitor.prototype.visitFunctionBody = function(ctx){
+    const children = this.visitChildren(ctx);
+    return children;
+}
+
 
 module.exports = Visitor;

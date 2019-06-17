@@ -58,5 +58,12 @@ describe("embedded interpreter", () => {
             $state: ["foo", "bar"]
         };
         expect(Interpreter.interpret(expression, context)).toEqual("foo+bar");
+    });
+    it("can interpret a function", () => {
+        const expression = "return $state.map(function(x){return Number.parseInt(x)})";
+        const context = {
+            $state: ["1", "2"]
+        };
+        expect(Interpreter.interpret(expression, context)).toEqual([1,2]);
     })
 });
