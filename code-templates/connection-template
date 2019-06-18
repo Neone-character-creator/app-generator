@@ -15,7 +15,18 @@ const connected = connect((state, ownProps) => {
             $this: null
         });
     })();
-    const options = determineValues(valueExpression, state);
+    const options = (()=>{
+        const context = {
+            $state: state,
+            $model: models,
+            $this: null
+        }
+        return interpreter.interpret(valueExpression, {
+                $state: state,
+                $model: models,
+                $this: null
+            });
+        })();
     return {
         options,
         value
