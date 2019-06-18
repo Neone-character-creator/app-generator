@@ -55,7 +55,12 @@ export default function(previousState, action) {
     if(previousState) {
         previousState = {...previousState};
         if (action.type === "SET") {
-            _.set(previousState, action.path, action.value);
+            const path = (()=>{
+                if (action.path.startsWith("$state")) {
+                    return action.path.substring("$state.".length);
+                }
+            })();
+            _.set(previousState, path, action.value);
         }
         if (action.type === "REMOVE") {
             const array = _.get(previousState, action.path);
