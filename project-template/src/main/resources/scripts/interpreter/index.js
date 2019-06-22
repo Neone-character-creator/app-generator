@@ -1,10 +1,6 @@
-const antlr4 = require("antlr4");
-const Lexer = require("./JavaScriptLexer").JavaScriptLexer;
-const Parser = require("./JavaScriptParser").JavaScriptParser;
-const Visitor = require("./visitor");
-module.exports = {
+import rules from "!../rules.json";
+export default {
     interpret: function(expression, context){
-
-        return new Function("$state", "$model", expression)(context.$state, context.$model);
+        return new Function("$state", "$model", "$this", "$rules", expression)(context.$state, context.$model, context.$this, rules );
     }
 };

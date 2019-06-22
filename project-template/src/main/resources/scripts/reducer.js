@@ -27,27 +27,29 @@ function setAvailableAdvancements(state){
         $state: state,
         $model: models,
     };
-    state.availableAdvancements = rules.advancement.reduce((availableAdvancements, type) =>{
+    state.availableAdvancements = Object.keys(rules.advancement).reduce((advancements, availableAdvancementType) =>{
+        const advancementRule = rules.advancement[availableAdvancementType];
         let concreteOptions;
-        if(typeof type.options === "string"){
-            concreteOptions = _.template(type.options)(sharedContext).split(",").map(x => x.trim());
+        if(typeof advancementRule.options === "string"){
+            concreteOptions = interpreter.interpret(advancementRule.options, sharedContext);
         } else {
-            concreteOptions = type.options;
+            concreteOptions = advancementRule.options;
         }
-        const availabilityFilter = _.template(type.when);
-        const costEvaluator = _.template(type.cost);
         concreteOptions = concreteOptions.map(option => {
             const localContext = {...sharedContext, $this: option};
-            const isAvailable = availabilityFilter(localContext);
-            const cost = costEvaluator(localContext) <= _.get(sharedContext, type.uses)
+            const cost = interpreter.interpret(advancementRule.cost, localContext);
+            const isAvailable = interpreter.interpret(advancementRule.when, localContext);
             return {
                 option,
                 cost,
-                isAvailable
+                isAvailable: isAvailable && cost <= _.get(localContext, advancementRule.uses)
             }
         });
-        availableAdvancements[type.description] = concreteOptions;
-        return availableAdvancements;
+
+        advancements[availableAdvancementType] = {
+            options: concreteOptions
+        };
+        return advancements;
     }, {});
 }
 

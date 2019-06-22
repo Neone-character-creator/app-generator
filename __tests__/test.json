@@ -60,7 +60,7 @@
                     "name": "thresholdWounds",
                     "type": "number",
                     "label": "Threshold Wounds",
-                    "value": "return  $state.character.wounds.base + $state.character.characteristics[$state.character.wounds.attribute]"
+                    "value": "return  $state.character.wounds.base + $state.character.characteristics[$state.character.wounds.characteristic]"
                   }
                 ]
               },
@@ -74,7 +74,7 @@
                     "name": "strainThreshold",
                     "type": "number",
                     "label": "Threshold Strain",
-                    "value": "return  $state.character.strain.base + $state.character.characteristics[$state.character.strain.attribute]"
+                    "value": "return  $state.character.strain.base + $state.character.characteristics[$state.character.strain.characteristic]"
                   }
                 ]
               },
@@ -1189,13 +1189,13 @@
                 "name": "specieswoundsThreshold",
                 "type": "textfield",
                 "label": "Wounds Threshold",
-                "value": "return '' + $state.character.species.woundsThreshold.attribute  + '(' + $state.character.characteristics[$state.character.species.woundsThreshold.attribute] + ') + '  + $state.character.species.woundsThreshold.base"
+                "value": "return '' + $state.character.species.woundsThreshold.characteristic  + '(' + $state.character.characteristics[$state.character.species.woundsThreshold.characteristic] + ') + '  + $state.character.species.woundsThreshold.base"
               },
               {
                 "name": "speciesstrainThreshold",
                 "type": "textfield",
                 "label": "Strain Threshold",
-                "value": "return '' + $state.character.species.strainThreshold.attribute +  '(' + $state.character.characteristics[$state.character.species.strainThreshold.attribute] + ') + ' +  $state.character.species.strainThreshold.base "
+                "value": "return '' + $state.character.species.strainThreshold.characteristic +  '(' + $state.character.characteristics[$state.character.species.strainThreshold.characteristic] + ') + ' +  $state.character.species.strainThreshold.base "
               },
               {
                 "name": "speciesStartingExperience",
@@ -1275,6 +1275,75 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Advancements",
+        "type": "view",
+        "children": [
+          {
+            "name": "characteristicAdvancementContainer",
+            "type": "container",
+            "direction": "vertical",
+            "children": [
+              {
+                "name": "characteristicAdvancementLabel",
+                "type": "label",
+                "text": "Characteristics"
+              },
+              {
+                "name": "characteristicAdvancement",
+                "type": "select",
+                "bind": "$state.selectedAdvancement",
+                "items": {
+                  "text": "option",
+                  "values": "return $state.availableAdvancements.characteristic.options"
+                }
+              }
+            ]
+          },
+          {
+            "name": "skillAdvancementContainer",
+            "type": "container",
+            "direction": "vertical",
+            "children": [
+              {
+                "name": "skillAdvancementLabel",
+                "type": "label",
+                "text": "Skills"
+              },
+              {
+                "name": "skillAdvancement",
+                "type": "select",
+                "bind": "$state.selectedAdvancement",
+                "items": {
+                  "text": "option",
+                  "values": "return $state.availableAdvancements.skill.options"
+                }
+              }
+            ]
+          },
+          {
+            "name": "talentAdvancementContainer",
+            "type": "container",
+            "direction": "vertical",
+            "children": [
+              {
+                "name": "talentAdvancementLabel",
+                "type": "label",
+                "text": "Talents"
+              },
+              {
+                "name": "talentAdvancement",
+                "type": "select",
+                "bind": "$state.selectedAdvancement",
+                "items": {
+                  "text": "option",
+                  "values": "return $state.availableAdvancements.talent.options"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1290,11 +1359,15 @@
         "soak": "number",
         "availableExperience": {
           "type": "number",
-          "derivedFrom": ["return $state.character.advancements.map(a => a.cost).reduce((x, y)=> x+y, 0)"]
+          "derivedFrom": [
+            "return $state.character.advancements.map(a => a.cost).reduce((x, y)=> x+y, 0)"
+          ]
         },
         "totalExperience": {
           "type": "number",
-          "derivedFrom": ["return $state.character.species.startingExperience"]
+          "derivedFrom": [
+            "return $state.character.species.startingExperience"
+          ]
         },
         "wounds": "woundsThreshold",
         "strain": "strainThreshold",
@@ -1542,7 +1615,7 @@
       "properties": {
         "name": "string",
         "isCareerSkill": "boolean",
-        "attribute": "string",
+        "characteristic": "string",
         "rank": "number"
       }
     },
@@ -1555,7 +1628,7 @@
     "woundsThreshold": {
       "properties": {
         "base": "number",
-        "attribute": {
+        "characteristic": {
           "type": "string",
           "default": "brawn"
         }
@@ -1564,7 +1637,7 @@
     "strainThreshold": {
       "properties": {
         "base": "number",
-        "attribute": {
+        "characteristic": {
           "type": "string",
           "default": "willpower"
         }
@@ -1606,11 +1679,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 11,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -1640,11 +1713,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 175,
           "startingiscareerskillchoices": 6,
@@ -1678,11 +1751,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 110,
           "startingSkills": [
@@ -1709,11 +1782,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -1740,11 +1813,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 110,
           "startingnoniscareerskillchoices": 2,
@@ -1769,11 +1842,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -1800,11 +1873,11 @@
           },
           "woundsThreshold": {
             "base": 12,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 9,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -1835,11 +1908,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 11,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -1872,11 +1945,11 @@
           },
           "woundsThreshold": {
             "base": 14,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 8,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 90,
           "startingSkills": [
@@ -1903,11 +1976,11 @@
           },
           "woundsThreshold": {
             "base": 11,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 8,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 90,
           "startingSkills": [
@@ -1935,11 +2008,11 @@
           },
           "woundsThreshold": {
             "base": 11,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 8,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 90,
           "startingSkills": [
@@ -1973,11 +2046,11 @@
           },
           "woundsThreshold": {
             "base": 11,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 8,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 90,
           "startingSkills": [
@@ -2011,11 +2084,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -2045,11 +2118,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 9,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 90,
           "startingSkills": [
@@ -2082,11 +2155,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -2113,11 +2186,11 @@
           },
           "woundsThreshold": {
             "base": 11,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -2144,11 +2217,11 @@
           },
           "woundsThreshold": {
             "base": 9,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 12,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "specialAbilities": [
@@ -2176,11 +2249,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -2211,11 +2284,11 @@
           },
           "woundsThreshold": {
             "base": 11,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 11,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 80,
           "startingSkills": [
@@ -2245,11 +2318,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 9,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -2282,11 +2355,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 12,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 90,
           "startingSkills": [
@@ -2313,11 +2386,11 @@
           },
           "woundsThreshold": {
             "base": 9,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 8,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -2344,11 +2417,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 8,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 95,
           "startingSkills": [
@@ -2379,11 +2452,11 @@
           },
           "woundsThreshold": {
             "base": 13,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 11,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 70,
           "startingSkills": [
@@ -2420,11 +2493,11 @@
           },
           "woundsThreshold": {
             "base": 10,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 110,
           "startingSkills": [
@@ -2457,11 +2530,11 @@
           },
           "woundsThreshold": {
             "base": 11,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "specialAbilities": [
@@ -2488,11 +2561,11 @@
           },
           "woundsThreshold": {
             "base": 11,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -2523,11 +2596,11 @@
           },
           "woundsThreshold": {
             "base": 11,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -2552,11 +2625,11 @@
           },
           "woundsThreshold": {
             "base": 11,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -2583,11 +2656,11 @@
           },
           "woundsThreshold": {
             "base": 11,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingExperience": 100,
           "startingSkills": [
@@ -2614,11 +2687,11 @@
           },
           "woundsThreshold": {
             "base": 8,
-            "attribute": "Brawn"
+            "characteristic": "Brawn"
           },
           "strainThreshold": {
             "base": 10,
-            "attribute": "Willpower"
+            "characteristic": "Willpower"
           },
           "startingSkills": [
             {
@@ -2648,11 +2721,11 @@
             "presence": 2
           },
           "woundsThreshold": {
-            "attribute": "Brawn",
+            "characteristic": "Brawn",
             "base": 8
           },
           "strainThreshold": {
-            "attribute": "Willpower",
+            "characteristic": "Willpower",
             "base": 12
           },
           "startingExperience": 90,
@@ -5536,16 +5609,23 @@
     }
   },
   "rules": {
-    "advancement": [
-      {
+    "advancement": {
+      "characteristic": {
         "description": "Increase Characteristic",
         "uses": "$state.character.availableExperience",
-        "options": ["brawn", "agility", "intellect", "cunning", "willpower", "presence"],
+        "options": [
+          "brawn",
+          "agility",
+          "intellect",
+          "cunning",
+          "willpower",
+          "presence"
+        ],
         "when": "return $state.character.characteristics[$this] < 6 ",
         "cost": "return ($state.character.characteristics[$this] + 1) * 10 ",
         "effect": "$state.character.characteristics[$this] + 1"
       },
-      {
+      "skill": {
         "description": "Skill Training",
         "uses": "$state.character.availableExperience",
         "options": "return Object.keys($model.skills.prototype.definition) ",
@@ -5553,12 +5633,12 @@
         "cost": "return ($state.character.skills[$this].rank + 1) * 5 ",
         "effect": "return $state.character.state[$this].rank + 1"
       },
-      {
+      "talent": {
         "description": "Acquire Talent",
         "uses": "$state.character.availableExperience",
         "options": "return $state.character.specializations.reduce((combined, s)=> combined.concat(s.talents), []) ",
         "when": "return $state.character.specializations.reduce((combined, x)=> combined.concat(x.talents), []).find(y => $state.character.specializationTalents.find(z => z.id === y.id)) "
       }
-    ]
+    }
   }
 }
