@@ -1293,11 +1293,17 @@
               {
                 "name": "characteristicAdvancement",
                 "type": "select",
-                "bind": "$state.selectedAdvancement",
+                "bind": "$state.selectedAdvancement.characteristic",
                 "items": {
                   "text": "option",
                   "values": "return $state.availableAdvancements.characteristic.options"
                 }
+              },
+              {
+                "name": "characteristicSubmit",
+                "type": "button",
+                "text": "Buy",
+                "action": "ADVANCEMENT characteristic $state.selectedAdvancement.characteristic"
               }
             ]
           },
@@ -5623,7 +5629,7 @@
         ],
         "when": "return $state.character.characteristics[$this] < 6 ",
         "cost": "return ($state.character.characteristics[$this] + 1) * 10 ",
-        "effect": "$state.character.characteristics[$this] + 1"
+        "effect": "$state.character.characteristics[$this] = $state.character.characteristics[$this] + 1"
       },
       "skill": {
         "description": "Skill Training",

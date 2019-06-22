@@ -1,6 +1,7 @@
 const boundProperty = ${boundProperty}; // The expression used to determine the value of binding.
 const readOnly = ${readOnly}; // If this component only calculates its value, or is bound and can update it.
 const valueExpression = "${values}";
+const action = ${action};
 const connected = connect((state, ownProps) => {
     const value = (()=>{
         const context = {
@@ -26,17 +27,25 @@ const connected = connect((state, ownProps) => {
                 $model: models,
                 $this: null
             });
-        })();
+        })() || [];
     return {
         options,
-        value
+        value: value !== undefined || null ? value : ""
     };
 }, dispatch => {
     const update = readOnly ? () => {} :
         _.debounce((value) => {
             dispatch({ type: "SET", path: boundProperty, value: value});
         });
+    const onClick = readOnly || !action ? () => {} :
+        (action, value) => {
+            dispatch({type: action, value});
+        };
+    const actionTokens = action.split(" ");
     return {
+        onClick: (event) => {
+            onClick(actionTokens[0], actionTokens.slice(1).join(" "));
+        },
         update: (event) => {
             update(event.target.value);
         }
