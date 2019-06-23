@@ -1,4 +1,4 @@
-const Interpreter = require("../project-template/src/main/resources/scripts/interpreter");
+const Interpreter = require("../project-template/src/main/resources/scripts/interpreter").default;
 describe("embedded interpreter", () => {
     it("can return a number literal", () => {
         const expression = "return 1";
@@ -6,7 +6,7 @@ describe("embedded interpreter", () => {
     });
     it("can return a string literal", () => {
         const expression = "return 'string'";
-        expect(Interpreter.interpret(expression, {})).toEqual("'string'");
+        expect(Interpreter.interpret(expression, {})).toEqual("string");
     });
     it("can return the result of addition", () => {
         const expression = "return 1+1";

@@ -344,7 +344,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("number")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"foo-number\" label=\"Number\" type=\"number\" value={props.boundValue} onChange={props.update} />"));
+            expect(generated).toEqual(expect.stringContaining("<Textfield id=\"foo-number\" label=\"Number\" type=\"number\" value={props.value} onChange={props.update} />"));
         });
     });
     describe("label components", () => {
@@ -366,7 +366,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("label")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<p>foo</p>"));
+            expect(generated).toEqual(expect.stringContaining("<p>{interpreter.interpret(props.value, props.context) || \"undefined\"}</p>"));
         });
     });
     describe("checkbox components", () => {
@@ -388,7 +388,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("checkbox")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" checked={props.boundValue} onChange={props.update} />"));
+            expect(generated).toEqual(expect.stringContaining("<Checkbox id=\"foo-checkbox\" checked={props.value} onChange={props.update} />"));
         });
     });
 });

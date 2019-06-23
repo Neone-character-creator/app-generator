@@ -4,12 +4,14 @@ exports[`component generator module throws an error if views are undefined 1`] =
 
 exports[`component generator module writes an app component 1`] = `
 "import React from \\"react\\";
-import { connect } from \\"react-redux\\";
+import * as _ from \\"lodash\\";
+import models from \\"../models\\";
+import interpreter from \\"../interpreter\\";
+import OneView from \\"./OneView\\"
 import { Tab, Tabs, TabList, TabPanel } from \\"react-tabs\\";
 import 'react-tabs/style/react-tabs.css';
-import OneView from \\"./OneView\\"
 
-const Component = () => (
+const Component = (props) => (
     <div id=\\"test-app\\">
     <Tabs>
         <TabList>
@@ -18,26 +20,35 @@ One
 </Tab>
         </TabList>
         <TabPanel>
-        <OneView/>
-        </TabPanel>
+<OneView/>
+</TabPanel>
     </Tabs>
     </div>
-);
-
+)
 export default Component;"
 `;
 
 exports[`component generator module writes an app component 2`] = `
 "import React from \\"react\\";
-import { connect } from \\"react-redux\\";
+import * as _ from \\"lodash\\";
+import models from \\"../models\\";
+import interpreter from \\"../interpreter\\";
+import Checkbox from \\"@material-ui/core/Checkbox\\";
+import Textfield from \\"@material-ui/core/TextField\\";
+import FormControl from \\"@material-ui/core/FormControl\\";
+import InputLabel from \\"@material-ui/core/InputLabel\\";
+import Select from \\"@material-ui/core/Select\\";
+import MenuItem from \\"@material-ui/core/MenuItem\\";
+import List from \\"@material-ui/core/List\\";
+import ListItem from \\"@material-ui/core/ListItem\\";
 import Grid from \\"@material-ui/core/Grid\\";
+import Button from \\"@material-ui/core/Button\\";
 import FooTextfield from './FooTextfield';
 
 const Component = () => (
     <div id=\\"one-view\\">
-<FooTextfield />
+        <FooTextfield />
     </div>
-);
-
+)
 export default Component;"
 `;

@@ -20,7 +20,7 @@ describe("checkbox", () => {
             checkboxSchema(config).validateSync(config);
         } catch(e) {
             expect(e.errors.length).toEqual(1);
-            expect(e.errors[0]).toBe("type must be one of the following values: checkbox, container, label, number, select, textfield");
+            expect(e.errors[0]).toBe("type must be one of the following values: checkbox, container, label, number, select, textfield, list, button");
         }
     });
     it("may not have unknown properties", () => {

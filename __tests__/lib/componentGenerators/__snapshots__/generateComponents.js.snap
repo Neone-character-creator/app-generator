@@ -2,205 +2,170 @@
 
 exports[`component generation module select components generates the component 1`] = `
 "import React from \\"react\\";
-import { connect } from \\"react-redux\\";
+import * as _ from \\"lodash\\";
+import models from \\"../models\\";
+import interpreter from \\"../interpreter\\";
+import Checkbox from \\"@material-ui/core/Checkbox\\";
 import Textfield from \\"@material-ui/core/TextField\\";
 import FormControl from \\"@material-ui/core/FormControl\\";
 import InputLabel from \\"@material-ui/core/InputLabel\\";
 import Select from \\"@material-ui/core/Select\\";
 import MenuItem from \\"@material-ui/core/MenuItem\\";
-import * as _ from \\"lodash\\";
-
-import models from \\"../models\\";
+import List from \\"@material-ui/core/List\\";
+import ListItem from \\"@material-ui/core/ListItem\\";
+import Grid from \\"@material-ui/core/Grid\\";
+import Button from \\"@material-ui/core/Button\\";
 
 const Component = (props) => (
     <FormControl>
     <InputLabel id=\\"select-select-label\\">Label</InputLabel>
-    <Select id=\\"-select\\" children value={props.boundValue} onChange={props.update} children={props.options.map((item, index) => (<MenuItem value={item}>{_.get(item, itemTextPath)}</MenuItem>))} />
-    </FormControl>
-);
+    <Select id=\\"select-select\\" autoWidth value={props.value} onChange={props.update}
+    renderValue={(x)=>_.get(props.value, itemTextPath)}
+     children={props.options.map((item, index) => (<MenuItem value={item}>
+    {
+        [_.get(item, itemTextPath, item)].map(prop => {
+        if (typeof prop === \\"function\\") {
+            return prop.bind(prop)();
+        }
+        return prop;
+        })[0]
 
-// The path of the bound portion of the state.
-const boundPropertyPath = \\"undefined\\";
-// The path of the select values.
-const boundValuesPath = \\"0,1,2\\";
+    }
+    </MenuItem>))} />
+    </FormControl>
+)
+
 const itemTextPath = \\"undefined\\";
-const connected = connect((state) => {
-    const boundValue = _.get(state, boundPropertyPath, \\"\\");
-    const options = determineValues(boundValuesPath);
+export default Component;"
+`;
+
+exports[`component generation module select components throws an error if values is undefined 1`] = `"The property items.values is required, but was not found in the component configuration: {\\"type\\":\\"select\\",\\"label\\":\\"Label\\",\\"items\\":{},\\"componentName\\":\\"select\\",\\"readOnly\\":false}"`;
+
+exports[`component generation module textfield components can be bound to a model property 1`] = `
+"import React from \\"react\\";
+import * as _ from \\"lodash\\";
+import models from \\"../models\\";
+import interpreter from \\"../interpreter\\";
+import Checkbox from \\"@material-ui/core/Checkbox\\";
+import Textfield from \\"@material-ui/core/TextField\\";
+import FormControl from \\"@material-ui/core/FormControl\\";
+import InputLabel from \\"@material-ui/core/InputLabel\\";
+import Select from \\"@material-ui/core/Select\\";
+import MenuItem from \\"@material-ui/core/MenuItem\\";
+import List from \\"@material-ui/core/List\\";
+import ListItem from \\"@material-ui/core/ListItem\\";
+import Grid from \\"@material-ui/core/Grid\\";
+import Button from \\"@material-ui/core/Button\\";
+import { connect } from \\"react-redux\\";
+const Component = (props) => (
+    <Textfield disabled={props.disabled} id=\\"textfield-textfield\\" fullWidth label=\\"Label\\" value={props.value} onChange={props.update} />
+)
+const boundProperty = \\"model.string\\"; // The expression used to determine the value of binding.
+const readOnly = false; // If this component only calculates its value, or is bound and can update it.
+const valueExpression = \\"\\";
+const action = \\"undefined\\";
+const connected = connect((state, ownProps) => {
+    const context = {
+        $state: state,
+        $model: models
+    }
+    const value = (()=>{
+        return !readOnly ? _.get(context, boundProperty) :
+            interpreter.interpret(boundProperty, context);
+    })();
+    const options = (()=>{
+        return interpreter.interpret(valueExpression, contex);
+        })() || [];
     return {
         options,
-        boundValue
+        context,
+        value: value !== undefined || null ? value : \\"\\"
     };
 }, dispatch => {
-    const update = _.debounce((value) => {
-        dispatch({ type: \\"SET\\", path: boundPropertyPath, value: value});
-    });
+    const update = readOnly ? () => {} :
+        _.debounce((value) => {
+            dispatch({ type: \\"SET\\", path: boundProperty, value: value});
+        });
+    const onClick = readOnly || !action ? () => {} :
+        (action, value) => {
+            dispatch({type: action, value});
+        };
+    const actionTokens = action.split(\\" \\");
     return {
+        onClick: (event) => {
+            onClick(actionTokens[0], actionTokens.slice(1).join(\\" \\"));
+        },
         update: (event) => {
             update(event.target.value);
         }
     };
 })(Component);
 
-function determineValues(expression){
+function determineValues(expression, state, value){
+    if (!expression){
+        return [];
+    }
     const expressionTokens = expression.split(\\".\\");
     switch(expressionTokens[0]){
         case \\"model\\":
             return _.get(models, expressionTokens.slice(1).join(\\".\\"));
+        case \\"character\\":
+            return _.get(state, expression, []);
     }
 }
 
 export default connected;"
 `;
 
-exports[`component generation module select components throws an error if values is undefined 1`] = `"The property items.values is required, but was not found in the component configuration: {\\"type\\":\\"select\\",\\"label\\":\\"Label\\",\\"items\\":{},\\"componentName\\":\\"select\\"}"`;
-
-exports[`component generation module textfield components can be bound to a model property 1`] = `
-"import React from \\"react\\";
-import { connect } from \\"react-redux\\";
-import Textfield from \\"@material-ui/core/TextField\\";
-import * as _ from \\"lodash\\";
-
-
-const Component = (props) => (
-    <Textfield disabled={props.disabled} id=\\"textfield-textfield\\" fullWidth label=\\"Label\\" value={props.boundValue} onChange={props.update} />
-);
-
-const boundExpression = \\"model.string\\";
-const readOnly = false;
-
-const connected = connect((state) => {
-    const processingResults = [boundExpression, boundExpression];
-    for(let i = 0;;i++){
-        processingResults[i % 2] = resolveExpression(processingResults[i % 2], state)
-        if (processingResults[0] === processingResults[1]){
-            break;
-        }
-    }
-    const boundValue = processingResults[0];
-    return {
-        boundValue,
-        disabled: readOnly
-    };
-}, dispatch => {
-    const update = _.debounce((value) => {
-        dispatch({ type: \\"SET\\", path: boundExpression, value: value});
-    });
-    return {
-        update: (event) => {
-            if(!readOnly) {
-                update(event.target.value);
-            }
-        }
-    };
-})(Component);
-
-export default connected;
-
-function resolveExpression(template, state){
-    return _.template(template)(state);
-}"
-`;
-
 exports[`component generation module textfield components can be bound to an action 1`] = `
 "import React from \\"react\\";
-import { connect } from \\"react-redux\\";
-import Textfield from \\"@material-ui/core/TextField\\";
 import * as _ from \\"lodash\\";
-
+import models from \\"../models\\";
+import interpreter from \\"../interpreter\\";
+import Checkbox from \\"@material-ui/core/Checkbox\\";
+import Textfield from \\"@material-ui/core/TextField\\";
+import FormControl from \\"@material-ui/core/FormControl\\";
+import InputLabel from \\"@material-ui/core/InputLabel\\";
+import Select from \\"@material-ui/core/Select\\";
+import MenuItem from \\"@material-ui/core/MenuItem\\";
+import List from \\"@material-ui/core/List\\";
+import ListItem from \\"@material-ui/core/ListItem\\";
+import Grid from \\"@material-ui/core/Grid\\";
+import Button from \\"@material-ui/core/Button\\";
 
 const Component = (props) => (
-    <Textfield disabled={props.disabled} id=\\"textfield-textfield\\" fullWidth label=\\"Label\\" value={props.boundValue} onChange={props.update} />
-);
-
-const boundExpression = \\"\\";
-const readOnly = false;
-
-const connected = connect((state) => {
-    const processingResults = [boundExpression, boundExpression];
-    for(let i = 0;;i++){
-        processingResults[i % 2] = resolveExpression(processingResults[i % 2], state)
-        if (processingResults[0] === processingResults[1]){
-            break;
-        }
-    }
-    const boundValue = processingResults[0];
-    return {
-        boundValue,
-        disabled: readOnly
-    };
-}, dispatch => {
-    const update = _.debounce((value) => {
-        dispatch({ type: \\"SET\\", path: boundExpression, value: value});
-    });
-    return {
-        update: (event) => {
-            if(!readOnly) {
-                update(event.target.value);
-            }
-        }
-    };
-})(Component);
-
-export default connected;
-
-function resolveExpression(template, state){
-    return _.template(template)(state);
-}"
+    <Textfield disabled={props.disabled} id=\\"textfield-textfield\\" fullWidth label=\\"Label\\" value={props.value} onChange={props.update} />
+)
+export default Component;"
 `;
 
 exports[`component generation module textfield components generates the component 1`] = `
 "import React from \\"react\\";
-import { connect } from \\"react-redux\\";
-import Textfield from \\"@material-ui/core/TextField\\";
 import * as _ from \\"lodash\\";
-
+import models from \\"../models\\";
+import interpreter from \\"../interpreter\\";
+import Checkbox from \\"@material-ui/core/Checkbox\\";
+import Textfield from \\"@material-ui/core/TextField\\";
+import FormControl from \\"@material-ui/core/FormControl\\";
+import InputLabel from \\"@material-ui/core/InputLabel\\";
+import Select from \\"@material-ui/core/Select\\";
+import MenuItem from \\"@material-ui/core/MenuItem\\";
+import List from \\"@material-ui/core/List\\";
+import ListItem from \\"@material-ui/core/ListItem\\";
+import Grid from \\"@material-ui/core/Grid\\";
+import Button from \\"@material-ui/core/Button\\";
 
 const Component = (props) => (
-    <Textfield disabled={props.disabled} id=\\"textfield-textfield\\" fullWidth label=\\"Label\\" value={props.boundValue} onChange={props.update} />
-);
-
-const boundExpression = \\"\\";
-const readOnly = false;
-
-const connected = connect((state) => {
-    const processingResults = [boundExpression, boundExpression];
-    for(let i = 0;;i++){
-        processingResults[i % 2] = resolveExpression(processingResults[i % 2], state)
-        if (processingResults[0] === processingResults[1]){
-            break;
-        }
-    }
-    const boundValue = processingResults[0];
-    return {
-        boundValue,
-        disabled: readOnly
-    };
-}, dispatch => {
-    const update = _.debounce((value) => {
-        dispatch({ type: \\"SET\\", path: boundExpression, value: value});
-    });
-    return {
-        update: (event) => {
-            if(!readOnly) {
-                update(event.target.value);
-            }
-        }
-    };
-})(Component);
-
-export default connected;
-
-function resolveExpression(template, state){
-    return _.template(template)(state);
-}"
+    <Textfield disabled={props.disabled} id=\\"textfield-textfield\\" fullWidth label=\\"Label\\" value={props.value} onChange={props.update} />
+)
+export default Component;"
 `;
 
-exports[`component generation module throws an error when a component has a child of an invalid type 1`] = `"Import for type bad not supported."`;
+exports[`component generation module throws an error when a component has a child of an invalid type 1`] = `"Import for type bad not supported"`;
 
-exports[`component generation module throws an error when a component has a key but is undefined 1`] = `"The component configuration type of undefined and the generator configuration type of container are different for components parent."`;
+exports[`component generation module throws an error when a component has a key but is undefined 1`] = `"Cannot read property 'value' of undefined"`;
 
-exports[`component generation module throws an error when a view has a child of an invalid type 1`] = `"Import for type notAValidType not supported."`;
+exports[`component generation module throws an error when a view has a child of an invalid type 1`] = `"Import for type notAValidType not supported"`;
 
 exports[`component generation module throws an error when an object is given 1`] = `"Component type must be a string, was object"`;
 

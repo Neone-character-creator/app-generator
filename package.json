@@ -37,12 +37,17 @@
     "yup": "^0.26.10"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "antlr4": "4.7.2",
+    "babel-jest": "^24.8.0",
+    "babel-polyfill": "^6.26.0",
     "jest": "^24.1.0",
     "jest-expect-message": "^1.0.2",
     "prettier": "^1.16.4",
     "react-test-renderer": "^16.8.4",
-    "sinon": "^7.2.7",
-    "antlr4": "4.7.2"
+    "sinon": "^7.2.7"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -51,6 +56,9 @@
     "testResultsProcessor": "jest-sonar-reporter",
     "setupFilesAfterEnv": [
       "jest-expect-message"
-    ]
+    ],
+    "moduleNameMapper": {
+      "../rules.json": "<rootDir>/__tests__/rules.json"
+    }
   }
 }

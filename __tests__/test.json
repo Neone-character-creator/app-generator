@@ -1322,7 +1322,7 @@
                 "type": "select",
                 "bind": "$state.selectedAdvancement",
                 "items": {
-                  "text": "option",
+                  "text": "return $this.option",
                   "values": "return $state.availableAdvancements.skill.options"
                 }
               }
@@ -1343,11 +1343,34 @@
                 "type": "select",
                 "bind": "$state.selectedAdvancement",
                 "items": {
-                  "text": "option",
+                  "text": "return $this.option",
                   "values": "return $state.availableAdvancements.talent.options"
                 }
               }
             ]
+          },
+          {
+            "name": "purchasedAdvancements",
+            "type": "list",
+            "bind": "$state.character.advancements",
+            "items": {
+              "child": {
+                "name": "singlePurchasedAdvancement",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [
+                  {
+                    "name": "singlePurchasedAdvancementLabel",
+                    "type": "label",
+                    "text": "return $this.description"
+                  },
+                  {
+                    "name": "singlePurchasedAdvancementRemoveButton",
+                    "type": "button"
+                  }
+                ]
+              }
+            }
           }
         ]
       }
@@ -1379,7 +1402,7 @@
         "strain": "strainThreshold",
         "characteristics": "characteristics",
         "skills": "skills",
-        "advancements": "[advancements]"
+        "advancements": "[advancement]"
       }
     },
     "skills": {
