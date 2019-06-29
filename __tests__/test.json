@@ -2,1152 +2,956 @@
   "appName": "test",
   "views": {
     "name": "app",
-    "children": [
-      {
-        "name": "Summary",
-        "type": "view",
+    "children": [{
+      "name": "Summary",
+      "type": "view",
+      "direction": "vertical",
+      "children": [{
+        "name": "biography",
+        "type": "container",
         "direction": "vertical",
-        "children": [
+        "children": [{
+          "name": "name",
+          "type": "textfield",
+          "label": "Character Name",
+          "bind": "$state.character.name"
+        },
           {
-            "name": "biography",
-            "type": "container",
-            "direction": "vertical",
-            "children": [
-              {
-                "name": "name",
-                "type": "textfield",
-                "label": "Character Name",
-                "bind": "$state.character.name"
-              },
-              {
-                "name": "species",
-                "type": "textfield",
-                "label": "Species",
-                "value": "return $state.character.species.name"
-              },
-              {
-                "name": "career",
-                "type": "textfield",
-                "label": "Career",
-                "value": "return $state.character.career.name"
-              },
-              {
-                "name": "specializations",
-                "type": "textfield",
-                "label": "Specialization Trees",
-                "value": "return $state.character.specializations.map(s => s.name).join(', ')"
-              }
-            ]
+            "name": "species",
+            "type": "textfield",
+            "label": "Species",
+            "value": "return $state.character.species.name"
           },
           {
-            "name": "combat",
-            "type": "container",
-            "direction": "horizontal",
-            "children": [
-              {
-                "name": "soak",
-                "type": "number",
-                "label": "Soak Value",
-                "bind": "$state.character.soak"
-              },
-              {
-                "name": "wounds",
-                "type": "container",
-                "direction": "horizontal",
-                "label": "Wounds",
-                "children": [
-                  {
-                    "name": "thresholdWounds",
-                    "type": "number",
-                    "label": "Threshold Wounds",
-                    "value": "return  $state.character.wounds.base + $state.character.characteristics[$state.character.wounds.characteristic]"
-                  }
-                ]
-              },
-              {
-                "name": "strain",
-                "type": "container",
-                "direction": "horizontal",
-                "label": "Strain",
-                "children": [
-                  {
-                    "name": "strainThreshold",
-                    "type": "number",
-                    "label": "Threshold Strain",
-                    "value": "return  $state.character.strain.base + $state.character.characteristics[$state.character.strain.characteristic]"
-                  }
-                ]
-              },
-              {
-                "name": "defense",
-                "type": "container",
-                "direction": "horizontal",
-                "children": [
-                  {
-                    "name": "rangedDefense",
-                    "type": "number",
-                    "label": "Ranged Defense",
-                    "value": "return $state.character.defense.ranged"
-                  },
-                  {
-                    "name": "meleeDefense",
-                    "type": "number",
-                    "label": "Melee Defense",
-                    "value": "return $state.character.defense.melee"
-                  }
-                ]
-              }
-            ]
+            "name": "career",
+            "type": "textfield",
+            "label": "Career",
+            "value": "return $state.character.career.name"
           },
           {
-            "name": "characteristics",
-            "type": "container",
-            "direction": "horizontal",
-            "children": [
-              {
-                "name": "BrawnCharacteristics",
-                "type": "number",
-                "label": "Brawn",
-                "value": "return $state.character.characteristics.brawn "
-              },
-              {
-                "name": "AgilityCharacteristics",
-                "type": "number",
-                "label": "Agility",
-                "value": "return $state.character.characteristics.agility "
-              },
-              {
-                "name": "IntellectCharacteristics",
-                "type": "number",
-                "label": "Intellect",
-                "value": "return $state.character.characteristics.intellect "
-              },
-              {
-                "name": "CunningCharacteristics",
-                "type": "number",
-                "label": "Cunning",
-                "value": "return $state.character.characteristics.cunning "
-              },
-              {
-                "name": "WillpowerCharacteristics",
-                "type": "number",
-                "label": "Willpower",
-                "value": "return $state.character.characteristics.willpower "
-              },
-              {
-                "name": "PresenceCharacteristics",
-                "type": "number",
-                "label": "Presence",
-                "value": "return $state.character.characteristics.presence "
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "container",
-            "direction": "horizontal",
-            "label": "Skills",
-            "children": [
-              {
-                "name": "generalSkills",
-                "type": "container",
-                "direction": "vertical",
-                "label": "General Skills",
-                "children": [
-                  {
-                    "name": "astrogation",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "astrogationLabel",
-                        "type": "label",
-                        "text": "Astrogation"
-                      },
-                      {
-                        "name": "astrogationCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.astrogation.isCareerSkill"
-                      },
-                      {
-                        "name": "astrogationRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.astrogation.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "athletics",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "athleticsLabel",
-                        "type": "label",
-                        "text": "Athletics"
-                      },
-                      {
-                        "name": "athleticsCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.athletics.isCareerSkill"
-                      },
-                      {
-                        "name": "athleticsRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.athletics.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "charm",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "charmLabel",
-                        "type": "label",
-                        "text": "Charm"
-                      },
-                      {
-                        "name": "charmCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.charm.isCareerSkill"
-                      },
-                      {
-                        "name": "charmRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.charm.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "coercion",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "coercionLabel",
-                        "type": "label",
-                        "text": "Coercion"
-                      },
-                      {
-                        "name": "coercionCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.coercion.isCareerSkill"
-                      },
-                      {
-                        "name": "coercionRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.coercion.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "computers",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "computersLabel",
-                        "type": "label",
-                        "text": "Computers"
-                      },
-                      {
-                        "name": "computersCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.computers.isCareerSkill"
-                      },
-                      {
-                        "name": "computersRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.computers.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "cool",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "coolLabel",
-                        "type": "label",
-                        "text": "Cool"
-                      },
-                      {
-                        "name": "coolCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.cool.isCareerSkill"
-                      },
-                      {
-                        "name": "coolRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.cool.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "coordination",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "coordinationLabel",
-                        "type": "label",
-                        "text": "Coordination"
-                      },
-                      {
-                        "name": "coordinationCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.coordination.isCareerSkill"
-                      },
-                      {
-                        "name": "coordinationRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.coordination.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "deception",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "deceptionLabel",
-                        "type": "label",
-                        "text": "Deception"
-                      },
-                      {
-                        "name": "deceptionCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.deception.isCareerSkill"
-                      },
-                      {
-                        "name": "deceptionRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.deception.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "discipline",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "disciplineLabel",
-                        "type": "label",
-                        "text": "Discipline"
-                      },
-                      {
-                        "name": "disciplineCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.discipline.isCareerSkill"
-                      },
-                      {
-                        "name": "disciplineRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.discipline.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "leadership",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "leadershipLabel",
-                        "type": "label",
-                        "text": "Leadership"
-                      },
-                      {
-                        "name": "leadershipCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.leadership.isCareerSkill"
-                      },
-                      {
-                        "name": "leadershipRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.leadership.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "mechanics",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "mechanicsLabel",
-                        "type": "label",
-                        "text": "Mechanics"
-                      },
-                      {
-                        "name": "mechanicsCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.mechanics.isCareerSkill"
-                      },
-                      {
-                        "name": "mechanicsRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.mechanics.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "medicine",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "medicineLabel",
-                        "type": "label",
-                        "text": "Medicine"
-                      },
-                      {
-                        "name": "medicineCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.medicine.isCareerSkill"
-                      },
-                      {
-                        "name": "medicineRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.medicine.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "negotiation",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "negotiationLabel",
-                        "type": "label",
-                        "text": "Negotiation"
-                      },
-                      {
-                        "name": "negotiationCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.negotiation.isCareerSkill"
-                      },
-                      {
-                        "name": "negotiationRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.negotiation.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "perception",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "perceptionLabel",
-                        "type": "label",
-                        "text": "Perception"
-                      },
-                      {
-                        "name": "perceptionCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.perception.isCareerSkill"
-                      },
-                      {
-                        "name": "perceptionRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.perception.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "pilotingPlanetary",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "pilotingPlanetaryLabel",
-                        "type": "label",
-                        "text": "PilotingPlanetary"
-                      },
-                      {
-                        "name": "pilotingPlanetaryCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.pilotingPlanetary.isCareerSkill"
-                      },
-                      {
-                        "name": "pilotingPlanetaryRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.pilotingPlanetary.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "pilotingSpace",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "pilotingSpaceLabel",
-                        "type": "label",
-                        "text": "PilotingSpace"
-                      },
-                      {
-                        "name": "pilotingSpaceCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.pilotingSpace.isCareerSkill"
-                      },
-                      {
-                        "name": "pilotingSpaceRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.pilotingSpace.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "resilience",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "resilienceLabel",
-                        "type": "label",
-                        "text": "Resilience"
-                      },
-                      {
-                        "name": "resilienceCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.resilience.isCareerSkill"
-                      },
-                      {
-                        "name": "resilienceRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.resilience.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "skulduggery",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "skulduggeryLabel",
-                        "type": "label",
-                        "text": "Skulduggery"
-                      },
-                      {
-                        "name": "skulduggeryCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.skulduggery.isCareerSkill"
-                      },
-                      {
-                        "name": "skulduggeryRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.skulduggery.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "stealth",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "stealthLabel",
-                        "type": "label",
-                        "text": "Stealth"
-                      },
-                      {
-                        "name": "stealthCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.stealth.isCareerSkill"
-                      },
-                      {
-                        "name": "stealthRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.stealth.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "streetwise",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "streetwiseLabel",
-                        "type": "label",
-                        "text": "Streetwise"
-                      },
-                      {
-                        "name": "streetwiseCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.streetwise.isCareerSkill"
-                      },
-                      {
-                        "name": "streetwiseRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.streetwise.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "survival",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "survivalLabel",
-                        "type": "label",
-                        "text": "Survival"
-                      },
-                      {
-                        "name": "survivalCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.survival.isCareerSkill"
-                      },
-                      {
-                        "name": "survivalRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.survival.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "vigilance",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "vigilanceLabel",
-                        "type": "label",
-                        "text": "Vigilance"
-                      },
-                      {
-                        "name": "vigilanceCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.vigilance.isCareerSkill"
-                      },
-                      {
-                        "name": "vigilanceRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.vigilance.rank"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "name": "combatSkills",
-                "type": "container",
-                "direction": "vertical",
-                "children": [
-                  {
-                    "name": "brawl",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "brawlLabel",
-                        "type": "label",
-                        "text": "Brawl"
-                      },
-                      {
-                        "name": "brawlCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.brawl.isCareerSkill"
-                      },
-                      {
-                        "name": "brawlRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.brawl.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "gunnery",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "gunneryLabel",
-                        "type": "label",
-                        "text": "Gunnery"
-                      },
-                      {
-                        "name": "gunneryCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.gunnery.isCareerSkill"
-                      },
-                      {
-                        "name": "gunneryRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.gunnery.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "melee",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "meleeLabel",
-                        "type": "label",
-                        "text": "Melee"
-                      },
-                      {
-                        "name": "meleeCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.melee.isCareerSkill"
-                      },
-                      {
-                        "name": "meleeRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.melee.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "rangedLight",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "rangedLightLabel",
-                        "type": "label",
-                        "text": "Ranged - Light"
-                      },
-                      {
-                        "name": "rangedLightCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.rangedLight.isCareerSkill"
-                      },
-                      {
-                        "name": "rangedLightRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.rangedLight.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "rangedHeavy",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "rangedHeavyLabel",
-                        "type": "label",
-                        "text": "Ranged - Heavy"
-                      },
-                      {
-                        "name": "rangedHeavyCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.rangedHeavy.isCareerSkill"
-                      },
-                      {
-                        "name": "rangedHeavyRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.rangedHeavy.rank"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "name": "knowledgeSkills",
-                "type": "container",
-                "direction": "vertical",
-                "label": "Knowledge Skills",
-                "children": [
-                  {
-                    "name": "coreWorlds",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "coreWorldsLabel",
-                        "type": "label",
-                        "text": "CoreWorlds"
-                      },
-                      {
-                        "name": "coreWorldsCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.coreWorlds.isCareerSkill"
-                      },
-                      {
-                        "name": "coreWorldsRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.coreWorlds.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "education",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "educationLabel",
-                        "type": "label",
-                        "text": "Education"
-                      },
-                      {
-                        "name": "educationCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.education.isCareerSkill"
-                      },
-                      {
-                        "name": "educationRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.education.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "lore",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "loreLabel",
-                        "type": "label",
-                        "text": "Lore"
-                      },
-                      {
-                        "name": "loreCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.lore.isCareerSkill"
-                      },
-                      {
-                        "name": "loreRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.lore.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "outerRim",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "outerRimLabel",
-                        "type": "label",
-                        "text": "OuterRim"
-                      },
-                      {
-                        "name": "outerRimCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.outerRim.isCareerSkill"
-                      },
-                      {
-                        "name": "outerRimRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.outerRim.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "underworld",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "underworldLabel",
-                        "type": "label",
-                        "text": "Underworld"
-                      },
-                      {
-                        "name": "underworldCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.underworld.isCareerSkill"
-                      },
-                      {
-                        "name": "underworldRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.underworld.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "xenology",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "xenologyLabel",
-                        "type": "label",
-                        "text": "Xenology"
-                      },
-                      {
-                        "name": "xenologyCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.xenology.isCareerSkill"
-                      },
-                      {
-                        "name": "xenologyRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.xenology.rank"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "other",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "otherLabel",
-                        "type": "label",
-                        "text": "Other"
-                      },
-                      {
-                        "name": "otherCareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.other.isCareerSkill"
-                      },
-                      {
-                        "name": "otherRating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.other.rank"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "name": "customSkills",
-                "type": "container",
-                "direction": "vertical",
-                "children": [
-                  {
-                    "name": "custom1",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "custom1Label",
-                        "type": "label",
-                        "text": "Custom1"
-                      },
-                      {
-                        "name": "custom1CareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.custom1.isCareerSkill"
-                      },
-                      {
-                        "name": "custom1Rating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.custom1"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "custom2",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "custom2Label",
-                        "type": "label",
-                        "text": "Custom2"
-                      },
-                      {
-                        "name": "custom2CareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.custom2.isCareerSkill"
-                      },
-                      {
-                        "name": "custom2Rating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.custom2"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "custom3",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "custom3Label",
-                        "type": "label",
-                        "text": "Custom3"
-                      },
-                      {
-                        "name": "custom3CareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.custom3.isCareerSkill"
-                      },
-                      {
-                        "name": "custom3Rating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.custom3"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "custom4",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "custom4Label",
-                        "type": "label",
-                        "text": "Custom4"
-                      },
-                      {
-                        "name": "custom4CareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.custom4.isCareerSkill"
-                      },
-                      {
-                        "name": "custom4Rating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.custom4"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "custom5",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "custom5Label",
-                        "type": "label",
-                        "text": "Custom5"
-                      },
-                      {
-                        "name": "custom5CareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.custom5.isCareerSkill"
-                      },
-                      {
-                        "name": "custom5Rating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.custom5"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "custom6",
-                    "type": "container",
-                    "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "custom6Label",
-                        "type": "label",
-                        "text": "Custom6"
-                      },
-                      {
-                        "name": "custom6CareerFlag",
-                        "type": "checkbox",
-                        "bind": "$state.character.skills.custom6.isCareerSkill"
-                      },
-                      {
-                        "name": "custom6Rating",
-                        "label": "Rating",
-                        "type": "number",
-                        "bind": "$state.character.skills.custom6"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "experience",
-            "type": "container",
-            "direction": "horizontal",
-            "label": "Experience",
-            "children": [
-              {
-                "name": "availableExperience",
-                "type": "textfield",
-                "label": "Available Experience",
-                "value": "return $state.character.availableExperience"
-              },
-              {
-                "name": "totalExperience",
-                "type": "textfield",
-                "label": "Total Experience",
-                "value": "return $state.character.totalExperience"
-              }
-            ]
+            "name": "specializations",
+            "type": "textfield",
+            "label": "Specialization Trees",
+            "value": "return $state.character.specializations.map(s => s.name).join(', ')"
           }
         ]
       },
+        {
+          "name": "combat",
+          "type": "container",
+          "direction": "horizontal",
+          "children": [{
+            "name": "soak",
+            "type": "number",
+            "label": "Soak Value",
+            "bind": "$state.character.soak"
+          },
+            {
+              "name": "wounds",
+              "type": "container",
+              "direction": "horizontal",
+              "label": "Wounds",
+              "children": [{
+                "name": "thresholdWounds",
+                "type": "number",
+                "label": "Threshold Wounds",
+                "value": "return  $state.character.wounds.base + $state.character.characteristics[$state.character.wounds.characteristic]"
+              }]
+            },
+            {
+              "name": "strain",
+              "type": "container",
+              "direction": "horizontal",
+              "label": "Strain",
+              "children": [{
+                "name": "strainThreshold",
+                "type": "number",
+                "label": "Threshold Strain",
+                "value": "return  $state.character.strain.base + $state.character.characteristics[$state.character.strain.characteristic]"
+              }]
+            },
+            {
+              "name": "defense",
+              "type": "container",
+              "direction": "horizontal",
+              "children": [{
+                "name": "rangedDefense",
+                "type": "number",
+                "label": "Ranged Defense",
+                "value": "return $state.character.defense.ranged"
+              },
+                {
+                  "name": "meleeDefense",
+                  "type": "number",
+                  "label": "Melee Defense",
+                  "value": "return $state.character.defense.melee"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "characteristics",
+          "type": "container",
+          "direction": "horizontal",
+          "children": [{
+            "name": "BrawnCharacteristics",
+            "type": "number",
+            "label": "Brawn",
+            "value": "return $state.character.characteristics.brawn "
+          },
+            {
+              "name": "AgilityCharacteristics",
+              "type": "number",
+              "label": "Agility",
+              "value": "return $state.character.characteristics.agility "
+            },
+            {
+              "name": "IntellectCharacteristics",
+              "type": "number",
+              "label": "Intellect",
+              "value": "return $state.character.characteristics.intellect "
+            },
+            {
+              "name": "CunningCharacteristics",
+              "type": "number",
+              "label": "Cunning",
+              "value": "return $state.character.characteristics.cunning "
+            },
+            {
+              "name": "WillpowerCharacteristics",
+              "type": "number",
+              "label": "Willpower",
+              "value": "return $state.character.characteristics.willpower "
+            },
+            {
+              "name": "PresenceCharacteristics",
+              "type": "number",
+              "label": "Presence",
+              "value": "return $state.character.characteristics.presence "
+            }
+          ]
+        },
+        {
+          "name": "skills",
+          "type": "container",
+          "direction": "horizontal",
+          "label": "Skills",
+          "children": [{
+            "name": "generalSkills",
+            "type": "container",
+            "direction": "vertical",
+            "label": "General Skills",
+            "children": [{
+              "name": "astrogation",
+              "type": "container",
+              "direction": "horizontal",
+              "children": [{
+                "name": "astrogationLabel",
+                "type": "label",
+                "text": "return 'Astrogation'"
+              },
+                {
+                  "name": "astrogationCareerFlag",
+                  "type": "checkbox",
+                  "bind": "$state.character.skills.astrogation.isCareerSkill"
+                },
+                {
+                  "name": "astrogationRating",
+                  "label": "Rating",
+                  "type": "number",
+                  "bind": "$state.character.skills.astrogation.rank"
+                }
+              ]
+            },
+              {
+                "name": "athletics",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "athleticsLabel",
+                  "type": "label",
+                  "text": "return 'Athletics'"
+                },
+                  {
+                    "name": "athleticsCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.athletics.isCareerSkill"
+                  },
+                  {
+                    "name": "athleticsRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.athletics.rank"
+                  }
+                ]
+              },
+              {
+                "name": "charm",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "charmLabel",
+                  "type": "label",
+                  "text": "return 'Charm'"
+                },
+                  {
+                    "name": "charmCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.charm.isCareerSkill"
+                  },
+                  {
+                    "name": "charmRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.charm.rank"
+                  }
+                ]
+              },
+              {
+                "name": "coercion",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "coercionLabel",
+                  "type": "label",
+                  "text": "return 'Coercion'"
+                },
+                  {
+                    "name": "coercionCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.coercion.isCareerSkill"
+                  },
+                  {
+                    "name": "coercionRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.coercion.rank"
+                  }
+                ]
+              },
+              {
+                "name": "computers",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "computersLabel",
+                  "type": "label",
+                  "text": "return 'Computers'"
+                },
+                  {
+                    "name": "computersCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.computers.isCareerSkill"
+                  },
+                  {
+                    "name": "computersRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.computers.rank"
+                  }
+                ]
+              },
+              {
+                "name": "cool",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "coolLabel",
+                  "type": "label",
+                  "text": "return 'Cool'"
+                },
+                  {
+                    "name": "coolCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.cool.isCareerSkill"
+                  },
+                  {
+                    "name": "coolRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.cool.rank"
+                  }
+                ]
+              },
+              {
+                "name": "coordination",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "coordinationLabel",
+                  "type": "label",
+                  "text": "return 'Coordination'"
+                },
+                  {
+                    "name": "coordinationCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.coordination.isCareerSkill"
+                  },
+                  {
+                    "name": "coordinationRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.coordination.rank"
+                  }
+                ]
+              },
+              {
+                "name": "deception",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "deceptionLabel",
+                  "type": "label",
+                  "text": "return 'Deception'"
+                },
+                  {
+                    "name": "deceptionCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.deception.isCareerSkill"
+                  },
+                  {
+                    "name": "deceptionRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.deception.rank"
+                  }
+                ]
+              },
+              {
+                "name": "discipline",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "disciplineLabel",
+                  "type": "label",
+                  "text": "return 'Discipline'"
+                },
+                  {
+                    "name": "disciplineCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.discipline.isCareerSkill"
+                  },
+                  {
+                    "name": "disciplineRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.discipline.rank"
+                  }
+                ]
+              },
+              {
+                "name": "leadership",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "leadershipLabel",
+                  "type": "label",
+                  "text": "return 'Leadership'"
+                },
+                  {
+                    "name": "leadershipCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.leadership.isCareerSkill"
+                  },
+                  {
+                    "name": "leadershipRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.leadership.rank"
+                  }
+                ]
+              },
+              {
+                "name": "mechanics",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "mechanicsLabel",
+                  "type": "label",
+                  "text": "return 'Mechanics'"
+                },
+                  {
+                    "name": "mechanicsCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.mechanics.isCareerSkill"
+                  },
+                  {
+                    "name": "mechanicsRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.mechanics.rank"
+                  }
+                ]
+              },
+              {
+                "name": "medicine",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "medicineLabel",
+                  "type": "label",
+                  "text": "return 'Medicine'"
+                },
+                  {
+                    "name": "medicineCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.medicine.isCareerSkill"
+                  },
+                  {
+                    "name": "medicineRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.medicine.rank"
+                  }
+                ]
+              },
+              {
+                "name": "negotiation",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "negotiationLabel",
+                  "type": "label",
+                  "text": "return 'Negotiation'"
+                },
+                  {
+                    "name": "negotiationCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.negotiation.isCareerSkill"
+                  },
+                  {
+                    "name": "negotiationRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.negotiation.rank"
+                  }
+                ]
+              },
+              {
+                "name": "perception",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "perceptionLabel",
+                  "type": "label",
+                  "text": "return 'Perception'"
+                },
+                  {
+                    "name": "perceptionCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.perception.isCareerSkill"
+                  },
+                  {
+                    "name": "perceptionRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.perception.rank"
+                  }
+                ]
+              },
+              {
+                "name": "pilotingPlanetary",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "pilotingPlanetaryLabel",
+                  "type": "label",
+                  "text": "return 'Piloting - Planetary'"
+                },
+                  {
+                    "name": "pilotingPlanetaryCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.pilotingPlanetary.isCareerSkill"
+                  },
+                  {
+                    "name": "pilotingPlanetaryRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.pilotingPlanetary.rank"
+                  }
+                ]
+              },
+              {
+                "name": "pilotingSpace",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "pilotingSpaceLabel",
+                  "type": "label",
+                  "text": "return 'Piloting - Space'"
+                },
+                  {
+                    "name": "pilotingSpaceCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.pilotingSpace.isCareerSkill"
+                  },
+                  {
+                    "name": "pilotingSpaceRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.pilotingSpace.rank"
+                  }
+                ]
+              },
+              {
+                "name": "resilience",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "resilienceLabel",
+                  "type": "label",
+                  "text": "return 'Resilience'"
+                },
+                  {
+                    "name": "resilienceCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.resilience.isCareerSkill"
+                  },
+                  {
+                    "name": "resilienceRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.resilience.rank"
+                  }
+                ]
+              },
+              {
+                "name": "skulduggery",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "skulduggeryLabel",
+                  "type": "label",
+                  "text": "return 'Skulduggery'"
+                },
+                  {
+                    "name": "skulduggeryCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.skulduggery.isCareerSkill"
+                  },
+                  {
+                    "name": "skulduggeryRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.skulduggery.rank"
+                  }
+                ]
+              },
+              {
+                "name": "stealth",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "stealthLabel",
+                  "type": "label",
+                  "text": "return 'Stealth'"
+                },
+                  {
+                    "name": "stealthCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.stealth.isCareerSkill"
+                  },
+                  {
+                    "name": "stealthRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.stealth.rank"
+                  }
+                ]
+              },
+              {
+                "name": "streetwise",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "streetwiseLabel",
+                  "type": "label",
+                  "text": "return 'Streetwise'"
+                },
+                  {
+                    "name": "streetwiseCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.streetwise.isCareerSkill"
+                  },
+                  {
+                    "name": "streetwiseRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.streetwise.rank"
+                  }
+                ]
+              },
+              {
+                "name": "survival",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "survivalLabel",
+                  "type": "label",
+                  "text": "return 'Survival'"
+                },
+                  {
+                    "name": "survivalCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.survival.isCareerSkill"
+                  },
+                  {
+                    "name": "survivalRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.survival.rank"
+                  }
+                ]
+              },
+              {
+                "name": "vigilance",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "vigilanceLabel",
+                  "type": "label",
+                  "text": "return 'Vigilance'"
+                },
+                  {
+                    "name": "vigilanceCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.vigilance.isCareerSkill"
+                  },
+                  {
+                    "name": "vigilanceRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.vigilance.rank"
+                  }
+                ]
+              }
+            ]
+          },
+            {
+              "name": "combatSkills",
+              "type": "container",
+              "direction": "vertical",
+              "children": [{
+                "name": "brawl",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "brawlLabel",
+                  "type": "label",
+                  "text": "return 'Brawl'"
+                },
+                  {
+                    "name": "brawlCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.brawl.isCareerSkill"
+                  },
+                  {
+                    "name": "brawlRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.brawl.rank"
+                  }
+                ]
+              },
+                {
+                  "name": "gunnery",
+                  "type": "container",
+                  "direction": "horizontal",
+                  "children": [{
+                    "name": "gunneryLabel",
+                    "type": "label",
+                    "text": "return 'Gunnery'"
+                  },
+                    {
+                      "name": "gunneryCareerFlag",
+                      "type": "checkbox",
+                      "bind": "$state.character.skills.gunnery.isCareerSkill"
+                    },
+                    {
+                      "name": "gunneryRating",
+                      "label": "Rating",
+                      "type": "number",
+                      "bind": "$state.character.skills.gunnery.rank"
+                    }
+                  ]
+                },
+                {
+                  "name": "melee",
+                  "type": "container",
+                  "direction": "horizontal",
+                  "children": [{
+                    "name": "meleeLabel",
+                    "type": "label",
+                    "text": "return 'Melee'"
+                  },
+                    {
+                      "name": "meleeCareerFlag",
+                      "type": "checkbox",
+                      "bind": "$state.character.skills.melee.isCareerSkill"
+                    },
+                    {
+                      "name": "meleeRating",
+                      "label": "Rating",
+                      "type": "number",
+                      "bind": "$state.character.skills.melee.rank"
+                    }
+                  ]
+                },
+                {
+                  "name": "rangedLight",
+                  "type": "container",
+                  "direction": "horizontal",
+                  "children": [{
+                    "name": "rangedLightLabel",
+                    "type": "label",
+                    "text": "return 'Ranged - Light'"
+                  },
+                    {
+                      "name": "rangedLightCareerFlag",
+                      "type": "checkbox",
+                      "bind": "$state.character.skills.rangedLight.isCareerSkill"
+                    },
+                    {
+                      "name": "rangedLightRating",
+                      "label": "Rating",
+                      "type": "number",
+                      "bind": "$state.character.skills.rangedLight.rank"
+                    }
+                  ]
+                },
+                {
+                  "name": "rangedHeavy",
+                  "type": "container",
+                  "direction": "horizontal",
+                  "children": [{
+                    "name": "rangedHeavyLabel",
+                    "type": "label",
+                    "text": "return 'Ranged - Heavy'"
+                  },
+                    {
+                      "name": "rangedHeavyCareerFlag",
+                      "type": "checkbox",
+                      "bind": "$state.character.skills.rangedHeavy.isCareerSkill"
+                    },
+                    {
+                      "name": "rangedHeavyRating",
+                      "label": "Rating",
+                      "type": "number",
+                      "bind": "$state.character.skills.rangedHeavy.rank"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "knowledgeSkills",
+              "type": "container",
+              "direction": "vertical",
+              "label": "Knowledge Skills",
+              "children": [{
+                "name": "coreWorlds",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [{
+                  "name": "coreWorldsLabel",
+                  "type": "label",
+                  "text": "return 'Core Worlds'"
+                },
+                  {
+                    "name": "coreWorldsCareerFlag",
+                    "type": "checkbox",
+                    "bind": "$state.character.skills.knowledgeCoreWorlds.isCareerSkill"
+                  },
+                  {
+                    "name": "coreWorldsRating",
+                    "label": "Rating",
+                    "type": "number",
+                    "bind": "$state.character.skills.knowledgeCoreWorlds.rank"
+                  }
+                ]
+              },
+                {
+                  "name": "education",
+                  "type": "container",
+                  "direction": "horizontal",
+                  "children": [{
+                    "name": "educationLabel",
+                    "type": "label",
+                    "text": "return 'Education'"
+                  },
+                    {
+                      "name": "educationCareerFlag",
+                      "type": "checkbox",
+                      "bind": "$state.character.skills.knowledgeEducation.isCareerSkill"
+                    },
+                    {
+                      "name": "educationRating",
+                      "label": "Rating",
+                      "type": "number",
+                      "bind": "$state.character.skills.knowledgeEducation.rank"
+                    }
+                  ]
+                },
+                {
+                  "name": "lore",
+                  "type": "container",
+                  "direction": "horizontal",
+                  "children": [{
+                    "name": "loreLabel",
+                    "type": "label",
+                    "text": "return 'Lore'"
+                  },
+                    {
+                      "name": "loreCareerFlag",
+                      "type": "checkbox",
+                      "bind": "$state.character.skills.knowledgeLore.isCareerSkill"
+                    },
+                    {
+                      "name": "loreRating",
+                      "label": "Rating",
+                      "type": "number",
+                      "bind": "$state.character.skills.knowledgeLore.rank"
+                    }
+                  ]
+                },
+                {
+                  "name": "outerRim",
+                  "type": "container",
+                  "direction": "horizontal",
+                  "children": [{
+                    "name": "outerRimLabel",
+                    "type": "label",
+                    "text": "return 'Outer Rim'"
+                  },
+                    {
+                      "name": "outerRimCareerFlag",
+                      "type": "checkbox",
+                      "bind": "$state.character.skills.knowledgeOuterRim.isCareerSkill"
+                    },
+                    {
+                      "name": "outerRimRating",
+                      "label": "Rating",
+                      "type": "number",
+                      "bind": "$state.character.skills.knowledgeOuterRim.rank"
+                    }
+                  ]
+                },
+                {
+                  "name": "underworld",
+                  "type": "container",
+                  "direction": "horizontal",
+                  "children": [{
+                    "name": "underworldLabel",
+                    "type": "label",
+                    "text": "return 'Underworld'"
+                  },
+                    {
+                      "name": "underworldCareerFlag",
+                      "type": "checkbox",
+                      "bind": "$state.character.skills.knowledgeUnderworld.isCareerSkill"
+                    },
+                    {
+                      "name": "underworldRating",
+                      "label": "Rating",
+                      "type": "number",
+                      "bind": "$state.character.skills.knowledgeUnderworld.rank"
+                    }
+                  ]
+                },
+                {
+                  "name": "xenology",
+                  "type": "container",
+                  "direction": "horizontal",
+                  "children": [{
+                    "name": "xenologyLabel",
+                    "type": "label",
+                    "text": "return 'Xenology'"
+                  },
+                    {
+                      "name": "xenologyCareerFlag",
+                      "type": "checkbox",
+                      "bind": "$state.character.skills.knowledgeXenology.isCareerSkill"
+                    },
+                    {
+                      "name": "xenologyRating",
+                      "label": "Rating",
+                      "type": "number",
+                      "bind": "$state.character.skills.knowledgeXenology.rank"
+                    }
+                  ]
+                },
+                {
+                  "name": "other",
+                  "type": "container",
+                  "direction": "horizontal",
+                  "children": [{
+                    "name": "otherLabel",
+                    "type": "label",
+                    "text": "return 'Other'"
+                  },
+                    {
+                      "name": "otherCareerFlag",
+                      "type": "checkbox",
+                      "bind": "$state.character.skills.knowledgeOther.isCareerSkill"
+                    },
+                    {
+                      "name": "otherRating",
+                      "label": "Rating",
+                      "type": "number",
+                      "bind": "$state.character.skills.knowledgeOther.rank"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "experience",
+          "type": "container",
+          "direction": "horizontal",
+          "label": "Experience",
+          "children": [{
+            "name": "availableExperience",
+            "type": "textfield",
+            "label": "Available Experience",
+            "value": "return $state.character.availableExperience"
+          },
+            {
+              "name": "totalExperience",
+              "type": "textfield",
+              "label": "Total Experience",
+              "value": "return $state.character.totalExperience"
+            }
+          ]
+        }
+      ]
+    },
       {
         "name": "Species",
         "type": "view",
         "direction": "vertical",
-        "children": [
-          {
-            "name": "speciesSelect",
-            "type": "select",
-            "bind": "$state.character.species",
-            "label": "Select Species",
-            "items": {
-              "text": "name",
-              "values": "return $model.species.values"
-            }
-          },
+        "children": [{
+          "name": "speciesSelect",
+          "type": "select",
+          "bind": "$state.character.species",
+          "label": "Select Species",
+          "items": {
+            "text": "name",
+            "values": "return $model.species.values"
+          }
+        },
           {
             "name": "speciesAbilitiesContainer",
             "direction": "horizontal",
             "type": "container",
-            "children": [
-              {
-                "name": "speciesBaseAbilityBrawn",
-                "type": "textfield",
-                "label": "Brawn",
-                "value": "return $state.character.species.baseCharacteristics.brawn"
-              },
+            "children": [{
+              "name": "speciesBaseAbilityBrawn",
+              "type": "textfield",
+              "label": "Brawn",
+              "value": "return $state.character.species.baseCharacteristics.brawn"
+            },
               {
                 "name": "speciesBaseAbilityAgility",
                 "type": "textfield",
@@ -1184,13 +988,12 @@
             "name": "SpeciesProperties",
             "type": "container",
             "direction": "vertical",
-            "children": [
-              {
-                "name": "specieswoundsThreshold",
-                "type": "textfield",
-                "label": "Wounds Threshold",
-                "value": "return '' + $state.character.species.woundsThreshold.characteristic  + '(' + $state.character.characteristics[$state.character.species.woundsThreshold.characteristic] + ') + '  + $state.character.species.woundsThreshold.base"
-              },
+            "children": [{
+              "name": "specieswoundsThreshold",
+              "type": "textfield",
+              "label": "Wounds Threshold",
+              "value": "return '' + $state.character.species.woundsThreshold.characteristic  + '(' + $state.character.characteristics[$state.character.species.woundsThreshold.characteristic] + ') + '  + $state.character.species.woundsThreshold.base"
+            },
               {
                 "name": "speciesstrainThreshold",
                 "type": "textfield",
@@ -1216,30 +1019,28 @@
       {
         "name": "Career",
         "type": "view",
-        "children": [
-          {
-            "name": "careerSelect",
-            "type": "select",
-            "bind": "$state.character.career",
-            "items": {
-              "text": "name",
-              "values": "return $model.career.values"
-            }
-          },
+        "children": [{
+          "name": "careerSelect",
+          "type": "select",
+          "bind": "$state.character.career",
+          "items": {
+            "text": "name",
+            "values": "return $model.career.values"
+          }
+        },
           {
             "name": "careerStartingSpecialization",
             "type": "container",
             "direction": "vertical",
-            "children": [
-              {
-                "name": "startingSpecializationSelect",
-                "type": "select",
-                "bind": "$state.character.specializations[0]",
-                "items": {
-                  "text": "name",
-                  "values": "return $state.character.career.specializations"
-                }
-              },
+            "children": [{
+              "name": "startingSpecializationSelect",
+              "type": "select",
+              "bind": "$state.character.specializations[0]",
+              "items": {
+                "text": "name",
+                "values": "return $state.character.career.specializations"
+              }
+            },
               {
                 "name": "startingSpecializationCareerSkills",
                 "type": "textfield",
@@ -1255,13 +1056,12 @@
                     "name": "startingSpecializationAvailableTalentsWrapper",
                     "type": "container",
                     "direction": "horizontal",
-                    "children": [
-                      {
-                        "name": "startingSpecializationTalentName",
-                        "type": "textfield",
-                        "label": "Talent Name",
-                        "bind": "$value.name"
-                      },
+                    "children": [{
+                      "name": "startingSpecializationTalentName",
+                      "type": "textfield",
+                      "label": "Talent Name",
+                      "bind": "$value.name"
+                    },
                       {
                         "name": "startingSpecializationTalentDescription",
                         "type": "textfield",
@@ -1279,44 +1079,41 @@
       {
         "name": "Advancements",
         "type": "view",
-        "children": [
-          {
-            "name": "characteristicAdvancementContainer",
-            "type": "container",
-            "direction": "vertical",
-            "children": [
-              {
-                "name": "characteristicAdvancementLabel",
-                "type": "label",
-                "text": "Characteristics"
-              },
-              {
-                "name": "characteristicAdvancement",
-                "type": "select",
-                "bind": "$state.selectedAdvancement.characteristic",
-                "items": {
-                  "text": "option",
-                  "values": "return $state.availableAdvancements.characteristic.options"
-                }
-              },
-              {
-                "name": "characteristicSubmit",
-                "type": "button",
-                "text": "Buy",
-                "action": "ADVANCEMENT characteristic $state.selectedAdvancement.characteristic"
-              }
-            ]
+        "children": [{
+          "name": "characteristicAdvancementContainer",
+          "type": "container",
+          "direction": "vertical",
+          "children": [{
+            "name": "characteristicAdvancementLabel",
+            "type": "label",
+            "text": "return 'Characteristics'"
           },
+            {
+              "name": "characteristicAdvancement",
+              "type": "select",
+              "bind": "$state.selectedAdvancement.characteristic",
+              "items": {
+                "text": "option",
+                "values": "return $state.availableAdvancements.characteristic.options"
+              }
+            },
+            {
+              "name": "characteristicSubmit",
+              "type": "button",
+              "text": "return 'Buy'",
+              "action": "ADVANCEMENT characteristic $state.selectedAdvancement.characteristic"
+            }
+          ]
+        },
           {
             "name": "skillAdvancementContainer",
             "type": "container",
             "direction": "vertical",
-            "children": [
-              {
-                "name": "skillAdvancementLabel",
-                "type": "label",
-                "text": "Skills"
-              },
+            "children": [{
+              "name": "skillAdvancementLabel",
+              "type": "label",
+              "text": "return 'Skills'"
+            },
               {
                 "name": "skillAdvancement",
                 "type": "select",
@@ -1332,12 +1129,11 @@
             "name": "talentAdvancementContainer",
             "type": "container",
             "direction": "vertical",
-            "children": [
-              {
-                "name": "talentAdvancementLabel",
-                "type": "label",
-                "text": "Talents"
-              },
+            "children": [{
+              "name": "talentAdvancementLabel",
+              "type": "label",
+              "text": "return 'Talents'"
+            },
               {
                 "name": "talentAdvancement",
                 "type": "select",
@@ -1358,12 +1154,11 @@
                 "name": "singlePurchasedAdvancement",
                 "type": "container",
                 "direction": "horizontal",
-                "children": [
-                  {
-                    "name": "singlePurchasedAdvancementLabel",
-                    "type": "label",
-                    "text": "return $this.description"
-                  },
+                "children": [{
+                  "name": "singlePurchasedAdvancementLabel",
+                  "type": "label",
+                  "text": "return $this.description"
+                },
                   {
                     "name": "singlePurchasedAdvancementRemoveButton",
                     "type": "button"
@@ -1606,7 +1401,7 @@
         "knowledgeEducation": {
           "type": "skill",
           "value": {
-            "name": "Cool",
+            "name": "Knowledge - Education",
             "characteristic": "Intellect"
           }
         },
@@ -1620,21 +1415,28 @@
         "knowledgeOuterRim": {
           "type": "skill",
           "value": {
-            "name": "Cool",
+            "name": "Knowledge - Outer Rim",
             "characteristic": "Intellect"
           }
         },
         "knowledgeUnderworld": {
           "type": "skill",
           "value": {
-            "name": "Cool",
+            "name": "Knowledge - Underworld",
             "characteristic": "Intellect"
           }
         },
         "knowledgeXenology": {
           "type": "skill",
           "value": {
-            "name": "Cool",
+            "name": "Knowledge - Xenology",
+            "characteristic": "Intellect"
+          }
+        },
+        "knowledgeOther": {
+          "type": "skill",
+          "value": {
+            "name": "Knowledge - Other",
             "characteristic": "Intellect"
           }
         }
@@ -1693,41 +1495,38 @@
         },
         "specialAbilities": "[specialAbility]"
       },
-      "values": [
-        {
-          "name": "Bothan",
-          "plural": "Bothans",
-          "source": "core",
-          "baseCharacteristics": {
-            "brawn": 1,
-            "agility": 2,
-            "intellect": 2,
-            "cunning": 3,
-            "willpower": 2,
-            "presence": 2
-          },
-          "woundsThreshold": {
-            "base": 10,
-            "characteristic": "Brawn"
-          },
-          "strainThreshold": {
-            "base": 11,
-            "characteristic": "Willpower"
-          },
-          "startingExperience": 100,
-          "startingSkills": [
-            "Streetwise"
-          ],
-          "startingTalents": [
-            "Convincing Demeanor"
-          ],
-          "specialAbilities": [
-            {
-              "name": "Streetwise",
-              "description": "Bothans begin the game with one rank in Streetwise. They still may not train Streetwise above rank 2 during character creation. They also start with one rank in the Convincing Demeanor talent."
-            }
-          ]
+      "values": [{
+        "name": "Bothan",
+        "plural": "Bothans",
+        "source": "core",
+        "baseCharacteristics": {
+          "brawn": 1,
+          "agility": 2,
+          "intellect": 2,
+          "cunning": 3,
+          "willpower": 2,
+          "presence": 2
         },
+        "woundsThreshold": {
+          "base": 10,
+          "characteristic": "Brawn"
+        },
+        "strainThreshold": {
+          "base": 11,
+          "characteristic": "Willpower"
+        },
+        "startingExperience": 100,
+        "startingSkills": [
+          "Streetwise"
+        ],
+        "startingTalents": [
+          "Convincing Demeanor"
+        ],
+        "specialAbilities": [{
+          "name": "Streetwise",
+          "description": "Bothans begin the game with one rank in Streetwise. They still may not train Streetwise above rank 2 during character creation. They also start with one rank in the Convincing Demeanor talent."
+        }]
+      },
         {
           "name": "Droid",
           "plural": "Droids",
@@ -1751,11 +1550,10 @@
           "startingExperience": 175,
           "startingiscareerskillchoices": 6,
           "firstspecialtytrainedskills": 4,
-          "specialAbilities": [
-            {
-              "name": "Droid",
-              "description": "Droids do not need to east, sleep or breath and are unaffected by toxins or poisons. Droids have a cybernetic implant cap of 6 instead of their Brawn."
-            },
+          "specialAbilities": [{
+            "name": "Droid",
+            "description": "Droids do not need to east, sleep or breath and are unaffected by toxins or poisons. Droids have a cybernetic implant cap of 6 instead of their Brawn."
+          },
             {
               "name": "Inorganic",
               "description": "Since droids are inorganic, they do not gain the benefits of recovering with bacta tank, stimpack or Medicine care."
@@ -1790,12 +1588,10 @@
           "startingSkills": [
             "Discipline"
           ],
-          "specialAbilities": [
-            {
-              "name": "Lunged Gand",
-              "description": "Gand with lungs breathe an ammonia mixture. They start with 10xp, breathing apparatus and treat oxygen as a dangerous atmosphere with rating 8."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Lunged Gand",
+            "description": "Gand with lungs breathe an ammonia mixture. They start with 10xp, breathing apparatus and treat oxygen as a dangerous atmosphere with rating 8."
+          }]
         },
         {
           "name": "Gand - Lungless",
@@ -1821,12 +1617,10 @@
           "startingSkills": [
             "Discipline"
           ],
-          "specialAbilities": [
-            {
-              "name": "Lungless Gand",
-              "description": "Gand without lungs gain all metabolic requirements from food. They cannot suffocate but suffer the normal effects from exposure to vacuum."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Lungless Gand",
+            "description": "Gand without lungs gain all metabolic requirements from food. They cannot suffocate but suffer the normal effects from exposure to vacuum."
+          }]
         },
         {
           "name": "Human",
@@ -1850,12 +1644,10 @@
           },
           "startingExperience": 110,
           "startingnoniscareerskillchoices": 2,
-          "specialAbilities": [
-            {
-              "name": "Starting Skills",
-              "description": "Humans start the game with one rank in two non-career skills of their choice."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Starting Skills",
+            "description": "Humans start the game with one rank in two non-career skills of their choice."
+          }]
         },
         {
           "name": "Rodian",
@@ -1881,12 +1673,10 @@
           "startingSkills": [
             "Survival"
           ],
-          "specialAbilities": [
-            {
-              "name": "Survival Training",
-              "description": "Rodians begin with 1 rank of Survival"
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Survival Training",
+            "description": "Rodians begin with 1 rank of Survival"
+          }]
         },
         {
           "name": "Trandoshan",
@@ -1912,11 +1702,10 @@
           "startingSkills": [
             "Perception"
           ],
-          "specialAbilities": [
-            {
-              "name": "Regeneration",
-              "description": "Whenever a Trandoshan would recover one or more wounds from natural healing or bacta tank treatment, they recover one additional Wound. They do not gain any additional wounds when receiving first aid or medical care from a character or when using a stimpack. Trandoshans may regrow lost limbs though it may take up to a month for the limb to be usable again."
-            },
+          "specialAbilities": [{
+            "name": "Regeneration",
+            "description": "Whenever a Trandoshan would recover one or more wounds from natural healing or bacta tank treatment, they recover one additional Wound. They do not gain any additional wounds when receiving first aid or medical care from a character or when using a stimpack. Trandoshans may regrow lost limbs though it may take up to a month for the limb to be usable again."
+          },
             {
               "name": "Claws",
               "description": "When a Trandoshan makes Brawl checks to deal damage to an opponent, they deal +1 damage and have a critical range of 3."
@@ -1944,21 +1733,17 @@
             "characteristic": "Willpower"
           },
           "startingExperience": 100,
-          "startingSkills": [
-            {
-              "options": [
-                "Charm",
-                "Deception"
-              ],
-              "choices": 1
-            }
-          ],
-          "specialAbilities": [
-            {
-              "name": "Twi'Lek",
-              "description": "When making skill checks, Twi'leks may remove ■ due to arid or hot conditions."
-            }
-          ]
+          "startingSkills": [{
+            "options": [
+              "Charm",
+              "Deception"
+            ],
+            "choices": 1
+          }],
+          "specialAbilities": [{
+            "name": "Twi'Lek",
+            "description": "When making skill checks, Twi'leks may remove ■ due to arid or hot conditions."
+          }]
         },
         {
           "name": "Wookie",
@@ -1984,12 +1769,10 @@
           "startingSkills": [
             "Brawl"
           ],
-          "specialAbilities": [
-            {
-              "name": "Wookie Rage",
-              "description": "When a Wookie has suffered any wounds, they deal +1 damage with Brawl and Melee attacks"
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Wookie Rage",
+            "description": "When a Wookie has suffered any wounds, they deal +1 damage with Brawl and Melee attacks"
+          }]
         },
         {
           "name": "Aqualish - Aquala",
@@ -2016,12 +1799,10 @@
             "Brawl",
             "Resilience"
           ],
-          "specialAbilities": [
-            {
-              "name": "Aquala",
-              "description": "Aquala may remove ■ due to any cold or wet condititions."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Aquala",
+            "description": "Aquala may remove ■ due to any cold or wet condititions."
+          }]
         },
         {
           "name": "Aqualish -  Ualaq",
@@ -2054,12 +1835,10 @@
               "choices": 1
             }
           ],
-          "specialAbilities": [
-            {
-              "name": "Ualaq",
-              "description": "Aquala may remove ■ due to dark condititions but suffer ■ in brightly lit environments."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Ualaq",
+            "description": "Aquala may remove ■ due to dark condititions but suffer ■ in brightly lit environments."
+          }]
         },
         {
           "name": "Aqualish - Quara",
@@ -2092,12 +1871,10 @@
               "choices": 1
             }
           ],
-          "specialAbilities": [
-            {
-              "name": "Quara",
-              "description": "Quara may remove ■ when attempting to track through a natural environment."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Quara",
+            "description": "Quara may remove ■ when attempting to track through a natural environment."
+          }]
         },
         {
           "name": "Klatoonian",
@@ -2120,16 +1897,14 @@
             "characteristic": "Willpower"
           },
           "startingExperience": 100,
-          "startingSkills": [
-            {
-              "options": [
-                "Brawl",
-                "Ranged - Heavy",
-                "Ranged - Light"
-              ],
-              "choices": 1
-            }
-          ],
+          "startingSkills": [{
+            "options": [
+              "Brawl",
+              "Ranged - Heavy",
+              "Ranged - Light"
+            ],
+            "choices": 1
+          }],
           "startingnoniscareerskillchoices": 1,
           "specialAbilities": []
         },
@@ -2154,21 +1929,17 @@
             "characteristic": "Willpower"
           },
           "startingExperience": 90,
-          "startingSkills": [
-            {
-              "options": [
-                "Resilience",
-                "Athletics"
-              ],
-              "choices": 1
-            }
-          ],
-          "specialAbilities": [
-            {
-              "name": "Pheromones",
-              "description": "Weequay can communicate with each other using pheremones. This is completely non-verbal and undetectable to any other species. Weequays can only communicate like this if they are within short range of each other."
-            }
-          ]
+          "startingSkills": [{
+            "options": [
+              "Resilience",
+              "Athletics"
+            ],
+            "choices": 1
+          }],
+          "specialAbilities": [{
+            "name": "Pheromones",
+            "description": "Weequay can communicate with each other using pheremones. This is completely non-verbal and undetectable to any other species. Weequays can only communicate like this if they are within short range of each other."
+          }]
         },
         {
           "name": "Chiss",
@@ -2194,12 +1965,10 @@
           "startingSkills": [
             "Cool"
           ],
-          "specialAbilities": [
-            {
-              "name": "Infravision",
-              "description": "Chiss have adapted to be able to see in both the infrared and normal visible spectrum. Chiss remove up to ■ added to checks by lighting connections."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Infravision",
+            "description": "Chiss have adapted to be able to see in both the infrared and normal visible spectrum. Chiss remove up to ■ added to checks by lighting connections."
+          }]
         },
         {
           "name": "Duro",
@@ -2225,12 +1994,10 @@
           "startingSkills": [
             "Piloting - Space"
           ],
-          "specialAbilities": [
-            {
-              "name": "Infravision",
-              "description": "Chiss have adapted to be able to see in both the infrared and normal visible spectrum. Chiss remove up to ■ added to checks by lighting connections."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Infravision",
+            "description": "Chiss have adapted to be able to see in both the infrared and normal visible spectrum. Chiss remove up to ■ added to checks by lighting connections."
+          }]
         },
         {
           "name": "Toydarian",
@@ -2253,11 +2020,10 @@
             "characteristic": "Willpower"
           },
           "startingExperience": 100,
-          "specialAbilities": [
-            {
-              "name": "Small",
-              "description": "Toydarians are smaller than average and count as silhouette 1."
-            },
+          "specialAbilities": [{
+            "name": "Small",
+            "description": "Toydarians are smaller than average and count as silhouette 1."
+          },
             {
               "name": "Hover",
               "description": "Toydarians have wings that allow them to hover slightly off the ground. Toydarians do not have to spend additional maneuvers when navigating difficult terrain."
@@ -2288,11 +2054,10 @@
           "startingSkills": [
             "Vigilance"
           ],
-          "specialAbilities": [
-            {
-              "name": "Arcona",
-              "description": "Arcona may remove ■ due to arid or hot environmental conditions."
-            },
+          "specialAbilities": [{
+            "name": "Arcona",
+            "description": "Arcona may remove ■ due to arid or hot environmental conditions."
+          },
             {
               "name": "Mood Readers",
               "description": "Arcona add [Triumph] to any Charm or Negotiation checks they make."
@@ -2326,12 +2091,10 @@
           "startingTalents": [
             "Durable"
           ],
-          "specialAbilities": [
-            {
-              "name": "Advanced Olfaction",
-              "description": "A Chevin's keen sense of smell adds □ to Perception checks involving the sense of smell."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Advanced Olfaction",
+            "description": "A Chevin's keen sense of smell adds □ to Perception checks involving the sense of smell."
+          }]
         },
         {
           "name": "Gran",
@@ -2354,21 +2117,17 @@
             "characteristic": "Willpower"
           },
           "startingExperience": 100,
-          "startingSkills": [
-            {
-              "options": [
-                "Charm",
-                "Negotiation"
-              ],
-              "choices": 1
-            }
-          ],
-          "specialAbilities": [
-            {
-              "name": "Enhanced Vision",
-              "description": "When making ranged combat or Perception checks, Gran remove up to ■ ■ due to environmental conditions or concealment, but not defense."
-            }
-          ]
+          "startingSkills": [{
+            "options": [
+              "Charm",
+              "Negotiation"
+            ],
+            "choices": 1
+          }],
+          "specialAbilities": [{
+            "name": "Enhanced Vision",
+            "description": "When making ranged combat or Perception checks, Gran remove up to ■ ■ due to environmental conditions or concealment, but not defense."
+          }]
         },
         {
           "name": "Faleen",
@@ -2394,12 +2153,10 @@
           "startingSkills": [
             "Charm"
           ],
-          "specialAbilities": [
-            {
-              "name": "Beguiling Pheromones",
-              "description": "Once per check as an incidental, a Faleen may suffer 2 strain to upgrade the ability of a Charm, Deception or Negotiation check against a living sentient being within a short range once. This ability has no effect on targets wearing breath masks or without respiratory systems."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Beguiling Pheromones",
+            "description": "Once per check as an incidental, a Faleen may suffer 2 strain to upgrade the ability of a Charm, Deception or Negotiation check against a living sentient being within a short range once. This ability has no effect on targets wearing breath masks or without respiratory systems."
+          }]
         },
         {
           "name": "Gotal",
@@ -2425,12 +2182,10 @@
           "startingSkills": [
             "Perception"
           ],
-          "specialAbilities": [
-            {
-              "name": "Energy Sensitivity",
-              "description": "The head cones of a Gotal are finely tuned sensory organs used to detect almost the entirety of the electromagnetic spectrum. Once per encounter as a maneuver, a Gotal may sense and current emotional states of all living things within short range of himself."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Energy Sensitivity",
+            "description": "The head cones of a Gotal are finely tuned sensory organs used to detect almost the entirety of the electromagnetic spectrum. Once per encounter as a maneuver, a Gotal may sense and current emotional states of all living things within short range of himself."
+          }]
         },
         {
           "name": "Quarren",
@@ -2456,11 +2211,10 @@
           "startingSkills": [
             "Negotiation"
           ],
-          "specialAbilities": [
-            {
-              "name": "Amphibious",
-              "description": "Quarren can breathe underwater without penalty and never suffer movement penalties for traveling through water."
-            },
+          "specialAbilities": [{
+            "name": "Amphibious",
+            "description": "Quarren can breathe underwater without penalty and never suffer movement penalties for traveling through water."
+          },
             {
               "name": "Ink Spray",
               "description": "Quarren can spit ink from a specialized sac within their gills that disperses in water, creating a brief murk. Once per counter, as an out-of-turn incidental, a Quarren may suffer 2 strain to add ■  to a combat check made by a character within short range (under water, it adds ■ ■ ■ to the combat check instead.)"
@@ -2488,25 +2242,21 @@
             "characteristic": "Willpower"
           },
           "startingExperience": 70,
-          "startingSkills": [
-            {
-              "options": [
-                "Coercion",
-                "Discipline"
-              ],
-              "choices": 1
-            }
-          ],
+          "startingSkills": [{
+            "options": [
+              "Coercion",
+              "Discipline"
+            ],
+            "choices": 1
+          }],
           "startingTalents": [
             "Enduring",
             "Nobody's Fool"
           ],
-          "specialAbilities": [
-            {
-              "name": "Ponderous",
-              "description": "A Hutt can never spend more than one maneuver moving per turn."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Ponderous",
+            "description": "A Hutt can never spend more than one maneuver moving per turn."
+          }]
         },
         {
           "name": "Gank",
@@ -2529,21 +2279,17 @@
             "characteristic": "Willpower"
           },
           "startingExperience": 110,
-          "startingSkills": [
-            {
-              "options": [
-                "Coercion",
-                "Vigilance"
-              ],
-              "choices": 1
-            }
-          ],
-          "specialAbilities": [
-            {
-              "name": "Cyborg",
-              "description": "All Ganks are cyborgs and each one often possesses several different cybernetic implants. A Gank beings play with up to two cybernetics that cost a total of up to 5,000 credits. If the character taks on additonal Obligation for credits at character creation, he may apply these extra funds to the 5,000 credit budgest to purchase cybernetics. Ganks have a cybernetic implant cap of 3 plus Brawn rating."
-            }
-          ]
+          "startingSkills": [{
+            "options": [
+              "Coercion",
+              "Vigilance"
+            ],
+            "choices": 1
+          }],
+          "specialAbilities": [{
+            "name": "Cyborg",
+            "description": "All Ganks are cyborgs and each one often possesses several different cybernetic implants. A Gank beings play with up to two cybernetics that cost a total of up to 5,000 credits. If the character taks on additonal Obligation for credits at character creation, he may apply these extra funds to the 5,000 credit budgest to purchase cybernetics. Ganks have a cybernetic implant cap of 3 plus Brawn rating."
+          }]
         },
         {
           "name": "Nikto - Red",
@@ -2566,12 +2312,10 @@
             "characteristic": "Willpower"
           },
           "startingExperience": 100,
-          "specialAbilities": [
-            {
-              "name": "Red Nikto",
-              "description": "When making skill checks, Red Niktos may remove ■ due to arid or hot environmental conditions."
-            }
-          ],
+          "specialAbilities": [{
+            "name": "Red Nikto",
+            "description": "When making skill checks, Red Niktos may remove ■ due to arid or hot environmental conditions."
+          }],
           "startingSkills": [
             "Resilience"
           ]
@@ -2600,11 +2344,10 @@
           "startingSkills": [
             "Coordination"
           ],
-          "specialAbilities": [
-            {
-              "name": "Green Nikto",
-              "description": "Green Niktos gain □ to Atheltics checks made to climb trees and other surfaces their claws can pierce."
-            },
+          "specialAbilities": [{
+            "name": "Green Nikto",
+            "description": "Green Niktos gain □ to Atheltics checks made to climb trees and other surfaces their claws can pierce."
+          },
             {
               "name": "Claws",
               "description": "When a Green Nikto makes Brawl checks to deal damage to an opponent, they deal +1 damage and have a Critical Rating of 3."
@@ -2664,12 +2407,10 @@
           "startingSkills": [
             "Athletics"
           ],
-          "specialAbilities": [
-            {
-              "name": "Swimmer",
-              "description": "A Pale Nikto never suffers movement penalties for travelling through water and can hold their breath for a number of rounds = to twice their Brawn rating before beginning to drown."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Swimmer",
+            "description": "A Pale Nikto never suffers movement penalties for travelling through water and can hold their breath for a number of rounds = to twice their Brawn rating before beginning to drown."
+          }]
         },
         {
           "name": "Nikto - Southern",
@@ -2695,12 +2436,10 @@
           "startingSkills": [
             "Athletics"
           ],
-          "specialAbilities": [
-            {
-              "name": "Perceptive",
-              "description": "Southern Niktos may add □ to Perception and Vigilance checks to detect sounds."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Perceptive",
+            "description": "Southern Niktos may add □ to Perception and Vigilance checks to detect sounds."
+          }]
         },
         {
           "name": "Sakiyan",
@@ -2722,15 +2461,13 @@
             "base": 10,
             "characteristic": "Willpower"
           },
-          "startingSkills": [
-            {
-              "options": [
-                "Perception",
-                "Vigilance"
-              ],
-              "choices": 1
-            }
-          ],
+          "startingSkills": [{
+            "options": [
+              "Perception",
+              "Vigilance"
+            ],
+            "choices": 1
+          }],
           "startingExperience": 80,
           "startingTalents": [
             "Expert Tracker"
@@ -2761,12 +2498,10 @@
           "startingSkills": [
             "Knowledge - Education"
           ],
-          "specialAbilities": [
-            {
-              "name": "Drall",
-              "description": "Drall have a mind for problems and their solutions. In addition to using his skill or characteristic rating, a Drall adds □ to the dicepool when providing skilled assistance."
-            }
-          ]
+          "specialAbilities": [{
+            "name": "Drall",
+            "description": "Drall have a mind for problems and their solutions. In addition to using his skill or characteristic rating, a Drall adds □ to the dicepool when providing skilled assistance."
+          }]
         }
       ]
     },
@@ -2828,465 +2563,460 @@
         "isCareerSkills": "[string]",
         "specializations": "[specialization]"
       },
-      "values": [
-        {
-          "name": "Bounty Hunter",
+      "values": [{
+        "name": "Bounty Hunter",
+        "careerSkills": [
+          "Athletics",
+          "Brawl",
+          "Perception",
+          "Piloting - Planetary",
+          "Piloting - Space",
+          "Ranged - Heavy",
+          "Streetwise",
+          "Streetwise",
+          "Vigilance"
+        ],
+        "specializations": [{
+          "name": "Assassin",
           "careerSkills": [
-            "Athletics",
-            "Brawl",
-            "Perception",
-            "Piloting - Planetary",
-            "Piloting - Space",
+            "Melee",
             "Ranged - Heavy",
-            "Streetwise",
-            "Streetwise",
-            "Vigilance"
+            "Skulduggery",
+            "Stealth"
           ],
-          "specializations": [
+          "talents": [{
+            "name": "Grit",
+            "tier": 1
+          },
             {
-              "name": "Assassin",
-              "careerSkills": [
-                "Melee",
-                "Ranged - Heavy",
-                "Skulduggery",
-                "Stealth"
-              ],
-              "talents": [
-                {
-                  "name": "Grit",
-                  "tier": 1
-                },
-                {
-                  "name": "Lethal Blows",
-                  "tier": 1
-                },
-                {
-                  "name": "Stalker",
-                  "tier": 1
-                },
-                {
-                  "name": "Dodge",
-                  "tier": 1
-                },
-                {
-                  "name": "Precise Aim",
-                  "tier": 2,
-                  "requires": [
-                    0,
-                    5,
-                    8
-                  ]
-                },
-                {
-                  "name": "Jump Up",
-                  "tier": 2,
-                  "requires": [
-                    1,
-                    4,
-                    6,
-                    9
-                  ]
-                },
-                {
-                  "name": "Quick Strike",
-                  "tier": 2,
-                  "requires": [
-                    2,
-                    5,
-                    7,
-                    10
-                  ]
-                },
-                {
-                  "name": "Quick Draw",
-                  "tier": 2,
-                  "requires": [
-                    3,
-                    6,
-                    11
-                  ]
-                },
-                {
-                  "name": "Targeted Blow",
-                  "tier": 3,
-                  "requires": [
-                    4,
-                    12
-                  ]
-                },
-                {
-                  "name": "Stalker",
-                  "tier": 3,
-                  "requires": [
-                    5,
-                    10,
-                    13
-                  ]
-                },
-                {
-                  "name": "Lethal Blows",
-                  "tier": 3,
-                  "requires": [
-                    6,
-                    9,
-                    14
-                  ]
-                },
-                {
-                  "name": "Anatomy Lessons",
-                  "tier": 3,
-                  "requires": [
-                    7,
-                    15
-                  ]
-                },
-                {
-                  "name": "Stalker",
-                  "tier": 4,
-                  "requires": [
-                    8,
-                    13
-                  ]
-                },
-                {
-                  "name": "Sniper Shot",
-                  "tier": 4,
-                  "requires": [
-                    9,
-                    12
-                  ]
-                },
-                {
-                  "name": "Dodge",
-                  "tier": 4,
-                  "requires": [
-                    10
-                  ]
-                },
-                {
-                  "name": "Lethal Blows",
-                  "tier": 4,
-                  "requires": [
-                    11
-                  ]
-                },
-                {
-                  "name": "Precise Aim",
-                  "tier": 5,
-                  "requires": [
-                    12
-                  ]
-                },
-                {
-                  "name": "Deadly Accuracy",
-                  "tier": 5,
-                  "requires": [
-                    13
-                  ]
-                },
-                {
-                  "name": "Dedication",
-                  "tier": 5,
-                  "requires": [
-                    14
-                  ]
-                },
-                {
-                  "name": "Master of Shadows",
-                  "tier": 4,
-                  "requires": [
-                    15
-                  ]
-                }
+              "name": "Lethal Blows",
+              "tier": 1
+            },
+            {
+              "name": "Stalker",
+              "tier": 1
+            },
+            {
+              "name": "Dodge",
+              "tier": 1
+            },
+            {
+              "name": "Precise Aim",
+              "tier": 2,
+              "requires": [
+                0,
+                5,
+                8
               ]
             },
             {
-              "name": "Gadgeteer",
-              "careerSkills": [
-                "Brawl",
-                "Coercion",
-                "Mechanics",
-                "Ranged - Light"
-              ],
-              "talents": [
-                {
-                  "name": "Brace",
-                  "tier": 1
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 1
-                },
-                {
-                  "name": "Intimidating",
-                  "tier": 1
-                },
-                {
-                  "name": "Defensive Stance",
-                  "tier": 1
-                },
-                {
-                  "name": "Spare Clip",
-                  "tier": 2,
-                  "requires": [
-                    5
-                  ]
-                },
-                {
-                  "name": "Jury Rigged",
-                  "tier": 2,
-                  "requires": [
-                    1
-                  ]
-                },
-                {
-                  "name": "Point Blank",
-                  "tier": 2,
-                  "requires": [
-                    5
-                  ]
-                },
-                {
-                  "name": "Disorient",
-                  "tier": 2,
-                  "requires": [
-                    3
-                  ]
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 3,
-                  "requires": [
-                    9
-                  ]
-                },
-                {
-                  "name": "Armor Master",
-                  "tier": 3,
-                  "requires": [
-                    5
-                  ]
-                },
-                {
-                  "name": "Natural Enforcer",
-                  "tier": 3,
-                  "requires": [
-                    9
-                  ]
-                },
-                {
-                  "name": "Stunning Blow",
-                  "tier": 3,
-                  "requires": [
-                    7
-                  ]
-                },
-                {
-                  "name": "Jury Rigged",
-                  "tier": 4,
-                  "requires": [
-                    13
-                  ]
-                },
-                {
-                  "name": "Tinkerer",
-                  "tier": 4,
-                  "requires": [
-                    9
-                  ]
-                },
-                {
-                  "name": "Deadly Accuracy",
-                  "tier": 4,
-                  "requires": [
-                    13
-                  ]
-                },
-                {
-                  "name": "Stunning Blow (Improved)",
-                  "tier": 4,
-                  "requires": [
-                    11
-                  ]
-                },
-                {
-                  "name": "Intimidating",
-                  "tier": 5,
-                  "requires": [
-                    17
-                  ]
-                },
-                {
-                  "name": "Dedication",
-                  "tier": 5,
-                  "requires": [
-                    13
-                  ]
-                },
-                {
-                  "name": "Armor Master (Improved)",
-                  "tier": 5,
-                  "requires": [
-                    17
-                  ]
-                },
-                {
-                  "name": "Crippling Blow",
-                  "tier": 5,
-                  "requires": [
-                    15
-                  ]
-                }
+              "name": "Jump Up",
+              "tier": 2,
+              "requires": [
+                1,
+                4,
+                6,
+                9
               ]
             },
             {
-              "name": "Survivalist",
-              "careerSkills": [
-                "Knowledge - Xenology",
-                "Perception",
-                "Resilience",
-                "Survival"
-              ],
-              "talents": [
-                {
-                  "name": "Forager",
-                  "tier": 1
-                },
-                {
-                  "name": "Stalker",
-                  "tier": 1
-                },
-                {
-                  "name": "Outdoorsman",
-                  "tier": 1
-                },
-                {
-                  "name": "Expert Tracker",
-                  "tier": 1
-                },
-                {
-                  "name": "Outdoorsman",
-                  "tier": 2,
-                  "requires": [
-                    0
-                  ]
-                },
-                {
-                  "name": "Swift",
-                  "tier": 2,
-                  "requires": [
-                    1,
-                    4,
-                    6
-                  ]
-                },
-                {
-                  "name": "Hunter",
-                  "tier": 2,
-                  "requires": [
-                    2,
-                    5
-                  ]
-                },
-                {
-                  "name": "Soft Spot",
-                  "tier": 2,
-                  "requires": [
-                    6
-                  ]
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 3,
-                  "requires": [
-                    4
-                  ]
-                },
-                {
-                  "name": "Expert Tracker",
-                  "tier": 3,
-                  "requires": [
-                    5
-                  ]
-                },
-                {
-                  "name": "Stalker",
-                  "tier": 3,
-                  "requires": [
-                    6,
-                    9
-                  ]
-                },
-                {
-                  "name": "Natural Outdoorsman",
-                  "tier": 3,
-                  "requires": [
-                    7,
-                    10
-                  ]
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 4,
-                  "requires": [
-                    8
-                  ]
-                },
-                {
-                  "name": "Hunter",
-                  "tier": 4,
-                  "requires": [
-                    9
-                  ]
-                },
-                {
-                  "name": "Expert Tracker",
-                  "tier": 4,
-                  "requires": [
-                    10
-                  ]
-                },
-                {
-                  "name": "Blooded",
-                  "tier": 4,
-                  "requires": [
-                    11
-                  ]
-                },
-                {
-                  "name": "Enduring",
-                  "tier": 5,
-                  "requires": [
-                    12,
-                    17
-                  ]
-                },
-                {
-                  "name": "Dedication",
-                  "tier": 5,
-                  "requires": [
-                    16,
-                    18
-                  ]
-                },
-                {
-                  "name": "Grit",
-                  "tier": 5,
-                  "requires": [
-                    14
-                  ]
-                },
-                {
-                  "name": "Heroic Fortitude",
-                  "tier": 5,
-                  "requires": [
-                    15
-                  ]
-                }
+              "name": "Quick Strike",
+              "tier": 2,
+              "requires": [
+                2,
+                5,
+                7,
+                10
+              ]
+            },
+            {
+              "name": "Quick Draw",
+              "tier": 2,
+              "requires": [
+                3,
+                6,
+                11
+              ]
+            },
+            {
+              "name": "Targeted Blow",
+              "tier": 3,
+              "requires": [
+                4,
+                12
+              ]
+            },
+            {
+              "name": "Stalker",
+              "tier": 3,
+              "requires": [
+                5,
+                10,
+                13
+              ]
+            },
+            {
+              "name": "Lethal Blows",
+              "tier": 3,
+              "requires": [
+                6,
+                9,
+                14
+              ]
+            },
+            {
+              "name": "Anatomy Lessons",
+              "tier": 3,
+              "requires": [
+                7,
+                15
+              ]
+            },
+            {
+              "name": "Stalker",
+              "tier": 4,
+              "requires": [
+                8,
+                13
+              ]
+            },
+            {
+              "name": "Sniper Shot",
+              "tier": 4,
+              "requires": [
+                9,
+                12
+              ]
+            },
+            {
+              "name": "Dodge",
+              "tier": 4,
+              "requires": [
+                10
+              ]
+            },
+            {
+              "name": "Lethal Blows",
+              "tier": 4,
+              "requires": [
+                11
+              ]
+            },
+            {
+              "name": "Precise Aim",
+              "tier": 5,
+              "requires": [
+                12
+              ]
+            },
+            {
+              "name": "Deadly Accuracy",
+              "tier": 5,
+              "requires": [
+                13
+              ]
+            },
+            {
+              "name": "Dedication",
+              "tier": 5,
+              "requires": [
+                14
+              ]
+            },
+            {
+              "name": "Master of Shadows",
+              "tier": 4,
+              "requires": [
+                15
               ]
             }
           ]
         },
+          {
+            "name": "Gadgeteer",
+            "careerSkills": [
+              "Brawl",
+              "Coercion",
+              "Mechanics",
+              "Ranged - Light"
+            ],
+            "talents": [{
+              "name": "Brace",
+              "tier": 1
+            },
+              {
+                "name": "Toughened",
+                "tier": 1
+              },
+              {
+                "name": "Intimidating",
+                "tier": 1
+              },
+              {
+                "name": "Defensive Stance",
+                "tier": 1
+              },
+              {
+                "name": "Spare Clip",
+                "tier": 2,
+                "requires": [
+                  5
+                ]
+              },
+              {
+                "name": "Jury Rigged",
+                "tier": 2,
+                "requires": [
+                  1
+                ]
+              },
+              {
+                "name": "Point Blank",
+                "tier": 2,
+                "requires": [
+                  5
+                ]
+              },
+              {
+                "name": "Disorient",
+                "tier": 2,
+                "requires": [
+                  3
+                ]
+              },
+              {
+                "name": "Toughened",
+                "tier": 3,
+                "requires": [
+                  9
+                ]
+              },
+              {
+                "name": "Armor Master",
+                "tier": 3,
+                "requires": [
+                  5
+                ]
+              },
+              {
+                "name": "Natural Enforcer",
+                "tier": 3,
+                "requires": [
+                  9
+                ]
+              },
+              {
+                "name": "Stunning Blow",
+                "tier": 3,
+                "requires": [
+                  7
+                ]
+              },
+              {
+                "name": "Jury Rigged",
+                "tier": 4,
+                "requires": [
+                  13
+                ]
+              },
+              {
+                "name": "Tinkerer",
+                "tier": 4,
+                "requires": [
+                  9
+                ]
+              },
+              {
+                "name": "Deadly Accuracy",
+                "tier": 4,
+                "requires": [
+                  13
+                ]
+              },
+              {
+                "name": "Stunning Blow (Improved)",
+                "tier": 4,
+                "requires": [
+                  11
+                ]
+              },
+              {
+                "name": "Intimidating",
+                "tier": 5,
+                "requires": [
+                  17
+                ]
+              },
+              {
+                "name": "Dedication",
+                "tier": 5,
+                "requires": [
+                  13
+                ]
+              },
+              {
+                "name": "Armor Master (Improved)",
+                "tier": 5,
+                "requires": [
+                  17
+                ]
+              },
+              {
+                "name": "Crippling Blow",
+                "tier": 5,
+                "requires": [
+                  15
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Survivalist",
+            "careerSkills": [
+              "Knowledge - Xenology",
+              "Perception",
+              "Resilience",
+              "Survival"
+            ],
+            "talents": [{
+              "name": "Forager",
+              "tier": 1
+            },
+              {
+                "name": "Stalker",
+                "tier": 1
+              },
+              {
+                "name": "Outdoorsman",
+                "tier": 1
+              },
+              {
+                "name": "Expert Tracker",
+                "tier": 1
+              },
+              {
+                "name": "Outdoorsman",
+                "tier": 2,
+                "requires": [
+                  0
+                ]
+              },
+              {
+                "name": "Swift",
+                "tier": 2,
+                "requires": [
+                  1,
+                  4,
+                  6
+                ]
+              },
+              {
+                "name": "Hunter",
+                "tier": 2,
+                "requires": [
+                  2,
+                  5
+                ]
+              },
+              {
+                "name": "Soft Spot",
+                "tier": 2,
+                "requires": [
+                  6
+                ]
+              },
+              {
+                "name": "Toughened",
+                "tier": 3,
+                "requires": [
+                  4
+                ]
+              },
+              {
+                "name": "Expert Tracker",
+                "tier": 3,
+                "requires": [
+                  5
+                ]
+              },
+              {
+                "name": "Stalker",
+                "tier": 3,
+                "requires": [
+                  6,
+                  9
+                ]
+              },
+              {
+                "name": "Natural Outdoorsman",
+                "tier": 3,
+                "requires": [
+                  7,
+                  10
+                ]
+              },
+              {
+                "name": "Toughened",
+                "tier": 4,
+                "requires": [
+                  8
+                ]
+              },
+              {
+                "name": "Hunter",
+                "tier": 4,
+                "requires": [
+                  9
+                ]
+              },
+              {
+                "name": "Expert Tracker",
+                "tier": 4,
+                "requires": [
+                  10
+                ]
+              },
+              {
+                "name": "Blooded",
+                "tier": 4,
+                "requires": [
+                  11
+                ]
+              },
+              {
+                "name": "Enduring",
+                "tier": 5,
+                "requires": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "name": "Dedication",
+                "tier": 5,
+                "requires": [
+                  16,
+                  18
+                ]
+              },
+              {
+                "name": "Grit",
+                "tier": 5,
+                "requires": [
+                  14
+                ]
+              },
+              {
+                "name": "Heroic Fortitude",
+                "tier": 5,
+                "requires": [
+                  15
+                ]
+              }
+            ]
+          }
+        ]
+      },
         {
           "name": "Colonist",
           "careerSkills": [
@@ -3299,157 +3029,155 @@
             "Negotiation",
             "Streetwise"
           ],
-          "specializations": [
-            {
-              "name": "Doctor",
-              "careerSkills": [
-                "Cool",
-                "Knowledge - Education",
-                "Medicine",
-                "Resilience"
-              ],
-              "talents": [
-                {
-                  "name": "Surgeon",
-                  "tier": 1
-                },
-                {
-                  "name": "Bacta Specialist",
-                  "tier": 1
-                },
-                {
-                  "name": "Grit",
-                  "tier": 1
-                },
-                {
-                  "name": "Resolve",
-                  "tier": 1
-                },
-                {
-                  "name": "Stim Application",
-                  "tier": 2,
-                  "requires": [
-                    0,
-                    5
-                  ]
-                },
-                {
-                  "name": "Grit",
-                  "tier": 2,
-                  "requires": [
-                    4,
-                    6
-                  ]
-                },
-                {
-                  "name": "Surgeon",
-                  "tier": 2,
-                  "requires": [
-                    2,
-                    5,
-                    7
-                  ]
-                },
-                {
-                  "name": "Resolve",
-                  "tier": 2,
-                  "requires": [
-                    6
-                  ]
-                },
-                {
-                  "name": "Surgeon",
-                  "tier": 3,
-                  "requires": [
-                    4,
-                    9
-                  ]
-                },
-                {
-                  "name": "Grit",
-                  "tier": 3,
-                  "requires": [
-                    8,
-                    10
-                  ]
-                },
-                {
-                  "name": "Bacta Specialist",
-                  "tier": 3,
-                  "requires": [
-                    6,
-                    9
-                  ]
-                },
-                {
-                  "name": "Pressure Point",
-                  "tier": 3,
-                  "requires": [
-                    7
-                  ]
-                },
-                {
-                  "name": "Stim Application (Improved)",
-                  "tier": 4,
-                  "requires": [
-                    8
-                  ]
-                },
-                {
-                  "name": "Natural Doctor",
-                  "tier": 4,
-                  "requires": [
-                    9
-                  ]
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 4,
-                  "requires": [
-                    10
-                  ]
-                },
-                {
-                  "name": "Anatomy Lessons",
-                  "tier": 4,
-                  "requires": [
-                    11
-                  ]
-                },
-                {
-                  "name": "Stim Application (Supreme)",
-                  "tier": 5,
-                  "requires": [
-                    12,
-                    17
-                  ]
-                },
-                {
-                  "name": "Master Doctor",
-                  "tier": 5,
-                  "requires": [
-                    13,
-                    16,
-                    18
-                  ]
-                },
-                {
-                  "name": "Dedication",
-                  "tier": 5,
-                  "requires": [
-                    14,
-                    17
-                  ]
-                },
-                {
-                  "name": "Dodge",
-                  "tier": 5,
-                  "requires": [
-                    15
-                  ]
-                }
-              ]
+          "specializations": [{
+            "name": "Doctor",
+            "careerSkills": [
+              "Cool",
+              "Knowledge - Education",
+              "Medicine",
+              "Resilience"
+            ],
+            "talents": [{
+              "name": "Surgeon",
+              "tier": 1
             },
+              {
+                "name": "Bacta Specialist",
+                "tier": 1
+              },
+              {
+                "name": "Grit",
+                "tier": 1
+              },
+              {
+                "name": "Resolve",
+                "tier": 1
+              },
+              {
+                "name": "Stim Application",
+                "tier": 2,
+                "requires": [
+                  0,
+                  5
+                ]
+              },
+              {
+                "name": "Grit",
+                "tier": 2,
+                "requires": [
+                  4,
+                  6
+                ]
+              },
+              {
+                "name": "Surgeon",
+                "tier": 2,
+                "requires": [
+                  2,
+                  5,
+                  7
+                ]
+              },
+              {
+                "name": "Resolve",
+                "tier": 2,
+                "requires": [
+                  6
+                ]
+              },
+              {
+                "name": "Surgeon",
+                "tier": 3,
+                "requires": [
+                  4,
+                  9
+                ]
+              },
+              {
+                "name": "Grit",
+                "tier": 3,
+                "requires": [
+                  8,
+                  10
+                ]
+              },
+              {
+                "name": "Bacta Specialist",
+                "tier": 3,
+                "requires": [
+                  6,
+                  9
+                ]
+              },
+              {
+                "name": "Pressure Point",
+                "tier": 3,
+                "requires": [
+                  7
+                ]
+              },
+              {
+                "name": "Stim Application (Improved)",
+                "tier": 4,
+                "requires": [
+                  8
+                ]
+              },
+              {
+                "name": "Natural Doctor",
+                "tier": 4,
+                "requires": [
+                  9
+                ]
+              },
+              {
+                "name": "Toughened",
+                "tier": 4,
+                "requires": [
+                  10
+                ]
+              },
+              {
+                "name": "Anatomy Lessons",
+                "tier": 4,
+                "requires": [
+                  11
+                ]
+              },
+              {
+                "name": "Stim Application (Supreme)",
+                "tier": 5,
+                "requires": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "name": "Master Doctor",
+                "tier": 5,
+                "requires": [
+                  13,
+                  16,
+                  18
+                ]
+              },
+              {
+                "name": "Dedication",
+                "tier": 5,
+                "requires": [
+                  14,
+                  17
+                ]
+              },
+              {
+                "name": "Dodge",
+                "tier": 5,
+                "requires": [
+                  15
+                ]
+              }
+            ]
+          },
             {
               "name": "Politico",
               "careerSkills": [
@@ -3458,11 +3186,10 @@
                 "Deception",
                 "Knowledge - Core Worlds"
               ],
-              "talents": [
-                {
-                  "name": "Kill With Kindness",
-                  "tier": 1
-                },
+              "talents": [{
+                "name": "Kill With Kindness",
+                "tier": 1
+              },
                 {
                   "name": "Grit",
                   "tier": 1
@@ -3603,11 +3330,10 @@
                 "Knowledge - Xenology",
                 "Perception"
               ],
-              "talents": [
-                {
-                  "name": "Respected Scholar",
-                  "tier": 1
-                },
+              "talents": [{
+                "name": "Respected Scholar",
+                "tier": 1
+              },
                 {
                   "name": "Speaks Binary",
                   "tier": 1
@@ -3756,154 +3482,152 @@
             "Piloting - Space",
             "Survival"
           ],
-          "specializations": [
-            {
-              "name": "Fringer",
-              "careerSkills": [
-                "Astrogation",
-                "Coordination",
-                "Negotiation",
-                "Streetwise"
-              ],
-              "talents": [
-                {
-                  "name": "Galaxy Mapper",
-                  "tier": 1
-                },
-                {
-                  "name": "Street Smarts",
-                  "tier": 1
-                },
-                {
-                  "name": "Rapid Recovery",
-                  "tier": 1
-                },
-                {
-                  "name": "Street Smarts",
-                  "tier": 1
-                },
-                {
-                  "name": "Skilled Jockey",
-                  "tier": 2,
-                  "requires": [
-                    0,
-                    5
-                  ]
-                },
-                {
-                  "name": "Galaxy Mapper",
-                  "tier": 2,
-                  "requires": [
-                    4
-                  ]
-                },
-                {
-                  "name": "Grit",
-                  "tier": 2,
-                  "requires": [
-                    2,
-                    7
-                  ]
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 2,
-                  "requires": [
-                    3,
-                    6
-                  ]
-                },
-                {
-                  "name": "Master Starhopper",
-                  "tier": 3,
-                  "requires": [
-                    4,
-                    9
-                  ]
-                },
-                {
-                  "name": "Defensive Driving",
-                  "tier": 3,
-                  "requires": [
-                    5,
-                    8
-                  ]
-                },
-                {
-                  "name": "Rapid Recovery",
-                  "tier": 3,
-                  "requires": [
-                    6
-                  ]
-                },
-                {
-                  "name": "Durable",
-                  "tier": 3,
-                  "requires": [
-                    7
-                  ]
-                },
-                {
-                  "name": "Rapid Recovery",
-                  "tier": 4,
-                  "requires": [
-                    13
-                  ]
-                },
-                {
-                  "name": "Jump Up",
-                  "tier": 4,
-                  "requires": [
-                    12,
-                    14
-                  ]
-                },
-                {
-                  "name": "Grit",
-                  "tier": 4,
-                  "requires": [
-                    10
-                  ]
-                },
-                {
-                  "name": "Knockdown",
-                  "tier": 4,
-                  "requires": [
-                    11
-                  ]
-                },
-                {
-                  "name": "Dedication",
-                  "tier": 5,
-                  "requires": [
-                    12,
-                    17
-                  ]
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 5,
-                  "requires": [
-                    13,
-                    16
-                  ]
-                },
-                {
-                  "name": "Dodge",
-                  "tier": 5,
-                  "requires": [
-                    19
-                  ]
-                },
-                {
-                  "name": "Dodge",
-                  "tier": 5,
-                  "requires": [
-                    15
-                  ]
-                }
-              ]
+          "specializations": [{
+            "name": "Fringer",
+            "careerSkills": [
+              "Astrogation",
+              "Coordination",
+              "Negotiation",
+              "Streetwise"
+            ],
+            "talents": [{
+              "name": "Galaxy Mapper",
+              "tier": 1
             },
+              {
+                "name": "Street Smarts",
+                "tier": 1
+              },
+              {
+                "name": "Rapid Recovery",
+                "tier": 1
+              },
+              {
+                "name": "Street Smarts",
+                "tier": 1
+              },
+              {
+                "name": "Skilled Jockey",
+                "tier": 2,
+                "requires": [
+                  0,
+                  5
+                ]
+              },
+              {
+                "name": "Galaxy Mapper",
+                "tier": 2,
+                "requires": [
+                  4
+                ]
+              },
+              {
+                "name": "Grit",
+                "tier": 2,
+                "requires": [
+                  2,
+                  7
+                ]
+              },
+              {
+                "name": "Toughened",
+                "tier": 2,
+                "requires": [
+                  3,
+                  6
+                ]
+              },
+              {
+                "name": "Master Starhopper",
+                "tier": 3,
+                "requires": [
+                  4,
+                  9
+                ]
+              },
+              {
+                "name": "Defensive Driving",
+                "tier": 3,
+                "requires": [
+                  5,
+                  8
+                ]
+              },
+              {
+                "name": "Rapid Recovery",
+                "tier": 3,
+                "requires": [
+                  6
+                ]
+              },
+              {
+                "name": "Durable",
+                "tier": 3,
+                "requires": [
+                  7
+                ]
+              },
+              {
+                "name": "Rapid Recovery",
+                "tier": 4,
+                "requires": [
+                  13
+                ]
+              },
+              {
+                "name": "Jump Up",
+                "tier": 4,
+                "requires": [
+                  12,
+                  14
+                ]
+              },
+              {
+                "name": "Grit",
+                "tier": 4,
+                "requires": [
+                  10
+                ]
+              },
+              {
+                "name": "Knockdown",
+                "tier": 4,
+                "requires": [
+                  11
+                ]
+              },
+              {
+                "name": "Dedication",
+                "tier": 5,
+                "requires": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "name": "Toughened",
+                "tier": 5,
+                "requires": [
+                  13,
+                  16
+                ]
+              },
+              {
+                "name": "Dodge",
+                "tier": 5,
+                "requires": [
+                  19
+                ]
+              },
+              {
+                "name": "Dodge",
+                "tier": 5,
+                "requires": [
+                  15
+                ]
+              }
+            ]
+          },
             {
               "name": "Scout",
               "careerSkills": [
@@ -3912,11 +3636,10 @@
                 "Piloting - Planetary",
                 "Survival"
               ],
-              "talents": [
-                {
-                  "name": "Rapid Recovery",
-                  "tier": 1
-                },
+              "talents": [{
+                "name": "Rapid Recovery",
+                "tier": 1
+              },
                 {
                   "name": "Stalker",
                   "tier": 1
@@ -4060,11 +3783,10 @@
                 "Knowledge - Underworld",
                 "Negotiation"
               ],
-              "talents": [
-                {
-                  "name": "Know Somebody",
-                  "tier": 1
-                },
+              "talents": [{
+                "name": "Know Somebody",
+                "tier": 1
+              },
                 {
                   "name": "Convincing Demeanor",
                   "tier": 1
@@ -4210,154 +3932,152 @@
             "Resilience",
             "Vigilance"
           ],
-          "specializations": [
-            {
-              "name": "Bodyguard",
-              "careerSkills": [
-                "Gunnery",
-                "Perception",
-                "Piloting - Planetary",
-                "Ranged - Heavy"
-              ],
-              "talents": [
-                {
-                  "name": "Toughened",
-                  "tier": 1
-                },
-                {
-                  "name": "Barrage",
-                  "tier": 1
-                },
-                {
-                  "name": "Durable",
-                  "tier": 1
-                },
-                {
-                  "name": "Grit",
-                  "tier": 1
-                },
-                {
-                  "name": "Body Guard",
-                  "tier": 2,
-                  "requires": [
-                    5
-                  ]
-                },
-                {
-                  "name": "Hard Headed",
-                  "tier": 2,
-                  "requires": [
-                    1,
-                    6
-                  ]
-                },
-                {
-                  "name": "Barrage",
-                  "tier": 2,
-                  "requires": [
-                    2,
-                    5
-                  ]
-                },
-                {
-                  "name": "Brace",
-                  "tier": 2,
-                  "requires": [
-                    6
-                  ]
-                },
-                {
-                  "name": "Body Guard",
-                  "tier": 3,
-                  "requires": [
-                    4
-                  ]
-                },
-                {
-                  "name": "Side Step",
-                  "tier": 3,
-                  "requires": [
-                    5,
-                    10
-                  ]
-                },
-                {
-                  "name": "Defensive Stance",
-                  "tier": 3,
-                  "requires": [
-                    6,
-                    9
-                  ]
-                },
-                {
-                  "name": "Brace",
-                  "tier": 3,
-                  "requires": [
-                    7
-                  ]
-                },
-                {
-                  "name": "Enduring",
-                  "tier": 4,
-                  "requires": [
-                    8
-                  ]
-                },
-                {
-                  "name": "Side Step",
-                  "tier": 4,
-                  "requires": [
-                    9,
-                    14
-                  ]
-                },
-                {
-                  "name": "Defensive Stance",
-                  "tier": 4,
-                  "requires": [
-                    10,
-                    13
-                  ]
-                },
-                {
-                  "name": "Hard Headed",
-                  "tier": 4,
-                  "requires": [
-                    14
-                  ]
-                },
-                {
-                  "name": "Dedication",
-                  "tier": 5,
-                  "requires": [
-                    17
-                  ]
-                },
-                {
-                  "name": "Barrage",
-                  "tier": 5,
-                  "requires": [
-                    13,
-                    16
-                  ]
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 5,
-                  "requires": [
-                    14,
-                    17
-                  ]
-                },
-                {
-                  "name": "Hard Headed (Improved)",
-                  "tier": 5,
-                  "requires": [
-                    15
-                  ]
-                }
-              ]
+          "specializations": [{
+            "name": "Bodyguard",
+            "careerSkills": [
+              "Gunnery",
+              "Perception",
+              "Piloting - Planetary",
+              "Ranged - Heavy"
+            ],
+            "talents": [{
+              "name": "Toughened",
+              "tier": 1
             },
+              {
+                "name": "Barrage",
+                "tier": 1
+              },
+              {
+                "name": "Durable",
+                "tier": 1
+              },
+              {
+                "name": "Grit",
+                "tier": 1
+              },
+              {
+                "name": "Body Guard",
+                "tier": 2,
+                "requires": [
+                  5
+                ]
+              },
+              {
+                "name": "Hard Headed",
+                "tier": 2,
+                "requires": [
+                  1,
+                  6
+                ]
+              },
+              {
+                "name": "Barrage",
+                "tier": 2,
+                "requires": [
+                  2,
+                  5
+                ]
+              },
+              {
+                "name": "Brace",
+                "tier": 2,
+                "requires": [
+                  6
+                ]
+              },
+              {
+                "name": "Body Guard",
+                "tier": 3,
+                "requires": [
+                  4
+                ]
+              },
+              {
+                "name": "Side Step",
+                "tier": 3,
+                "requires": [
+                  5,
+                  10
+                ]
+              },
+              {
+                "name": "Defensive Stance",
+                "tier": 3,
+                "requires": [
+                  6,
+                  9
+                ]
+              },
+              {
+                "name": "Brace",
+                "tier": 3,
+                "requires": [
+                  7
+                ]
+              },
+              {
+                "name": "Enduring",
+                "tier": 4,
+                "requires": [
+                  8
+                ]
+              },
+              {
+                "name": "Side Step",
+                "tier": 4,
+                "requires": [
+                  9,
+                  14
+                ]
+              },
+              {
+                "name": "Defensive Stance",
+                "tier": 4,
+                "requires": [
+                  10,
+                  13
+                ]
+              },
+              {
+                "name": "Hard Headed",
+                "tier": 4,
+                "requires": [
+                  14
+                ]
+              },
+              {
+                "name": "Dedication",
+                "tier": 5,
+                "requires": [
+                  17
+                ]
+              },
+              {
+                "name": "Barrage",
+                "tier": 5,
+                "requires": [
+                  13,
+                  16
+                ]
+              },
+              {
+                "name": "Toughened",
+                "tier": 5,
+                "requires": [
+                  14,
+                  17
+                ]
+              },
+              {
+                "name": "Hard Headed (Improved)",
+                "tier": 5,
+                "requires": [
+                  15
+                ]
+              }
+            ]
+          },
             {
               "name": "Marauder",
               "careerSkills": [
@@ -4366,11 +4086,10 @@
                 "Resilience",
                 "Survival"
               ],
-              "talents": [
-                {
-                  "name": "Toughened",
-                  "tier": 1
-                },
+              "talents": [{
+                "name": "Toughened",
+                "tier": 1
+              },
                 {
                   "name": "Frenzied Attack",
                   "tier": 1
@@ -4519,11 +4238,10 @@
                 "Leadership",
                 "Ranged - Heavy"
               ],
-              "talents": [
-                {
-                  "name": "Command",
-                  "tier": 1
-                },
+              "talents": [{
+                "name": "Command",
+                "tier": 1
+              },
                 {
                   "name": "Second Wind",
                   "tier": 1
@@ -4677,157 +4395,155 @@
             "Streetwise",
             "Vigilance"
           ],
-          "specializations": [
-            {
-              "name": "Pilot",
-              "careerSkills": [
-                "Astrogation",
-                "Gunnery",
-                "Piloting - Planetary",
-                "Piloting - Space"
-              ],
-              "talents": [
-                {
-                  "name": "Full Throttle",
-                  "tier": 1
-                },
-                {
-                  "name": "Skilled Jockey",
-                  "tier": 1
-                },
-                {
-                  "name": "Galaxy Mapper",
-                  "tier": 1
-                },
-                {
-                  "name": "Let's Ride",
-                  "tier": 1
-                },
-                {
-                  "name": "Skilled Jockey",
-                  "tier": 2,
-                  "requires": [
-                    0,
-                    5
-                  ]
-                },
-                {
-                  "name": "Dead to Rights",
-                  "tier": 2,
-                  "requires": [
-                    1,
-                    4
-                  ]
-                },
-                {
-                  "name": "Galaxy Mapper",
-                  "tier": 2,
-                  "requires": [
-                    2,
-                    7
-                  ]
-                },
-                {
-                  "name": "Rapid Recovery",
-                  "tier": 2,
-                  "requires": [
-                    3,
-                    6
-                  ]
-                },
-                {
-                  "name": "Full Throttle (Improved)",
-                  "tier": 3,
-                  "requires": [
-                    4
-                  ]
-                },
-                {
-                  "name": "Dead to Rights (Improved)",
-                  "tier": 3,
-                  "requires": [
-                    5
-                  ]
-                },
-                {
-                  "name": "Grit",
-                  "tier": 3,
-                  "requires": [
-                    6,
-                    11
-                  ]
-                },
-                {
-                  "name": "Natural Pilot",
-                  "tier": 3,
-                  "requires": [
-                    7,
-                    10
-                  ]
-                },
-                {
-                  "name": "Grit",
-                  "tier": 4,
-                  "requires": [
-                    8,
-                    13
-                  ]
-                },
-                {
-                  "name": "Full Throttle (Supreme)",
-                  "tier": 4,
-                  "requires": [
-                    12
-                  ]
-                },
-                {
-                  "name": "Tricky Target",
-                  "tier": 4,
-                  "requires": [
-                    10
-                  ]
-                },
-                {
-                  "name": "Defensive Driving",
-                  "tier": 4,
-                  "requires": [
-                    11
-                  ]
-                },
-                {
-                  "name": "Master Pilot",
-                  "tier": 5,
-                  "requires": [
-                    12,
-                    17
-                  ]
-                },
-                {
-                  "name": "Dedication",
-                  "tier": 5,
-                  "requires": [
-                    16,
-                    18
-                  ]
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 5,
-                  "requires": [
-                    14,
-                    17
-                  ]
-                },
-                {
-                  "name": "Brilliant Evasion",
-                  "tier": 5,
-                  "requires": [
-                    15,
-                    18
-                  ]
-                }
-              ]
+          "specializations": [{
+            "name": "Pilot",
+            "careerSkills": [
+              "Astrogation",
+              "Gunnery",
+              "Piloting - Planetary",
+              "Piloting - Space"
+            ],
+            "talents": [{
+              "name": "Full Throttle",
+              "tier": 1
             },
+              {
+                "name": "Skilled Jockey",
+                "tier": 1
+              },
+              {
+                "name": "Galaxy Mapper",
+                "tier": 1
+              },
+              {
+                "name": "Let's Ride",
+                "tier": 1
+              },
+              {
+                "name": "Skilled Jockey",
+                "tier": 2,
+                "requires": [
+                  0,
+                  5
+                ]
+              },
+              {
+                "name": "Dead to Rights",
+                "tier": 2,
+                "requires": [
+                  1,
+                  4
+                ]
+              },
+              {
+                "name": "Galaxy Mapper",
+                "tier": 2,
+                "requires": [
+                  2,
+                  7
+                ]
+              },
+              {
+                "name": "Rapid Recovery",
+                "tier": 2,
+                "requires": [
+                  3,
+                  6
+                ]
+              },
+              {
+                "name": "Full Throttle (Improved)",
+                "tier": 3,
+                "requires": [
+                  4
+                ]
+              },
+              {
+                "name": "Dead to Rights (Improved)",
+                "tier": 3,
+                "requires": [
+                  5
+                ]
+              },
+              {
+                "name": "Grit",
+                "tier": 3,
+                "requires": [
+                  6,
+                  11
+                ]
+              },
+              {
+                "name": "Natural Pilot",
+                "tier": 3,
+                "requires": [
+                  7,
+                  10
+                ]
+              },
+              {
+                "name": "Grit",
+                "tier": 4,
+                "requires": [
+                  8,
+                  13
+                ]
+              },
+              {
+                "name": "Full Throttle (Supreme)",
+                "tier": 4,
+                "requires": [
+                  12
+                ]
+              },
+              {
+                "name": "Tricky Target",
+                "tier": 4,
+                "requires": [
+                  10
+                ]
+              },
+              {
+                "name": "Defensive Driving",
+                "tier": 4,
+                "requires": [
+                  11
+                ]
+              },
+              {
+                "name": "Master Pilot",
+                "tier": 5,
+                "requires": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "name": "Dedication",
+                "tier": 5,
+                "requires": [
+                  16,
+                  18
+                ]
+              },
+              {
+                "name": "Toughened",
+                "tier": 5,
+                "requires": [
+                  14,
+                  17
+                ]
+              },
+              {
+                "name": "Brilliant Evasion",
+                "tier": 5,
+                "requires": [
+                  15,
+                  18
+                ]
+              }
+            ]
+          },
             {
               "name": "Scoundrel",
               "careerSkills": [
@@ -4836,11 +4552,10 @@
                 "Deception",
                 "Ranged - Light"
               ],
-              "talents": [
-                {
-                  "name": "Black Market Contacts",
-                  "tier": 1
-                },
+              "talents": [{
+                "name": "Black Market Contacts",
+                "tier": 1
+              },
                 {
                   "name": "Convincing Demeanor",
                   "tier": 1
@@ -4986,11 +4701,10 @@
                 "Stealth",
                 "Vigilance"
               ],
-              "talents": [
-                {
-                  "name": "Street Smarts",
-                  "tier": 1
-                },
+              "talents": [{
+                "name": "Street Smarts",
+                "tier": 1
+              },
                 {
                   "name": "Black Market Contacts",
                   "tier": 1
@@ -5147,162 +4861,160 @@
             "Perception",
             "Piloting - Planetary"
           ],
-          "specializations": [
-            {
-              "name": "Mechanic",
-              "careerSkills": [
-                "Brawl",
-                "Mechanics",
-                "Piloting - Space",
-                "Skulduggery"
-              ],
-              "talents": [
-                {
-                  "name": "Gearhead",
-                  "tier": 1
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 1
-                },
-                {
-                  "name": "Fine Tuning",
-                  "tier": 1
-                },
-                {
-                  "name": "Solid Repairs",
-                  "tier": 1
-                },
-                {
-                  "name": "Redundant Systems",
-                  "tier": 2,
-                  "requires": [
-                    0,
-                    5
-                  ]
-                },
-                {
-                  "name": "Solid Repairs",
-                  "tier": 2,
-                  "requires": [
-                    1,
-                    4,
-                    6
-                  ]
-                },
-                {
-                  "name": "Gearhead",
-                  "tier": 2,
-                  "requires": [
-                    2,
-                    5,
-                    7
-                  ]
-                },
-                {
-                  "name": "Grit",
-                  "tier": 2,
-                  "requires": [
-                    3,
-                    6
-                  ]
-                },
-                {
-                  "name": "Solid Repairs",
-                  "tier": 3,
-                  "requires": [
-                    4,
-                    9
-                  ]
-                },
-                {
-                  "name": "Enduring",
-                  "tier": 3,
-                  "requires": [
-                    5,
-                    8,
-                    10
-                  ]
-                },
-                {
-                  "name": "Bad Motivator",
-                  "tier": 3,
-                  "requires": [
-                    6,
-                    9,
-                    11
-                  ]
-                },
-                {
-                  "name": "Toughened",
-                  "tier": 3,
-                  "requires": [
-                    7,
-                    10
-                  ]
-                },
-                {
-                  "name": "Contraption",
-                  "tier": 4,
-                  "requires": [
-                    8,
-                    13
-                  ]
-                },
-                {
-                  "name": "Solid Repairs",
-                  "tier": 4,
-                  "requires": [
-                    9,
-                    12,
-                    14
-                  ]
-                },
-                {
-                  "name": "Fine Tuning",
-                  "tier": 4,
-                  "requires": [
-                    10,
-                    13
-                  ]
-                },
-                {
-                  "name": "Hard Headed",
-                  "tier": 4,
-                  "requires": [
-                    11
-                  ]
-                },
-                {
-                  "name": "Natural Tinkerer",
-                  "tier": 5,
-                  "requires": [
-                    12
-                  ]
-                },
-                {
-                  "name": "Hold Together",
-                  "tier": 5,
-                  "requires": [
-                    13
-                  ]
-                },
-                {
-                  "name": "Dedication",
-                  "tier": 5,
-                  "requires": [
-                    14
-                  ]
-                },
-                {
-                  "name": "Hard Headed (Improved)",
-                  "tier": 5,
-                  "requires": [
-                    15
-                  ]
-                }
-              ]
+          "specializations": [{
+            "name": "Mechanic",
+            "careerSkills": [
+              "Brawl",
+              "Mechanics",
+              "Piloting - Space",
+              "Skulduggery"
+            ],
+            "talents": [{
+              "name": "Gearhead",
+              "tier": 1
             },
+              {
+                "name": "Toughened",
+                "tier": 1
+              },
+              {
+                "name": "Fine Tuning",
+                "tier": 1
+              },
+              {
+                "name": "Solid Repairs",
+                "tier": 1
+              },
+              {
+                "name": "Redundant Systems",
+                "tier": 2,
+                "requires": [
+                  0,
+                  5
+                ]
+              },
+              {
+                "name": "Solid Repairs",
+                "tier": 2,
+                "requires": [
+                  1,
+                  4,
+                  6
+                ]
+              },
+              {
+                "name": "Gearhead",
+                "tier": 2,
+                "requires": [
+                  2,
+                  5,
+                  7
+                ]
+              },
+              {
+                "name": "Grit",
+                "tier": 2,
+                "requires": [
+                  3,
+                  6
+                ]
+              },
+              {
+                "name": "Solid Repairs",
+                "tier": 3,
+                "requires": [
+                  4,
+                  9
+                ]
+              },
+              {
+                "name": "Enduring",
+                "tier": 3,
+                "requires": [
+                  5,
+                  8,
+                  10
+                ]
+              },
+              {
+                "name": "Bad Motivator",
+                "tier": 3,
+                "requires": [
+                  6,
+                  9,
+                  11
+                ]
+              },
+              {
+                "name": "Toughened",
+                "tier": 3,
+                "requires": [
+                  7,
+                  10
+                ]
+              },
+              {
+                "name": "Contraption",
+                "tier": 4,
+                "requires": [
+                  8,
+                  13
+                ]
+              },
+              {
+                "name": "Solid Repairs",
+                "tier": 4,
+                "requires": [
+                  9,
+                  12,
+                  14
+                ]
+              },
+              {
+                "name": "Fine Tuning",
+                "tier": 4,
+                "requires": [
+                  10,
+                  13
+                ]
+              },
+              {
+                "name": "Hard Headed",
+                "tier": 4,
+                "requires": [
+                  11
+                ]
+              },
+              {
+                "name": "Natural Tinkerer",
+                "tier": 5,
+                "requires": [
+                  12
+                ]
+              },
+              {
+                "name": "Hold Together",
+                "tier": 5,
+                "requires": [
+                  13
+                ]
+              },
+              {
+                "name": "Dedication",
+                "tier": 5,
+                "requires": [
+                  14
+                ]
+              },
+              {
+                "name": "Hard Headed (Improved)",
+                "tier": 5,
+                "requires": [
+                  15
+                ]
+              }
+            ]
+          },
             {
               "name": "Outlaw Tech",
               "careerSkills": [
@@ -5311,11 +5023,10 @@
                 "Mechanics",
                 "Streetwise"
               ],
-              "talents": [
-                {
-                  "name": "Tinkerer",
-                  "tier": 1
-                },
+              "talents": [{
+                "name": "Tinkerer",
+                "tier": 1
+              },
                 {
                   "name": "Utinni!",
                   "tier": 1
@@ -5469,11 +5180,10 @@
                 "Stealth",
                 "Vigilance"
               ],
-              "talents": [
-                {
-                  "name": "Codebreaker",
-                  "tier": 1
-                },
+              "talents": [{
+                "name": "Codebreaker",
+                "tier": 1
+              },
                 {
                   "name": "Grit",
                   "tier": 1

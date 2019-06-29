@@ -9,7 +9,7 @@ const Component = (props) => (
     <List>
         {(props.value || []).map(i =>
             <ListItem>
-                <Child value={i} />
+                <Child value={i} context={props.context} />
             </ListItem>)
         }
     </List>

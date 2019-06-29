@@ -3,34 +3,25 @@ const readOnly = ${readOnly}; // If this component only calculates its value, or
 const valueExpression = "${values}";
 const action = ${action};
 const connected = connect((state, ownProps) => {
+    const context = {
+        $state: state,
+        $model: models
+    }
     const value = (()=>{
-        const context = {
-            $state: state,
-            $model: models,
-            $this: null
+        try {
+            return interpreter.interpret(boundProperty, context);
+        } catch(e){
+            console.error(e);
+            return undefined;
         }
-        return !readOnly ? _.get(context, boundProperty) :
-            interpreter.interpret(boundProperty, {
-            $state: state,
-            $model: models,
-            $this: null
-        });
     })();
     const options = (()=>{
-        const context = {
-            $state: state,
-            $model: models,
-            $this: null
-        }
-        return interpreter.interpret(valueExpression, {
-                $state: state,
-                $model: models,
-                $this: null
-            });
+        return interpreter.interpret(valueExpression, context);
         })() || [];
     return {
         options,
-        value: value !== undefined || null ? value : ""
+        context,
+        value: _.isNil(value) ? "" : value
     };
 }, dispatch => {
     const update = readOnly ? () => {} :

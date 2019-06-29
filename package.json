@@ -28,6 +28,7 @@
     "js-yaml": "^3.12.1",
     "lodash": "^4.17.11",
     "ncp": "^2.0.0",
+    "npm": "^6.9.0",
     "react": "^16.8.4",
     "react-tabs": "^3.0.0",
     "recursive-readdir": "^2.2.2",
