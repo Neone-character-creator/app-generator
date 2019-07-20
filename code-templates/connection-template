@@ -1,3 +1,4 @@
+const isBoundComponent = ${isBoundComponent}
 const boundProperty = ${boundProperty}; // The expression used to determine the value of binding.
 const readOnly = ${readOnly}; // If this component only calculates its value, or is bound and can update it.
 const valueExpression = "${values}";
@@ -9,7 +10,11 @@ const connected = connect((state, ownProps) => {
     }
     const value = (()=>{
         try {
-            return interpreter.interpret(boundProperty, context);
+            if (isBoundComponent){
+                return _.get(context, boundProperty);
+            } else {
+                return interpreter.interpret(boundProperty, context);
+            }
         } catch(e){
             console.error(e);
             return undefined;
