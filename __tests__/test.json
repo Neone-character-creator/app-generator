@@ -922,7 +922,7 @@
               "name": "totalExperience",
               "type": "number",
               "label": "Total Experience",
-              "value": "return $state.character.totalExperience"
+              "bind": "$state.character.totalExperience"
             }
           ]
         }
@@ -1161,7 +1161,8 @@
                 },
                   {
                     "name": "singlePurchasedAdvancementRemoveButton",
-                    "type": "button"
+                    "type": "button",
+                    "action" : "REMOVE-ADVANCEMENT $this"
                   }
                 ]
               }
