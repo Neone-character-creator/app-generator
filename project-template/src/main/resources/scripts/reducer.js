@@ -115,6 +115,23 @@ export default function (previousState, action) {
                 value
             })
         }
+        if (action.type === "REMOVE-ADVANCEMENT") {
+            const tokens = action.value.split(" ");
+            const advancementType = tokens[0];
+            const foundAdvancement = previousState.character.advancements.find(adv => {
+                return adv.value.option === advancementType;
+            });
+            let previousMatchFound = false;
+            previousState.character.advancements = previousState.character.advancements.filter(x => {
+                if (previousMatchFound) {
+                    return false;
+                } else {
+                    previousMatchFound = Object.is(x, foundAdvancement);
+                    return previousMatchFound;
+                }
+
+            })
+        }
     } else {
         previousState = {character: new models.character()};
     }
