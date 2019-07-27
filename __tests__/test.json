@@ -1117,11 +1117,17 @@
               {
                 "name": "skillAdvancement",
                 "type": "select",
-                "bind": "$state.selectedAdvancement",
+                "bind": "$state.selectedAdvancement.skill",
                 "items": {
-                  "text": "return $this.option",
+                  "text": "option",
                   "values": "return $state.availableAdvancements.skill.options"
                 }
+              },
+              {
+                "name": "skillSubmit",
+                "type": "button",
+                "text": "return 'Buy'",
+                "action": "ADVANCEMENT skill $state.selectedAdvancement.skill"
               }
             ]
           },
@@ -1137,9 +1143,9 @@
               {
                 "name": "talentAdvancement",
                 "type": "select",
-                "bind": "$state.selectedAdvancement",
+                "bind": "$state.selectedAdvancement.talent",
                 "items": {
-                  "text": "return $this.option",
+                  "text": "option",
                   "values": "return $state.availableAdvancements.talent.options"
                 }
               }
@@ -1157,11 +1163,12 @@
                 "children": [{
                   "name": "singlePurchasedAdvancementLabel",
                   "type": "label",
-                  "text": "return $this.description"
+                  "text": "return `${$this.type} Advancement ${$this.value.option}`"
                 },
                   {
                     "name": "singlePurchasedAdvancementRemoveButton",
                     "type": "button",
+                    "text": "return `Remove`",
                     "action" : "REMOVE-ADVANCEMENT $this"
                   }
                 ]
