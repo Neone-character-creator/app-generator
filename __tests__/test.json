@@ -1101,7 +1101,7 @@
               "name": "characteristicSubmit",
               "type": "button",
               "text": "return 'Buy'",
-              "action": "ADVANCEMENT characteristic $state.selectedAdvancement.characteristic"
+              "action": "return `ADVANCEMENT characteristic $state.selectedAdvancement.characteristic`"
             }
           ]
         },
@@ -1127,7 +1127,7 @@
                 "name": "skillSubmit",
                 "type": "button",
                 "text": "return 'Buy'",
-                "action": "ADVANCEMENT skill $state.selectedAdvancement.skill"
+                "action": "return `ADVANCEMENT skill $state.selectedAdvancement.skill`"
               }
             ]
           },
@@ -1169,7 +1169,7 @@
                     "name": "singlePurchasedAdvancementRemoveButton",
                     "type": "button",
                     "text": "return `Remove`",
-                    "action" : "REMOVE-ADVANCEMENT $this"
+                    "action" : "return `REMOVE-ADVANCEMENT ${$this.value.option}`"
                   }
                 ]
               }

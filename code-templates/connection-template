@@ -6,7 +6,8 @@ const action = ${action};
 const connected = connect((state, ownProps) => {
     const context = {
         $state: state,
-        $model: models
+        $model: models,
+        $this: ownProps.value
     }
     const value = (()=>{
         try {
@@ -28,7 +29,10 @@ const connected = connect((state, ownProps) => {
         context,
         value: _.isNil(value) ? "" : value
     };
-}, dispatch => {
+}, (dispatch) => {
+    return {dispatch};
+}, (stateProps, dispatchProps, ownProps) => {
+    var {dispatch} = dispatchProps;
     const update = readOnly ? () => {} :
         _.debounce((value) => {
             dispatch({ type: "SET", path: boundProperty, value: value});
@@ -37,8 +41,9 @@ const connected = connect((state, ownProps) => {
         (action, value) => {
             dispatch({type: action, value});
         };
-    const actionTokens = action.split(" ");
-    return {
+    const interpretedActionString = interpreter.interpret(action, stateProps.context);
+    const actionTokens = interpretedActionString !== undefined ? interpretedActionString.split(" ") : ["",""];
+    return {...stateProps,
         onClick: (event) => {
             onClick(actionTokens[0], actionTokens.slice(1).join(" "));
         },
