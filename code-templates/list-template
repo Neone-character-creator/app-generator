@@ -1,8 +1,6 @@
 const Child = (props) => {
 
-    return (<ListItem>
-        ${childComponent}
-    </ListItem>)
+    return (${childComponent})
 };
 
 const Component = (props) => (
