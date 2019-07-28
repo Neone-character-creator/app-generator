@@ -128,7 +128,20 @@ export default function (previousState, action) {
                 advancement: action.advancement,
                 cost: previousState.selectedAdvancement[action.advancementType].cost
             };
-            previousState.character.advancements.push(addedAdvancement);
+            const advancementRule = rules.advancement[action.advancementType];
+            const isAvailable = interpreter.interpret(advancementRule.when, {
+                $state: previousState,
+                $this: previousState.selectedAdvancement[action.advancementType].option
+            }) === true && interpreter.interpret(advancementRule.cost, {
+                $state: previousState,
+                $this: previousState.selectedAdvancement[action.advancementType].option
+            }) <= previousState.character.availableExperience;
+            if(isAvailable) {
+                previousState.character.advancements.push(addedAdvancement);
+            } else {
+                alert("Advancement not added, prerequisites not met.")
+                console.warn("Attempted to add an advancement when it shouldn't be allowed.")
+            }
         }
         if (action.type === "REMOVE-ADVANCEMENT") {
             const tokens = action.value.split(" ");
