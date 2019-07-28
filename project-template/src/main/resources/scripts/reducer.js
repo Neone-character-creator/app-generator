@@ -2,6 +2,7 @@ import * as _ from "lodash";
 import models from "./models";
 import interpreter from "./interpreter";
 import rules from "!./rules.json";
+import hooks from "!./hooks.json";
 
 const baseValues = {};
 
@@ -81,8 +82,23 @@ function applyAdvancements(state) {
     });
 };
 
+function runHooks(when, state, action) {
+    const hooksToRun = hooks.filter(hook => {
+        return hook[when] === action.type;
+    });
+    hooksToRun.forEach(hook => {
+        hook.effects.forEach(effect => {
+            interpreter.interpret(effect, {$state:state, $this: action});
+        })
+    });
+}
+
+const runBeforeHooks = runHooks.bind(null, "before");
+const runAfterHooks = runHooks.bind(null, "after");
+
 export default function (previousState, action) {
     if (previousState) {
+        runBeforeHooks(previousState, action);
         previousState = {...previousState};
         if (action.type === "SET") {
             const path = (() => {
@@ -137,5 +153,6 @@ export default function (previousState, action) {
     setCalculatedProperties(models.character.prototype.definition, previousState, "character");
     applyAdvancements(previousState);
     setAvailableAdvancements(previousState);
+    runAfterHooks(previousState, action);
     return previousState;
 };
