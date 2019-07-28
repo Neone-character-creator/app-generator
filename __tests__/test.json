@@ -5386,7 +5386,7 @@
           "presence"
         ],
         "when": "return $state.character.characteristics[$this] < 6 ",
-        "cost": "return ($state.character.characteristics[$this] + 1) * 10 ",
+        "cost": "return ($state.character.characteristics[$this] + 1) * 10",
         "effect": "$state.character.characteristics[$this] = $state.character.characteristics[$this] += 1"
       },
       "skill": {

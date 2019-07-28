@@ -73,7 +73,7 @@ function applyAdvancements(state) {
             case "characteristic":
                 interpreter.interpret(rules.advancement[advancement.type].effect, {
                     $state: state,
-                    $this: advancement.value,
+                    $this: advancement.advancement,
                     $rules: rules,
                     $model: models
                 });
@@ -107,12 +107,12 @@ export default function (previousState, action) {
             array.push(action.value);
         }
         if (action.type === "ADVANCEMENT") {
-            const type = action.advancementType;
-            const value = action.advancement;
-            previousState.character.advancements.push({
-                type,
-                value
-            })
+            const addedAdvancement = {
+                type: action.advancementType,
+                advancement: action.advancement,
+                cost: previousState.selectedAdvancement[action.advancementType].cost
+            };
+            previousState.character.advancements.push(addedAdvancement);
         }
         if (action.type === "REMOVE-ADVANCEMENT") {
             const tokens = action.value.split(" ");
