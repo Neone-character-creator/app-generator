@@ -68,12 +68,16 @@ function setAvailableAdvancements(state) {
 
 function applyAdvancements(state) {
     (state.character.advancements || []).forEach(advancement => {
-        interpreter.interpret(rules.advancement[advancement.type].effect, {
-            $state: state,
-            $this: advancement.value.option,
-            $rules: rules,
-            $model: models
-        });
+        switch (advancement.type) {
+            case "skill":
+            case "characteristic":
+                interpreter.interpret(rules.advancement[advancement.type].effect, {
+                    $state: state,
+                    $this: advancement.value,
+                    $rules: rules,
+                    $model: models
+                });
+        }
     });
 };
 
@@ -103,13 +107,8 @@ export default function (previousState, action) {
             array.push(action.value);
         }
         if (action.type === "ADVANCEMENT") {
-            const tokens = action.value.split(" ");
-            const type = tokens[0];
-            const value = interpreter.interpret("return " + tokens[1], {
-                $state: previousState,
-                $model: models,
-                $rules: rules,
-            });
+            const type = action.advancementType;
+            const value = action.advancement;
             previousState.character.advancements.push({
                 type,
                 value

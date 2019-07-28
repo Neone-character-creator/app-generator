@@ -38,14 +38,13 @@ const connected = connect((state, ownProps) => {
             dispatch({ type: "SET", path: boundProperty, value: value});
         });
     const onClick = readOnly || !action ? () => {} :
-        (action, value) => {
-            dispatch({type: action, value});
+        (action) => {
+            dispatch(action);
         };
-    const interpretedActionString = interpreter.interpret(action, stateProps.context);
-    const actionTokens = interpretedActionString !== undefined ? interpretedActionString.split(" ") : ["",""];
     return {...stateProps,
         onClick: (event) => {
-            onClick(actionTokens[0], actionTokens.slice(1).join(" "));
+            const interpretedAction = interpreter.interpret(action, stateProps.context);
+            onClick(interpretedAction);
         },
         update: (event) => {
             update(event.target.value);

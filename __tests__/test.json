@@ -1101,7 +1101,7 @@
               "name": "characteristicSubmit",
               "type": "button",
               "text": "return 'Buy'",
-              "action": "return `ADVANCEMENT characteristic $state.selectedAdvancement.characteristic`"
+              "action": "return {type:'ADVANCEMENT', advancementType:'characteristic', advancement: $state.selectedAdvancement.characteristic.option}"
             }
           ]
         },
@@ -1127,7 +1127,7 @@
                 "name": "skillSubmit",
                 "type": "button",
                 "text": "return 'Buy'",
-                "action": "return `ADVANCEMENT skill $state.selectedAdvancement.skill`"
+                "action": "return {type:'ADVANCEMENT', advancementType:'skill', advancement: $state.selectedAdvancement.skill.option}"
               }
             ]
           },
@@ -1145,9 +1145,15 @@
                 "type": "select",
                 "bind": "$state.selectedAdvancement.talent",
                 "items": {
-                  "text": "option",
+                  "text": "option.name",
                   "values": "return $state.availableAdvancements.talent.options"
                 }
+              },
+              {
+                "name": "talentSubmit",
+                "type": "button",
+                "text": "return 'Buy'",
+                "action": "return {type:'ADVANCEMENT', advancementType:'talent', advancement: $state.selectedAdvancement.talent.option.name}"
               }
             ]
           },
@@ -1163,13 +1169,13 @@
                 "children": [{
                   "name": "singlePurchasedAdvancementLabel",
                   "type": "label",
-                  "text": "return `${$this.type} Advancement ${$this.value.option}`"
+                  "text": "return `${$this.type} Advancement ${$this.value}`"
                 },
                   {
                     "name": "singlePurchasedAdvancementRemoveButton",
                     "type": "button",
                     "text": "return `Remove`",
-                    "action" : "return `REMOVE-ADVANCEMENT ${$this.value.option}`"
+                    "action" : "return `REMOVE-ADVANCEMENT ${$this.value}`"
                   }
                 ]
               }
@@ -5370,7 +5376,7 @@
         ],
         "when": "return $state.character.characteristics[$this] < 6 ",
         "cost": "return ($state.character.characteristics[$this] + 1) * 10 ",
-        "effect": "$state.character.characteristics[$this] = $state.character.characteristics[$this] + 1"
+        "effect": "$state.character.characteristics[$this] = $state.character.characteristics[$this] += 1"
       },
       "skill": {
         "description": "Skill Training",
@@ -5378,7 +5384,7 @@
         "options": "return Object.keys($model.skills.prototype.definition) ",
         "when": "return $state.character.skills[$this].rank < 5 ",
         "cost": "return ($state.character.skills[$this].rank + 1) * 5 ",
-        "effect": "return $state.character.state[$this].rank + 1"
+        "effect": "return $state.character.skills[$this].rank += 1"
       },
       "talent": {
         "description": "Acquire Talent",
