@@ -1080,6 +1080,11 @@
         "name": "Advancements",
         "type": "view",
         "children": [{
+          "name": "availableExperienceAdvancement",
+          "type": "textfield",
+          "label": "Available Experience",
+          "bind": "$state.character.availableExperience"
+        },{
           "name": "characteristicAdvancementContainer",
           "type": "container",
           "direction": "vertical",
