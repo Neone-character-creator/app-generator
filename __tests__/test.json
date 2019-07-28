@@ -1103,6 +1103,12 @@
               }
             },
             {
+              "name": "characteristicAdvancementCost",
+              "type": "number",
+              "bind" : "$state.selectedAdvancement.characteristic.cost",
+              "label": "Cost"
+            },
+            {
               "name": "characteristicSubmit",
               "type": "button",
               "text": "return 'Buy'",
@@ -1203,7 +1209,7 @@
         "availableExperience": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.advancements.map(a => a.cost).reduce((x, y)=> x+y, 0)"
+            "return $state.character.advancements.map(a => a.cost).reduce((x, y)=> x-y, $state.character.totalExperience)"
           ]
         },
         "totalExperience": {
