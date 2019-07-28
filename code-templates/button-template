@@ -1,5 +1,5 @@
 const Component = (props) => (
-    <Button id="${componentName}-button" variant="contained" onClick={props.onClick} >
+    <Button id="${componentName}-button" variant="contained" onClick={props.onClick} disabled={props.disabled} >
         {props.value}
     </Button>
 );

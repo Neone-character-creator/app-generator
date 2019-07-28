@@ -3,6 +3,7 @@ const boundProperty = ${boundProperty}; // The expression used to determine the 
 const readOnly = ${readOnly}; // If this component only calculates its value, or is bound and can update it.
 const valueExpression = "${values}";
 const action = ${action};
+const disabledWhenExpression = ${disabledWhen};
 const connected = connect((state, ownProps) => {
     const context = {
         $state: state,
@@ -24,7 +25,9 @@ const connected = connect((state, ownProps) => {
     const options = (()=>{
         return interpreter.interpret(valueExpression, context);
         })() || [];
+    const disabled = interpreter.interpret(disabledWhenExpression, context);
     return {
+        disabled,
         options,
         context,
         value: _.isNil(value) ? "" : value

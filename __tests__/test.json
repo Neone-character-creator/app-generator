@@ -1112,6 +1112,7 @@
               "name": "characteristicSubmit",
               "type": "button",
               "text": "return 'Buy'",
+              "disabledWhen": "return _.get($state, 'selectedAdvancement.characteristic.isAvailable') !== true",
               "action": "return {type:'ADVANCEMENT', advancementType:'characteristic', advancement: $state.selectedAdvancement.characteristic.option}"
             }
           ]
@@ -1138,6 +1139,7 @@
                 "name": "skillSubmit",
                 "type": "button",
                 "text": "return 'Buy'",
+                "disabledWhen": "return _.get($state, 'selectedAdvancement.skill.isAvailable') !== true",
                 "action": "return {type:'ADVANCEMENT', advancementType:'skill', advancement: $state.selectedAdvancement.skill.option}"
               }
             ]
@@ -1164,6 +1166,7 @@
                 "name": "talentSubmit",
                 "type": "button",
                 "text": "return 'Buy'",
+                "disabledWhen": "return _.get($state, 'selectedAdvancement.talent.isAvailable') !== true",
                 "action": "return {type:'ADVANCEMENT', advancementType:'talent', advancement: $state.selectedAdvancement.talent.option.name}"
               }
             ]
