@@ -1473,7 +1473,12 @@
     "skill": {
       "properties": {
         "name": "string",
-        "isCareerSkill": "boolean",
+        "isCareerSkill": {
+          "type": "boolean",
+          "derivedFrom": [
+            "return $state.character.career && $state.character.career.careerSkills.includes($this.ancestors[0].name)"
+          ]
+        },
         "characteristic": "string",
         "rank": "number"
       }
@@ -2588,7 +2593,7 @@
     "career": {
       "properties": {
         "name": "string",
-        "isCareerSkills": "[string]",
+        "careerSkills": "[string]",
         "specializations": "[specialization]"
       },
       "values": [{
@@ -5363,7 +5368,7 @@
     "specialization": {
       "properties": {
         "name": "string",
-        "isCareerSkills": "[skill]",
+        "careerSkills": "[skill]",
         "talents": "[specializationTalent]"
       }
     },

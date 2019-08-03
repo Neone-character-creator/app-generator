@@ -6,32 +6,43 @@ import hooks from "!./hooks.json";
 
 const baseValues = {};
 
-function setCalculatedProperties(modelDefinition, state, statePath) {
+function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, statePath) {
+    const joinedStatePath = statePath[0] + statePath.slice(1).map(element => `[${element}]`).join("");
     if (modelDefinition.baseValue) {
-        const originalBaseValue = _.get(baseValues, statePath) || 0;
-        const differenceFromOriginalBase = (_.get(state, statePath) - originalBaseValue) || 0;
+        const originalBaseValue = _.get(baseValues, joinedStatePath) || 0;
+        const differenceFromOriginalBase = (_.get(state, joinedStatePath) - originalBaseValue) || 0;
         const baseValue = modelDefinition.baseValue.reduce((accumulator, nextExpression) => {
                 return interpreter.interpret(nextExpression, {$state: state, $models: models, $this: accumulator}, true)
                     || accumulator;
             }, 0);
         if (originalBaseValue !== baseValue) {
-            _.set(baseValues, statePath, baseValue);
+            _.set(baseValues, joinedStatePath, baseValue);
         }
-        _.set(state, statePath, baseValue + differenceFromOriginalBase);
+        _.set(state, joinedStatePath, baseValue + differenceFromOriginalBase);
     } else if (modelDefinition.derivedFrom) {
-        let value = modelDefinition.derivedFrom.reduce((valueSoFar, nextExpression) => {
-                return interpreter.interpret(nextExpression, {$state: state, $models: models, $this: valueSoFar})
+        let value = modelDefinition.derivedFrom.reduce((accumulator, nextExpression) => {
+                return interpreter.interpret(nextExpression, {$state: state, $models: models,
+                    $this: {
+                        accumulator,
+                        ancestors: statePath.filter((x, i)=>i < statePath.length -1).map((element, index) => {
+                            const joined = statePath.filter((x, i) => {
+                                return i <= index;
+                            }).map(x => `[${x}]`).join("");
+                            return _.get(state, joined);
+                        }).reverse()
+                    }})
             }, null);
-        _.set(state, statePath, value);
+        _.set(state, joinedStatePath, value);
     }
     Object.getOwnPropertyNames(modelDefinition).reduce((updated, nextPropertyName) => {
+        const parentScopes = ancestorDefinitions ? [...ancestorDefinitions, modelDefinition] : [modelDefinition];
         const modelProperty = modelDefinition[nextPropertyName];
         const propertyModelDefinition = models[modelDefinition[nextPropertyName].type] ? models[modelDefinition[nextPropertyName].type].prototype.definition : undefined;
-        const propertyPath = statePath + `['${nextPropertyName}']`;
+        const propertyPath = [...statePath, `${nextPropertyName}`];
         if (modelProperty.derivedFrom || modelProperty.baseValue) {
-            setCalculatedProperties(modelProperty, state, propertyPath);
+            setCalculatedProperties(modelProperty, parentScopes, state, propertyPath);
         } else if (propertyModelDefinition) {
-            setCalculatedProperties(propertyModelDefinition, state, propertyPath);
+            setCalculatedProperties(propertyModelDefinition, parentScopes, state, propertyPath);
         }
     }, state);
 }
@@ -163,7 +174,7 @@ export default function (previousState, action) {
     } else {
         previousState = {character: new models.character()};
     }
-    setCalculatedProperties(models.character.prototype.definition, previousState, "character");
+    setCalculatedProperties(models.character.prototype.definition, null, previousState, ["character"]);
     applyAdvancements(previousState);
     setAvailableAdvancements(previousState);
     runAfterHooks(previousState, action);
