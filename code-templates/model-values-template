@@ -1,0 +1,3 @@
+${name}Model.values = JSON.parse(`${values}`).map(parsed => {
+    return {...new ${name}Model(), ...parsed}
+});

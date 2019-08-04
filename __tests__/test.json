@@ -1013,6 +1013,16 @@
                 "value": "return $state.character.species.specialAbilities.map(sa => sa.name).join(', ') "
               }
             ]
+          },
+          {
+            "name": "speciesCareerSkillChoices",
+            "type": "select",
+            "bind": "$state.character.species.careerSkills",
+            "items": {
+              "maxSelections": "return $state.character.species && $state.character.species.startingCareerSkillChoices",
+              "text": "name",
+              "values": "return Object.keys($model.skills.prototype.definition).map(d => $model.skills.prototype.definition[d].value)"
+            }
           }
         ]
       },
@@ -1518,7 +1528,8 @@
         "startingExperience": "number",
         "startingSkills": "[string]",
         "startingTalents": "[talent]",
-        "startingisCareerSkillChoices": {
+        "careerSkills": "[skill]",
+        "startingCareerSkillChoices": {
           "type": "number",
           "default": 4
         },
@@ -1581,7 +1592,7 @@
             "characteristic": "willpower"
           },
           "startingExperience": 175,
-          "startingiscareerskillchoices": 6,
+          "startingCareerSkillChoices": 6,
           "firstspecialtytrainedskills": 4,
           "specialAbilities": [{
             "name": "Droid",

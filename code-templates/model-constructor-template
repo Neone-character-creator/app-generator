@@ -18,7 +18,3 @@ function ${name}Model(){
         }
     });
 }
-
-${name}Model.values = JSON.parse(`${values}`);
-
-${name}Model.prototype.definition = JSON.parse(`${schema}`);

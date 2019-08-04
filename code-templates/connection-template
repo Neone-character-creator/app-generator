@@ -4,6 +4,7 @@ const readOnly = ${readOnly}; // If this component only calculates its value, or
 const valueExpression = "${values}";
 const action = ${action};
 const disabledWhenExpression = ${disabledWhen};
+const selectionCountExpression = ${selectionCount};
 const connected = connect((state, ownProps) => {
     const context = {
         $state: state,
@@ -22,6 +23,7 @@ const connected = connect((state, ownProps) => {
             return undefined;
         }
     })();
+    const maxSelections = interpreter.interpret(selectionCountExpression, context);
     const options = (()=>{
         return interpreter.interpret(valueExpression, context);
         })() || [];
@@ -30,6 +32,7 @@ const connected = connect((state, ownProps) => {
         disabled,
         options,
         context,
+        maxSelections,
         value: _.isNil(value) ? "" : value
     };
 }, (dispatch) => {
