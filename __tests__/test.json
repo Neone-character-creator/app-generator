@@ -1486,7 +1486,9 @@
         "isCareerSkill": {
           "type": "boolean",
           "derivedFrom": [
-            "return $state.character.career && $state.character.career.careerSkills.includes($this.ancestors[0].name)"
+            "return $state.character.career && $state.character.career.careerSkills.includes($this.ancestors[0].name)",
+            "return $this.accumulator || ($state.character.career.specializations.map(s => s.careerSkills).includes($this.ancestors[0].name))",
+            "return $this.accumulator || ($state.character.species && $state.character.species.careerSkills.includes($this.ancestors[0].name))"
           ]
         },
         "characteristic": "string",
