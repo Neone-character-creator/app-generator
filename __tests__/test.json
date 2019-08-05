@@ -1021,7 +1021,7 @@
             "items": {
               "maxSelections": "return $state.character.species && $state.character.species.startingCareerSkillChoices",
               "text": "name",
-              "values": "return Object.keys($model.skills.prototype.definition).map(d => $model.skills.prototype.definition[d].value)"
+              "values": "return Object.keys($model.skills.prototype.definition).map(d => $model.skills.prototype.definition[d].value.name)"
             }
           }
         ]
