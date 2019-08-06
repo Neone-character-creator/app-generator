@@ -25,7 +25,8 @@ module.exports = {
         index: "demo.html",
         historyApiFallback: {
             index: "demo.html",
-        }
+        },
+        writeToDisk: true
     },
     "module": {
         "rules": [
