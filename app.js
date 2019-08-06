@@ -9,35 +9,50 @@ const tmp = require("tmp");
 if (!argv.configFile) {
     throw new Error("--configFile is missing.");
 }
-try {
-    const rawConfiguraiton = require("./lib/schema/configuration")(JSON.parse(fs.readFileSync(argv.configFile, 'utf-8')));
-    rawConfiguraiton.views.name = "app";
-    rawConfiguraiton.views.type = "app";
-    const componentConfiguration = Object.assign(rawConfiguraiton, require('./lib/generateComponentsHierarchy').default(rawConfiguraiton.views),
-        {
-            app: {
-                type:"app",
-                children: rawConfiguraiton.views.children.map(v => v.name)
-            }
-        });
-    const modelConfiguration = _.pick(rawConfiguraiton, "model");
-    const appConfiguration = Object.assign({}, componentConfiguration, modelConfiguration);
 
-    const tmpDir = tmp.dirSync().name;
-    if (argv.only === "classes") {
-        const modelSources = new ModelClassGenerator(appConfiguration.model, tmpDir).generate();
-        ModelClassWriter(tmpDir, modelSources);
-        return;
-    }
+function work(configFileLocation) {
+    try {
+        const rawConfiguraiton = require("./lib/schema/configuration")(JSON.parse(fs.readFileSync(configFileLocation, 'utf-8')));
+        rawConfiguraiton.views.name = "app";
+        rawConfiguraiton.views.type = "app";
+        const componentConfiguration = Object.assign(rawConfiguraiton, require('./lib/generateComponentsHierarchy').default(rawConfiguraiton.views),
+            {
+                app: {
+                    type: "app",
+                    children: rawConfiguraiton.views.children.map(v => v.name)
+                }
+            });
+        const modelConfiguration = _.pick(rawConfiguraiton, "model");
+        const appConfiguration = Object.assign({}, componentConfiguration, modelConfiguration);
 
-    var pluginGenerator = new PluginGenerator(appConfiguration, tmpDir);
-    pluginGenerator.generate().catch(e => console.error(e));
-} catch (e) {
-    if (e.errors) {
-        e.errors.forEach(error => {
-            console.error(error);
-        })
-    } else {
-        console.error(e);
+        const tmpDir = tmp.dirSync().name;
+        if (argv.only === "classes") {
+            const modelSources = new ModelClassGenerator(appConfiguration.model, tmpDir).generate();
+            ModelClassWriter(tmpDir, modelSources);
+            return;
+        }
+
+        var pluginGenerator = new PluginGenerator(appConfiguration, tmpDir);
+        pluginGenerator.generate().catch(e => console.error(e));
+    } catch (e) {
+        if (e.errors) {
+            e.errors.forEach(error => {
+                console.error(error);
+            })
+        } else {
+            console.error(e);
+        }
     }
+}
+
+if(argv.watch) {
+    work(argv.configFile);
+    fs.watchFile(argv.configFile, {
+        interval: 2500
+    }, ()=>{
+        console.log("File changed, rebuilding...")
+        work(argv.configFile);
+    });
+} else {
+    work(argv.configFile);
 }
