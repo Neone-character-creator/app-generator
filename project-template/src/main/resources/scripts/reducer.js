@@ -95,7 +95,12 @@ function applyAdvancements(state) {
 
 function runHooks(when, state, action) {
     const hooksToRun = hooks.filter(hook => {
-        return hook[when] === action.type;
+        const matchesTrigger = hook.when ? interpreter.interpret(hook.when, {
+            $this: {
+                action
+            }
+        }) : true;
+        return hook[when] === action.type && matchesTrigger;
     });
     hooksToRun.forEach(hook => {
         hook.effects.forEach(effect => {
@@ -174,9 +179,11 @@ export default function (previousState, action) {
     } else {
         previousState = {character: new models.character()};
     }
-    setCalculatedProperties(models.character.prototype.definition, null, previousState, ["character"]);
-    applyAdvancements(previousState);
-    setAvailableAdvancements(previousState);
-    runAfterHooks(previousState, action);
+    if(!action.type.startsWith("@@")) {
+        setCalculatedProperties(models.character.prototype.definition, null, previousState, ["character"]);
+        applyAdvancements(previousState);
+        setAvailableAdvancements(previousState);
+        runAfterHooks(previousState, action);
+    }
     return previousState;
 };
