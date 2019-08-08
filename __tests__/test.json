@@ -6363,7 +6363,8 @@
         "description": "Acquire Talent",
         "uses": "$state.character.availableExperience",
         "options": "return $state.character.specializations.reduce((combined, s)=> combined.concat(s.talents), []) ",
-        "when": "return $state.character.specializations.reduce((combined, x)=> combined.concat(x.talents), []).find(y => $state.character.specializationTalents.find(z => z.id === y.id)) "
+        "when": "return $this.tier === 1 || $state.character.specializations.reduce((combined, x)=> combined.concat(x.talents), []).find(y => $state.character.specializationTalents.find(z => z.id === y.id))",
+        "cost": "return $this.tier * 5"
       }
     }
   },
