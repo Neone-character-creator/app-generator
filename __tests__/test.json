@@ -2896,8 +2896,18 @@
     },
     "defense": {
       "properties": {
-        "ranged": "number",
-        "melee": "number"
+        "ranged": {
+          "type": "number",
+          "derivedFrom":[
+            "return $state.character.armor.map(a => a.defense).reduce((a,b)=>a+b, 0)"
+          ]
+        },
+        "melee": {
+          "type": "number",
+          "derivedFrom":[
+            "return $state.character.armor.map(a => a.defense).reduce((a,b)=>a+b, 0)"
+          ]
+        }
       }
     },
     "characteristics": {
