@@ -1181,6 +1181,30 @@
                 "bind": "$state.character.totalExperience"
               }
             ]
+          },
+          {
+            "name": "motivations",
+            "type": "container",
+            "direction": "vertical",
+            "children": [
+              {
+                "name": "motivationsLabel",
+                "type": "label",
+                "text": "return 'Motivations'"
+              },
+              {
+                "name": "motivationsList",
+                "type": "list",
+                "bind": "$state.character.motivations",
+                "items": {
+                  "child": {
+                    "name": "motivation",
+                    "type": "textfield",
+                    "bind": "$state.character.motivations[$index]"
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -1511,7 +1535,13 @@
         "skills": "skills",
         "advancements": "[advancement]",
         "weapons": "[weapon]",
-        "armor": "[armor]"
+        "armor": "[armor]",
+        "motivations": {
+          "type": "[string]",
+          "default": [
+            ""
+          ]
+        }
       }
     },
     "skills": {
@@ -2898,13 +2928,13 @@
       "properties": {
         "ranged": {
           "type": "number",
-          "derivedFrom":[
+          "derivedFrom": [
             "return $state.character.armor.map(a => a.defense).reduce((a,b)=>a+b, 0)"
           ]
         },
         "melee": {
           "type": "number",
-          "derivedFrom":[
+          "derivedFrom": [
             "return $state.character.armor.map(a => a.defense).reduce((a,b)=>a+b, 0)"
           ]
         }
