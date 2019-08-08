@@ -1014,7 +1014,8 @@
                     ]
                   }
                 }
-              },{
+              },
+              {
                 "name": "newWeapon",
                 "type": "container",
                 "direction": "horizontal",
@@ -1024,7 +1025,7 @@
                     "type": "button",
                     "text": "return 'Add'",
                     "disabledWhen": "return !_.get($state, 'selectedWeapon')",
-                    "action":"return {type:'ADD', path:'character.weapons', value:$state.selectedWeapon}"
+                    "action": "return {type:'ADD', path:'character.weapons', value:$state.selectedWeapon}"
                   },
                   {
                     "name": "newWeaponName",
@@ -1065,6 +1066,97 @@
                     "type": "textfield",
                     "label": "Special",
                     "bind": "$state.selectedWeapon.special"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "armor",
+            "type": "container",
+            "direction": "vertical",
+            "children": [
+              {
+                "name": "armorLabel",
+                "type": "label",
+                "text": "return 'Armor'"
+              },
+              {
+                "name": "armorList",
+                "type": "list",
+                "bind": "$state.character.armor",
+                "items": {
+                  "child": {
+                    "name": "armorItem",
+                    "type": "container",
+                    "direction": "horizontal",
+                    "children": [
+                      {
+                        "name": "armorName",
+                        "type": "textfield",
+                        "label": "Name",
+                        "bind": "$this.name"
+                      },
+                      {
+                        "name": "armorDefense",
+                        "type": "number",
+                        "label": "Defense",
+                        "bind": "$this.armor"
+                      },
+                      {
+                        "name": "armorSoak",
+                        "type": "number",
+                        "label": "Soak",
+                        "bind": "$this.soak"
+                      },
+                      {
+                        "name": "armorEncumbrance",
+                        "type": "number",
+                        "label": "Hard Points",
+                        "bind": "$this.hardpoints"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "name": "newArmor",
+                "type": "container",
+                "children": [
+                  {
+                    "name": "addArmor",
+                    "type": "button",
+                    "text": "return 'Add'",
+                    "disabledWhen": "return !_.get($state, 'selectedArmor')",
+                    "action": "return {type:'ADD', path:'character.armor', value:$state.selectedArmor}"
+                  },
+                  {
+                    "name": "newArmorName",
+                    "type": "select",
+                    "label": "Name",
+                    "bind": "$state.selectedArmor",
+                    "items": {
+                      "text": "name",
+                      "values": "return $model.armor.values"
+                    }
+                  },
+                  {
+                    "name": "newArmorDefense",
+                    "type": "number",
+                    "label": "Defense",
+                    "bind": "$state.selectedArmor.armor"
+                  },
+                  {
+                    "name": "newArmorSoak",
+                    "type": "number",
+                    "label": "Soak",
+                    "bind": "$state.selectedArmor.soak"
+                  },
+                  {
+                    "name": "newArmorEncumbrance",
+                    "type": "number",
+                    "label": "Hard Points",
+                    "bind": "$state.selectedArmor.hardpoints"
                   }
                 ]
               }
@@ -6155,7 +6247,7 @@
         "soak": "number",
         "price": "number",
         "encumbrance": "number",
-        "hardponts": "number",
+        "hardpoints": "number",
         "isRestricted": "boolean",
         "rarity": "number"
       },
@@ -6166,7 +6258,7 @@
           "soak": 1,
           "price": 500,
           "encumbrance": 2,
-          "hardponts": 1,
+          "hardpoints": 1,
           "rarity": 1
         },
         {
@@ -6175,7 +6267,7 @@
           "soak": 1,
           "price": 1000,
           "encumbrance": 3,
-          "hardponts": 1,
+          "hardpoints": 1,
           "rarity": 6
         },
         {
@@ -6184,7 +6276,7 @@
           "soak": 2,
           "price": 5000,
           "encumbrance": 6,
-          "hardponts": 4,
+          "hardpoints": 4,
           "rarity": 7
         },
         {
@@ -6193,7 +6285,7 @@
           "soak": 1,
           "price": 50,
           "encumbrance": 1,
-          "hardponts": 0,
+          "hardpoints": 0,
           "rarity": 0
         },
         {
@@ -6202,7 +6294,7 @@
           "soak": 2,
           "price": 2500,
           "encumbrance": 4,
-          "hardponts": 3,
+          "hardpoints": 3,
           "rarity": 5
         },
         {
@@ -6211,7 +6303,7 @@
           "soak": 0,
           "price": 2500,
           "encumbrance": 3,
-          "hardponts": 0,
+          "hardpoints": 0,
           "rarity": 8
         },
         {
@@ -6220,7 +6312,7 @@
           "soak": 2,
           "price": 500,
           "encumbrance": 2,
-          "hardponts": 0,
+          "hardpoints": 0,
           "rarity": 1
         }
       ]
