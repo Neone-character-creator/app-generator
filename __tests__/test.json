@@ -1486,7 +1486,13 @@
         "career": "career",
         "specializations": "[specialization]",
         "specializationTalents": "[specializationTalent]",
-        "soak": "number",
+        "soak": {
+          "type": "number",
+          "derivedFrom": [
+            "return $state.character.characteristics.brawn;",
+            "return $state.character.armor.map(a => a.soak).reduce((a, b) => a+b, $this.accumulator);"
+          ]
+        },
         "availableExperience": {
           "type": "number",
           "derivedFrom": [
