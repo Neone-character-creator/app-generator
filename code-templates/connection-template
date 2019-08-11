@@ -9,12 +9,13 @@ const connected = connect((state, ownProps) => {
     const context = {
         $state: state,
         $model: models,
-        $this: ownProps.value
+        $this: ownProps.value,
+        $index: ownProps.index
     }
     const value = (()=>{
         try {
             if (isBoundComponent){
-                return _.get(context, boundProperty);
+                return interpreter.interpret("# " + boundProperty, context);
             } else {
                 return interpreter.interpret(boundProperty, context);
             }

@@ -1,6 +1,10 @@
 import rules from "!../rules.json";
 export default {
     interpret: function(expression, context){
-        return new Function("$state", "$model", "$this", "$rules", expression)(context.$state, context.$model, context.$this, rules );
+        if (typeof expression === "string" && expression.startsWith("#")) {
+            return new Function("$state", "$model", "$this", "$rules", `return ${expression.substring(1)}`)(context.$state, context.$model, context.$this, rules);
+        } else {
+            return expression;
+        }
     }
 };

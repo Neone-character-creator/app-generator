@@ -23,19 +23,19 @@
                 "name": "species",
                 "type": "textfield",
                 "label": "Species",
-                "value": "return $state.character.species.name"
+                "value": "# $state.character.species.name"
               },
               {
                 "name": "career",
                 "type": "textfield",
                 "label": "Career",
-                "value": "return $state.character.career.name"
+                "value": "# $state.character.career.name"
               },
               {
                 "name": "specializations",
                 "type": "textfield",
                 "label": "Specialization Trees",
-                "value": "return $state.character.specializations.map(s => s.name).join(', ')"
+                "value": "# $state.character.specializations.map(s => s.name).join(', ')"
               }
             ]
           },
@@ -60,7 +60,7 @@
                     "name": "thresholdWounds",
                     "type": "number",
                     "label": "Threshold Wounds",
-                    "value": "return  $state.character.wounds.base + $state.character.characteristics[$state.character.wounds.characteristic]"
+                    "value": "#  $state.character.wounds.base + $state.character.characteristics[$state.character.wounds.characteristic]"
                   }
                 ]
               },
@@ -74,7 +74,7 @@
                     "name": "strainThreshold",
                     "type": "number",
                     "label": "Threshold Strain",
-                    "value": "return  $state.character.strain.base + $state.character.characteristics[$state.character.strain.characteristic]"
+                    "value": "#  $state.character.strain.base + $state.character.characteristics[$state.character.strain.characteristic]"
                   }
                 ]
               },
@@ -87,13 +87,13 @@
                     "name": "rangedDefense",
                     "type": "number",
                     "label": "Ranged Defense",
-                    "value": "return $state.character.defense.ranged"
+                    "value": "# $state.character.defense.ranged"
                   },
                   {
                     "name": "meleeDefense",
                     "type": "number",
                     "label": "Melee Defense",
-                    "value": "return $state.character.defense.melee"
+                    "value": "# $state.character.defense.melee"
                   }
                 ]
               }
@@ -108,37 +108,37 @@
                 "name": "BrawnCharacteristics",
                 "type": "number",
                 "label": "Brawn",
-                "value": "return $state.character.characteristics.brawn "
+                "value": "# $state.character.characteristics.brawn "
               },
               {
                 "name": "AgilityCharacteristics",
                 "type": "number",
                 "label": "Agility",
-                "value": "return $state.character.characteristics.agility "
+                "value": "# $state.character.characteristics.agility "
               },
               {
                 "name": "IntellectCharacteristics",
                 "type": "number",
                 "label": "Intellect",
-                "value": "return $state.character.characteristics.intellect "
+                "value": "# $state.character.characteristics.intellect "
               },
               {
                 "name": "CunningCharacteristics",
                 "type": "number",
                 "label": "Cunning",
-                "value": "return $state.character.characteristics.cunning "
+                "value": "# $state.character.characteristics.cunning "
               },
               {
                 "name": "WillpowerCharacteristics",
                 "type": "number",
                 "label": "Willpower",
-                "value": "return $state.character.characteristics.willpower "
+                "value": "# $state.character.characteristics.willpower "
               },
               {
                 "name": "PresenceCharacteristics",
                 "type": "number",
                 "label": "Presence",
-                "value": "return $state.character.characteristics.presence "
+                "value": "# $state.character.characteristics.presence "
               }
             ]
           },
@@ -162,7 +162,7 @@
                       {
                         "name": "astrogationLabel",
                         "type": "label",
-                        "text": "return 'Astrogation'"
+                        "text": "# 'Astrogation'"
                       },
                       {
                         "name": "astrogationCareerFlag",
@@ -185,7 +185,7 @@
                       {
                         "name": "athleticsLabel",
                         "type": "label",
-                        "text": "return 'Athletics'"
+                        "text": "# 'Athletics'"
                       },
                       {
                         "name": "athleticsCareerFlag",
@@ -208,7 +208,7 @@
                       {
                         "name": "charmLabel",
                         "type": "label",
-                        "text": "return 'Charm'"
+                        "text": "# 'Charm'"
                       },
                       {
                         "name": "charmCareerFlag",
@@ -231,7 +231,7 @@
                       {
                         "name": "coercionLabel",
                         "type": "label",
-                        "text": "return 'Coercion'"
+                        "text": "# 'Coercion'"
                       },
                       {
                         "name": "coercionCareerFlag",
@@ -254,7 +254,7 @@
                       {
                         "name": "computersLabel",
                         "type": "label",
-                        "text": "return 'Computers'"
+                        "text": "# 'Computers'"
                       },
                       {
                         "name": "computersCareerFlag",
@@ -277,7 +277,7 @@
                       {
                         "name": "coolLabel",
                         "type": "label",
-                        "text": "return 'Cool'"
+                        "text": "# 'Cool'"
                       },
                       {
                         "name": "coolCareerFlag",
@@ -300,7 +300,7 @@
                       {
                         "name": "coordinationLabel",
                         "type": "label",
-                        "text": "return 'Coordination'"
+                        "text": "# 'Coordination'"
                       },
                       {
                         "name": "coordinationCareerFlag",
@@ -323,7 +323,7 @@
                       {
                         "name": "deceptionLabel",
                         "type": "label",
-                        "text": "return 'Deception'"
+                        "text": "# 'Deception'"
                       },
                       {
                         "name": "deceptionCareerFlag",
@@ -346,7 +346,7 @@
                       {
                         "name": "disciplineLabel",
                         "type": "label",
-                        "text": "return 'Discipline'"
+                        "text": "# 'Discipline'"
                       },
                       {
                         "name": "disciplineCareerFlag",
@@ -369,7 +369,7 @@
                       {
                         "name": "leadershipLabel",
                         "type": "label",
-                        "text": "return 'Leadership'"
+                        "text": "# 'Leadership'"
                       },
                       {
                         "name": "leadershipCareerFlag",
@@ -392,7 +392,7 @@
                       {
                         "name": "mechanicsLabel",
                         "type": "label",
-                        "text": "return 'Mechanics'"
+                        "text": "# 'Mechanics'"
                       },
                       {
                         "name": "mechanicsCareerFlag",
@@ -415,7 +415,7 @@
                       {
                         "name": "medicineLabel",
                         "type": "label",
-                        "text": "return 'Medicine'"
+                        "text": "# 'Medicine'"
                       },
                       {
                         "name": "medicineCareerFlag",
@@ -438,7 +438,7 @@
                       {
                         "name": "negotiationLabel",
                         "type": "label",
-                        "text": "return 'Negotiation'"
+                        "text": "# 'Negotiation'"
                       },
                       {
                         "name": "negotiationCareerFlag",
@@ -461,7 +461,7 @@
                       {
                         "name": "perceptionLabel",
                         "type": "label",
-                        "text": "return 'Perception'"
+                        "text": "# 'Perception'"
                       },
                       {
                         "name": "perceptionCareerFlag",
@@ -484,7 +484,7 @@
                       {
                         "name": "pilotingPlanetaryLabel",
                         "type": "label",
-                        "text": "return 'Piloting - Planetary'"
+                        "text": "# 'Piloting - Planetary'"
                       },
                       {
                         "name": "pilotingPlanetaryCareerFlag",
@@ -507,7 +507,7 @@
                       {
                         "name": "pilotingSpaceLabel",
                         "type": "label",
-                        "text": "return 'Piloting - Space'"
+                        "text": "# 'Piloting - Space'"
                       },
                       {
                         "name": "pilotingSpaceCareerFlag",
@@ -530,7 +530,7 @@
                       {
                         "name": "resilienceLabel",
                         "type": "label",
-                        "text": "return 'Resilience'"
+                        "text": "# 'Resilience'"
                       },
                       {
                         "name": "resilienceCareerFlag",
@@ -553,7 +553,7 @@
                       {
                         "name": "skulduggeryLabel",
                         "type": "label",
-                        "text": "return 'Skulduggery'"
+                        "text": "# 'Skulduggery'"
                       },
                       {
                         "name": "skulduggeryCareerFlag",
@@ -576,7 +576,7 @@
                       {
                         "name": "stealthLabel",
                         "type": "label",
-                        "text": "return 'Stealth'"
+                        "text": "# 'Stealth'"
                       },
                       {
                         "name": "stealthCareerFlag",
@@ -599,7 +599,7 @@
                       {
                         "name": "streetwiseLabel",
                         "type": "label",
-                        "text": "return 'Streetwise'"
+                        "text": "# 'Streetwise'"
                       },
                       {
                         "name": "streetwiseCareerFlag",
@@ -622,7 +622,7 @@
                       {
                         "name": "survivalLabel",
                         "type": "label",
-                        "text": "return 'Survival'"
+                        "text": "# 'Survival'"
                       },
                       {
                         "name": "survivalCareerFlag",
@@ -645,7 +645,7 @@
                       {
                         "name": "vigilanceLabel",
                         "type": "label",
-                        "text": "return 'Vigilance'"
+                        "text": "# 'Vigilance'"
                       },
                       {
                         "name": "vigilanceCareerFlag",
@@ -675,7 +675,7 @@
                       {
                         "name": "brawlLabel",
                         "type": "label",
-                        "text": "return 'Brawl'"
+                        "text": "# 'Brawl'"
                       },
                       {
                         "name": "brawlCareerFlag",
@@ -698,7 +698,7 @@
                       {
                         "name": "gunneryLabel",
                         "type": "label",
-                        "text": "return 'Gunnery'"
+                        "text": "# 'Gunnery'"
                       },
                       {
                         "name": "gunneryCareerFlag",
@@ -721,7 +721,7 @@
                       {
                         "name": "meleeLabel",
                         "type": "label",
-                        "text": "return 'Melee'"
+                        "text": "# 'Melee'"
                       },
                       {
                         "name": "meleeCareerFlag",
@@ -744,7 +744,7 @@
                       {
                         "name": "rangedLightLabel",
                         "type": "label",
-                        "text": "return 'Ranged - Light'"
+                        "text": "# 'Ranged - Light'"
                       },
                       {
                         "name": "rangedLightCareerFlag",
@@ -767,7 +767,7 @@
                       {
                         "name": "rangedHeavyLabel",
                         "type": "label",
-                        "text": "return 'Ranged - Heavy'"
+                        "text": "# 'Ranged - Heavy'"
                       },
                       {
                         "name": "rangedHeavyCareerFlag",
@@ -798,7 +798,7 @@
                       {
                         "name": "coreWorldsLabel",
                         "type": "label",
-                        "text": "return 'Core Worlds'"
+                        "text": "# 'Core Worlds'"
                       },
                       {
                         "name": "coreWorldsCareerFlag",
@@ -821,7 +821,7 @@
                       {
                         "name": "educationLabel",
                         "type": "label",
-                        "text": "return 'Education'"
+                        "text": "# 'Education'"
                       },
                       {
                         "name": "educationCareerFlag",
@@ -844,7 +844,7 @@
                       {
                         "name": "loreLabel",
                         "type": "label",
-                        "text": "return 'Lore'"
+                        "text": "# 'Lore'"
                       },
                       {
                         "name": "loreCareerFlag",
@@ -867,7 +867,7 @@
                       {
                         "name": "outerRimLabel",
                         "type": "label",
-                        "text": "return 'Outer Rim'"
+                        "text": "# 'Outer Rim'"
                       },
                       {
                         "name": "outerRimCareerFlag",
@@ -890,7 +890,7 @@
                       {
                         "name": "underworldLabel",
                         "type": "label",
-                        "text": "return 'Underworld'"
+                        "text": "# 'Underworld'"
                       },
                       {
                         "name": "underworldCareerFlag",
@@ -913,7 +913,7 @@
                       {
                         "name": "xenologyLabel",
                         "type": "label",
-                        "text": "return 'Xenology'"
+                        "text": "# 'Xenology'"
                       },
                       {
                         "name": "xenologyCareerFlag",
@@ -936,7 +936,7 @@
                       {
                         "name": "otherLabel",
                         "type": "label",
-                        "text": "return 'Other'"
+                        "text": "# 'Other'"
                       },
                       {
                         "name": "otherCareerFlag",
@@ -963,7 +963,7 @@
               {
                 "name": "weaponLabel",
                 "type": "label",
-                "text": "return 'Weapons'"
+                "text": "# 'Weapons'"
               },
               {
                 "name": "weaponList",
@@ -1023,9 +1023,9 @@
                   {
                     "name": "addWeapon",
                     "type": "button",
-                    "text": "return 'Add'",
-                    "disabledWhen": "return !_.get($state, 'selectedWeapon')",
-                    "action": "return {type:'ADD', path:'character.weapons', value:$state.selectedWeapon}"
+                    "text": "# 'Add'",
+                    "disabledWhen": "# !_.get($state, 'selectedWeapon')",
+                    "action": "# {type:'ADD', path:'character.weapons', value:$state.selectedWeapon}"
                   },
                   {
                     "name": "newWeaponName",
@@ -1034,7 +1034,7 @@
                     "bind": "$state.selectedWeapon",
                     "items": {
                       "text": "name",
-                      "values": "return $model.weapon.values"
+                      "values": "# $model.weapon.values"
                     }
                   },
                   {
@@ -1079,7 +1079,7 @@
               {
                 "name": "armorLabel",
                 "type": "label",
-                "text": "return 'Armor'"
+                "text": "# 'Armor'"
               },
               {
                 "name": "armorList",
@@ -1126,9 +1126,9 @@
                   {
                     "name": "addArmor",
                     "type": "button",
-                    "text": "return 'Add'",
-                    "disabledWhen": "return !_.get($state, 'selectedArmor')",
-                    "action": "return {type:'ADD', path:'character.armor', value:$state.selectedArmor}"
+                    "text": "# 'Add'",
+                    "disabledWhen": "# !_.get($state, 'selectedArmor')",
+                    "action": "# {type:'ADD', path:'character.armor', value:$state.selectedArmor}"
                   },
                   {
                     "name": "newArmorName",
@@ -1137,7 +1137,7 @@
                     "bind": "$state.selectedArmor",
                     "items": {
                       "text": "name",
-                      "values": "return $model.armor.values"
+                      "values": "# $model.armor.values"
                     }
                   },
                   {
@@ -1172,7 +1172,7 @@
                 "name": "availableExperience",
                 "type": "textfield",
                 "label": "Available Experience",
-                "value": "return $state.character.availableExperience"
+                "value": "# $state.character.availableExperience"
               },
               {
                 "name": "totalExperience",
@@ -1190,7 +1190,7 @@
               {
                 "name": "motivationsLabel",
                 "type": "label",
-                "text": "return 'Motivations'"
+                "text": "# 'Motivations'"
               },
               {
                 "name": "motivationsList",
@@ -1220,7 +1220,7 @@
             "label": "Select Species",
             "items": {
               "text": "name",
-              "values": "return $model.species.values"
+              "values": "# $model.species.values"
             }
           },
           {
@@ -1232,37 +1232,37 @@
                 "name": "speciesBaseAbilityBrawn",
                 "type": "textfield",
                 "label": "Brawn",
-                "value": "return $state.character.species.baseCharacteristics.brawn"
+                "value": "# $state.character.species.baseCharacteristics.brawn"
               },
               {
                 "name": "speciesBaseAbilityAgility",
                 "type": "textfield",
                 "label": "Agility",
-                "value": "return $state.character.species.baseCharacteristics.agility"
+                "value": "# $state.character.species.baseCharacteristics.agility"
               },
               {
                 "name": "speciesBaseAbilityIntellect",
                 "type": "textfield",
                 "label": "Intellect",
-                "value": "return $state.character.species.baseCharacteristics.intellect"
+                "value": "# $state.character.species.baseCharacteristics.intellect"
               },
               {
                 "name": "speciesBaseAbilityCunning",
                 "type": "textfield",
                 "label": "Cunning",
-                "value": "return $state.character.species.baseCharacteristics.cunning"
+                "value": "# $state.character.species.baseCharacteristics.cunning"
               },
               {
                 "name": "speciesBaseAbilityWillpower",
                 "type": "textfield",
                 "label": "Willpower",
-                "value": "return $state.character.species.baseCharacteristics.willpower"
+                "value": "# $state.character.species.baseCharacteristics.willpower"
               },
               {
                 "name": "speciesBaseAbilityPresence",
                 "type": "textfield",
                 "label": "Presence",
-                "value": "return $state.character.species.baseCharacteristics.presence"
+                "value": "# $state.character.species.baseCharacteristics.presence"
               }
             ]
           },
@@ -1275,25 +1275,25 @@
                 "name": "specieswoundsThreshold",
                 "type": "textfield",
                 "label": "Wounds Threshold",
-                "value": "return '' + $state.character.species.woundsThreshold.characteristic  + '(' + $state.character.characteristics[$state.character.species.woundsThreshold.characteristic] + ') + '  + $state.character.species.woundsThreshold.base"
+                "value": "# '' + $state.character.species.woundsThreshold.characteristic  + '(' + $state.character.characteristics[$state.character.species.woundsThreshold.characteristic] + ') + '  + $state.character.species.woundsThreshold.base"
               },
               {
                 "name": "speciesstrainThreshold",
                 "type": "textfield",
                 "label": "Strain Threshold",
-                "value": "return '' + $state.character.species.strainThreshold.characteristic +  '(' + $state.character.characteristics[$state.character.species.strainThreshold.characteristic] + ') + ' +  $state.character.species.strainThreshold.base "
+                "value": "# '' + $state.character.species.strainThreshold.characteristic +  '(' + $state.character.characteristics[$state.character.species.strainThreshold.characteristic] + ') + ' +  $state.character.species.strainThreshold.base "
               },
               {
                 "name": "speciesStartingExperience",
                 "type": "textfield",
                 "label": "Starting Experience",
-                "value": "return $state.character.species.startingExperience"
+                "value": "# $state.character.species.startingExperience"
               },
               {
                 "name": "speciesSpecialAbilities",
                 "type": "textfield",
                 "label": "Special Abilities",
-                "value": "return $state.character.species.specialAbilities.map(sa => sa.name).join(', ') "
+                "value": "# $state.character.species.specialAbilities.map(sa => sa.name).join(', ') "
               }
             ]
           },
@@ -1302,9 +1302,9 @@
             "type": "select",
             "bind": "$state.character.species.careerSkills",
             "items": {
-              "maxSelections": "return $state.character.species && $state.character.species.startingCareerSkillChoices",
+              "maxSelections": "# $state.character.species && $state.character.species.startingCareerSkillChoices",
               "text": "name",
-              "values": "return Object.keys($model.skills.prototype.definition).map(d => $model.skills.prototype.definition[d].value.name)"
+              "values": "# Object.keys($model.skills.prototype.definition).map(d => $model.skills.prototype.definition[d].value.name)"
             }
           }
         ]
@@ -1319,7 +1319,7 @@
             "bind": "$state.character.career",
             "items": {
               "text": "name",
-              "values": "return $model.career.values"
+              "values": "# $model.career.values"
             }
           },
           {
@@ -1333,19 +1333,19 @@
                 "bind": "$state.character.specializations[0]",
                 "items": {
                   "text": "name",
-                  "values": "return $state.character.career.specializations"
+                  "values": "# $state.character.career.specializations"
                 }
               },
               {
                 "name": "startingSpecializationCareerSkills",
                 "type": "textfield",
-                "value": "return $state.character.specializations[0] ? $state.character.specializations[0].careerSkills.join(', ') : '' ",
+                "value": "# $state.character.specializations[0] ? $state.character.specializations[0].careerSkills.join(', ') : '' ",
                 "label": "Specialization Career Skills"
               },
               {
                 "name": "startingSpecializationAvailableTalents",
                 "type": "list",
-                "bind": "return $state.character.specializations[0].talents",
+                "bind": "# $state.character.specializations[0].talents",
                 "items": {
                   "child": {
                     "name": "startingSpecializationAvailableTalentsWrapper",
@@ -1390,7 +1390,7 @@
               {
                 "name": "characteristicAdvancementLabel",
                 "type": "label",
-                "text": "return 'Characteristics'"
+                "text": "# 'Characteristics'"
               },
               {
                 "name": "characteristicAdvancement",
@@ -1398,7 +1398,7 @@
                 "bind": "$state.selectedAdvancement.characteristic",
                 "items": {
                   "text": "option",
-                  "values": "return $state.availableAdvancements.characteristic.options"
+                  "values": "# $state.availableAdvancements.characteristic.options"
                 }
               },
               {
@@ -1410,9 +1410,9 @@
               {
                 "name": "characteristicSubmit",
                 "type": "button",
-                "text": "return 'Buy'",
-                "disabledWhen": "return _.get($state, 'selectedAdvancement.characteristic.isAvailable') !== true",
-                "action": "return {type:'ADVANCEMENT', advancementType:'characteristic', advancement: $state.selectedAdvancement.characteristic.option}"
+                "text": "# 'Buy'",
+                "disabledWhen": "# _.get($state, 'selectedAdvancement.characteristic.isAvailable') !== true",
+                "action": "# {type:'ADVANCEMENT', advancementType:'characteristic', advancement: $state.selectedAdvancement.characteristic.option}"
               }
             ]
           },
@@ -1424,7 +1424,7 @@
               {
                 "name": "skillAdvancementLabel",
                 "type": "label",
-                "text": "return 'Skills'"
+                "text": "# 'Skills'"
               },
               {
                 "name": "skillAdvancement",
@@ -1432,15 +1432,15 @@
                 "bind": "$state.selectedAdvancement.skill",
                 "items": {
                   "text": "option",
-                  "values": "return $state.availableAdvancements.skill.options"
+                  "values": "# $state.availableAdvancements.skill.options"
                 }
               },
               {
                 "name": "skillSubmit",
                 "type": "button",
-                "text": "return 'Buy'",
-                "disabledWhen": "return _.get($state, 'selectedAdvancement.skill.isAvailable') !== true",
-                "action": "return {type:'ADVANCEMENT', advancementType:'skill', advancement: $state.selectedAdvancement.skill.option}"
+                "text": "# 'Buy'",
+                "disabledWhen": "# _.get($state, 'selectedAdvancement.skill.isAvailable') !== true",
+                "action": "# {type:'ADVANCEMENT', advancementType:'skill', advancement: $state.selectedAdvancement.skill.option}"
               }
             ]
           },
@@ -1452,7 +1452,7 @@
               {
                 "name": "talentAdvancementLabel",
                 "type": "label",
-                "text": "return 'Talents'"
+                "text": "# 'Talents'"
               },
               {
                 "name": "talentAdvancement",
@@ -1460,15 +1460,15 @@
                 "bind": "$state.selectedAdvancement.talent",
                 "items": {
                   "text": "option.name",
-                  "values": "return $state.availableAdvancements.talent.options"
+                  "values": "# $state.availableAdvancements.talent.options"
                 }
               },
               {
                 "name": "talentSubmit",
                 "type": "button",
-                "text": "return 'Buy'",
-                "disabledWhen": "return _.get($state, 'selectedAdvancement.talent.isAvailable') !== true",
-                "action": "return {type:'ADVANCEMENT', advancementType:'talent', advancement: $state.selectedAdvancement.talent.option.name}"
+                "text": "# 'Buy'",
+                "disabledWhen": "# _.get($state, 'selectedAdvancement.talent.isAvailable') !== true",
+                "action": "# {type:'ADVANCEMENT', advancementType:'talent', advancement: $state.selectedAdvancement.talent.option.name}"
               }
             ]
           },
@@ -1485,13 +1485,13 @@
                   {
                     "name": "singlePurchasedAdvancementLabel",
                     "type": "label",
-                    "text": "return `${$this.type} Advancement ${$this.value}`"
+                    "text": "# `${$this.type} Advancement ${$this.value}`"
                   },
                   {
                     "name": "singlePurchasedAdvancementRemoveButton",
                     "type": "button",
-                    "text": "return `Remove`",
-                    "action": "return `REMOVE-ADVANCEMENT ${$this.value}`"
+                    "text": "# `Remove`",
+                    "action": "# `REMOVE-ADVANCEMENT ${$this.value}`"
                   }
                 ]
               }
@@ -1513,20 +1513,20 @@
         "soak": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.characteristics.brawn;",
-            "return $state.character.armor.map(a => a.soak).reduce((a, b) => a+b, $this.accumulator);"
+            "# $state.character.characteristics.brawn;",
+            "# $state.character.armor.map(a => a.soak).reduce((a, b) => a+b, $this.accumulator);"
           ]
         },
         "availableExperience": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.advancements.map(a => a.cost).reduce((x, y)=> x-y, $state.character.totalExperience)"
+            "# $state.character.advancements.map(a => a.cost).reduce((x, y)=> x-y, $state.character.totalExperience)"
           ]
         },
         "totalExperience": {
           "type": "number",
           "baseValue": [
-            "return $state.character.species.startingExperience"
+            "# $state.character.species.startingExperience"
           ]
         },
         "wounds": "woundsThreshold",
@@ -1792,9 +1792,9 @@
         "isCareerSkill": {
           "type": "boolean",
           "derivedFrom": [
-            "return $state.character.career && $state.character.career.careerSkills.includes($this.ancestors[0].name)",
-            "return $this.accumulator || ($state.character.career.specializations.map(s => s.careerSkills).includes($this.ancestors[0].name))",
-            "return $this.accumulator || ($state.character.species && $state.character.species.careerSkills.includes($this.ancestors[0].name))"
+            "# $state.character.career && $state.character.career.careerSkills.includes($this.ancestors[0].name)",
+            "# $this.accumulator || ($state.character.career.specializations.map(s => s.careerSkills).includes($this.ancestors[0].name))",
+            "# $this.accumulator || ($state.character.species && $state.character.species.careerSkills.includes($this.ancestors[0].name))"
           ]
         },
         "characteristic": "string",
@@ -2929,13 +2929,13 @@
         "ranged": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.armor.map(a => a.defense).reduce((a,b)=>a+b, 0)"
+            "# $state.character.armor.map(a => a.defense).reduce((a,b)=>a+b, 0)"
           ]
         },
         "melee": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.armor.map(a => a.defense).reduce((a,b)=>a+b, 0)"
+            "# $state.character.armor.map(a => a.defense).reduce((a,b)=>a+b, 0)"
           ]
         }
       }
@@ -2945,37 +2945,37 @@
         "brawn": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.species.baseCharacteristics.brawn"
+            "# $state.character.species.baseCharacteristics.brawn"
           ]
         },
         "agility": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.species.baseCharacteristics.agility"
+            "# $state.character.species.baseCharacteristics.agility"
           ]
         },
         "intellect": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.species.baseCharacteristics.intellect"
+            "# $state.character.species.baseCharacteristics.intellect"
           ]
         },
         "cunning": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.species.baseCharacteristics.cunning"
+            "# $state.character.species.baseCharacteristics.cunning"
           ]
         },
         "willpower": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.species.baseCharacteristics.willpower"
+            "# $state.character.species.baseCharacteristics.willpower"
           ]
         },
         "presence": {
           "type": "number",
           "derivedFrom": [
-            "return $state.character.species.baseCharacteristics.presence"
+            "# $state.character.species.baseCharacteristics.presence"
           ]
         }
       }
@@ -6377,24 +6377,24 @@
           "willpower",
           "presence"
         ],
-        "when": "return $state.character.characteristics[$this] < 6 ",
-        "cost": "return ($state.character.characteristics[$this] + 1) * 10",
+        "when": "# $state.character.characteristics[$this] < 6 ",
+        "cost": "# ($state.character.characteristics[$this] + 1) * 10",
         "effect": "$state.character.characteristics[$this] = $state.character.characteristics[$this] += 1"
       },
       "skill": {
         "description": "Skill Training",
         "uses": "$state.character.availableExperience",
-        "options": "return Object.keys($model.skills.prototype.definition) ",
-        "when": "return $state.character.skills[$this].rank < 5 ",
-        "cost": "return ($state.character.skills[$this].rank + 1) * 5 ",
-        "effect": "return $state.character.skills[$this].rank += 1"
+        "options": "# Object.keys($model.skills.prototype.definition) ",
+        "when": "# $state.character.skills[$this].rank < 5 ",
+        "cost": "# ($state.character.skills[$this].rank + 1) * 5 ",
+        "effect": "# $state.character.skills[$this].rank += 1"
       },
       "talent": {
         "description": "Acquire Talent",
         "uses": "$state.character.availableExperience",
-        "options": "return $state.character.specializations.reduce((combined, s)=> combined.concat(s.talents), []) ",
-        "when": "return $this.tier === 1 || $state.character.specializations.reduce((combined, x)=> combined.concat(x.talents), []).find(y => $state.character.specializationTalents.find(z => z.id === y.id))",
-        "cost": "return $this.tier * 5"
+        "options": "# $state.character.specializations.reduce((combined, s)=> combined.concat(s.talents), []) ",
+        "when": "# $this.tier === 1 || $state.character.specializations.reduce((combined, x)=> combined.concat(x.talents), []).find(y => $state.character.specializationTalents.find(z => z.id === y.id))",
+        "cost": "# $this.tier * 5"
       }
     }
   },
@@ -6413,7 +6413,7 @@
     },
     {
       "after": "ADD",
-      "when": "return $this.action.path === 'character.weapons'",
+      "when": "# $this.action.path === 'character.weapons'",
       "effects": [
         "$state.selectedWeapon = undefined"
       ]
