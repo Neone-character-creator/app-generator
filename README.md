@@ -43,3 +43,27 @@ Components of the following types can exist.
 * label - A `label` is a component to display text.
     * properties
         * text - The text to display
+        
+#### Configuring Model
+The model configuration defines the structure and values of the state.
+
+A model must define, at minimum, a type called `character`.
+
+Each model definition must have a `properties` object, the properties that the model property has, which contains the name of each property as keys and a property configuration.
+
+The configuration may be either a string or object. As a string, the string is the type of the property and the defaults for that property are used.
+
+The following basic types are supported
+* `string`
+* `number`
+* `boolean`
+* `array`
+
+In addition, a property can have a type of any custom type defined within the model section.
+
+When defined with an object, the object can have the following properties:
+* type - The string type of the property.
+* derivedFrom - An array of expressions used to calculate this property value.
+* baseValue - An array of expressions used to calculate the base property value, before user modifications.
+
+Models may have a `values` array. This contains a set of defined instances of the model.
