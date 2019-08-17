@@ -191,6 +191,4 @@ exports[`component generation module throws an error when a view has a child of 
 
 exports[`component generation module throws an error when an object is given 1`] = `"Component type must be a string, was object"`;
 
-exports[`component generation module throws an error when creating a generator for an unsupported type 1`] = `"component type random not supported"`;
-
 exports[`component generation module throws an error when null is given 1`] = `"Component type must be a string, was object"`;
