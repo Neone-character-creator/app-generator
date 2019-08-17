@@ -20,7 +20,7 @@ const Component = (props) => (
     <FormControl>
     <InputLabel id=\\"select-select-label\\">Label</InputLabel>
     <Select id=\\"select-select\\" autoWidth value={props.value} onChange={props.update}
-    renderValue={(x)=>_.get(props.value, itemTextPath)}
+    renderValue={(x)=>_.get(props.value, itemTextPath)} multiple={props.maxSelections > 1}
      children={props.options.map((item, index) => (<MenuItem value={item}>
     {
         [_.get(item, itemTextPath, item)].map(prop => {
@@ -60,40 +60,62 @@ import { connect } from \\"react-redux\\";
 const Component = (props) => (
     <Textfield disabled={props.disabled} id=\\"textfield-textfield\\" fullWidth label=\\"Label\\" value={props.value} onChange={props.update} />
 )
+const isBoundComponent = true
 const boundProperty = \\"model.string\\"; // The expression used to determine the value of binding.
 const readOnly = false; // If this component only calculates its value, or is bound and can update it.
 const valueExpression = \\"\\";
 const action = \\"undefined\\";
+const disabledWhenExpression = undefined;
+const selectionCountExpression = 0;
 const connected = connect((state, ownProps) => {
     const context = {
         $state: state,
-        $model: models
+        $model: models,
+        $this: ownProps.value,
+        $index: ownProps.index
     }
     const value = (()=>{
-        return !readOnly ? _.get(context, boundProperty) :
-            interpreter.interpret(boundProperty, context);
+        try {
+            if (isBoundComponent){
+                return interpreter.interpret(\\"# \\" + boundProperty, context);
+            } else {
+                return interpreter.interpret(boundProperty, context);
+            }
+        } catch(e){
+            console.error(e);
+            return undefined;
+        }
     })();
+    const maxSelections = interpreter.interpret(selectionCountExpression, context);
     const options = (()=>{
-        return interpreter.interpret(valueExpression, contex);
+        return interpreter.interpret(valueExpression, context);
         })() || [];
+    const disabled = interpreter.interpret(disabledWhenExpression, context);
     return {
+        disabled,
         options,
         context,
-        value: value !== undefined || null ? value : \\"\\"
+        maxSelections,
+        value: _.isNil(value) ? \\"\\" : value
     };
-}, dispatch => {
+}, (dispatch) => {
+    return {dispatch};
+}, (stateProps, dispatchProps, ownProps) => {
+    var {dispatch} = dispatchProps;
     const update = readOnly ? () => {} :
         _.debounce((value) => {
-            dispatch({ type: \\"SET\\", path: boundProperty, value: value});
+            if(!stateProps.maxSelections || value.length <= stateProps.maxSelections) {
+                dispatch({ type: \\"SET\\", path: boundProperty, value: value});
+            }
         });
     const onClick = readOnly || !action ? () => {} :
-        (action, value) => {
-            dispatch({type: action, value});
+        (action) => {
+            dispatch(action);
         };
-    const actionTokens = action.split(\\" \\");
-    return {
+    return {...stateProps,
         onClick: (event) => {
-            onClick(actionTokens[0], actionTokens.slice(1).join(\\" \\"));
+            const interpretedAction = interpreter.interpret(action, stateProps.context);
+            onClick(interpretedAction);
         },
         update: (event) => {
             update(event.target.value);
@@ -163,7 +185,7 @@ export default Component;"
 
 exports[`component generation module throws an error when a component has a child of an invalid type 1`] = `"Import for type bad not supported"`;
 
-exports[`component generation module throws an error when a component has a key but is undefined 1`] = `"Cannot read property 'value' of undefined"`;
+exports[`component generation module throws an error when a component has a key but is undefined 1`] = `"Cannot read property 'bind' of undefined"`;
 
 exports[`component generation module throws an error when a view has a child of an invalid type 1`] = `"Import for type notAValidType not supported"`;
 

@@ -3,11 +3,6 @@ const generateSelect = require("../../../lib/componentGenerators/selectGenerator
 const appGenerator = require("../../../lib/componentGenerators/appGenerator");
 
 describe("component generation module", () => {
-    it("throws an error when creating a generator for an unsupported type", () => {
-        expect(() => {
-            generateComponent('random')
-        }).toThrowErrorMatchingSnapshot();
-    });
     it("throws an error when an object is given", () => {
         expect(() => {
             generateComponent({})
@@ -366,7 +361,7 @@ describe("component generation module", () => {
                 }
             };
             const generated = generateComponent("label")("foo")(config);
-            expect(generated).toEqual(expect.stringContaining("<p>{interpreter.interpret(props.value, props.context) || \"undefined\"}</p>"));
+            expect(generated).toEqual(expect.stringContaining("<p>{props.value}</p>"));
         });
     });
     describe("checkbox components", () => {
