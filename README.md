@@ -67,3 +67,19 @@ When defined with an object, the object can have the following properties:
 * baseValue - An array of expressions used to calculate the base property value, before user modifications.
 
 Models may have a `values` array. This contains a set of defined instances of the model.
+
+#### Configuring rules
+Enforcement of a portion of game rules.
+
+The following rules can be implemented:
+* `advancement` is rules for character advancement.
+TODO: Finish
+
+#### Hooks
+Hooks are expressions that are evaluated when events occur.
+
+Each hook definition contains properties:
+* after - The type of the Redux event that the hook is run after resolving.
+* before - The type of the  Redux event the the hook is run before resolving.
+* when - An optional expression that causes the hook to only be run when it evaluated to true.
+* effects - An array of expressions to evaluate when the hook runs.
