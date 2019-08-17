@@ -45,13 +45,19 @@ function work(configFileLocation) {
     }
 }
 
+function logWatchMessage(){
+    console.log("\x1b[32mWatching your configuration file for changes.\x1b[0m");
+}
+
 if(argv.watch) {
     work(argv.configFile);
+    logWatchMessage()
     fs.watchFile(argv.configFile, {
         interval: 2500
     }, ()=>{
         console.log("File changed, rebuilding...")
         work(argv.configFile);
+        logWatchMessage()
     });
 } else {
     work(argv.configFile);
