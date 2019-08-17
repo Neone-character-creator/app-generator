@@ -5,10 +5,12 @@ function ${name}Model(){
             const symbol = Symbol(property);
             this[symbol] = propertyDef[property];
         } else {
-            if (propertyDef.type.match(/\[.*\]/)){
+            if(propertyDef.default !== undefined) {
+                this[property] = propertyDef.default;
+            } else if (propertyDef.type.match(/\[.*\]/)){
                 this[property] = [];
             } else {
-                this[property] = propertyDef.default !== undefined ? propertyDef.default : new module.exports[propertyDef.type]();
+                this[property] = new module.exports[propertyDef.type]();
             }
             if (_.isArray(this[property])){
                 // TODO: Add always present values perhaps?
