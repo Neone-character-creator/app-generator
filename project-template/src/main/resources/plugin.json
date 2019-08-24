@@ -1,0 +1,12 @@
+{
+  "description":{
+    "creator" : "${authorName}",
+    "game" : "${gameName}",
+    "version" : "${pluginVersion}",
+    "toolVersion": "${toolVersion}"
+  },
+  "resources" : {
+    "character" : "character.html",
+    "description" : "description.html"
+  }
+}
