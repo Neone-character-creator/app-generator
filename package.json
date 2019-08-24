@@ -7,9 +7,7 @@
     "test": "jest",
     "scan": "node_modules/sonar-scanner/bin/sonar-scanner",
     "build": "node app.js",
-    "generate": "npm run build',",
-    "generate:classes": "npm run build -- --only classes",
-    "antlr:grammar:generate": "antlr4 -o project-template/src/main/resources/scripts/interpreter -Dlanguage=JavaScript -no-listener -visitor lib/scripting/JavaScriptParser.g4 lib/scripting/JavaScriptLexer.g4"
+    "generate": "npm run build"
   },
   "repository": {
     "type": "git",
