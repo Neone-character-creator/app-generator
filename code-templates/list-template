@@ -5,10 +5,8 @@ const Child = (props) => {
 const Component = (props) => (
     <List>
         {(props.value || []).map((v, index) => {
-            var childContext = {...props.context, ...{
-                $index: index}};
             return (<ListItem>
-                <Child value={v} context={childContext} />
+                <Child value={v} index={index} />
             </ListItem>)
             })
         }
