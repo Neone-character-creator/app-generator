@@ -13,21 +13,21 @@ function extractComponentDefinitions(components: {
     components: { [s: string]: any },
     views: string[]
 }, element: any) {
-
-    if (components.components[element.name]) {
-        throw new Error(`Duplicate component ${element.name} found`);
+    element.identifier = element.name + element.type;
+    if (components.components[element.identifier]) {
+        throw new Error(`Duplicate component ${element.name} ${element.type} found`);
     }
     if (element.type == "view") {
-        components.views.push(element.name);
+        components.views.push(element.identifier);
     }
-    components.components[element.name] = element;
+    components.components[element.identifier] = element;
     const children: Array<any> = element.children;
     if (!_.isEmpty(children)) {
         children.forEach(child => {
             extractComponentDefinitions(components, child);
         });
         element.children = element.children.map((child: any) => {
-            return child.name;
+            return child.identifier;
         });
     }
     const listChild = _.get(element, "items.child");
@@ -49,9 +49,9 @@ function extractViewDefinition(components: {
     }
     if (element.children) {
         element.children = element.children.map((child: any) => {
-            return child.name;
+            return child.identifier;
         })
     }
-    components.components[element.name] = element;
+    components.components[element.identifier] = element;
     return components;
 }
