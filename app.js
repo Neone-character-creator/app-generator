@@ -5,6 +5,7 @@ const PluginGenerator = require("./lib/pluginGenerator");
 const ModelClassGenerator = require("./lib/classGenerator");
 const ModelClassWriter = require("./lib/model/writer");
 const tmp = require("tmp");
+const package = require("./package.json");
 
 if (!argv.configFile) {
     throw new Error("--configFile is missing.");
@@ -31,7 +32,7 @@ function work(configFileLocation) {
             ModelClassWriter(tmpDir, modelSources);
             return;
         }
-
+        appConfiguration.toolVersion = package.version;
         var pluginGenerator = new PluginGenerator(appConfiguration, tmpDir);
         pluginGenerator.generate().catch(e => console.error(e));
     } catch (e) {
