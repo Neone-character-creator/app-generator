@@ -42,7 +42,7 @@ const connected = connect((state, ownProps) => {
     var {dispatch} = dispatchProps;
     const update = readOnly ? () => {} :
         _.debounce((value) => {
-            if(!stateProps.maxSelections || value.length <= stateProps.maxSelections) {
+            if(stateProps.maxSelections == 1 || value.length <= stateProps.maxSelections) {
                 dispatch({ type: "SET", path: boundProperty, value: value});
             }
         });
