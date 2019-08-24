@@ -1024,12 +1024,14 @@
                     "name": "addWeapon",
                     "type": "button",
                     "text": "# 'Add'",
+                    "weight": 1,
                     "disabledWhen": "# !_.get($state, 'selectedWeapon')",
                     "action": "# {type:'ADD', path:'character.weapons', value:$state.selectedWeapon}"
                   },
                   {
                     "name": "newWeaponName",
                     "type": "select",
+                    "weight": 2,
                     "label": "Weapon",
                     "bind": "$state.selectedWeapon",
                     "items": {
@@ -1041,30 +1043,35 @@
                     "name": "newWeaponSkill",
                     "type": "textfield",
                     "label": "Skill",
+                    "weight" : 1,
                     "bind": "$state.selectedWeapon.skill"
                   },
                   {
                     "name": "newWeaponDamage",
                     "type": "number",
                     "label": "Damage",
+                    "weight" : 1,
                     "bind": "$state.selectedWeapon.damage"
                   },
                   {
                     "name": "newWeaponRange",
                     "type": "textfield",
                     "label": "Range",
+                    "weight" : 1,
                     "bind": "$state.selectedWeapon.range"
                   },
                   {
                     "name": "newWeaponCrit",
                     "type": "number",
                     "label": "Crit",
+                    "weight" : 1,
                     "bind": "$state.selectedWeapon.criticalRating"
                   },
                   {
                     "name": "newWeaponSpecial",
                     "type": "textfield",
                     "label": "Special",
+                    "weight" : 2,
                     "bind": "$state.selectedWeapon.special"
                   }
                 ]
