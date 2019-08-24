@@ -1,5 +1,7 @@
 {
-  "appName": "test",
+  "gameName": "test",
+  "pluginVersion": "1.0",
+  "authorName": "Damien Marble",
   "views": {
     "name": "app",
     "children": [

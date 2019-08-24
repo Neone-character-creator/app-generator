@@ -99,7 +99,7 @@ describe("component generation module", () => {
     });
     describe("app components", () => {
         const config = {
-            appName: "Test",
+            gameName: "Test",
             views: ["summary", "one", "two"],
             components: {
                 app : {
@@ -116,9 +116,9 @@ describe("component generation module", () => {
                 }
             }
         };
-        it("names the app based on the appName", () => {
+        it("names the app based on the gameName", () => {
             const generatedComponent = appGenerator(config);
-            expect(generatedComponent).toEqual(expect.stringContaining(`<div id="${config.appName}-app">`));
+            expect(generatedComponent).toEqual(expect.stringContaining(`<div id="${config.gameName}-app">`));
         });
         it("changes the name of the component", () => {
             const generatedComponent = appGenerator(config);

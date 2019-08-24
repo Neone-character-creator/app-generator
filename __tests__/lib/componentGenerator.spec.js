@@ -10,7 +10,7 @@ describe("component generator module", () =>{
 
     it("throws an error if views are undefined", () => {
         const hierarchy = {
-            appName: "test",
+            gameName: "test",
             components: {
                 one: {
                     type: "view",
@@ -26,7 +26,7 @@ describe("component generator module", () =>{
 
     it("writes an app component", async () => {
         const hierarchy = {
-            appName: "test",
+            gameName: "test",
             views: ["one"],
             components: {
                 app: {
