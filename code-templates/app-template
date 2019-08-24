@@ -1,5 +1,5 @@
 const Component = (props) => (
-    <div id="${appName}-app">
+    <div id="${gameName}-app">
     <Tabs>
         <TabList>
             ${viewNames}
