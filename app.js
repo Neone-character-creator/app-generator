@@ -20,7 +20,7 @@ function work(configFileLocation) {
             {
                 app: {
                     type: "app",
-                    children: rawConfiguraiton.views.children.map(v => v.name)
+                    children: rawConfiguraiton.views.children.map(v => v.identifier)
                 }
             });
         const modelConfiguration = _.pick(rawConfiguraiton, "model");

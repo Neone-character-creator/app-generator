@@ -1,5 +1,5 @@
 const Component = () => (
-    <div id="${componentName}-view">
+    <div id="${componentIdentifier}">
         ${children}
     </div>
 )
