@@ -1,19 +1,20 @@
 const Component = (props) => (
-    <FormControl>
-    <InputLabel id="${componentName}-select-label">${label}</InputLabel>
-    <Select id="${componentName}-select" autoWidth value={props.value} onChange={props.update}
-    renderValue={(x)=>_.get(props.value, itemTextPath)} multiple={props.maxSelections > 1}
-     children={props.options.map((item, index) => (<MenuItem value={item}>
-    {
-        [_.get(item, itemTextPath, item)].map(prop => {
-        if (typeof prop === "function") {
-            return prop.bind(prop)();
-        }
-        return prop;
-        })[0]
+    <FormControl fullWidth={true}>
+        <InputLabel id="${componentName}-select-label">${label}</InputLabel>
+        <Select id="${componentName}-select" autoWidth={true} value={props.value} onChange={props.update}
+            renderValue={(x)=>_.get(props.value, itemTextPath)} multiple={props.maxSelections > 1}
+            children={props.options.map((item, index) => (<MenuItem value={item}>
+                {
+                    [_.get(item, itemTextPath, item)].map(prop => {
+                        if (typeof prop === "function") {
+                            return prop.bind(prop)();
+                        }
+                        return prop;
+                    })[0]
 
-    }
-    </MenuItem>))} />
+                }
+                </MenuItem>))}
+        />
     </FormControl>
 )
 
