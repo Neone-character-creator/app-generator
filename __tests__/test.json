@@ -981,36 +981,42 @@
                         "name": "weaponName",
                         "type": "textfield",
                         "label": "Name",
+                        "weight": 2,
                         "bind": "$this.name"
                       },
                       {
                         "name": "weaponSkill",
                         "type": "textfield",
                         "label": "Skill",
+                        "weight": 1,
                         "bind": "$this.skill"
                       },
                       {
                         "name": "weaponDamage",
                         "type": "number",
                         "label": "Damage",
+                        "weight": 1,
                         "bind": "$this.damage"
                       },
                       {
                         "name": "weaponRange",
                         "type": "textfield",
                         "label": "Range",
+                        "weight": 1,
                         "bind": "$this.range"
                       },
                       {
                         "name": "weaponCrit",
                         "type": "number",
                         "label": "Crit",
+                        "weight": 1,
                         "bind": "$this.criticalRating"
                       },
                       {
                         "name": "weaponSpecial",
                         "type": "textfield",
                         "label": "Special",
+                        "weight": 2,
                         "bind": "$this.special"
                       }
                     ]
@@ -1104,24 +1110,35 @@
                         "name": "armorName",
                         "type": "textfield",
                         "label": "Name",
+                        "weight": 2,
                         "bind": "$this.name"
                       },
                       {
                         "name": "armorDefense",
                         "type": "number",
                         "label": "Defense",
-                        "bind": "$this.armor"
+                        "weight": 1,
+                        "bind": "$this.defense"
                       },
                       {
                         "name": "armorSoak",
                         "type": "number",
                         "label": "Soak",
+                        "weight": 1,
                         "bind": "$this.soak"
                       },
                       {
                         "name": "armorEncumbrance",
                         "type": "number",
+                        "label": "Encumbrance",
+                        "weight": 1,
+                        "bind": "$this.encumbrance"
+                      },
+                      {
+                        "name": "armorHardpoints",
+                        "type": "number",
                         "label": "Hard Points",
+                        "weight": 1,
                         "bind": "$this.hardpoints"
                       }
                     ]
@@ -1136,14 +1153,16 @@
                     "name": "addArmor",
                     "type": "button",
                     "text": "# 'Add'",
+                    "weight" : 1,
                     "disabledWhen": "# !_.get($state, 'selectedArmor')",
                     "action": "# {type:'ADD', path:'character.armor', value:$state.selectedArmor}"
                   },
                   {
                     "name": "newArmorName",
                     "type": "select",
-                    "label": "Name",
+                    "label": "Armor",
                     "bind": "$state.selectedArmor",
+                    "weight" : 2,
                     "items": {
                       "text": "name",
                       "values": "# $model.armor.values"
@@ -1152,17 +1171,27 @@
                   {
                     "name": "newArmorDefense",
                     "type": "number",
+                    "weight" : 1,
                     "label": "Defense",
-                    "bind": "$state.selectedArmor.armor"
+                    "bind": "$state.selectedArmor.defense"
                   },
                   {
                     "name": "newArmorSoak",
                     "type": "number",
+                    "weight" : 1,
                     "label": "Soak",
                     "bind": "$state.selectedArmor.soak"
                   },
                   {
-                    "name": "newArmorEncumbrance",
+                    "name" : "newArmorEncumbrance",
+                    "weight": 1,
+                    "type": "number",
+                    "label": "Encumbrance",
+                    "bind": "$state.selectedArmor.encumbrance"
+                  },
+                  {
+                    "name": "newArmorHardPoints",
+                    "weight" : 1,
                     "type": "number",
                     "label": "Hard Points",
                     "bind": "$state.selectedArmor.hardpoints"
