@@ -25,8 +25,5 @@ class Component extends React.Component {
             this.props.options !== nextProps.options;
     }
 }
-const Component = (props) => (
-
-)
 
 const itemTextPath = ${itemText};
