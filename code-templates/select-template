@@ -20,7 +20,7 @@ class Component extends React.Component {
                 </FormControl>)
     }
 
-    componentShouldUpdate(nextProps){
+    shouldComponentUpdate(nextProps){
         return this.props.value !== nextProps.value ||
             this.props.options !== nextProps.options;
     }

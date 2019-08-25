@@ -5,7 +5,7 @@ class Component extends React.Component {
                 </Grid>);
     }
 
-    componentShouldUpdate(){
+    shouldComponentUpdate(){
         return false;
     }
 }

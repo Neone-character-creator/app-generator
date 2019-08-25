@@ -15,7 +15,7 @@ const connected = connect((state, ownProps) => {
     const value = (()=>{
         try {
             if (isBoundComponent){
-                return interpreter.interpret("# " + boundProperty, context);
+                return _.get(context, boundProperty);
             } else {
                 return interpreter.interpret(boundProperty, context);
             }

@@ -3,7 +3,7 @@ class Component extends React.Component {
         return <Textfield disabled={this.props.disabled} id="${componentIdentifier}" fullWidth label="${label}" value={this.props.value} onChange={this.props.update} />;
     }
 
-    componentShouldUpdate(nextProps){
+    shouldComponentUpdate(nextProps){
         return this.props.disabled !== nextProps.disabled ||
             this.props.value !== nextProps.value;
     }
