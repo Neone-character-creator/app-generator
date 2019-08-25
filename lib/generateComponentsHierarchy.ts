@@ -13,7 +13,7 @@ function extractComponentDefinitions(components: {
     components: { [s: string]: any },
     views: string[]
 }, element: any) {
-    element.identifier = element.name + element.type;
+    element.identifier = `${element.name}-${element.type}`;
     if (components.components[element.identifier]) {
         throw new Error(`Duplicate component ${element.name} ${element.type} found`);
     }
@@ -42,6 +42,9 @@ function extractViewDefinition(components: {
     views: string[]
 }, element: any) {
     const children = element.children;
+    if(!element.identifier) {
+        throw new Error(`Component ${element.name} has no identifier`);
+    }
     if (!_.isEmpty(children)) {
         children.forEach((child: any) => {
             extractComponentDefinitions(components, child);

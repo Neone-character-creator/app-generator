@@ -1201,6 +1201,66 @@
             ]
           },
           {
+            "name": "otherEquipment",
+            "type": "container",
+            "children": [
+              {
+                "name": "money",
+                "type": "container",
+                "weight": 1,
+                "direction": "horizontal",
+                "children": [
+                  {
+                    "name": "money",
+                    "type": "number",
+                    "label": "Credits",
+                    "weight": 1,
+                    "bind": "$state.character.credits"
+                  }
+                ]
+              },
+              {
+                "name": "otherItemsParent",
+                "type": "container",
+                "weight": 11,
+                "children": [
+                  {
+                    "name": "otherItems",
+                    "type": "list",
+                    "bind": "$state.character.otherItems",
+                    "items": {
+                      "child": {
+                        "name": "otherItem",
+                        "type": "textfield",
+                        "bind": "$state.character.otherItems[$index]"
+                      }
+                    }
+                  },
+                  {
+                    "name": "newOtherItem",
+                    "type": "container",
+                    "children": [
+                      {
+                        "name": "addOtherItem",
+                        "type": "button",
+                        "text": "Add",
+                        "weight": 1,
+                        "action": "# {type:'ADD', path: 'character.otherItems, value: $state.newItem }"
+                      },
+                      {
+                        "name": "newOtherItem",
+                        "type": "textfield",
+                        "label": "New Item",
+                        "weight": 11,
+                        "bind": "$state.newItem"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "name": "experience",
             "type": "container",
             "direction": "horizontal",
@@ -1575,6 +1635,7 @@
         "advancements": "[advancement]",
         "weapons": "[weapon]",
         "armor": "[armor]",
+        "credits": "number",
         "motivations": {
           "type": "[string]",
           "default": [
