@@ -1,5 +1,11 @@
-const Component = (props) => (
-    <Grid id="${componentIdentifier}" container spacing={8} justify="space-around" direction={"${direction}" == "vertical" ? "column" : "row"}>
-        ${children}
-    </Grid>
-);
+class Component extends React.Component {
+    render(){
+        return (<Grid id="${componentIdentifier}" container spacing={8} justify="space-around" direction={"${direction}" == "vertical" ? "column" : "row"}>
+                    ${children}
+                </Grid>);
+    }
+
+    componentShouldUpdate(){
+        return false;
+    }
+}

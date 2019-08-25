@@ -32,7 +32,6 @@ const connected = connect((state, ownProps) => {
     return {
         disabled,
         options,
-        context,
         maxSelections,
         value: _.isNil(value) ? "" : value
     };
@@ -40,26 +39,25 @@ const connected = connect((state, ownProps) => {
     return {dispatch};
 }, (stateProps, dispatchProps, ownProps) => {
     var {dispatch} = dispatchProps;
-    const update = readOnly ? () => {} :
-        _.debounce((value) => {
-            if(stateProps.maxSelections == 1 || value.length <= stateProps.maxSelections) {
-                dispatch({ type: "SET", path: boundProperty, value: value});
-            }
-        });
-    const onClick = readOnly || !action ? () => {} :
-        (action) => {
-            dispatch(action);
-        };
     return {...stateProps,
-        onClick: (event) => {
-            const interpretedAction = interpreter.interpret(action, stateProps.context);
-            onClick(interpretedAction);
-        },
-        update: (event) => {
-            update(event.target.value);
-        }
+        onClick: clickHandler.bind(null, dispatch, action),
+        update: stateUpdater.bind(null, stateProps, dispatch)
     };
 })(Component);
+
+function doNothing(){};
+
+function clickHandler(dispatch, action, event){
+    const interpretedAction = interpreter.interpret(action, stateProps.context);
+    dispatch(interpretedAction);
+}
+
+function stateUpdater(stateProps, dispatch, event){
+    const value = event.target.value;
+    if(!stateProps.maxSelection || stateProps.maxSelection == 1 || value.length <= stateProps.maxSelection) {
+        dispatch({ type: "SET", path: boundProperty, value});
+    }
+}
 
 function determineValues(expression, state, value){
     if (!expression){

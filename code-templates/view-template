@@ -1,5 +1,11 @@
-const Component = () => (
-    <div id="${componentIdentifier}">
-        ${children}
-    </div>
-)
+class Component extends React.Component {
+    render(){
+        return (<div id="${componentIdentifier}">
+                    ${children}
+                </div>)
+    }
+
+    shouldComponentUpdate(){
+        return false;
+    }
+}

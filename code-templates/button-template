@@ -1,5 +1,12 @@
-const Component = (props) => (
-    <Button id="${componentIdentifier}" variant="contained" onClick={props.onClick} disabled={props.disabled} >
-        {props.value}
-    </Button>
-);
+class Component extends React.Component {
+    render() {
+        return (<Button id="${componentIdentifier}" variant="contained" onClick={this.props.onClick} disabled={this.props.disabled} >
+                    {this.props.value}
+                </Button>);
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        return this.props.disabled !== nextProps.disabled ||
+            this.props.value !== nextProps.value;
+    }
+}
