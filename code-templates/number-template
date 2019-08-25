@@ -1,7 +1,7 @@
 class Component extends React.Component {
     render() {
         return (
-            <Textfield id="${componentIdentifier}" label="${this.props.label}" type="number" value={this.props.value} onChange={props.update} />
+            <Textfield id="${componentIdentifier}" label="${label}" type="number" value={this.props.value} onChange={this.props.update} />
         );
     }
 

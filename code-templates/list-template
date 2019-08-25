@@ -2,13 +2,17 @@ const Child = (props) => {
     return (${childComponent})
 };
 
-const Component = (props) => (
-    <List>
-        {(props.value || []).map((v, index) => {
-            return (<ListItem>
-                <Child value={v} index={index} />
-            </ListItem>)
-            })
-        }
-    </List>
-);
+class Component extends React.Component {
+    render() {
+        return (
+            <List>
+                {(this.props.value || []).map((v, index) => {
+                    return (<ListItem>
+                        <Child item={v} index={index}/>
+                    </ListItem>)
+                    })
+                }
+            </List>
+        );
+    }
+}

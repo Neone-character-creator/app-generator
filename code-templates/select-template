@@ -2,9 +2,9 @@ class Component extends React.Component {
     render(){
         return (<FormControl fullWidth={true}>
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
-                    <Select id="${componentIdentifier}" autoWidth={true} value={props.value} onChange={props.update}
-                        renderValue={(x)=>_.get(props.value, itemTextPath)} multiple={props.maxSelections > 1}
-                        children={props.options.map((item, index) => (
+                    <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.props.update}
+                        renderValue={(x)=>_.get(this.props.value, itemTextPath)} multiple={this.props.maxSelections > 1}
+                        children={this.props.options.map((item, index) => (
                             <MenuItem value={item}>
                                 {
                                     [_.get(item, itemTextPath, item)].map(prop => {
