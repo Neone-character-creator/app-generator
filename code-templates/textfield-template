@@ -1,6 +1,6 @@
 class Component extends React.Component {
     render(){
-        return <Textfield disabled={this.props.disabled} id="${componentIdentifier}" fullWidth label="${label}" value={this.props.value} onChange={this.props.update} />;
+        return <Textfield disabled={this.props.disabled} id="${componentIdentifier}" fullWidth={true} label="${label}" value={this.props.value} onChange={this.props.update} />;
     }
 
     shouldComponentUpdate(nextProps){

@@ -1051,35 +1051,35 @@
                     "name": "newWeaponSkill",
                     "type": "textfield",
                     "label": "Skill",
-                    "weight" : 1,
+                    "weight": 1,
                     "bind": "$state.selectedWeapon.skill"
                   },
                   {
                     "name": "newWeaponDamage",
                     "type": "number",
                     "label": "Damage",
-                    "weight" : 1,
+                    "weight": 1,
                     "bind": "$state.selectedWeapon.damage"
                   },
                   {
                     "name": "newWeaponRange",
                     "type": "textfield",
                     "label": "Range",
-                    "weight" : 1,
+                    "weight": 1,
                     "bind": "$state.selectedWeapon.range"
                   },
                   {
                     "name": "newWeaponCrit",
                     "type": "number",
                     "label": "Crit",
-                    "weight" : 1,
+                    "weight": 1,
                     "bind": "$state.selectedWeapon.criticalRating"
                   },
                   {
                     "name": "newWeaponSpecial",
                     "type": "textfield",
                     "label": "Special",
-                    "weight" : 2,
+                    "weight": 2,
                     "bind": "$state.selectedWeapon.special"
                   }
                 ]
@@ -1153,7 +1153,7 @@
                     "name": "addArmor",
                     "type": "button",
                     "text": "# 'Add'",
-                    "weight" : 1,
+                    "weight": 1,
                     "disabledWhen": "# !_.get($state, 'selectedArmor')",
                     "action": "# {type:'ADD', path:'character.armor', value:$state.selectedArmor}"
                   },
@@ -1162,7 +1162,7 @@
                     "type": "select",
                     "label": "Armor",
                     "bind": "$state.selectedArmor",
-                    "weight" : 2,
+                    "weight": 2,
                     "items": {
                       "text": "name",
                       "values": "# $model.armor.values"
@@ -1171,19 +1171,19 @@
                   {
                     "name": "newArmorDefense",
                     "type": "number",
-                    "weight" : 1,
+                    "weight": 1,
                     "label": "Defense",
                     "bind": "$state.selectedArmor.defense"
                   },
                   {
                     "name": "newArmorSoak",
                     "type": "number",
-                    "weight" : 1,
+                    "weight": 1,
                     "label": "Soak",
                     "bind": "$state.selectedArmor.soak"
                   },
                   {
-                    "name" : "newArmorEncumbrance",
+                    "name": "newArmorEncumbrance",
                     "weight": 1,
                     "type": "number",
                     "label": "Encumbrance",
@@ -1191,7 +1191,7 @@
                   },
                   {
                     "name": "newArmorHardPoints",
-                    "weight" : 1,
+                    "weight": 1,
                     "type": "number",
                     "label": "Hard Points",
                     "bind": "$state.selectedArmor.hardpoints"
@@ -1203,26 +1203,18 @@
           {
             "name": "otherEquipment",
             "type": "container",
+            "direction": "vertical",
             "children": [
               {
                 "name": "money",
-                "type": "container",
-                "weight": 1,
-                "direction": "horizontal",
-                "children": [
-                  {
-                    "name": "money",
-                    "type": "number",
-                    "label": "Credits",
-                    "weight": 1,
-                    "bind": "$state.character.credits"
-                  }
-                ]
+                "type": "number",
+                "label": "Credits",
+                "bind": "$state.character.credits"
               },
               {
                 "name": "otherItemsParent",
                 "type": "container",
-                "weight": 11,
+                "direction": "vertical",
                 "children": [
                   {
                     "name": "otherItems",
@@ -1245,7 +1237,7 @@
                         "type": "button",
                         "text": "Add",
                         "weight": 1,
-                        "action": "# {type:'ADD', path: 'character.otherItems, value: $state.newItem }"
+                        "action": "# {type:'ADD', path: 'character.otherItems', value: $state.newItem }"
                       },
                       {
                         "name": "newOtherItem",
@@ -1636,6 +1628,7 @@
         "weapons": "[weapon]",
         "armor": "[armor]",
         "credits": "number",
+        "otherItems": "[string]",
         "motivations": {
           "type": "[string]",
           "default": [

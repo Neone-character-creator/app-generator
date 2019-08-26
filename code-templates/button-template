@@ -7,6 +7,7 @@ class Component extends React.Component {
 
     shouldComponentUpdate(nextProps, nextState){
         return this.props.disabled !== nextProps.disabled ||
-            this.props.value !== nextProps.value;
+            this.props.value !== nextProps.value ||
+            this.props.clickAction !== nextProps.clickAction;
     }
 }
