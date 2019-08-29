@@ -1,25 +1,43 @@
-plugins {
-    // Apply the java-library plugin to add support for Java Library
-    id 'java-library'
+group 'io.github.thisisnozaku.charactercreator'
+version 'unspecified'
+
+buildscript {
+    dependencies {
+        classpath "com.twcable.gradle:gradle-plugin-scr:1.2.0"
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url "http://dl.bintray.com/twcable/aem"
+        }
+    }
+}
+
+apply plugin: "java"
+apply plugin: 'osgi'
+apply plugin: 'com.twcable.scr'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
 }
 
 dependencies {
-    compile 'org.apache.felix:org.apache.felix.scr:2.0.2'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile "io.github.thisisnozaku.charactercreator:neone-plugin-api:1.0"
     compile 'org.apache.felix:org.apache.felix.scr.annotations:1.9.12'
-}
-
-// In this section you declare where to find the dependencies of your project
-repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
 }
 
 jar {
     manifest {
         instruction 'Bundle-Category', 'plugin'
         instruction 'Bundle-Description', 'API bundle for NEOne character creator plugins.'
-        instruction 'Export-Package', 'neone.app.%appName%; version=1.0.0'
+        instructionReplace 'Private-Package', 'io.github.thisisnozaku.*'
+        instructionReplace 'Export-Package', '!*'
+        instruction 'Import-Package', 'io.github.thisisnozaku.charactercreator.plugins; version=1.0.0'
     }
-    baseName = "%appName%-plugin"
+    baseName = "${gameName}-plugin"
 }
