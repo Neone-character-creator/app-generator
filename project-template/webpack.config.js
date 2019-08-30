@@ -1,5 +1,9 @@
 const path = require("path");
 
+function resolvePluginResource(req, res) {
+
+}
+
 module.exports = {
     "mode": "development",
     "entry": "./src/main/resources/scripts/app.js",
@@ -14,8 +18,13 @@ module.exports = {
                 const resourcePath = path.resolve(__dirname + "/src/main/resources" + req.baseUrl);
                 res.sendFile(resourcePath);
             });
-            app.use(/\/scripts\/.*/, function(req, res) {
-                const resourcePath = path.resolve(__dirname + "/src/main/resources" + req.baseUrl);
+            app.use(/\/pluginresource\/.*/, function(req, res) {
+                console.log(req.baseUrl);
+                var split = req.baseUrl.split("/");
+                console.log(split);
+                var adjustedPath = "/" + split.slice(2).join("/");
+                console.log(adjustedPath);
+                const resourcePath = path.resolve(__dirname + ["", "src", "main", "resources"].join(path.sep) + adjustedPath);
                 res.sendFile(resourcePath);
             });
         },
