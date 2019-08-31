@@ -29,7 +29,8 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
-    "antlr4": "4.7.2",
-    "null-loader": "3.0.0"
+    "antlr4" : "4.7.2",
+    "null-loader": "3.0.0",
+    "why-did-you-update" : "1.0.6"
   }
 }
