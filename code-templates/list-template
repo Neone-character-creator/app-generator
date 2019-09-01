@@ -2,7 +2,7 @@ const Child = (props) => {
     return (${childComponent})
 };
 
-class Component extends React.Component {
+class ${componentName} extends React.Component {
     render() {
         return (
             <List>
@@ -15,4 +15,10 @@ class Component extends React.Component {
             </List>
         );
     }
+
+    shouldComponentUpdate(nextProps){
+        return this.props.value !== nextProps.value;
+    }
 }
+
+const Component = ${componentName};

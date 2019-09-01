@@ -1,4 +1,4 @@
-class Component extends React.Component {
+class ${componentName} extends React.Component {
     render(){
         return (<Grid id="${componentIdentifier}" container spacing={8} justify="space-around" direction={"${direction}" == "vertical" ? "column" : "row"}>
                     ${children}
@@ -9,3 +9,5 @@ class Component extends React.Component {
         return false;
     }
 }
+
+const Component = ${componentName};

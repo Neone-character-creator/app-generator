@@ -1,9 +1,21 @@
-class Component extends React.Component {
+class ${componentName} extends React.Component {
+    constructor(props){
+        super(props);
+        this.update = function(event){
+            const value = event.target.value;
+            if(!stateProps.maxSelection || stateProps.maxSelection == 1 || value.length <= stateProps.maxSelection) {
+                this.props.dispatch({ type: "SET", path: boundProperty, value});
+            }
+        }
+        this.update = this.update.bind(this);
+    }
     render() {
-        return <Checkbox id="${componentIdentifier}" checked={this.props.value} onChange={this.props.update} />
+        return <Checkbox id="${componentIdentifier}" checked={this.props.value} onChange={this.update} />
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         return nextProps.value !== this.props.value;
     }
 }
+
+const Component = ${componentName};

@@ -1,6 +1,25 @@
 class Component extends React.Component {
+    constructor(props){
+        super(props);
+
+        const updateDispatch = function(value){
+            this.props.dispatch({ type: "SET", path: this.props.boundProperty, value});
+        }.bind(this);
+
+        this.update = function(event){
+            const value = event.target.value;
+            this.setState({
+                text: value
+            });
+            if(!this.props.maxSelection || this.props.maxSelection == 1 || value.length <= this.props.maxSelection) {
+               updateDispatch(value);
+            }
+        };
+        this.update = this.update.bind(this);
+    }
+
     render(){
-        return <Textfield disabled={this.props.disabled} id="${componentIdentifier}" fullWidth={true} label="${label}" value={this.props.value} onChange={this.props.update} />;
+        return <Textfield disabled={this.props.disabled} id="${componentIdentifier}" fullWidth={true} label="${label}" value={this.props.value} onChange={this.update} />;
     }
 
     shouldComponentUpdate(nextProps){

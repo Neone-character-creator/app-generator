@@ -1,4 +1,4 @@
-class Component extends React.Component {
+class ${componentName} extends React.Component {
     render() {
         return (
             <Textfield id="${componentIdentifier}" label="${label}" type="number" value={this.props.value} onChange={this.props.update} />
@@ -9,3 +9,5 @@ class Component extends React.Component {
         return this.props.value !== nextProps.value;
     }
 }
+
+const Component = ${componentName};

@@ -1,3 +1,11 @@
-const Component = (props) => (
-    <p>{props.value}</p>
-);
+class ${componentName} extends React.Component {
+    render(){
+        return <p>{this.props.value}</p>
+    }
+
+    shouldComponentUpdate(nextProps){
+        return nextProps.value !== this.props.value;
+    }
+}
+
+const Component = ${componentName};

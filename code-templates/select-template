@@ -1,8 +1,18 @@
-class Component extends React.Component {
+class ${componentName} extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.update = function(event){
+            var value = event.target.value;
+            this.props.dispatch({ type: "SET", path: boundProperty, value});
+        }
+
+        this.update = this.update.bind(this);
+    }
     render(){
         return (<FormControl fullWidth={true}>
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
-                    <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.props.update}
+                    <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.update}
                         renderValue={(x)=>_.get(this.props.value, itemTextPath)} multiple={this.props.maxSelections > 1}
                         children={this.props.options.map((item, index) => (
                             <MenuItem value={item}>
@@ -27,3 +37,5 @@ class Component extends React.Component {
 }
 
 const itemTextPath = ${itemText};
+
+const Component = ${componentName};
