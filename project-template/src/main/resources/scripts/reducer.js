@@ -179,11 +179,11 @@ export default function (previousState, action) {
     } else {
         previousState = {character: new models.character()};
     }
-    if(!action.type.startsWith("@@")) {
-        setCalculatedProperties(models.character.prototype.definition, null, previousState, ["character"]);
-        applyAdvancements(previousState);
-        setAvailableAdvancements(previousState);
-        runAfterHooks(previousState, action);
-    }
+
+    setCalculatedProperties(models.character.prototype.definition, null, previousState, ["character"]);
+    applyAdvancements(previousState);
+    setAvailableAdvancements(previousState);
+    runAfterHooks(previousState, action);
+
     return previousState;
 };
