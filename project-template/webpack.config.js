@@ -1,8 +1,5 @@
 const path = require("path");
-
-function resolvePluginResource(req, res) {
-
-}
+const webpack = require("webpack");
 
 module.exports = {
     "mode": "development",
@@ -66,5 +63,10 @@ module.exports = {
         module: "empty",
         net: "empty",
         fs: "empty"
-    }
-}
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            "process.env.NODE_ENV":"'dev'"
+        })
+    ]
+};
