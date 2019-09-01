@@ -34,7 +34,7 @@ function work(configFileLocation) {
         }
         appConfiguration.toolVersion = package.version;
         var pluginGenerator = new PluginGenerator(appConfiguration, tmpDir);
-        pluginGenerator.generate().catch(e => console.error(e));
+        return pluginGenerator.generate().catch(e => console.error(e));
     } catch (e) {
         if (e.errors) {
             e.errors.forEach(error => {
@@ -51,8 +51,7 @@ function logWatchMessage(){
 }
 
 if(argv.watch) {
-    work(argv.configFile);
-    logWatchMessage()
+    work(argv.configFile).then(logWatchMessage);
     fs.watchFile(argv.configFile, {
         interval: 2500
     }, ()=>{
