@@ -1817,21 +1817,21 @@
         "rangedLight": {
           "type": "skill",
           "value": {
-            "name": "Cool",
+            "name": "Ranged - Light",
             "characteristic": "Agility"
           }
         },
         "rangedHeavy": {
           "type": "skill",
           "value": {
-            "name": "Cool",
+            "name": "Ranged - Heavy",
             "characteristic": "Agility"
           }
         },
         "knowledgeCoreWorlds": {
           "type": "skill",
           "value": {
-            "name": "Cool",
+            "name": "Knowledge - Core Worlds",
             "characteristic": "Intellect"
           }
         },
@@ -1845,7 +1845,7 @@
         "knowledgeLore": {
           "type": "skill",
           "value": {
-            "name": "Cool",
+            "name": "Knowledge - Lore",
             "characteristic": "Intellect"
           }
         },
