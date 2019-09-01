@@ -1390,8 +1390,14 @@
           },
           {
             "name": "speciesCareerSkillChoices",
+            "type": "label",
+            "text": "Starting Career Skills"
+          },
+          {
+            "name": "speciesCareerSkillChoices",
             "type": "select",
             "bind": "$state.character.species.careerSkills",
+
             "items": {
               "maxSelections": "# $state.character.species && $state.character.species.startingCareerSkillChoices",
               "text": "name",
@@ -1503,7 +1509,7 @@
                 "type": "button",
                 "text": "# 'Buy'",
                 "disabledWhen": "# _.get($state, 'selectedAdvancement.characteristic.isAvailable') !== true",
-                "action": "# {type:'ADVANCEMENT', advancementType:'characteristic', advancement: $state.selectedAdvancement.characteristic.option}"
+                "action": "# {type:'ADVANCEMENT', advancementType:'characteristic', advancement: _.get($state, 'selectedAdvancement.characteristic.option')}"
               }
             ]
           },
@@ -1531,7 +1537,7 @@
                 "type": "button",
                 "text": "# 'Buy'",
                 "disabledWhen": "# _.get($state, 'selectedAdvancement.skill.isAvailable') !== true",
-                "action": "# {type:'ADVANCEMENT', advancementType:'skill', advancement: $state.selectedAdvancement.skill.option}"
+                "action": "# {type:'ADVANCEMENT', advancementType:'skill', advancement: _.get($state, 'selectedAdvancement.skill.option')}"
               }
             ]
           },
@@ -1559,7 +1565,7 @@
                 "type": "button",
                 "text": "# 'Buy'",
                 "disabledWhen": "# _.get($state, 'selectedAdvancement.talent.isAvailable') !== true",
-                "action": "# {type:'ADVANCEMENT', advancementType:'talent', advancement: $state.selectedAdvancement.talent.option.name}"
+                "action": "# {type:'ADVANCEMENT', advancementType:'talent', advancement: _.get($state, 'selectedAdvancement.talent.option.name')}"
               }
             ]
           },
