@@ -176,6 +176,9 @@ export default function (previousState, action) {
 
             })
         }
+        if (action.type === "OVERRIDE") {
+            previousState.character = {... new models.character(), ...action.state};
+        }
     } else {
         previousState = {character: new models.character()};
     }
