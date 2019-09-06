@@ -46,4 +46,4 @@ jar {
     baseName = "${gameName}-plugin"
 }
 
-jar.dependsOn npm_run_build
+processResources.dependsOn npm_run_build
