@@ -1411,6 +1411,11 @@
         "type": "view",
         "children": [
           {
+            "name": "careerChoices",
+            "type": "label",
+            "text": "Career"
+          },
+          {
             "name": "careerSelect",
             "type": "select",
             "bind": "$state.character.career",
@@ -1424,6 +1429,11 @@
             "type": "container",
             "direction": "vertical",
             "children": [
+              {
+                "name": "startingSpecialization",
+                "type": "label",
+                "text": "Specialization"
+              },
               {
                 "name": "startingSpecializationSelect",
                 "type": "select",
