@@ -4,7 +4,8 @@
   "description": "",
   "main": "serve.js",
   "scripts": {
-    "start": "npm i && webpack-cli && webpack-dev-server"
+    "start": "npm i && webpack-cli && webpack-dev-server",
+    "build": "webpack-cli"
   },
   "author": "",
   "license": "ISC",
