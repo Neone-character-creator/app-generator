@@ -8,7 +8,7 @@ import React from "react";
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 window.character = function(stringifiedState) {
-    if (state === undefined) {
+    if (stringifiedState === undefined) {
         return store.getState().character;
     } else {
         store.dispatch({
