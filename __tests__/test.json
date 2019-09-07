@@ -1391,13 +1391,12 @@
           {
             "name": "speciesCareerSkillChoices",
             "type": "label",
-            "text": "Starting Career Skills"
+            "text": "# 'Starting Career Skills (choose ' + _.get($state, 'character.species.startingCareerSkillChoices', 0) + ')'"
           },
           {
             "name": "speciesCareerSkillChoices",
             "type": "select",
             "bind": "$state.character.species.careerSkills",
-
             "items": {
               "maxSelections": "# $state.character.species && $state.character.species.startingCareerSkillChoices",
               "text": "name",
@@ -1447,7 +1446,7 @@
                 "name": "startingSpecializationCareerSkills",
                 "type": "textfield",
                 "value": "# $state.character.specializations[0] ? $state.character.specializations[0].careerSkills.join(', ') : '' ",
-                "label": "Specialization Career Skills"
+                "label": "# Specialization Career Skills (choose ${$state.character."
               },
               {
                 "name": "startingSpecializationAvailableTalents",
