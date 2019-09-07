@@ -62,7 +62,7 @@
                     "name": "thresholdWounds",
                     "type": "number",
                     "label": "Threshold Wounds",
-                    "value": "#  $state.character.wounds.base + $state.character.characteristics[$state.character.wounds.characteristic]"
+                    "value": "#  $state.character.wounds"
                   }
                 ]
               },
@@ -76,7 +76,7 @@
                     "name": "strainThreshold",
                     "type": "number",
                     "label": "Threshold Strain",
-                    "value": "#  $state.character.strain.base + $state.character.characteristics[$state.character.strain.characteristic]"
+                    "value": "#  $state.character.strain"
                   }
                 ]
               },
@@ -1635,8 +1635,18 @@
             "# $state.character.species.startingExperience"
           ]
         },
-        "wounds": "woundsThreshold",
-        "strain": "strainThreshold",
+        "wounds": {
+          "type": "number",
+          "derivedFrom": [
+            "# _.get($state.character.characteristics, _.get($state, 'character.species.woundsThreshold.characteristics'), 0) + _.get($state, 'character.species.woundsThreshold.base', 0)"
+          ]
+        },
+        "strain": {
+          "type": "number",
+          "derivedFrom": [
+            "# _.get($state.character.characteristics, _.get($state, 'character.species.strainThreshold.characteristics'), 0) + _.get($state, 'character.species.strainThreshold.base', 0)"
+          ]
+        },
         "characteristics": "characteristics",
         "skills": "skills",
         "advancements": "[advancement]",
