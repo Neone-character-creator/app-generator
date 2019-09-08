@@ -8,7 +8,7 @@ class ${componentName} extends React.Component {
             <List>
                 {(this.props.value || []).map((v, index) => {
                     return (<ListItem>
-                        <Child item={v} index={index}/>
+                        <Child value={v} index={index}/>
                     </ListItem>)
                     })
                 }
