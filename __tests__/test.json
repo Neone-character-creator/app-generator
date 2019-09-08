@@ -1452,7 +1452,7 @@
               {
                 "name": "startingSpecializationAvailableTalents",
                 "type": "list",
-                "bind": "# $state.character.specializations[0].talents",
+                "bind": "$state.character.specializations[0].talents",
                 "items": {
                   "child": {
                     "name": "startingSpecializationAvailableTalentsWrapper",
@@ -1460,16 +1460,21 @@
                     "direction": "horizontal",
                     "children": [
                       {
+                        "name": "startingSpecializationTalentIsBought",
+                        "type": "checkbox",
+                        "value": "# $state.character.talents.includes($this)"
+                      },
+                      {
                         "name": "startingSpecializationTalentName",
                         "type": "textfield",
                         "label": "Talent Name",
                         "bind": "$this.name"
                       },
                       {
-                        "name": "startingSpecializationTalentDescription",
-                        "type": "textfield",
-                        "label": "Talent Description",
-                        "bind": "$this.description"
+                        "name": "startingSpecializationTalentCost",
+                        "label": "cost",
+                        "type": "number",
+                        "value": "# $this.tier * 5"
                       }
                     ]
                   }
@@ -1616,7 +1621,7 @@
         "defense": "defense",
         "career": "career",
         "specializations": "[specialization]",
-        "specializationTalents": "[specializationTalent]",
+        "talents": "[talent]",
         "soak": {
           "type": "number",
           "derivedFrom": [
@@ -5909,10 +5914,10 @@
       "properties": {
         "name": "string",
         "careerSkills": "[skill]",
-        "talents": "[specializationTalent]"
+        "talents": "[talent]"
       }
     },
-    "specializationTalent": {
+    "talent": {
       "properties": {
         "id": "string",
         "tier": "number",
@@ -6512,8 +6517,9 @@
         "description": "Acquire Talent",
         "uses": "$state.character.availableExperience",
         "options": "# $state.character.specializations.reduce((combined, s)=> combined.concat(s.talents), []) ",
-        "when": "# $this.tier === 1 || $state.character.specializations.reduce((combined, x)=> combined.concat(x.talents), []).find(y => $state.character.specializationTalents.find(z => z.id === y.id))",
-        "cost": "# $this.tier * 5"
+        "when": "# $this.tier === 1 || $state.character.specializations.reduce((combined, x)=> combined.concat(x.talents), []).find(y => $state.character.talents.find(z => z.id === y.id))",
+        "cost": "# $this.tier * 5",
+        "effect": "# $state.character.talents.push($state.selectedAdvancement.talent.option)"
       }
     }
   },

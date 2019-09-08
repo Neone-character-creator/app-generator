@@ -12,26 +12,28 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
         const originalBaseValue = _.get(baseValues, joinedStatePath) || 0;
         const differenceFromOriginalBase = (_.get(state, joinedStatePath) - originalBaseValue) || 0;
         const baseValue = modelDefinition.baseValue.reduce((accumulator, nextExpression) => {
-                return interpreter.interpret(nextExpression, {$state: state, $models: models, $this: accumulator}, true)
-                    || accumulator;
-            }, 0);
+            return interpreter.interpret(nextExpression, {$state: state, $models: models, $this: accumulator}, true)
+                || accumulator;
+        }, 0);
         if (originalBaseValue !== baseValue) {
             _.set(baseValues, joinedStatePath, baseValue);
         }
         _.set(state, joinedStatePath, baseValue + differenceFromOriginalBase);
     } else if (modelDefinition.derivedFrom) {
         let value = modelDefinition.derivedFrom.reduce((accumulator, nextExpression) => {
-                return interpreter.interpret(nextExpression, {$state: state, $models: models,
-                    $this: {
-                        accumulator,
-                        ancestors: statePath.filter((x, i)=>i < statePath.length -1).map((element, index) => {
-                            const joined = statePath.filter((x, i) => {
-                                return i <= index;
-                            }).map(x => `[${x}]`).join("");
-                            return _.get(state, joined);
-                        }).reverse()
-                    }})
-            }, null);
+            return interpreter.interpret(nextExpression, {
+                $state: state, $models: models,
+                $this: {
+                    accumulator,
+                    ancestors: statePath.filter((x, i) => i < statePath.length - 1).map((element, index) => {
+                        const joined = statePath.filter((x, i) => {
+                            return i <= index;
+                        }).map(x => `[${x}]`).join("");
+                        return _.get(state, joined);
+                    }).reverse()
+                }
+            })
+        }, null);
         _.set(state, joinedStatePath, value);
     }
     Object.getOwnPropertyNames(modelDefinition).reduce((updated, nextPropertyName) => {
@@ -80,16 +82,12 @@ function setAvailableAdvancements(state) {
 
 function applyAdvancements(state) {
     (state.character.advancements || []).forEach(advancement => {
-        switch (advancement.type) {
-            case "skill":
-            case "characteristic":
-                interpreter.interpret(rules.advancement[advancement.type].effect, {
-                    $state: state,
-                    $this: advancement.advancement,
-                    $rules: rules,
-                    $model: models
-                });
-        }
+        interpreter.interpret(rules.advancement[advancement.type].effect, {
+            $state: state,
+            $this: advancement.advancement,
+            $rules: rules,
+            $model: models
+        });
     });
 };
 
@@ -104,7 +102,7 @@ function runHooks(when, state, action) {
     });
     hooksToRun.forEach(hook => {
         hook.effects.forEach(effect => {
-            interpreter.interpret(effect, {$state:state, $this: action});
+            interpreter.interpret(effect, {$state: state, $this: action});
         })
     });
 }
@@ -152,7 +150,7 @@ export default function (previousState, action) {
                 $state: previousState,
                 $this: previousState.selectedAdvancement[action.advancementType].option
             }) <= previousState.character.availableExperience;
-            if(isAvailable) {
+            if (isAvailable) {
                 previousState.character.advancements.push(addedAdvancement);
             } else {
                 alert("Advancement not added, prerequisites not met.")
@@ -177,7 +175,7 @@ export default function (previousState, action) {
             })
         }
         if (action.type === "OVERRIDE") {
-            previousState.character = {... new models.character(), ...action.state};
+            previousState.character = {...new models.character(), ...action.state};
         }
     } else {
         previousState = {character: new models.character()};
