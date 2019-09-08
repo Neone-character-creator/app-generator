@@ -4,7 +4,7 @@ class ${componentName} extends React.Component {
         this.click = function(){
             this.props.dispatch(this.props.clickAction);
         }
-        this.click.bind(this);
+        this.click = this.click.bind(this);
     }
     render() {
         return (<Button id="${componentIdentifier}" variant="contained" onClick={this.click} disabled={this.props.disabled} >
