@@ -17,6 +17,11 @@ window.character = function(stringifiedState) {
         });
     }
 };
+if (process.env.HAS_PDF === true) {
+    window.export = function(){
+        return store.getState();
+    };
+}
 if (process.env.NODE_ENV === "dev") {
     whyDidYouUpdate(React);
 }

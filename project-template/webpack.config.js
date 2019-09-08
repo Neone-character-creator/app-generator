@@ -1,6 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
-
+const fs = require("fs");
 module.exports = {
     "mode": "development",
     "entry": "./src/main/resources/scripts/app.js",
@@ -61,7 +61,8 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            "process.env.NODE_ENV":"'dev'"
+            "process.env.NODE_ENV":"'dev'",
+            "process.env.HAS_PDF": fs.existsSync(path.resolve("src", "main", "resources", "sheet.pdf"))
         })
     ]
 };

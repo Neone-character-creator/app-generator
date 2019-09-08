@@ -2,6 +2,7 @@
   "gameName": "test",
   "pluginVersion": "1.0",
   "authorName": "Damien Marble",
+  "pdfPath": "__tests__/sheet.pdf",
   "views": {
     "name": "app",
     "children": [
@@ -1446,7 +1447,7 @@
                 "name": "startingSpecializationCareerSkills",
                 "type": "textfield",
                 "value": "# $state.character.specializations[0] ? $state.character.specializations[0].careerSkills.join(', ') : '' ",
-                "label": "# Specialization Career Skills (choose ${$state.character."
+                "label": "Specialization Career Skills"
               },
               {
                 "name": "startingSpecializationAvailableTalents",
