@@ -142,6 +142,12 @@
                 "type": "number",
                 "label": "Presence",
                 "value": "# $state.character.characteristics.presence "
+              },
+              {
+                "name": "ForceRating",
+                "type": "number",
+                "label": "Force Rating",
+                "value": "# $state.character.forceRating"
               }
             ]
           },
@@ -1622,6 +1628,7 @@
         "career": "career",
         "specializations": "[specialization]",
         "talents": "[talent]",
+        "forceRating": "number",
         "soak": {
           "type": "number",
           "derivedFrom": [
