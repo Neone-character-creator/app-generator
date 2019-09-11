@@ -5934,6 +5934,295 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Force Sensitive Exile",
+          "careerSkills": [],
+          "talents": [
+            {
+              "name": "Uncanny Senses",
+              "tier": 1
+            },
+            {
+              "name": "Insight",
+              "tier": 1
+            },
+            {
+              "name": "Forager",
+              "tier": 1
+            },
+            {
+              "name": "Uncanny Reactions",
+              "tier": 1
+            },
+            {
+              "name": "Convincing Demeanor",
+              "tier": 2,
+              "requires": [
+                0
+              ]
+            },
+            {
+              "name": "Overwhelm Emotions",
+              "tier": 2
+            },
+            {
+              "name": "Intense Focus",
+              "tier": 2
+            },
+            {
+              "name": "Quick Draw",
+              "tier": 2,
+              "requires": [3]
+            },
+            {
+              "name": "Sense Danger",
+              "tier": 3,
+              "requires": [
+                4
+              ]
+            },
+            {
+              "name": "Sense Emotions",
+              "tier": 3,
+              "requires": [
+                5
+              ]
+            },
+            {
+              "name": "Balance",
+              "tier": 3,
+              "requires": [
+                6
+              ]
+            },
+            {
+              "name": "Touch of Fate",
+              "tier": 3,
+              "requires": [
+                7
+              ]
+            },
+            {
+              "name": "Street Smarts",
+              "tier": 4,
+              "requires": [
+                8,
+                13
+              ]
+            },
+            {
+              "name": "Uncanny Senses",
+              "tier": 4,
+              "requires": [
+                9,
+                12,
+                14
+              ]
+            },
+            {
+              "name": "Uncanny Reactions",
+              "tier": 4,
+              "requires": [
+                10,
+                13,
+                15
+              ]
+            },
+            {
+              "name": "Street Smarts",
+              "tier": 4,
+              "requires": [
+                11,
+                14
+              ]
+            },
+            {
+              "name": "Sixth Sense",
+              "tier": 5,
+              "requires": [
+                12,
+                17
+              ]
+            },
+            {
+              "name": "Force Rating",
+              "tier": 5,
+              "requires": [
+                13,
+                16,
+                18
+              ]
+            },
+            {
+              "name": "Dedication",
+              "tier": 5,
+              "requires": [
+                14,
+                17,
+                19
+              ]
+            },
+            {
+              "name": "Superior Reflexes",
+              "tier": 5,
+              "requires": [
+                15,
+                19
+              ]
+            },
+            {
+              "name": "Sense Basic Power",
+              "tier": 2
+            },
+            {
+              "name": "Control (Evade)",
+              "tier": 2,
+              "requires": [20]
+            },
+            {
+              "name": "Duration",
+              "tier": 2,
+              "requires": [
+                21
+              ]
+            },
+            {
+              "name": "Strength",
+              "tier": 2,
+              "requires": [
+                22
+              ]
+            },
+            {
+              "name": "Control (Accuracy)",
+              "tier": 2,
+              "requires": [
+                23
+              ]
+            },
+            {
+              "name": "Control (Telepathy)",
+              "tier": 2,
+              "requires": [20]
+            },
+            {
+              "name": "Range",
+              "tier": 2,
+              "requires": [25]
+            },
+            {
+              "name": "Range",
+              "tier": 2,
+              "requires": [26]
+            },
+            {
+              "name": "Range",
+              "tier": 2,
+              "requires": [27]
+            },
+            {
+              "name": "Magnitude",
+              "tier": 2,
+              "requires": [20]
+            },
+            {
+              "name": "Magnitude",
+              "tier": 2,
+              "requires": [28]
+            },
+            {
+              "name": "Magnitude",
+              "tier": 2,
+              "requires": [29]
+            },
+            {
+              "name": "Magnitude",
+              "tier": 2,
+              "requires": [30]
+            },
+            {
+              "name": "Influence Basic Power",
+              "tier": 2
+            },
+            {
+              "name": "Range",
+              "tier": 1,
+              "requires": [32]
+            },
+            {
+              "name": "Magnitude",
+              "tier": 1,
+              "requires": [32]
+            },
+            {
+              "name": "Control (Emotion Control)",
+              "tier": 2,
+              "requires": [32]
+            },
+            {
+              "name": "Control (Charisma)",
+              "tier": 3,
+              "requires": [33, 34]
+            },
+            {
+              "name": "Strength",
+              "tier": 2,
+              "requires": [35]
+            },
+            {
+              "name": "Range",
+              "tier": 2,
+              "requires": [33]
+            },
+            {
+              "name": "Magnitude",
+              "tier": 1,
+              "requires": [36]
+            },
+            {
+              "name": "Duration",
+              "tier": 1,
+              "requires": [41]
+            },
+            {
+              "name": "Duration",
+              "tier": 1,
+              "requires": [
+                37
+              ]
+            },
+            {
+              "name": "Range",
+              "tier": 2,
+              "requires": [
+                38
+              ]
+            },
+            {
+              "name": "Magnitude",
+              "tier": 2,
+              "requires": [
+                39
+              ]
+            },
+            {
+              "name": "Duration",
+              "tier": 1,
+              "requires": [
+                40,
+                45
+              ]
+            },
+            {
+              "name": "Duration",
+              "tier": 1,
+              "requires": [
+                40,
+                44
+              ]
+            }
+          ]
         }
       ]
     },
