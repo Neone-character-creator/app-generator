@@ -2004,7 +2004,7 @@
             "Streetwise"
           ],
           "startingTalents": [
-            "Convincing Demeanor"
+            "convincing-demeanor"
           ],
           "specialAbilities": [
             {
@@ -2609,7 +2609,7 @@
             "Negotiation"
           ],
           "startingTalents": [
-            "Durable"
+            "durable"
           ],
           "specialAbilities": [
             {
@@ -2783,8 +2783,8 @@
             }
           ],
           "startingTalents": [
-            "Enduring",
-            "Nobody's Fool"
+            "enduring",
+            "nobodys-fool"
           ],
           "specialAbilities": [
             {
@@ -2921,7 +2921,7 @@
             "Survival"
           ],
           "startingTalents": [
-            "Natural Outdoorsman"
+            "natural-outdoorsman"
           ],
           "specialAbilities": []
         },
@@ -3018,7 +3018,7 @@
           ],
           "startingExperience": 80,
           "startingTalents": [
-            "Expert Tracker"
+            "expert-tracker"
           ],
           "specialAbilities": []
         },
@@ -3252,23 +3252,23 @@
           ],
           "talents": [
             {
-              "name": "Grit",
+              "id": "grit",
               "tier": 1
             },
             {
-              "name": "Lethal Blows",
+              "name": "lethal-blows",
               "tier": 1
             },
             {
-              "name": "Stalker",
+              "name": "stalker",
               "tier": 1
             },
             {
-              "name": "Dodge",
+              "name": "dodge",
               "tier": 1
             },
             {
-              "name": "Precise Aim",
+              "name": "precise-aim",
               "tier": 2,
               "requires": [
                 0,
@@ -3277,7 +3277,7 @@
               ]
             },
             {
-              "name": "Jump Up",
+              "name": "jump-up",
               "tier": 2,
               "requires": [
                 1,
@@ -3287,7 +3287,7 @@
               ]
             },
             {
-              "name": "Quick Strike",
+              "name": "quick-strike",
               "tier": 2,
               "requires": [
                 2,
@@ -3297,7 +3297,7 @@
               ]
             },
             {
-              "name": "Quick Draw",
+              "name": "quick-draw",
               "tier": 2,
               "requires": [
                 3,
@@ -3306,7 +3306,7 @@
               ]
             },
             {
-              "name": "Targeted Blow",
+              "name": "targeted-blow",
               "tier": 3,
               "requires": [
                 4,
@@ -3314,7 +3314,7 @@
               ]
             },
             {
-              "name": "Stalker",
+              "name": "stalker",
               "tier": 3,
               "requires": [
                 5,
@@ -3323,7 +3323,7 @@
               ]
             },
             {
-              "name": "Lethal Blows",
+              "name": "lethal-blows",
               "tier": 3,
               "requires": [
                 6,
@@ -3332,7 +3332,7 @@
               ]
             },
             {
-              "name": "Anatomy Lessons",
+              "name": "anatomy-lessons",
               "tier": 3,
               "requires": [
                 7,
@@ -3340,7 +3340,7 @@
               ]
             },
             {
-              "name": "Stalker",
+              "name": "stalker",
               "tier": 4,
               "requires": [
                 8,
@@ -3348,7 +3348,7 @@
               ]
             },
             {
-              "name": "Sniper Shot",
+              "name": "sniper-shot",
               "tier": 4,
               "requires": [
                 9,
@@ -3356,42 +3356,42 @@
               ]
             },
             {
-              "name": "Dodge",
+              "name": "dodge",
               "tier": 4,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Lethal Blows",
+              "name": "lethal-blows",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Precise Aim",
+              "name": "precise-aim",
               "tier": 5,
               "requires": [
                 12
               ]
             },
             {
-              "name": "Deadly Accuracy",
+              "name": "deadly-accuracy",
               "tier": 5,
               "requires": [
                 13
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 14
               ]
             },
             {
-              "name": "Master of Shadows",
+              "name": "master-of-shadows",
               "tier": 4,
               "requires": [
                 15
@@ -3405,132 +3405,132 @@
             "Brawl",
             "Coercion",
             "Mechanics",
-            "Ranged - Light"
+            "ranged - Light"
           ],
           "talents": [
             {
-              "name": "Brace",
+              "name": "brace",
               "tier": 1
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 1
             },
             {
-              "name": "Intimidating",
+              "name": "intimidating",
               "tier": 1
             },
             {
-              "name": "Defensive Stance",
+              "name": "defensive-stance",
               "tier": 1
             },
             {
-              "name": "Spare Clip",
+              "name": "spare-clip",
               "tier": 2,
               "requires": [
                 5
               ]
             },
             {
-              "name": "Jury Rigged",
+              "name": "jury-rigged",
               "tier": 2,
               "requires": [
                 1
               ]
             },
             {
-              "name": "Point Blank",
+              "name": "point-blank",
               "tier": 2,
               "requires": [
                 5
               ]
             },
             {
-              "name": "Disorient",
+              "name": "disorient",
               "tier": 2,
               "requires": [
                 3
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 3,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Armor Master",
+              "name": "armor-master",
               "tier": 3,
               "requires": [
                 5
               ]
             },
             {
-              "name": "Natural Enforcer",
+              "name": "natural-enforcer",
               "tier": 3,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Stunning Blow",
+              "name": "stunning-blow",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "name": "Jury Rigged",
+              "name": "jury-rigged",
               "tier": 4,
               "requires": [
                 13
               ]
             },
             {
-              "name": "Tinkerer",
+              "name": "tinkerer",
               "tier": 4,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Deadly Accuracy",
+              "name": "deadly-accuracy",
               "tier": 4,
               "requires": [
                 13
               ]
             },
             {
-              "name": "Stunning Blow (Improved)",
+              "name": "stunning-blow-improved",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Intimidating",
+              "name": "intimidating",
               "tier": 5,
               "requires": [
                 17
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 13
               ]
             },
             {
-              "name": "Armor Master (Improved)",
+              "name": "armor-master-Improved",
               "tier": 5,
               "requires": [
                 17
               ]
             },
             {
-              "name": "Crippling Blow",
+              "name": "crippling-blow",
               "tier": 5,
               "requires": [
                 15
@@ -3548,30 +3548,30 @@
           ],
           "talents": [
             {
-              "name": "Forager",
+              "name": "forager",
               "tier": 1
             },
             {
-              "name": "Stalker",
+              "name": "stalker",
               "tier": 1
             },
             {
-              "name": "Outdoorsman",
+              "name": "outdoorsman",
               "tier": 1
             },
             {
-              "name": "Expert Tracker",
+              "name": "expert-tracker",
               "tier": 1
             },
             {
-              "name": "Outdoorsman",
+              "name": "outdoorsman",
               "tier": 2,
               "requires": [
                 0
               ]
             },
             {
-              "name": "Swift",
+              "name": "swift",
               "tier": 2,
               "requires": [
                 1,
@@ -3580,7 +3580,7 @@
               ]
             },
             {
-              "name": "Hunter",
+              "name": "hunter",
               "tier": 2,
               "requires": [
                 2,
@@ -3588,28 +3588,28 @@
               ]
             },
             {
-              "name": "Soft Spot",
+              "name": "soft-spot",
               "tier": 2,
               "requires": [
                 6
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Expert Tracker",
+              "name": "expert-tracker",
               "tier": 3,
               "requires": [
                 5
               ]
             },
             {
-              "name": "Stalker",
+              "name": "stalker",
               "tier": 3,
               "requires": [
                 6,
@@ -3617,7 +3617,7 @@
               ]
             },
             {
-              "name": "Natural Outdoorsman",
+              "name": "natural-outdoorsman",
               "tier": 3,
               "requires": [
                 7,
@@ -3625,35 +3625,35 @@
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 4,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Hunter",
+              "name": "hunter",
               "tier": 4,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Expert Tracker",
+              "name": "expert-tracker",
               "tier": 4,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Blooded",
+              "name": "blooded",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Enduring",
+              "name": "enduring",
               "tier": 5,
               "requires": [
                 12,
@@ -3661,7 +3661,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 16,
@@ -3669,14 +3669,14 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 5,
               "requires": [
                 14
               ]
             },
             {
-              "name": "Heroic Fortitude",
+              "name": "heroic-fortitude",
               "tier": 5,
               "requires": [
                 15
@@ -3694,23 +3694,23 @@
           ],
           "talents": [
             {
-              "name": "Surgeon",
+              "name": "surgeon",
               "tier": 1
             },
             {
-              "name": "Bacta Specialist",
+              "name": "bacta-specialist",
               "tier": 1
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 1
             },
             {
-              "name": "Resolve",
+              "name": "resolve",
               "tier": 1
             },
             {
-              "name": "Stim Application",
+              "name": "stim-application",
               "tier": 2,
               "requires": [
                 0,
@@ -3718,7 +3718,7 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 2,
               "requires": [
                 4,
@@ -3726,7 +3726,7 @@
               ]
             },
             {
-              "name": "Surgeon",
+              "name": "surgeon",
               "tier": 2,
               "requires": [
                 2,
@@ -3735,14 +3735,14 @@
               ]
             },
             {
-              "name": "Resolve",
+              "name": "resolve",
               "tier": 2,
               "requires": [
                 6
               ]
             },
             {
-              "name": "Surgeon",
+              "name": "surgeon",
               "tier": 3,
               "requires": [
                 4,
@@ -3750,7 +3750,7 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 3,
               "requires": [
                 8,
@@ -3758,7 +3758,7 @@
               ]
             },
             {
-              "name": "Bacta Specialist",
+              "name": "bacta-specialist",
               "tier": 3,
               "requires": [
                 6,
@@ -3766,42 +3766,42 @@
               ]
             },
             {
-              "name": "Pressure Point",
+              "name": "pressure-point",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "name": "Stim Application (Improved)",
+              "name": "stim-application-improved",
               "tier": 4,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Natural Doctor",
+              "name": "natural-doctor",
               "tier": 4,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 4,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Anatomy Lessons",
+              "name": "anatomy-lessons",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Stim Application (Supreme)",
+              "name": "stim-application-Supreme",
               "tier": 5,
               "requires": [
                 12,
@@ -3809,7 +3809,7 @@
               ]
             },
             {
-              "name": "Master Doctor",
+              "name": "master-doctor",
               "tier": 5,
               "requires": [
                 13,
@@ -3818,7 +3818,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 14,
@@ -3826,7 +3826,7 @@
               ]
             },
             {
-              "name": "Dodge",
+              "name": "dodge",
               "tier": 5,
               "requires": [
                 15
@@ -3844,23 +3844,23 @@
           ],
           "talents": [
             {
-              "name": "Kill With Kindness",
+              "name": "kill-with-kindness",
               "tier": 1
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 1
             },
             {
-              "name": "Plausible Deniability",
+              "name": "plausible-deniability",
               "tier": 1
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 1
             },
             {
-              "name": "Inspiring Rhetoric",
+              "name": "inspiring-rhetoric",
               "tier": 2,
               "requires": [
                 0,
@@ -3868,7 +3868,7 @@
               ]
             },
             {
-              "name": "Kill With Kindness",
+              "name": "kill-with-kindness",
               "tier": 2,
               "requires": [
                 1,
@@ -3876,7 +3876,7 @@
               ]
             },
             {
-              "name": "Scathing Tirade",
+              "name": "scathing-tirade",
               "tier": 2,
               "requires": [
                 2,
@@ -3884,7 +3884,7 @@
               ]
             },
             {
-              "name": "Plausible Deniability",
+              "name": "plausible-deniability",
               "tier": 2,
               "requires": [
                 3,
@@ -3892,70 +3892,70 @@
               ]
             },
             {
-              "name": "Dodge",
+              "name": "dodge",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Inspiring Rhetoric (Improved)",
+              "name": "inspiring-rhetoric-improved",
               "tier": 3,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Scathing Tirade (Improved)",
+              "name": "scathing-tirade-improved",
               "tier": 3,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Well Rounded",
+              "name": "well-rounded",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 4,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Inspiring Rhetoric (Supreme)",
+              "name": "inspiring-rhetoric-supreme",
               "tier": 4,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Scathing Tirade (Supreme)",
+              "name": "scathing-tirade-supreme",
               "tier": 4,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Nobody's Fool",
+              "name": "nobodys-fool",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Steely Nerves",
+              "name": "steely-nerved",
               "tier": 5,
               "requires": [
                 12
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 16,
@@ -3963,7 +3963,7 @@
               ]
             },
             {
-              "name": "Natural Charmer",
+              "name": "natural-charmer",
               "tier": 5,
               "requires": [
                 17,
@@ -3971,7 +3971,7 @@
               ]
             },
             {
-              "name": "Intense Presence",
+              "name": "intense-presence",
               "tier": 5,
               "requires": [
                 15
@@ -3989,23 +3989,23 @@
           ],
           "talents": [
             {
-              "name": "Respected Scholar",
+              "name": "respected-scholar",
               "tier": 1
             },
             {
-              "name": "Speaks Binary",
+              "name": "speaks-binary",
               "tier": 1
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 1
             },
             {
-              "name": "Brace",
+              "name": "brace",
               "tier": 1
             },
             {
-              "name": "Researcher",
+              "name": "researcher",
               "tier": 2,
               "requires": [
                 0,
@@ -4013,7 +4013,7 @@
               ]
             },
             {
-              "name": "Respected Scholar",
+              "name": "respected-scholar",
               "tier": 2,
               "requires": [
                 1,
@@ -4021,7 +4021,7 @@
               ]
             },
             {
-              "name": "Resolve",
+              "name": "resolve",
               "tier": 2,
               "requires": [
                 2,
@@ -4029,7 +4029,7 @@
               ]
             },
             {
-              "name": "Researcher",
+              "name": "researcher",
               "tier": 2,
               "requires": [
                 3,
@@ -4037,7 +4037,7 @@
               ]
             },
             {
-              "name": "Codebreaker",
+              "name": "codebreaker",
               "tier": 3,
               "requires": [
                 4,
@@ -4045,63 +4045,63 @@
               ]
             },
             {
-              "name": "Knowledge Specialization",
+              "name": "knowledge-specialization",
               "tier": 3,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Natural Scholar",
+              "name": "natural-scholar",
               "tier": 3,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Well Rounded",
+              "name": "well-rounded",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "name": "Knowledge Specialization",
+              "name": "knowledge-specialization",
               "tier": 4,
               "requires": [
                 13
               ]
             },
             {
-              "name": "Intense Focus",
+              "name": "intense-focus",
               "tier": 4,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Confidence",
+              "name": "confidence",
               "tier": 4,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Resolve",
+              "name": "resolve",
               "tier": 4,
               "requires": [
                 14
               ]
             },
             {
-              "name": "Stroke of Genius",
+              "name": "stroke-of-genius",
               "tier": 5,
               "requires": [
                 12
               ]
             },
             {
-              "name": "Mental Fortress",
+              "name": "mental-fortress",
               "tier": 5,
               "requires": [
                 16,
@@ -4109,7 +4109,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 17,
@@ -4117,7 +4117,7 @@
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 4,
               "requires": [
                 18,
@@ -4136,23 +4136,23 @@
           ],
           "talents": [
             {
-              "name": "Galaxy Mapper",
+              "name": "galaxy-mapper",
               "tier": 1
             },
             {
-              "name": "Street Smarts",
+              "name": "street-smarts",
               "tier": 1
             },
             {
-              "name": "Rapid Recovery",
+              "name": "rapid-recovery",
               "tier": 1
             },
             {
-              "name": "Street Smarts",
+              "name": "street-smarts",
               "tier": 1
             },
             {
-              "name": "Skilled Jockey",
+              "name": "skilled-jockey",
               "tier": 2,
               "requires": [
                 0,
@@ -4160,14 +4160,14 @@
               ]
             },
             {
-              "name": "Galaxy Mapper",
+              "name": "galaxy-mapper",
               "tier": 2,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 2,
               "requires": [
                 2,
@@ -4175,7 +4175,7 @@
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 2,
               "requires": [
                 3,
@@ -4183,7 +4183,7 @@
               ]
             },
             {
-              "name": "Master Starhopper",
+              "name": "master-starhopper",
               "tier": 3,
               "requires": [
                 4,
@@ -4191,7 +4191,7 @@
               ]
             },
             {
-              "name": "Defensive Driving",
+              "name": "defensive-driving",
               "tier": 3,
               "requires": [
                 5,
@@ -4199,28 +4199,28 @@
               ]
             },
             {
-              "name": "Rapid Recovery",
+              "name": "rapid-recovery",
               "tier": 3,
               "requires": [
                 6
               ]
             },
             {
-              "name": "Durable",
+              "name": "durable",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "name": "Rapid Recovery",
+              "name": "rapid-recovery",
               "tier": 4,
               "requires": [
                 13
               ]
             },
             {
-              "name": "Jump Up",
+              "name": "jump-up",
               "tier": 4,
               "requires": [
                 12,
@@ -4228,21 +4228,21 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 4,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Knockdown",
+              "name": "knockdown",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 12,
@@ -4250,7 +4250,7 @@
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 5,
               "requires": [
                 13,
@@ -4258,14 +4258,14 @@
               ]
             },
             {
-              "name": "Dodge",
+              "name": "dodge",
               "tier": 5,
               "requires": [
                 19
               ]
             },
             {
-              "name": "Dodge",
+              "name": "dodge",
               "tier": 5,
               "requires": [
                 15
@@ -4283,23 +4283,23 @@
           ],
           "talents": [
             {
-              "name": "Rapid Recovery",
+              "name": "rapid-recovery",
               "tier": 1
             },
             {
-              "name": "Stalker",
+              "name": "stalker",
               "tier": 1
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 1
             },
             {
-              "name": "Shortcut",
+              "name": "shortcut",
               "tier": 1
             },
             {
-              "name": "Forager",
+              "name": "forager",
               "tier": 2,
               "requires": [
                 0,
@@ -4307,7 +4307,7 @@
               ]
             },
             {
-              "name": "Quick Strike",
+              "name": "quick-strike",
               "tier": 2,
               "requires": [
                 1,
@@ -4316,7 +4316,7 @@
               ]
             },
             {
-              "name": "Let's Ride",
+              "name": "lets-ride",
               "tier": 2,
               "requires": [
                 2,
@@ -4325,7 +4325,7 @@
               ]
             },
             {
-              "name": "Disorient",
+              "name": "disorient",
               "tier": 2,
               "requires": [
                 3,
@@ -4333,63 +4333,63 @@
               ]
             },
             {
-              "name": "Rapid Recovery",
+              "name": "rapid-recovery",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Natural Hunter",
+              "name": "natural-hunter",
               "tier": 3,
               "requires": [
                 5
               ]
             },
             {
-              "name": "Familiar Suns",
+              "name": "familiar-suns",
               "tier": 3,
               "requires": [
                 6
               ]
             },
             {
-              "name": "Shortcut",
+              "name": "shortcut",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 4,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Heightened Awareness",
+              "name": "heightened-awareness",
               "tier": 4,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 4,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Quick Strike",
+              "name": "quick-strike",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Utility Belt",
+              "name": "utility-belt",
               "tier": 5,
               "requires": [
                 12,
@@ -4397,7 +4397,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 16,
@@ -4405,7 +4405,7 @@
               ]
             },
             {
-              "name": "Stalker",
+              "name": "stalker",
               "tier": 5,
               "requires": [
                 14,
@@ -4413,7 +4413,7 @@
               ]
             },
             {
-              "name": "Disorient",
+              "name": "disorient",
               "tier": 5,
               "requires": [
                 15
@@ -4431,23 +4431,23 @@
           ],
           "talents": [
             {
-              "name": "Know Somebody",
+              "name": "know-somebody",
               "tier": 1
             },
             {
-              "name": "Convincing Demeanor",
+              "name": "convincing-demeanor",
               "tier": 1
             },
             {
-              "name": "Wheel and Deal",
+              "name": "wheel-and-deal",
               "tier": 1
             },
             {
-              "name": "Smooth Talker",
+              "name": "smooth-talker",
               "tier": 1
             },
             {
-              "name": "Wheel and Deal",
+              "name": "wheel-and-deal",
               "tier": 2,
               "requires": [
                 0,
@@ -4455,84 +4455,84 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 2,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Spare Clip",
+              "name": "spare-clip",
               "tier": 2,
               "requires": [
                 5
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 2,
               "requires": [
                 6
               ]
             },
             {
-              "name": "Know Somebody",
+              "name": "know-somebody",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Nobody's Fool",
+              "name": "nobodys-fool",
               "tier": 3,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Smooth Talker",
+              "name": "smooth-talker",
               "tier": 3,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Nobody's Fool",
+              "name": "nobodys-fool",
               "tier": 3,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Wheel and Deal",
+              "name": "wheel-and-deal",
               "tier": 4,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Steely Nerves",
+              "name": "steely-nerved",
               "tier": 4,
               "requires": [
                 12
               ]
             },
             {
-              "name": "Black Market Contacts",
+              "name": "black-market-contacts",
               "tier": 4,
               "requires": [
                 13
               ]
             },
             {
-              "name": "Black Market Contacts",
+              "name": "black-market-contacts",
               "tier": 4,
               "requires": [
                 14
               ]
             },
             {
-              "name": "Know Somebody",
+              "name": "know-somebody",
               "tier": 5,
               "requires": [
                 12,
@@ -4540,7 +4540,7 @@
               ]
             },
             {
-              "name": "Natural Negotiator",
+              "name": "natural-negotiator",
               "tier": 5,
               "requires": [
                 16,
@@ -4548,7 +4548,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 17,
@@ -4556,7 +4556,7 @@
               ]
             },
             {
-              "name": "Master Merchant",
+              "name": "master-merchant",
               "tier": 5,
               "requires": [
                 15,
@@ -4571,34 +4571,34 @@
             "Gunnery",
             "Perception",
             "Piloting - Planetary",
-            "Ranged - Heavy"
+            "ranged - Heavy"
           ],
           "talents": [
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 1
             },
             {
-              "name": "Barrage",
+              "name": "barrage",
               "tier": 1
             },
             {
-              "name": "Durable",
+              "name": "durable",
               "tier": 1
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 1
             },
             {
-              "name": "Body Guard",
+              "name": "body-guard",
               "tier": 2,
               "requires": [
                 5
               ]
             },
             {
-              "name": "Hard Headed",
+              "name": "hard-headed",
               "tier": 2,
               "requires": [
                 1,
@@ -4606,7 +4606,7 @@
               ]
             },
             {
-              "name": "Barrage",
+              "name": "barrage",
               "tier": 2,
               "requires": [
                 2,
@@ -4614,21 +4614,21 @@
               ]
             },
             {
-              "name": "Brace",
+              "name": "brace",
               "tier": 2,
               "requires": [
                 6
               ]
             },
             {
-              "name": "Body Guard",
+              "name": "body-guard",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Side Step",
+              "name": "side-step",
               "tier": 3,
               "requires": [
                 5,
@@ -4636,7 +4636,7 @@
               ]
             },
             {
-              "name": "Defensive Stance",
+              "name": "defensive-stance",
               "tier": 3,
               "requires": [
                 6,
@@ -4644,21 +4644,21 @@
               ]
             },
             {
-              "name": "Brace",
+              "name": "brace",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "name": "Enduring",
+              "name": "enduring",
               "tier": 4,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Side Step",
+              "name": "side-step",
               "tier": 4,
               "requires": [
                 9,
@@ -4666,7 +4666,7 @@
               ]
             },
             {
-              "name": "Defensive Stance",
+              "name": "defensive-stance",
               "tier": 4,
               "requires": [
                 10,
@@ -4674,21 +4674,21 @@
               ]
             },
             {
-              "name": "Hard Headed",
+              "name": "hard-headed",
               "tier": 4,
               "requires": [
                 14
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 17
               ]
             },
             {
-              "name": "Barrage",
+              "name": "barrage",
               "tier": 5,
               "requires": [
                 13,
@@ -4696,7 +4696,7 @@
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 5,
               "requires": [
                 14,
@@ -4704,7 +4704,7 @@
               ]
             },
             {
-              "name": "Hard Headed (Improved)",
+              "name": "hard-headed-improved",
               "tier": 5,
               "requires": [
                 15
@@ -4722,23 +4722,23 @@
           ],
           "talents": [
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 1
             },
             {
-              "name": "Frenzied Attack",
+              "name": "frenzied-attack",
               "tier": 1
             },
             {
-              "name": "Feral Strength",
+              "name": "feral-strength",
               "tier": 1
             },
             {
-              "name": "Lethal Blows",
+              "name": "lethal-blows",
               "tier": 1
             },
             {
-              "name": "Feral Strength",
+              "name": "feral-strength",
               "tier": 2,
               "requires": [
                 0,
@@ -4746,7 +4746,7 @@
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 2,
               "requires": [
                 1,
@@ -4755,7 +4755,7 @@
               ]
             },
             {
-              "name": "Heroic Fortitude",
+              "name": "heroic-fortitude",
               "tier": 2,
               "requires": [
                 2,
@@ -4764,7 +4764,7 @@
               ]
             },
             {
-              "name": "Knockdown",
+              "name": "knockdown",
               "tier": 2,
               "requires": [
                 3,
@@ -4772,14 +4772,14 @@
               ]
             },
             {
-              "name": "Enduring",
+              "name": "enduring",
               "tier": 3,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Lethal Blows",
+              "name": "lethal-blows",
               "tier": 3,
               "requires": [
                 5,
@@ -4787,7 +4787,7 @@
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 3,
               "requires": [
                 6,
@@ -4795,14 +4795,14 @@
               ]
             },
             {
-              "name": "Frenzied Attack",
+              "name": "frenzied-attack",
               "tier": 3,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 4,
               "requires": [
                 8,
@@ -4810,7 +4810,7 @@
               ]
             },
             {
-              "name": "Feral Strength",
+              "name": "feral-strength",
               "tier": 4,
               "requires": [
                 12,
@@ -4818,7 +4818,7 @@
               ]
             },
             {
-              "name": "Natural Brawler",
+              "name": "natural-brawler",
               "tier": 4,
               "requires": [
                 13,
@@ -4826,7 +4826,7 @@
               ]
             },
             {
-              "name": "Lethal Blows",
+              "name": "lethal-blows",
               "tier": 4,
               "requires": [
                 11,
@@ -4834,14 +4834,14 @@
               ]
             },
             {
-              "name": "Frenzied Attack",
+              "name": "frenzied-attack",
               "tier": 5,
               "requires": [
                 17
               ]
             },
             {
-              "name": "Enduring",
+              "name": "enduring",
               "tier": 5,
               "requires": [
                 13,
@@ -4849,7 +4849,7 @@
               ]
             },
             {
-              "name": "Defensive Stance",
+              "name": "defensive-stance",
               "tier": 5,
               "requires": [
                 14,
@@ -4857,7 +4857,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 18
@@ -4871,27 +4871,27 @@
             "Discipline",
             "Gunnery",
             "Leadership",
-            "Ranged - Heavy"
+            "ranged - Heavy"
           ],
           "talents": [
             {
-              "name": "Command",
+              "name": "command",
               "tier": 1
             },
             {
-              "name": "Second Wind",
+              "name": "second-wind",
               "tier": 1
             },
             {
-              "name": "Point Blank",
+              "name": "point-blank",
               "tier": 1
             },
             {
-              "name": "Side Step",
+              "name": "side-step",
               "tier": 1
             },
             {
-              "name": "Second Wind",
+              "name": "second-wind",
               "tier": 2,
               "requires": [
                 0,
@@ -4899,7 +4899,7 @@
               ]
             },
             {
-              "name": "Confidence",
+              "name": "confidence",
               "tier": 2,
               "requires": [
                 1,
@@ -4907,7 +4907,7 @@
               ]
             },
             {
-              "name": "Strong Arm",
+              "name": "strong-arm",
               "tier": 2,
               "requires": [
                 2,
@@ -4915,7 +4915,7 @@
               ]
             },
             {
-              "name": "Point Blank",
+              "name": "point-blank",
               "tier": 2,
               "requires": [
                 3,
@@ -4923,7 +4923,7 @@
               ]
             },
             {
-              "name": "Field Commander",
+              "name": "field-commander",
               "tier": 3,
               "requires": [
                 4,
@@ -4931,7 +4931,7 @@
               ]
             },
             {
-              "name": "Command",
+              "name": "command",
               "tier": 3,
               "requires": [
                 5,
@@ -4940,7 +4940,7 @@
               ]
             },
             {
-              "name": "Natural Marksman",
+              "name": "natural-marksman",
               "tier": 3,
               "requires": [
                 6,
@@ -4948,28 +4948,28 @@
               ]
             },
             {
-              "name": "Sniper Shot",
+              "name": "sniper-shot",
               "tier": 3,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Field Commander (Improved)",
+              "name": "field-commander-improved",
               "tier": 4,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 4,
               "requires": [
                 9
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 4,
               "requires": [
                 10,
@@ -4977,7 +4977,7 @@
               ]
             },
             {
-              "name": "Lethal Blows",
+              "name": "lethal-blows",
               "tier": 4,
               "requires": [
                 11,
@@ -4985,14 +4985,14 @@
               ]
             },
             {
-              "name": "Deadly Accuracy",
+              "name": "deadly-accuracy",
               "tier": 5,
               "requires": [
                 17
               ]
             },
             {
-              "name": "True Aim",
+              "name": "true-aim",
               "tier": 5,
               "requires": [
                 13,
@@ -5000,7 +5000,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 17,
@@ -5008,7 +5008,7 @@
               ]
             },
             {
-              "name": "True Aim",
+              "name": "true-aim",
               "tier": 5,
               "requires": [
                 15,
@@ -5027,23 +5027,23 @@
           ],
           "talents": [
             {
-              "name": "Full Throttle",
+              "name": "full-throttle",
               "tier": 1
             },
             {
-              "name": "Skilled Jockey",
+              "name": "skilled-jockey",
               "tier": 1
             },
             {
-              "name": "Galaxy Mapper",
+              "name": "galaxy-mapper",
               "tier": 1
             },
             {
-              "name": "Let's Ride",
+              "name": "lets-ride",
               "tier": 1
             },
             {
-              "name": "Skilled Jockey",
+              "name": "skilled-jockey",
               "tier": 2,
               "requires": [
                 0,
@@ -5051,7 +5051,7 @@
               ]
             },
             {
-              "name": "Dead to Rights",
+              "name": "dead-to-rights",
               "tier": 2,
               "requires": [
                 1,
@@ -5059,7 +5059,7 @@
               ]
             },
             {
-              "name": "Galaxy Mapper",
+              "name": "galaxy-mapper",
               "tier": 2,
               "requires": [
                 2,
@@ -5067,7 +5067,7 @@
               ]
             },
             {
-              "name": "Rapid Recovery",
+              "name": "rapid-recovery",
               "tier": 2,
               "requires": [
                 3,
@@ -5075,21 +5075,21 @@
               ]
             },
             {
-              "name": "Full Throttle (Improved)",
+              "name": "full-throttle-improved",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Dead to Rights (Improved)",
+              "name": "dead-to-rights-improved",
               "tier": 3,
               "requires": [
                 5
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 3,
               "requires": [
                 6,
@@ -5097,7 +5097,7 @@
               ]
             },
             {
-              "name": "Natural Pilot",
+              "name": "natural-pilot",
               "tier": 3,
               "requires": [
                 7,
@@ -5105,7 +5105,7 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 4,
               "requires": [
                 8,
@@ -5113,28 +5113,28 @@
               ]
             },
             {
-              "name": "Full Throttle (Supreme)",
+              "name": "full-throttle-supreme",
               "tier": 4,
               "requires": [
                 12
               ]
             },
             {
-              "name": "Tricky Target",
+              "name": "tricky-target",
               "tier": 4,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Defensive Driving",
+              "name": "defensive-driving",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Master Pilot",
+              "name": "master-pilot",
               "tier": 5,
               "requires": [
                 12,
@@ -5142,7 +5142,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 16,
@@ -5150,7 +5150,7 @@
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 5,
               "requires": [
                 14,
@@ -5158,7 +5158,7 @@
               ]
             },
             {
-              "name": "Brilliant Evasion",
+              "name": "brilliant-evasion",
               "tier": 5,
               "requires": [
                 15,
@@ -5173,34 +5173,34 @@
             "Charm",
             "Cool",
             "Deception",
-            "Ranged - Light"
+            "ranged - Light"
           ],
           "talents": [
             {
-              "name": "Black Market Contacts",
+              "name": "black-market-contacts",
               "tier": 1
             },
             {
-              "name": "Convincing Demeanor",
+              "name": "convincing-demeanor",
               "tier": 1
             },
             {
-              "name": "Quick Draw",
+              "name": "quick-draw",
               "tier": 1
             },
             {
-              "name": "Rapid Reaction",
+              "name": "rapid-reaction",
               "tier": 1
             },
             {
-              "name": "Convincing Demeanor",
+              "name": "convincing-demeanor",
               "tier": 2,
               "requires": [
                 0
               ]
             },
             {
-              "name": "Black Market Contacts",
+              "name": "black-market-contacts",
               "tier": 2,
               "requires": [
                 1,
@@ -5208,7 +5208,7 @@
               ]
             },
             {
-              "name": "Convincing Demeanor",
+              "name": "convincing-demeanor",
               "tier": 2,
               "requires": [
                 5,
@@ -5216,21 +5216,21 @@
               ]
             },
             {
-              "name": "Quick Strike",
+              "name": "quick-strike",
               "tier": 2,
               "requires": [
                 3
               ]
             },
             {
-              "name": "Hidden Storage",
+              "name": "hidden-storage",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 3,
               "requires": [
                 5,
@@ -5238,7 +5238,7 @@
               ]
             },
             {
-              "name": "Black Market Contacts",
+              "name": "black-market-contacts",
               "tier": 3,
               "requires": [
                 6,
@@ -5246,21 +5246,21 @@
               ]
             },
             {
-              "name": "Side Step",
+              "name": "side-step",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 4,
               "requires": [
                 8
               ]
             },
             {
-              "name": "Rapid Reaction",
+              "name": "rapid-reaction",
               "tier": 4,
               "requires": [
                 9,
@@ -5268,7 +5268,7 @@
               ]
             },
             {
-              "name": "Hidden Storage",
+              "name": "hidden-storage",
               "tier": 4,
               "requires": [
                 10,
@@ -5276,21 +5276,21 @@
               ]
             },
             {
-              "name": "Side Step",
+              "name": "side-step",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 12
               ]
             },
             {
-              "name": "Natural Charmer",
+              "name": "natural-charmer",
               "tier": 5,
               "requires": [
                 13,
@@ -5299,7 +5299,7 @@
               ]
             },
             {
-              "name": "Soft Spot",
+              "name": "soft-spot",
               "tier": 5,
               "requires": [
                 14,
@@ -5308,7 +5308,7 @@
               ]
             },
             {
-              "name": "Quick Strike",
+              "name": "quick-strike",
               "tier": 5,
               "requires": [
                 15,
@@ -5327,23 +5327,23 @@
           ],
           "talents": [
             {
-              "name": "Street Smarts",
+              "name": "street-smarts",
               "tier": 1
             },
             {
-              "name": "Black Market Contacts",
+              "name": "black-market-contacts",
               "tier": 1
             },
             {
-              "name": "Indistinguishable",
+              "name": "indistinguishable",
               "tier": 1
             },
             {
-              "name": "Bypass Security",
+              "name": "bypass-security",
               "tier": 1
             },
             {
-              "name": "Black Market Contacts",
+              "name": "black-market-contacts",
               "tier": 2,
               "requires": [
                 0,
@@ -5351,7 +5351,7 @@
               ]
             },
             {
-              "name": "Dodge",
+              "name": "dodge",
               "tier": 2,
               "requires": [
                 1,
@@ -5360,7 +5360,7 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 2,
               "requires": [
                 5,
@@ -5368,7 +5368,7 @@
               ]
             },
             {
-              "name": "Hidden Storage",
+              "name": "hidden-storage",
               "tier": 2,
               "requires": [
                 3,
@@ -5376,7 +5376,7 @@
               ]
             },
             {
-              "name": "Stalker",
+              "name": "stalker",
               "tier": 3,
               "requires": [
                 4,
@@ -5384,7 +5384,7 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 3,
               "requires": [
                 5,
@@ -5393,7 +5393,7 @@
               ]
             },
             {
-              "name": "Rapid Reaction",
+              "name": "rapid-reaction",
               "tier": 3,
               "requires": [
                 6,
@@ -5402,14 +5402,14 @@
               ]
             },
             {
-              "name": "Shortcut",
+              "name": "shortcut",
               "tier": 3,
               "requires": [
                 10
               ]
             },
             {
-              "name": "Bypass Security",
+              "name": "bypass-security",
               "tier": 4,
               "requires": [
                 8
@@ -5424,7 +5424,7 @@
               ]
             },
             {
-              "name": "Street Smarts",
+              "name": "street-smarts",
               "tier": 4,
               "requires": [
                 10,
@@ -5433,7 +5433,7 @@
               ]
             },
             {
-              "name": "Jump Up",
+              "name": "jump-up",
               "tier": 4,
               "requires": [
                 11,
@@ -5441,14 +5441,14 @@
               ]
             },
             {
-              "name": "Master of Shadows",
+              "name": "master-of-shadows",
               "tier": 5,
               "requires": [
                 12
               ]
             },
             {
-              "name": "Dodge",
+              "name": "dodge",
               "tier": 5,
               "requires": [
                 13,
@@ -5456,7 +5456,7 @@
               ]
             },
             {
-              "name": "Indistinguishable",
+              "name": "indistinguishable",
               "tier": 5,
               "requires": [
                 14,
@@ -5464,7 +5464,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 15
@@ -5482,23 +5482,23 @@
           ],
           "talents": [
             {
-              "name": "Gearhead",
+              "name": "gearhead",
               "tier": 1
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 1
             },
             {
-              "name": "Fine Tuning",
+              "name": "fine-tuning",
               "tier": 1
             },
             {
-              "name": "Solid Repairs",
+              "name": "solid-repairs",
               "tier": 1
             },
             {
-              "name": "Redundant Systems",
+              "name": "redundant-systems",
               "tier": 2,
               "requires": [
                 0,
@@ -5506,7 +5506,7 @@
               ]
             },
             {
-              "name": "Solid Repairs",
+              "name": "solid-repairs",
               "tier": 2,
               "requires": [
                 1,
@@ -5515,7 +5515,7 @@
               ]
             },
             {
-              "name": "Gearhead",
+              "name": "gearhead",
               "tier": 2,
               "requires": [
                 2,
@@ -5524,7 +5524,7 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 2,
               "requires": [
                 3,
@@ -5532,7 +5532,7 @@
               ]
             },
             {
-              "name": "Solid Repairs",
+              "name": "solid-repairs",
               "tier": 3,
               "requires": [
                 4,
@@ -5540,7 +5540,7 @@
               ]
             },
             {
-              "name": "Enduring",
+              "name": "enduring",
               "tier": 3,
               "requires": [
                 5,
@@ -5549,7 +5549,7 @@
               ]
             },
             {
-              "name": "Bad Motivator",
+              "name": "bad-motivator",
               "tier": 3,
               "requires": [
                 6,
@@ -5558,7 +5558,7 @@
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 3,
               "requires": [
                 7,
@@ -5566,7 +5566,7 @@
               ]
             },
             {
-              "name": "Contraption",
+              "name": "contraption",
               "tier": 4,
               "requires": [
                 8,
@@ -5574,7 +5574,7 @@
               ]
             },
             {
-              "name": "Solid Repairs",
+              "name": "solid-repairs",
               "tier": 4,
               "requires": [
                 9,
@@ -5583,7 +5583,7 @@
               ]
             },
             {
-              "name": "Fine Tuning",
+              "name": "fine-tuning",
               "tier": 4,
               "requires": [
                 10,
@@ -5591,35 +5591,35 @@
               ]
             },
             {
-              "name": "Hard Headed",
+              "name": "hard-headed",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "name": "Natural Tinkerer",
+              "name": "natural-tinkerer",
               "tier": 5,
               "requires": [
                 12
               ]
             },
             {
-              "name": "Hold Together",
+              "name": "hold-together",
               "tier": 5,
               "requires": [
                 13
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 14
               ]
             },
             {
-              "name": "Hard Headed (Improved)",
+              "name": "hard-headed-improved",
               "tier": 5,
               "requires": [
                 15
@@ -5637,23 +5637,23 @@
           ],
           "talents": [
             {
-              "name": "Tinkerer",
+              "name": "tinkerer",
               "tier": 1
             },
             {
-              "name": "Utinni!",
+              "name": "utinni",
               "tier": 1
             },
             {
-              "name": "Speaks Binary",
+              "name": "speaks-binary",
               "tier": 1
             },
             {
-              "name": "Tinkerer",
+              "name": "tinkerer",
               "tier": 1
             },
             {
-              "name": "Solid Repairs",
+              "name": "solid-repairs",
               "tier": 2,
               "requires": [
                 0,
@@ -5661,7 +5661,7 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 2,
               "requires": [
                 1,
@@ -5670,7 +5670,7 @@
               ]
             },
             {
-              "name": "Utinni!",
+              "name": "utinni",
               "tier": 2,
               "requires": [
                 2,
@@ -5679,7 +5679,7 @@
               ]
             },
             {
-              "name": "Toughened",
+              "name": "toughened",
               "tier": 2,
               "requires": [
                 3,
@@ -5687,7 +5687,7 @@
               ]
             },
             {
-              "name": "Utility Belt",
+              "name": "utility-belt",
               "tier": 3,
               "requires": [
                 4,
@@ -5695,7 +5695,7 @@
               ]
             },
             {
-              "name": "Side Step",
+              "name": "side-step",
               "tier": 3,
               "requires": [
                 5,
@@ -5704,7 +5704,7 @@
               ]
             },
             {
-              "name": "Brace",
+              "name": "brace",
               "tier": 3,
               "requires": [
                 6,
@@ -5713,7 +5713,7 @@
               ]
             },
             {
-              "name": "Defensive Stance",
+              "name": "defensive-stance",
               "tier": 3,
               "requires": [
                 7,
@@ -5729,7 +5729,7 @@
               ]
             },
             {
-              "name": "Speaks Binary",
+              "name": "speaks-binary",
               "tier": 4,
               "requires": [
                 9,
@@ -5761,14 +5761,14 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 16
               ]
             },
             {
-              "name": "Known Schematic",
+              "name": "known-schematic",
               "tier": 5,
               "requires": [
                 14,
@@ -5776,7 +5776,7 @@
               ]
             },
             {
-              "name": "Brace",
+              "name": "brace",
               "tier": 5,
               "requires": [
                 15,
@@ -5795,23 +5795,23 @@
           ],
           "talents": [
             {
-              "name": "Codebreaker",
+              "name": "codebreaker",
               "tier": 1
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 1
             },
             {
-              "name": "Technical Aptitude",
+              "name": "technical-aptitude",
               "tier": 1
             },
             {
-              "name": "Bypass Security",
+              "name": "bypass-security",
               "tier": 1
             },
             {
-              "name": "Defensive Slicing",
+              "name": "defensive-slicing",
               "tier": 2,
               "requires": [
                 0,
@@ -5819,14 +5819,14 @@
               ]
             },
             {
-              "name": "Technical Aptitude",
+              "name": "technical-aptitude",
               "tier": 2,
               "requires": [
                 6
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 2,
               "requires": [
                 5,
@@ -5834,21 +5834,21 @@
               ]
             },
             {
-              "name": "Bypass Security",
+              "name": "bypass-security",
               "tier": 2,
               "requires": [
                 6
               ]
             },
             {
-              "name": "Natural Programmer",
+              "name": "natural-programmer",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Bypass Security",
+              "name": "bypass-security",
               "tier": 3,
               "requires": [
                 5,
@@ -5856,7 +5856,7 @@
               ]
             },
             {
-              "name": "Defensive Slicing",
+              "name": "defensive-slicing",
               "tier": 3,
               "requires": [
                 6,
@@ -5865,7 +5865,7 @@
               ]
             },
             {
-              "name": "Grit",
+              "name": "grit",
               "tier": 3,
               "requires": [
                 7,
@@ -5873,7 +5873,7 @@
               ]
             },
             {
-              "name": "Defensive Slicing",
+              "name": "defensive-slicing",
               "tier": 4,
               "requires": [
                 8,
@@ -5881,7 +5881,7 @@
               ]
             },
             {
-              "name": "Defensive Slicing (Improved)",
+              "name": "defensive-slicing-improved",
               "tier": 4,
               "requires": [
                 9,
@@ -5890,7 +5890,7 @@
               ]
             },
             {
-              "name": "Codebreaker",
+              "name": "codebreaker",
               "tier": 4,
               "requires": [
                 10,
@@ -5899,7 +5899,7 @@
               ]
             },
             {
-              "name": "Resolve",
+              "name": "resolve",
               "tier": 4,
               "requires": [
                 11,
@@ -5907,7 +5907,7 @@
               ]
             },
             {
-              "name": "Skilled Slicer",
+              "name": "skilled-slicer",
               "tier": 5,
               "requires": [
                 12,
@@ -5915,7 +5915,7 @@
               ]
             },
             {
-              "name": "Master Slicer",
+              "name": "master-slicer",
               "tier": 5,
               "requires": [
                 13,
@@ -5924,7 +5924,7 @@
               ]
             },
             {
-              "name": "Mental Fortress",
+              "name": "mental-fortress",
               "tier": 5,
               "requires": [
                 14,
@@ -5933,7 +5933,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 15,
@@ -5947,71 +5947,73 @@
           "careerSkills": [],
           "talents": [
             {
-              "name": "Uncanny Senses",
+              "name": "uncanny-senses",
               "tier": 1
             },
             {
-              "name": "Insight",
+              "name": "insight",
               "tier": 1
             },
             {
-              "name": "Forager",
+              "name": "forager",
               "tier": 1
             },
             {
-              "name": "Uncanny Reactions",
+              "name": "uncanny-reaction",
               "tier": 1
             },
             {
-              "name": "Convincing Demeanor",
+              "name": "convincing-demeanor",
               "tier": 2,
               "requires": [
                 0
               ]
             },
             {
-              "name": "Overwhelm Emotions",
+              "name": "overwhelm-emotions",
               "tier": 2
             },
             {
-              "name": "Intense Focus",
+              "name": "intense-focus",
               "tier": 2
             },
             {
-              "name": "Quick Draw",
+              "name": "quick-draw",
               "tier": 2,
-              "requires": [3]
+              "requires": [
+                3
+              ]
             },
             {
-              "name": "Sense Danger",
+              "name": "sense-danger",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "name": "Sense Emotions",
+              "name": "sense-emotions",
               "tier": 3,
               "requires": [
                 5
               ]
             },
             {
-              "name": "Balance",
+              "name": "balance",
               "tier": 3,
               "requires": [
                 6
               ]
             },
             {
-              "name": "Touch of Fate",
+              "name": "touch-of-fate",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "name": "Street Smarts",
+              "name": "street-smarts",
               "tier": 4,
               "requires": [
                 8,
@@ -6019,7 +6021,7 @@
               ]
             },
             {
-              "name": "Uncanny Senses",
+              "name": "uncanny-senses",
               "tier": 4,
               "requires": [
                 9,
@@ -6028,7 +6030,7 @@
               ]
             },
             {
-              "name": "Uncanny Reactions",
+              "name": "uncanny-reaction",
               "tier": 4,
               "requires": [
                 10,
@@ -6037,7 +6039,7 @@
               ]
             },
             {
-              "name": "Street Smarts",
+              "name": "street-smarts",
               "tier": 4,
               "requires": [
                 11,
@@ -6045,7 +6047,7 @@
               ]
             },
             {
-              "name": "Sixth Sense",
+              "name": "sixth-sense",
               "tier": 5,
               "requires": [
                 12,
@@ -6053,7 +6055,7 @@
               ]
             },
             {
-              "name": "Force Rating",
+              "name": "force-rating",
               "tier": 5,
               "requires": [
                 13,
@@ -6062,7 +6064,7 @@
               ]
             },
             {
-              "name": "Dedication",
+              "name": "dedication",
               "tier": 5,
               "requires": [
                 14,
@@ -6071,7 +6073,7 @@
               ]
             },
             {
-              "name": "Superior Reflexes",
+              "name": "superior-reflexes",
               "tier": 5,
               "requires": [
                 15,
@@ -6079,142 +6081,177 @@
               ]
             },
             {
-              "name": "Sense Basic Power",
+              "name": "sense-basic-power",
               "tier": 2
             },
             {
-              "name": "Control (Evade)",
+              "name": "control-evade",
               "tier": 2,
-              "requires": [20]
+              "requires": [
+                20
+              ]
             },
             {
-              "name": "Duration",
+              "name": "duration",
               "tier": 2,
               "requires": [
                 21
               ]
             },
             {
-              "name": "Strength",
+              "name": "strength",
               "tier": 2,
               "requires": [
                 22
               ]
             },
             {
-              "name": "Control (Accuracy)",
+              "name": "control-accuracy",
               "tier": 2,
               "requires": [
                 23
               ]
             },
             {
-              "name": "Control (Telepathy)",
+              "name": "control-telepathy",
               "tier": 2,
-              "requires": [20]
+              "requires": [
+                20
+              ]
             },
             {
-              "name": "Range",
+              "name": "range",
               "tier": 2,
-              "requires": [25]
+              "requires": [
+                25
+              ]
             },
             {
-              "name": "Range",
+              "name": "range",
               "tier": 2,
-              "requires": [26]
+              "requires": [
+                26
+              ]
             },
             {
-              "name": "Range",
+              "name": "range",
               "tier": 2,
-              "requires": [27]
+              "requires": [
+                27
+              ]
             },
             {
-              "name": "Magnitude",
+              "name": "magnitude",
               "tier": 2,
-              "requires": [20]
+              "requires": [
+                20
+              ]
             },
             {
-              "name": "Magnitude",
+              "name": "magnitude",
               "tier": 2,
-              "requires": [28]
+              "requires": [
+                28
+              ]
             },
             {
-              "name": "Magnitude",
+              "name": "magnitude",
               "tier": 2,
-              "requires": [29]
+              "requires": [
+                29
+              ]
             },
             {
-              "name": "Magnitude",
+              "name": "magnitude",
               "tier": 2,
-              "requires": [30]
+              "requires": [
+                30
+              ]
             },
             {
               "name": "Influence Basic Power",
               "tier": 2
             },
             {
-              "name": "Range",
+              "name": "range",
               "tier": 1,
-              "requires": [32]
+              "requires": [
+                32
+              ]
             },
             {
-              "name": "Magnitude",
+              "name": "magnitude",
               "tier": 1,
-              "requires": [32]
+              "requires": [
+                32
+              ]
             },
             {
               "name": "Control (Emotion Control)",
               "tier": 2,
-              "requires": [32]
+              "requires": [
+                32
+              ]
             },
             {
               "name": "Control (Charisma)",
               "tier": 3,
-              "requires": [33, 34]
+              "requires": [
+                33,
+                34
+              ]
             },
             {
-              "name": "Strength",
+              "name": "strength",
               "tier": 2,
-              "requires": [35]
+              "requires": [
+                35
+              ]
             },
             {
-              "name": "Range",
+              "name": "range",
               "tier": 2,
-              "requires": [33]
+              "requires": [
+                33
+              ]
             },
             {
-              "name": "Magnitude",
+              "name": "magnitude",
               "tier": 1,
-              "requires": [36]
+              "requires": [
+                36
+              ]
             },
             {
-              "name": "Duration",
+              "name": "duration",
               "tier": 1,
-              "requires": [41]
+              "requires": [
+                41
+              ]
             },
             {
-              "name": "Duration",
+              "name": "duration",
               "tier": 1,
               "requires": [
                 37
               ]
             },
             {
-              "name": "Range",
+              "name": "range",
               "tier": 2,
               "requires": [
                 38
               ]
             },
             {
-              "name": "Magnitude",
+              "name": "magnitude",
               "tier": 2,
               "requires": [
                 39
               ]
             },
             {
-              "name": "Duration",
+              "name": "duration",
               "tier": 1,
               "requires": [
                 40,
@@ -6222,7 +6259,7 @@
               ]
             },
             {
-              "name": "Duration",
+              "name": "duration",
               "tier": 1,
               "requires": [
                 40,
@@ -6238,7 +6275,477 @@
         "id": "string",
         "tier": "number",
         "requires": "[string]"
-      }
+      },
+      "values": [
+        {
+          "id": "anatomy-lessons"
+        },
+        {
+          "id": "armor-master"
+        },
+        {
+          "id": "armor-master-improved"
+        },
+        {
+          "id": "bacta-specialist"
+        },
+        {
+          "id": "bad-motivator"
+        },
+        {
+          "id": "balance"
+        },
+        {
+          "id": "barrage"
+        },
+        {
+          "id": "black-market-contacts"
+        },
+        {
+          "id": "blooded"
+        },
+        {
+          "id": "body-guard"
+        },
+        {
+          "id": "brace"
+        },
+        {
+          "id": "brilliant-evasion"
+        },
+        {
+          "id": "bypass-security"
+        },
+        {
+          "id": "codebreaker"
+        },
+        {
+          "id": "command"
+        },
+        {
+          "id": "confidence"
+        },
+        {
+          "id": "contraption"
+        },
+        {
+          "id": "control-accuracy"
+        },
+        {
+          "id": "control-evade"
+        },
+        {
+          "id": "control-telepathy"
+        },
+        {
+          "id": "convincing-demeanor"
+        },
+        {
+          "id": "crippling-blow"
+        },
+        {
+          "id": "deadly-accuracy"
+        },
+        {
+          "id": "dead-to-rights"
+        },
+        {
+          "id": "dead-to-rights-improved"
+        },
+        {
+          "id": "dedication"
+        },
+        {
+          "id": "defensive-driving"
+        },
+        {
+          "id": "defensive-slicing"
+        },
+        {
+          "id": "defensive-slicing-improved"
+        },
+        {
+          "id": "defensive-stance"
+        },
+        {
+          "id": "disorient"
+        },
+        {
+          "id": "dodge"
+        },
+        {
+          "id": "durable"
+        },
+        {
+          "id": "duration"
+        },
+        {
+          "id": "enduring"
+        },
+        {
+          "id": "expert-tracker"
+        },
+        {
+          "id": "familiar-suns"
+        },
+        {
+          "id": "feral-strength"
+        },
+        {
+          "id": "field-commander"
+        },
+        {
+          "id": "fine-tuning"
+        },
+        {
+          "id": "field-commander-improved"
+        },
+        {
+          "id": "frenzied-attack"
+        },
+        {
+          "id": "forager"
+        },
+        {
+          "id": "force-rating"
+        },
+        {
+          "id": "full-throttle"
+        },
+        {
+          "id": "full-throttle-improved"
+        },
+        {
+          "id": "full-throttle-supreme"
+        },
+        {
+          "id": "galaxy-mapper"
+        },
+        {
+          "id": "gearhead"
+        },
+        {
+          "id": "grit"
+        },
+        {
+          "id": "hard-headed"
+        },
+        {
+          "id": "hard-headed-improved"
+        },
+        {
+          "id": "heightened-awareness"
+        },
+        {
+          "id": "heroic-fortitude"
+        },
+        {
+          "id": "hidden-storage"
+        },
+        {
+          "id": "hold-together"
+        },
+        {
+          "id": "hunter"
+        },
+        {
+          "id": "indistinguishable"
+        },
+        {
+          "id": "insight"
+        },
+        {
+          "id": "inspiring-rhetoric"
+        },
+        {
+          "id": "inspiring-rhetoric-improved"
+        },
+        {
+          "id": "inspiring-rhetoric-supreme"
+        },
+        {
+          "id": "intense-focus"
+        },
+        {
+          "id": "intense-presence"
+        },
+        {
+          "id": "intimidating"
+        },
+        {
+          "id": "jump-up"
+        },
+        {
+          "id": "jury-rigged"
+        },
+        {
+          "id": "kill-with-kindness"
+        },
+        {
+          "id": "knockdown"
+        },
+        {
+          "id": "knowledge-specialization"
+        },
+        {
+          "id": "known-schematic"
+        },
+        {
+          "id": "know-somebody"
+        },
+        {
+          "id": "lethal-blows"
+        },
+        {
+          "id": "lets-ride"
+        },
+        {
+          "id": "magnitude"
+        },
+        {
+          "id": "master-doctor"
+        },
+        {
+          "id": "master-merchant"
+        },
+        {
+          "id": "master-of-shadows"
+        },
+        {
+          "id": "master-pilot"
+        },
+        {
+          "id": "master-slicer"
+        },
+        {
+          "id": "master-starhopper"
+        },
+        {
+          "id": "mental-fortress"
+        },
+        {
+          "id": "natural-brawler"
+        },
+        {
+          "id": "natural-charmer"
+        },
+        {
+          "id": "natural-negotiator"
+        },
+        {
+          "id": "natural-doctor"
+        },
+        {
+          "id": "natural-enforcer"
+        },
+        {
+          "id": "natural-hunter"
+        },
+        {
+          "id": "natural-marksman"
+        },
+        {
+          "id": "natural-outdoorsman"
+        },
+        {
+          "id": "natural-pilot"
+        },
+        {
+          "id": "natural-programmer"
+        },
+        {
+          "id": "natural-rogue"
+        },
+        {
+          "id": "natural-scholar"
+        },
+        {
+          "id": "natural-tinkerer"
+        },
+        {
+          "id": "nobodys-fool"
+        },
+        {
+          "id": "overwhelm-emotions"
+        },
+        {
+          "id": "outdoorsman"
+        },
+        {
+          "id": "plausible-deniability"
+        },
+        {
+          "id": "point-blank"
+        },
+        {
+          "id": "precise-aim"
+        },
+        {
+          "id": "pressure-point"
+        },
+        {
+          "id": "quick-draw"
+        },
+        {
+          "id": "quick-strike"
+        },
+        {
+          "id": "range"
+        },
+        {
+          "id": "rapid-reaction"
+        },
+        {
+          "id": "rapid-recovery"
+        },
+        {
+          "id": "redundant-systems"
+        },
+        {
+          "id": "researcher"
+        },
+        {
+          "id": "resolve"
+        },
+        {
+          "id": "respected-scholar"
+        },
+        {
+          "id": "scathing-tirade"
+        },
+        {
+          "id": "scathing-tirade-improved"
+        },
+        {
+          "id": "scathing-tirade-supreme"
+        },
+        {
+          "id": "second-wind"
+        },
+        {
+          "id": "sense-basic-power"
+        },
+        {
+          "id": "sense-danger"
+        },
+        {
+          "id": "sense-emotions"
+        },
+        {
+          "id": "shortcut"
+        },
+        {
+          "id": "side-step"
+        },
+        {
+          "id": "sixth-sense"
+        },
+        {
+          "id": "skilled-jockey"
+        },
+        {
+          "id": "skilled-slicer"
+        },
+        {
+          "id": "smooth-talker"
+        },
+        {
+          "id": "sniper-shot"
+        },
+        {
+          "id": "soft-spot"
+        },
+        {
+          "id": "solid-repairs"
+        },
+        {
+          "id": "spare-clip"
+        },
+        {
+          "id": "speaks-binary"
+        },
+        {
+          "id": "stalker"
+        },
+        {
+          "id": "steely-nerved"
+        },
+        {
+          "id": "stim-application"
+        },
+        {
+          "id": "stim-application-improved"
+        },
+        {
+          "id": "stim-application-supreme"
+        },
+        {
+          "id": "street-smarts"
+        },
+        {
+          "id": "strength"
+        },
+        {
+          "id": "stroke-of-genius"
+        },
+        {
+          "id": "strong-arm"
+        },
+        {
+          "id": "stunning-blow"
+        },
+        {
+          "id": "stunning-blow-improved"
+        },
+        {
+          "id": "superior-reflexes"
+        },
+        {
+          "id": "surgeon"
+        },
+        {
+          "id": "swift"
+        },
+        {
+          "id": "targeted-blow"
+        },
+        {
+          "id": "technical-aptitude"
+        },
+        {
+          "id": "tinkerer"
+        },
+        {
+          "id": "touch-of-fate"
+        },
+        {
+          "id": "toughened"
+        },
+        {
+          "id": "tricky-target"
+        },
+        {
+          "id": "true-aim"
+        },
+        {
+          "id": "uncanny-reaction"
+        },
+        {
+          "id": "uncanny-senses"
+        },
+        {
+          "id": "utility-belt"
+        },
+        {
+          "id": "utinni"
+        },
+        {
+          "id": "well-rounded"
+        },
+        {
+          "id": "wheel-and-deal"
+        }
+      ]
     },
     "weapon": {
       "properties": {
@@ -6257,7 +6764,7 @@
       "values": [
         {
           "name": "Holdout Blaster",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 5,
           "criticalRating": 4,
           "range": "Short",
@@ -6271,7 +6778,7 @@
         },
         {
           "name": "Light Blaster Pistol",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 5,
           "criticalRating": 4,
           "range": "Medium",
@@ -6285,7 +6792,7 @@
         },
         {
           "name": "Blaster Pistol",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 6,
           "criticalRating": 3,
           "range": "Medium",
@@ -6299,7 +6806,7 @@
         },
         {
           "name": "Heavy Blaster Pistol",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 7,
           "criticalRating": 3,
           "range": "Medium",
@@ -6313,7 +6820,7 @@
         },
         {
           "name": "Blaster Carbine",
-          "skill": "Ranged (Heavy)",
+          "skill": "ranged (Heavy)",
           "damage": 9,
           "criticalRating": 3,
           "range": "Medium",
@@ -6327,7 +6834,7 @@
         },
         {
           "name": "Blaster Rifle",
-          "skill": "Ranged (Heavy)",
+          "skill": "ranged (Heavy)",
           "damage": 9,
           "criticalRating": 3,
           "range": "Long",
@@ -6341,7 +6848,7 @@
         },
         {
           "name": "Heavy Blaster Rifle",
-          "skill": "Ranged (Heavy)",
+          "skill": "ranged (Heavy)",
           "damage": 10,
           "criticalRating": 3,
           "range": "Long",
@@ -6356,7 +6863,7 @@
         },
         {
           "name": "Light Repeating Blaster",
-          "skill": "Ranged (Heavy)",
+          "skill": "ranged (Heavy)",
           "damage": 11,
           "criticalRating": 3,
           "range": "Long",
@@ -6391,7 +6898,7 @@
         },
         {
           "name": "Bowcaster",
-          "skill": "Ranged (Heavy)",
+          "skill": "ranged (Heavy)",
           "damage": 10,
           "criticalRating": 3,
           "range": "Medium",
@@ -6401,12 +6908,12 @@
           "rarity": 7,
           "special": [
             "Cumbersome 3",
-            "Knockdown"
+            "knockdown"
           ]
         },
         {
           "name": "Ionization Blaster",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 10,
           "criticalRating": 5,
           "range": "Short",
@@ -6415,13 +6922,13 @@
           "price": 250,
           "rarity": 3,
           "special": [
-            "Disorient 5",
+            "disorient 5",
             "Stun Damage (Droid Only)"
           ]
         },
         {
           "name": "Disruptor Pistol",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 10,
           "criticalRating": 2,
           "range": "Short",
@@ -6436,7 +6943,7 @@
         },
         {
           "name": "Disruptor Rifle",
-          "skill": "Ranged (Heavy)",
+          "skill": "ranged (Heavy)",
           "damage": 10,
           "criticalRating": 2,
           "range": "Long",
@@ -6452,7 +6959,7 @@
         },
         {
           "name": "Slugthrower Pistol",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 4,
           "criticalRating": 5,
           "range": "Short",
@@ -6463,7 +6970,7 @@
         },
         {
           "name": "Slugthrower Rifle",
-          "skill": "Ranged (Heavy)",
+          "skill": "ranged (Heavy)",
           "damage": 7,
           "criticalRating": 5,
           "range": "Medium",
@@ -6477,7 +6984,7 @@
         },
         {
           "name": "Bola / Net",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 2,
           "criticalRating": 0,
           "range": "Short",
@@ -6487,13 +6994,13 @@
           "rarity": 2,
           "special": [
             "Ensnare 3",
-            "Knockdown",
+            "knockdown",
             "Limited Ammo 1"
           ]
         },
         {
           "name": "Flame Projector",
-          "skill": "Ranged (Heavy)",
+          "skill": "ranged (Heavy)",
           "damage": 8,
           "criticalRating": 2,
           "range": "Short",
@@ -6528,7 +7035,7 @@
         },
         {
           "name": "Frag Grenade",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 8,
           "criticalRating": 4,
           "range": "Short",
@@ -6543,7 +7050,7 @@
         },
         {
           "name": "Stun Grenade",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 8,
           "criticalRating": 0,
           "range": "Short",
@@ -6552,7 +7059,7 @@
           "price": 1500,
           "rarity": 6,
           "special": [
-            "Disorient 3",
+            "disorient 3",
             "Stun Damage",
             "Blast 8",
             "Limited Ammo 1"
@@ -6560,7 +7067,7 @@
         },
         {
           "name": "Thermal Detonator",
-          "skill": "Ranged (Light)",
+          "skill": "ranged (Light)",
           "damage": 20,
           "criticalRating": 2,
           "range": "Short",
@@ -6587,7 +7094,7 @@
           "price": 25,
           "rarity": 0,
           "special": [
-            "Disorient 3"
+            "disorient 3"
           ]
         },
         {
@@ -6628,7 +7135,7 @@
           "rarity": 2,
           "special": [
             "Defensive 1",
-            "Disorient 3"
+            "disorient 3"
           ]
         },
         {
@@ -6674,7 +7181,7 @@
           "price": 15,
           "rarity": 1,
           "special": [
-            "Disorient 2"
+            "disorient 2"
           ]
         },
         {
@@ -6833,7 +7340,7 @@
         "description": "Acquire Talent",
         "uses": "$state.character.availableExperience",
         "options": "# $state.character.specializations.reduce((combined, s)=> combined.concat(s.talents), []) ",
-        "when": "# $this.tier === 1 || $state.character.specializations.reduce((combined, x)=> combined.concat(x.talents), []).find(y => $state.character.talents.find(z => z.id === y.id))",
+        "when": "# $this.requires === undefined || $state.character.advancements.filter(a => a.type === 'talent').",
         "cost": "# $this.tier * 5",
         "effect": "# $state.character.talents.push($state.selectedAdvancement.talent.option)"
       }
