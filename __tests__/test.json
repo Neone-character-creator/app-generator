@@ -5089,140 +5089,199 @@
           ],
           "talents": [
             {
-              "id": "toughened",
+              "id": "bodyguard-1",
+              "value": "toughened",
               "tier": 1
             },
             {
-              "id": "barrage",
+              "id": "bodyguard-2",
+              "value": "barrage",
               "tier": 1
             },
             {
-              "id": "durable",
+              "id": "bodyguard-3",
+              "value": "durable",
               "tier": 1
             },
             {
-              "id": "grit",
+              "id": "bodyguard-4",
+              "value": "grit",
               "tier": 1
             },
             {
-              "id": "body-guard",
+              "id": "bodyguard-5",
+              "value": "body-guard",
               "tier": 2,
-              "requires": [
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-6"
+                ]
+              }
             },
             {
-              "id": "hard-headed",
+              "id": "bodyguard-6",
+              "value": "hard-headed",
               "tier": 2,
-              "requires": [
-                1,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-2",
+                  "bodyguard-7",
+                  "bodyguard-10"
+                ]
+              }
             },
             {
-              "id": "barrage",
+              "id": "bodyguard-7",
+              "value": "barrage",
               "tier": 2,
-              "requires": [
-                2,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-3",
+                  "bodyguard-6",
+                  "bodyguard-8"
+                ]
+              }
             },
             {
-              "id": "brace",
+              "id": "bodyguard-8",
+              "value": "brace",
               "tier": 2,
-              "requires": [
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-7"
+                ]
+              }
             },
             {
-              "id": "body-guard",
+              "id": "bodyguard-9",
+              "value": "body-guard",
               "tier": 3,
-              "requires": [
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-5"
+                ]
+              }
             },
             {
-              "id": "side-step",
+              "id": "bodyguard-10",
+              "value": "side-step",
               "tier": 3,
-              "requires": [
-                5,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-6",
+                  "bodyguard-11",
+                  "bodyguard-14"
+                ]
+              }
             },
             {
-              "id": "defensive-stance",
+              "id": "bodyguard-11",
+              "value": "defensive-stance",
               "tier": 3,
-              "requires": [
-                6,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-7",
+                  "bodyguard-10",
+                  "bodyguard-15"
+                ]
+              }
             },
             {
-              "id": "brace",
+              "id": "bodyguard-12",
+              "value": "brace",
               "tier": 3,
-              "requires": [
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-8"
+                ]
+              }
             },
             {
-              "id": "enduring",
+              "id": "bodyguard-13",
+              "value": "enduring",
               "tier": 4,
-              "requires": [
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-9"
+                ]
+              }
             },
             {
-              "id": "side-step",
+              "id": "bodyguard-14",
+              "value": "side-step",
               "tier": 4,
-              "requires": [
-                9,
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-10",
+                  "bodyguard-15",
+                  "bodyguard-18"
+                ]
+              }
             },
             {
-              "id": "defensive-stance",
+              "id": "bodyguard-15",
+              "value": "defensive-stance",
               "tier": 4,
-              "requires": [
-                10,
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-11",
+                  "bodyguard-14",
+                  "bodyguard-19"
+                ]
+              }
             },
             {
-              "id": "hard-headed",
+              "id": "bodyguard-16",
+              "value": "hard-headed",
               "tier": 4,
-              "requires": [
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-12",
+                  "bodyguard-17"
+                ]
+              }
             },
             {
-              "id": "dedication",
+              "id": "bodyguard-17",
+              "value": "dedication",
               "tier": 5,
-              "requires": [
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-18"
+                ]
+              }
             },
             {
-              "id": "barrage",
+              "id": "bodyguard-18",
+              "value": "barrage",
               "tier": 5,
-              "requires": [
-                13,
-                16
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-14",
+                  "bodyguard-17"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "bodyguard-19",
+              "value": "toughened",
               "tier": 5,
-              "requires": [
-                14,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-15",
+                  "bodyguard-18"
+                ]
+              }
             },
             {
-              "id": "hard-headed-improved",
+              "id": "bodyguard-20",
+              "value": "hard-headed-improved",
               "tier": 5,
-              "requires": [
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "bodyguard-15"
+                ]
+              }
             }
           ]
         },
@@ -5236,146 +5295,206 @@
           ],
           "talents": [
             {
-              "id": "toughened",
+              "id": "marauder-1",
+              "value": "toughened",
               "tier": 1
             },
             {
-              "id": "frenzied-attack",
+              "id": "marauder-2",
+              "value": "frenzied-attack",
               "tier": 1
             },
             {
-              "id": "feral-strength",
+              "id": "marauder-3",
+              "value": "feral-strength",
               "tier": 1
             },
             {
-              "id": "lethal-blows",
+              "id": "marauder-4",
+              "value": "lethal-blows",
               "tier": 1
             },
             {
-              "id": "feral-strength",
+              "id": "marauder-5",
+              "value": "feral-strength",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-1",
+                  "marauder-6"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "marauder-6",
+              "value": "toughened",
               "tier": 2,
-              "requires": [
-                1,
-                4,
-                6
-              ]
+              "requires": {
+                "advancementS": [
+                  "marauder-2",
+                  "marauder-5",
+                  "marauder-7",
+                  "marauder-10"
+                ]
+              }
             },
             {
-              "id": "heroic-fortitude",
+              "id": "marauder-7",
+              "value": "heroic-fortitude",
               "tier": 2,
-              "requires": [
-                2,
-                5,
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-3",
+                  "marauder-5",
+                  "marauder-8",
+                  "marauder-11"
+                ]
+              }
             },
             {
-              "id": "knockdown",
+              "id": "marauder-8",
+              "value": "knockdown",
               "tier": 2,
-              "requires": [
-                3,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-4",
+                  "marauder-7"
+                ]
+              }
             },
             {
-              "id": "enduring",
+              "id": "marauder-9",
+              "value": "enduring",
               "tier": 3,
-              "requires": [
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-10",
+                  "marauder-13"
+                ]
+              }
             },
             {
-              "id": "lethal-blows",
+              "id": "marauder-10",
+              "value": "lethal-blows",
               "tier": 3,
-              "requires": [
-                5,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-6",
+                  "marauder-9",
+                  "marauder-11"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "marauder-11",
+              "value": "toughened",
               "tier": 3,
-              "requires": [
-                6,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-7",
+                  "marauder-10",
+                  "marauder-12"
+                ]
+              }
             },
             {
-              "id": "frenzied-attack",
+              "id": "marauder-12",
+              "value": "frenzied-attack",
               "tier": 3,
-              "requires": [
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-11",
+                  "marauder-16"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "marauder-13",
+              "value": "toughened",
               "tier": 4,
-              "requires": [
-                8,
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-9",
+                  "marauder-14"
+                ]
+              }
             },
             {
-              "id": "feral-strength",
+              "id": "marauder-14",
+              "value": "feral-strength",
               "tier": 4,
-              "requires": [
-                12,
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-13",
+                  "marauder-15",
+                  "marauder-18"
+                ]
+              }
             },
             {
-              "id": "natural-brawler",
+              "id": "marauder-15",
+              "value": "natural-brawler",
               "tier": 4,
-              "requires": [
-                13,
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-14",
+                  "marauder-16",
+                  "marauder-19"
+                ]
+              }
             },
             {
-              "id": "lethal-blows",
+              "id": "marauder-16",
+              "value": "lethal-blows",
               "tier": 4,
-              "requires": [
-                11,
-                14
-              ]
+              "requires": {
+                "advancemenets": [
+                  "marauder-12",
+                  "marauder-15"
+                ]
+              }
             },
             {
-              "id": "frenzied-attack",
+              "id": "marauder-17",
+              "value": "frenzied-attack",
               "tier": 5,
-              "requires": [
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-18"
+                ]
+              }
             },
             {
-              "id": "enduring",
+              "id": "marauder-18",
+              "value": "enduring",
               "tier": 5,
-              "requires": [
-                13,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-14",
+                  "marauder-19"
+                ]
+              }
             },
             {
-              "id": "defensive-stance",
+              "id": "marauder-19",
+              "value": "defensive-stance",
               "tier": 5,
-              "requires": [
-                14,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-15",
+                  "marauder-18"
+                ]
+              }
             },
             {
-              "id": "dedication",
+              "id": "marauder-20",
+              "value": "dedication",
               "tier": 5,
-              "requires": [
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "marauder-19"
+                ]
+              }
             }
           ]
         },
@@ -5389,145 +5508,206 @@
           ],
           "talents": [
             {
-              "id": "command",
+              "id": "mercenary-1",
+              "value": "command",
               "tier": 1
             },
             {
-              "id": "second-wind",
+              "id": "mercenary-2",
+              "value": "second-wind",
               "tier": 1
             },
             {
-              "id": "point-blank",
+              "id": "mercenary-3",
+              "value": "point-blank",
               "tier": 1
             },
             {
-              "id": "side-step",
+              "id": "mercenary-4",
+              "value": "svaluee-step",
               "tier": 1
             },
             {
-              "id": "second-wind",
+              "id": "mercenary-5",
+              "value": "second-wind",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-1",
+                  "mercenary-6",
+                  "mercenary-9"
+                ]
+              }
             },
             {
-              "id": "confidence",
+              "id": "mercenary-6",
+              "value": "confvalueence",
               "tier": 2,
-              "requires": [
-                1,
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-2",
+                  "mercenary-5",
+                  "mercenary-10"
+                ]
+              }
             },
             {
-              "id": "strong-arm",
+              "id": "mercenary-7",
+              "value": "strong-arm",
               "tier": 2,
-              "requires": [
-                2,
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-3",
+                  "mercenary-8",
+                  "mercenary-11"
+                ]
+              }
             },
             {
-              "id": "point-blank",
+              "id": "mercenary-8",
+              "value": "point-blank",
               "tier": 2,
-              "requires": [
-                3,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-4",
+                  "mercenary-7"
+                ]
+              }
             },
             {
-              "id": "field-commander",
+              "id": "mercenary-9",
+              "value": "field-commander",
               "tier": 3,
-              "requires": [
-                4,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-5",
+                  "mercenary-10"
+                ]
+              }
             },
             {
-              "id": "command",
+              "id": "mercenary-10",
+              "value": "command",
               "tier": 3,
-              "requires": [
-                5,
-                8,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-6",
+                  "mercenary-9",
+                  "mercenary-11",
+                  "mercenary-14"
+                ]
+              }
             },
             {
-              "id": "natural-marksman",
+              "id": "mercenary-11",
+              "value": "natural-marksman",
               "tier": 3,
-              "requires": [
-                6,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-7",
+                  "mercenary-10",
+                  "mercenary-12",
+                  "mercenary-15"
+                ]
+              }
             },
             {
-              "id": "sniper-shot",
+              "id": "mercenary-12",
+              "value": "sniper-shot",
               "tier": 3,
-              "requires": [
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-11",
+                  "mercenary-16"
+                ]
+              }
             },
             {
-              "id": "field-commander-improved",
+              "id": "mercenary-13",
+              "value": "field-commander-improved",
               "tier": 4,
-              "requires": [
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-9"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "mercenary-14",
+              "value": "grit",
               "tier": 4,
-              "requires": [
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-10",
+                  "mercenary-18"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "mercenary-15",
+              "value": "toughened",
               "tier": 4,
-              "requires": [
-                10,
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-11",
+                  "mercenary-16"
+                ]
+              }
             },
             {
-              "id": "lethal-blows",
+              "id": "mercenary-16",
+              "value": "lethal-blows",
               "tier": 4,
-              "requires": [
-                11,
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-12",
+                  "mercenary-15",
+                  "mercenary-20"
+                ]
+              }
             },
             {
-              "id": "deadly-accuracy",
+              "id": "mercenary-17",
+              "value": "deadly-accuracy",
               "tier": 5,
-              "requires": [
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-18"
+                ]
+              }
             },
             {
-              "id": "true-aim",
+              "id": "mercenary-18",
+              "value": "true-aim",
               "tier": 5,
-              "requires": [
-                13,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-14",
+                  "mercenary-19"
+                ]
+              }
             },
             {
-              "id": "dedication",
+              "id": "mercenary-19",
+              "value": "dedication",
               "tier": 5,
-              "requires": [
-                17,
-                19
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-18",
+                  "mercenary-20"
+                ]
+              }
             },
             {
-              "id": "true-aim",
+              "id": "mercenary-20",
+              "value": "true-aim",
               "tier": 5,
-              "requires": [
-                15,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "mercenary-16",
+                  "mercenary-19"
+                ]
+              }
             }
           ]
         },
@@ -5541,142 +5721,200 @@
           ],
           "talents": [
             {
-              "id": "full-throttle",
+              "id": "pilot-1",
+              "value": "full-throttle",
               "tier": 1
             },
             {
-              "id": "skilled-jockey",
+              "id": "pilot-2",
+              "value": "skilled-jockey",
               "tier": 1
             },
             {
-              "id": "galaxy-mapper",
+              "id": "pilot-3",
+              "value": "galaxy-mapper",
               "tier": 1
             },
             {
-              "id": "lets-ride",
+              "id": "pilot-4",
+              "value": "lets-rvaluee",
               "tier": 1
             },
             {
-              "id": "skilled-jockey",
+              "id": "pilot-5",
+              "value": "skilled-jockey",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-1",
+                  "pilot-6",
+                  "pilot-9"
+                ]
+              }
             },
             {
-              "id": "dead-to-rights",
+              "id": "pilot-6",
+              "value": "dead-to-rights",
               "tier": 2,
-              "requires": [
-                1,
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-2",
+                  "pilot-5"
+                ]
+              }
             },
             {
-              "id": "galaxy-mapper",
+              "id": "pilot-7",
+              "value": "galaxy-mapper",
               "tier": 2,
-              "requires": [
-                2,
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-3",
+                  "pilot-8",
+                  "pilot-11"
+                ]
+              }
             },
             {
-              "id": "rapid-recovery",
+              "id": "pilot-8",
+              "value": "rapid-recovery",
               "tier": 2,
-              "requires": [
-                3,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-4",
+                  "pilot-7",
+                  "pilot-12"
+                ]
+              }
             },
             {
-              "id": "full-throttle-improved",
+              "id": "pilot-9",
+              "value": "full-throttle-improved",
               "tier": 3,
-              "requires": [
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-5",
+                  "pilot-13"
+                ]
+              }
             },
             {
-              "id": "dead-to-rights-improved",
+              "id": "pilot-10",
+              "value": "dead-to-rights-improved",
               "tier": 3,
-              "requires": [
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-6"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "pilot-11",
+              "value": "grit",
               "tier": 3,
-              "requires": [
-                6,
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-7",
+                  "pilot-12",
+                  "pilot-15"
+                ]
+              }
             },
             {
-              "id": "natural-pilot",
+              "id": "pilot-12",
+              "value": "natural-pilot",
               "tier": 3,
-              "requires": [
-                7,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-8",
+                  "pilot-11",
+                  "pilot-16"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "pilot-13",
+              "value": "grit",
               "tier": 4,
-              "requires": [
-                8,
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-9",
+                  "pilot-14",
+                  "pilot-17"
+                ]
+              }
             },
             {
-              "id": "full-throttle-supreme",
+              "id": "pilot-14",
+              "value": "full-throttle-supreme",
               "tier": 4,
-              "requires": [
-                12
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-13"
+                ]
+              }
             },
             {
-              "id": "tricky-target",
+              "id": "pilot-15",
+              "value": "tricky-target",
               "tier": 4,
-              "requires": [
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-11",
+                  "pilot-19"
+                ]
+              }
             },
             {
-              "id": "defensive-driving",
+              "id": "pilot-16",
+              "value": "defensive-driving",
               "tier": 4,
-              "requires": [
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "pilot-12",
+                  "pilot-20"
+                ]
+              }
             },
             {
-              "id": "master-pilot",
+              "id": "pilot-17",
+              "value": "master-pilot",
+              "tier": 5,
+              "requires": {
+                "advancements": [
+                  "pilot-13",
+                  "pilot-18"
+                ]
+              }
+            },
+            {
+              "id": "pilot-18",
+              "value": "dedication",
+              "tier": 5,
+              "requires": {
+                "advancements": [
+                  "pilot-17",
+                  "pilot-18"
+                ]
+              }
+            },
+            {
+              "id": "pilot-19",
+              "value": "toughened",
+              "tier": 5,
+              "requires": {"advancements": [
+                "pilot-15",
+                "pilot-18",
+                "pilot-20"
+              ]}
+            },
+            {
+              "id": "pilot-20",
+              "value": "brilliant-evasion",
               "tier": 5,
               "requires": [
-                12,
-                17
-              ]
-            },
-            {
-              "id": "dedication",
-              "tier": 5,
-              "requires": [
-                16,
-                18
-              ]
-            },
-            {
-              "id": "toughened",
-              "tier": 5,
-              "requires": [
-                14,
-                17
-              ]
-            },
-            {
-              "id": "brilliant-evasion",
-              "tier": 5,
-              "requires": [
-                15,
-                18
+                "pilot-16",
+                "pilot-19"
               ]
             }
           ]
@@ -5691,30 +5929,30 @@
           ],
           "talents": [
             {
-              "id": "black-market-contacts",
+              "value": "black-market-contacts",
               "tier": 1
             },
             {
-              "id": "convincing-demeanor",
+              "value": "convincing-demeanor",
               "tier": 1
             },
             {
-              "id": "quick-draw",
+              "value": "quick-draw",
               "tier": 1
             },
             {
-              "id": "rapid-reaction",
+              "value": "rapvalue-reaction",
               "tier": 1
             },
             {
-              "id": "convincing-demeanor",
+              "value": "convincing-demeanor",
               "tier": 2,
               "requires": [
                 0
               ]
             },
             {
-              "id": "black-market-contacts",
+              "value": "black-market-contacts",
               "tier": 2,
               "requires": [
                 1,
@@ -5722,7 +5960,7 @@
               ]
             },
             {
-              "id": "convincing-demeanor",
+              "value": "convincing-demeanor",
               "tier": 2,
               "requires": [
                 5,
@@ -5730,21 +5968,21 @@
               ]
             },
             {
-              "id": "quick-strike",
+              "value": "quick-strike",
               "tier": 2,
               "requires": [
                 3
               ]
             },
             {
-              "id": "hidden-storage",
+              "value": "hvalueden-storage",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "id": "toughened",
+              "value": "toughened",
               "tier": 3,
               "requires": [
                 5,
@@ -5752,7 +5990,7 @@
               ]
             },
             {
-              "id": "black-market-contacts",
+              "value": "black-market-contacts",
               "tier": 3,
               "requires": [
                 6,
@@ -5760,21 +5998,21 @@
               ]
             },
             {
-              "id": "side-step",
+              "value": "svaluee-step",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "id": "toughened",
+              "value": "toughened",
               "tier": 4,
               "requires": [
                 8
               ]
             },
             {
-              "id": "rapid-reaction",
+              "value": "rapvalue-reaction",
               "tier": 4,
               "requires": [
                 9,
@@ -5782,7 +6020,7 @@
               ]
             },
             {
-              "id": "hidden-storage",
+              "value": "hvalueden-storage",
               "tier": 4,
               "requires": [
                 10,
@@ -5790,21 +6028,21 @@
               ]
             },
             {
-              "id": "side-step",
+              "value": "svaluee-step",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "id": "dedication",
+              "value": "dedication",
               "tier": 5,
               "requires": [
                 12
               ]
             },
             {
-              "id": "natural-charmer",
+              "value": "natural-charmer",
               "tier": 5,
               "requires": [
                 13,
@@ -5813,7 +6051,7 @@
               ]
             },
             {
-              "id": "soft-spot",
+              "value": "soft-spot",
               "tier": 5,
               "requires": [
                 14,
@@ -5822,7 +6060,7 @@
               ]
             },
             {
-              "id": "quick-strike",
+              "value": "quick-strike",
               "tier": 5,
               "requires": [
                 15,
@@ -5841,23 +6079,23 @@
           ],
           "talents": [
             {
-              "id": "street-smarts",
+              "value": "street-smarts",
               "tier": 1
             },
             {
-              "id": "black-market-contacts",
+              "value": "black-market-contacts",
               "tier": 1
             },
             {
-              "id": "indistinguishable",
+              "value": "indistinguishable",
               "tier": 1
             },
             {
-              "id": "bypass-security",
+              "value": "bypass-security",
               "tier": 1
             },
             {
-              "id": "black-market-contacts",
+              "value": "black-market-contacts",
               "tier": 2,
               "requires": [
                 0,
@@ -5865,7 +6103,7 @@
               ]
             },
             {
-              "id": "dodge",
+              "value": "dodge",
               "tier": 2,
               "requires": [
                 1,
@@ -5874,7 +6112,7 @@
               ]
             },
             {
-              "id": "grit",
+              "value": "grit",
               "tier": 2,
               "requires": [
                 5,
@@ -5882,7 +6120,7 @@
               ]
             },
             {
-              "id": "hidden-storage",
+              "value": "hvalueden-storage",
               "tier": 2,
               "requires": [
                 3,
@@ -5890,7 +6128,7 @@
               ]
             },
             {
-              "id": "stalker",
+              "value": "stalker",
               "tier": 3,
               "requires": [
                 4,
@@ -5898,7 +6136,7 @@
               ]
             },
             {
-              "id": "grit",
+              "value": "grit",
               "tier": 3,
               "requires": [
                 5,
@@ -5907,7 +6145,7 @@
               ]
             },
             {
-              "id": "rapid-reaction",
+              "value": "rapvalue-reaction",
               "tier": 3,
               "requires": [
                 6,
@@ -5916,21 +6154,21 @@
               ]
             },
             {
-              "id": "shortcut",
+              "value": "shortcut",
               "tier": 3,
               "requires": [
                 10
               ]
             },
             {
-              "id": "bypass-security",
+              "value": "bypass-security",
               "tier": 4,
               "requires": [
                 8
               ]
             },
             {
-              "id": "Natural Rogue",
+              "value": "Natural Rogue",
               "tier": 4,
               "requires": [
                 9,
@@ -5938,7 +6176,7 @@
               ]
             },
             {
-              "id": "street-smarts",
+              "value": "street-smarts",
               "tier": 4,
               "requires": [
                 10,
@@ -5947,7 +6185,7 @@
               ]
             },
             {
-              "id": "jump-up",
+              "value": "jump-up",
               "tier": 4,
               "requires": [
                 11,
@@ -5955,14 +6193,14 @@
               ]
             },
             {
-              "id": "master-of-shadows",
+              "value": "master-of-shadows",
               "tier": 5,
               "requires": [
                 12
               ]
             },
             {
-              "id": "dodge",
+              "value": "dodge",
               "tier": 5,
               "requires": [
                 13,
@@ -5970,7 +6208,7 @@
               ]
             },
             {
-              "id": "indistinguishable",
+              "value": "indistinguishable",
               "tier": 5,
               "requires": [
                 14,
@@ -5978,7 +6216,7 @@
               ]
             },
             {
-              "id": "dedication",
+              "value": "dedication",
               "tier": 5,
               "requires": [
                 15
@@ -5996,23 +6234,23 @@
           ],
           "talents": [
             {
-              "id": "gearhead",
+              "value": "gearhead",
               "tier": 1
             },
             {
-              "id": "toughened",
+              "value": "toughened",
               "tier": 1
             },
             {
-              "id": "fine-tuning",
+              "value": "fine-tuning",
               "tier": 1
             },
             {
-              "id": "solid-repairs",
+              "value": "solvalue-repairs",
               "tier": 1
             },
             {
-              "id": "redundant-systems",
+              "value": "redundant-systems",
               "tier": 2,
               "requires": [
                 0,
@@ -6020,7 +6258,7 @@
               ]
             },
             {
-              "id": "solid-repairs",
+              "value": "solvalue-repairs",
               "tier": 2,
               "requires": [
                 1,
@@ -6029,7 +6267,7 @@
               ]
             },
             {
-              "id": "gearhead",
+              "value": "gearhead",
               "tier": 2,
               "requires": [
                 2,
@@ -6038,7 +6276,7 @@
               ]
             },
             {
-              "id": "grit",
+              "value": "grit",
               "tier": 2,
               "requires": [
                 3,
@@ -6046,7 +6284,7 @@
               ]
             },
             {
-              "id": "solid-repairs",
+              "value": "solvalue-repairs",
               "tier": 3,
               "requires": [
                 4,
@@ -6054,7 +6292,7 @@
               ]
             },
             {
-              "id": "enduring",
+              "value": "enduring",
               "tier": 3,
               "requires": [
                 5,
@@ -6063,7 +6301,7 @@
               ]
             },
             {
-              "id": "bad-motivator",
+              "value": "bad-motivator",
               "tier": 3,
               "requires": [
                 6,
@@ -6072,7 +6310,7 @@
               ]
             },
             {
-              "id": "toughened",
+              "value": "toughened",
               "tier": 3,
               "requires": [
                 7,
@@ -6080,7 +6318,7 @@
               ]
             },
             {
-              "id": "contraption",
+              "value": "contraption",
               "tier": 4,
               "requires": [
                 8,
@@ -6088,7 +6326,7 @@
               ]
             },
             {
-              "id": "solid-repairs",
+              "value": "solvalue-repairs",
               "tier": 4,
               "requires": [
                 9,
@@ -6097,7 +6335,7 @@
               ]
             },
             {
-              "id": "fine-tuning",
+              "value": "fine-tuning",
               "tier": 4,
               "requires": [
                 10,
@@ -6105,35 +6343,35 @@
               ]
             },
             {
-              "id": "hard-headed",
+              "value": "hard-headed",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "id": "natural-tinkerer",
+              "value": "natural-tinkerer",
               "tier": 5,
               "requires": [
                 12
               ]
             },
             {
-              "id": "hold-together",
+              "value": "hold-together",
               "tier": 5,
               "requires": [
                 13
               ]
             },
             {
-              "id": "dedication",
+              "value": "dedication",
               "tier": 5,
               "requires": [
                 14
               ]
             },
             {
-              "id": "hard-headed-improved",
+              "value": "hard-headed-improved",
               "tier": 5,
               "requires": [
                 15
@@ -6151,23 +6389,23 @@
           ],
           "talents": [
             {
-              "id": "tinkerer",
+              "value": "tinkerer",
               "tier": 1
             },
             {
-              "id": "utinni",
+              "value": "utinni",
               "tier": 1
             },
             {
-              "id": "speaks-binary",
+              "value": "speaks-binary",
               "tier": 1
             },
             {
-              "id": "tinkerer",
+              "value": "tinkerer",
               "tier": 1
             },
             {
-              "id": "solid-repairs",
+              "value": "solvalue-repairs",
               "tier": 2,
               "requires": [
                 0,
@@ -6175,7 +6413,7 @@
               ]
             },
             {
-              "id": "grit",
+              "value": "grit",
               "tier": 2,
               "requires": [
                 1,
@@ -6184,7 +6422,7 @@
               ]
             },
             {
-              "id": "utinni",
+              "value": "utinni",
               "tier": 2,
               "requires": [
                 2,
@@ -6193,7 +6431,7 @@
               ]
             },
             {
-              "id": "toughened",
+              "value": "toughened",
               "tier": 2,
               "requires": [
                 3,
@@ -6201,7 +6439,7 @@
               ]
             },
             {
-              "id": "utility-belt",
+              "value": "utility-belt",
               "tier": 3,
               "requires": [
                 4,
@@ -6209,7 +6447,7 @@
               ]
             },
             {
-              "id": "side-step",
+              "value": "svaluee-step",
               "tier": 3,
               "requires": [
                 5,
@@ -6218,7 +6456,7 @@
               ]
             },
             {
-              "id": "brace",
+              "value": "brace",
               "tier": 3,
               "requires": [
                 6,
@@ -6227,7 +6465,7 @@
               ]
             },
             {
-              "id": "defensive-stance",
+              "value": "defensive-stance",
               "tier": 3,
               "requires": [
                 7,
@@ -6235,7 +6473,7 @@
               ]
             },
             {
-              "id": "Jury Rigged",
+              "value": "Jury Rigged",
               "tier": 4,
               "requires": [
                 8,
@@ -6243,7 +6481,7 @@
               ]
             },
             {
-              "id": "speaks-binary",
+              "value": "speaks-binary",
               "tier": 4,
               "requires": [
                 9,
@@ -6252,7 +6490,7 @@
               ]
             },
             {
-              "id": "Inventor",
+              "value": "Inventor",
               "tier": 4,
               "requires": [
                 10,
@@ -6260,14 +6498,14 @@
               ]
             },
             {
-              "id": "Jury Rigged",
+              "value": "Jury Rigged",
               "tier": 4,
               "requires": [
                 11
               ]
             },
             {
-              "id": "Inventor",
+              "value": "Inventor",
               "tier": 5,
               "requires": [
                 12,
@@ -6275,14 +6513,14 @@
               ]
             },
             {
-              "id": "dedication",
+              "value": "dedication",
               "tier": 5,
               "requires": [
                 16
               ]
             },
             {
-              "id": "known-schematic",
+              "value": "known-schematic",
               "tier": 5,
               "requires": [
                 14,
@@ -6290,7 +6528,7 @@
               ]
             },
             {
-              "id": "brace",
+              "value": "brace",
               "tier": 5,
               "requires": [
                 15,
@@ -6309,23 +6547,23 @@
           ],
           "talents": [
             {
-              "id": "codebreaker",
+              "value": "codebreaker",
               "tier": 1
             },
             {
-              "id": "grit",
+              "value": "grit",
               "tier": 1
             },
             {
-              "id": "technical-aptitude",
+              "value": "technical-aptitude",
               "tier": 1
             },
             {
-              "id": "bypass-security",
+              "value": "bypass-security",
               "tier": 1
             },
             {
-              "id": "defensive-slicing",
+              "value": "defensive-slicing",
               "tier": 2,
               "requires": [
                 0,
@@ -6333,14 +6571,14 @@
               ]
             },
             {
-              "id": "technical-aptitude",
+              "value": "technical-aptitude",
               "tier": 2,
               "requires": [
                 6
               ]
             },
             {
-              "id": "grit",
+              "value": "grit",
               "tier": 2,
               "requires": [
                 5,
@@ -6348,21 +6586,21 @@
               ]
             },
             {
-              "id": "bypass-security",
+              "value": "bypass-security",
               "tier": 2,
               "requires": [
                 6
               ]
             },
             {
-              "id": "natural-programmer",
+              "value": "natural-programmer",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "id": "bypass-security",
+              "value": "bypass-security",
               "tier": 3,
               "requires": [
                 5,
@@ -6370,7 +6608,7 @@
               ]
             },
             {
-              "id": "defensive-slicing",
+              "value": "defensive-slicing",
               "tier": 3,
               "requires": [
                 6,
@@ -6379,7 +6617,7 @@
               ]
             },
             {
-              "id": "grit",
+              "value": "grit",
               "tier": 3,
               "requires": [
                 7,
@@ -6387,7 +6625,7 @@
               ]
             },
             {
-              "id": "defensive-slicing",
+              "value": "defensive-slicing",
               "tier": 4,
               "requires": [
                 8,
@@ -6395,7 +6633,7 @@
               ]
             },
             {
-              "id": "defensive-slicing-improved",
+              "value": "defensive-slicing-improved",
               "tier": 4,
               "requires": [
                 9,
@@ -6404,7 +6642,7 @@
               ]
             },
             {
-              "id": "codebreaker",
+              "value": "codebreaker",
               "tier": 4,
               "requires": [
                 10,
@@ -6413,7 +6651,7 @@
               ]
             },
             {
-              "id": "resolve",
+              "value": "resolve",
               "tier": 4,
               "requires": [
                 11,
@@ -6421,7 +6659,7 @@
               ]
             },
             {
-              "id": "skilled-slicer",
+              "value": "skilled-slicer",
               "tier": 5,
               "requires": [
                 12,
@@ -6429,7 +6667,7 @@
               ]
             },
             {
-              "id": "master-slicer",
+              "value": "master-slicer",
               "tier": 5,
               "requires": [
                 13,
@@ -6438,7 +6676,7 @@
               ]
             },
             {
-              "id": "mental-fortress",
+              "value": "mental-fortress",
               "tier": 5,
               "requires": [
                 14,
@@ -6447,7 +6685,7 @@
               ]
             },
             {
-              "id": "dedication",
+              "value": "dedication",
               "tier": 5,
               "requires": [
                 15,
@@ -6461,73 +6699,73 @@
           "careerSkills": [],
           "talents": [
             {
-              "id": "uncanny-senses",
+              "value": "uncanny-senses",
               "tier": 1
             },
             {
-              "id": "insight",
+              "value": "insight",
               "tier": 1
             },
             {
-              "id": "forager",
+              "value": "forager",
               "tier": 1
             },
             {
-              "id": "uncanny-reaction",
+              "value": "uncanny-reaction",
               "tier": 1
             },
             {
-              "id": "convincing-demeanor",
+              "value": "convincing-demeanor",
               "tier": 2,
               "requires": [
                 0
               ]
             },
             {
-              "id": "overwhelm-emotions",
+              "value": "overwhelm-emotions",
               "tier": 2
             },
             {
-              "id": "intense-focus",
+              "value": "intense-focus",
               "tier": 2
             },
             {
-              "id": "quick-draw",
+              "value": "quick-draw",
               "tier": 2,
               "requires": [
                 3
               ]
             },
             {
-              "id": "sense-danger",
+              "value": "sense-danger",
               "tier": 3,
               "requires": [
                 4
               ]
             },
             {
-              "id": "sense-emotions",
+              "value": "sense-emotions",
               "tier": 3,
               "requires": [
                 5
               ]
             },
             {
-              "id": "balance",
+              "value": "balance",
               "tier": 3,
               "requires": [
                 6
               ]
             },
             {
-              "id": "touch-of-fate",
+              "value": "touch-of-fate",
               "tier": 3,
               "requires": [
                 7
               ]
             },
             {
-              "id": "street-smarts",
+              "value": "street-smarts",
               "tier": 4,
               "requires": [
                 8,
@@ -6535,7 +6773,7 @@
               ]
             },
             {
-              "id": "uncanny-senses",
+              "value": "uncanny-senses",
               "tier": 4,
               "requires": [
                 9,
@@ -6544,7 +6782,7 @@
               ]
             },
             {
-              "id": "uncanny-reaction",
+              "value": "uncanny-reaction",
               "tier": 4,
               "requires": [
                 10,
@@ -6553,7 +6791,7 @@
               ]
             },
             {
-              "id": "street-smarts",
+              "value": "street-smarts",
               "tier": 4,
               "requires": [
                 11,
@@ -6561,7 +6799,7 @@
               ]
             },
             {
-              "id": "sixth-sense",
+              "value": "sixth-sense",
               "tier": 5,
               "requires": [
                 12,
@@ -6569,7 +6807,7 @@
               ]
             },
             {
-              "id": "force-rating",
+              "value": "force-rating",
               "tier": 5,
               "requires": [
                 13,
@@ -6578,7 +6816,7 @@
               ]
             },
             {
-              "id": "dedication",
+              "value": "dedication",
               "tier": 5,
               "requires": [
                 14,
@@ -6587,7 +6825,7 @@
               ]
             },
             {
-              "id": "superior-reflexes",
+              "value": "superior-reflexes",
               "tier": 5,
               "requires": [
                 15,
@@ -6595,120 +6833,120 @@
               ]
             },
             {
-              "id": "sense-basic-power",
+              "value": "sense-basic-power",
               "tier": 2
             },
             {
-              "id": "control-evade",
+              "value": "control-evade",
               "tier": 2,
               "requires": [
                 20
               ]
             },
             {
-              "id": "duration",
+              "value": "duration",
               "tier": 2,
               "requires": [
                 21
               ]
             },
             {
-              "id": "strength",
+              "value": "strength",
               "tier": 2,
               "requires": [
                 22
               ]
             },
             {
-              "id": "control-accuracy",
+              "value": "control-accuracy",
               "tier": 2,
               "requires": [
                 23
               ]
             },
             {
-              "id": "control-telepathy",
+              "value": "control-telepathy",
               "tier": 2,
               "requires": [
                 20
               ]
             },
             {
-              "id": "range",
+              "value": "range",
               "tier": 2,
               "requires": [
                 25
               ]
             },
             {
-              "id": "range",
+              "value": "range",
               "tier": 2,
               "requires": [
                 26
               ]
             },
             {
-              "id": "range",
+              "value": "range",
               "tier": 2,
               "requires": [
                 27
               ]
             },
             {
-              "id": "magnitude",
+              "value": "magnitude",
               "tier": 2,
               "requires": [
                 20
               ]
             },
             {
-              "id": "magnitude",
+              "value": "magnitude",
               "tier": 2,
               "requires": [
                 28
               ]
             },
             {
-              "id": "magnitude",
+              "value": "magnitude",
               "tier": 2,
               "requires": [
                 29
               ]
             },
             {
-              "id": "magnitude",
+              "value": "magnitude",
               "tier": 2,
               "requires": [
                 30
               ]
             },
             {
-              "id": "Influence Basic Power",
+              "value": "Influence Basic Power",
               "tier": 2
             },
             {
-              "id": "range",
+              "value": "range",
               "tier": 1,
               "requires": [
                 32
               ]
             },
             {
-              "id": "magnitude",
+              "value": "magnitude",
               "tier": 1,
               "requires": [
                 32
               ]
             },
             {
-              "id": "Control (Emotion Control)",
+              "value": "Control (Emotion Control)",
               "tier": 2,
               "requires": [
                 32
               ]
             },
             {
-              "id": "Control (Charisma)",
+              "value": "Control (Charisma)",
               "tier": 3,
               "requires": [
                 33,
@@ -6716,56 +6954,56 @@
               ]
             },
             {
-              "id": "strength",
+              "value": "strength",
               "tier": 2,
               "requires": [
                 35
               ]
             },
             {
-              "id": "range",
+              "value": "range",
               "tier": 2,
               "requires": [
                 33
               ]
             },
             {
-              "id": "magnitude",
+              "value": "magnitude",
               "tier": 1,
               "requires": [
                 36
               ]
             },
             {
-              "id": "duration",
+              "value": "duration",
               "tier": 1,
               "requires": [
                 41
               ]
             },
             {
-              "id": "duration",
+              "value": "duration",
               "tier": 1,
               "requires": [
                 37
               ]
             },
             {
-              "id": "range",
+              "value": "range",
               "tier": 2,
               "requires": [
                 38
               ]
             },
             {
-              "id": "magnitude",
+              "value": "magnitude",
               "tier": 2,
               "requires": [
                 39
               ]
             },
             {
-              "id": "duration",
+              "value": "duration",
               "tier": 1,
               "requires": [
                 40,
@@ -6773,7 +7011,7 @@
               ]
             },
             {
-              "id": "duration",
+              "value": "duration",
               "tier": 1,
               "requires": [
                 40,
