@@ -3275,147 +3275,179 @@
               "id": "assassin-5",
               "value": "precise-aim",
               "tier": 2,
-              "requires": [
-                "assassin-1",
-                "assassin-6",
-                "assassin-9"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-1",
+                  "assassin-6",
+                  "assassin-9"
+                ]
+              }
             },
             {
               "id": "assassin-6",
               "value": "jump-up",
               "tier": 2,
-              "requires": [
-                "assassin-2",
-                "assassin-5",
-                "assassin-7",
-                "assassin-10"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-2",
+                  "assassin-5",
+                  "assassin-7",
+                  "assassin-10"
+                ]
+              }
             },
             {
               "id": "assassin-7",
               "value": "quick-strike",
               "tier": 2,
-              "requires": [
-                "assassin-3",
-                "assassin-6",
-                "assassin-8",
-                "assassin-11"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-3",
+                  "assassin-6",
+                  "assassin-8",
+                  "assassin-11"
+                ]
+              }
             },
             {
               "id": "assassin-8",
               "value": "quick-draw",
               "tier": 2,
-              "requires": [
-                "assassin-4",
-                "assassin-7",
-                "assassin-12"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-4",
+                  "assassin-7",
+                  "assassin-12"
+                ]
+              }
             },
             {
               "id": "assassin-9",
               "value": "targeted-blow",
               "tier": 3,
-              "requires": [
-                "assassin-5",
-                "assassin-13"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-5",
+                  "assassin-13"
+                ]
+              }
             },
             {
               "id": "assassin-10",
               "value": "stalker",
               "tier": 3,
-              "requires": [
-                "assassin-6",
-                "assassin-11",
-                "assassin-14"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-6",
+                  "assassin-11",
+                  "assassin-14"
+                ]
+              }
             },
             {
               "id": "assassin-11",
               "value": "lethal-blows",
               "tier": 3,
-              "requires": [
-                "assassin-7",
-                "assassin-10",
-                "assassin-15"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-7",
+                  "assassin-10",
+                  "assassin-15"
+                ]
+              }
             },
             {
               "id": "assassin-12",
               "value": "anatomy-lessons",
               "tier": 3,
-              "requires": [
-                "assassin-8",
-                "assassin-16"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-8",
+                  "assassin-16"
+                ]
+              }
             },
             {
               "id": "assassin-13",
               "value": "stalker",
               "tier": 4,
-              "requires": [
-                "assassin-9",
-                "assassin-14"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-9",
+                  "assassin-14"
+                ]
+              }
             },
             {
               "id": "assassin-14",
               "value": "sniper-shot",
               "tier": 4,
-              "requires": [
-                "assassin-10",
-                "assassin-13"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-10",
+                  "assassin-13"
+                ]
+              }
             },
             {
               "id": "assassin-15",
               "value": "dodge",
               "tier": 4,
-              "requires": [
-                "assassin-11"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-11"
+                ]
+              }
             },
             {
               "id": "assassin-16",
               "value": "lethal-blows",
               "tier": 4,
-              "requires": [
-                "assassin-12"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-12"
+                ]
+              }
             },
             {
               "id": "assassin-17",
               "value": "precise-aim",
               "tier": 5,
-              "requires": [
-                "assassin-13"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-13"
+                ]
+              }
             },
             {
               "id": "assassin-87",
               "value": "deadly-accuracy",
               "tier": 5,
-              "requires": [
-                "assassin-12"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-12"
+                ]
+              }
             },
             {
               "id": "assassin-19",
               "value": "dedication",
               "tier": 5,
-              "requires": [
-                "assassin-15"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-15"
+                ]
+              }
             },
             {
               "id": "assassin-20",
               "value": "master-of-shadows",
               "tier": 4,
-              "requires": [
-                "assassin-16"
-              ]
+              "requires": {
+                "advancements": [
+                  "assassin-16"
+                ]
+              }
             }
           ]
         },
@@ -3429,132 +3461,184 @@
           ],
           "talents": [
             {
-              "id": "brace",
+              "id": "gadgeteer-1",
+              "value": "brace",
               "tier": 1
             },
             {
-              "id": "toughened",
+              "id": "gadgeteer-2",
+              "value": "toughened",
               "tier": 1
             },
             {
+              "id": "gadgeteer-3",
+              "value": "intimidating",
+              "tier": 1
+            },
+            {
+              "id": "gadgeteer-4",
+              "value": "defensive-stance",
+              "tier": 1
+            },
+            {
+              "id": "gadgeteer-5",
+              "value": "spare-clip",
+              "tier": 2,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-6"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-6",
+              "value": "jury-rigged",
+              "tier": 2,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-2"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-7",
+              "value": "point-blank",
+              "tier": 2,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-6"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-8",
+              "value": "disorient",
+              "tier": 2,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-4"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-9",
+              "idname": "toughened",
+              "tier": 3,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-10"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-10",
+              "value": "armor-master",
+              "tier": 3,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-6"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-11",
+              "value": "natural-enforcer",
+              "tier": 3,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-10"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-12",
+              "value": "stunning-blow",
+              "tier": 3,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-8"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-13",
+              "value": "jury-rigged",
+              "tier": 4,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-14"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-14",
+              "value": "tinkerer",
+              "tier": 4,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-10"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-15",
+              "value": "deadly-accuracy",
+              "tier": 4,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-14"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-16",
+              "value": "stunning-blow-improved",
+              "tier": 4,
+              "requires": {
+                "advancements": [
+                  "gadgeteer-11"
+                ]
+              }
+            },
+            {
+              "id": "gadgeteer-17",
               "id": "intimidating",
-              "tier": 1
-            },
-            {
-              "id": "defensive-stance",
-              "tier": 1
-            },
-            {
-              "id": "spare-clip",
-              "tier": 2,
-              "requires": [
-                5
-              ]
-            },
-            {
-              "id": "jury-rigged",
-              "tier": 2,
-              "requires": [
-                1
-              ]
-            },
-            {
-              "id": "point-blank",
-              "tier": 2,
-              "requires": [
-                5
-              ]
-            },
-            {
-              "id": "disorient",
-              "tier": 2,
-              "requires": [
-                3
-              ]
-            },
-            {
-              "id": "toughened",
-              "tier": 3,
-              "requires": [
-                9
-              ]
-            },
-            {
-              "id": "armor-master",
-              "tier": 3,
-              "requires": [
-                5
-              ]
-            },
-            {
-              "id": "natural-enforcer",
-              "tier": 3,
-              "requires": [
-                9
-              ]
-            },
-            {
-              "id": "stunning-blow",
-              "tier": 3,
-              "requires": [
-                7
-              ]
-            },
-            {
-              "id": "jury-rigged",
-              "tier": 4,
-              "requires": [
-                13
-              ]
-            },
-            {
-              "id": "tinkerer",
-              "tier": 4,
-              "requires": [
-                9
-              ]
-            },
-            {
-              "id": "deadly-accuracy",
-              "tier": 4,
-              "requires": [
-                13
-              ]
-            },
-            {
-              "id": "stunning-blow-improved",
-              "tier": 4,
-              "requires": [
-                11
-              ]
-            },
-            {
-              "id": "intimidating",
               "tier": 5,
-              "requires": [
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "gadgeteer-18"
+                ]
+              }
             },
             {
-              "id": "dedication",
+              "id": "gadgeteer-18",
+              "value": "dedication",
               "tier": 5,
-              "requires": [
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "gadgeteer-13"
+                ]
+              }
             },
             {
-              "id": "armor-master-Improved",
+              "id": "gadgeteer-19",
+              "value": "armor-master-Improved",
               "tier": 5,
-              "requires": [
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "gadgeteer-18"
+                ]
+              }
             },
             {
-              "id": "crippling-blow",
+              "id": "gadgeteer-20",
+              "value": "crippling-blow",
               "tier": 5,
-              "requires": [
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "gadgeteer-16"
+                ]
+              }
             }
           ]
         },
@@ -3568,139 +3652,202 @@
           ],
           "talents": [
             {
-              "id": "forager",
+              "id": "survivalist-1",
+              "value": "forager",
               "tier": 1
             },
             {
-              "id": "stalker",
+              "id": "survivalist-2",
+              "value": "stalker",
               "tier": 1
             },
             {
-              "id": "outdoorsman",
+              "id": "survivalist-3",
+              "value": "outdoorsman",
               "tier": 1
             },
             {
-              "id": "expert-tracker",
+              "id": "survivalist-4",
+              "value": "expert-tracker",
               "tier": 1
             },
             {
-              "id": "outdoorsman",
+              "id": "survivalist-5",
+              "value": "outdoorsman",
               "tier": 2,
-              "requires": [
-                0
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-4",
+                  "survivalist-6",
+                  "survivalist-9"
+                ]
+              }
             },
             {
-              "id": "swift",
+              "id": "survivalist-6",
+              "value": "swift",
               "tier": 2,
-              "requires": [
-                1,
-                4,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-2",
+                  "survivalist-6",
+                  "survivalist-8",
+                  "survivalist-10"
+                ]
+              }
             },
             {
-              "id": "hunter",
+              "id": "survivalist-7",
+              "value": "hunter",
               "tier": 2,
-              "requires": [
-                2,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-3",
+                  "survivalist-6",
+                  "survivalist-8",
+                  "survivalist-11"
+                ]
+              }
             },
             {
-              "id": "soft-spot",
+              "id": "survivalist-8",
+              "value": "soft-spot",
               "tier": 2,
-              "requires": [
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-7",
+                  "survivalist-12"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "survivalist-9",
+              "value": "toughened",
               "tier": 3,
-              "requires": [
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-5",
+                  "survivalist-17"
+                ]
+              }
             },
             {
-              "id": "expert-tracker",
+              "id": "survivalist-10",
+              "value": "expert-tracker",
               "tier": 3,
-              "requires": [
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-6"
+                ]
+              }
             },
             {
-              "id": "stalker",
+              "id": "survivalist-11",
+              "value": "stalker",
               "tier": 3,
-              "requires": [
-                6,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-7",
+                  "survivalist-12",
+                  "survivalist-15"
+                ]
+              }
             },
             {
-              "id": "natural-outdoorsman",
+              "id": "survivalist-12",
+              "name": "natural-outdoorsman",
               "tier": 3,
-              "requires": [
-                7,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-8",
+                  "survivalist-11"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "survivalist-13",
+              "value": "toughened",
               "tier": 4,
-              "requires": [
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-9",
+                  "survivalist-17"
+                ]
+              }
             },
             {
-              "id": "hunter",
+              "id": "survivalist-14",
+              "value": "hunter",
               "tier": 4,
-              "requires": [
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-10"
+                ]
+              }
             },
             {
-              "id": "expert-tracker",
+              "id": "survivalist-15",
+              "value": "expert-tracker",
               "tier": 4,
-              "requires": [
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-11",
+                  "survivalist-19"
+                ]
+              }
             },
             {
-              "id": "blooded",
+              "id": "survivalist-16",
+              "value": "blooded",
               "tier": 4,
-              "requires": [
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-12"
+                ]
+              }
             },
             {
-              "id": "enduring",
+              "id": "survivalist-17",
+              "value": "enduring",
               "tier": 5,
-              "requires": [
-                12,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-13",
+                  "survivalist-18"
+                ]
+              }
             },
             {
-              "id": "dedication",
+              "id": "survivalist-18",
+              "value": "dedication",
               "tier": 5,
-              "requires": [
-                16,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-17",
+                  "survivalist-19"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "survivalist-19",
+              "value": "grit",
               "tier": 5,
-              "requires": [
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-15",
+                  "survivalist-18"
+                ]
+              }
             },
             {
-              "id": "heroic-fortitude",
+              "id": "survivalist-20",
+              "value": "heroic-fortitude",
               "tier": 5,
-              "requires": [
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "survivalist-16"
+                ]
+              }
             }
           ]
         },
@@ -3714,143 +3861,203 @@
           ],
           "talents": [
             {
-              "id": "surgeon",
+              "id": "doctor-1",
+              "value": "surgeon",
               "tier": 1
             },
             {
-              "id": "bacta-specialist",
+              "id": "doctor-2",
+              "value": "bacta-specialist",
               "tier": 1
             },
             {
-              "id": "grit",
+              "id": "doctor-3",
+              "value": "grit",
               "tier": 1
             },
             {
-              "id": "resolve",
+              "id": "doctor-4",
+              "value": "resolve",
               "tier": 1
             },
             {
-              "id": "stim-application",
+              "id": "doctor-5",
+              "value": "stim-application",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-1",
+                  "doctor-6",
+                  "doctor-9"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "doctor-6",
+              "value": "grit",
               "tier": 2,
-              "requires": [
-                4,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-5",
+                  "doctor-7"
+                ]
+              }
             },
             {
-              "id": "surgeon",
+              "id": "doctor-7",
+              "value": "surgeon",
               "tier": 2,
-              "requires": [
-                2,
-                5,
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-3",
+                  "doctor-6",
+                  "doctor-8"
+                ]
+              }
             },
             {
-              "id": "resolve",
+              "id": "doctor-8",
+              "value": "resolve",
               "tier": 2,
-              "requires": [
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-7",
+                  "doctor-12"
+                ]
+              }
             },
             {
-              "id": "surgeon",
+              "id": "doctor-9",
+              "value": "surgeon",
               "tier": 3,
-              "requires": [
-                4,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-5",
+                  "doctor-10",
+                  "doctor-13"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "doctor-10",
+              "value": "grit",
               "tier": 3,
-              "requires": [
-                8,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-9",
+                  "doctor-11",
+                  "doctor-14"
+                ]
+              }
             },
             {
-              "id": "bacta-specialist",
+              "id": "doctor-11",
+              "value": "bacta-specialist",
               "tier": 3,
-              "requires": [
-                6,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-7",
+                  "doctor-10",
+                  "doctor-15"
+                ]
+              }
             },
             {
-              "id": "pressure-point",
+              "id": "doctor-12",
+              "value": "pressure-point",
               "tier": 3,
-              "requires": [
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-8"
+                ]
+              }
             },
             {
-              "id": "stim-application-improved",
+              "id": "doctor-13",
+              "value": "stim-application-improved",
               "tier": 4,
-              "requires": [
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-9",
+                  "doctor-17"
+                ]
+              }
             },
             {
-              "id": "natural-doctor",
+              "id": "doctor-14",
+              "value": "natural-doctor",
               "tier": 4,
-              "requires": [
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-10",
+                  "doctor-18"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "doctor-15",
+              "value": "toughened",
               "tier": 4,
-              "requires": [
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-11",
+                  "doctor-19"
+                ]
+              }
             },
             {
-              "id": "anatomy-lessons",
+              "id": "doctor-16",
+              "value": "anatomy-lessons",
               "tier": 4,
-              "requires": [
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-12"
+                ]
+              }
             },
             {
-              "id": "stim-application-Supreme",
+              "id": "doctor-17",
+              "value": "stim-application-Supreme",
               "tier": 5,
-              "requires": [
-                12,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-13",
+                  "doctor-18"
+                ]
+              }
             },
             {
-              "id": "master-doctor",
+              "id": "doctor-18",
+              "value": "master-doctor",
               "tier": 5,
-              "requires": [
-                13,
-                16,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-14",
+                  "doctor-17",
+                  "doctor-19"
+                ]
+              }
             },
             {
-              "id": "dedication",
+              "id": "doctor-19",
+              "value": "dedication",
               "tier": 5,
-              "requires": [
-                14,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-15",
+                  "doctor-18"
+                ]
+              }
             },
             {
-              "id": "dodge",
+              "id": "doctor-20",
+              "value": "dodge",
               "tier": 5,
-              "requires": [
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "doctor-16"
+                ]
+              }
             }
           ]
         },
@@ -3864,138 +4071,197 @@
           ],
           "talents": [
             {
-              "id": "kill-with-kindness",
+              "id": "politico-1",
+              "value": "kill-with-kindness",
               "tier": 1
             },
             {
-              "id": "grit",
+              "id": "politico-2",
+              "value": "grit",
               "tier": 1
             },
             {
-              "id": "plausible-deniability",
+              "id": "politico-3",
+              "value": "plausible-deniability",
               "tier": 1
             },
             {
-              "id": "toughened",
+              "id": "politico-4",
+              "value": "toughened",
               "tier": 1
             },
             {
-              "id": "inspiring-rhetoric",
+              "id": "politico-5",
+              "value": "inspiring-rhetoric",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-1",
+                  "politico-6"
+                ]
+              }
             },
             {
-              "id": "kill-with-kindness",
+              "id": "politico-6",
+              "value": "kill-with-kindness",
               "tier": 2,
-              "requires": [
-                1,
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-2",
+                  "politico-5"
+                ]
+              }
             },
             {
-              "id": "scathing-tirade",
+              "id": "politico-7",
+              "value": "scathing-tirade",
               "tier": 2,
-              "requires": [
-                2,
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-3",
+                  "politico-8"
+                ]
+              }
             },
             {
-              "id": "plausible-deniability",
+              "id": "politico-8",
+              "value": "plausible-deniability",
               "tier": 2,
-              "requires": [
-                3,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-4",
+                  "politico-7"
+                ]
+              }
             },
             {
-              "id": "dodge",
+              "id": "politico-9",
+              "value": "dodge",
               "tier": 3,
-              "requires": [
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-4",
+                  "politico-10",
+                  "politico-13"
+                ]
+              }
             },
             {
-              "id": "inspiring-rhetoric-improved",
+              "id": "politico-10",
+              "value": "inspiring-rhetoric-improved",
               "tier": 3,
-              "requires": [
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-9"
+                ]
+              }
             },
             {
-              "id": "scathing-tirade-improved",
+              "id": "politico-11",
+              "value": "scathing-tirade-improved",
               "tier": 3,
-              "requires": [
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-12"
+                ]
+              }
             },
             {
-              "id": "well-rounded",
+              "id": "politico-12",
+              "value": "well-rounded",
               "tier": 3,
-              "requires": [
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-8",
+                  "politico-16"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "politico-13",
+              "value": "grit",
               "tier": 4,
-              "requires": [
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-9",
+                  "politico-17"
+                ]
+              }
             },
             {
-              "id": "inspiring-rhetoric-supreme",
+              "id": "politico-14",
+              "value": "inspiring-rhetoric-supreme",
               "tier": 4,
-              "requires": [
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-10"
+                ]
+              }
             },
             {
-              "id": "scathing-tirade-supreme",
+              "id": "politico-15",
+              "value": "scathing-tirade-supreme",
               "tier": 4,
-              "requires": [
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-11"
+                ]
+              }
             },
             {
-              "id": "nobodys-fool",
+              "id": "politico-16",
+              "value": "nobodys-fool",
               "tier": 4,
-              "requires": [
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-12",
+                  "politico-20"
+                ]
+              }
             },
             {
-              "id": "steely-nerved",
+              "id": "politico-17",
+              "value": "steely-nerved",
               "tier": 5,
-              "requires": [
-                12
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-13",
+                  "politico-18"
+                ]
+              }
             },
             {
-              "id": "dedication",
+              "id": "politico-18",
+              "value": "dedication",
               "tier": 5,
-              "requires": [
-                16,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-17",
+                  "politico-19"
+                ]
+              }
             },
             {
-              "id": "natural-charmer",
+              "id": "politico-19",
+              "value": "natural-charmer",
               "tier": 5,
-              "requires": [
-                17,
-                19
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-18",
+                  "politico-20"
+                ]
+              }
             },
             {
-              "id": "intense-presence",
+              "id": "politico-20",
+              "value": "intense-presence",
               "tier": 5,
-              "requires": [
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "politico-16",
+                  "politico-19"
+                ]
+              }
             }
           ]
         },
@@ -4009,139 +4275,197 @@
           ],
           "talents": [
             {
-              "id": "respected-scholar",
+              "id": "scholar-1",
+              "value": "respected-scholar",
               "tier": 1
             },
             {
-              "id": "speaks-binary",
+              "id": "scholar-2",
+              "value": "speaks-binary",
               "tier": 1
             },
             {
-              "id": "grit",
+              "id": "scholar-3",
+              "value": "grit",
               "tier": 1
             },
             {
-              "id": "brace",
+              "id": "scholar-4",
+              "value": "brace",
               "tier": 1
             },
             {
-              "id": "researcher",
+              "id": "scholar-5",
+              "value": "researcher",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-1",
+                  "scholar-6",
+                  "scholar-9"
+                ]
+              }
             },
             {
-              "id": "respected-scholar",
+              "id": "scholar-6",
+              "value": "respected-scholar",
               "tier": 2,
-              "requires": [
-                1,
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-2",
+                  "scholar-5"
+                ]
+              }
             },
             {
-              "id": "resolve",
+              "id": "scholar-7",
+              "value": "resolve",
               "tier": 2,
-              "requires": [
-                2,
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-3",
+                  "scholar-8"
+                ]
+              }
             },
             {
-              "id": "researcher",
+              "id": "scholar-8",
+              "value": "researcher",
               "tier": 2,
-              "requires": [
-                3,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-4",
+                  "scholar-7",
+                  "scholar-12"
+                ]
+              }
             },
             {
-              "id": "codebreaker",
+              "id": "scholar-9",
+              "value": "codebreaker",
               "tier": 3,
-              "requires": [
-                4,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-5",
+                  "scholar-10"
+                ]
+              }
             },
             {
-              "id": "knowledge-specialization",
+              "id": "scholar-10",
+              "value": "knowledge-specialization",
               "tier": 3,
-              "requires": [
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-9",
+                  "scholar-14"
+                ]
+              }
             },
             {
-              "id": "natural-scholar",
+              "id": "scholar-11",
+              "value": "natural-scholar",
               "tier": 3,
-              "requires": [
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-12",
+                  "scholar-15"
+                ]
+              }
             },
             {
-              "id": "well-rounded",
+              "id": "scholar-12",
+              "value": "well-rounded",
               "tier": 3,
-              "requires": [
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-8",
+                  "scholar-11"
+                ]
+              }
             },
             {
-              "id": "knowledge-specialization",
+              "id": "scholar-13",
+              "value": "knowledge-specialization",
               "tier": 4,
-              "requires": [
-                13
-              ]
+              "requires": {
+                "advancement": [
+                  "scholar-14",
+                  "scholar-17"
+                ]
+              }
             },
             {
-              "id": "intense-focus",
+              "id": "scholar-14",
+              "value": "intense-focus",
               "tier": 4,
-              "requires": [
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-13",
+                  "scholar-15"
+                ]
+              }
             },
             {
-              "id": "confidence",
+              "id": "scholar-15",
+              "value": "confidence",
               "tier": 4,
-              "requires": [
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-11",
+                  "scholar-16"
+                ]
+              }
             },
             {
-              "id": "resolve",
+              "id": "scholar-16",
+              "value": "resolve",
               "tier": 4,
-              "requires": [
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "scholar-15",
+                  "scholar-20"
+                ]
+              }
             },
             {
-              "id": "stroke-of-genius",
+              "id": "scholar-17",
+              "value": "stroke-of-genius",
+              "tier": 5,
+              "requires": {
+                "advancements": [
+                  "scholar-13",
+                  "scholar-18"
+                ]
+              }
+            },
+            {
+              "id": "scholar-18",
+              "value": "mental-fortress",
+              "tier": 5,
+              "requires": {
+                "advancements": [
+                  "advancements-17",
+                  "advancements-19"
+                ]
+              }
+            },
+            {
+              "id": "scholar-19",
+              "value": "dedication",
               "tier": 5,
               "requires": [
-                12
+                "scholar-18",
+                "scholar-20"
               ]
             },
             {
-              "id": "mental-fortress",
-              "tier": 5,
-              "requires": [
-                16,
-                18
-              ]
-            },
-            {
-              "id": "dedication",
-              "tier": 5,
-              "requires": [
-                17,
-                19
-              ]
-            },
-            {
-              "id": "toughened",
+              "id": "scholar-20",
+              "value": "toughened",
               "tier": 4,
               "requires": [
-                18,
-                15
+                "scholar-16",
+                "scholar-19"
               ]
             }
           ]
@@ -4156,140 +4480,196 @@
           ],
           "talents": [
             {
-              "id": "galaxy-mapper",
+              "id": "fringer-1",
+              "value": "galaxy-mapper",
               "tier": 1
             },
             {
-              "id": "street-smarts",
+              "id": "fringer-2",
+              "value": "street-smarts",
               "tier": 1
             },
             {
-              "id": "rapid-recovery",
+              "id": "fringer-3",
+              "value": "rapid-recovery",
               "tier": 1
             },
             {
-              "id": "street-smarts",
+              "id": "fringer-4",
+              "value": "street-smarts",
               "tier": 1
             },
             {
-              "id": "skilled-jockey",
+              "id": "fringer-5",
+              "value": "skilled-jockey",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-1",
+                  "fringer-6",
+                  "fringer-9"
+                ]
+              }
             },
             {
-              "id": "galaxy-mapper",
+              "id": "fringer-6",
+              "value": "galaxy-mapper",
               "tier": 2,
-              "requires": [
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-5",
+                  "fringer-10"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "fringer-7",
+              "value": "grit",
               "tier": 2,
-              "requires": [
-                2,
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-3",
+                  "fringer-8",
+                  "fringer-11"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "fringer-8",
+              "value": "toughened",
               "tier": 2,
-              "requires": [
-                3,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-4",
+                  "fringer-7",
+                  "fringer-12"
+                ]
+              }
             },
             {
-              "id": "master-starhopper",
+              "id": "fringer-9",
+              "value": "master-starhopper",
               "tier": 3,
-              "requires": [
-                4,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-5",
+                  "fringer-10"
+                ]
+              }
             },
             {
-              "id": "defensive-driving",
+              "id": "fringer-10",
+              "value": "defensive-driving",
               "tier": 3,
-              "requires": [
-                5,
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-6",
+                  "fringer-9"
+                ]
+              }
             },
             {
-              "id": "rapid-recovery",
+              "id": "fringer-11",
+              "value": "rapid-recovery",
               "tier": 3,
-              "requires": [
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-7"
+                ]
+              }
             },
             {
-              "id": "durable",
+              "id": "fringer-12",
+              "value": "durable",
               "tier": 3,
-              "requires": [
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-8"
+                ]
+              }
             },
             {
-              "id": "rapid-recovery",
+              "id": "fringer-13",
+              "value": "rapid-recovery",
               "tier": 4,
-              "requires": [
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-14",
+                  "fringer-17"
+                ]
+              }
             },
             {
-              "id": "jump-up",
+              "id": "fringer-14",
+              "value": "jump-up",
               "tier": 4,
-              "requires": [
-                12,
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-15"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "fringer-15",
+              "value": "grit",
               "tier": 4,
-              "requires": [
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-11"
+                ]
+              }
             },
             {
-              "id": "knockdown",
+              "id": "fringer-16",
+              "value": "knockdown",
               "tier": 4,
-              "requires": [
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-12"
+                ]
+              }
             },
             {
-              "id": "dedication",
+              "id": "fringer-17",
+              "value": "dedication",
               "tier": 5,
-              "requires": [
-                12,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-13",
+                  "fringer-18"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "fringer-18",
+              "value": "toughened",
               "tier": 5,
-              "requires": [
-                13,
-                16
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-14",
+                  "fringer-17"
+                ]
+              }
             },
             {
-              "id": "dodge",
+              "id": "fringer-19",
+              "value": "dodge",
               "tier": 5,
-              "requires": [
-                19
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-20"
+                ]
+              }
             },
             {
-              "id": "dodge",
+              "id": "fringer-20",
+              "value": "dodge",
               "tier": 5,
-              "requires": [
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "fringer-16"
+                ]
+              }
             }
           ]
         },
@@ -4303,141 +4683,201 @@
           ],
           "talents": [
             {
+              "id": "scout-1",
+              "value": "rapid-recovery",
+              "tier": 1
+            },
+            {
+              "id": "scout-2",
+              "value": "stalker",
+              "tier": 1
+            },
+            {
+              "id": "scout-3",
+              "value": "grit",
+              "tier": 1
+            },
+            {
+              "id": "scout-4",
+              "value": "shortcut",
+              "tier": 1
+            },
+            {
+              "id": "scout-5",
+              "value": "forager",
+              "tier": 2,
+              "requires": {
+                "advancements": [
+                  "scout-1",
+                  "scout-6",
+                  "scout-9"
+                ]
+              }
+            },
+            {
+              "id": "scout-6",
+              "value": "quick-strike",
+              "tier": 2,
+              "requires": {
+                "advancements": [
+                  "scout-2",
+                  "scout-5",
+                  "scout-7",
+                  "scout-10"
+                ]
+              }
+            },
+            {
+              "id": "scout-7",
+              "value": "lets-ride",
+              "tier": 2,
+              "requires": {
+                "advancements": [
+                  "scout-3",
+                  "scout-6",
+                  "scout-8",
+                  "scout-11"
+                ]
+              }
+            },
+            {
+              "id": "scout-8",
+              "value": "disorient",
+              "tier": 2,
+              "requires": {
+                "advancements": [
+                  "scout-4",
+                  "scout-7",
+                  "scout-12"
+                ]
+              }
+            },
+            {
+              "id": "scout-9",
               "id": "rapid-recovery",
-              "tier": 1
-            },
-            {
-              "id": "stalker",
-              "tier": 1
-            },
-            {
-              "id": "grit",
-              "tier": 1
-            },
-            {
-              "id": "shortcut",
-              "tier": 1
-            },
-            {
-              "id": "forager",
-              "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
-            },
-            {
-              "id": "quick-strike",
-              "tier": 2,
-              "requires": [
-                1,
-                4,
-                6
-              ]
-            },
-            {
-              "id": "lets-ride",
-              "tier": 2,
-              "requires": [
-                2,
-                5,
-                7
-              ]
-            },
-            {
-              "id": "disorient",
-              "tier": 2,
-              "requires": [
-                3,
-                6
-              ]
-            },
-            {
-              "id": "rapid-recovery",
               "tier": 3,
-              "requires": [
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-5",
+                  "scout-13"
+                ]
+              }
             },
             {
-              "id": "natural-hunter",
+              "id": "scout-10",
+              "value": "natural-hunter",
               "tier": 3,
-              "requires": [
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-6"
+                ]
+              }
             },
             {
-              "id": "familiar-suns",
+              "id": "scout-11",
+              "value": "familiar-suns",
               "tier": 3,
-              "requires": [
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-7",
+                  "scout-15"
+                ]
+              }
             },
             {
-              "id": "shortcut",
+              "id": "scout-12",
+              "value": "shortcut",
               "tier": 3,
-              "requires": [
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-8"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "scout-13",
+              "value": "grit",
               "tier": 4,
-              "requires": [
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-9",
+                  "scout-17"
+                ]
+              }
             },
             {
-              "id": "heightened-awareness",
+              "id": "scout-14",
+              "value": "heightened-awareness",
               "tier": 4,
-              "requires": [
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-10"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "scout-15",
+              "value": "toughened",
               "tier": 4,
-              "requires": [
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-11",
+                  "scout-19"
+                ]
+              }
             },
             {
-              "id": "quick-strike",
+              "id": "scout-16",
+              "value": "quick-strike",
               "tier": 4,
-              "requires": [
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-12"
+                ]
+              }
             },
             {
-              "id": "utility-belt",
+              "id": "scout-17",
+              "value": "utility-belt",
               "tier": 5,
-              "requires": [
-                12,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-13",
+                  "scout-18"
+                ]
+              }
             },
             {
+              "id": "scout-18",
               "id": "dedication",
               "tier": 5,
-              "requires": [
-                16,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-17",
+                  "scout-19"
+                ]
+              }
             },
             {
+              "id": "scout-19",
               "id": "stalker",
               "tier": 5,
-              "requires": [
-                14,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-18",
+                  "scout-15"
+                ]
+              }
             },
             {
+              "id": "scout-20",
               "id": "disorient",
               "tier": 5,
-              "requires": [
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "scout-16"
+                ]
+              }
             }
           ]
         },
@@ -4451,137 +4891,191 @@
           ],
           "talents": [
             {
-              "id": "know-somebody",
+              "id": "trader-1",
+              "value": "know-somebody",
               "tier": 1
             },
             {
-              "id": "convincing-demeanor",
+              "id": "trader-2",
+              "value": "convincing-demeanor",
               "tier": 1
             },
             {
-              "id": "wheel-and-deal",
+              "id": "trader-3",
+              "value": "wheel-and-deal",
               "tier": 1
             },
             {
-              "id": "smooth-talker",
+              "id": "trader-4",
+              "value": "smooth-talker",
               "tier": 1
             },
             {
-              "id": "wheel-and-deal",
+              "id": "trader-5",
+              "value": "wheel-and-deal",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-1",
+                  "trader-6",
+                  "trader-9"
+                ]
+              }
             },
             {
-              "id": "grit",
+              "id": "trader-6",
+              "value": "grit",
               "tier": 2,
-              "requires": [
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-5",
+                  "trader-7"
+                ]
+              }
             },
             {
-              "id": "spare-clip",
+              "id": "trader-7",
+              "value": "spare-clip",
               "tier": 2,
-              "requires": [
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-6"
+                ]
+              }
             },
             {
-              "id": "toughened",
+              "id": "trader-8",
+              "value": "toughened",
               "tier": 2,
-              "requires": [
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-7"
+                ]
+              }
             },
             {
-              "id": "know-somebody",
+              "id": "trader-9",
+              "value": "know-somebody",
               "tier": 3,
-              "requires": [
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-5"
+                ]
+              }
             },
             {
-              "id": "nobodys-fool",
+              "id": "trader-10",
+              "value": "nobodys-fool",
               "tier": 3,
-              "requires": [
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-9"
+                ]
+              }
             },
             {
-              "id": "smooth-talker",
+              "id": "trader-11",
+              "value": "smooth-talker",
               "tier": 3,
-              "requires": [
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-10"
+                ]
+              }
             },
             {
-              "id": "nobodys-fool",
+              "id": "trader-12",
+              "value": "nobodys-fool",
               "tier": 3,
-              "requires": [
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-11"
+                ]
+              }
             },
             {
-              "id": "wheel-and-deal",
+              "id": "trader-13",
+              "value": "wheel-and-deal",
               "tier": 4,
-              "requires": [
-                8
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-9"
+                ]
+              }
             },
             {
-              "id": "steely-nerved",
+              "id": "trader-14",
+              "value": "steely-nerved",
               "tier": 4,
-              "requires": [
-                12
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-13"
+                ]
+              }
             },
             {
-              "id": "black-market-contacts",
+              "id": "trader-15",
+              "value": "black-market-contacts",
               "tier": 4,
-              "requires": [
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-14"
+                ]
+              }
             },
             {
-              "id": "black-market-contacts",
+              "id": "trader-16",
+              "value": "black-market-contacts",
               "tier": 4,
-              "requires": [
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-16",
+                  "trader-20"
+                ]
+              }
             },
             {
-              "id": "know-somebody",
+              "id": "trader-17",
+              "value": "know-somebody",
               "tier": 5,
-              "requires": [
-                12,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-13"
+                ]
+              }
             },
             {
-              "id": "natural-negotiator",
+              "id": "trader-18",
+              "value": "natural-negotiator",
               "tier": 5,
-              "requires": [
-                16,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-17",
+                  "trader-19"
+                ]
+              }
             },
             {
-              "id": "dedication",
+              "id": "trader-19",
+              "value": "dedication",
               "tier": 5,
-              "requires": [
-                17,
-                19
-              ]
+              "requires": {
+                "advancements": [
+                  "trader-18",
+                  "trader-20"
+                ]
+              }
             },
             {
-              "id": "master-merchant",
+              "id": "trader-20",
+              "value": "master-merchant",
               "tier": 5,
-              "requires": [
-                15,
-                18
-              ]
+              "requires": {
+                "advacements": [
+                  "trader-16",
+                  "trader-19"
+                ]
+              }
             }
           ]
         },
