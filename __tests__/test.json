@@ -1578,7 +1578,7 @@
                 "bind": "$state.selectedAdvancement.talent",
                 "items": {
                   "text": "option.value.name",
-                  "values": "# $state.availableAdvancements.talent.options.map(o => {o.option.value = $model.talent.values.find(t => t.id === o.option.value);return o;})"
+                  "values": "# $state.availableAdvancements.talent.options.map(o => _.cloneDeep(o)).map(o => {o.option.value = $model.talent.values.find(t => t.id === o.option.value);return o;})"
                 }
               },
               {
