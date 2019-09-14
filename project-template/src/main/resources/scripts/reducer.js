@@ -49,6 +49,35 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
     }, state);
 }
 
+function evaluateArrayOfExpressions(expressions, context) {
+    return expressions.reduce((accumulator, nextExpression) => {
+        return interpreter.interpret(nextExpression, {...context, ...{
+                $this: {
+                    accumulator
+                }
+            }})
+    }, [])
+}
+
+function evaluateRequirements(requirements, context) {
+    var localContext = {...context};
+    if(_.isString(requirements)) {
+        return interpreter.interpret(requirements, localContext);
+    } else if (_.isObject(requirements)) {
+        if (requirements.any) {
+            return requirements.any.reduce((anyMeet, expression) => {
+                return anyMeet || evaluateRequirements(expression, localContext);
+            }, false);
+        } else if (requirements.all) {
+            return requirements.all.reduce((anyMeet, expression) => {
+                return anyMeet && evaluateRequirements(expression, localContext);
+            }, requirements.all.length > 0);
+        }
+    } else if (_.isArray(requirements)) {
+        return evaluateArrayOfExpressions(requirements, localContext);
+    }
+}
+
 function setAvailableAdvancements(state) {
     const sharedContext = {
         $state: state,
@@ -59,13 +88,15 @@ function setAvailableAdvancements(state) {
         let concreteOptions;
         if (typeof advancementRule.options === "string") {
             concreteOptions = interpreter.interpret(advancementRule.options, sharedContext);
-        } else {
-            concreteOptions = advancementRule.options;
+        } else if (_.isArray(advancementRule.options)) {
+            concreteOptions = evaluateArrayOfExpressions(advancementRule.options, sharedContext);
+        } else if (advancementRule.options.values) {
+            concreteOptions = advancementRule.options.values;
         }
         concreteOptions = concreteOptions.map(option => {
             const localContext = {...sharedContext, $this: option};
             const cost = interpreter.interpret(advancementRule.cost, localContext);
-            const isAvailable = interpreter.interpret(advancementRule.when, localContext);
+            const isAvailable = evaluateRequirements(advancementRule.when, localContext);
             return {
                 option,
                 cost,

@@ -7013,7 +7013,7 @@
               "value": "uncanny-senses",
               "tier": 1,
               "requires": {
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7021,7 +7021,7 @@
               "value": "insight",
               "tier": 1,
               "requires": {
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7034,7 +7034,7 @@
               "value": "uncanny-reaction",
               "tier": 1,
               "requires": {
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7052,7 +7052,7 @@
               "value": "overwhelm-emotions",
               "tier": 2,
               "requires": {
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7079,7 +7079,7 @@
                   "force-sensitive-5",
                   "force-sensitive-13"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7090,7 +7090,7 @@
                 "advancements": [
                   "force-sensitive-6"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7102,7 +7102,7 @@
                   "force-sensitive-7",
                   "force-sensitive-15"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7114,7 +7114,7 @@
                   "force-sensitive-8",
                   "force-sensitive-16"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7140,7 +7140,7 @@
                   "force-sensitive-15",
                   "force-sensitive-18"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7154,7 +7154,7 @@
                   "force-sensitive-16",
                   "force-sensitive-19"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7183,7 +7183,7 @@
             },
             {
               "id": "force-sensitive-18",
-              "value": "force-rating",
+              "value": "forceRating",
               "tier": 5,
               "requires": {
                 "advancements": [
@@ -7191,7 +7191,7 @@
                   "force-sensitive-17",
                   "force-sensitive-19"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7222,7 +7222,7 @@
               "value": "force-sense-basic-power",
               "tier": 2,
               "requires": {
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7233,7 +7233,7 @@
                 "advancements": [
                   "force-sense-1"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7244,7 +7244,7 @@
                 "advancements": [
                   "force-sense-2"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7255,7 +7255,7 @@
                 "advancements": [
                   "force-sense-3"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7266,7 +7266,7 @@
                 "advancements": [
                   "force-sense-4"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7277,7 +7277,7 @@
                 "advancements": [
                   "force-sense-1"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7288,7 +7288,7 @@
                 "advancements": [
                   "force-sense-7"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7299,7 +7299,7 @@
                 "advancements": [
                   "force-sense-7"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7330,7 +7330,7 @@
                 "advancements": [
                   "force-sense-10"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7341,7 +7341,7 @@
                 "advancements": [
                   "force-sense-11"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7349,7 +7349,7 @@
               "value": "force-influence-basic-power",
               "tier": 2,
               "requires": {
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7360,7 +7360,7 @@
                 "advancements": [
                   "force-influence-1"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7371,7 +7371,7 @@
                 "advancements": [
                   "force-influence-1"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7382,7 +7382,7 @@
                 "advancements": [
                   "force-influence-1"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7394,7 +7394,7 @@
                   "force-influence-2",
                   "force-influence-3"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7425,7 +7425,7 @@
                 "advancements": [
                   "force-influence-5"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7436,7 +7436,7 @@
                 "advancements": [
                   "force-influence-10"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7447,7 +7447,7 @@
                 "advancements": [
                   "force-influence-6"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7458,7 +7458,7 @@
                 "advancements": [
                   "force-influence-7"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7469,7 +7469,7 @@
                 "advancements": [
                   "force-influence-8"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7481,7 +7481,7 @@
                   "force-influence-9",
                   "force-influence-14"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7493,7 +7493,7 @@
                   "force-influence-10",
                   "force-influence-13"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7501,7 +7501,7 @@
               "value": "force-move-basic-power",
               "tier": 2,
               "requires": {
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7512,7 +7512,7 @@
                 "advancements": [
                   "force-move-1"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7523,7 +7523,7 @@
                 "advancements": [
                   "force-move-1"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7534,7 +7534,7 @@
                 "advancements": [
                   "force-move-1"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7545,7 +7545,7 @@
                 "advancements": [
                   "force-move-1"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7556,7 +7556,7 @@
                 "advancements": [
                   "force-move-2"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7567,7 +7567,7 @@
                 "advancements": [
                   "force-move-3"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7579,7 +7579,7 @@
                   "force-move-4",
                   "force-move-5"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7590,7 +7590,7 @@
                 "advancements": [
                   "force-move-6"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7601,7 +7601,7 @@
                 "advancements": [
                   "force-move-1"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7625,7 +7625,7 @@
                   "force-move-8",
                   "force-move-15"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7636,7 +7636,7 @@
                 "advancements": [
                   "force-move-9"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7647,7 +7647,7 @@
                 "advancements": [
                   "force-move-10"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             },
             {
@@ -7659,7 +7659,7 @@
                   "force-move-12",
                   "force-move-11"
                 ],
-                "force-rating": 1
+                "forceRating": 1
               }
             }
           ]
@@ -7829,7 +7829,7 @@
           "name": "Forager"
         },
         {
-          "id": "force-rating",
+          "id": "forceRating",
           "name": "Force Rating"
         },
         {
@@ -8953,7 +8953,27 @@
         "description": "Acquire Talent",
         "uses": "$state.character.availableExperience",
         "options": "# $state.character.specializations.reduce((concatenated, nextSpecialization) => {return concatenated.concat(nextSpecialization.talents)}, [])",
-        "when": "# $this.requires === undefined || _.intersection($this.requires.advancements, $state.character.advancements.filter(a => a.type === 'talent').map(a => a.id)).length > 0",
+        "when": {
+          "any": [
+            "# $this.requires === undefined",
+            {
+              "all": [
+                {
+                  "any" : [
+                    "# $this.requires.advancements === undefined",
+                    "# _.intersection($this.requires.advancements, $state.character.advancements.filter(a => a.type === 'talent').map(a => a.id)).length > 0"
+                  ]
+                },
+                {
+                  "any": [
+                    "# !$this.requires.forceRating",
+                    "# $state.character.forceRating >= $this.requires.forceRating"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         "cost": "# $this.tier * 5",
         "effect": "# $state.character.talents.push($state.selectedAdvancement.talent.option)"
       }
