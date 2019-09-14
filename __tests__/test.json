@@ -7572,6 +7572,7 @@
             },
             {
               "id": "force-move-7",
+              "tier": 2,
               "value": "move-strength",
               "requires": {
                 "advancements": [
@@ -7582,7 +7583,8 @@
             },
             {
               "id": "force-move-8",
-              "value": "move-range",
+              "value": "move-control",
+              "tier": 2,
               "requires": {
                 "advancements": [
                   "force-move-4",
@@ -7594,6 +7596,7 @@
             {
               "id": "force-move-9",
               "value": "move-magnitude",
+              "tier": 2,
               "requires": {
                 "advancements": [
                   "force-move-6"
@@ -7604,6 +7607,7 @@
             {
               "id": "force-move-10",
               "value": "move-strength",
+              "tier": 3,
               "requires": {
                 "advancements": [
                   "force-move-1"
@@ -7614,6 +7618,7 @@
             {
               "id": "force-move-11",
               "value": "move-control",
+              "tier": 1,
               "requires": {
                 "advancements": [
                   "force-move-7",
@@ -7625,6 +7630,7 @@
             {
               "id": "force-move-12",
               "value": "move-range",
+              "tier": 3,
               "requires": {
                 "advancements": [
                   "force-move-8",
@@ -7636,6 +7642,7 @@
             {
               "id": "force-move-13",
               "name": "move-magnitude",
+              "tier": 2,
               "requires": {
                 "advancements": [
                   "force-move-9"
@@ -7646,6 +7653,7 @@
             {
               "id": "force-move-14",
               "name": "move-strength",
+              "tier": 4,
               "requires": {
                 "advancements": [
                   "force-move-10"
@@ -7656,6 +7664,7 @@
             {
               "id": "force-move-15",
               "name": "move-control",
+              "tier": 3,
               "requires": {
                 "advancements": [
                   "force-move-12",
