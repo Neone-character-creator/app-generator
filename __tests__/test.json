@@ -6575,151 +6575,214 @@
           ],
           "talents": [
             {
+              "id": "outlaw-tech-1",
               "value": "tinkerer",
               "tier": 1
             },
             {
+              "id": "outlaw-tech-2",
               "value": "utinni",
               "tier": 1
             },
             {
+              "id": "outlaw-tech-3",
               "value": "speaks-binary",
               "tier": 1
             },
             {
+              "id": "outlaw-tech-4",
               "value": "tinkerer",
               "tier": 1
             },
             {
-              "value": "solvalue-repairs",
+              "id": "outlaw-tech-5",
+              "value": "solid-repairs",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-1",
+                  "outlaw-tech-6",
+                  "outlaw-tech-9"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-6",
               "value": "grit",
               "tier": 2,
-              "requires": [
-                1,
-                4,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-2",
+                  "outlaw-tech-5",
+                  "outlaw-tech-7",
+                  "outlaw-tech-10"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-7",
               "value": "utinni",
               "tier": 2,
-              "requires": [
-                2,
-                5,
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-3",
+                  "outlaw-tech-6",
+                  "outlaw-tech-8",
+                  "outlaw-tech-11"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-8",
               "value": "toughened",
               "tier": 2,
-              "requires": [
-                3,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-4",
+                  "outlaw-tech-7",
+                  "outlaw-tech-12"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-9",
               "value": "utility-belt",
               "tier": 3,
-              "requires": [
-                4,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-5",
+                  "outlaw-tech-10",
+                  "outlaw-tech-13"
+                ]
+              }
             },
             {
-              "value": "svaluee-step",
+              "id": "outlaw-tech-10",
+              "value": "side-step",
               "tier": 3,
-              "requires": [
-                5,
-                8,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-6",
+                  "outlaw-tech-9",
+                  "outlaw-tech-11",
+                  "outlaw-tech-14"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-11",
               "value": "brace",
               "tier": 3,
-              "requires": [
-                6,
-                9,
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-7",
+                  "outlaw-tech-10",
+                  "outlaw-tech-12",
+                  "outlaw-tech-15"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-12",
               "value": "defensive-stance",
               "tier": 3,
-              "requires": [
-                7,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-8",
+                  "outlaw-tech-11",
+                  "outlaw-tech-16"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-13",
               "value": "Jury Rigged",
               "tier": 4,
-              "requires": [
-                8,
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-9",
+                  "outlaw-tech-14",
+                  "outlaw-tech-17"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-14",
               "value": "speaks-binary",
               "tier": 4,
-              "requires": [
-                9,
-                12,
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-10",
+                  "outlaw-tech-13",
+                  "outlaw-tech-15"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-15",
               "value": "Inventor",
               "tier": 4,
-              "requires": [
-                10,
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-11",
+                  "outlaw-tech-14",
+                  "outlaw-tech-19"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-16",
               "value": "Jury Rigged",
               "tier": 4,
-              "requires": [
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-12",
+                  "outlaw-tech-20"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-17",
               "value": "Inventor",
               "tier": 5,
-              "requires": [
-                12,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-13",
+                  "outlaw-tech-18"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-18",
               "value": "dedication",
               "tier": 5,
-              "requires": [
-                16
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-17"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-19",
               "value": "known-schematic",
               "tier": 5,
-              "requires": [
-                14,
-                19
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-15",
+                  "outlaw-tech-20"
+                ]
+              }
             },
             {
+              "id": "outlaw-tech-20",
               "value": "brace",
               "tier": 5,
-              "requires": [
-                15,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "outlaw-tech-16",
+                  "outlaw-tech-19"
+                ]
+              }
             }
           ]
         },
@@ -6733,150 +6796,211 @@
           ],
           "talents": [
             {
+              "id": "slicer-1",
               "value": "codebreaker",
               "tier": 1
             },
             {
+              "id": "slicer-2",
               "value": "grit",
               "tier": 1
             },
             {
+              "id": "slicer-3",
               "value": "technical-aptitude",
               "tier": 1
             },
             {
+              "id": "slicer-4",
               "value": "bypass-security",
               "tier": 1
             },
             {
+              "id": "slicer-5",
               "value": "defensive-slicing",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-1",
+                  "slicer-9"
+                ]
+              }
             },
             {
+              "id": "slicer-6",
               "value": "technical-aptitude",
               "tier": 2,
-              "requires": [
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-7",
+                  "slicer-10"
+                ]
+              }
             },
             {
+              "id": "slicer-7",
               "value": "grit",
               "tier": 2,
-              "requires": [
-                5,
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-6",
+                  "slicer-8",
+                  "slicer-11"
+                ]
+              }
             },
             {
+              "id": "slicer-8",
               "value": "bypass-security",
               "tier": 2,
-              "requires": [
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-7",
+                  "slicer-12"
+                ]
+              }
             },
             {
+              "id": "slicer-9",
               "value": "natural-programmer",
               "tier": 3,
-              "requires": [
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-5",
+                  "slicer-13"
+                ]
+              }
             },
             {
+              "id": "slicer-10",
               "value": "bypass-security",
               "tier": 3,
-              "requires": [
-                5,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-6",
+                  "slicer-11",
+                  "slicer-14"
+                ]
+              }
             },
             {
+              "id": "slicer-11",
               "value": "defensive-slicing",
               "tier": 3,
               "requires": [
-                6,
-                9,
-                11
+                "slicer-7",
+                "slicer-10",
+                "slicer-12",
+                "slicer-15"
               ]
             },
             {
+              "id": "slicer-12",
               "value": "grit",
               "tier": 3,
-              "requires": [
-                7,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-8",
+                  "slicer-11",
+                  "slicer-16"
+                ]
+              }
             },
             {
+              "id": "slicer-13",
               "value": "defensive-slicing",
               "tier": 4,
-              "requires": [
-                8,
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-9",
+                  "slicer-14",
+                  "slicer-17"
+                ]
+              }
             },
             {
+              "id": "slicer-14",
               "value": "defensive-slicing-improved",
               "tier": 4,
-              "requires": [
-                9,
-                12,
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-10",
+                  "slicer-13",
+                  "slicer-15",
+                  "slicer-20"
+                ]
+              }
             },
             {
+              "id": "slicer-15",
               "value": "codebreaker",
               "tier": 4,
-              "requires": [
-                10,
-                13,
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-11",
+                  "slicer-14",
+                  "slicer-16",
+                  "slicer-19"
+                ]
+              }
             },
             {
+              "id": "slicer-16",
               "value": "resolve",
               "tier": 4,
-              "requires": [
-                11,
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-12",
+                  "slicer-15",
+                  "slicer-20"
+                ]
+              }
             },
             {
+              "id": "slicer-17",
               "value": "skilled-slicer",
               "tier": 5,
-              "requires": [
-                12,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-14",
+                  "slicer-18"
+                ]
+              }
             },
             {
+              "id": "slicer-18",
               "value": "master-slicer",
               "tier": 5,
-              "requires": [
-                13,
-                16,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-14",
+                  "slicer-17",
+                  "slicer-19"
+                ]
+              }
             },
             {
+              "id": "slicer-19",
               "value": "mental-fortress",
               "tier": 5,
-              "requires": [
-                14,
-                17,
-                19
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-15",
+                  "slicer-16",
+                  "slicer-20"
+                ]
+              }
             },
             {
+              "id": "slicer-20",
               "value": "dedication",
               "tier": 5,
-              "requires": [
-                15,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "slicer-16",
+                  "slicer-19"
+                ]
+              }
             }
           ]
         },
@@ -6885,324 +7009,660 @@
           "careerSkills": [],
           "talents": [
             {
+              "id": "force-sensitive-1",
               "value": "uncanny-senses",
-              "tier": 1
+              "tier": 1,
+              "requires": {
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-2",
               "value": "insight",
-              "tier": 1
+              "tier": 1,
+              "requires": {
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-3",
               "value": "forager",
               "tier": 1
             },
             {
+              "id": "force-sensitive-4",
               "value": "uncanny-reaction",
-              "tier": 1
+              "tier": 1,
+              "requires": {
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-5",
               "value": "convincing-demeanor",
               "tier": 2,
-              "requires": [
-                0
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-1"
+                ]
+              }
             },
             {
+              "id": "force-sensitive-6",
               "value": "overwhelm-emotions",
-              "tier": 2
+              "tier": 2,
+              "requires": {
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-7",
               "value": "intense-focus",
               "tier": 2
             },
             {
+              "id": "force-sensitive-8",
               "value": "quick-draw",
               "tier": 2,
-              "requires": [
-                3
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-4"
+                ]
+              }
             },
             {
+              "id": "force-sensitive-9",
               "value": "sense-danger",
               "tier": 3,
-              "requires": [
-                4
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-5",
+                  "force-sensitive-13"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-10",
               "value": "sense-emotions",
               "tier": 3,
-              "requires": [
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-6"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-11",
               "value": "balance",
               "tier": 3,
-              "requires": [
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-7",
+                  "force-sensitive-15"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-12",
               "value": "touch-of-fate",
               "tier": 3,
-              "requires": [
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-8",
+                  "force-sensitive-16"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-13",
               "value": "street-smarts",
               "tier": 4,
-              "requires": [
-                8,
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-9",
+                  "force-sensitive-14",
+                  "force-sensitive-17"
+                ]
+              }
             },
             {
+              "id": "force-sensitive-14",
               "value": "uncanny-senses",
               "tier": 4,
-              "requires": [
-                9,
-                12,
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-10",
+                  "force-sensitive-13",
+                  "force-sensitive-15",
+                  "force-sensitive-18"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-15",
               "value": "uncanny-reaction",
               "tier": 4,
-              "requires": [
-                10,
-                13,
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-11",
+                  "force-sensitive-14",
+                  "force-sensitive-16",
+                  "force-sensitive-19"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-16",
               "value": "street-smarts",
               "tier": 4,
-              "requires": [
-                11,
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-12",
+                  "force-sensitive-15",
+                  "force-sensitive-20"
+                ]
+              }
             },
             {
+              "id": "force-sensitive-17",
               "value": "sixth-sense",
               "tier": 5,
-              "requires": [
-                12,
-                17
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-13",
+                  "force-sensitive-16",
+                  "force-sensitive-17"
+                ]
+              }
             },
             {
+              "id": "force-sensitive-18",
               "value": "force-rating",
               "tier": 5,
-              "requires": [
-                13,
-                16,
-                18
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-14",
+                  "force-sensitive-17",
+                  "force-sensitive-19"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sensitive-19",
               "value": "dedication",
               "tier": 5,
-              "requires": [
-                14,
-                17,
-                19
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-15",
+                  "force-sensitive-18",
+                  "force-sensitive-20"
+                ]
+              }
             },
             {
+              "id": "force-sensitive-20",
               "value": "superior-reflexes",
               "tier": 5,
-              "requires": [
-                15,
-                19
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sensitive-16",
+                  "force-sensitive-19"
+                ]
+              }
             },
             {
+              "id": "force-sense-1",
               "value": "sense-basic-power",
-              "tier": 2
+              "tier": 2,
+              "requires": {
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sense-2",
               "value": "control-evade",
               "tier": 2,
-              "requires": [
-                20
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-1"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sense-3",
               "value": "duration",
               "tier": 2,
-              "requires": [
-                21
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-2"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sense-4",
               "value": "strength",
               "tier": 2,
-              "requires": [
-                22
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-3"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sense-5",
               "value": "control-accuracy",
               "tier": 2,
-              "requires": [
-                23
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-4"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sense-6",
               "value": "control-telepathy",
               "tier": 2,
-              "requires": [
-                20
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-1"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sense-7",
               "value": "range",
               "tier": 2,
-              "requires": [
-                25
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-7"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sense-8",
               "value": "range",
               "tier": 2,
-              "requires": [
-                26
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-7"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sense-9",
               "value": "range",
               "tier": 2,
-              "requires": [
-                27
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-8"
+                ]
+              }
             },
             {
+              "id": "force-sense-10",
               "value": "magnitude",
               "tier": 2,
-              "requires": [
-                20
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-6"
+                ]
+              }
             },
             {
+              "id": "force-sense-11",
               "value": "magnitude",
               "tier": 2,
-              "requires": [
-                28
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-10"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sense-12",
               "value": "magnitude",
               "tier": 2,
-              "requires": [
-                29
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-11"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-sense-13",
               "value": "magnitude",
               "tier": 2,
-              "requires": [
-                30
-              ]
+              "requires": {
+                "advancements": [
+                  "force-sense-12"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-influence-1",
               "value": "Influence Basic Power",
-              "tier": 2
+              "tier": 2,
+              "requires": {
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-influence-2",
               "value": "range",
               "tier": 1,
-              "requires": [
-                32
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-1"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-influence-3",
               "value": "magnitude",
               "tier": 1,
-              "requires": [
-                32
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-1"
+                ],
+                "force-rating": 1
+              }
             },
             {
-              "value": "Control (Emotion Control)",
+              "id": "force-influence-4",
+              "value": "control-emotion",
               "tier": 2,
-              "requires": [
-                32
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-1"
+                ],
+                "force-rating": 1
+              }
             },
             {
-              "value": "Control (Charisma)",
+              "id": "force-influence-5",
+              "value": "control-charisma",
               "tier": 3,
-              "requires": [
-                33,
-                34
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-2",
+                  "force-influence-3"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-influence-6",
               "value": "strength",
               "tier": 2,
-              "requires": [
-                35
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-4"
+                ]
+              }
             },
             {
+              "id": "force-influence-7",
               "value": "range",
               "tier": 2,
-              "requires": [
-                33
-              ]
+              "requires": {
+                "advancement": [
+                  "force-influence-5"
+                ]
+              }
             },
             {
+              "id": "force-influence-8",
               "value": "magnitude",
               "tier": 1,
-              "requires": [
-                36
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-5"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-influence-9",
               "value": "duration",
               "tier": 1,
-              "requires": [
-                41
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-10"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-influence-10",
               "value": "duration",
               "tier": 1,
-              "requires": [
-                37
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-6"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-influence-11",
               "value": "range",
               "tier": 2,
-              "requires": [
-                38
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-7"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-influence-12",
               "value": "magnitude",
               "tier": 2,
-              "requires": [
-                39
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-8"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-influence-13",
               "value": "duration",
               "tier": 1,
-              "requires": [
-                40,
-                45
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-9",
+                  "force-influence-14"
+                ],
+                "force-rating": 1
+              }
             },
             {
+              "id": "force-influence-14",
               "value": "duration",
               "tier": 1,
-              "requires": [
-                40,
-                44
-              ]
+              "requires": {
+                "advancements": [
+                  "force-influence-10",
+                  "force-influence-13"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-1",
+              "value": "move-basic",
+              "tier": 2,
+              "requires": {
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-2",
+              "value": "move-magnitude",
+              "tier": 1,
+              "requires": {
+                "advancements": [
+                  "force-move-1"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-3",
+              "value": "move-strength",
+              "tier": 2,
+              "requires": {
+                "advancements": [
+                  "force-move-1"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-4",
+              "value": "move-range",
+              "tier": 1,
+              "requires": {
+                "advancements": [
+                  "force-move-1"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-5",
+              "value": "move-range",
+              "tier": 1,
+              "requires": {
+                "advancements": [
+                  "force-move-1"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-6",
+              "value": "move-magnitude",
+              "tier": 1,
+              "requires": {
+                "advancements": [
+                  "force-move-2"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-7",
+              "value": "move-strength",
+              "requires": {
+                "advancements": [
+                  "force-move-3"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-8",
+              "value": "move-range",
+              "requires": {
+                "advancements": [
+                  "force-move-4",
+                  "force-move-5"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-9",
+              "value": "move-magnitude",
+              "requires": {
+                "advancements": [
+                  "force-move-6"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-10",
+              "value": "move-strength",
+              "requires": {
+                "advancements": [
+                  "force-move-1"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-11",
+              "value": "move-control",
+              "requires": {
+                "advancements": [
+                  "force-move-7",
+                  "force-move-15"
+                ],
+                "force=rating": 1
+              }
+            },
+            {
+              "id": "force-move-12",
+              "value": "move-range",
+              "requires": {
+                "advancements": [
+                  "force-move-8",
+                  "force-move-15"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-13",
+              "name": "move-magnitude",
+              "requires": {
+                "advancements": [
+                  "force-move-9"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-14",
+              "name": "move-strength",
+              "requires": {
+                "advancements": [
+                  "force-move-10"
+                ],
+                "force-rating": 1
+              }
+            },
+            {
+              "id": "force-move-15",
+              "name": "move-control",
+              "requires": {
+                "advancements": [
+                  "force-move-12",
+                  "force-move-11"
+                ],
+                "force-rating": 1
+              }
             }
           ]
         }
