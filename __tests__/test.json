@@ -4445,8 +4445,8 @@
               "tier": 5,
               "requires": {
                 "advancements": [
-                  "advancements-17",
-                  "advancements-19"
+                  "scholar-17",
+                  "scholar-19"
                 ]
               }
             },
@@ -6332,8 +6332,8 @@
               "tier": 5,
               "requires": {
                 "advancements": [
-                  14,
-                  17
+                  "thief-15",
+                  "thief-18"
                 ]
               }
             },
@@ -6341,9 +6341,11 @@
               "id": "thief-20",
               "value": "dedication",
               "tier": 5,
-              "requires": {"advancements": [
-                "advancements-16"
-              ]}
+              "requires": {
+                "advancements": [
+                  "thief-16"
+                ]
+              }
             }
           ]
         },
@@ -6357,148 +6359,209 @@
           ],
           "talents": [
             {
+              "id": "mechanic-1",
               "value": "gearhead",
               "tier": 1
             },
             {
+              "id": "mechanic-2",
               "value": "toughened",
               "tier": 1
             },
             {
+              "id": "mechanic-3",
               "value": "fine-tuning",
               "tier": 1
             },
             {
-              "value": "solvalue-repairs",
+              "id": "mechanic-4",
+              "value": "solid-repairs",
               "tier": 1
             },
             {
+              "id": "mechanic-5",
               "value": "redundant-systems",
               "tier": 2,
-              "requires": [
-                0,
-                5
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-1",
+                  "mechanic-6",
+                  "mechanic-9"
+                ]
+              }
             },
             {
-              "value": "solvalue-repairs",
+              "id": "mechanic-6",
+              "value": "solid-repairs",
               "tier": 2,
-              "requires": [
-                1,
-                4,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-2",
+                  "mechanic-5",
+                  "mechanic-7",
+                  "mechanic-10"
+                ]
+              }
             },
             {
+              "id": "mechanic-7",
               "value": "gearhead",
               "tier": 2,
-              "requires": [
-                2,
-                5,
-                7
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-3",
+                  "mechanic-6",
+                  "mechanic-8",
+                  "mechanic-11"
+                ]
+              }
             },
             {
+              "id": "mechanic-8",
               "value": "grit",
               "tier": 2,
-              "requires": [
-                3,
-                6
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-4",
+                  "mechanic-7",
+                  "mechanic-12"
+                ]
+              }
             },
             {
-              "value": "solvalue-repairs",
+              "id": "mechanic-9",
+              "value": "solid-repairs",
               "tier": 3,
-              "requires": [
-                4,
-                9
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-5",
+                  "mechanic-10",
+                  "mechanic-13"
+                ]
+              }
             },
             {
+              "id": "mechanic-10",
               "value": "enduring",
               "tier": 3,
-              "requires": [
-                5,
-                8,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-6",
+                  "mechanic-9",
+                  "mechanic-11",
+                  "mechanic-14"
+                ]
+              }
             },
             {
+              "id": "mechanic-11",
               "value": "bad-motivator",
               "tier": 3,
-              "requires": [
-                6,
-                9,
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  6,
+                  9,
+                  11
+                ]
+              }
             },
             {
+              "id": "mechanic-12",
               "value": "toughened",
               "tier": 3,
-              "requires": [
-                7,
-                10
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-8",
+                  "mechanic-11",
+                  "mechanic-16"
+                ]
+              }
             },
             {
+              "id": "mechanic-13",
               "value": "contraption",
               "tier": 4,
-              "requires": [
-                8,
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-9",
+                  "mechanic-14"
+                ]
+              }
             },
             {
-              "value": "solvalue-repairs",
+              "id": "mechanic-14",
+              "value": "solid-repairs",
               "tier": 4,
-              "requires": [
-                9,
-                12,
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-10",
+                  "mechanic-13",
+                  "mechanic-15",
+                  "mechanic-18"
+                ]
+              }
             },
             {
+              "id": "mechanic-15",
               "value": "fine-tuning",
               "tier": 4,
-              "requires": [
-                10,
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-11",
+                  "mechanic-14",
+                  "mechanic-19"
+                ]
+              }
             },
             {
+              "id": "mechanic-16",
               "value": "hard-headed",
               "tier": 4,
-              "requires": [
-                11
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-12"
+                ]
+              }
             },
             {
+              "id": "mechanic-17",
               "value": "natural-tinkerer",
               "tier": 5,
-              "requires": [
-                12
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-13"
+                ]
+              }
             },
             {
+              "id": "mechanic-18",
               "value": "hold-together",
               "tier": 5,
-              "requires": [
-                13
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-14"
+                ]
+              }
             },
             {
+              "id": "mechanic-19",
               "value": "dedication",
               "tier": 5,
-              "requires": [
-                14
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-15"
+                ]
+              }
             },
             {
+              "id": "mechanic-20",
               "value": "hard-headed-improved",
               "tier": 5,
-              "requires": [
-                15
-              ]
+              "requires": {
+                "advancements": [
+                  "mechanic-16"
+                ]
+              }
             }
           ]
         },
