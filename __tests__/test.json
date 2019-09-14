@@ -1446,7 +1446,7 @@
                 "bind": "$state.character.specializations[0]",
                 "items": {
                   "text": "name",
-                  "values": "# ($state.character.career.specializations || []).map(sn => $model.specialization.values.find(s => s.name === sn))"
+                  "values": "# ($state.character.career.specializations || []).map(sn => $model.specialization.values.find(s => s.name === sn)).concat([$model.specialization.values.find(s => s.name === 'Force Sensitive Exile')])"
                 }
               },
               {
