@@ -1577,8 +1577,8 @@
                 "type": "select",
                 "bind": "$state.selectedAdvancement.talent",
                 "items": {
-                  "text": "name",
-                  "values": "# $state.availableAdvancements.talent.options.map(o => $model.talent.values.find(t => t.id === o.option.value))"
+                  "text": "option.value.name",
+                  "values": "# $state.availableAdvancements.talent.options.map(o => {o.option.value = $model.talent.values.find(t => t.id === o.option.value);return o;})"
                 }
               },
               {
@@ -8895,7 +8895,7 @@
         "description": "Acquire Talent",
         "uses": "$state.character.availableExperience",
         "options": "# $state.character.specializations.reduce((concatenated, nextSpecialization) => {return concatenated.concat(nextSpecialization.talents)}, [])",
-        "when": "# $this.requires === undefined || _.intersection($this.requires.map(x => x.id), $state.character.advancements.filter(a => a.type === 'talent').map(a => a.id)).length",
+        "when": "# $this.requires === undefined || _.intersection($this.requires.advancements, $state.character.advancements.filter(a => a.type === 'talent').map(a => a.id)).length > 0",
         "cost": "# $this.tier * 5",
         "effect": "# $state.character.talents.push($state.selectedAdvancement.talent.option)"
       }
