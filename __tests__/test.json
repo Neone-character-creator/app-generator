@@ -1586,7 +1586,7 @@
                 "type": "button",
                 "text": "# 'Buy'",
                 "disabledWhen": "# _.get($state, 'selectedAdvancement.talent.isAvailable') !== true",
-                "action": "# {type:'ADVANCEMENT', advancementType:'talent', advancement: _.get($state, 'selectedAdvancement.talent.option.name')}"
+                "action": "# {type:'ADVANCEMENT', advancementType:'talent', advancement: _.get($state, 'selectedAdvancement.talent.option.value')}"
               }
             ]
           },

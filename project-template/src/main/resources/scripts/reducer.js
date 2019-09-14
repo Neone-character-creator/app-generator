@@ -174,13 +174,10 @@ export default function (previousState, action) {
                 cost: previousState.selectedAdvancement[action.advancementType].cost
             };
             const advancementRule = rules.advancement[action.advancementType];
-            const isAvailable = interpreter.interpret(advancementRule.when, {
+            const isAvailable = evaluateRequirements(advancementRule.when, {
                 $state: previousState,
                 $this: previousState.selectedAdvancement[action.advancementType].option
-            }) === true && interpreter.interpret(advancementRule.cost, {
-                $state: previousState,
-                $this: previousState.selectedAdvancement[action.advancementType].option
-            }) <= previousState.character.availableExperience;
+            });
             if (isAvailable) {
                 previousState.character.advancements.push(addedAdvancement);
             } else {
