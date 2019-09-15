@@ -24,6 +24,8 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
             return interpreter.interpret(nextExpression, {
                 $state: state, $models: models,
                 $this: {
+                    definition: modelDefinition,
+                    path: statePath,
                     accumulator,
                     ancestors: statePath.filter((x, i) => i < statePath.length - 1).map((element, index) => {
                         const joined = statePath.filter((x, i) => {
@@ -159,6 +161,7 @@ export default function (previousState, action) {
                 throw new Error(`value at path ${action.path} is not array!`);
             }
             array.splice(action.remove);
+            _.set(previousState, action.path, [...array]);
         }
         if (action.type === "ADD") {
             const array = _.get(previousState, action.path);
@@ -166,6 +169,7 @@ export default function (previousState, action) {
                 throw new Error(`value at path ${action.path} is not array!`);
             }
             array.push(action.value);
+            _.set(previousState, action.path, [...array]);
         }
         if (action.type === "ADVANCEMENT") {
             const addedAdvancement = {
