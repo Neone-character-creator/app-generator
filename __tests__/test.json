@@ -1459,11 +1459,11 @@
               {
                 "name": "specializationStartingSkillChoices",
                 "type": "select",
-                "bind": "$state.character.specializationStartingSkills",
+                "bind": "$state.character.careerStartingSkills",
                 "items": {
                   "maxSelections": "# $state.character.species && $state.character.species.startingCareerSkillChoices",
                   "text": "name",
-                  "values": "# $state.specializations[0].careerSkills"
+                  "values": "# _.get($state, 'character.career.careerSkills', [])"
                 }
               },
               {
@@ -1639,7 +1639,7 @@
         "defense": "defense",
         "career": "career",
         "specializations": "[specialization]",
-        "specializationStartingSkills": "[string]",
+        "careerStartingSkills": "[string]",
         "speciesCareerSkills": "[string]",
         "talents": "[talent]",
         "forceRating": "number",
@@ -1943,7 +1943,12 @@
           ]
         },
         "characteristic": "string",
-        "rank": "number"
+        "rank": {
+          "type": "number",
+          "derivedFrom": [
+            "# $state.character.careerStartingSkills.map(s => s.toLowerCase()).includes($this.path[2]) ? 1 : 0"
+          ]
+        }
       }
     },
     "woundsOrStrain": {
@@ -3131,7 +3136,7 @@
         "description": "string"
       }
     },
-    "career": {
+    "career":   {
       "properties": {
         "name": "string",
         "careerSkills": "[string]",
