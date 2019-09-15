@@ -1356,6 +1356,7 @@
                   "child": {
                     "name": "obligationItem",
                     "type": "container",
+                    "direction": "horizontal",
                     "children": [
                       {
                         "name": "obligationType",
