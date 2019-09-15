@@ -977,6 +977,7 @@
               {
                 "name": "weaponList",
                 "type": "list",
+                "keyProperty": "name",
                 "bind": "$state.character.weapons",
                 "items": {
                   "child": {
@@ -1106,6 +1107,7 @@
               {
                 "name": "armorList",
                 "type": "list",
+                "keyProperty": "name",
                 "bind": "$state.character.armor",
                 "items": {
                   "child": {
@@ -1458,6 +1460,7 @@
               {
                 "name": "startingSpecializationAvailableTalents",
                 "type": "list",
+                "keyProperty": "id",
                 "bind": "$state.character.specializations[0].talents",
                 "items": {
                   "child": {
@@ -3522,7 +3525,7 @@
             },
             {
               "id": "gadgeteer-9",
-              "idname": "toughened",
+              "name": "toughened",
               "tier": 3,
               "requires": {
                 "advancements": [
@@ -8322,7 +8325,7 @@
         },
         {
           "id": "toughened",
-          "name": "toughened"
+          "name": "Toughened"
         },
         {
           "id": "tricky-target",
@@ -8954,20 +8957,25 @@
         "uses": "$state.character.availableExperience",
         "options": "# $state.character.specializations.reduce((concatenated, nextSpecialization) => {return concatenated.concat(nextSpecialization.talents)}, [])",
         "when": {
-          "any": [
-            "# $this.requires === undefined",
+          "all": [
+            "# !$state.character.advancements.find(a => a.id === $this.id)",
             {
-              "all": [
+              "any": [
+                "# $this.requires === undefined",
                 {
-                  "any" : [
-                    "# $this.requires.advancements === undefined",
-                    "# _.intersection($this.requires.advancements, $state.character.advancements.filter(a => a.type === 'talent').map(a => a.id)).length > 0"
-                  ]
-                },
-                {
-                  "any": [
-                    "# !$this.requires.forceRating",
-                    "# $state.character.forceRating >= $this.requires.forceRating"
+                  "all": [
+                    {
+                      "any": [
+                        "# $this.requires.advancements === undefined",
+                        "# _.intersection($this.requires.advancements, $state.character.advancements.filter(a => a.type === 'talent').map(a => a.id)).length > 0"
+                      ]
+                    },
+                    {
+                      "any": [
+                        "# !$this.requires.forceRating",
+                        "# $state.character.forceRating >= $this.requires.forceRating"
+                      ]
+                    }
                   ]
                 }
               ]
@@ -8983,20 +8991,20 @@
     {
       "after": "ADVANCEMENT",
       "effects": [
-        "$state.selectedAdvancement = undefined"
+        "# $state.selectedAdvancement = undefined"
       ]
     },
     {
       "after": "REMOVE-ADVANCEMENT",
       "effects": [
-        "$state.selectedAdvancement = undefined"
+        "# $state.selectedAdvancement = undefined"
       ]
     },
     {
       "after": "ADD",
       "when": "# $this.action.path === 'character.weapons'",
       "effects": [
-        "$state.selectedWeapon = undefined"
+        "# $state.selectedWeapon = undefined"
       ]
     }
   ]
