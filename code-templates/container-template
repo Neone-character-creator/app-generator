@@ -1,6 +1,10 @@
+const defaultStyle = {
+    border: ${border}
+};
+
 class ${componentName} extends React.Component {
     render(){
-        return (<Grid id="${componentIdentifier}" container spacing={8} justify="space-around" direction={"${direction}" == "vertical" ? "column" : "row"}>
+        return (<Grid id="${componentIdentifier}" style={defaultStyle} container spacing={8} justify="space-around" direction={"${direction}" == "vertical" ? "column" : "row"}>
                     ${children}
                 </Grid>);
     }
