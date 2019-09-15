@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Neone-character-creator/app-generator#readme",
   "dependencies": {
     "@types/lodash": "^4.14.123",
+    "cypress": "^3.4.1",
     "fs-extra": "^7.0.1",
     "jest-sonar-reporter": "^2.0.0",
     "lodash": "^4.17.15",
