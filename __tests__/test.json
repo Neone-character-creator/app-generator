@@ -1642,7 +1642,13 @@
         "careerStartingSkills": "[string]",
         "speciesCareerSkills": "[string]",
         "talents": "[talent]",
-        "forceRating": "number",
+        "forceRating": {
+          "type": "number",
+          "derivedFrom": [
+            "# $state.character.advancements.filter(a => a.type === 'talent').map(a => a.option.value === 'force-rating').length",
+            "# _.get($state, 'character.species.name') === 'Droid' ? 0 : $this.accumulator"
+          ]
+        },
         "soak": {
           "type": "number",
           "derivedFrom": [
@@ -3136,7 +3142,7 @@
         "description": "string"
       }
     },
-    "career":   {
+    "career": {
       "properties": {
         "name": "string",
         "careerSkills": "[string]",
