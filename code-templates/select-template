@@ -1,3 +1,29 @@
+class ErrorBoundary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError(error){
+        return {
+            error: "There was an error in ${componentName}"
+        };
+    }
+
+    componentDidCatch(error, errorInfo){
+        console.error(error, errorInfo);
+    }
+
+    render() {
+        if (this.state.hasError) {
+          // You can render any custom fallback UI
+          return <h1>{this.props.error}</h1>;
+        }
+
+        return this.props.children;
+      }
+}
+
 class ${componentName} extends React.Component {
     constructor(props){
         super(props);
@@ -12,7 +38,9 @@ class ${componentName} extends React.Component {
         this.update = this.update.bind(this);
     }
     render(){
-        return (<FormControl fullWidth={true}>
+        return (
+        <ErrorBoundary>
+        <FormControl fullWidth={true}>
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
                     <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.update}
                         renderValue={(x)=>_.get(this.props.value, itemTextPath)} multiple={this.props.maxSelections > 1}
@@ -29,7 +57,8 @@ class ${componentName} extends React.Component {
                                 }
                             </MenuItem>))}
                     />
-                </FormControl>)
+                </FormControl>
+                </ErrorBoundary>)
     }
 
     shouldComponentUpdate(nextProps){

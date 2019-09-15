@@ -1,7 +1,35 @@
+class ErrorBoundary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError(error){
+        return {
+            error: "There was an error in ${componentName}"
+        };
+    }
+
+    componentDidCatch(error, errorInfo){
+        console.error(error, errorInfo);
+    }
+
+    render() {
+        if (this.state.hasError) {
+          // You can render any custom fallback UI
+          return <h1>{this.props.error}</h1>;
+        }
+
+        return this.props.children;
+      }
+}
+
 class ${componentName} extends React.Component {
     render() {
         return (
+        <ErrorBoundary>
             <Textfield id="${componentIdentifier}" label="${label}" type="number" value={this.props.value} onChange={this.props.update} />
+        </ErrorBoundary>
         );
     }
 
