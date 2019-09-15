@@ -1,6 +1,7 @@
 const argv = require('yargs').argv;
 const fs = require('fs-extra');
 const _ = require("lodash");
+const paths = require("path");
 const PluginGenerator = require("./lib/pluginGenerator");
 const ModelClassGenerator = require("./lib/classGenerator");
 const ModelClassWriter = require("./lib/model/writer");
@@ -13,6 +14,8 @@ if (!argv.configFile) {
 
 function work(configFileLocation) {
     try {
+        configFileLocation = paths.resolve(configFileLocation);
+        const parent = paths.resolve(configFileLocation, "..");
         const rawConfiguraiton = require("./lib/schema/configuration")(JSON.parse(fs.readFileSync(configFileLocation, 'utf-8')));
         rawConfiguraiton.views.name = "app";
         rawConfiguraiton.views.type = "app";
@@ -33,6 +36,7 @@ function work(configFileLocation) {
             return;
         }
         appConfiguration.toolVersion = package.version;
+        appConfiguration.rootDir = parent;
         var pluginGenerator = new PluginGenerator(appConfiguration, tmpDir);
         return pluginGenerator.generate().catch(e => console.error(e));
     } catch (e) {
