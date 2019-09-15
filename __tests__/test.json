@@ -1306,6 +1306,80 @@
                 }
               }
             ]
+          },
+          {
+            "name": "obligations",
+            "type": "container",
+            "direction": "vertical",
+            "children": [
+              {
+                "name": "obligations",
+                "type": "label",
+                "text": "Obligations"
+              },
+              {
+                "name": "newObligation",
+                "type": "container",
+                "direction": "horizontal",
+                "children": [
+                  {
+                    "name": "addObligation",
+                    "type": "button",
+                    "text": "Add",
+                    "action": "# {type:'ADD', path:'character.obligations', value: _.get($state, 'newObligation')}"
+                  },
+                  {
+                    "name": "newObligationType",
+                    "type": "textfield",
+                    "label": "Obligation Type",
+                    "bind": "$state.newObligation.type"
+                  },
+                  {
+                    "name": "newObligationDescription",
+                    "type": "textfield",
+                    "label": "Obligation Description",
+                    "bind": "$state.newObligation.description"
+                  },
+                  {
+                    "name": "newObligationRating",
+                    "type": "number",
+                    "label": "Obligation Rating",
+                    "bind": "$state.newObligation.rating"
+                  }
+                ]
+              },
+              {
+                "name": "obligations",
+                "type": "list",
+                "bind": "$state.character.obligations",
+                "items": {
+                  "child": {
+                    "name": "obligationItem",
+                    "type": "container",
+                    "children": [
+                      {
+                        "name": "obligationType",
+                        "type": "textfield",
+                        "label": "Obligation Type",
+                        "value": "# $this.type"
+                      },
+                      {
+                        "name": "obligationDescription",
+                        "type": "textfield",
+                        "label": "Obligation Description",
+                        "value": "# $this.description"
+                      },
+                      {
+                        "name": "obligationRating",
+                        "type": "number",
+                        "label": "Obligation Rating",
+                        "value": "# $this.rating"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
           }
         ]
       },
@@ -1693,7 +1767,8 @@
           "default": [
             ""
           ]
-        }
+        },
+        "obligations" : "[obligation]"
       }
     },
     "skills": {
@@ -8946,6 +9021,13 @@
           "rarity": 1
         }
       ]
+    },
+    "obligation": {
+      "properties": {
+        "type": "string",
+        "description": "string",
+        "rating": "number"
+      }
     }
   },
   "rules": {

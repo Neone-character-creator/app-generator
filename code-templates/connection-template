@@ -6,6 +6,7 @@ const action = ${action};
 const disabledWhenExpression = ${disabledWhen};
 const selectionCountExpression = ${selectionCount};
 const connected = connect((state, ownProps) => {
+    try {
     const context = {
         $state: state,
         $model: models,
@@ -13,16 +14,11 @@ const connected = connect((state, ownProps) => {
         $index: ownProps.index
     };
     const value = (()=>{
-        try {
             if (isBoundComponent){
                 return _.get(context, boundProperty);
             } else {
                 return interpreter.interpret(boundProperty, context);
             }
-        } catch(e){
-            console.error(e);
-            return undefined;
-        }
     })();
     const maxSelections = interpreter.interpret(selectionCountExpression, context);
     const options = (()=>{
@@ -38,6 +34,11 @@ const connected = connect((state, ownProps) => {
         boundProperty,
         value: _.isNil(value) ? "" : value
     };
+    } catch(e){
+        return {
+            hasError: e
+        }
+    }
 }, (dispatch) => {
     return {dispatch};
 })(Component);
