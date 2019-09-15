@@ -153,7 +153,7 @@ export default function (previousState, action) {
                     return action.path.substring("$state.".length);
                 }
             })();
-            _.set(previousState, path, action.value);
+            _.set(previousState, path, _.cloneDeep(action.value));
         }
         if (action.type === "REMOVE") {
             const array = _.get(previousState, action.path);
@@ -168,7 +168,7 @@ export default function (previousState, action) {
             if (!_.isArray(array)) {
                 throw new Error(`value at path ${action.path} is not array!`);
             }
-            array.push(action.value);
+            array.push(_.cloneDeep(action.value));
             _.set(previousState, action.path, [...array]);
         }
         if (action.type === "ADVANCEMENT") {
