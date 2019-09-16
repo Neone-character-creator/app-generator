@@ -161,29 +161,29 @@ export default function (previousState, action) {
     if (previousState) {
         runBeforeHooks(previousState, action);
         previousState = {...previousState};
+        const actionPath = (() => {
+            if (action.path.startsWith("$state")) {
+                return action.path.substring("$state.".length);
+            }
+        })();
         if (action.type === "SET") {
-            const path = (() => {
-                if (action.path.startsWith("$state")) {
-                    return action.path.substring("$state.".length);
-                }
-            })();
-            _.set(previousState, path, _.cloneDeep(action.value));
+            _.set(previousState, actionPath, _.cloneDeep(action.value));
         }
         if (action.type === "REMOVE") {
-            const array = _.get(previousState, action.path);
+            const array = _.get(previousState, actionPath);
             if (!_.isArray(array)) {
-                throw new Error(`value at path ${action.path} is not array!`);
+                throw new Error(`value at path ${actionPath} is not array!`);
             }
             array.splice(action.remove);
-            _.set(previousState, action.path, [...array]);
+            _.set(previousState, actionPath, [...array]);
         }
         if (action.type === "ADD") {
-            const array = _.get(previousState, action.path);
+            const array = _.get(previousState, actionPath);
             if (!_.isArray(array)) {
-                throw new Error(`value at path ${action.path} is not array!`);
+                throw new Error(`value at path ${actionPath} is not array!`);
             }
             array.push(_.cloneDeep(action.value));
-            _.set(previousState, action.path, [...array]);
+            _.set(previousState, actionPath, [...array]);
         }
         if (action.type === "ADVANCEMENT") {
             const addedAdvancement = {
