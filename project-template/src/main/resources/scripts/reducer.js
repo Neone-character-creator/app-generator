@@ -6,11 +6,21 @@ import hooks from "!./hooks.json";
 
 const baseValues = {};
 
+function calculateDiff(newValue, previousBase) {
+    if (_.isArray(previousBase)) {
+        return _.difference(newValue || [], previousBase)
+    } else if (_.isNumber(previousBase)) {
+        return newValue - previousBase;
+    } else {
+        throw new Error(`A difference between ${newValue} and ${previousBase} doesn't make sense.`);
+    }
+}
+
 function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, statePath) {
     const joinedStatePath = statePath[0] + statePath.slice(1).map(element => `[${element}]`).join("");
     if (modelDefinition.baseValue) {
-        const originalBaseValue = _.get(baseValues, joinedStatePath) || 0;
-        const differenceFromOriginalBase = (_.get(state, joinedStatePath) - originalBaseValue) || 0;
+        const originalBaseValue = _.get(baseValues, joinedStatePath) || (modelDefinition.type === "number" ? 0 : []);
+        const differenceFromOriginalBase = calculateDiff(_.get(state, joinedStatePath), originalBaseValue) || 0;
         const baseValue = modelDefinition.baseValue.reduce((accumulator, nextExpression) => {
             return interpreter.interpret(nextExpression, {$state: state, $models: models, $this: accumulator}, true)
                 || accumulator;
@@ -18,7 +28,11 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
         if (originalBaseValue !== baseValue) {
             _.set(baseValues, joinedStatePath, baseValue);
         }
-        _.set(state, joinedStatePath, baseValue + differenceFromOriginalBase);
+        if(_.isArray(baseValue)){
+            _.set(state, joinedStatePath, baseValue.concat(differenceFromOriginalBase));
+        } else {
+            _.set(state, joinedStatePath, baseValue + differenceFromOriginalBase);
+        }
     } else if (modelDefinition.derivedFrom) {
         let value = modelDefinition.derivedFrom.reduce((accumulator, nextExpression) => {
             return interpreter.interpret(nextExpression, {
