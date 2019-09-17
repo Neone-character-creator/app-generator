@@ -19,4 +19,12 @@ function ${name}Model(){
             }
         }
     });
+    if(this.id === undefined) {
+        this.id = ${name}Model.id();
+    }
+}
+
+${name}Model._id = 1;
+${name}Model.id = function(){
+    return ${name}Model._id++;
 }
