@@ -13,11 +13,12 @@ const connected = connect((state, ownProps) => {
         $this: ownProps.value,
         $index: ownProps.index
     };
+    const interpretedBoundProperty = interpreter.interpret(boundProperty, context);
     const value = (()=>{
             if (isBoundComponent){
-                return _.get(context, boundProperty);
+                return _.get(context, interpretedBoundProperty);
             } else {
-                return interpreter.interpret(boundProperty, context);
+                return interpreter.interpret(interpretedBoundProperty, context);
             }
     })();
     const maxSelections = interpreter.interpret(selectionCountExpression, context);
@@ -31,7 +32,7 @@ const connected = connect((state, ownProps) => {
         disabled,
         options,
         maxSelections,
-        boundProperty,
+        boundProperty: interpretedBoundProperty,
         value: _.isNil(value) ? "" : value
     };
     } catch(e){

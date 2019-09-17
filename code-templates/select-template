@@ -31,7 +31,7 @@ class ${componentName} extends React.Component {
         this.update = function(event){
             var value = event.target.value;
             if(!this.props.maxSelections || (!_.isArray(value) && this.props.maxSelections === 1) || value.length <= this.props.maxSelections) {
-                this.props.dispatch({ type: "SET", path: boundProperty, value});
+                this.props.dispatch({ type: "SET", path: this.props.boundProperty, value});
             }
         }
 
