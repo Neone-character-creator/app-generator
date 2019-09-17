@@ -35,7 +35,7 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
         }
     } else if (modelDefinition.derivedFrom) {
         let value = modelDefinition.derivedFrom.reduce((accumulator, nextExpression) => {
-            return interpreter.interpret(nextExpression, {
+            const localContext = {
                 $state: state, $models: models,
                 $this: {
                     definition: modelDefinition,
@@ -48,7 +48,8 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
                         return _.get(state, joined);
                     }).reverse()
                 }
-            })
+            };
+            return interpreter.interpret(nextExpression, localContext);
         }, null);
         _.set(state, joinedStatePath, value);
     }
