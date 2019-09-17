@@ -28,7 +28,7 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
         if (originalBaseValue !== baseValue) {
             _.set(baseValues, joinedStatePath, baseValue);
         }
-        if(_.isArray(baseValue)){
+        if (_.isArray(baseValue)) {
             _.set(state, joinedStatePath, baseValue.concat(differenceFromOriginalBase));
         } else {
             _.set(state, joinedStatePath, baseValue + differenceFromOriginalBase);
@@ -67,17 +67,19 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
 
 function evaluateArrayOfExpressions(expressions, context) {
     return expressions.reduce((accumulator, nextExpression) => {
-        return interpreter.interpret(nextExpression, {...context, ...{
+        return interpreter.interpret(nextExpression, {
+            ...context, ...{
                 $this: {
                     accumulator
                 }
-            }})
+            }
+        })
     }, [])
 }
 
 function evaluateRequirements(requirements, context) {
     var localContext = {...context};
-    if(_.isString(requirements)) {
+    if (_.isString(requirements)) {
         return interpreter.interpret(requirements, localContext);
     } else if (_.isObject(requirements)) {
         if (requirements.any) {
@@ -157,6 +159,38 @@ function runHooks(when, state, action) {
 const runBeforeHooks = runHooks.bind(null, "before");
 const runAfterHooks = runHooks.bind(null, "after");
 
+const arrayTypeMatcher = /\[(.*)\]/;
+
+function transformToModelInstance(path, value) {
+    if (value.id) {
+        return value;
+    } else {
+        const pathElements = path.split(".");
+        const modelDef = pathElements.reduce((loc, nextPathElement)=>{
+            if(loc === undefined) {
+                return undefined;
+            }
+            if(loc.prototype) {
+                return loc.prototype.definition[nextPathElement]
+            } else {
+                return loc[nextPathElement];
+            }
+        }, models);
+        if (modelDef) {
+            const modelType = modelDef.type.match(arrayTypeMatcher) ? {
+                    type: arrayTypeMatcher.exec(modelDef.type)[1],
+                    isArray: true
+                } :
+                {
+                    type: modelDef.type
+                };
+            return {...new models[modelType.type](), ...value};
+        } else {
+            return value;
+        }
+    }
+}
+
 export default function (previousState, action) {
     if (previousState) {
         runBeforeHooks(previousState, action);
@@ -167,7 +201,7 @@ export default function (previousState, action) {
             }
         })();
         if (action.type === "SET") {
-            _.set(previousState, actionPath, _.cloneDeep(action.value));
+            _.set(previousState, actionPath, transformToModelInstance(actionPath, action.value));
         }
         if (action.type === "REMOVE") {
             const array = _.get(previousState, actionPath);
@@ -182,7 +216,7 @@ export default function (previousState, action) {
             if (!_.isArray(array)) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
-            array.push(_.cloneDeep(action.value));
+            array.push(transformToModelInstance(actionPath, action.value));
             _.set(previousState, actionPath, [...array]);
         }
         if (action.type === "ADVANCEMENT") {
@@ -233,4 +267,5 @@ export default function (previousState, action) {
     runAfterHooks(previousState, action);
 
     return previousState;
-};
+}
+;
