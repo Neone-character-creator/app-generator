@@ -174,7 +174,7 @@ export default function (previousState, action) {
             if (!_.isArray(array)) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
-            array.splice(action.remove);
+            array.splice(action.remove, 1);
             _.set(previousState, actionPath, [...array]);
         }
         if (action.type === "ADD") {
