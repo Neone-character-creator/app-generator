@@ -33,12 +33,16 @@ class ${componentName} extends React.Component {
         this.click = this.click.bind(this);
     }
     render() {
+        if(!this.props.hidden){
         return (
             <ErrorBoundary>
         <Button id="${componentIdentifier}" variant="contained" onClick={this.click} disabled={this.props.disabled} >
                     {this.props.value}
                 </Button>
                 </ErrorBoundary>);
+        } else {
+            return null
+        }
     }
 
     shouldComponentUpdate(nextProps, nextState){

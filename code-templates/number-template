@@ -44,11 +44,15 @@ class ${componentName} extends React.Component {
             this.update = this.update.bind(this);
         }
     render() {
+        if(!this.props.hidden){
         return (
         <ErrorBoundary>
             <Textfield id="${componentIdentifier}" label="${label}" type="number" value={this.props.value} onChange={this.update} />
         </ErrorBoundary>
         );
+        } else {
+            return null
+        }
     }
 
     shouldComponentUpdate(nextProps){

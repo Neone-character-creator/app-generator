@@ -45,11 +45,15 @@ class Component extends React.Component {
     }
 
     render(){
+        if(!this.props.hidden){
         return (
         <ErrorBoundary>
         <Textfield disabled={this.props.disabled} id="${componentIdentifier}" fullWidth={true} label="${label}" value={this.props.value} onChange={this.update} />
         </ErrorBoundary>
         );
+        } else {
+            return null
+        }
     }
 
     shouldComponentUpdate(nextProps){

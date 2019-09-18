@@ -4,9 +4,9 @@ const readOnly = ${readOnly}; // If this component only calculates its value, or
 const valueExpression = "${values}";
 const action = ${action};
 const disabledWhenExpression = ${disabledWhen};
+const hiddenWhenExpression = ${hiddenWhen};
 const selectionCountExpression = ${selectionCount};
 const connected = connect((state, ownProps) => {
-    try {
     const context = {
         $state: state,
         $model: models,
@@ -26,20 +26,17 @@ const connected = connect((state, ownProps) => {
         return interpreter.interpret(valueExpression, context);
         })() || [];
     const disabled = interpreter.interpret(disabledWhenExpression, context);
+    const hidden = interpreter.interpret(hiddenWhenExpression, context);
     const clickAction = interpreter.interpret(action, context);
     return {
         clickAction,
         disabled,
+        hidden,
         options,
         maxSelections,
         boundProperty: interpretedBoundProperty,
         value: _.isNil(value) ? "" : value
     };
-    } catch(e){
-        return {
-            hasError: e
-        }
-    }
 }, (dispatch) => {
     return {dispatch};
 })(Component);

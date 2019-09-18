@@ -2,5 +2,5 @@ import React from "react";
 import * as _ from "lodash";
 import models from "../models";
 import interpreter from "../interpreter";
+import { connect } from "react-redux"
 ${imports}
-${connectionImports}

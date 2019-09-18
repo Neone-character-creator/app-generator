@@ -36,10 +36,13 @@ class ${componentName} extends React.Component {
         this.update = this.update.bind(this);
     }
     render() {
-        return (<ErrorBoundary>
-        <Checkbox id="${componentIdentifier}" checked={this.props.value} onChange={this.update} />
-        </ErrorBoundary>
-        )
+        if(!this.props.hidden){
+            return (<ErrorBoundary>
+                <Checkbox id="${componentIdentifier}" checked={this.props.value} onChange={this.update} />
+            </ErrorBoundary>)
+        } else {
+            return null
+        }
     }
 
     shouldComponentUpdate(nextProps, nextState) {

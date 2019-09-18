@@ -38,6 +38,7 @@ class ${componentName} extends React.Component {
         this.update = this.update.bind(this);
     }
     render(){
+        if(!this.props.hidden){
         return (
         <ErrorBoundary>
         <FormControl fullWidth={true}>
@@ -59,6 +60,9 @@ class ${componentName} extends React.Component {
                     />
                 </FormControl>
                 </ErrorBoundary>)
+        } else {
+            return null
+        }
     }
 
     shouldComponentUpdate(nextProps){

@@ -30,6 +30,7 @@ const Child = (props) => {
 
 class ${componentName} extends React.Component {
     render() {
+        if(!this.props.hidden){
         return (
         <ErrorBoundary>
             <List>
@@ -42,6 +43,9 @@ class ${componentName} extends React.Component {
             </List>
         </ErrorBoundary>
         );
+        } else {
+            return null
+        }
     }
 
     shouldComponentUpdate(nextProps){

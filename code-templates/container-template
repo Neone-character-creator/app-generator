@@ -30,15 +30,19 @@ const defaultStyle = {
 
 class ${componentName} extends React.Component {
     render(){
-        return (<ErrorBoundary>
-        <Grid id="${componentIdentifier}" style={defaultStyle} container spacing={8} justify="space-around" direction={"${direction}" == "vertical" ? "column" : "row"}>
+        if(!this.props.hidden){
+            return (<ErrorBoundary>
+                <Grid id="${componentIdentifier}" style={defaultStyle} container spacing={8} justify="space-around" direction={"${direction}" == "vertical" ? "column" : "row"}>
                     ${children}
                 </Grid>
-                </ErrorBoundary>);
+            </ErrorBoundary>);
+        } else {
+            return null
+        }
     }
 
-    shouldComponentUpdate(){
-        return false;
+    shouldComponentUpdate(nextProps){
+        return this.props.hidden !== nextProps.hidden;
     }
 }
 

@@ -1,6 +1,10 @@
 class ${componentName} extends React.Component {
     render(){
-        return <p>{this.props.value}</p>
+        if(!this.props.hidden){
+            return <p>{this.props.value}</p>
+        } else {
+            return null
+        }
     }
 
     shouldComponentUpdate(nextProps){
