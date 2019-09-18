@@ -185,6 +185,9 @@ function transformToModelInstance(path, value) {
                 {
                     type: modelDef.type
                 };
+            if(modelType.type === "string" || modelType.type === "number" || _.isArray(value)) {
+                return value;
+            }
             return {...new models[modelType.type](), ...value};
         } else {
             return value;
@@ -197,7 +200,7 @@ export default function (previousState, action) {
         runBeforeHooks(previousState, action);
         previousState = {...previousState};
         const actionPath = (() => {
-            if (action.path.startsWith("$state")) {
+            if (action && action.path && action.path.startsWith("$state")) {
                 return action.path.substring("$state.".length);
             }
         })();
