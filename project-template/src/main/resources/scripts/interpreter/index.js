@@ -10,3 +10,4 @@ const interpreter = {
         }
     }
 };
+export default interpreter;
