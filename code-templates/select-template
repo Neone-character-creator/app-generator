@@ -24,6 +24,16 @@ class ErrorBoundary extends React.Component {
       }
 }
 
+function translateValueForRender(value){
+    if (_.isArray(value)) {
+        return value.map(translateValueForRender).join(", ");
+    } else if (_.isObject(value)){
+        return _.get(value, itemTextPath);
+    } else {
+        return value;
+    }
+}
+
 class ${componentName} extends React.Component {
     constructor(props){
         super(props);
@@ -44,7 +54,7 @@ class ${componentName} extends React.Component {
         <FormControl fullWidth={true}>
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
                     <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.update}
-                        renderValue={(x)=>_.isNumber(this.props.value) || _.isString(this.props.value) ? this.props.value : _.get(this.props.value, itemTextPath)} multiple={this.props.maxSelections > 1}
+                        renderValue={translateValueForRender} multiple={this.props.maxSelections > 1}
                         children={this.props.options.map((item, index) => (
                             <MenuItem value={item}>
                                 {
