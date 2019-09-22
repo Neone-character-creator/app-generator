@@ -42,7 +42,9 @@ class ${componentName} extends React.Component {
     }
 
     shouldComponentUpdate(nextProps){
-        return this.props.hidden !== nextProps.hidden;
+        return this.props.hidden !== nextProps.hidden ||
+            this.props.index !== nextProps.index ||
+            this.props.value !== nextProps.value;
     }
 }
 
