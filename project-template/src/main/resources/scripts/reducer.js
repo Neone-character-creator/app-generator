@@ -212,16 +212,18 @@ export default function (previousState, action) {
             if (!_.isArray(array)) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
-            array.splice(action.remove, 1);
-            _.set(previousState, actionPath, [...array]);
+            const updatedArray = [...array];
+            updatedArray.splice(action.remove, 1);
+            _.set(previousState, actionPath, [...updatedArray ]);
         }
         if (action.type === "ADD") {
             const array = _.get(previousState, actionPath);
             if (!_.isArray(array)) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
-            array.push(transformToModelInstance(actionPath, action.value));
-            _.set(previousState, actionPath, [...array]);
+            const updatedArray = [...array];
+            updatedArray.push(transformToModelInstance(actionPath, action.value));
+            _.set(previousState, actionPath, [...updatedArray]);
         }
         if (action.type === "ADVANCEMENT") {
             const addedAdvancement = {
