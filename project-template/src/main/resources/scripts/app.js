@@ -22,7 +22,7 @@ if (process.env.HAS_PDF === true) {
         return store.getState();
     };
 }
-if (process.env.NODE_ENV === "dev") {
+if (process.env.NODE_ENV === "perf") {
     whyDidYouUpdate(React);
 }
 
