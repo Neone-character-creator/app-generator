@@ -68,20 +68,21 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
 
 function evaluateArrayOfExpressions(expressions, context) {
     return expressions.reduce((accumulator, nextExpression) => {
-        return interpreter.interpret(nextExpression, {
-            ...context, ...{
-                $this: {
-                    accumulator
-                }
-            }
-        })
+        const localContext = {...context};
+        _.set(localContext, '$this.accumulator', accumulator);
+        return interpreter.interpret(nextExpression, localContext);
     }, [])
 }
 
 function evaluateRequirements(requirements, context) {
+    if(requirements === undefined) {
+        return true;
+    }
     var localContext = {...context};
     if (_.isString(requirements)) {
         return interpreter.interpret(requirements, localContext);
+    } else if (_.isArray(requirements)) {
+        return evaluateArrayOfExpressions(requirements, localContext);
     } else if (_.isObject(requirements)) {
         if (requirements.any) {
             return requirements.any.reduce((anyMeet, expression) => {
@@ -92,8 +93,6 @@ function evaluateRequirements(requirements, context) {
                 return anyMeet && evaluateRequirements(expression, localContext);
             }, requirements.all.length > 0);
         }
-    } else if (_.isArray(requirements)) {
-        return evaluateArrayOfExpressions(requirements, localContext);
     }
 }
 
@@ -119,6 +118,8 @@ function setAvailableAdvancements(state) {
             return {
                 option,
                 cost,
+                meetsRequirements: isAvailable,
+                meetsCost: cost <= _.get(localContext, advancementRule.uses),
                 isAvailable: isAvailable && cost <= _.get(localContext, advancementRule.uses)
             }
         });
