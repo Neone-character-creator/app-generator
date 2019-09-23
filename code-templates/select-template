@@ -24,7 +24,7 @@ class ErrorBoundary extends React.Component {
       }
 }
 
-function translateValueForRender(value){
+function translateValueForRender(value, context){
     if (_.isArray(value)) {
         return value.map(translateValueForRender).join(", ");
     } else if (_.isObject(value)){
@@ -59,8 +59,11 @@ class ${componentName} extends React.Component {
                             <MenuItem value={item}>
                                 {
                                     [_.get(item, itemTextPath, item)].map(prop => {
-                                        if (typeof prop === "function") {
-                                            return prop.bind(prop)();
+                                        if(valueDisplayExpression) {
+                                            const localContext = {... this.props.context, ...{
+                                                $this: prop
+                                            }};
+                                            return interpreter.interpret(valueDisplayExpression, localContext);
                                         }
                                         return prop;
                                     })[0]
@@ -82,5 +85,5 @@ class ${componentName} extends React.Component {
 }
 
 const itemTextPath = ${itemText};
-
+const valueDisplayExpression = ${displayExpression};
 const Component = ${componentName};
