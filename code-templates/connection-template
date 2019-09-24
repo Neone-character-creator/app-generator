@@ -8,7 +8,7 @@ const hiddenWhenExpression = ${hiddenWhen};
 const selectionCountExpression = ${selectionCount};
 const connected = connect((state, ownProps) => {
     const context = {
-        $state: state,
+        $state: calculatedStateProjection(state),
         $model: models,
         $this: ownProps.value,
         $index: ownProps.index

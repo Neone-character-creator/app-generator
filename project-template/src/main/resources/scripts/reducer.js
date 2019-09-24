@@ -198,13 +198,13 @@ function transformToModelInstance(path, value) {
 
 export default function (previousState, action) {
     if (previousState) {
-        runBeforeHooks(previousState, action);
         previousState = {...previousState};
         const actionPath = (() => {
             if (action && action.path && action.path.startsWith("$state")) {
                 return action.path.substring("$state.".length);
             }
         })();
+        runBeforeHooks(previousState, action);
         if (action.type === "SET") {
             _.set(previousState, actionPath, transformToModelInstance(actionPath, action.value));
         }
@@ -264,15 +264,17 @@ export default function (previousState, action) {
         if (action.type === "OVERRIDE") {
             previousState.character = {...new models.character(), ...action.state};
         }
+        runAfterHooks(previousState, action);
     } else {
         previousState = {character: new models.character()};
     }
 
-    setCalculatedProperties(models.character.prototype.definition, null, previousState, ["character"]);
-    applyAdvancements(previousState);
-    setAvailableAdvancements(previousState);
-    runAfterHooks(previousState, action);
-
     return previousState;
+};
+
+export function calculatedStateProjection(state) {
+    setCalculatedProperties(models.character.prototype.definition, null, state, ["character"]);
+    applyAdvancements(state);
+    setAvailableAdvancements(state);
+    return state;
 }
-;
