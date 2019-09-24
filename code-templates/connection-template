@@ -8,7 +8,7 @@ const hiddenWhenExpression = ${hiddenWhen};
 const selectionCountExpression = ${selectionCount};
 const connected = connect((state, ownProps) => {
     const context = {
-        $state: calculatedStateProjection(state),
+        $state: calculateStateProjection(state),
         $model: models,
         $this: ownProps.value,
         $index: ownProps.index
@@ -52,6 +52,10 @@ function determineValues(expression, state, value){
         case "character":
             return _.get(state, expression, []);
     }
+}
+
+function renderOption(value) {
+    return value.choices + " from " + value.options.join(", ");
 }
 
 export default connected;

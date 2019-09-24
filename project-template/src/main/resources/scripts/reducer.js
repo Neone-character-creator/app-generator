@@ -3,6 +3,7 @@ import models from "./models";
 import interpreter from "./interpreter";
 import rules from "!./rules.json";
 import hooks from "!./hooks.json";
+import { createSelector } from "reselect";
 
 const baseValues = {};
 
@@ -112,8 +113,20 @@ function setAvailableAdvancements(state) {
             concreteOptions = advancementRule.options.values;
         }
         concreteOptions = concreteOptions.map(option => {
+            if(_.isArray(option)) {
+                option = [...option];
+            } else if (_.isObject(option)) {
+                option = {...option};
+            }
             const localContext = {...sharedContext, $this: option};
             const cost = interpreter.interpret(advancementRule.cost, localContext);
+            if(advancementRule.optionTransformer) {
+                if (_.isArray(advancementRule.optionTransformer)) {
+                    evaluateArrayOfExpressions(advancementRule.optionTransformer, localContext);
+                } else {
+                    interpreter.interpret(advancementRule.optionTransformer, localContext)
+                }
+            }
             const isAvailable = evaluateRequirements(advancementRule.when, localContext);
             return {
                 option,
@@ -272,9 +285,11 @@ export default function (previousState, action) {
     return previousState;
 };
 
-export function calculatedStateProjection(state) {
+function calculatedStateProjection(state) {
     setCalculatedProperties(models.character.prototype.definition, null, state, ["character"]);
     applyAdvancements(state);
     setAvailableAdvancements(state);
     return state;
 }
+
+export const calculateStateProjection = createSelector(state => state, calculatedStateProjection);
