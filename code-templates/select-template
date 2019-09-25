@@ -6,7 +6,8 @@ class ErrorBoundary extends React.Component {
 
     static getDerivedStateFromError(error){
         return {
-            error: "There was an error in ${componentName}"
+            error: "There was an error in ${componentName}",
+            hasError: true
         };
     }
 
@@ -17,7 +18,7 @@ class ErrorBoundary extends React.Component {
     render() {
         if (this.state.hasError) {
           // You can render any custom fallback UI
-          return <h1>{this.props.error}</h1>;
+          return <h1>{this.state.error}</h1>;
         }
 
         return this.props.children;
@@ -28,7 +29,11 @@ function translateValueForRender(value, context){
     if (_.isArray(value)) {
         return value.map(translateValueForRender).join(", ");
     } else if (_.isObject(value)){
-        return _.get(value, itemTextPath);
+        if (value.options && value.choices) {
+            return renderOption(value);
+        } else {
+            return _.get(value, itemTextPath);
+        }
     } else {
         return value;
     }
@@ -54,7 +59,10 @@ class ${componentName} extends React.Component {
         <FormControl fullWidth={true}>
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
                     <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.update}
-                        renderValue={translateValueForRender} multiple={this.props.maxSelections > 1}
+                        renderValue={value => {
+                            const translatedValue = itemTextPath ? _.get(value, itemTextPath) : value;
+                            return translateValueForRender(translatedValue);
+                        }} multiple={this.props.maxSelections > 1}
                         children={this.props.options.map((item, index) => (
                             <MenuItem value={item}>
                                 {
@@ -63,9 +71,9 @@ class ${componentName} extends React.Component {
                                             const localContext = {... this.props.context, ...{
                                                 $this: prop
                                             }};
-                                            return interpreter.interpret(valueDisplayExpression, localContext);
+                                            return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext));
                                         }
-                                        return prop;
+                                        return translateValueForRender(prop);
                                     })[0]
 
                                 }
