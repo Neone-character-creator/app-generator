@@ -3,7 +3,7 @@ import models from "./models";
 import interpreter from "./interpreter";
 import rules from "!./rules.json";
 import hooks from "!./hooks.json";
-import { createSelector } from "reselect";
+import {createSelector} from "reselect";
 
 const baseValues = {};
 
@@ -76,7 +76,7 @@ function evaluateArrayOfExpressions(expressions, context) {
 }
 
 function evaluateRequirements(requirements, context) {
-    if(requirements === undefined) {
+    if (requirements === undefined) {
         return true;
     }
     var localContext = {...context};
@@ -113,14 +113,14 @@ function setAvailableAdvancements(state) {
             concreteOptions = advancementRule.options.values;
         }
         concreteOptions = concreteOptions.map(option => {
-            if(_.isArray(option)) {
+            if (_.isArray(option)) {
                 option = [...option];
             } else if (_.isObject(option)) {
                 option = {...option};
             }
             const localContext = {...sharedContext, $this: option};
             const cost = interpreter.interpret(advancementRule.cost, localContext);
-            if(advancementRule.optionTransformer) {
+            if (advancementRule.optionTransformer) {
                 if (_.isArray(advancementRule.optionTransformer)) {
                     evaluateArrayOfExpressions(advancementRule.optionTransformer, localContext);
                 } else {
@@ -145,13 +145,18 @@ function setAvailableAdvancements(state) {
 }
 
 function applyAdvancements(state) {
-    (state.character.advancements || []).forEach(advancement => {
-        interpreter.interpret(rules.advancement[advancement.type].effect, {
-            $state: state,
-            $this: advancement.advancement,
-            $rules: rules,
-            $model: models
-        });
+    _.flatMap(_.get(state, 'character.advancements', []).map(a => a.effects)).forEach(advancementEffect => {
+        const target = advancementEffect.target;
+        if (advancementEffect.add) {
+            const initialValue = _.get({$state: state}, target);
+            const toAdd = advancementEffect.add;
+            _.set({$state: state}, target, initialValue + toAdd);
+        } else if (advancementEffect.push) {
+            const array = [..._.get({$state: state}, target)];
+            const toPush = advancementEffect.push;
+            array.push(toPush);
+            _.set({$state: state}, target, array);
+        }
     });
 };
 
@@ -181,11 +186,11 @@ function transformToModelInstance(path, value) {
         return value;
     } else {
         const pathElements = path.split(".");
-        const modelDef = pathElements.reduce((loc, nextPathElement)=>{
-            if(loc === undefined) {
+        const modelDef = pathElements.reduce((loc, nextPathElement) => {
+            if (loc === undefined) {
                 return undefined;
             }
-            if(loc.prototype) {
+            if (loc.prototype) {
                 return loc.prototype.definition[nextPathElement]
             } else {
                 return loc[nextPathElement];
@@ -199,7 +204,7 @@ function transformToModelInstance(path, value) {
                 {
                     type: modelDef.type
                 };
-            if(modelType.type === "string" || modelType.type === "number" || _.isArray(value)) {
+            if (modelType.type === "string" || modelType.type === "number" || _.isArray(value)) {
                 return value;
             }
             return {...new models[modelType.type](), ...value};
@@ -228,7 +233,7 @@ export default function (previousState, action) {
             }
             const updatedArray = [...array];
             updatedArray.splice(action.remove, 1);
-            _.set(previousState, actionPath, [...updatedArray ]);
+            _.set(previousState, actionPath, [...updatedArray]);
         }
         if (action.type === "ADD") {
             const array = _.get(previousState, actionPath);
@@ -242,7 +247,7 @@ export default function (previousState, action) {
         if (action.type === "ADVANCEMENT") {
             const addedAdvancement = {
                 type: action.advancementType,
-                advancement: action.advancement,
+                value: action.advancement,
                 cost: previousState.selectedAdvancement[action.advancementType].cost
             };
             const advancementRule = rules.advancement[action.advancementType];
@@ -251,7 +256,7 @@ export default function (previousState, action) {
                 $this: previousState.selectedAdvancement[action.advancementType].option
             });
             if (isAvailable) {
-                previousState.character.advancements.push(addedAdvancement);
+                previousState.character.advancements.push(populateAdvancement(advancementRule, addedAdvancement, {$state: previousState}));
             } else {
                 alert("Advancement not added, prerequisites not met.")
                 console.warn("Attempted to add an advancement when it shouldn't be allowed.")
@@ -293,3 +298,14 @@ function calculatedStateProjection(state) {
 }
 
 export const calculateStateProjection = createSelector(state => state, calculatedStateProjection);
+
+function populateAdvancement(advancementRule, advancementAction, context) {
+    const advancement = {...advancementAction};
+    advancement.effects = advancementRule.effects.map(effect => {
+        effect.target = interpreter.interpret(effect.target, context);
+        effect.add = interpreter.interpret(effect.add, context);
+        effect.push = interpreter.interpret(effect.push, context);
+        return effect;
+    });
+    return advancement;
+}
