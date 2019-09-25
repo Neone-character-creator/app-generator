@@ -145,19 +145,7 @@ function setAvailableAdvancements(state) {
 }
 
 function applyAdvancements(state) {
-    _.flatMap(_.get(state, 'character.advancements', []).map(a => a.effects)).forEach(advancementEffect => {
-        const target = advancementEffect.target;
-        if (advancementEffect.add) {
-            const initialValue = _.get({$state: state}, target);
-            const toAdd = advancementEffect.add;
-            _.set({$state: state}, target, initialValue + toAdd);
-        } else if (advancementEffect.push) {
-            const array = [..._.get({$state: state}, target)];
-            const toPush = advancementEffect.push;
-            array.push(toPush);
-            _.set({$state: state}, target, array);
-        }
-    });
+    _.flatMap(_.get(state, 'character.advancements', []).map(a => a.effects)).forEach(applyEffect.bind(null, state));
 };
 
 function runHooks(when, state, action) {
@@ -207,7 +195,8 @@ function transformToModelInstance(path, value) {
             if (modelType.type === "string" || modelType.type === "number" || _.isArray(value)) {
                 return value;
             }
-            return {...new models[modelType.type](), ...value};
+            const lookupValue = models[modelType.type].values.find(v => v.id === value);
+            return lookupValue ? lookupValue : {...new models[modelType.type](), ...value};
         } else {
             return value;
         }
@@ -222,9 +211,13 @@ export default function (previousState, action) {
                 return action.path.substring("$state.".length);
             }
         })();
+        const transformedValue = transformToModelInstance(actionPath, action.value);
         runBeforeHooks(previousState, action);
         if (action.type === "SET") {
-            _.set(previousState, actionPath, transformToModelInstance(actionPath, action.value));
+            if (transformedValue.effects) {
+                previousState.effects.push(transformedValue);
+            }
+            _.set(previousState, actionPath, transformedValue);
         }
         if (action.type === "REMOVE") {
             const array = _.get(previousState, actionPath);
@@ -232,7 +225,8 @@ export default function (previousState, action) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
             const updatedArray = [...array];
-            updatedArray.splice(action.remove, 1);
+            const removed = updatedArray.splice(action.remove, 1);
+            _.pull(previousState.effects, removed);
             _.set(previousState, actionPath, [...updatedArray]);
         }
         if (action.type === "ADD") {
@@ -241,7 +235,10 @@ export default function (previousState, action) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
             const updatedArray = [...array];
-            updatedArray.push(transformToModelInstance(actionPath, action.value));
+            updatedArray.push(transformedValue);
+            if (transformedValue.effects) {
+                previousState.effects.push(transformedValue);
+            }
             _.set(previousState, actionPath, [...updatedArray]);
         }
         if (action.type === "ADVANCEMENT") {
@@ -258,7 +255,7 @@ export default function (previousState, action) {
             if (isAvailable) {
                 previousState.character.advancements.push(populateAdvancement(advancementRule, addedAdvancement, {$state: previousState}));
             } else {
-                alert("Advancement not added, prerequisites not met.")
+                alert("Advancement not added, prerequisites not met.");
                 console.warn("Attempted to add an advancement when it shouldn't be allowed.")
             }
         }
@@ -284,7 +281,10 @@ export default function (previousState, action) {
         }
         runAfterHooks(previousState, action);
     } else {
-        previousState = {character: new models.character()};
+        previousState = {
+            character: new models.character(),
+            effects: []
+        };
     }
 
     return previousState;
@@ -292,6 +292,7 @@ export default function (previousState, action) {
 
 function calculatedStateProjection(state) {
     setCalculatedProperties(models.character.prototype.definition, null, state, ["character"]);
+    applyEffects(state);
     applyAdvancements(state);
     setAvailableAdvancements(state);
     return state;
@@ -308,4 +309,26 @@ function populateAdvancement(advancementRule, advancementAction, context) {
         return effect;
     });
     return advancement;
+}
+
+function applyEffects(state){
+    _.flatMap(state.effects, se => se.effects).forEach(applyEffect.bind(null, state));
+}
+
+function applyEffect(state, effect){
+    var context = {$state: state};
+    const willBeApplied = effect.if === undefined || interpreter.interpret(effect.if, context);
+    if(willBeApplied) {
+        const target = effect.target;
+        if (effect.add) {
+            const initialValue = _.get({$state: state}, target);
+            const toAdd = effect.add;
+            _.set({$state: state}, target, initialValue + toAdd);
+        } else if (effect.push) {
+            const array = [..._.get({$state: state}, target)];
+            const toPush = effect.push;
+            array.push(toPush);
+            _.set({$state: state}, target, array);
+        }
+    }
 }
