@@ -60,8 +60,23 @@ class ${componentName} extends React.Component {
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
                     <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.update}
                         renderValue={value => {
-                            const translatedValue = itemTextPath ? _.get(value, itemTextPath) : value;
-                            return translateValueForRender(translatedValue);
+                            const extractedValue = itemTextPath ? _.get(value, itemTextPath) : value;
+                            if (valueDisplayExpression) {
+                                if (_.isArray(extractedValue)) {
+                                    return translateValueForRender(extractedValue.map(ev => {
+                                        const localContext = {... this.props.context, ...{
+                                            $this: ev
+                                        }};
+                                        return interpreter.interpret(valueDisplayExpression, localContext);
+                                    }));
+                                }
+                                const localContext = {... this.props.context, ...{
+                                    $this: extractedValue
+                                }};
+                                return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext));
+                            } else {
+                                return translateValueForRender(extractedValue);
+                            }
                         }} multiple={this.props.maxSelections > 1}
                         children={this.props.options.map((item, index) => (
                             <MenuItem value={item}>
