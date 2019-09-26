@@ -170,6 +170,9 @@ const runAfterHooks = runHooks.bind(null, "after");
 const arrayTypeMatcher = /\[(.*)\]/;
 
 function transformToModelInstance(path, value) {
+    if(!value) {
+        return;
+    }
     if (value.id) {
         return value;
     } else {
@@ -302,6 +305,9 @@ export const calculateStateProjection = createSelector(state => state, calculate
 
 function populateAdvancement(advancementRule, advancementAction, context) {
     const advancement = {...advancementAction};
+    context = {...context, ...{
+        $this: advancement.value
+    }};
     advancement.effects = advancementRule.effects.map(effect => {
         effect.target = interpreter.interpret(effect.target, context);
         effect.add = interpreter.interpret(effect.add, context);
