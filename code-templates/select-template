@@ -78,8 +78,9 @@ class ${componentName} extends React.Component {
                                 return translateValueForRender(extractedValue);
                             }
                         }} multiple={this.props.maxSelections > 1}
-                        children={this.props.options.map((item, index) => (
-                            <MenuItem value={item}>
+                        children={this.props.options.map((item, index) => {
+                            const itemDisabled = interpreter.interpret(listItemDisabledExpression, {...this.props.context, ...{$this: item}}) || false;
+                            return (<MenuItem value={item} disabled={itemDisabled} >
                                 {
                                     [_.get(item, itemTextPath, item)].map(prop => {
                                         if(valueDisplayExpression) {
@@ -92,7 +93,8 @@ class ${componentName} extends React.Component {
                                     })[0]
 
                                 }
-                            </MenuItem>))}
+                            </MenuItem>)
+                            })}
                     />
                 </FormControl>
                 </ErrorBoundary>)
@@ -110,3 +112,4 @@ class ${componentName} extends React.Component {
 const itemTextPath = ${itemText};
 const valueDisplayExpression = ${displayExpression};
 const Component = ${componentName};
+const listItemDisabledExpression = ${itemDisabledWhen};
