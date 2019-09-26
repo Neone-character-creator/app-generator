@@ -256,7 +256,8 @@ export default function (previousState, action) {
                 $this: previousState.selectedAdvancement[action.advancementType].option
             });
             if (isAvailable) {
-                previousState.character.advancements.push(populateAdvancement(advancementRule, addedAdvancement, {$state: previousState}));
+                const updatedArray = [...previousState.character.advancements, populateAdvancement(advancementRule, addedAdvancement, {$state: previousState})];
+                previousState.character.advancements = updatedArray;
             } else {
                 alert("Advancement not added, prerequisites not met.");
                 console.warn("Attempted to add an advancement when it shouldn't be allowed.")
