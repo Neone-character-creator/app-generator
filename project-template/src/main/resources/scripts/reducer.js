@@ -170,7 +170,7 @@ const runAfterHooks = runHooks.bind(null, "after");
 const arrayTypeMatcher = /\[(.*)\]/;
 
 function transformToModelInstance(path, value) {
-    if(!value) {
+    if(value === undefined) {
         return;
     }
     if (value.id) {
