@@ -119,7 +119,7 @@ function setAvailableAdvancements(state) {
                 option = {...option};
             }
             const localContext = {...sharedContext, $this: option};
-            const cost = interpreter.interpret(advancementRule.cost, localContext);
+            const cost = interpreter.interpret(advancementRule.cost, localContext) || 0;
             if (advancementRule.optionTransformer) {
                 if (_.isArray(advancementRule.optionTransformer)) {
                     evaluateArrayOfExpressions(advancementRule.optionTransformer, localContext);
@@ -247,7 +247,7 @@ export default function (previousState, action) {
         if (action.type === "ADVANCEMENT") {
             const addedAdvancement = {
                 type: action.advancementType,
-                value: action.advancement,
+                advancement: action.advancement,
                 cost: previousState.selectedAdvancement[action.advancementType].cost
             };
             const advancementRule = rules.advancement[action.advancementType];
@@ -306,6 +306,7 @@ export const calculateStateProjection = createSelector(state => state, calculate
 
 function populateAdvancement(advancementRule, advancementAction, context) {
     const advancement = {...advancementAction};
+    advancement.id = advancementAction.id;
     context = {...context, ...{
         $this: advancement.value
     }};
