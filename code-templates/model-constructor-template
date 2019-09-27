@@ -22,6 +22,7 @@ function ${name}Model(){
     if(this.id === undefined) {
         this.id = ${name}Model.id();
     }
+    this.effects = this.__proto__.effects;
 }
 
 ${name}Model._id = 1;

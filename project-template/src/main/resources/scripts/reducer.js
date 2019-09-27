@@ -37,7 +37,8 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
     } else if (modelDefinition.derivedFrom) {
         let value = modelDefinition.derivedFrom.reduce((accumulator, nextExpression) => {
             const localContext = {
-                $state: state, $models: models,
+                $state: state,
+                $models: models,
                 $this: {
                     definition: modelDefinition,
                     path: statePath,
@@ -79,6 +80,9 @@ function evaluateRequirements(requirements, context) {
     if (requirements === undefined) {
         return true;
     }
+    if(_.isFunction(requirements)) {
+        return requirements();
+    }
     var localContext = {...context};
     if (_.isString(requirements)) {
         return interpreter.interpret(requirements, localContext);
@@ -99,8 +103,7 @@ function evaluateRequirements(requirements, context) {
 
 function setAvailableAdvancements(state) {
     const sharedContext = {
-        $state: state,
-        $model: models,
+        $state: state
     };
     state.availableAdvancements = Object.keys(rules.advancement).reduce((advancements, availableAdvancementType) => {
         const advancementRule = rules.advancement[availableAdvancementType];
@@ -127,7 +130,7 @@ function setAvailableAdvancements(state) {
                     interpreter.interpret(advancementRule.optionTransformer, localContext)
                 }
             }
-            const isAvailable = evaluateRequirements(advancementRule.when, localContext);
+            const isAvailable = evaluateRequirements(advancementRule.requires, localContext);
             return {
                 option,
                 cost,
@@ -145,7 +148,7 @@ function setAvailableAdvancements(state) {
 }
 
 function applyAdvancements(state) {
-    _.flatMap(_.get(state, 'character.advancements', []).map(a => a.transformations)).forEach(applyEffect.bind(null, state));
+    _.flatMap(_.get(state, 'character.advancements', []).map(a => a.transformers)).forEach(applyEffect.bind(null, state));
 };
 
 function runHooks(when, state, action) {
@@ -158,7 +161,7 @@ function runHooks(when, state, action) {
         return hook[when] === action.type && matchesTrigger;
     });
     hooksToRun.forEach(hook => {
-        hook.transformations.forEach(effect => {
+        hook.effects.forEach(effect => {
             interpreter.interpret(effect, {$state: state, $this: action});
         })
     });
@@ -199,6 +202,7 @@ function transformToModelInstance(path, value) {
                 return value;
             }
             const lookupValue = models[modelType.type].values.find(v => v.id === value);
+            lookupValue.effects = [...models[modelType.type].prototype.effects];
             return lookupValue ? lookupValue : {...new models[modelType.type](), ...value};
         } else {
             return value;
@@ -221,22 +225,33 @@ export default function (previousState, action) {
         const transformedValue = transformToModelInstance(actionPath, action.value);
         runBeforeHooks(previousState, action);
         if (action.type === "SET") {
-            previousState.transformations = [...previousState.transformations.filter(t => {
-                return t.effect !== 'Set' && t.target !== actionPath;
-            }), {
-                effect: 'SET',
-                target: actionPath,
-                value: transformedValue
-            }];
             if (transformedValue.effects) {
-                previousState.transformations = previousState.transformations.concat(transformedValue.effects);
+                transformedValue.effects = (transformedValue.effects || []).map(transformEffect => {
+                    return {
+                        ...transformEffect, ...{
+                            requires: state => _.get(state, actionPath) === transformedValue
+                        }
+                    };
+                });
             }
+            previousState.transformers = [...previousState.transformers.filter(t => {
+                const sameAction = _.isEqualWith(t.effects.action, 'set', (x, y) => x.toLowerCase() === y.toLowerCase());
+                const sameTarget = t.effects.target === actionPath;
+                return !sameAction || !sameTarget;
+            }), {
+                effects:{
+                    target: actionPath,
+                    action: 'SET',
+                    value: transformedValue,
+                },
+                requires: transformedValue.requires
+            }];
         }
         if (action.type === "REMOVE") {
             if (!_.isArray(_.get(previousState, actionPath))) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
-            previousState.transformations = previousState.transformations.filter(t => {
+            previousState.transformers = previousState.transformers.filter(t => {
                 return t.path !== actionPath;
             });
         }
@@ -244,7 +259,7 @@ export default function (previousState, action) {
             if (!_.isArray(_.get(previousState, actionPath))) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
-            previousState.transformations = [...previousState.transformations, {
+            previousState.transformers = [...previousState.transformers, {
                 effect: 'ADD',
                 path: actionPath,
                 value: transformedValue
@@ -293,7 +308,7 @@ export default function (previousState, action) {
     } else {
         previousState = {
             character: new models.character(),
-            transformations: []
+            transformers: []
         };
     }
 
@@ -301,8 +316,8 @@ export default function (previousState, action) {
 };
 
 function calculatedStateProjection(state) {
+    recalculateEffects(state);
     setCalculatedProperties(models.character.prototype.definition, null, state, ["character"]);
-    applyEffects(state);
     applyAdvancements(state);
     setAvailableAdvancements(state);
     return state;
@@ -318,7 +333,7 @@ function populateAdvancement(advancementRule, advancementAction, context) {
             $this: advancement.value
         }
     };
-    advancement.transformations = advancementRule.transformations.map(effect => {
+    advancement.transformers = advancementRule.transformers.map(effect => {
         effect.target = interpreter.interpret(effect.target, context);
         effect.add = interpreter.interpret(effect.add, context);
         effect.push = interpreter.interpret(effect.push, context);
@@ -327,8 +342,21 @@ function populateAdvancement(advancementRule, advancementAction, context) {
     return advancement;
 }
 
-function applyEffects(state) {
-    state.transformations.forEach(applyEffect.bind(null, state));
+function recalculateEffects(state) {
+    state.transformers = state.transformers.filter(transformer => {
+        const requirementsMet = evaluateRequirements(transformer.requires, {$state: state, $this: transformer}) !== false;
+        if(requirementsMet){
+            if(_.isArray(transformer.effects)) {
+                transformer.effects.forEach(applyEffect.bind(null, state));
+            } else {
+                applyEffect(state, transformer.effects);
+            }
+
+           return true;
+        }
+        return false;
+    });
+    return state;
 }
 
 function applyEffect(state, effect){
@@ -336,7 +364,7 @@ function applyEffect(state, effect){
     const willBeApplied = effect.if === undefined || interpreter.interpret(effect.if, context);
     if(willBeApplied) {
         const target = effect.target;
-        const action = effect.effect;
+        const action = effect.action;
         switch (action) {
             case 'ADD':
                 const initialValue = _.get({$state: state}, target);

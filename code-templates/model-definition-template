@@ -1,1 +1,2 @@
 ${name}Model.prototype.definition = JSON.parse(`${schema}`);
+${name}Model.prototype.effects = JSON.parse(`${effects}`);
