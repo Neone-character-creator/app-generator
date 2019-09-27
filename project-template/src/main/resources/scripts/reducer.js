@@ -145,7 +145,7 @@ function setAvailableAdvancements(state) {
 }
 
 function applyAdvancements(state) {
-    _.flatMap(_.get(state, 'character.advancements', []).map(a => a.effects)).forEach(applyEffect.bind(null, state));
+    _.flatMap(_.get(state, 'character.advancements', []).map(a => a.transformations)).forEach(applyEffect.bind(null, state));
 };
 
 function runHooks(when, state, action) {
@@ -158,7 +158,7 @@ function runHooks(when, state, action) {
         return hook[when] === action.type && matchesTrigger;
     });
     hooksToRun.forEach(hook => {
-        hook.effects.forEach(effect => {
+        hook.transformations.forEach(effect => {
             interpreter.interpret(effect, {$state: state, $this: action});
         })
     });
@@ -170,7 +170,7 @@ const runAfterHooks = runHooks.bind(null, "after");
 const arrayTypeMatcher = /\[(.*)\]/;
 
 function transformToModelInstance(path, value) {
-    if(value === undefined) {
+    if (value === undefined) {
         return;
     }
     if (value.id) {
@@ -208,7 +208,11 @@ function transformToModelInstance(path, value) {
 
 export default function (previousState, action) {
     if (previousState) {
-        previousState = {...previousState};
+        previousState = {
+            ...previousState, ...{
+                character: new models.character()
+            }
+        };
         const actionPath = (() => {
             if (action && action.path && action.path.startsWith("$state")) {
                 return action.path.substring("$state.".length);
@@ -217,32 +221,34 @@ export default function (previousState, action) {
         const transformedValue = transformToModelInstance(actionPath, action.value);
         runBeforeHooks(previousState, action);
         if (action.type === "SET") {
+            previousState.transformations = [...previousState.transformations.filter(t => {
+                return t.effect !== 'Set' && t.target !== actionPath;
+            }), {
+                effect: 'SET',
+                target: actionPath,
+                value: transformedValue
+            }];
             if (transformedValue.effects) {
-                previousState.effects.push(transformedValue);
+                previousState.transformations = previousState.transformations.concat(transformedValue.effects);
             }
-            _.set(previousState, actionPath, transformedValue);
         }
         if (action.type === "REMOVE") {
-            const array = _.get(previousState, actionPath);
-            if (!_.isArray(array)) {
+            if (!_.isArray(_.get(previousState, actionPath))) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
-            const updatedArray = [...array];
-            const removed = updatedArray.splice(action.remove, 1);
-            _.pull(previousState.effects, removed);
-            _.set(previousState, actionPath, [...updatedArray]);
+            previousState.transformations = previousState.transformations.filter(t => {
+                return t.path !== actionPath;
+            });
         }
         if (action.type === "ADD") {
-            const array = _.get(previousState, actionPath);
-            if (!_.isArray(array)) {
+            if (!_.isArray(_.get(previousState, actionPath))) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
-            const updatedArray = [...array];
-            updatedArray.push(transformedValue);
-            if (transformedValue.effects) {
-                previousState.effects.push(transformedValue);
-            }
-            _.set(previousState, actionPath, [...updatedArray]);
+            previousState.transformations = [...previousState.transformations, {
+                effect: 'ADD',
+                path: actionPath,
+                value: transformedValue
+            }];
         }
         if (action.type === "ADVANCEMENT") {
             const addedAdvancement = {
@@ -287,7 +293,7 @@ export default function (previousState, action) {
     } else {
         previousState = {
             character: new models.character(),
-            effects: []
+            transformations: []
         };
     }
 
@@ -307,10 +313,12 @@ export const calculateStateProjection = createSelector(state => state, calculate
 function populateAdvancement(advancementRule, advancementAction, context) {
     const advancement = {...advancementAction};
     advancement.id = advancementAction.advancement.id;
-    context = {...context, ...{
-        $this: advancement.value
-    }};
-    advancement.effects = advancementRule.effects.map(effect => {
+    context = {
+        ...context, ...{
+            $this: advancement.value
+        }
+    };
+    advancement.transformations = advancementRule.transformations.map(effect => {
         effect.target = interpreter.interpret(effect.target, context);
         effect.add = interpreter.interpret(effect.add, context);
         effect.push = interpreter.interpret(effect.push, context);
@@ -319,8 +327,8 @@ function populateAdvancement(advancementRule, advancementAction, context) {
     return advancement;
 }
 
-function applyEffects(state){
-    _.flatMap(state.effects, se => se.effects).forEach(applyEffect.bind(null, state));
+function applyEffects(state) {
+    state.transformations.forEach(applyEffect.bind(null, state));
 }
 
 function applyEffect(state, effect){
@@ -328,17 +336,22 @@ function applyEffect(state, effect){
     const willBeApplied = effect.if === undefined || interpreter.interpret(effect.if, context);
     if(willBeApplied) {
         const target = effect.target;
-        if (effect.add) {
-            const initialValue = _.get({$state: state}, target);
-            const toAdd = effect.add;
-            _.set({$state: state}, target, initialValue + toAdd);
-        } else if (effect.push) {
-            const array = [..._.get({$state: state}, target)];
-            const toPush = effect.push;
-            array.push(toPush);
-            _.set({$state: state}, target, array);
-        } else if (effect.trigger) {
-
+        const action = effect.effect;
+        switch (action) {
+            case 'ADD':
+                const initialValue = _.get({$state: state}, target);
+                const toAdd = effect.add;
+                _.set({$state: state}, target, initialValue + toAdd);
+                break;
+            case 'PUSH':
+                const array = [..._.get({$state: state}, target)];
+                const toPush = effect.push;
+                array.push(toPush);
+                _.set({$state: state}, target, array);
+                break;
+            case 'SET':
+                _.set(state, effect.target, effect.value);
+                break;
         }
     }
 }
