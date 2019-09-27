@@ -306,7 +306,7 @@ export const calculateStateProjection = createSelector(state => state, calculate
 
 function populateAdvancement(advancementRule, advancementAction, context) {
     const advancement = {...advancementAction};
-    advancement.id = advancementAction.id;
+    advancement.id = advancementAction.advancement.id;
     context = {...context, ...{
         $this: advancement.value
     }};
@@ -337,6 +337,8 @@ function applyEffect(state, effect){
             const toPush = effect.push;
             array.push(toPush);
             _.set({$state: state}, target, array);
+        } else if (effect.trigger) {
+
         }
     }
 }
