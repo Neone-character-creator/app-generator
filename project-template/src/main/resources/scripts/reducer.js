@@ -212,6 +212,28 @@ function transformToModelInstance(path, value) {
     }
 }
 
+function recursivelyExtractTransformers(state, value, target, parent) {
+    if (_.isArray(value)) {
+        const mapped = value.map((v, i) => recursivelyExtractTransformers(state, v, target + `[${i}]`, parent));
+        return _.flatMap(mapped);
+    } else {
+        const addThisTransformer = {
+            effects: {
+                target,
+                action: 'SET',
+                value,
+            },
+            requires: value.requires
+        };
+        const childTransformers = (value.effects || []).map(v => {
+            return {
+                effects: {...v, source: value}, requires: context => _.get(context.$state, target) === value
+            }
+        });
+        return [addThisTransformer].concat(childTransformers);
+    }
+}
+
 export default function (previousState, action) {
     if (previousState) {
         previousState = {
@@ -227,42 +249,11 @@ export default function (previousState, action) {
         let transformedValue = transformToModelInstance(actionPath, action.value);
         runBeforeHooks(previousState, action);
         if (action.type === "SET") {
-            if (_.isArray(transformedValue)) {
-                transformedValue = transformedValue.map((tv, i) => {
-                    tv.effects = tv.effects.map(childEffect => {
-                        return {
-                            effects: {
-                                ...childEffect
-                            },
-                            requires: context => _.get(context.$state, actionPath + `[${i}]`) === tv
-                        };
-                    });
-                    return tv;
-                });
-            } else {
-                if (transformedValue.effects) {
-                    transformedValue.effects = (transformedValue.effects || []).map(transformEffect => {
-                        return {
-                            effects: {
-                                ...transformEffect
-                            },
-                            requires: context => _.get(context.$state, actionPath) === transformedValue
-                        };
-                    });
-                }
-            }
-            previousState.transformers = [...previousState.transformers.filter(t => {
+            previousState.transformers = previousState.transformers.filter(t => {
                 const sameAction = _.isEqualWith(t.effects.action, 'set', (x, y) => x.toLowerCase() === y.toLowerCase());
                 const sameTarget = t.effects.target === actionPath;
                 return !sameAction || !sameTarget;
-            }), {
-                effects: {
-                    target: actionPath,
-                    action: 'SET',
-                    value: transformedValue,
-                },
-                requires: transformedValue.requires
-            }].concat(_.flatMap(transformedValue, tv => tv.effects) || []);
+            }).concat(recursivelyExtractTransformers(previousState, transformedValue, actionPath));
         }
         if (action.type === "REMOVE") {
             if (!_.isArray(_.get(previousState, actionPath))) {
@@ -402,24 +393,30 @@ function applyEffect(state, effect) {
     var context = {$state: state};
     const willBeApplied = effect.if === undefined || interpreter.interpret(effect.if, context);
     if (willBeApplied) {
-        const target = effect.target.replace("$state.", "");
+        const target = (function () {
+            const interpretedValue = interpreter.interpret(effect.target, {$state: state})
+            if (_.isString(interpretedValue)) {
+                return interpretedValue.replace("$state.", "");
+            } else {
+                return interpretedValue;
+            }
+        })();
         const action = effect.action;
+        const value = interpreter.interpret(effect.value, {...context, $this: effect.source});
         switch (action) {
             case 'ADD':
                 const initialValue = _.get(state, target);
-                const toAdd = effect.value;
-                _.set(state, target, initialValue + toAdd);
+                _.set(state, target, initialValue + value);
                 break;
             case 'PUSH':
                 const initialArray = _.get(state, target);
                 effect.index = initialArray.length;
                 const array = [...initialArray];
-                const toPush = effect.value;
-                array.push(toPush);
+                array.push(value);
                 _.set(state, target, array);
                 break;
             case 'SET':
-                _.set(state, effect.target, effect.value);
+                _.set(state, target, value);
                 break;
         }
     }
