@@ -34,12 +34,14 @@ class ${componentName} extends React.Component {
             }.bind(this);
 
             this.update = function(event){
-                const value = Number.parseInt(event.target.value);
-                this.setState({
-                    text: value
-                });
-                if(!this.props.maxSelection || this.props.maxSelection == 1 || value.length <= this.props.maxSelection) {
-                   updateDispatch(value);
+                if(isBoundComponent){
+                    const value = Number.parseInt(event.target.value);
+                    this.setState({
+                        text: value
+                    });
+                    if(!this.props.maxSelection || this.props.maxSelection == 1 || value.length <= this.props.maxSelection) {
+                    updateDispatch(value);
+                    }
                 }
             };
             this.update = this.update.bind(this);
