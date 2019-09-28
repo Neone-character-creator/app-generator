@@ -80,8 +80,8 @@ function evaluateRequirements(requirements, context) {
     if (requirements === undefined) {
         return true;
     }
-    if(_.isFunction(requirements)) {
-        return requirements();
+    if (_.isFunction(requirements)) {
+        return requirements(context);
     }
     var localContext = {...context};
     if (_.isString(requirements)) {
@@ -224,30 +224,45 @@ export default function (previousState, action) {
                 return action.path.substring("$state.".length);
             }
         })();
-        const transformedValue = transformToModelInstance(actionPath, action.value);
+        let transformedValue = transformToModelInstance(actionPath, action.value);
         runBeforeHooks(previousState, action);
         if (action.type === "SET") {
-            if (transformedValue.effects) {
-                transformedValue.effects = (transformedValue.effects || []).map(transformEffect => {
-                    return {
-                        ...transformEffect, ...{
-                            requires: state => _.get(state, actionPath) === transformedValue
-                        }
-                    };
+            if (_.isArray(transformedValue)) {
+                transformedValue = transformedValue.map((tv, i) => {
+                    tv.effects = tv.effects.map(childEffect => {
+                        return {
+                            effects: {
+                                ...childEffect
+                            },
+                            requires: context => _.get(context.$state, actionPath + `[${i}]`) === tv
+                        };
+                    });
+                    return tv;
                 });
+            } else {
+                if (transformedValue.effects) {
+                    transformedValue.effects = (transformedValue.effects || []).map(transformEffect => {
+                        return {
+                            effects: {
+                                ...transformEffect
+                            },
+                            requires: context => _.get(context.$state, actionPath) === transformedValue
+                        };
+                    });
+                }
             }
             previousState.transformers = [...previousState.transformers.filter(t => {
                 const sameAction = _.isEqualWith(t.effects.action, 'set', (x, y) => x.toLowerCase() === y.toLowerCase());
                 const sameTarget = t.effects.target === actionPath;
                 return !sameAction || !sameTarget;
             }), {
-                effects:{
+                effects: {
                     target: actionPath,
                     action: 'SET',
                     value: transformedValue,
                 },
                 requires: transformedValue.requires
-            }];
+            }].concat(_.flatMap(transformedValue, tv => tv.effects) || []);
         }
         if (action.type === "REMOVE") {
             if (!_.isArray(_.get(previousState, actionPath))) {
@@ -255,9 +270,9 @@ export default function (previousState, action) {
             }
             let itemToRemoveFound = false;
             previousState.transformers = previousState.transformers.filter(t => {
-                if (!itemToRemoveFound){
+                if (!itemToRemoveFound) {
                     itemToRemoveFound = t.effects.target === actionPath && t.effects.action === 'PUSH' &&
-                    _.isEqual(action.remove, t.effects.value);
+                        _.isEqual(action.remove, t.effects.value);
                     return !itemToRemoveFound;
                 }
                 return true;
@@ -278,7 +293,7 @@ export default function (previousState, action) {
                 const sameTarget = t.effects.target === actionPath;
                 return !sameAction || !sameTarget;
             }), {
-                effects:{
+                effects: {
                     target: actionPath,
                     action: 'PUSH',
                     value: transformedValue,
@@ -365,37 +380,40 @@ function populateAdvancement(advancementRule, advancementAction, context) {
 
 function recalculateEffects(state) {
     state.transformers = state.transformers.filter(transformer => {
-        const requirementsMet = evaluateRequirements(transformer.requires, {$state: state, $this: transformer}) !== false;
-        if(requirementsMet){
-            if(_.isArray(transformer.effects)) {
+        const requirementsMet = evaluateRequirements(transformer.requires, {
+            $state: state,
+            $this: transformer
+        }) !== false;
+        if (requirementsMet) {
+            if (_.isArray(transformer.effects)) {
                 transformer.effects.forEach(applyEffect.bind(null, state));
             } else {
                 applyEffect(state, transformer.effects);
             }
 
-           return true;
+            return true;
         }
         return false;
     });
     return state;
 }
 
-function applyEffect(state, effect){
+function applyEffect(state, effect) {
     var context = {$state: state};
     const willBeApplied = effect.if === undefined || interpreter.interpret(effect.if, context);
-    if(willBeApplied) {
-        const target = effect.target;
+    if (willBeApplied) {
+        const target = effect.target.replace("$state.", "");
         const action = effect.action;
         switch (action) {
             case 'ADD':
-                const initialValue = _.get({$state: state}, target);
+                const initialValue = _.get(state, target);
                 const toAdd = effect.value;
                 _.set(state, target, initialValue + toAdd);
                 break;
             case 'PUSH':
                 const initialArray = _.get(state, target);
                 effect.index = initialArray.length;
-                const array = [... initialArray];
+                const array = [...initialArray];
                 const toPush = effect.value;
                 array.push(toPush);
                 _.set(state, target, array);
