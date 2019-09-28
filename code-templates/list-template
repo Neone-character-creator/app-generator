@@ -36,8 +36,9 @@ class ${componentName} extends React.Component {
         <ErrorBoundary>
             <List>
                 {(this.props.value || []).map((v, index) => {
-                    return (<ListItem key={_.get(v, '${keyProperty}')} >
-                        <Child value={v} index={index}/>
+                    const key = _.get(v, '${keyProperty}') + index;
+                    return (<ListItem key={key} >
+                        <Child value={v} index={index} key={key} keyProp={key} />
                     </ListItem>)
                     })
                 }
