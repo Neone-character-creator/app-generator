@@ -149,7 +149,7 @@ function setAvailableAdvancements(state) {
 
 function applyAdvancements(state) {
     _.flatMap(_.get(state, 'character.advancements', []).map(a => a.transformers)).forEach(applyEffect.bind(null, state));
-};
+}
 
 function runHooks(when, state, action) {
     const hooksToRun = hooks.filter(hook => {
@@ -202,7 +202,9 @@ function transformToModelInstance(path, value) {
                 return value;
             }
             const lookupValue = models[modelType.type].values.find(v => v.id === value);
-            lookupValue.effects = [...models[modelType.type].prototype.effects];
+            if (lookupValue) {
+                lookupValue.effects = [...models[modelType.type].prototype.effects];
+            }
             return lookupValue ? lookupValue : {...new models[modelType.type](), ...value};
         } else {
             return value;
@@ -251,18 +253,37 @@ export default function (previousState, action) {
             if (!_.isArray(_.get(previousState, actionPath))) {
                 throw new Error(`value at path ${actionPath} is not array!`);
             }
+            let itemToRemoveFound = false;
             previousState.transformers = previousState.transformers.filter(t => {
-                return t.path !== actionPath;
+                if (!itemToRemoveFound){
+                    itemToRemoveFound = t.effects.target === actionPath && t.effects.action === 'PUSH' &&
+                    _.isEqual(action.remove, t.effects.value);
+                    return !itemToRemoveFound;
+                }
+                return true;
             });
         }
         if (action.type === "ADD") {
-            if (!_.isArray(_.get(previousState, actionPath))) {
-                throw new Error(`value at path ${actionPath} is not array!`);
+            if (transformedValue.effects) {
+                transformedValue.effects = (transformedValue.effects || []).map(transformEffect => {
+                    return {
+                        ...transformEffect, ...{
+                            requires: state => _.get(state, actionPath) === transformedValue
+                        }
+                    };
+                });
             }
-            previousState.transformers = [...previousState.transformers, {
-                effect: 'ADD',
-                path: actionPath,
-                value: transformedValue
+            previousState.transformers = [...previousState.transformers.filter(t => {
+                const sameAction = _.isEqualWith(t.effects.action, 'set', (x, y) => x.toLowerCase() === y.toLowerCase());
+                const sameTarget = t.effects.target === actionPath;
+                return !sameAction || !sameTarget;
+            }), {
+                effects:{
+                    target: actionPath,
+                    action: 'PUSH',
+                    value: transformedValue,
+                },
+                requires: transformedValue.requires
             }];
         }
         if (action.type === "ADVANCEMENT") {
@@ -368,14 +389,16 @@ function applyEffect(state, effect){
         switch (action) {
             case 'ADD':
                 const initialValue = _.get({$state: state}, target);
-                const toAdd = effect.add;
-                _.set({$state: state}, target, initialValue + toAdd);
+                const toAdd = effect.value;
+                _.set(state, target, initialValue + toAdd);
                 break;
             case 'PUSH':
-                const array = [..._.get({$state: state}, target)];
-                const toPush = effect.push;
+                const initialArray = _.get(state, target);
+                effect.index = initialArray.length;
+                const array = [... initialArray];
+                const toPush = effect.value;
                 array.push(toPush);
-                _.set({$state: state}, target, array);
+                _.set(state, target, array);
                 break;
             case 'SET':
                 _.set(state, effect.target, effect.value);
