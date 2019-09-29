@@ -65,7 +65,7 @@ class ${componentName} extends React.Component {
                                 if (_.isArray(extractedValue)) {
                                     return translateValueForRender(extractedValue.map(ev => {
                                         const localContext = {... this.props.context, ...{
-                                            $this: extractedValue
+                                            $this: ev
                                         }};
                                         return interpreter.interpret(valueDisplayExpression, localContext);
                                     }));
