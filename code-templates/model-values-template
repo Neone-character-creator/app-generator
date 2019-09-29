@@ -1,3 +1,12 @@
 ${name}Model.values = JSON.parse(`${values}`).map(parsed => {
     return {...new ${name}Model(), ...parsed}
 });
+${name}Model.values = (${name}Model.values).reduce((mapped, nextValue) =>{
+    if(nextValue.id) {
+        if(mapped[nextValue.id]) {
+            throw new Error("A duplicate id " + nextValue.id + " was discovered in ${name}Model");
+        }
+        mapped[nextValue.id] = nextValue;
+    }
+    return mapped;
+}, ${name}Model.values);
