@@ -20,9 +20,9 @@ function ${name}Model(){
         }
     });
     if(this.id === undefined) {
-        this.id = ${name}Model.id();
+        this.id = '${name}-' + ${name}Model.id();
     }
-    this.effects = this.__proto__.effects;
+    this.effects = _.isArray(this.__proto__.effects) ? [...this.__proto__.effects] : {...this.__proto__.effects};
 }
 
 ${name}Model._id = 1;
