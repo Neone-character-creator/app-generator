@@ -1,7 +1,9 @@
-${name}Model.values = JSON.parse(`${values}`).map(parsed => {
-    return {...new ${name}Model(), ...parsed}
+${name}Model._values = JSON.parse(`${values}`).map(parsed => {
+    const instantiated = {...new ${name}Model(), ...parsed};
+    instantiated.__proto__ = ${name}Model.prototype;
+    return instantiated;
 });
-${name}Model.values = (${name}Model.values).reduce((mapped, nextValue) =>{
+${name}Model._values = (${name}Model._values).reduce((mapped, nextValue) =>{
     if(nextValue.id) {
         if(mapped[nextValue.id]) {
             throw new Error("A duplicate id " + nextValue.id + " was discovered in ${name}Model");
@@ -9,4 +11,4 @@ ${name}Model.values = (${name}Model.values).reduce((mapped, nextValue) =>{
         mapped[nextValue.id] = nextValue;
     }
     return mapped;
-}, ${name}Model.values);
+}, ${name}Model._values);

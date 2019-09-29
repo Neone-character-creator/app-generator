@@ -52,7 +52,7 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
                 }
             };
             return interpreter.interpret(nextExpression, localContext);
-        }, null);
+        }, _.get(state, joinedStatePath));
         _.set(state, joinedStatePath, value);
     }
     Object.getOwnPropertyNames(modelDefinition).reduce((updated, nextPropertyName) => {
@@ -107,8 +107,13 @@ function evaluateComparisonObject(comparison, context) {
     const evaluatedValue = interpreter.interpret(comparison.target, context);
     if (comparison.lessThan !== undefined) {
         return evaluatedValue < comparison.lessThan;
+    } else if(comparison.contains){
+        return _.isArray(evaluatedValue) && evaluatedValue.map(ev => ev.id).includes(comparison.contains);
     } else {
-        throw new Error();
+        const keys = Object.keys(comparison);
+        return keys.reduce((allMatch, nextProperty) => {
+            return allMatch && _.isEqual(_.get(context, nextProperty), comparison[nextProperty]);
+        }, true);
     }
 }
 
@@ -158,13 +163,10 @@ function setAvailableAdvancements(state) {
     }, {});
 }
 
-function applyAdvancements(state) {
-    _.flatMap(_.get(state, 'character.advancements', []).map(a => a.transformers)).forEach(applyEffect.bind(null, state));
-}
-
 function runHooks(when, state, action) {
     const hooksToRun = hooks.filter(hook => {
         const matchesTrigger = hook.when ? interpreter.interpret(hook.when, {
+            $state: state,
             $this: {
                 action
             }
@@ -212,7 +214,7 @@ function transformToModelInstance(path, value) {
             if (modelType.type === "string" || modelType.type === "number" || _.isArray(value)) {
                 return value;
             }
-            const lookupValue = models[modelType.type].values.find(v => v.id === value);
+            const lookupValue = _.get(models, `${modelType.type.values}`, []).find(v => v.id === value);
             if (lookupValue) {
                 lookupValue.effects = [...models[modelType.type].prototype.effects];
             }
@@ -230,11 +232,43 @@ function recursivelyExtractTransformers(state, value, target, parent) {
             action: 'SET',
             value,
         },
+        requires: value.requires,
+        source: value
+    };
+    const childTransformers = (value.effects || []).map(v => {
+        return {
+            effects: {...v, source: value}, requires: context => {
+                const targetValue = _.get(context.$state, target);
+                if (_.isArray(targetValue)) {
+                    return targetValue.includes(value);
+                } else {
+                    _.isEqual(targetValue, value);
+                }
+            }
+        }
+    });
+    return [addThisTransformer].concat(childTransformers);
+}
+
+function recursivelyExtractTransformersForArrayPush(state, value, target, parent) {
+    const addThisTransformer = {
+        effects: {
+            target,
+            action: 'PUSH',
+            value,
+        },
         requires: value.requires
     };
     const childTransformers = (value.effects || []).map(v => {
         return {
-            effects: {...v, source: value}, requires: context => _.get(context.$state, target) === value
+            effects: {...v, source: value}, requires: context => {
+                const targetValue = _.get(context.$state, target);
+                if (_.isArray(targetValue)) {
+                    return targetValue.includes(value);
+                } else {
+                    _.isEqual(targetValue, value);
+                }
+            }
         }
     });
     return [addThisTransformer].concat(childTransformers);
@@ -257,84 +291,62 @@ export default function (previousState, action) {
         }));
         runBeforeHooks(previousState, action);
         if (action.type === "SET") {
-            previousState.transformers = previousState.transformers.filter(t => {
-                const sameAction = _.isEqualWith(t.effects.action, 'set', (x, y) => x.toLowerCase() === y.toLowerCase());
-                const sameTarget = t.effects.target === actionPath;
-                return !sameAction || !sameTarget;
-            }).concat(recursivelyExtractTransformers(previousState, transformedValue, actionPath));
+            if(actionPath.startsWith("character")) {
+                previousState.transformers = previousState.transformers.filter(t => {
+                    const sameAction = _.isEqualWith(t.effects.action, 'set', (x, y) => x.toLowerCase() === y.toLowerCase());
+                    const sameTarget = t.effects.target === actionPath;
+                    return !sameAction || !sameTarget;
+                }).concat(recursivelyExtractTransformers(previousState, transformedValue, actionPath));
+            } else {
+                _.set(previousState, actionPath, transformedValue);
+            }
         }
         if (action.type === "REMOVE") {
-            if (!_.isArray(_.get(previousState, actionPath))) {
-                throw new Error(`value at path ${actionPath} is not array!`);
-            }
-            let itemToRemoveFound = false;
-            previousState.transformers = previousState.transformers.filter(t => {
-                if (!itemToRemoveFound) {
-                    itemToRemoveFound = t.effects.target === actionPath && t.effects.action === 'PUSH' &&
-                        _.isEqual(action.remove, t.effects.value);
-                    return !itemToRemoveFound;
+            if(actionPath.startsWith("character")) {
+                if (!_.isArray(_.get(previousState, actionPath))) {
+                    throw new Error(`value at path ${actionPath} is not array!`);
                 }
-                return true;
-            });
-        }
-        if (action.type === "ADD") {
-            if (transformedValue.effects) {
-                transformedValue.effects = (transformedValue.effects || []).map(transformEffect => {
-                    return {
-                        ...transformEffect, ...{
-                            requires: state => _.get(state, actionPath) === transformedValue
-                        }
-                    };
+                let itemToRemoveFound = false;
+                previousState.transformers = previousState.transformers.filter(t => {
+                    if (!itemToRemoveFound) {
+                        itemToRemoveFound = t.effects.target === actionPath && t.effects.action === 'PUSH' &&
+                            _.isEqual(action.remove, t.effects.value);
+                        return !itemToRemoveFound;
+                    }
+                    return true;
                 });
-            }
-            previousState.transformers = [...previousState.transformers.filter(t => {
-                const sameAction = _.isEqualWith(t.effects.action, 'set', (x, y) => x.toLowerCase() === y.toLowerCase());
-                const sameTarget = t.effects.target === actionPath;
-                return !sameAction || !sameTarget;
-            }), {
-                effects: {
-                    target: actionPath,
-                    action: 'PUSH',
-                    value: transformedValue,
-                },
-                requires: transformedValue.requires
-            }];
-        }
-        if (action.type === "ADVANCEMENT") {
-            const addedAdvancement = {
-                type: action.advancementType,
-                advancement: action.advancement,
-                cost: previousState.selectedAdvancement[action.advancementType].cost
-            };
-            const advancementRule = rules.advancement[action.advancementType];
-            const isAvailable = evaluateRequirements(advancementRule.when, {
-                $state: previousState,
-                $this: previousState.selectedAdvancement[action.advancementType].option
-            });
-            if (isAvailable) {
-                const updatedArray = [...previousState.character.advancements, populateAdvancement(advancementRule, addedAdvancement, {$state: previousState})];
-                previousState.character.advancements = updatedArray;
             } else {
-                alert("Advancement not added, prerequisites not met.");
-                console.warn("Attempted to add an advancement when it shouldn't be allowed.")
+                const array = _.get(previousState, actionPath);
+                if (array) {
+                    let itemToRemoveFound = false;
+                    _.set(previousState, actionPath, array.filter((v, i) =>{
+                        itemToRemoveFound = itemToRemoveFound || i === action.index || _.isEqual(v, transformedValue);
+                        return itemToRemoveFound;
+                    }));
+                }
             }
         }
-        if (action.type === "REMOVE-ADVANCEMENT") {
-            const tokens = action.value.split(" ");
-            const advancementType = tokens[0];
-            const foundAdvancement = previousState.character.advancements.find(adv => {
-                return adv.value.option === advancementType;
-            });
-            let previousMatchFound = false;
-            previousState.character.advancements = previousState.character.advancements.filter(x => {
-                if (previousMatchFound) {
-                    return false;
-                } else {
-                    previousMatchFound = Object.is(x, foundAdvancement);
-                    return previousMatchFound;
+        if (action.type === "PUSH") {
+            if(actionPath.startsWith("character")) {
+                if (_.isArray(transformedValue.effects)) {
+                    transformedValue.effects = (transformedValue.effects || []).map(transformEffect => {
+                        return {
+                            ...transformEffect, ...{
+                                requires: state => _.get(state, actionPath) === transformedValue
+                            }
+                        };
+                    });
+                } else if (_.isObject(transformedValue.effects)) {
+                    transformedValue.effects.requires = state => _.get(state, actionPath) === transformedValue;
                 }
-
-            })
+                previousState.transformers = [...previousState.transformers.filter(t => {
+                    const sameAction = _.isEqualWith(t.effects.action, 'set', (x, y) => x.toLowerCase() === y.toLowerCase());
+                    const sameTarget = t.effects.target === actionPath;
+                    return !sameAction || !sameTarget;
+                })].concat(recursivelyExtractTransformersForArrayPush(previousState, transformedValue, actionPath));
+            } else {
+                _.get(previousState, actionPath).push(transformedValue);
+            }
         }
         if (action.type === "OVERRIDE") {
             previousState.character = {...new models.character(), ...action.state};
@@ -353,7 +365,6 @@ export default function (previousState, action) {
 function calculatedStateProjection(state) {
     recalculateEffects(state);
     setCalculatedProperties(models.character.prototype.definition, null, state, ["character"]);
-    applyAdvancements(state);
     setAvailableAdvancements(state);
     return state;
 }
@@ -398,23 +409,26 @@ function recalculateEffects(state) {
 }
 
 function applyEffect(state, effect) {
-    var context = {$state: state};
-    const willBeApplied = effect.if === undefined || interpreter.interpret(effect.if, context);
+    var context = {$state: state, $this: effect.source};
+    const target = (function () {
+        const interpretedValue = interpreter.interpret(effect.target, context);
+        if (_.isString(interpretedValue)) {
+            return interpretedValue.replace("$state.", "");
+        } else {
+            return interpretedValue;
+        }
+    })();
+    const willBeApplied = (effect.if === undefined || interpreter.interpret(effect.if, context)) && target.startsWith("character");
     if (willBeApplied) {
-        const target = (function () {
-            const interpretedValue = interpreter.interpret(effect.target, {$state: state})
-            if (_.isString(interpretedValue)) {
-                return interpretedValue.replace("$state.", "");
-            } else {
-                return interpretedValue;
-            }
-        })();
         const action = effect.action;
         const value = interpreter.interpret(effect.value, {...context, $this: effect.source});
+        const initialValue = _.get(state, target);
         switch (action) {
             case 'ADD':
-                const initialValue = _.get(state, target);
                 _.set(state, target, initialValue + value);
+                break;
+            case 'SUBTRACT':
+                _.set(state, target, initialValue - value);
                 break;
             case 'PUSH':
                 const initialArray = _.get(state, target);

@@ -1,6 +1,6 @@
 function ${name}Model(){
-    Object.getOwnPropertyNames(this.__proto__.definition).forEach((property)=>{
-        const propertyDef = this.__proto__.definition[property];
+    Object.getOwnPropertyNames(this.definition).forEach((property)=>{
+        const propertyDef = this.definition[property];
         if(property.startsWith("@")){
             const symbol = Symbol(property);
             this[symbol] = propertyDef[property];
