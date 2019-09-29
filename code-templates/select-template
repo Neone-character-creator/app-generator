@@ -35,7 +35,7 @@ function translateValueForRender(value, context){
             return _.get(value, itemTextPath);
         }
     } else {
-        return value;
+        return interpreter.interpret(value, context);
     }
 }
 
@@ -65,7 +65,7 @@ class ${componentName} extends React.Component {
                                 if (_.isArray(extractedValue)) {
                                     return translateValueForRender(extractedValue.map(ev => {
                                         const localContext = {... this.props.context, ...{
-                                            $this: ev
+                                            $this: extractedValue
                                         }};
                                         return interpreter.interpret(valueDisplayExpression, localContext);
                                     }));
@@ -85,7 +85,7 @@ class ${componentName} extends React.Component {
                                     [_.get(item, itemTextPath, item)].map(prop => {
                                         if(valueDisplayExpression) {
                                             const localContext = {... this.props.context, ...{
-                                                $this: prop
+                                                $this: item
                                             }};
                                             return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext));
                                         }
