@@ -97,7 +97,18 @@ function evaluateRequirements(requirements, context) {
             return requirements.all.reduce((anyMeet, expression) => {
                 return anyMeet && evaluateRequirements(expression, localContext);
             }, requirements.all.length > 0);
+        } else {
+            return evaluateComparisonObject(requirements, context);
         }
+    }
+}
+
+function evaluateComparisonObject(comparison, context) {
+    const evaluatedValue = interpreter.interpret(comparison.target, context);
+    if (comparison.lessThan !== undefined) {
+        return evaluatedValue < comparison.lessThan;
+    } else {
+        throw new Error();
     }
 }
 
@@ -213,25 +224,20 @@ function transformToModelInstance(path, value) {
 }
 
 function recursivelyExtractTransformers(state, value, target, parent) {
-    if (_.isArray(value)) {
-        const mapped = value.map((v, i) => recursivelyExtractTransformers(state, v, target + `[${i}]`, parent));
-        return _.flatMap(mapped);
-    } else {
-        const addThisTransformer = {
-            effects: {
-                target,
-                action: 'SET',
-                value,
-            },
-            requires: value.requires
-        };
-        const childTransformers = (value.effects || []).map(v => {
-            return {
-                effects: {...v, source: value}, requires: context => _.get(context.$state, target) === value
-            }
-        });
-        return [addThisTransformer].concat(childTransformers);
-    }
+    const addThisTransformer = {
+        effects: {
+            target,
+            action: 'SET',
+            value,
+        },
+        requires: value.requires
+    };
+    const childTransformers = (value.effects || []).map(v => {
+        return {
+            effects: {...v, source: value}, requires: context => _.get(context.$state, target) === value
+        }
+    });
+    return [addThisTransformer].concat(childTransformers);
 }
 
 export default function (previousState, action) {
@@ -246,7 +252,9 @@ export default function (previousState, action) {
                 return action.path.substring("$state.".length);
             }
         })();
-        let transformedValue = transformToModelInstance(actionPath, action.value);
+        let transformedValue = transformToModelInstance(actionPath, interpreter.interpret(action.value, {
+            $state: previousState
+        }));
         runBeforeHooks(previousState, action);
         if (action.type === "SET") {
             previousState.transformers = previousState.transformers.filter(t => {
