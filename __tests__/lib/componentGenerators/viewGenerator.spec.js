@@ -2,20 +2,22 @@ const generateComponent = require("../../../lib/componentGenerators/genericGener
 describe("view component generator", () => {
     const config = {
         componentName: "Test",
-        views: ["summary"],
+        views: ["summary-view"],
         components: {
-            summary: {
+            "summary-view": {
+                name:"summary",
                 type: "view",
-                children: ["foo"],
+                children: ["foo-textfield"],
             },
-            foo: {
+            "foo-textfield": {
+                name:"foo",
                 type: "textfield"
             }
         }
     };
     it("renders the child components", () => {
         const generatedComponent = generateComponent("view")("summary")(config);
-        expect(generatedComponent).toEqual(expect.stringContaining(`<FooTextfield />`));
+        expect(generatedComponent).toEqual(expect.stringContaining(`<FooTextfield value={this.props.value} index={this.props.index}/>`));
     });
     it("adds imports for each child component", () => {
         const generatedComponent = generateComponent("view")("summary")(config);

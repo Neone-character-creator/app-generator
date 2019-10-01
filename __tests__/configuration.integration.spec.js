@@ -16,8 +16,8 @@ describe("plugin generation chain", () => {
                }
            }) ;
            const components = require('../lib/componentGenerator')(hierarchy);
-           expect(components.Summary.path).toEqual("components/SummaryView.js");
-           expect(components.Summary.content).toMatchSnapshot();
+           expect(components['Summary-view'].path).toEqual("components/SummaryView.js");
+           expect(components['Summary-view'].content).toMatchSnapshot();
            done();
        } catch (e) {
            done(e);

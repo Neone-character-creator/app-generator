@@ -1,4 +1,4 @@
-const checkboxSchema = require("../../../../lib/schema/component/component");
+const checkboxSchema = require("../../../../lib/schema/component");
 
 describe("checkbox", () => {
     it("must have a type", () => {

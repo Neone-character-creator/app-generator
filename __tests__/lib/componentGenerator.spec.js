@@ -2,9 +2,9 @@ const componentGenerator = require("../../lib/componentGenerator");
 const sinon = require("sinon");
 const renderer = require("react-test-renderer");
 
-describe("component generator module", () =>{
+describe("component generator module", () => {
     let componentWriter;
-    beforeEach(()=>{
+    beforeEach(() => {
         componentWriter = sinon.stub()
     });
 
@@ -21,34 +21,37 @@ describe("component generator module", () =>{
                 }
             }
         };
-        expect(()=>componentGenerator(hierarchy)).toThrowErrorMatchingSnapshot();
+        expect(() => componentGenerator(hierarchy)).toThrowErrorMatchingSnapshot();
     });
 
     it("writes an app component", async () => {
         const hierarchy = {
             gameName: "test",
-            views: ["one"],
+            views: ["one-view"],
             components: {
-                app: {
+                "app-app": {
+                    name:"app",
                     type: "app",
                     children: [
-                        "one"
+                        "one-view"
                     ]
                 },
-                one: {
+                "one-view": {
+                    name:"one",
                     type: "view",
-                    children: ["foo"]
+                    children: ["foo-textfield"]
                 },
-                foo: {
+                "foo-textfield": {
+                    name:"foo",
                     type: "textfield"
                 }
             }
         };
         const components = await componentGenerator(hierarchy);
-        expect(components.app.path).toBe('components/App.js');
-        expect(renderer.create(components.app.content).toJSON()).toMatchSnapshot();
+        expect(components["app-app"].path).toBe('components/App.js');
+        expect(renderer.create(components["app-app"].content).toJSON()).toMatchSnapshot();
 
-        expect(components.one.path).toBe('components/OneView.js');
-        expect(renderer.create(components.one.content).toJSON()).toMatchSnapshot();
+        expect(components["one-view"].path).toBe('components/OneView.js');
+        expect(renderer.create(components["one-view"].content).toJSON()).toMatchSnapshot();
     });
 });
