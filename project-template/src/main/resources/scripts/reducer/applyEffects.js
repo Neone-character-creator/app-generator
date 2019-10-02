@@ -26,7 +26,7 @@ function recalculateEffects(state) {
 }
 
 function applyEffect(state, effect, source) {
-    const context = {$state: state, $this: effect};
+    const context = {$state: state, $this: {...effect, source}};
     const target = (function () {
         const interpretedValue = interpreter.interpret(effect.path, context);
         if (_.isString(interpretedValue)) {
