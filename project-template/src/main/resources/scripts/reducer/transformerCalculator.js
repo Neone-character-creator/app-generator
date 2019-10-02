@@ -25,6 +25,20 @@ const generateTransformerFromAction = function (state, actionType, path, value) 
             return generateSetTransformer(state, path, value);
         case "PUSH":
             return generatePushTransformer(state, path, value);
+        case "ADD":
+            return {
+                action: "ADD",
+                path,
+                value,
+                requires: value.requires
+            };
+        case "SUBTRACT":
+            return {
+                action: "SUBTRACT",
+                path,
+                value,
+                requires: value.requires
+            }
     }
 };
 
@@ -32,7 +46,8 @@ const generateSetTransformer = function (state, path, value) {
     return {
         action: "SET",
         path,
-        value
+        value,
+        requires: value.requires
     };
 };
 
@@ -41,7 +56,8 @@ const generatePushTransformer = function (state, path, value) {
         action: "PUSH",
         path,
         value,
-        index: _.get(state, path, []).length
+        index: _.get(state, path, []).length,
+        requires: value.requires
     };
 };
 

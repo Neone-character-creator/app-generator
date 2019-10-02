@@ -132,55 +132,6 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
     }, state);
 }
 
-function evaluateArrayOfExpressions(expressions, context) {
-    return expressions.reduce((accumulator, nextExpression) => {
-        const localContext = {...context};
-        _.set(localContext, '$this.accumulator', accumulator);
-        return interpreter.interpret(nextExpression, localContext);
-    }, [])
-}
-
-function evaluateRequirements(requirements, context) {
-    if (requirements === undefined) {
-        return true;
-    }
-    if (_.isFunction(requirements)) {
-        return requirements(context);
-    }
-    var localContext = {...context};
-    if (_.isString(requirements)) {
-        return interpreter.interpret(requirements, localContext);
-    } else if (_.isArray(requirements)) {
-        return evaluateArrayOfExpressions(requirements, localContext);
-    } else if (_.isObject(requirements)) {
-        if (requirements.any) {
-            return requirements.any.reduce((anyMeet, expression) => {
-                return anyMeet || evaluateRequirements(expression, localContext);
-            }, false);
-        } else if (requirements.all) {
-            return requirements.all.reduce((anyMeet, expression) => {
-                return anyMeet && evaluateRequirements(expression, localContext);
-            }, requirements.all.length > 0);
-        } else {
-            return evaluateComparisonObject(requirements, context);
-        }
-    }
-}
-
-function evaluateComparisonObject(comparison, context) {
-    const evaluatedValue = interpreter.interpret(comparison.target, context);
-    if (comparison.lessThan !== undefined) {
-        return evaluatedValue < comparison.lessThan;
-    } else if (comparison.contains) {
-        return _.isArray(evaluatedValue) && evaluatedValue.map(ev => ev.id).includes(comparison.contains);
-    } else {
-        const keys = Object.keys(comparison);
-        return keys.reduce((allMatch, nextProperty) => {
-            return allMatch && _.isEqual(_.get(context, nextProperty), comparison[nextProperty]);
-        }, true);
-    }
-}
-
 function setAvailableAdvancements(state) {
     const sharedContext = {
         $state: state

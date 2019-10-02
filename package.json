@@ -27,9 +27,11 @@
     "lodash": "^4.17.15",
     "ncp": "^2.0.0",
     "npm": "^6.9.0",
-    "react": "^16.8.4",
+    "react": "16.8.4",
+    "react-dom": "16.10.1",
     "react-tabs": "^3.0.0",
     "recursive-readdir": "^2.2.2",
+    "reselect": "^4.0.0",
     "sonar-scanner": "^3.1.0",
     "tmp": "0.0.33",
     "yargs": "^13.2.1",
@@ -49,15 +51,21 @@
     "sinon": "^7.2.7"
   },
   "jest": {
+    "testRegex": "(/__tests__/.*(\\.|/)(test|spec))\\.jsx?$",
     "collectCoverageFrom": [
-      "./lib/**/*.{js, jsx}"
+      "lib/**/*.{js, jsx}",
+      "project-template/src/main/resources/scripts/**/*.js"
     ],
     "testResultsProcessor": "jest-sonar-reporter",
     "setupFilesAfterEnv": [
       "jest-expect-message"
     ],
     "moduleNameMapper": {
-      "../rules.json": "<rootDir>/__tests__/rules.json"
+      "../rules.json": "<rootDir>/__tests__/rules.json",
+      "../models": "<rootDir>/__tests__/app/models.js",
+      "./models": "<rootDir>/__tests__/app/models.js",
+      "./components/App": "<rootDir>/__tests__/app.js",
+      "./hooks.json": "<rootDir>/__tests__/app/hooks.json"
     }
   }
 }

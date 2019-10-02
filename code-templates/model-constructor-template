@@ -1,10 +1,7 @@
-function ${name}Model(){
+function ${name}Model(original){
     Object.getOwnPropertyNames(this.definition).forEach((property)=>{
         const propertyDef = this.definition[property];
-        if(property.startsWith("@")){
-            const symbol = Symbol(property);
-            this[symbol] = propertyDef[property];
-        } else {
+        if(original === undefined || original[property] === undefined) {
             if(propertyDef.default !== undefined) {
                 this[property] = propertyDef.default;
             } else if (propertyDef.type.match(/\[.*\]/)){
@@ -12,12 +9,23 @@ function ${name}Model(){
             } else {
                 this[property] = new module.exports[propertyDef.type]();
             }
-            if (_.isArray(this[property])){
-                // TODO: Add always present values perhaps?
-            } else if (_.isObject(this[property])) {
-                this[property] = {...this[property], ...propertyDef.value};
+        } else {
+            if(_.isString(original[property]) && original[property].startsWith("#")) {
+                this[property] = original[property];
+            } else if (_.isArray(original[property])){
+                const containedType = propertyDef.type.substring(1, propertyDef.type.length -1);
+                const constructor = module.exports[containedType];
+                if(constructor) {
+                    this[property] = original[property].map(i => new constructor(i));
+                } else {
+                    this[property] = original[property];
+                }
+            } else if (_.isObject(original[property])) {
+                this[property] = {...this[property], ...new module.exports[propertyDef.type](original[property])};
+            } else {
+                this[property] = original[property];
             }
-        }
+         }
     });
     if(this.id === undefined) {
         this.id = '${name}-' + ${name}Model.id();

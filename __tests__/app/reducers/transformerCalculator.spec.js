@@ -71,9 +71,55 @@ describe("Transformer generator", function () {
             index: 1
         }]);
     });
-    it("REMOVE undoes a PUSH at the same path", function(){
+    it("REMOVE undoes a PUSH at the same path", function () {
         transformerCalculator(state, "PUSH", "a", 1);
         transformerCalculator(state, "REMOVE", "a", 0)
         expect(state.transformers).toEqual([]);
+    });
+    it("generates a transformer to increase a value with an ADD", function(){
+        transformerCalculator(state, "ADD", "a", 1);
+        expect(state.transformers[0]).toEqual({
+            path: "a",
+            action: "ADD",
+            value: 1
+        });
+    });
+    it("generates a transformer to reduce a value with an ADD", function(){
+        transformerCalculator(state, "SUBTRACT", "a", 1);
+        expect(state.transformers[0]).toEqual({
+            path: "a",
+            action: "SUBTRACT",
+            value: 1
+        });
+    });
+    describe("value requirements", function () {
+        it("are added to the transfomer created to add them", function () {
+            state.a = 1;
+            transformerCalculator(state, "ADD", "b", {
+                requires: [
+                    {
+                        path: "a",
+                        comparison: "equals",
+                        value: 1
+                    }
+                ]
+            });
+            expect(state.transformers[0]).toEqual({
+                path: "b",
+                action: "ADD",
+                value: {
+                    requires: [{
+                        path: "a",
+                        comparison: "equals",
+                        value: 1
+                    }]
+                },
+                requires: [{
+                    path: "a",
+                    comparison: "equals",
+                    value: 1
+                }]
+            });
+        })
     })
 });

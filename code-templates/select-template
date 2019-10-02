@@ -70,12 +70,12 @@ class ${componentName} extends React.Component {
                                         return interpreter.interpret(valueDisplayExpression, localContext);
                                     }));
                                 }
-                                const localContext = {... this.props.context, ...{
+                                const localContext = {... this.props.context,
                                     $this: extractedValue
-                                }};
-                                return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext));
+                                };
+                                return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext), {... this.props.context, $this: extractedValue});
                             } else {
-                                return translateValueForRender(extractedValue);
+                                return translateValueForRender(extractedValue, {... this.props.context, $this: extractedValue});
                             }
                         }} multiple={this.props.maxSelections > 1}
                         children={this.props.options.map((item, index) => {
@@ -87,7 +87,7 @@ class ${componentName} extends React.Component {
                                             const localContext = {... this.props.context, ...{
                                                 $this: item
                                             }};
-                                            return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext));
+                                            return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext), localContext);
                                         }
                                         return translateValueForRender(prop, {...this.props.context, $this: prop});
                                     })[0]

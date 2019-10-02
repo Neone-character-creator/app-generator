@@ -22,9 +22,15 @@ const connected = connect((state, ownProps) => {
             }
     })();
     const maxSelections = interpreter.interpret(selectionCountExpression, context);
-    const options = (()=>{
-        return interpreter.interpret(valueExpression, context);
-        })() || [];
+    const options = (interpreter.interpret(valueExpression, context) || []).map(opt => {
+        if(_.isArray(opt)){
+            return opt.map(evaluateObjectProperties.bind(null, context));
+        } else if(_.isObject(opt)) {
+            return evaluateObjectProperties(context, opt);
+        } else {
+            return opt;
+        }
+    });
     const disabled = interpreter.interpret(disabledWhenExpression, context);
     const hidden = interpreter.interpret(hiddenWhenExpression, context);
     const clickAction = interpreter.interpret(action, context);
