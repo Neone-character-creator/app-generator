@@ -2,38 +2,43 @@ import _ from "lodash";
 
 
 const modelTranslator = function (modelConfiguration, targetPath, value) {
-    if (targetPath === undefined) {
-        throw new Error("targetPath must not be null or undefined");
-    }
-    if (value === undefined) {
-        return;
-    }
-    const pathElementTokens = _.toPath(targetPath);
-    const modelDef = pathElementTokens.reduce((currentPosition, nextPathElement) => {
-        if (currentPosition === undefined) {
-            return undefined;
+        if (targetPath === undefined) {
+            throw new Error("targetPath must not be null or undefined");
         }
-        if (currentPosition.prototype) {
-            return currentPosition.prototype.definition[nextPathElement];
-        } else {
-            return currentPosition[nextPathElement];
+        if (value === undefined) {
+            return;
         }
-    }, modelConfiguration);
-    const isArrayMatcher = /\[(.*)\]/.exec(modelDef.type);
-    if (modelDef.type === "string" || modelDef.type === "number") {
-        if (modelDef.type !== typeof value) {
-            throw new Error("Path " + targetPath + " has a defined type of " + modelDef.type + " but a " + typeof value + " was given.");
+        const pathElementTokens = _.toPath(targetPath);
+        const modelDef = pathElementTokens.reduce((currentPosition, nextPathElement) => {
+            if (currentPosition === undefined) {
+                return undefined;
+            }
+            if (currentPosition.prototype) {
+                return currentPosition.prototype.definition[nextPathElement];
+            } else {
+                return currentPosition[nextPathElement];
+            }
+        }, modelConfiguration);
+        const isArrayMatcher = /\[(.*)\]/.exec(modelDef.type);
+        const instanceModelType = isArrayMatcher ? isArrayMatcher[1] : modelDef.type;
+        if (instanceModelType === "string" || instanceModelType === "number") {
+            const arrayTypeButValueNotArray = isArrayMatcher && !_.isArray(value);
+            const arrayTypeButArrayValuesWrong = isArrayMatcher && instanceModelType !== typeof  value[0];
+            const typeWrong = instanceModelType === typeof value;
+            if (arrayTypeButValueNotArray || arrayTypeButArrayValuesWrong || typeWrong) {
+                throw new Error("Path " + targetPath + " has a defined type of " + modelDef.type + " but a " + typeof value + " was given.");
+            }
+            return value;
         }
-        return value;
-    }
-    return lookupOrCreateInstance(modelConfiguration, _.get(value, "id", value), modelDef);
 
-};
+        return lookupOrCreateInstance(modelConfiguration, _.get(value, "id", value), modelDef);
+    }
+;
 
 export default modelTranslator;
 
 function lookupOrCreateInstance(modelConfiguration, value, typeDefinition) {
-    const lookupValue = modelConfiguration[typeDefinition.type].values.find(v => v.id === value);
+    const lookupValue = modelConfiguration[typeDefinition.type.replace("[", "").replace("]", "")].values.find(v => v.id === value);
     if (lookupValue) {
         lookupValue.effects = [...modelConfiguration[typeDefinition.type].prototype.effects];
         return lookupValue;
