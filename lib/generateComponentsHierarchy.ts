@@ -13,7 +13,7 @@ function extractComponentDefinitions(components: {
     components: { [s: string]: any },
     views: string[]
 }, element: any) {
-    element.identifier = `${element.name}-${element.type}`;
+    element.identifier = `${element.name}${element.type}`;
     if (components.components[element.identifier]) {
         throw new Error(`Duplicate component ${element.name} ${element.type} found`);
     }

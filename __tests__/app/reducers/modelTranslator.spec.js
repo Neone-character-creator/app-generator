@@ -10,6 +10,7 @@ describe("model translator", function () {
             this.spouse = null;
             this.children = [];
         };
+        model.character.type = "character";
         model.character.prototype._id = 1;
         model.character.prototype.id = function(){
             return "character-" + model.character.prototype._id++;
@@ -20,7 +21,7 @@ describe("model translator", function () {
             children: {type: "[character]"},
             spouse: {type: "character"}
         };
-        model.character.prototype.values = [];
+        model.character.values = [];
         model.character.prototype.effects = [];
     });
 
@@ -44,7 +45,7 @@ describe("model translator", function () {
                 children: [],
                 effects: []
             });
-            expect(model.character.prototype.values).toEqual([{
+            expect(model.character.values).toEqual([{
                 id: "character-1",
                 name: "",
                 age: 0,
@@ -54,7 +55,7 @@ describe("model translator", function () {
             }]);
         });
         it("performs a lookup if the target path has a model type and the value matches an instance id", function () {
-            model.character.prototype.values.push({
+            model.character.values.push({
                 id: "character-1",
                 name: "",
                 age: 0,
@@ -70,7 +71,7 @@ describe("model translator", function () {
                 effects: [],
                 children: []
             });
-            expect(model.character.prototype.values).toEqual([{
+            expect(model.character.values).toEqual([{
                 id: "character-1",
                 name: "",
                 age: 0,

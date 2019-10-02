@@ -11,4 +11,4 @@ ${name}Model.values = (${name}Model._values).reduce((mapped, nextValue) =>{
         mapped[nextValue.id] = nextValue;
     }
     return mapped;
-}, ${name}Model._values);
+}, (${name}Model._values || []));

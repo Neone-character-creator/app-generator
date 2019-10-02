@@ -1,18 +1,18 @@
 import * as _ from "lodash";
-import models from "./models";
+import models from "../models";
 import interpreter from "../interpreter";
-import {evaluateObjectProperties} from "../interpreter";
-import rules from "!./rules.json";
-import hooks from "!./hooks.json";
+import rules from "!../rules.json";
+import hooks from "!../hooks.json";
 import {createSelector} from "reselect/lib/index";
 import modelTranslator from "./modelTranslator";
 import applyEffects from "./applyEffects";
 import calculateTransformers from "./transformerCalculator";
+import evaluateRequirements from "./evaluateRequirements";
 
 export default function (previousState, action) {
     if (previousState) {
         if(!Object.values(ACTION_TYPES).includes(action.type)) {
-            throw new Error(`Action type ${action.type} is not supported.`);
+            throw new Error("Action type " + action.type +" is not supported.");
         }
         previousState = {
             ...previousState, ...{
@@ -23,7 +23,7 @@ export default function (previousState, action) {
             if (action && action.path && action.path.startsWith("$state.")) {
                 return action.path.substring("$state.".length);
             } else {
-                throw new Error(`Path ${action.path} is invalid, it must begin with $state.`)
+                throw new Error("Path " + action.path + " is invalid, it must begin with $state.");
             }
         })();
         let transformedValue = modelTranslator(models, actionPath, action.value);
@@ -58,7 +58,9 @@ export default function (previousState, action) {
         if (action.type === "OVERRIDE") {
             previousState.character = {...new models.character(), ...action.state};
         }
-        runAfterHooks(previousState, action);
+        applyEffects(previousState);
+        setCalculatedProperties(models.character.prototype.definition, null, previousState, ["character"]);
+        setAvailableAdvancements(previousState);
     } else {
         previousState = {
             character: new models.character(),
@@ -77,12 +79,12 @@ function calculateDiff(newValue, previousBase) {
     } else if (_.isNumber(previousBase)) {
         return newValue - previousBase;
     } else {
-        throw new Error(`A difference between ${newValue} and ${previousBase} doesn't make sense.`);
+        throw new Error("A difference between " + newValue +" and " + previousBase + "doesn't make sense.");
     }
 }
 
 function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, statePath) {
-    const joinedStatePath = statePath[0] + statePath.slice(1).map(element => `[${element}]`).join("");
+    const joinedStatePath = statePath[0] + statePath.slice(1).map(element => "[" + element +"]").join("");
     if (modelDefinition.baseValue) {
         const originalBaseValue = _.get(baseValues, joinedStatePath) || (modelDefinition.type === "number" ? 0 : []);
         const differenceFromOriginalBase = calculateDiff(_.get(state, joinedStatePath), originalBaseValue) || 0;
@@ -110,7 +112,7 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
                     ancestors: statePath.filter((x, i) => i < statePath.length - 1).map((element, index) => {
                         const joined = statePath.filter((x, i) => {
                             return i <= index;
-                        }).map(x => `[${x}]`).join("");
+                        }).map(x => "[" + x + "]").join("");
                         return _.get(state, joined);
                     }).reverse()
                 }
@@ -123,7 +125,7 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
         const parentScopes = ancestorDefinitions ? [...ancestorDefinitions, modelDefinition] : [modelDefinition];
         const modelProperty = modelDefinition[nextPropertyName];
         const propertyModelDefinition = models[modelDefinition[nextPropertyName].type] ? models[modelDefinition[nextPropertyName].type].prototype.definition : undefined;
-        const propertyPath = [...statePath, `${nextPropertyName}`];
+        const propertyPath = [...statePath, nextPropertyName];
         if (modelProperty.derivedFrom || modelProperty.baseValue) {
             setCalculatedProperties(modelProperty, parentScopes, state, propertyPath);
         } else if (propertyModelDefinition) {
@@ -142,7 +144,7 @@ function setAvailableAdvancements(state) {
         if (typeof advancementRule.options === "string") {
             concreteOptions = interpreter.interpret(advancementRule.options, sharedContext);
         } else if (_.isArray(advancementRule.options)) {
-            concreteOptions = evaluateArrayOfExpressions(advancementRule.options, sharedContext);
+            concreteOptions = evaluateRequirements(advancementRule.options, sharedContext);
         } else if (advancementRule.options.values) {
             concreteOptions = advancementRule.options.values;
         }
@@ -156,7 +158,7 @@ function setAvailableAdvancements(state) {
             const cost = interpreter.interpret(advancementRule.cost, localContext) || 0;
             if (advancementRule.optionTransformer) {
                 if (_.isArray(advancementRule.optionTransformer)) {
-                    evaluateArrayOfExpressions(advancementRule.optionTransformer, localContext);
+                    evaluateRequirements(advancementRule.optionTransformer, localContext);
                 } else {
                     interpreter.interpret(advancementRule.optionTransformer, localContext)
                 }
@@ -207,26 +209,7 @@ function interpretTransformerEffects(context, transformer) {
     return transformer;
 }
 
-function transformerExtractor(action, state, value, target) {
-    let addThisTransformer = {
-        effects: {
-            target,
-            action,
-            value,
-        },
-        requires: value.requires
-    };
-    const evaluationContext = {$state: state, $this: {...value, source: value}};
-    addThisTransformer = addThisTransformer.effects ? interpretTransformerEffects(evaluationContext, addThisTransformer) : addThisTransformer;
-    return [addThisTransformer];
-}
-
-const extractTransformersForArrayPush = transformerExtractor.bind(null, "PUSH");
-
 function calculatedStateProjection(state) {
-    applyEffects(state);
-    setCalculatedProperties(models.character.prototype.definition, null, state, ["character"]);
-    setAvailableAdvancements(state);
     return state;
 }
 

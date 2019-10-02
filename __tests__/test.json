@@ -2,7 +2,7 @@
   "gameName": "test",
   "pluginVersion": "1.0",
   "authorName": "Damien Marble",
-  "pdfPath": "__tests__/sheet.pdf",
+  "pdfPath": "sheet.pdf",
   "views": {
     "name": "app",
     "children": [

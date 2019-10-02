@@ -16,7 +16,9 @@ describe("state reducer", function(){
         }).toThrowErrorMatchingSnapshot();
     });
     it("creates a copy of the previous state", function(){
-        const initialState = {};
+        const initialState = {
+            transformers: []
+        };
         const outputState = reducer(initialState, {
             type: "SET",
             path: "$state.foo"

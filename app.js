@@ -16,17 +16,17 @@ function work(configFileLocation) {
     try {
         configFileLocation = paths.resolve(configFileLocation);
         const parent = paths.resolve(configFileLocation, "..");
-        const rawConfiguraiton = require("./lib/schema/configuration")(JSON.parse(fs.readFileSync(configFileLocation, 'utf-8')));
-        rawConfiguraiton.views.name = "app";
-        rawConfiguraiton.views.type = "app";
-        const componentConfiguration = Object.assign(rawConfiguraiton, require('./lib/generateComponentsHierarchy').default(rawConfiguraiton.views),
+        const rawConfiguration = require("./lib/schema/configuration")(JSON.parse(fs.readFileSync(configFileLocation, 'utf-8')));
+        rawConfiguration.views.name = "app";
+        rawConfiguration.views.type = "app";
+        const componentConfiguration = Object.assign(rawConfiguration, require('./lib/generateComponentsHierarchy').default(rawConfiguration.views),
             {
                 app: {
                     type: "app",
-                    children: rawConfiguraiton.views.children.map(v => v.identifier)
+                    children: rawConfiguration.views.children.map(v => v.identifier)
                 }
             });
-        const modelConfiguration = _.pick(rawConfiguraiton, "model");
+        const modelConfiguration = _.pick(rawConfiguration, "model");
         const appConfiguration = Object.assign({}, componentConfiguration, modelConfiguration);
 
         const tmpDir = tmp.dirSync().name;

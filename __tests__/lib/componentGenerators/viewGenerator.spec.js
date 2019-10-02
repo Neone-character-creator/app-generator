@@ -4,12 +4,12 @@ describe("view component generator", () => {
         componentName: "Test",
         views: ["summary-view"],
         components: {
-            "summary-view": {
+            "summaryview": {
                 name:"summary",
                 type: "view",
-                children: ["foo-textfield"],
+                children: ["footextfield"],
             },
-            "foo-textfield": {
+            "footextfield": {
                 name:"foo",
                 type: "textfield"
             }

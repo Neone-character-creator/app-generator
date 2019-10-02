@@ -27,31 +27,31 @@ describe("component generator module", () => {
     it("writes an app component", async () => {
         const hierarchy = {
             gameName: "test",
-            views: ["one-view"],
+            views: ["oneview"],
             components: {
-                "app-app": {
+                "appapp": {
                     name:"app",
                     type: "app",
                     children: [
-                        "one-view"
+                        "oneview"
                     ]
                 },
-                "one-view": {
+                "oneview": {
                     name:"one",
                     type: "view",
-                    children: ["foo-textfield"]
+                    children: ["footextfield"]
                 },
-                "foo-textfield": {
+                "footextfield": {
                     name:"foo",
                     type: "textfield"
                 }
             }
         };
         const components = await componentGenerator(hierarchy);
-        expect(components["app-app"].path).toBe('components/App.js');
-        expect(renderer.create(components["app-app"].content).toJSON()).toMatchSnapshot();
+        expect(components["appapp"].path).toBe('components/App.js');
+        expect(renderer.create(components["appapp"].content).toJSON()).toMatchSnapshot();
 
-        expect(components["one-view"].path).toBe('components/OneView.js');
-        expect(renderer.create(components["one-view"].content).toJSON()).toMatchSnapshot();
+        expect(components["oneview"].path).toBe('components/OneView.js');
+        expect(renderer.create(components["oneview"].content).toJSON()).toMatchSnapshot();
     });
 });
