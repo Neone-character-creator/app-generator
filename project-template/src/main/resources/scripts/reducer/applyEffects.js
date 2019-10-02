@@ -2,11 +2,11 @@ import interpreter from "../interpreter";
 import _ from "lodash";
 import evaluateRequirements from "./evaluateRequirements";
 
-function recursivelyApplyEffects(state, effects) {
-    if(_.isArray(effects)) {
-        effects.forEach(effect => applyEffect(state, effect));
+function recursivelyApplyEffects(state, effects, source) {
+    if (_.isArray(effects)) {
+        effects.forEach(effect => applyEffect(state, effect, source));
     } else {
-        applyEffect(state, effects);
+        applyEffect(state, effects, source);
     }
 }
 
@@ -25,7 +25,7 @@ function recalculateEffects(state) {
     return state;
 }
 
-function applyEffect(state, effect) {
+function applyEffect(state, effect, source) {
     const context = {$state: state, $this: effect};
     const target = (function () {
         const interpretedValue = interpreter.interpret(effect.path, context);
@@ -38,11 +38,11 @@ function applyEffect(state, effect) {
     const willBeApplied = evaluateRequirements(effect.requires, context);
     if (willBeApplied) {
         const action = effect.action;
-        const value = interpreter.interpret(effect.value, {...context, $this: effect.source});
+        const value = interpreter.interpret(effect.value, {...context, $this: {source}});
         const initialValue = _.get(state, target);
         switch (action) {
             case 'ADD':
-                _.set(state, target, (_.isNumber(initialValue) ?  initialValue :  0) + value);
+                _.set(state, target, (_.isNumber(initialValue) ? initialValue : 0) + value);
                 break;
             case 'SUBTRACT':
                 _.set(state, target, initialValue - value);
@@ -57,6 +57,9 @@ function applyEffect(state, effect) {
             case 'SET':
                 _.set(state, target, value);
                 break;
+        }
+        if (value.effects) {
+            recursivelyApplyEffects(state, value.effects, value);
         }
     }
 }
