@@ -51,6 +51,47 @@ class ${componentName} extends React.Component {
         }
 
         this.update = this.update.bind(this);
+        this.isItemDisabled = function(item) {
+            return interpreter.interpret(listItemDisabledExpression, {...this.props.context, $this: item}) || false;
+        }
+        this.isItemDisabled = this.isItemDisabled.bind(this);
+        this.renderValue = value => {
+            const extractedValue = itemTextPath ? _.get(value, itemTextPath) : value;
+            if (valueDisplayExpression) {
+                if (_.isArray(extractedValue)) {
+                    return translateValueForRender(extractedValue.map(ev => {
+                        const localContext = {... this.props.context, ...{
+                            $this: ev
+                        }};
+                        return interpreter.interpret(valueDisplayExpression, localContext);
+                    }));
+                }
+                const localContext = {... this.props.context,
+                    $this: extractedValue
+                };
+                return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext), {... this.props.context, $this: extractedValue});
+            } else {
+                return translateValueForRender(extractedValue, {... this.props.context, $this: extractedValue});
+            }
+        }
+        this.renderValue = this.renderValue.bind(this);
+
+        this.renderItems = this.props.options.map((item, index) => {
+            const itemDisabled = this.isItemDisabled(item);
+            return (<MenuItem value={item} disabled={itemDisabled} >
+                {
+                    [_.get(item, itemTextPath, item)].map(prop => {
+                        if(valueDisplayExpression) {
+                            const localContext = {... this.props.context, ...{
+                                $this: item
+                            }};
+                            return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext), localContext);
+                        }
+                    return translateValueForRender(prop, {...this.props.context, $this: prop});
+                    })[0]
+                }
+            </MenuItem>)
+        })
     }
     render(){
         if(!this.props.hidden){
@@ -59,42 +100,8 @@ class ${componentName} extends React.Component {
         <FormControl fullWidth={true}>
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
                     <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.update}
-                        renderValue={value => {
-                            const extractedValue = itemTextPath ? _.get(value, itemTextPath) : value;
-                            if (valueDisplayExpression) {
-                                if (_.isArray(extractedValue)) {
-                                    return translateValueForRender(extractedValue.map(ev => {
-                                        const localContext = {... this.props.context, ...{
-                                            $this: ev
-                                        }};
-                                        return interpreter.interpret(valueDisplayExpression, localContext);
-                                    }));
-                                }
-                                const localContext = {... this.props.context,
-                                    $this: extractedValue
-                                };
-                                return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext), {... this.props.context, $this: extractedValue});
-                            } else {
-                                return translateValueForRender(extractedValue, {... this.props.context, $this: extractedValue});
-                            }
-                        }} multiple={this.props.maxSelections > 1}
-                        children={this.props.options.map((item, index) => {
-                            const itemDisabled = interpreter.interpret(listItemDisabledExpression, {...this.props.context, ...{$this: item}}) || false;
-                            return (<MenuItem value={item} disabled={itemDisabled} >
-                                {
-                                    [_.get(item, itemTextPath, item)].map(prop => {
-                                        if(valueDisplayExpression) {
-                                            const localContext = {... this.props.context, ...{
-                                                $this: item
-                                            }};
-                                            return translateValueForRender(interpreter.interpret(valueDisplayExpression, localContext), localContext);
-                                        }
-                                        return translateValueForRender(prop, {...this.props.context, $this: prop});
-                                    })[0]
-
-                                }
-                            </MenuItem>)
-                            })}
+                        renderValue={this.renderValue} multiple={this.props.maxSelections > 1}
+                        children={this.renderItems}
                     />
                 </FormControl>
                 </ErrorBoundary>)
