@@ -35,6 +35,7 @@ const connected = connect((state, ownProps) => {
     const hidden = interpreter.interpret(hiddenWhenExpression, context);
     const clickAction = interpreter.interpret(action, context);
     return {
+        context,
         clickAction,
         disabled,
         hidden,
