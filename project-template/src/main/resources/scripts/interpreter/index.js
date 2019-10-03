@@ -28,10 +28,10 @@ function evaluateObjectProperties(context, object) {
         const derivedFrom = _.get(propDef, "derivedFrom");
         if (_.isArray(derivedFrom)) {
             mapped[nextProp] = derivedFrom.reduce((accumulator, nextExpression) => {
-                return interpreter.interpret(propDef.derivedFrom || object[nextProp], {...context,
+                return interpreter.interpret(nextExpression, {...context,
                     $this: {...object, accumulator}
                 });
-            });
+            }, null);
         } else {
             mapped[nextProp] = interpreter.interpret(derivedFrom || object[nextProp], {...context, $this: context.$this || object});
         }
