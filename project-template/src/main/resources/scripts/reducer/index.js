@@ -1,13 +1,14 @@
 import * as _ from "lodash";
 import models from "../models";
 import interpreter from "../interpreter";
-import rules from "!../rules.json";
-import hooks from "!../hooks.json";
+import hooksConfiguration from "!../hooks.json";
+import Hook from "./hooks";
 import {createSelector} from "reselect/lib/index";
 import modelTranslator from "./modelTranslator";
 import applyEffects from "./applyEffects";
 import calculateTransformers from "./transformerCalculator";
-import evaluateRequirements from "./evaluateRequirements";
+
+const hooks = new Hook(hooksConfiguration);
 
 export default function (previousState, action) {
     if (previousState) {
@@ -58,9 +59,8 @@ export default function (previousState, action) {
         if (action.type === "OVERRIDE") {
             previousState.character = {...new models.character(), ...action.state};
         }
-        applyEffects(previousState);
+        applyEffects(previousState, hooks);
         setCalculatedProperties(models.character.prototype.definition, null, previousState, ["character"]);
-        setAvailableAdvancements(previousState);
     } else {
         previousState = {
             character: new models.character(),
@@ -132,81 +132,6 @@ function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, st
             setCalculatedProperties(propertyModelDefinition, parentScopes, state, propertyPath);
         }
     }, state);
-}
-
-function setAvailableAdvancements(state) {
-    const sharedContext = {
-        $state: state
-    };
-    state.availableAdvancements = Object.keys(rules.advancement).reduce((advancements, availableAdvancementType) => {
-        const advancementRule = rules.advancement[availableAdvancementType];
-        let concreteOptions;
-        if (typeof advancementRule.options === "string") {
-            concreteOptions = interpreter.interpret(advancementRule.options, sharedContext);
-        } else if (_.isArray(advancementRule.options)) {
-            concreteOptions = evaluateRequirements(advancementRule.options, sharedContext);
-        } else if (advancementRule.options.values) {
-            concreteOptions = advancementRule.options.values;
-        }
-        concreteOptions = concreteOptions.map(option => {
-            if (_.isArray(option)) {
-                option = [...option];
-            } else if (_.isObject(option)) {
-                option = {...option};
-            }
-            const localContext = {...sharedContext, $this: option};
-            const cost = interpreter.interpret(advancementRule.cost, localContext) || 0;
-            if (advancementRule.optionTransformer) {
-                if (_.isArray(advancementRule.optionTransformer)) {
-                    evaluateRequirements(advancementRule.optionTransformer, localContext);
-                } else {
-                    interpreter.interpret(advancementRule.optionTransformer, localContext)
-                }
-            }
-            const isAvailable = evaluateRequirements(advancementRule.requires, localContext);
-            return {
-                option,
-                cost,
-                meetsRequirements: isAvailable,
-                meetsCost: cost <= _.get(localContext, advancementRule.uses),
-                isAvailable: isAvailable && cost <= _.get(localContext, advancementRule.uses)
-            }
-        });
-
-        advancements[availableAdvancementType] = {
-            options: concreteOptions
-        };
-        return advancements;
-    }, {});
-}
-
-function runHooks(when, state, action) {
-    const hooksToRun = hooks.filter(hook => {
-        const matchesTrigger = hook.when ? interpreter.interpret(hook.when, {
-            $state: state,
-            $this: {
-                action
-            }
-        }) : true;
-        return hook[when] === action.type && matchesTrigger;
-    });
-    hooksToRun.forEach(hook => {
-        hook.effects.forEach(effect => {
-            interpreter.interpret(effect, {$state: state, $this: action});
-        })
-    });
-}
-
-const runAfterHooks = runHooks.bind(null, "after");
-
-function interpretTransformerEffects(context, transformer) {
-    const evaluator = evaluateObjectProperties.bind(null, context);
-    transformer.effects = (_.isArray(transformer.effects) ? transformer.effects : [transformer.effects]).map(evaluator)
-        .map(transformed => {
-            transformed.value = _.isObject(transformed.value) ? interpretTransformerEffects(context, transformed.value) : transformed.value
-            return transformed;
-        });
-    return transformer;
 }
 
 function calculatedStateProjection(state) {

@@ -2,22 +2,22 @@ import interpreter from "../interpreter";
 import _ from "lodash";
 import evaluateRequirements from "./evaluateRequirements";
 
-function recursivelyApplyEffects(state, effects, source) {
+function recursivelyApplyEffects(state, effects, hooks, source) {
     if (_.isArray(effects)) {
-        effects.forEach(effect => applyEffect(state, effect, source));
+        effects.forEach(effect => applyEffect(state, effect, source, hooks));
     } else {
-        applyEffect(state, effects, source);
+        applyEffect(state, effects, source, hooks);
     }
 }
 
-function recalculateEffects(state) {
+function recalculateEffects(state, hooks) {
     state.transformers = state.transformers.filter(transformer => {
         const requirementsMet = evaluateRequirements(transformer.requires, {
             $state: state,
             $this: transformer
         }) !== false;
         if (requirementsMet) {
-            recursivelyApplyEffects(state, transformer);
+            recursivelyApplyEffects(state, transformer, hooks);
             return true;
         }
         return false;
@@ -25,20 +25,14 @@ function recalculateEffects(state) {
     return state;
 }
 
-function applyEffect(state, effect, source) {
+function applyEffect(state, effect, source, hooks) {
     const context = {$state: state, $this: {...effect, source}};
-    const target = (function () {
-        const interpretedValue = interpreter.interpret(effect.path, context);
-        if (_.isString(interpretedValue)) {
-            return interpretedValue.replace("$state.", "");
-        } else {
-            return interpretedValue;
-        }
-    })();
+    const target = interpreter.interpret(effect.path, context);
     const willBeApplied = evaluateRequirements(effect.requires, context);
     if (willBeApplied) {
         const action = effect.action;
-        const value = interpreter.interpret(effect.value, {...context, $this: {source}});
+        const value = interpreter.interpret(effect.value, context);
+        hooks.before(state, target, action);
         const initialValue = _.get(state, target);
         switch (action) {
             case 'ADD':
@@ -58,8 +52,9 @@ function applyEffect(state, effect, source) {
                 _.set(state, target, value);
                 break;
         }
+        hooks.after(state, target, action);
         if (value.effects) {
-            recursivelyApplyEffects(state, value.effects, value);
+            recursivelyApplyEffects(state, value.effects, hooks, value);
         }
     }
 }
