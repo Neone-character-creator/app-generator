@@ -48,8 +48,8 @@ describe("Effect applier", function () {
             }]
         });
     });
-    describe("evaluates transformer requirements", function(){
-        it("evaluates requirement objects", function() {
+    describe("evaluates transformer requirements", function () {
+        it("evaluates requirement objects", function () {
             state.a = 1;
             state.transformers = state.transformers.concat([{
                 path: "$state.a",
@@ -57,7 +57,7 @@ describe("Effect applier", function () {
                 value: 1,
                 requires: {
                     path: "$state.a",
-                    equals:1
+                    equals: 1
                 }
             }]);
             applyEffects(state);
@@ -74,5 +74,81 @@ describe("Effect applier", function () {
                 }]
             });
         });
+        it("removes transformers whose requirements are not met", function () {
+            state.transformers = state.transformers.concat([{
+                path: "$state.a",
+                action: "SET",
+                value: 1,
+            }, {
+                path: "$state.a",
+                action: "SET",
+                value: 1,
+                requires: {
+                    path: "$state.a",
+                    equals: 1
+                }
+            }]);
+            const newState = {...state};
+
+            applyEffects(state);
+            expect(state).toEqual({
+                a: 1,
+                transformers: [{
+                    path: "$state.a",
+                    action: "SET",
+                    value: 1,
+                }, {
+                    path: "$state.a",
+                    action: "SET",
+                    value: 1,
+                    requires: {
+                        path: "$state.a",
+                        equals: 1
+                    }
+                }]
+            });
+
+            newState.transformers.splice(0, 1);
+            applyEffects(newState);
+            expect(newState).toEqual({
+                transformers: []
+            })
+        });
     });
+    it("applies secondary effects", function(){
+        state.transformers.push({
+            path: "$state.a",
+            action: "SET",
+            value: {
+                effects: [{
+                    path: "$state.b",
+                    action:"SET",
+                    value: 1
+                }]
+            }
+        });
+        applyEffects(state);
+        expect(state).toEqual({
+            a: {
+                effects: [{
+                    action: "SET",
+                    path: "$state.b",
+                    value: 1
+                }]
+            },
+            b: 1,
+            transformers: [{
+                path: "$state.a",
+                action: "SET",
+                value: {
+                    effects: [{
+                        source: "$state.a",
+                        path: "$state.b",
+                        action: "SET",
+                        value: 1
+                    }]
+                }
+            }]
+        });
+    })
 });
