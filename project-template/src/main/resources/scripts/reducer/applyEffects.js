@@ -27,7 +27,7 @@ function recalculateEffects(state, hooks) {
 
 function applyEffect(state, effect, source, hooks) {
     const context = {$state: state, $this: {...effect, source}};
-    const target = interpreter.interpret(effect.path, context);
+    const target = interpreter.interpret(effect.path, context).replace("$state.", "");
     const willBeApplied = evaluateRequirements(effect.requires, context);
     if (willBeApplied) {
         const action = effect.action;
@@ -42,15 +42,19 @@ function applyEffect(state, effect, source, hooks) {
                 _.set(state, target, initialValue - value);
                 break;
             case 'PUSH':
-                const initialArray = _.get(state, target);
-                effect.index = initialArray.length;
-                const array = [...initialArray];
-                array.push(value);
-                _.set(state, target, array);
+                const initialArrayForPush = _.get(state, target);
+                effect.index = initialArrayForPush.length;
+                const arrayAfterPush = [...initialArrayForPush];
+                arrayAfterPush.push(value);
+                _.set(state, target, arrayAfterPush);
                 break;
             case 'SET':
                 _.set(state, target, value);
                 break;
+            case "COMBINE":
+                const initialArrayForCombine = _.get(state, target, []);
+                const arrayAfterCombine = [...initialArrayForCombine].concat(value);
+                _.set(state, target, arrayAfterCombine);
         }
         hooks.after(state, target, action);
         if (value.effects) {

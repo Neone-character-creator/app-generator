@@ -56,6 +56,13 @@ export default function (previousState, action) {
                 _.get(previousState, actionPath).push(transformedValue);
             }
         }
+        if(action.type === "COMBINE") {
+            if (actionPath.startsWith("character")) {
+                calculateTransformers(previousState, "PUSH", actionPath, transformedValue);
+            } else {
+                _.set(previousState, actionPath, _.get(previousState, actionPath).push(transformedValue).concat(transformedValue));
+            }
+        }
         if (action.type === "OVERRIDE") {
             previousState.character = {...new models.character(), ...action.state};
         }

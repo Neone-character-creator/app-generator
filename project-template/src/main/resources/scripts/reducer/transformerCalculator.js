@@ -40,7 +40,14 @@ const generateTransformerFromAction = function (state, actionType, path, value) 
                 path,
                 value,
                 requires: value.requires
-            }
+            };
+        case "COMBINE":
+            return {
+                action: "SUBTRACT",
+                path,
+                value,
+                requires: value.requires
+            };
     }
 };
 
