@@ -1,4 +1,5 @@
 const _ = require("lodash");
+import interpreter from "../interpreter";
 
 const calculateTransformers = function (state, actionType, path, value) {
     state.transformers = state.transformers.filter(transformer => {
@@ -20,6 +21,7 @@ const calculateTransformers = function (state, actionType, path, value) {
 };
 
 const generateTransformerFromAction = function (state, actionType, path, value) {
+    value = interpreter.interpret(value, {$state: state, $this: value});
     switch (actionType) {
         case "SET":
             return generateSetTransformer(state, path, value);
