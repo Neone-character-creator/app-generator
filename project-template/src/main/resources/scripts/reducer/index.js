@@ -71,9 +71,10 @@ export default function (previousState, action) {
         }
 
         const state = actionHandlers[action.type](previousState, action)
-
-        applyEffects(state , hooks);
-        setCalculatedProperties(models.character.prototype.definition, null, state , ["character"]);
+        if(action.type !== "persist/REHYDRATE") {
+            applyEffects(state, hooks);
+            setCalculatedProperties(models.character.prototype.definition, null, state, ["character"]);
+        }
         return state;
     } else {
         previousState = generateNewState();
