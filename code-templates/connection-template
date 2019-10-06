@@ -34,7 +34,15 @@ const connected = connect((state, ownProps) => {
     });
     const disabled = interpreter.interpret(disabledWhenExpression, context);
     const hidden = interpreter.interpret(hiddenWhenExpression, context);
-    const clickAction = interpreter.interpret(action, context);
+    const clickAction = [interpreter.interpret(action, context)].map(opt => {
+        if(_.isArray(opt)){
+            return opt.map(evaluateObjectProperties.bind(null, context));
+        } else if(_.isObject(opt)) {
+            return evaluateObjectProperties(context, opt);
+        } else {
+            return opt;
+        }
+    })[0];
     return {
         context,
         clickAction,
