@@ -76,7 +76,7 @@ class ${componentName} extends React.Component {
         }
         this.renderValue = this.renderValue.bind(this);
 
-        this.renderItems = this.props.options.map((item, index) => {
+        this.renderItems = () => this.props.options.map((item, index) => {
             const itemDisabled = this.isItemDisabled(item);
             return (<MenuItem value={item} disabled={itemDisabled} >
                 {
@@ -101,7 +101,7 @@ class ${componentName} extends React.Component {
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
                     <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.update}
                         renderValue={this.renderValue} multiple={this.props.maxSelections > 1}
-                        children={this.renderItems}
+                        children={this.renderItems()}
                     />
                 </FormControl>
                 </ErrorBoundary>)
