@@ -11,27 +11,47 @@ import setTempProperty from "./setTempProperty";
 
 const hooks = new Hook(hooksConfiguration);
 
-function generateNewState(){
+function generateNewState() {
     return {
         character: new models.character(),
         transformers: []
     };
 }
 
+function reattachPrototypes(value) {
+    if(_.isArray(value)) {
+        value.forEach(reattachPrototypes);
+    } else if (_.isObject(value)) {
+        if (value._protoName) {
+            Object.setPrototypeOf(value, models[value._protoName].prototype);
+        }
+        Object.keys(value).forEach(property =>{
+            if (_.isObject(value[property])) {
+                reattachPrototypes(value[property]);
+            }
+        })
+    }
+};
+
 const actionHandlers = new Proxy({
-    "persist/REHYDRATE" : function(state, action) {
-        return action.payload ? action.payload : generateNewState();
+    "persist/REHYDRATE": function (state, action) {
+        //
+        reattachPrototypes(_.get(action, "payload.transformers", []));
+        return {
+            ...generateNewState(),
+            transformers: _.get(action.payload, "transformers", [])
+        };
     },
-    "persist/PERSIST" : function(state, action){
+    "persist/PERSIST": function (state, action) {
         delete state["$stemp"];
         return state;
     },
-    default: function(state, action){
+    default: function (state, action) {
         let isTemp = false;
         const actionPath = (() => {
             if (action && action.path && action.path.startsWith("$state.")) {
                 return action.path.substring("$state.".length);
-            } else if(action && action.path && action.path.startsWith("$temp.")) {
+            } else if (action && action.path && action.path.startsWith("$temp.")) {
                 isTemp = true;
                 return action.path.substring("$temp.".length);
             } else {
@@ -50,12 +70,12 @@ const actionHandlers = new Proxy({
             return state;
         }
     },
-    OVERRIDE: function(state, action){
+    OVERRIDE: function (state, action) {
         state = {...generateNewState(), ...action.state};
         return state;
     }
 }, {
-    get: function(target, prop, receiver) {
+    get: function (target, prop, receiver) {
         if (!target.hasOwnProperty(prop)) {
             return target["default"];
         } else {
@@ -66,15 +86,13 @@ const actionHandlers = new Proxy({
 
 export default function (previousState, action) {
     if (previousState) {
-        if(!Object.values(ACTION_TYPES).includes(action.type)) {
-            throw new Error("Action type " + action.type +" is not supported.");
+        if (!Object.values(ACTION_TYPES).includes(action.type)) {
+            throw new Error("Action type " + action.type + " is not supported.");
         }
 
         const state = actionHandlers[action.type](previousState, action)
-        if(action.type !== "persist/REHYDRATE") {
-            applyEffects(state, hooks);
-            setCalculatedProperties(models.character.prototype.definition, null, state, ["character"]);
-        }
+        applyEffects(state, hooks);
+        setCalculatedProperties(models.character.prototype.definition, null, state, ["character"]);
         return state;
     } else {
         previousState = generateNewState();
@@ -91,12 +109,12 @@ function calculateDiff(newValue, previousBase) {
     } else if (_.isNumber(previousBase)) {
         return newValue - previousBase;
     } else {
-        throw new Error("A difference between " + newValue +" and " + previousBase + "doesn't make sense.");
+        throw new Error("A difference between " + newValue + " and " + previousBase + "doesn't make sense.");
     }
 }
 
 function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, statePath) {
-    const joinedStatePath = statePath[0] + statePath.slice(1).map(element => "[" + element +"]").join("");
+    const joinedStatePath = statePath[0] + statePath.slice(1).map(element => "[" + element + "]").join("");
     if (modelDefinition.baseValue) {
         const originalBaseValue = _.get(baseValues, joinedStatePath) || (modelDefinition.type === "number" ? 0 : []);
         const differenceFromOriginalBase = calculateDiff(_.get(state, joinedStatePath), originalBaseValue) || 0;
