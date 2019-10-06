@@ -16,12 +16,23 @@ function ${name}Model(original){
                 const containedType = propertyDef.type.substring(1, propertyDef.type.length -1);
                 const constructor = module.exports[containedType];
                 if(constructor) {
-                    this[property] = original[property].map(i => new constructor(i));
+                    this[property] = original[property].map(i => {
+                        const lookupValue = constructor.values[i];
+                        if (lookupValue){
+                            return lookupValue;
+                        } else {
+                            return new constructor(i)
+                        }
+                    });
                 } else {
                     this[property] = original[property];
                 }
             } else if (_.isObject(original[property])) {
-                this[property] = {...this[property], ...new module.exports[propertyDef.type](original[property])};
+                if(original[property].choices && original[property].options) {
+                    this[property] = original[property];
+                } else {
+                    this[property] = {...this[property], ...new module.exports[propertyDef.type](original[property])};
+                }
             } else {
                 this[property] = original[property];
             }
@@ -31,6 +42,7 @@ function ${name}Model(original){
         this.id = '${name}-' + ${name}Model.id();
     }
     this.effects = _.isArray(this.__proto__.effects) ? [...this.__proto__.effects] : {...this.__proto__.effects};
+    this._protoName = "${name}";
 }
 
 ${name}Model._id = 1;
