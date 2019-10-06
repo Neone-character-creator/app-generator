@@ -2,7 +2,7 @@ const _ = require("lodash");
 import interpreter from "../interpreter";
 
 const calculateTransformers = function (state, actionType, path, value) {
-    state.transformers = state.transformers.filter(transformer => {
+    const transformers = state.transformers.filter(transformer => {
         switch (actionType) {
             case "SET":
                 return path !== transformer.path || actionType !== transformer.action;
@@ -11,13 +11,14 @@ const calculateTransformers = function (state, actionType, path, value) {
                     throw new Error(`For REMOVE, value must be an index but was ${typeof value}`);
                 }
                 return path !== transformer.path || transformer.index !== value;
+            case "COMBINE":
+                return path !== transformer.path && _.isEqual(transformer.source, value);
         }
         return true;
     });
     const transformerToAdd = generateTransformerFromAction(state, actionType, path, value)
-    if (transformerToAdd) {
-        state.transformers.push(transformerToAdd);
-    }
+    transformers.push(transformerToAdd);
+    return transformers;
 };
 
 const generateTransformerFromAction = function (state, actionType, path, value) {

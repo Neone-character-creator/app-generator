@@ -11,7 +11,8 @@ const connected = connect((state, ownProps) => {
         $state: calculateStateProjection(state),
         $model: models,
         $this: ownProps.value,
-        $index: ownProps.index
+        $index: ownProps.index,
+        $temp: calculateStateProjection(state).$temp
     };
     const interpretedBoundProperty = interpreter.interpret(boundProperty, context);
     const value = (()=>{

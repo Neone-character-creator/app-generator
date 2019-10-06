@@ -20,6 +20,14 @@
     <link rel="stylesheet"
           href="https://raw.githubusercontent.com/Neone-character-creator/neone-character-creator-core/master/src/main/resources/static/css/character-page.css"/>
     <script src="https://apis.google.com/js/platform.js" id="gap"></script>
+    <script>
+        $(document).ready(function(){
+            $("#new-character").on("click", function(){
+                localStorage.removeItem("persist:root");
+                location.reload();
+            });
+        });
+    </script>
 
     <title>Title</title>
 </head>

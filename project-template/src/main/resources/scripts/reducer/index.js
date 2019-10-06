@@ -7,72 +7,76 @@ import {createSelector} from "reselect/lib/index";
 import modelTranslator from "./modelTranslator";
 import applyEffects from "./applyEffects";
 import calculateTransformers from "./transformerCalculator";
+import setTempProperty from "./setTempProperty";
 
 const hooks = new Hook(hooksConfiguration);
+
+function generateNewState(){
+    return {
+        character: new models.character(),
+        transformers: []
+    };
+}
+
+const actionHandlers = new Proxy({
+    "persist/REHYDRATE" : function(state, action) {
+        return action.payload ? action.payload : generateNewState();
+    },
+    "persist/PERSIST" : function(state, action){
+        delete state["$stemp"];
+        return state;
+    },
+    default: function(state, action){
+        let isTemp = false;
+        const actionPath = (() => {
+            if (action && action.path && action.path.startsWith("$state.")) {
+                return action.path.substring("$state.".length);
+            } else if(action && action.path && action.path.startsWith("$temp.")) {
+                isTemp = true;
+                return action.path.substring("$temp.".length);
+            } else {
+                throw new Error("Path " + action.path + " is invalid, it must begin with $state.");
+            }
+        })();
+        state = {...generateNewState(), transformers: state.transformers, $temp: state.$temp};
+
+        let transformedValue = modelTranslator(models, actionPath, interpreter.interpret(action.value, {
+            $state: state,
+        }));
+        if (isTemp) {
+            return setTempProperty(state, action.type, actionPath, transformedValue);
+        } else {
+            state.transformers = calculateTransformers(state, action.type, actionPath, transformedValue);
+            return state;
+        }
+    },
+    OVERRIDE: function(state, action){
+        state = {...generateNewState(), ...action.state};
+        return state;
+    }
+}, {
+    get: function(target, prop, receiver) {
+        if (!target.hasOwnProperty(prop)) {
+            return target["default"];
+        } else {
+            return target[prop];
+        }
+    }
+});
 
 export default function (previousState, action) {
     if (previousState) {
         if(!Object.values(ACTION_TYPES).includes(action.type)) {
             throw new Error("Action type " + action.type +" is not supported.");
         }
-        previousState = {
-            ...previousState, ...{
-                character: new models.character()
-            }
-        };
-        const actionPath = (() => {
-            if (action && action.path && action.path.startsWith("$state.")) {
-                return action.path.substring("$state.".length);
-            } else {
-                throw new Error("Path " + action.path + " is invalid, it must begin with $state.");
-            }
-        })();
-        let transformedValue = modelTranslator(models, actionPath, action.value);
-        if (action.type === "SET") {
-            if (actionPath.startsWith("character")) {
-                calculateTransformers(previousState, "SET", actionPath, transformedValue);
-            } else {
-                _.set(previousState, actionPath, transformedValue);
-            }
-        }
-        if (action.type === "REMOVE") {
-            if (actionPath.startsWith("character")) {
-                calculateTransformers(previousState, "REMOVE", actionPath, transformedValue);
-            } else {
-                const array = _.get(previousState, actionPath);
-                if (array) {
-                    let itemToRemoveFound = false;
-                    _.set(previousState, actionPath, array.filter((v, i) => {
-                        itemToRemoveFound = itemToRemoveFound || i === action.index || _.isEqual(v, transformedValue);
-                        return itemToRemoveFound;
-                    }));
-                }
-            }
-        }
-        if (action.type === "PUSH") {
-            if (actionPath.startsWith("character")) {
-                calculateTransformers(previousState, "PUSH", actionPath, transformedValue);
-            } else {
-                _.get(previousState, actionPath).push(transformedValue);
-            }
-        }
-        if(action.type === "COMBINE") {
-            if (actionPath.startsWith("character")) {
-                calculateTransformers(previousState, "PUSH", actionPath, transformedValue);
-            } else {
-                _.set(previousState, actionPath, _.get(previousState, actionPath).push(transformedValue).concat(transformedValue));
-            }
-        }
-        if (action.type === "OVERRIDE") {
-            previousState.character = {...new models.character(), ...action.state};
-        }
-        applyEffects(previousState, hooks);
-        setCalculatedProperties(models.character.prototype.definition, null, previousState, ["character"]);
+
+        const state = actionHandlers[action.type](previousState, action)
+
+        applyEffects(state , hooks);
+        setCalculatedProperties(models.character.prototype.definition, null, state , ["character"]);
+        return state;
     } else {
-        previousState = {
-            character: new models.character(),
-            transformers: []
-        };
+        previousState = generateNewState();
     }
 
     return previousState;
@@ -151,5 +155,7 @@ export const ACTION_TYPES = {
     SET: "SET",
     PUSH: "PUSH",
     REMOVE: "REMOVE",
-    OVERRIDE: "OVERRIDE"
-}
+    OVERRIDE: "OVERRIDE",
+    REHYDRATE: "persist/REHYDRATE",
+    PERSIST: "persist/PERSIST"
+};

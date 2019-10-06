@@ -9,10 +9,11 @@ const interpreter = {
             $models: models,
             $rules: rules,
             $index: _.get(context, "$index"),
-            $this: _.get(context, "$this")
+            $this: _.get(context, "$this"),
+            $temp: _.get(context.$state, "$temp", {})
         };
         if (typeof expression === "string" && expression.startsWith("#")) {
-            return new Function("$state", "$models", "$this", "$rules", "$index", `return ${expression.substring(1)}`).bind(context, context.$state, context.$models, context.$this, context.$rules, context.$index)();
+            return new Function("$state", "$models", "$this", "$rules", "$index", "$temp", `return ${expression.substring(1)}`).bind(context, context.$state, context.$models, context.$this, context.$rules, context.$index, context.$temp)();
         } else if (expression && (expression.any || expression.all)) {
             expression.any
         } else {
