@@ -100,7 +100,7 @@ class ${componentName} extends React.Component {
         <FormControl fullWidth={true}>
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
                     <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.update}
-                        renderValue={this.renderValue} multiple={this.props.maxSelections > 1}
+                        renderValue={this.renderValue} multiple={this.props.maxSelections > 1} disabled={this.props.disabled}
                         children={this.renderItems()}
                     />
                 </FormControl>
@@ -112,7 +112,7 @@ class ${componentName} extends React.Component {
 
     shouldComponentUpdate(nextProps){
         return this.props.value !== nextProps.value ||
-            this.props.options !== nextProps.options;
+            this.props.options !== nextProps.options || this.props.disabled !== nextProps.disabled;
     }
 }
 
