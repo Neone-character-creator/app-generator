@@ -11,7 +11,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 const persistedReducer = persistReducer({
     key: 'root',
-    storage
+    storage,
+    blacklist: ["$temp"]
 }, reducer);
 
 const store = createStore(persistedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
