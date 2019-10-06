@@ -5,7 +5,7 @@ const modelTranslator = function (modelConfiguration, targetPath, value) {
         if (targetPath === undefined) {
             throw new Error("targetPath must not be null or undefined");
         }
-        if (value === undefined) {
+        if (_.isNil(value)) {
             return;
         }
         const pathElementTokens = _.toPath(targetPath);
@@ -28,7 +28,7 @@ const modelTranslator = function (modelConfiguration, targetPath, value) {
             if (instanceModelType === "string" || instanceModelType === "number") {
                 const arrayTypeButValueNotArray = isArrayMatcher && !_.isArray(value);
                 const arrayTypeButArrayValuesWrong = isArrayMatcher && instanceModelType !== typeof value[0];
-                const typeWrong = instanceModelType === typeof value;
+                const typeWrong = instanceModelType !== typeof value;
                 if (arrayTypeButValueNotArray || arrayTypeButArrayValuesWrong || typeWrong) {
                     throw new Error("Path " + targetPath + " has a defined type of " + modelDef.type + " but a " + typeof value + " was given.");
                 }
