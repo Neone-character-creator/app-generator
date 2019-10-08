@@ -1,6 +1,8 @@
 import interpreter from "../interpreter";
 import _ from "lodash";
 import evaluateRequirements from "./evaluateRequirements";
+import modelTranslator from "./modelTranslator";
+import models from "../models";
 
 function recursivelyApplyEffects(state, effects, hooks, source) {
     if (_.isArray(effects)) {
@@ -31,8 +33,7 @@ function applyEffect(state, effect, source, hooks) {
     const willBeApplied = evaluateRequirements(effect.requires, context);
     if (willBeApplied) {
         const action = effect.action;
-        const value = interpreter.interpret(effect.value, context);
-        hooks.before(state, target, action);
+        const value = modelTranslator(models, target, interpreter.interpret(effect.value, context));
         const initialValue = _.get(state, target);
         switch (action) {
             case 'ADD':
@@ -56,7 +57,6 @@ function applyEffect(state, effect, source, hooks) {
                 const arrayAfterCombine = [...initialArrayForCombine].concat(value);
                 _.set(state, target, arrayAfterCombine);
         }
-        hooks.after(state, target, action);
         if (value.effects) {
             recursivelyApplyEffects(state, value.effects, hooks, value);
         }

@@ -6,13 +6,14 @@ class Hooks {
     }
 }
 
-function runHooks(configuration, when, state, path, action) {
+function runHooks(configuration, when, state, path, action, value) {
     const hooksToRun = configuration.filter(hook => {
         const matchesTrigger = hook.when ? interpreter.interpret(hook.when, {
             $state: state,
             $this: {
                 path,
-                action
+                action,
+                value
             }
         }) : true;
         return hook[when] === action && matchesTrigger;
@@ -24,10 +25,10 @@ function runHooks(configuration, when, state, path, action) {
     });
 }
 
-Hooks.prototype.before = function(state, path, action){
-    runHooks(this.configuration, "before", state, path, action);
+Hooks.prototype.before = function(state, path, action, value){
+    runHooks(this.configuration, "before", state, path, action, value);
 };
-Hooks.prototype.after = function(state, path, action){
-    runHooks(this.configuration, "after", state, path, action);
+Hooks.prototype.after = function(state, path, action, value){
+    runHooks(this.configuration, "after", state, path, action, value);
 };
 export default Hooks;
