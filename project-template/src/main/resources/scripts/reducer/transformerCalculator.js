@@ -16,8 +16,10 @@ const calculateTransformers = function (state, actionType, path, value) {
         }
         return true;
     });
-    const transformerToAdd = generateTransformerFromAction(state, actionType, path, value)
-    transformers.push(transformerToAdd);
+    const transformerToAdd = generateTransformerFromAction(state, actionType, path, value);
+    if(transformerToAdd) {
+        transformers.push(transformerToAdd);
+    }
     return transformers;
 };
 
