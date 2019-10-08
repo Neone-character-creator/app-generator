@@ -43,7 +43,6 @@ const actionHandlers = new Proxy({
         };
     },
     "persist/PERSIST": function (state, action) {
-        delete state["$stemp"];
         return state;
     },
     default: function (state, action) {
@@ -63,6 +62,7 @@ const actionHandlers = new Proxy({
         let transformedValue = modelTranslator(models, actionPath, interpreter.interpret(action.value, {
             $state: state,
         }));
+        hooks.before(state, actionPath, action, transformedValue);
         if (isTemp) {
             return setTempProperty(state, action.type, actionPath, transformedValue);
         } else {
@@ -90,8 +90,21 @@ export default function (previousState, action) {
             throw new Error("Action type " + action.type + " is not supported.");
         }
 
+        const actionPath = (() => {
+            if (action && action.path && action.path.startsWith("$state.")) {
+                return action.path.substring("$state.".length);
+            } else if (action && action.path && action.path.startsWith("$temp.")) {
+                return action.path.substring("$temp.".length);
+            }
+        })();
+
         const state = actionHandlers[action.type](previousState, action)
         applyEffects(state, hooks);
+        if(actionPath) {
+            hooks.after(state, action.path, action.type, modelTranslator(models, actionPath, interpreter.interpret(action.value, {
+                $state: state,
+            })));
+        }
         setCalculatedProperties(models.character.prototype.definition, null, state, ["character"]);
         return state;
     } else {
