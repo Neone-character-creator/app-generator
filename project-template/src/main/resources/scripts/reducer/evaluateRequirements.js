@@ -2,7 +2,7 @@ import _ from "lodash";
 import interpreter from "../interpreter";
 
 const evaluateRequirements = function(requirements, context) {
-    if (requirements === undefined) {
+    if (_.isNil(requirements)) {
         return true;
     }
     if (_.isFunction(requirements)) {
