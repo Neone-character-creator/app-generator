@@ -33,6 +33,14 @@ function reattachPrototypes(value) {
     }
 };
 
+function extractActionPathFromAction(action){
+    if (action && action.path && action.path.startsWith("$state")) {
+        return action.path.slice("$state.".length);
+    } else if (action && action.path && action.path.startsWith("$temp")) {
+        return action.path.substring("$temp.".length);
+    }
+}
+
 const actionHandlers = new Proxy({
     "persist/REHYDRATE": function (state, action) {
         //
@@ -47,16 +55,7 @@ const actionHandlers = new Proxy({
     },
     default: function (state, action) {
         let isTemp = false;
-        const actionPath = (() => {
-            if (action && action.path && action.path.startsWith("$state.")) {
-                return action.path.substring("$state.".length);
-            } else if (action && action.path && action.path.startsWith("$temp.")) {
-                isTemp = true;
-                return action.path.substring("$temp.".length);
-            } else {
-                throw new Error("Path " + action.path + " is invalid, it must begin with $state.");
-            }
-        })();
+        const actionPath = extractActionPathFromAction(action);
         state = {...generateNewState(), transformers: state.transformers, $temp: state.$temp};
 
         let transformedValue = modelTranslator(models, actionPath, interpreter.interpret(action.value, {
@@ -90,13 +89,7 @@ export default function (previousState, action) {
             throw new Error("Action type " + action.type + " is not supported.");
         }
 
-        const actionPath = (() => {
-            if (action && action.path && action.path.startsWith("$state.")) {
-                return action.path.substring("$state.".length);
-            } else if (action && action.path && action.path.startsWith("$temp.")) {
-                return action.path.substring("$temp.".length);
-            }
-        })();
+        const actionPath = extractActionPathFromAction(action);
 
         const state = actionHandlers[action.type](previousState, action)
         applyEffects(state, hooks);
