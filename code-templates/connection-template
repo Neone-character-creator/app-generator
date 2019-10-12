@@ -10,18 +10,18 @@ const connected = connect((state, ownProps) => {
     const context = {
         $state: calculateStateProjection(state),
         $model: models,
-        $this: ownProps.value,
+        $this: ownProps.value ? ownProps.value : {},
         $index: ownProps.index,
         $temp: calculateStateProjection(state).$temp
     };
-    const interpretedBoundProperty = interpreter.interpret(boundProperty, context);
-    const value = (()=>{
-            if (isBoundComponent){
-                return _.get(context, interpretedBoundProperty);
-            } else {
-                return interpreter.interpret(interpretedBoundProperty, context);
-            }
-    })();
+    const propertyPathAsString = interpreter.interpret(boundProperty, context);
+    const propertyPathAsArray = _.toPath(propertyPathAsString);
+    const lastPropertyName = propertyPathAsArray[propertyPathAsArray.length-1];
+    _.set(context, "$this.path", propertyPathAsString);
+    const rawParent = _.get(context, propertyPathAsArray.slice(0, -1));
+    const parentValue = _.isArray(rawParent) ? rawParent : _.isNil(rawParent)
+        ? null : evaluateObjectProperties(context, rawParent);
+    const value = readOnly ? interpreter.interpret(propertyPathAsString, context) : _.isNil(parentValue) ? null : parentValue[lastPropertyName];
     const maxSelections = interpreter.interpret(selectionCountExpression, context);
     const options = (interpreter.interpret(valueExpression, context) || []).map(opt => {
         if(_.isArray(opt)){
@@ -50,7 +50,7 @@ const connected = connect((state, ownProps) => {
         hidden,
         options,
         maxSelections,
-        boundProperty: interpretedBoundProperty,
+        boundProperty: propertyPathAsString,
         value: _.isNil(value) ? "" : value
     };
 }, (dispatch) => {
