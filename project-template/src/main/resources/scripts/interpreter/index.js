@@ -24,14 +24,13 @@ const interpreter = {
 
 function evaluateObjectProperties(context, object) {
     const definition = object.__proto__.definition;
-    return Object.keys(object).reduce((mapped, nextProp) => {
+    return _.union(Object.keys(object), Object.keys(definition || {})).reduce((mapped, nextProp) => {
         const propDef = _.get(definition, nextProp);
         const derivedFrom = _.get(propDef, "derivedFrom");
         if (_.isArray(derivedFrom)) {
             mapped[nextProp] = derivedFrom.reduce((accumulator, nextExpression) => {
-                return interpreter.interpret(nextExpression, {...context,
-                    $this: {...object, accumulator}
-                });
+                _.set(context, "$this.accumulator", accumulator);
+                return interpreter.interpret(nextExpression, context);
             }, null);
         } else {
             mapped[nextProp] = interpreter.interpret(derivedFrom || object[nextProp], {...context, $this: context.$this || object});
