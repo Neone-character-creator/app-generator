@@ -1,7 +1,8 @@
 const isBoundComponent = ${isBoundComponent}
-const boundProperty = ${boundProperty}; // The expression used to determine the value of binding.
+const boundPropertyExpression = ${boundProperty}; // The expression used to bind this component to the state.
+const valuePropertyExpression = ${valueExpression}; // The expression evaluated to determine the value of the component
 const readOnly = ${readOnly}; // If this component only calculates its value, or is bound and can update it.
-const valueExpression = "${values}";
+const optionsExpression = "${values}";
 const action = ${action};
 const disabledWhenExpression = ${disabledWhen};
 const hiddenWhenExpression = ${hiddenWhen};
@@ -12,18 +13,22 @@ const connected = connect((state, ownProps) => {
         $model: models,
         $this: ownProps.value ? ownProps.value : {},
         $index: ownProps.index,
-        $temp: calculateStateProjection(state).$temp
+        $temp: calculateStateProjection(state).$temp,
+        $parent: ownProps.parent
     };
-    const propertyPathAsString = interpreter.interpret(boundProperty, context);
+    const propertyPathAsString = interpreter.interpret(boundPropertyExpression, context);
+    if(propertyPathAsString !== undefined && !_.isString(propertyPathAsString)) {
+        throw new Error("property path was defined but was " + typeof propertyPathAsString + " instead of a string");
+    }
     const propertyPathAsArray = _.toPath(propertyPathAsString);
     const lastPropertyName = propertyPathAsArray[propertyPathAsArray.length-1];
     _.set(context, "$this.path", propertyPathAsString);
-    const rawParent = _.get(context, propertyPathAsArray.slice(0, -1));
-    const parentValue = _.isArray(rawParent) ? rawParent : _.isNil(rawParent)
-        ? null : evaluateObjectProperties(context, rawParent);
-    const value = readOnly ? interpreter.interpret(propertyPathAsString, context) : _.isNil(parentValue) ? null : parentValue[lastPropertyName];
+    const rawParentValue = _.get(context, propertyPathAsArray.slice(0, -1));
+    const parentValue = _.isArray(rawParentValue) ? rawParentValue : _.isNil(rawParentValue)
+        ? null : evaluateObjectProperties(context, rawParentValue);
+    const value = !_.isNil(valuePropertyExpression) ? interpreter.interpret(valuePropertyExpression, context) : _.isNil(parentValue) ? null : parentValue[lastPropertyName];
     const maxSelections = interpreter.interpret(selectionCountExpression, context);
-    const options = (interpreter.interpret(valueExpression, context) || []).map(opt => {
+    const options = (interpreter.interpret(optionsExpression, context) || []).map(opt => {
         if(_.isArray(opt)){
             return opt.map(evaluateObjectProperties.bind(null, context));
         } else if(_.isObject(opt)) {
@@ -68,6 +73,10 @@ function determineValues(expression, state, value){
         case "character":
             return _.get(state, expression, []);
     }
+}
+
+function evaluateValueExpression(expression, context) {
+
 }
 
 function renderOption(value) {

@@ -3,6 +3,16 @@ class Character {
 
     }
 }
+Character.prototype.definition = {
+    age: {
+        type: "number",
+        default: 0
+    },
+    name: {
+        type:"string",
+        default: ""
+    }
+};
 
 module.exports = {
     character: Character
