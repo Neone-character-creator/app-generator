@@ -1,5 +1,5 @@
 import _ from "lodash";
-
+import copyWithPrototype from "../copyWithPrototype";
 
 const modelTranslator = function (modelConfiguration, targetPath, value) {
         if (targetPath === undefined) {
@@ -49,7 +49,7 @@ function lookupOrCreateInstance(modelConfiguration, value, typeDefinition) {
     const lookupValue = modelConfiguration[instanceType].values.find(v => v.id === value);
     if (lookupValue) {
         lookupValue.effects = [...modelConfiguration[instanceType].prototype.effects];
-        return lookupValue;
+        return _.cloneDeepWith(lookupValue, copyWithPrototype);
     } else {
         const newInstance = new modelConfiguration[instanceType]();
         modelConfiguration[instanceType].values.push(newInstance);

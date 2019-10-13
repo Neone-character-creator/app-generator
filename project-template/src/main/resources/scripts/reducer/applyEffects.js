@@ -3,6 +3,7 @@ import _ from "lodash";
 import evaluateRequirements from "./evaluateRequirements";
 import modelTranslator from "./modelTranslator";
 import models from "../models";
+import copyWithPrototype from "../copyWithPrototype";
 
 function recursivelyApplyEffects(state, effects, hooks, source) {
     if (_.isArray(effects)) {

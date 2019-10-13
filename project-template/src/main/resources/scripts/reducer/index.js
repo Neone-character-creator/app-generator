@@ -8,6 +8,7 @@ import modelTranslator from "./modelTranslator";
 import applyEffects from "./applyEffects";
 import calculateTransformers from "./transformerCalculator";
 import setTempProperty from "./setTempProperty";
+import copyWithPrototype from "../copyWithPrototype";
 
 const hooks = new Hook(hooksConfiguration);
 
@@ -62,9 +63,9 @@ const actionHandlers = new Proxy({
         const actionPath = extractActionPathFromAction(action);
         state = {...generateNewState(), transformers: state.transformers, $temp: state.$temp};
 
-        let transformedValue = action.type === "REMOVE" ? action.value : modelTranslator(models, actionPath, interpreter.interpret(action.value, {
+        let transformedValue = action.type === "REMOVE" ? action.value : copyWithPrototype(modelTranslator(models, actionPath, interpreter.interpret(action.value, {
             $state: state,
-        }));
+        })));
         hooks.before(state, actionPath, action, transformedValue);
         if (isTemp) {
             return setTempProperty(state, action.type, actionPath, transformedValue);
