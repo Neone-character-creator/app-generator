@@ -26,7 +26,9 @@ const connected = connect((state, ownProps) => {
     const rawParentValue = _.get(context, propertyPathAsArray.slice(0, -1));
     const parentValue = _.isArray(rawParentValue) ? rawParentValue : _.isNil(rawParentValue)
         ? null : evaluateObjectProperties(context, rawParentValue);
-    const value = !_.isNil(valuePropertyExpression) ? interpreter.interpret(valuePropertyExpression, context) : _.isNil(parentValue) ? null : parentValue[lastPropertyName];
+    const value = !_.isNil(valuePropertyExpression) ? interpreter.interpret(valuePropertyExpression, context)
+        : _.isNil(parentValue) ? null
+        : parentValue[lastPropertyName];
     const maxSelections = interpreter.interpret(selectionCountExpression, context);
     const options = (interpreter.interpret(optionsExpression, context) || []).map(opt => {
         if(_.isArray(opt)){
