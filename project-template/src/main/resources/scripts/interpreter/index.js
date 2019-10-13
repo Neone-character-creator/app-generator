@@ -2,6 +2,14 @@ import rules from "!../rules.json";
 import models from "../models";
 import _ from "lodash";
 
+function extendObjectWithPrototype(valueToInheritFrom, ...otherObjects) {
+    const mergedObject = otherObjects.reduce((combinedObject, nextObject) => {
+        return {...combinedObject, ...nextObject};
+    }, {...valueToInheritFrom});
+    mergedObject.__proto__ = valueToInheritFrom.__proto__;
+    return mergedObject;
+}
+
 const interpreter = {
     interpret: function (expression, context) {
         context = {
@@ -33,7 +41,8 @@ function evaluateObjectProperties(context, object) {
                 return interpreter.interpret(nextExpression, context);
             }, null);
         } else {
-            mapped[nextProp] = interpreter.interpret(derivedFrom || object[nextProp], {...context, $this: context.$this || object});
+            mapped[nextProp] = interpreter.interpret(derivedFrom || object[nextProp],
+                {...context, $this: extendObjectWithPrototype(object, context.$this)});
         }
         return mapped;
     }, new object.__proto__.constructor());
