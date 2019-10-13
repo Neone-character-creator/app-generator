@@ -41,6 +41,10 @@ function extractActionPathFromAction(action){
     }
 }
 
+function actionPathIsTemp(action){
+    return action.path.startsWith("$temp");
+}
+
 const actionHandlers = new Proxy({
     "persist/REHYDRATE": function (state, action) {
         //
@@ -54,7 +58,7 @@ const actionHandlers = new Proxy({
         return state;
     },
     default: function (state, action) {
-        let isTemp = false;
+        let isTemp = actionPathIsTemp(action);
         const actionPath = extractActionPathFromAction(action);
         state = {...generateNewState(), transformers: state.transformers, $temp: state.$temp};
 
