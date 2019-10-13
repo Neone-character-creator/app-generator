@@ -62,7 +62,7 @@ const actionHandlers = new Proxy({
         const actionPath = extractActionPathFromAction(action);
         state = {...generateNewState(), transformers: state.transformers, $temp: state.$temp};
 
-        let transformedValue = modelTranslator(models, actionPath, interpreter.interpret(action.value, {
+        let transformedValue = action.type === "REMOVE" ? action.value : modelTranslator(models, actionPath, interpreter.interpret(action.value, {
             $state: state,
         }));
         hooks.before(state, actionPath, action, transformedValue);
