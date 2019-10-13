@@ -44,10 +44,15 @@ function applyEffect(state, effect, source, hooks) {
                 break;
             case 'PUSH':
                 const initialArrayForPush = _.get(state, target);
-                effect.index = initialArrayForPush.length;
-                const arrayAfterPush = [...initialArrayForPush];
-                arrayAfterPush.push(value);
-                _.set(state, target, arrayAfterPush);
+                const indexOfValue = initialArrayForPush.indexOf(value);
+                if (indexOfValue === -1) {
+                    effect.index = initialArrayForPush.length;
+                    const arrayAfterPush = [...initialArrayForPush];
+                    arrayAfterPush.push(value);
+                    _.set(state, target, arrayAfterPush);
+                } else {
+                    effect.index = indexOfValue;
+                }
                 break;
             case 'SET':
                 _.set(state, target, value);
