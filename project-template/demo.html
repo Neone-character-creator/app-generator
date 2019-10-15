@@ -26,6 +26,17 @@
                 localStorage.removeItem("persist:root");
                 location.reload();
             });
+
+            $("#save-character").on("click", function(){
+                var content = $("#content")[0].contentWindow;
+                var character = content.character();
+                $.ajax({
+                    url:"/save",
+                    type: "POST",
+                    data: JSON.stringify(character),
+                    contentType: "application/json"
+                });
+            });
         });
     </script>
 
