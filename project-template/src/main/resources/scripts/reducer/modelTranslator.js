@@ -27,9 +27,11 @@ const modelTranslator = function (modelConfiguration, targetPath, value) {
             const instanceModelType = isArrayMatcher ? isArrayMatcher[1] : modelDef.type;
             if (instanceModelType === "string" || instanceModelType === "number") {
                 const arrayTypeButValueNotArray = isArrayMatcher && !_.isArray(value);
-                const arrayTypeButArrayValuesWrong = isArrayMatcher && instanceModelType !== typeof value[0];
+                const arrayTypeButArrayValuesWrong = isArrayMatcher && value.reduce((found, next)=>{
+                    return found || typeof next != instanceModelType;
+                }, false);
                 const typeWrong = instanceModelType !== typeof value;
-                if (arrayTypeButValueNotArray || arrayTypeButArrayValuesWrong || typeWrong) {
+                if (arrayTypeButValueNotArray || arrayTypeButArrayValuesWrong || (typeWrong && !isArrayMatcher)) {
                     throw new Error("Path " + targetPath + " has a defined type of " + modelDef.type + " but a " + typeof value + " was given.");
                 }
                 return value;
