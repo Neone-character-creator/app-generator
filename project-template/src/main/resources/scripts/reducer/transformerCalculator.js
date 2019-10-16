@@ -10,7 +10,7 @@ const calculateTransformers = function (state, actionType, path, value) {
                 if (!_.isNumber(value)) {
                     throw new Error(`For REMOVE, value must be an index but was ${typeof value}`);
                 }
-                return path !== transformer.path || transformer.index !== value;
+                return transformer.action !== "PUSH" || path !== transformer.path || transformer.index !== value;
             case "COMBINE":
                 return path !== transformer.path && _.isEqual(transformer.source, value);
         }
