@@ -40,7 +40,7 @@ function evaluateObjectProperties(context, object) {
             mapped[nextProp] = derivedFrom.reduce((accumulator, nextExpression) => {
                 _.set(context, "$this.accumulator", accumulator);
                 return interpreter.interpret(nextExpression, context);
-            }, null);
+            }, object[nextProp]);
         } else {
             mapped[nextProp] = interpreter.interpret(derivedFrom || object[nextProp],
                 {...context, $this: extendObjectWithPrototype(object, context.$this)});
