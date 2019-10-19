@@ -37,7 +37,7 @@ const modelTranslator = function (modelConfiguration, targetPath, value) {
                 return value;
             }
 
-            return lookupOrCreateInstance(modelConfiguration, _.get(value, "id", value), modelDef);
+            return lookupOrCreateInstance(modelConfiguration, value, modelDef);
         } else {
             return value;
         }
@@ -47,14 +47,16 @@ const modelTranslator = function (modelConfiguration, targetPath, value) {
 export default modelTranslator;
 
 function lookupOrCreateInstance(modelConfiguration, value, typeDefinition) {
+    const valueId = _.isString(value) ? value : _.get(value, "id");
     const instanceType = typeDefinition.type.replace("[", "").replace("]", "");
-    const lookupValue = modelConfiguration[instanceType].values.find(v => v.id === value);
+    const lookupValue = modelConfiguration[instanceType].values.find(v => v.id === valueId);
     if (lookupValue) {
         lookupValue.effects = [...modelConfiguration[instanceType].prototype.effects];
         return _.cloneDeepWith(lookupValue, copyWithPrototype);
     } else {
         const newInstance = new modelConfiguration[instanceType](value);
         modelConfiguration[instanceType].values.push(newInstance);
+        modelConfiguration[instanceType].values[newInstance.id] = newInstance;
         newInstance.effects = [...modelConfiguration[instanceType].prototype.effects];
         return newInstance;
     }
