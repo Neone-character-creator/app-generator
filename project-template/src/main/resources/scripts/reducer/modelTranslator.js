@@ -27,7 +27,7 @@ const modelTranslator = function (modelConfiguration, targetPath, value) {
             const instanceModelType = isArrayMatcher ? isArrayMatcher[1] : modelDef.type;
             if (instanceModelType === "string" || instanceModelType === "number") {
                 const arrayTypeButValueNotArray = isArrayMatcher && !_.isArray(value);
-                const arrayTypeButArrayValuesWrong = isArrayMatcher && value.reduce((found, next)=>{
+                const arrayTypeButArrayValuesWrong = !arrayTypeButValueNotArray && value.reduce((found, next)=>{
                     return found || typeof next != instanceModelType;
                 }, false);
                 const typeWrong = instanceModelType !== typeof value;
@@ -53,7 +53,7 @@ function lookupOrCreateInstance(modelConfiguration, value, typeDefinition) {
         lookupValue.effects = [...modelConfiguration[instanceType].prototype.effects];
         return _.cloneDeepWith(lookupValue, copyWithPrototype);
     } else {
-        const newInstance = new modelConfiguration[instanceType]();
+        const newInstance = new modelConfiguration[instanceType](value);
         modelConfiguration[instanceType].values.push(newInstance);
         newInstance.effects = [...modelConfiguration[instanceType].prototype.effects];
         return newInstance;
