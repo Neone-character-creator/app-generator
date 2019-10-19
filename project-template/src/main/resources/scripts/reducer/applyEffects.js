@@ -62,7 +62,7 @@ function applyEffect(state, effect, source, hooks) {
                 const arrayAfterCombine = [...initialArrayForCombine].concat(value);
                 _.set(state, target, arrayAfterCombine);
         }
-        if (value.effects) {
+        if (value && value.effects) {
             recursivelyApplyEffects(state, value.effects, hooks, value);
         }
     }
