@@ -27,7 +27,7 @@ const modelTranslator = function (modelConfiguration, targetPath, value) {
             const instanceModelType = isArrayMatcher ? isArrayMatcher[1] : modelDef.type;
             if (instanceModelType === "string" || instanceModelType === "number") {
                 const arrayTypeButValueNotArray = isArrayMatcher && !_.isArray(value);
-                const arrayTypeButArrayValuesWrong = !arrayTypeButValueNotArray && value.reduce((found, next)=>{
+                const arrayTypeButArrayValuesWrong = _.isArray(value) && value.reduce((found, next)=>{
                     return found || typeof next != instanceModelType;
                 }, false);
                 const typeWrong = instanceModelType !== typeof value;
