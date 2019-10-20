@@ -37,7 +37,7 @@ function applyEffect(state, effect, source, hooks) {
         const initialValue = _.get(state, target);
         switch (action) {
             case 'ADD':
-                _.set(state, target, (_.isNumber(initialValue) ? initialValue : 0) + value);
+                _.set(state, target, (_.isNumber(initialValue) ? initialValue : 0) + _.isNumber(value) ? value : 0);
                 break;
             case 'SUBTRACT':
                 _.set(state, target, initialValue - value);
