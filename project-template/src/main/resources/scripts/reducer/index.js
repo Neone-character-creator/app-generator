@@ -20,13 +20,13 @@ function generateNewState() {
 }
 
 function reattachPrototypes(value) {
-    if(_.isArray(value)) {
+    if (_.isArray(value)) {
         value.forEach(reattachPrototypes);
     } else if (_.isObject(value)) {
         if (value._protoName) {
             Object.setPrototypeOf(value, models[value._protoName].prototype);
         }
-        Object.keys(value).forEach(property =>{
+        Object.keys(value).forEach(property => {
             if (_.isObject(value[property])) {
                 reattachPrototypes(value[property]);
             }
@@ -34,7 +34,7 @@ function reattachPrototypes(value) {
     }
 };
 
-function extractActionPathFromAction(action){
+function extractActionPathFromAction(action) {
     if (action && action.path && action.path.startsWith("$state")) {
         return action.path.slice("$state.".length);
     } else if (action && action.path && action.path.startsWith("$temp")) {
@@ -42,7 +42,7 @@ function extractActionPathFromAction(action){
     }
 }
 
-function actionPathIsTemp(action){
+function actionPathIsTemp(action) {
     return action.path.startsWith("$temp");
 }
 
@@ -101,7 +101,7 @@ export default function (previousState, action) {
 
         const state = actionHandlers[action.type](previousState, action)
         applyEffects(state, hooks);
-        if(actionPath) {
+        if (actionPath) {
             hooks.after(state, action.path, action.type, modelTranslator(models, actionPath, interpreter.interpret(action.value, {
                 $state: state,
             })));
@@ -115,35 +115,31 @@ export default function (previousState, action) {
     return previousState;
 };
 
-const baseValues = {};
+const previousBaseValues = {};
+const previousUserValues = {};
 
-function calculateDiff(newValue, previousBase) {
-    if (_.isArray(previousBase)) {
-        return _.difference(newValue || [], previousBase)
-    } else if (_.isNumber(previousBase)) {
-        return newValue - previousBase;
+function calculateDiff(newValue, oldValue) {
+    if (_.isNumber(newValue) && _.isNumber(oldValue)) {
+        return oldValue - newValue;
+    } else if (_.isArray(newValue) && _.isArray(oldValue)) {
+        return _.difference(newValue, oldValue);
     } else {
-        throw new Error("A difference between " + newValue + " and " + previousBase + "doesn't make sense.");
+        throw new Error("Tried to find diff between a " + typeof newValue + " and a " + typeof oldValue + " which isn't supported");
     }
 }
 
 function setCalculatedProperties(modelDefinition, ancestorDefinitions, state, statePath) {
     const joinedStatePath = statePath[0] + statePath.slice(1).map(element => "[" + element + "]").join("");
     if (modelDefinition.baseValue) {
-        const originalBaseValue = _.get(baseValues, joinedStatePath) || (modelDefinition.type === "number" ? 0 : []);
-        const differenceFromOriginalBase = calculateDiff(_.get(state, joinedStatePath), originalBaseValue) || 0;
-        const baseValue = modelDefinition.baseValue.reduce((accumulator, nextExpression) => {
+        const currentValue = _.get(state, joinedStatePath);
+        const previousBaseValue = _.get(previousBaseValues, joinedStatePath) || (modelDefinition.type === "number" ? 0 : []);
+        const userChanges = calculateDiff(currentValue, previousBaseValue);
+        const newBaseValue = modelDefinition.baseValue.reduce((accumulator, nextExpression) => {
             return interpreter.interpret(nextExpression, {$state: state, $models: models, $this: accumulator}, true)
                 || accumulator;
-        }, 0);
-        if (originalBaseValue !== baseValue) {
-            _.set(baseValues, joinedStatePath, baseValue);
-        }
-        if (_.isArray(baseValue)) {
-            _.set(state, joinedStatePath, baseValue.concat(differenceFromOriginalBase));
-        } else {
-            _.set(state, joinedStatePath, baseValue + differenceFromOriginalBase);
-        }
+        }, modelDefinition.type === "number" ? 0 : []);
+        const newValue = _.isArray(currentValue) ? newBaseValue.concat(userChanges) : newBaseValue + userChanges;
+        _.set(state, joinedStatePath, newValue);
     } else if (modelDefinition.derivedFrom) {
         let value = modelDefinition.derivedFrom.reduce((accumulator, nextExpression) => {
             const localContext = {
