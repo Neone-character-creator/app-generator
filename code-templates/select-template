@@ -52,7 +52,15 @@ class ${componentName} extends React.Component {
 
         this.update = this.update.bind(this);
         this.isItemDisabled = function(item) {
-            return interpreter.interpret(listItemDisabledExpression, {...this.props.context, $this: item}) || false;
+            if(_.isArray(listItemDisabledExpression)) {
+                return listItemDisabledExpression.reduce((currentValue, nextSubExpression) => {
+                    const context = {...this.props.context, $this: item};
+                    context.$this.accumulator = currentValue;
+                    return interpreter.interpret(nextSubExpression, context);
+                }, undefined) || false;
+            } else {
+                return interpreter.interpret(listItemDisabledExpression, {...this.props.context, $this: item}) || false;
+            }
         }
         this.isItemDisabled = this.isItemDisabled.bind(this);
         this.renderValue = value => {
@@ -119,4 +127,4 @@ class ${componentName} extends React.Component {
 const itemTextPath = ${itemText};
 const valueDisplayExpression = ${displayExpression};
 const Component = ${componentName};
-const listItemDisabledExpression = ${itemDisabledWhen};
+const listItemDisabledExpression = JSON.parse(_.unescape(${itemDisabledWhen}));
