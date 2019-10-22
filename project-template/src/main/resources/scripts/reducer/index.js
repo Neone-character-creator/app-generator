@@ -48,7 +48,6 @@ function actionPathIsTemp(action) {
 
 const actionHandlers = new Proxy({
     "persist/REHYDRATE": function (state, action) {
-        //
         reattachPrototypes(_.get(action, "payload.transformers", []));
         return {
             ...generateNewState(),
@@ -63,11 +62,11 @@ const actionHandlers = new Proxy({
         const actionPath = extractActionPathFromAction(action);
         state = {...generateNewState(), transformers: state.transformers, $temp: state.$temp};
 
-        let translatedValue = modelTranslator(models, actionPath, interpreter.interpret(action.value, {
+        let translatedValue = action.type === "REMOVE" ? action.value : modelTranslator(models, actionPath, interpreter.interpret(action.value, {
             $state: state,
         }));
 
-        let transformedValue = action.type === "REMOVE" ? action.value : !_.isArray(translatedValue) && _.isObject(translatedValue) ?
+        let transformedValue = !_.isArray(translatedValue) && _.isObject(translatedValue) ?
             copyWithPrototype(translatedValue) : translatedValue;
         hooks.before(state, actionPath, action, transformedValue);
         if (isTemp) {
@@ -102,7 +101,7 @@ export default function (previousState, action) {
         const state = actionHandlers[action.type](previousState, action)
         applyEffects(state, hooks);
         if (actionPath) {
-            hooks.after(state, action.path, action.type, modelTranslator(models, actionPath, interpreter.interpret(action.value, {
+            hooks.after(state, action.path, action.type, action.type === "REMOVE" ? action.value : modelTranslator(models, actionPath, interpreter.interpret(action.value, {
                 $state: state,
             })));
         }
@@ -116,7 +115,6 @@ export default function (previousState, action) {
 };
 
 const previousBaseValues = {};
-const previousUserValues = {};
 
 function calculateDiff(newValue, oldValue) {
     if (_.isNumber(newValue) && _.isNumber(oldValue)) {
