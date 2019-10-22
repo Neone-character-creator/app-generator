@@ -6,6 +6,12 @@ function ${name}Model(original){
                 this[property] = propertyDef.default;
             } else if (propertyDef.type.match(/\[.*\]/)){
                 this[property] = [];
+                const instanceTypeName = propertyDef.type.substring(1, propertyDef.type.length - 1);
+                const instanceDefinition = module.exports[instanceTypeName];
+                if (instanceDefinition) {
+                    this[property].__proto__.definition = instanceDefinition.definition;
+                    this[property].__proto__.values = instanceDefinition.values;
+                }
             } else {
                 this[property] = new module.exports[propertyDef.type]();
             }

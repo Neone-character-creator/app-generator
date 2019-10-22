@@ -16,7 +16,9 @@ const modelTranslator = function (modelConfiguration, targetPath, value) {
             if(/^\d+$/.test(nextPathElement)) {
                 return currentPosition;
             }
-            if (currentPosition.prototype) {
+            if(currentPosition.type) {
+                return modelConfiguration[currentPosition.type].prototype.definition[nextPathElement];
+            } else if (currentPosition.prototype) {
                 return currentPosition.prototype.definition[nextPathElement];
             } else {
                 return currentPosition[nextPathElement];
