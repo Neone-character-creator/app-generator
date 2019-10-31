@@ -35,6 +35,8 @@ function work(configFileLocation) {
             ModelClassWriter(tmpDir, modelSources);
             return;
         }
+        appConfiguration.alphanumericGameName = appConfiguration.gameName.replace(/\W/g, "");
+        console.log(appConfiguration.alphanumericGameName);
         appConfiguration.toolVersion = package.version;
         appConfiguration.rootDir = parent;
         var pluginGenerator = new PluginGenerator(appConfiguration, tmpDir);
