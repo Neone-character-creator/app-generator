@@ -1,7 +1,7 @@
 {
   "description":{
     "creator" : "${authorName}",
-    "game" : "${gameName}",
+    "game" : "${alphanumericGameName}",
     "version" : "${pluginVersion}",
     "toolVersion": "${toolVersion}"
   },

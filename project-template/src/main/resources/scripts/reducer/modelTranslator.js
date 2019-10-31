@@ -17,7 +17,13 @@ const modelTranslator = function (modelConfiguration, targetPath, value) {
                 return currentPosition;
             }
             if(currentPosition.type) {
-                return modelConfiguration[currentPosition.type].prototype.definition[nextPathElement];
+                var arrayMatcher = /\[(.*)\]/.exec(currentPosition.type);
+                if (arrayMatcher) {
+                    const itemType = arrayMatcher[1];
+                    return modelConfiguration[itemType].prototype.definition[nextPathElement];
+                } else {
+                    return modelConfiguration[currentPosition.type].prototype.definition[nextPathElement];
+                }
             } else if (currentPosition.prototype) {
                 return currentPosition.prototype.definition[nextPathElement];
             } else {

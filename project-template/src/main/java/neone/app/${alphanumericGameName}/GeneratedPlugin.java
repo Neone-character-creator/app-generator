@@ -1,4 +1,4 @@
-package neone.app.${gameName};
+package neone.app.${alphanumericGameName};
 
 import io.github.thisisnozaku.charactercreator.plugins.GamePlugin;
 import org.apache.felix.scr.annotations.Component;
