@@ -29,9 +29,9 @@ class ${componentName} extends React.Component {
     constructor(props){
             super(props);
 
-            const updateDispatch = function(value){
+            const updateDispatch = _.debounce((value) => {
                 this.props.dispatch({ type: "SET", path: this.props.boundProperty, value});
-            }.bind(this);
+            });
 
             this.update = function(event){
                 if(isBoundComponent){
