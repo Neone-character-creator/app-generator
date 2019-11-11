@@ -7,7 +7,7 @@ import reducer from "./reducer";
 import React from "react";
 import {persistStore, persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { PersistGate } from 'redux-persist/integration/react'
+import {PersistGate} from 'redux-persist/integration/react'
 
 const persistedReducer = persistReducer({
     key: 'root',
@@ -27,6 +27,19 @@ window.character = function (stringifiedState) {
         });
     }
 };
+window.addEventListener("message", function (event) {
+    switch (event.data.action) {
+        case "get-character":
+            event.source.postMessage({
+                action: "get-character",
+                character: window.character()
+            }, event.origin);
+
+            break;
+        case "set-character":
+            window.character(event.data.character);
+    }
+});
 if (process.env.HAS_PDF === true) {
     window.export = function () {
         return store.getState();
