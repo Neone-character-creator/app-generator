@@ -77,7 +77,11 @@ const actionHandlers = new Proxy({
         }
     },
     OVERRIDE: function (state, action) {
-        state = {...generateNewState(), ...action.state};
+        state = {
+            ...generateNewState(), ...{
+                character: action.state
+            }
+        };
         return state;
     }
 }, {
