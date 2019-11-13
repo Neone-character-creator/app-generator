@@ -5,18 +5,8 @@ import {createStore} from "redux";
 import {whyDidYouUpdate} from "why-did-you-update";
 import reducer from "./reducer";
 import React from "react";
-import {persistStore, persistReducer} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import {PersistGate} from 'redux-persist/integration/react'
 
-const persistedReducer = persistReducer({
-    key: 'root',
-    storage,
-    blacklist: ["$temp"]
-}, reducer);
-
-const store = createStore(persistedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-const persistor = persistStore(store);
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 window.character = function (stringifiedState) {
     if (stringifiedState === undefined) {
         return store.getState().character;
@@ -32,7 +22,8 @@ window.addEventListener("message", function (event) {
         case "get-character":
             event.source.postMessage({
                 action: "get-character",
-                character: window.character()
+                character: window.character(),
+                correlationId: event.data.correlationId
             }, event.origin);
 
             break;
@@ -51,9 +42,7 @@ if (process.env.NODE_ENV === "perf") {
 
 ReactDOM.render(
     <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-            <App/>
-        </PersistGate>
+        <App/>
     </Provider>
     , document.getElementById("app"));
 
