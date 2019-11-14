@@ -21,20 +21,27 @@
           href="https://raw.githubusercontent.com/Neone-character-creator/neone-character-creator-core/master/src/main/resources/static/css/character-page.css"/>
     <script src="https://apis.google.com/js/platform.js" id="gap"></script>
     <script>
-        $(document).ready(function(){
-            $("#new-character").on("click", function(){
+        $(function () {
+            window.addEventListener("message", function (event) {
+                switch (event.data.action) {
+                    case "get-character":
+                        $.ajax({
+                            url: "/save",
+                            type: "POST",
+                            data: JSON.stringify(event.data.character),
+                            contentType: "application/json"
+                        });
+                }
+            });
+            $("#new-character").on("click", function () {
                 localStorage.removeItem("persist:root");
                 location.reload();
             });
 
-            $("#save-character").on("click", function(){
+            $("#save-character").on("click", function () {
                 var content = $("#content")[0].contentWindow;
-                var character = content.character();
-                $.ajax({
-                    url:"/save",
-                    type: "POST",
-                    data: JSON.stringify(character),
-                    contentType: "application/json"
+                content.postMessage({
+                    action: "get-character"
                 });
             });
         });
@@ -79,16 +86,13 @@
         <div class="container">
             <ul class="navbar-nav nav text-center">
                 <li>
-                    <button class="btn btn-default" type="button" id="new-character"
-                            attr="data-url="
-                    /games/%authorName%/${alphanumericGameName}/%appVersion%"><span
-                        class="glyphicon glyphicon-file"/>
-                    New Character
+                    <button class="btn btn-default" type="button" id="new-character"><span
+                            class="glyphicon glyphicon-file"/>
+                        New Character
                     </button>
                 </li>
                 <li>
-                    <button class="btn btn-default" type="button" id="save-character"
-                    ><span
+                    <button class="btn btn-default" type="button" id="save-character"><span
                             class="glyphicon glyphicon-floppy-save"/>
                         Save Character
                     </button>
@@ -96,10 +100,9 @@
                 <li>
                     <button class="btn btn-default" type="button" id="open-character"
                             data-toggle='modal' ,
-                            data-target='#loading-modal'
-                    ">
-                    <span class="glyphicon glyphicon-floppy-open"/>
-                    Open Character
+                            data-target='#loading-modal'>
+                        <span class="glyphicon glyphicon-floppy-open"/>
+                        Open Character
                     </button>
                 </li>
                 <li>

@@ -9,7 +9,7 @@ import org.apache.felix.scr.annotations.Service;
  *
  */
 @Service(value = GamePlugin.class)
-@Component
+@Component(immediate = true)
 public class GeneratedPlugin<T extends Character> extends GamePlugin {
 
 }
