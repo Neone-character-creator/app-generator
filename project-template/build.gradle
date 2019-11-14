@@ -43,7 +43,7 @@ jar {
         instructionReplace 'Export-Package', '!*'
         instruction 'Import-Package', 'io.github.thisisnozaku.charactercreator.plugins; version=1.0.0'
     }
-    baseName = "${alphanumericGameName}-plugin"
+    baseName = "${alphanumericGameName}-${pluginVersion}-plugin"
 }
 
 processResources.dependsOn npm_run_build
