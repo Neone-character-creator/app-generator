@@ -17,8 +17,8 @@ module.exports = {
                 const resourcePath = path.resolve(__dirname + "/src/main/resources" + req.baseUrl);
                 res.sendFile(resourcePath);
             });
-            app.use(/\/scripts\/.*/, function(req, res) {
-                const resourcePath = path.resolve(__dirname + ["", "src", "main", "resources"].join(path.sep) + req.baseUrl);
+            app.use(/\/pluginresource\/.*/, function(req, res) {
+                const resourcePath = path.resolve(__dirname + ["", "src", "main", "resources"].join(path.sep) + req.baseUrl.replace(/\/pluginresource\/.+?\/.+?\/.+?\//, "/"));
                 res.sendFile(resourcePath);
             });
             app.use("/save", function(req, res){

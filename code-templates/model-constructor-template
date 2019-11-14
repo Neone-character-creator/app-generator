@@ -53,5 +53,5 @@ function ${name}Model(original){
 
 ${name}Model._id = 1;
 ${name}Model.id = function(){
-    return ${name}Model._id++;
+    return new ObjectID().toString();
 }
