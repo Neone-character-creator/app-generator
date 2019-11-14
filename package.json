@@ -1,6 +1,6 @@
 {
   "name": "app-generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Creates a NEOne character creator webapp scaffold from a configuration file.\r  # Requires\r  * Node\r  * Gradle",
   "main": "app.js",
   "scripts": {
