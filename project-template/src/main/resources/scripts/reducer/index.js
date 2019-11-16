@@ -77,11 +77,9 @@ const actionHandlers = new Proxy({
         }
     },
     OVERRIDE: function (state, action) {
-        state = {
-            ...generateNewState(), ...{
+        state = _.merge(generateNewState(), {
                 character: action.state
-            }
-        };
+            });
         return state;
     }
 }, {
