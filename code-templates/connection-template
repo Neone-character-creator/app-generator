@@ -65,8 +65,7 @@ const connected = connect((state, ownProps) => {
 }, (props, dispatchProps) => {
     const { dispatch } = dispatchProps;
     return {...props,
-        performAction: (event) => {
-            const value = event.target.value;
+        performAction: (value) => {
             const path = props.boundProperty;
             if (_.isArray(props.actionDefinition)) {
                 props.forEach(action => {

@@ -28,6 +28,10 @@ class ErrorBoundary extends React.Component {
 class ${componentName} extends React.Component {
     constructor(props){
         super(props);
+        this.update = function(event) {
+            const value = event.target.value;
+            props.performAction(value);
+        }
     }
 
     render() {

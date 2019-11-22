@@ -28,13 +28,17 @@ class ErrorBoundary extends React.Component {
 class Component extends React.Component {
     constructor(props){
         super(props);
+        this.update = event => {
+            const value = event.target.value;
+            props.performAction(value);
+        }
     }
 
     render(){
         if(!this.props.hidden){
         return (
         <ErrorBoundary>
-        <Textfield disabled={this.props.disabled} id="${componentIdentifier}" fullWidth={true} label="${label}" value={this.props.value} onChange={this.props.performAction} />
+        <Textfield disabled={this.props.disabled} id="${componentIdentifier}" fullWidth={true} label="${label}" value={this.props.value} onChange={this.update} />
         </ErrorBoundary>
         );
         } else {

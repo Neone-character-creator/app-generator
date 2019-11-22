@@ -43,6 +43,13 @@ class ${componentName} extends React.Component {
     constructor(props){
         super(props);
 
+        this.update = function(event){
+            var value = event.target.value;
+            if(!this.props.maxSelections || (!_.isArray(value) && this.props.maxSelections === 1) || value.length <= this.props.maxSelections) {
+                props.performAction(value);
+            }
+        }
+
         this.isItemDisabled = function(item) {
             if(_.isArray(listItemDisabledExpression)) {
                 return listItemDisabledExpression.reduce((currentValue, nextSubExpression) => {
@@ -99,7 +106,7 @@ class ${componentName} extends React.Component {
         <ErrorBoundary>
         <FormControl fullWidth={true}>
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
-                    <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.props.performAction}
+                    <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.performAction}
                         renderValue={this.renderValue} multiple={this.props.maxSelections > 1} disabled={this.props.disabled}
                         children={this.renderItems()}
                     />

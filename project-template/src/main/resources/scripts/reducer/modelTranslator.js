@@ -33,7 +33,7 @@ const modelTranslator = function (modelConfiguration, targetPath, value) {
         if(modelDef) {
             const isArrayMatcher = /\[(.*)\]/.exec(modelDef.type);
             const instanceModelType = isArrayMatcher ? isArrayMatcher[1] : modelDef.type;
-            if (instanceModelType === "string" || instanceModelType === "number") {
+            if (instanceModelType === "string" || instanceModelType === "number" || instanceModelType === "boolean") {
                 const arrayTypeButValueNotArray = isArrayMatcher && !_.isArray(value);
                 const arrayTypeButArrayValuesWrong = _.isArray(value) && value.reduce((found, next)=>{
                     return found || typeof next != instanceModelType;
