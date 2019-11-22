@@ -27,30 +27,14 @@ class ErrorBoundary extends React.Component {
 
 class ${componentName} extends React.Component {
     constructor(props){
-            super(props);
+        super(props);
+    }
 
-            const updateDispatch = _.debounce((value) => {
-                this.props.dispatch({ type: "SET", path: this.props.boundProperty, value});
-            });
-
-            this.update = function(event){
-                if(isBoundComponent){
-                    const value = Number.parseInt(event.target.value);
-                    this.setState({
-                        text: value
-                    });
-                    if(!this.props.maxSelection || this.props.maxSelection == 1 || value.length <= this.props.maxSelection) {
-                    updateDispatch(value);
-                    }
-                }
-            };
-            this.update = this.update.bind(this);
-        }
     render() {
         if(!this.props.hidden){
         return (
         <ErrorBoundary>
-            <Textfield id="${componentIdentifier}" label="${label}" type="number" value={this.props.value} onChange={this.update} />
+            <Textfield id="${componentIdentifier}" label="${label}" type="number" value={this.props.value} onChange={this.props.performAction} />
         </ErrorBoundary>
         );
         } else {

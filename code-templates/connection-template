@@ -41,7 +41,7 @@ const connected = connect((state, ownProps) => {
     });
     const disabled = interpreter.interpret(disabledWhenExpression, context);
     const hidden = interpreter.interpret(hiddenWhenExpression, context);
-    const clickAction = [interpreter.interpret(action, context)].map(opt => {
+    const actionDefinition = [interpreter.interpret(action, context)].map(opt => {
         if(_.isArray(opt)){
             return opt.map(evaluateObjectProperties.bind(null, context));
         } else if(_.isObject(opt)) {
@@ -52,7 +52,7 @@ const connected = connect((state, ownProps) => {
     })[0];
     return {
         context,
-        clickAction,
+        actionDefinition,
         disabled,
         hidden,
         options,
@@ -62,6 +62,21 @@ const connected = connect((state, ownProps) => {
     };
 }, (dispatch) => {
     return {dispatch};
+}, (props, dispatchProps) => {
+    const { dispatch } = dispatchProps;
+    return {...props,
+        performAction: (event) => {
+            const value = event.target.value;
+            const path = props.boundProperty;
+            if (_.isArray(props.actionDefinition)) {
+                props.forEach(action => {
+                    dispatch({...action, value, path});
+                })
+            } else {
+                dispatch({...props.actionDefinition, value, path});
+            }
+        }
+    };
 })(Component);
 
 function determineValues(expression, state, value){
