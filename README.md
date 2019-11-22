@@ -10,7 +10,7 @@ The app configuration file has the following elements:
 1. `appName` The name of the app.
 2. `views` The different pages of the app. UI components are defined under here.
 3. `model` Definitions of the model types used by the app.
-4. `rules` Rules for advancement.
+4. `rules` Gameplay rules.
 5. `hooks` Definitions for code to run when events occur within the app.
 
 #### Configuring Views
@@ -47,7 +47,21 @@ Components of the following types can exist.
 * label - A `label` is a component to display text.
     * properties
         * text - The text to display.
-        
+* button - A `button` is a component that can display a text label and perform an action when clicked.
+    * properties
+        * text - A text label displayed on the component
+        * action - An interpreted string or object defining the action performed on a click.
+            * type - For an object, this is the action performed when clicking the button: `SET`, `REMOVE`, `PUSH`
+            * path - For an object, this is the path affected by the action.
+            * value - For an object, this is the value or evaluated string which determines the value of the action.
+* select - A `select` displays a set of options that the user can choose from.
+    * properties
+        * bind - The path in the state the component is bound to.
+        * label - The label on the component.
+        * items - The object configuring the options of the select.
+            * maxSelections - The maximum number of options which can be selected at a time.
+            * text - The property on the option values displayed in the select.
+            * values - The array of values or interpreted expression string to get an array of values to populate the select.
 #### Configuring Model
 The model configuration defines the structure and values of the state.
 
@@ -67,6 +81,7 @@ In addition, a property can have a type of any custom type defined within the mo
 
 When defined with an object, the object must have the following properties:
 * type - The name of the type of the property.
+* default - The initial value of the property instead of the default.
 
 It also may optionally have the following properties.
 * derivedFrom - An array of expressions used to calculate this property value. When set, this value cannot be directly modified, it is only calculated
@@ -77,11 +92,7 @@ Models may have a `values` array. This contains a set of defined instances of th
 Models can define `effects`. This is an object or array of objects defining state modification that are applied when model instances are added to the state.
 
 #### Configuring rules
-Enforcement of a portion of game rules.
-
-The following rules can be implemented:
-* `advancement` is rules for character advancement.
-TODO: Finish
+Rules allow defining certain
 
 #### Hooks
 Hooks are expressions that are evaluated when events occur.
