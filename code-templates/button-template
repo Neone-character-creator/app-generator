@@ -36,7 +36,7 @@ class ${componentName} extends React.Component {
         if(!this.props.hidden){
         return (
             <ErrorBoundary>
-                <Button id="${componentIdentifier}" variant="contained" onClick={this.props.performAction} disabled={this.update} >
+                <Button id="${componentIdentifier}" variant="contained" onClick={this.update} disabled={this.props.disabled} >
                     {this.props.value}
                 </Button>
             </ErrorBoundary>);
