@@ -29,12 +29,12 @@ function recalculateEffects(state, hooks) {
 
 function applyEffect(state, effect, source, hooks) {
     const context = {$state: state, $this: {...effect, source}};
-    const target = interpreter.interpret(effect.path, context).replace("$state.", "");
+    const interpretedPath = interpreter.interpret(effect.path, context);
+    const target = _.isString(interpretedPath) ? interpretedPath.replace("$state.", "") : interpretedPath.map(ip => ip.replace("$state.", ""));
     const willBeApplied = evaluateRequirements(effect.requires, context);
     if (willBeApplied) {
         const action = effect.action;
         const value = modelTranslator(models, target, interpreter.interpret(effect.value, context));
-        const initialValue = _.get(state, target);
         switch (action) {
             case 'ADD':
                 _.set(state, target, (_.isNumber(initialValue) ? initialValue : 0) + _.isNumber(value) ? value : 0);
@@ -61,6 +61,12 @@ function applyEffect(state, effect, source, hooks) {
                 const initialArrayForCombine = _.get(state, target, []);
                 const arrayAfterCombine = [...initialArrayForCombine].concat(value);
                 _.set(state, target, arrayAfterCombine);
+                break;
+            case "SWAP":
+                const firstValue = _.get(state, target[0]);
+                _.set(state, target[0], _.get(state, target[1]));
+                _.set(state, target[1], firstValue);
+                break;
         }
         if (value && value.effects) {
             recursivelyApplyEffects(state, value.effects, hooks, value);
