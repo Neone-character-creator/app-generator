@@ -35,15 +35,28 @@ function reattachPrototypes(value) {
 };
 
 function extractActionPathFromAction(action) {
-    if (action && action.path && action.path.startsWith("$state")) {
+    if(_.isArray(action.path)) {
+        if (action.type !== "SWAP") {
+            throw new Error("A path with an array type is only allowed for SWAP actions.");
+        }
+        if(action.path.length !== 2) {
+            throw new Error("If action type is SWAP, path must be an array containing 2 strings.");
+        }
+        if (!action.path.every(p => _.isString(p))) {
+            throw new Error("If path is an array for a SWAP, each element bust me a string.");
+        }
+        return action.path.map(p => extractActionPathFromAction({
+            path: p
+        }));
+    } else if (action && action.path && action.path.startsWith("$state")) {
         return action.path.slice("$state.".length);
     } else if (action && action.path && action.path.startsWith("$temp")) {
         return action.path.substring("$temp.".length);
     }
 }
 
-function actionPathIsTemp(action) {
-    return action.path.startsWith("$temp");
+function actionPathIsTemp(path) {
+    return _.isArray(path) ? path.every(p => p.startsWith("$temp")) : path.startsWith("$temp");
 }
 
 const actionHandlers = new Proxy({
@@ -58,8 +71,8 @@ const actionHandlers = new Proxy({
         return state;
     },
     default: function (state, action) {
-        let isTemp = actionPathIsTemp(action);
         const actionPath = extractActionPathFromAction(action);
+        let isTemp = actionPathIsTemp(action.path);
         state = {...generateNewState(), transformers: state.transformers, $temp: state.$temp};
 
         let translatedValue = action.type === "REMOVE" ? action.value : modelTranslator(models, actionPath, interpreter.interpret(action.value, {
@@ -111,6 +124,7 @@ export default function (previousState, action) {
         return state;
     } else {
         previousState = generateNewState();
+        setCalculatedProperties(models.character.prototype.definition, null, previousState, ["character"]);
     }
 
     return previousState;
@@ -186,5 +200,6 @@ export const ACTION_TYPES = {
     REMOVE: "REMOVE",
     OVERRIDE: "OVERRIDE",
     REHYDRATE: "persist/REHYDRATE",
-    PERSIST: "persist/PERSIST"
+    PERSIST: "persist/PERSIST",
+    SWAP: "SWAP"
 };
