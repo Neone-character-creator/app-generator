@@ -47,7 +47,8 @@ class Component extends React.Component {
     }
 
     shouldComponentUpdate(nextProps){
-        return this.props.disabled !== nextProps.disabled ||
-            this.props.value !== nextProps.value;
+        return  this.props.disabled !== nextProps.disabled ||
+                this.props.hidden !== nexProps.hidden ||
+                this.props.value !== nextProps.value;
     }
 }

@@ -45,7 +45,7 @@ class ${componentName} extends React.Component {
 
         this.update = function(event){
             var value = event.target.value;
-            if(!this.props.maxSelections || (!_.isArray(value) && this.props.maxSelections === 1) || value.length <= this.props.maxSelections) {
+            if(!props.maxSelections || (!_.isArray(value) && props.maxSelections === 1) || value.length <= props.maxSelections) {
                 props.performAction(value);
             }
         }
@@ -106,7 +106,7 @@ class ${componentName} extends React.Component {
         <ErrorBoundary>
         <FormControl fullWidth={true}>
                     <InputLabel id="${componentIdentifier}-label">${label}</InputLabel>
-                    <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.performAction}
+                    <Select id="${componentIdentifier}" autoWidth={true} value={this.props.value} onChange={this.update}
                         renderValue={this.renderValue} multiple={this.props.maxSelections > 1} disabled={this.props.disabled}
                         children={this.renderItems()}
                     />
