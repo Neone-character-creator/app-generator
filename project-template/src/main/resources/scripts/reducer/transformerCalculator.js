@@ -51,6 +51,11 @@ const generateTransformerFromAction = function (state, actionType, path, value) 
                 value,
                 requires: value.requires
             };
+        case "SWAP":
+            return {
+                action:"SWAP",
+                path
+            }
     }
 };
 

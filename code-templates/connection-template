@@ -69,10 +69,10 @@ const connected = connect((state, ownProps) => {
             const path = props.boundProperty;
             if (_.isArray(props.actionDefinition)) {
                 props.forEach(action => {
-                    dispatch({...action, value, path});
+                    dispatch(_.merge({}, action, {value, path}));
                 })
             } else {
-                dispatch({...props.actionDefinition, value, path});
+                dispatch(_.merge({}, props.actionDefinition, { value, path}));
             }
         }
     };
