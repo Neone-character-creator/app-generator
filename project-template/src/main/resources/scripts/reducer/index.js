@@ -132,14 +132,22 @@ export default function (previousState, action) {
 
 function calculateProperties(modelPrototype, ancestorDefinitions, state, statePath) {
     var evaluationCount = 0;
-    var hasChangesSinceLastEvaluation = false;
+    var evaluationCycleProperties = [];
     do {
         if(evaluationCount > 2) {
-            throw new Error("Calculated property evaluation took more than 2 iterations. This likely is caused by a circular reference, where properties are causing each other to change in an infinite loop");
+            const currentCycleChangedProperties = evaluationCycleProperties[evaluationCount];
+            if(Object.keys(currentCycleChangedProperties).length) {
+                const message = "Calculated property evaluation took more than 2 iterations. This likely is caused by a circular reference, where properties are causing each other to change in an infinite loop" + "\n" +
+                    "The following properties were modified in the last evaluation cycle: " + Object.keys(currentCycleChangedProperties).join(", ");
+                throw new Error(message);
+            }
         }
         evaluationCount++;
-        hasChangesSinceLastEvaluation = setCalculatedProperties(modelPrototype, ancestorDefinitions, state, statePath);
-    } while(hasChangesSinceLastEvaluation);
+        var propertiesEvaluatedInCycle = setCalculatedProperties(modelPrototype, ancestorDefinitions, state, statePath);
+        if(Object.keys(propertiesEvaluatedInCycle).length) {
+            evaluationCycleProperties[evaluationCount] = propertiesEvaluatedInCycle;
+        }
+    } while(evaluationCycleProperties[evaluationCount].length);
 }
 
 const previousBaseValues = {};
@@ -156,32 +164,32 @@ function calculateDiff(newValue, oldValue) {
 
 const previousCalculatedValues = {};
 
-function setCalculatedProperties(modelPrototype, ancestorDefinitions, state, statePath) {
-    const modelDefinition = modelPrototype.definition;
+function setCalculatedProperties(propertyContext, ancestorDefinitions, state, statePath) {
+    var evaluatedProperties = {};
+    const modelPropertiesDefinition = propertyContext.definition;
     const joinedStatePath = statePath[0] + statePath.slice(1).map(element => "[" + element + "]").join("");
-    var evaluatedNewValue = false;
-    if (modelDefinition.baseValue) {
+    if (propertyContext.baseValue) {
         const currentValue = _.get(state, joinedStatePath);
-        const previousBaseValue = _.get(previousBaseValues, joinedStatePath) || (modelDefinition.type === "number" ? 0 : []);
+        const previousBaseValue = _.get(previousBaseValues, joinedStatePath) || (propertyContext.type === "number" ? 0 : []);
         const userChanges = calculateDiff(currentValue, previousBaseValue);
-        const newBaseValue = modelDefinition.baseValue.reduce((accumulator, nextExpression) => {
+        const newBaseValue = propertyContext.baseValue.reduce((accumulator, nextExpression) => {
             return interpreter.interpret(nextExpression, {$state: state, $models: models, $this: accumulator}, true)
                 || accumulator;
-        }, modelDefinition.type === "number" ? 0 : []);
+        }, propertyContext.type === "number" ? 0 : []);
         const newValue = _.isArray(currentValue) ? newBaseValue.concat(userChanges) : newBaseValue + userChanges;
         const lastCalculatedValue = previousCalculatedValues[joinedStatePath];
         if(!_.isEqual(lastCalculatedValue, newValue)) {
             _.set(state, joinedStatePath, newValue);
             previousCalculatedValues[joinedStatePath] = newValue;
-            evaluatedNewValue = true;
+            evaluatedProperties[joinedStatePath] = newValue;
         }
-    } else if (modelDefinition.derivedFrom) {
-        let newValue = modelDefinition.derivedFrom.reduce((accumulator, nextExpression) => {
+    } else if (propertyContext.derivedFrom) {
+        let newValue = propertyContext.derivedFrom.reduce((accumulator, nextExpression) => {
             const localContext = {
                 $state: state,
                 $models: models,
                 $this: {
-                    definition: modelDefinition,
+                    definition: modelPropertiesDefinition,
                     path: statePath,
                     accumulator,
                     ancestors: statePath.filter((x, i) => i < statePath.length - 1).map((element, index) => {
@@ -198,20 +206,21 @@ function setCalculatedProperties(modelPrototype, ancestorDefinitions, state, sta
         if(!_.isEqual(lastCalculatedValue, newValue)) {
             _.set(state, joinedStatePath, newValue);
             previousCalculatedValues[joinedStatePath] = newValue;
-            evaluatedNewValue = true;
+            evaluatedProperties[joinedStatePath] = newValue;
         }
     }
     // FIXME: Different "definitions" are actually different objects.
-    Object.getOwnPropertyNames(modelDefinition).reduce((updated, nextPropertyName) => {
-        const parentScopes = ancestorDefinitions ? [...ancestorDefinitions, modelDefinition] : [modelDefinition];
-        const modelProperty = modelDefinition[nextPropertyName];
-        const propertyModelDefinition = models[modelDefinition[nextPropertyName].type] ? models[modelDefinition[nextPropertyName].type].prototype : {definition : modelProperty};
-        const propertyPath = [...statePath, nextPropertyName];
-        if (modelProperty.derivedFrom || modelProperty.baseValue) {
-            evaluatedNewValue = setCalculatedProperties(propertyModelDefinition, parentScopes, state, propertyPath) || evaluatedNewValue;
-        }
-    }, state);
-    return evaluatedNewValue;
+    if(modelPropertiesDefinition) {
+        Object.getOwnPropertyNames(modelPropertiesDefinition).reduce((updated, nextPropertyName) => {
+            const parentScopes = ancestorDefinitions ? [...ancestorDefinitions, modelPropertiesDefinition] : [modelPropertiesDefinition];
+            const propertyContext = modelPropertiesDefinition[nextPropertyName];
+            propertyContext.definition = propertyContext.definition || _.get(models, propertyContext.type + ".prototype.definition");
+            const propertyPath = [...statePath, nextPropertyName];
+            const subPropertyCalculationResult = setCalculatedProperties(propertyContext, parentScopes, state, propertyPath);
+            evaluatedProperties = _.merge(evaluatedProperties, subPropertyCalculationResult);
+        }, state);
+    }
+    return evaluatedProperties;
 }
 
 function calculatedStateProjection(state) {
