@@ -135,19 +135,19 @@ function calculateProperties(modelPrototype, ancestorDefinitions, state, statePa
     var evaluationCycleProperties = [];
     do {
         if(evaluationCount > 2) {
-            const currentCycleChangedProperties = evaluationCycleProperties[evaluationCount];
+            const currentCycleChangedProperties = evaluationCycleProperties[evaluationCount - 1];
             if(Object.keys(currentCycleChangedProperties).length) {
                 const message = "Calculated property evaluation took more than 2 iterations. This likely is caused by a circular reference, where properties are causing each other to change in an infinite loop" + "\n" +
-                    "The following properties were modified in the last evaluation cycle: " + Object.keys(currentCycleChangedProperties).join(", ");
+                    "The following properties were modified in the last evaluation cycle: " + Object.keys(currentCycleChangedProperties).join("\n");
                 throw new Error(message);
             }
         }
-        evaluationCount++;
         var propertiesEvaluatedInCycle = setCalculatedProperties(modelPrototype, ancestorDefinitions, state, statePath);
         if(Object.keys(propertiesEvaluatedInCycle).length) {
             evaluationCycleProperties[evaluationCount] = propertiesEvaluatedInCycle;
         }
-    } while(evaluationCycleProperties[evaluationCount].length);
+        evaluationCount++;
+    } while(!_.isEmpty(evaluationCycleProperties[evaluationCount - 1]));
 }
 
 const previousBaseValues = {};
@@ -181,6 +181,7 @@ function setCalculatedProperties(propertyContext, ancestorDefinitions, state, st
         if(!_.isEqual(lastCalculatedValue, newValue)) {
             _.set(state, joinedStatePath, newValue);
             previousCalculatedValues[joinedStatePath] = newValue;
+            previousBaseValues[joinedStatePath] = newBaseValue;
             evaluatedProperties[joinedStatePath] = newValue;
         }
     } else if (propertyContext.derivedFrom) {
