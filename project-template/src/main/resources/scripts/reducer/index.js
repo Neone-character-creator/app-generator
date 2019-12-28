@@ -205,7 +205,7 @@ function setCalculatedProperties(modelPrototype, ancestorDefinitions, state, sta
     Object.getOwnPropertyNames(modelDefinition).reduce((updated, nextPropertyName) => {
         const parentScopes = ancestorDefinitions ? [...ancestorDefinitions, modelDefinition] : [modelDefinition];
         const modelProperty = modelDefinition[nextPropertyName];
-        const propertyModelDefinition = models[modelDefinition[nextPropertyName].type] ? models[modelDefinition[nextPropertyName].type].prototype.definition : {definition : modelProperty};
+        const propertyModelDefinition = models[modelDefinition[nextPropertyName].type] ? models[modelDefinition[nextPropertyName].type].prototype : {definition : modelProperty};
         const propertyPath = [...statePath, nextPropertyName];
         if (modelProperty.derivedFrom || modelProperty.baseValue) {
             evaluatedNewValue = setCalculatedProperties(propertyModelDefinition, parentScopes, state, propertyPath) || evaluatedNewValue;
