@@ -120,7 +120,7 @@ export default function (previousState, action) {
                 $state: state,
             })));
         }
-        calculateProperties(models.character.prototype, null, previousState, ["character"]);
+        calculateProperties(models.character.prototype, null, state, ["character"]);
         return state;
     } else {
         previousState = generateNewState();
