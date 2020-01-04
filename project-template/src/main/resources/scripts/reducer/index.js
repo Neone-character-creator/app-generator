@@ -35,11 +35,11 @@ function reattachPrototypes(value) {
 };
 
 function extractActionPathFromAction(action) {
-    if(_.isArray(action.path)) {
+    if (_.isArray(action.path)) {
         if (action.type !== "SWAP") {
             throw new Error("A path with an array type is only allowed for SWAP actions.");
         }
-        if(action.path.length !== 2) {
+        if (action.path.length !== 2) {
             throw new Error("If action type is SWAP, path must be an array containing 2 strings.");
         }
         if (!action.path.every(p => _.isString(p))) {
@@ -91,8 +91,8 @@ const actionHandlers = new Proxy({
     },
     OVERRIDE: function (state, action) {
         state = _.merge(generateNewState(), {
-                character: action.state
-            });
+            character: action.state
+        });
         return state;
     }
 }, {
@@ -134,20 +134,20 @@ function calculateProperties(modelPrototype, ancestorDefinitions, state, statePa
     var evaluationCount = 0;
     var evaluationCycleProperties = [];
     do {
-        if(evaluationCount > 2) {
+        if (evaluationCount > 2) {
             const currentCycleChangedProperties = evaluationCycleProperties[evaluationCount - 1];
-            if(Object.keys(currentCycleChangedProperties).length) {
+            if (Object.keys(currentCycleChangedProperties).length) {
                 const message = "Calculated property evaluation took more than 2 iterations. This likely is caused by a circular reference, where properties are causing each other to change in an infinite loop" + "\n" +
                     "The following properties were modified in the last evaluation cycle: " + Object.keys(currentCycleChangedProperties).join("\n");
                 throw new Error(message);
             }
         }
         var propertiesEvaluatedInCycle = setCalculatedProperties(modelPrototype, ancestorDefinitions, state, statePath);
-        if(Object.keys(propertiesEvaluatedInCycle).length) {
+        if (Object.keys(propertiesEvaluatedInCycle).length) {
             evaluationCycleProperties[evaluationCount] = propertiesEvaluatedInCycle;
         }
         evaluationCount++;
-    } while(!_.isEmpty(evaluationCycleProperties[evaluationCount - 1]));
+    } while (!_.isEmpty(evaluationCycleProperties[evaluationCount - 1]));
 }
 
 const previousBaseValues = {};
@@ -162,7 +162,7 @@ function calculateDiff(newValue, oldValue) {
     }
 }
 
-const previousCalculatedValues = {};
+const valuesCalculatedLastCycle = {};
 
 function setCalculatedProperties(propertyContext, ancestorDefinitions, state, statePath) {
     var evaluatedProperties = {};
@@ -178,9 +178,9 @@ function setCalculatedProperties(propertyContext, ancestorDefinitions, state, st
         }, propertyContext.type === "number" ? 0 : []);
         const newValue = _.isArray(currentValue) ? newBaseValue.concat(userChanges) : newBaseValue + userChanges;
         const lastCalculatedValue = previousCalculatedValues[joinedStatePath];
+        _.set(state, joinedStatePath, newValue);
         if(!_.isEqual(lastCalculatedValue, newValue)) {
-            _.set(state, joinedStatePath, newValue);
-            previousCalculatedValues[joinedStatePath] = newValue;
+            valuesCalculatedLastCycle[joinedStatePath] = newValue;
             previousBaseValues[joinedStatePath] = newBaseValue;
             evaluatedProperties[joinedStatePath] = newValue;
         }
@@ -203,15 +203,15 @@ function setCalculatedProperties(propertyContext, ancestorDefinitions, state, st
             };
             return interpreter.interpret(nextExpression, localContext);
         }, _.get(state, joinedStatePath));
-        const lastCalculatedValue = previousCalculatedValues[joinedStatePath];
+        const lastCalculatedValue = valuesCalculatedLastCycle[joinedStatePath];
+        _.set(state, joinedStatePath, newValue);
         if(!_.isEqual(lastCalculatedValue, newValue)) {
-            _.set(state, joinedStatePath, newValue);
-            previousCalculatedValues[joinedStatePath] = newValue;
+            valuesCalculatedLastCycle[joinedStatePath] = newValue;
             evaluatedProperties[joinedStatePath] = newValue;
         }
     }
     // FIXME: Different "definitions" are actually different objects.
-    if(modelPropertiesDefinition) {
+    if (modelPropertiesDefinition) {
         Object.getOwnPropertyNames(modelPropertiesDefinition).reduce((updated, nextPropertyName) => {
             const parentScopes = ancestorDefinitions ? [...ancestorDefinitions, modelPropertiesDefinition] : [modelPropertiesDefinition];
             const propertyContext = modelPropertiesDefinition[nextPropertyName];
