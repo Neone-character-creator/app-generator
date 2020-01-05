@@ -14,7 +14,7 @@ import OneView  from \\"./OneView\\"
 import { Tab, Tabs, TabList, TabPanel } from \\"react-tabs\\";
 import 'react-tabs/style/react-tabs.css';
 const Component = (props) => (
-    <div id=\\"test-app\\">
+    <div id=\\"-app\\">
     <Tabs>
         <TabList>
             <Tab>
@@ -28,10 +28,11 @@ One
     </div>
 )
 const isBoundComponent = false
-const boundProperty = undefined; // The expression used to determine the value of binding.
+const boundPropertyExpression = undefined; // The expression used to bind this component to the state.
+const valuePropertyExpression = undefined; // The expression evaluated to determine the value of the component
 const readOnly = true; // If this component only calculates its value, or is bound and can update it.
-const valueExpression = \\"\\";
-const action = undefined;
+const optionsExpression = \\"\\";
+const action = {\\"type\\":\\"SET\\"};
 const disabledWhenExpression = undefined;
 const hiddenWhenExpression = undefined;
 const selectionCountExpression = 0;
@@ -39,19 +40,26 @@ const connected = connect((state, ownProps) => {
     const context = {
         $state: calculateStateProjection(state),
         $model: models,
-        $this: ownProps.value,
-        $index: ownProps.index
+        $this: ownProps.value ? ownProps.value : {},
+        $index: ownProps.index,
+        $temp: calculateStateProjection(state).$temp,
+        $parent: ownProps.parent
     };
-    const interpretedBoundProperty = interpreter.interpret(boundProperty, context);
-    const value = (()=>{
-            if (isBoundComponent){
-                return _.get(context, interpretedBoundProperty);
-            } else {
-                return interpreter.interpret(interpretedBoundProperty, context);
-            }
-    })();
+    const propertyPathAsString = interpreter.interpret(boundPropertyExpression, context);
+    if(propertyPathAsString !== undefined && !_.isString(propertyPathAsString)) {
+        throw new Error(\\"property path was defined but was \\" + typeof propertyPathAsString + \\" instead of a string\\");
+    }
+    const propertyPathAsArray = _.toPath(propertyPathAsString);
+    const lastPropertyName = propertyPathAsArray[propertyPathAsArray.length-1];
+    _.set(context, \\"$this.path\\", propertyPathAsString);
+    const rawParentValue = _.get(context, propertyPathAsArray.slice(0, -1));
+    const parentValue = _.isArray(rawParentValue) ? rawParentValue : _.isNil(rawParentValue)
+        ? null : evaluateObjectProperties(context, rawParentValue);
+    const value = !_.isNil(valuePropertyExpression) ? interpreter.interpret(valuePropertyExpression, context)
+        : _.isNil(parentValue) ? null
+        : parentValue[lastPropertyName];
     const maxSelections = interpreter.interpret(selectionCountExpression, context);
-    const options = (interpreter.interpret(valueExpression, context) || []).map(opt => {
+    const options = (interpreter.interpret(optionsExpression, context) || []).map(opt => {
         if(_.isArray(opt)){
             return opt.map(evaluateObjectProperties.bind(null, context));
         } else if(_.isObject(opt)) {
@@ -62,18 +70,41 @@ const connected = connect((state, ownProps) => {
     });
     const disabled = interpreter.interpret(disabledWhenExpression, context);
     const hidden = interpreter.interpret(hiddenWhenExpression, context);
-    const clickAction = interpreter.interpret(action, context);
+    const actionDefinition = [interpreter.interpret(action, context)].map(opt => {
+        if(_.isArray(opt)){
+            return opt.map(evaluateObjectProperties.bind(null, context));
+        } else if(_.isObject(opt)) {
+            return evaluateObjectProperties(context, opt);
+        } else {
+            return opt;
+        }
+    })[0];
     return {
-        clickAction,
+        context,
+        actionDefinition,
         disabled,
         hidden,
         options,
         maxSelections,
-        boundProperty: interpretedBoundProperty,
+        boundProperty: propertyPathAsString,
         value: _.isNil(value) ? \\"\\" : value
     };
 }, (dispatch) => {
     return {dispatch};
+}, (props, dispatchProps) => {
+    const { dispatch } = dispatchProps;
+    return {...props,
+        performAction: (value) => {
+            const path = props.boundProperty;
+            if (_.isArray(props.actionDefinition)) {
+                props.forEach(action => {
+                    dispatch(_.merge({}, action, {value, path}));
+                })
+            } else {
+                dispatch(_.merge({}, props.actionDefinition, { value, path}));
+            }
+        }
+    };
 })(Component);
 
 function determineValues(expression, state, value){
@@ -87,6 +118,10 @@ function determineValues(expression, state, value){
         case \\"character\\":
             return _.get(state, expression, []);
     }
+}
+
+function evaluateValueExpression(expression, context) {
+
 }
 
 function renderOption(value) {
@@ -127,10 +162,11 @@ class Component extends React.Component {
     }
 }
 const isBoundComponent = false
-const boundProperty = undefined; // The expression used to determine the value of binding.
+const boundPropertyExpression = undefined; // The expression used to bind this component to the state.
+const valuePropertyExpression = undefined; // The expression evaluated to determine the value of the component
 const readOnly = true; // If this component only calculates its value, or is bound and can update it.
-const valueExpression = \\"\\";
-const action = undefined;
+const optionsExpression = \\"\\";
+const action = {\\"type\\":\\"SET\\"};
 const disabledWhenExpression = undefined;
 const hiddenWhenExpression = undefined;
 const selectionCountExpression = 0;
@@ -138,19 +174,26 @@ const connected = connect((state, ownProps) => {
     const context = {
         $state: calculateStateProjection(state),
         $model: models,
-        $this: ownProps.value,
-        $index: ownProps.index
+        $this: ownProps.value ? ownProps.value : {},
+        $index: ownProps.index,
+        $temp: calculateStateProjection(state).$temp,
+        $parent: ownProps.parent
     };
-    const interpretedBoundProperty = interpreter.interpret(boundProperty, context);
-    const value = (()=>{
-            if (isBoundComponent){
-                return _.get(context, interpretedBoundProperty);
-            } else {
-                return interpreter.interpret(interpretedBoundProperty, context);
-            }
-    })();
+    const propertyPathAsString = interpreter.interpret(boundPropertyExpression, context);
+    if(propertyPathAsString !== undefined && !_.isString(propertyPathAsString)) {
+        throw new Error(\\"property path was defined but was \\" + typeof propertyPathAsString + \\" instead of a string\\");
+    }
+    const propertyPathAsArray = _.toPath(propertyPathAsString);
+    const lastPropertyName = propertyPathAsArray[propertyPathAsArray.length-1];
+    _.set(context, \\"$this.path\\", propertyPathAsString);
+    const rawParentValue = _.get(context, propertyPathAsArray.slice(0, -1));
+    const parentValue = _.isArray(rawParentValue) ? rawParentValue : _.isNil(rawParentValue)
+        ? null : evaluateObjectProperties(context, rawParentValue);
+    const value = !_.isNil(valuePropertyExpression) ? interpreter.interpret(valuePropertyExpression, context)
+        : _.isNil(parentValue) ? null
+        : parentValue[lastPropertyName];
     const maxSelections = interpreter.interpret(selectionCountExpression, context);
-    const options = (interpreter.interpret(valueExpression, context) || []).map(opt => {
+    const options = (interpreter.interpret(optionsExpression, context) || []).map(opt => {
         if(_.isArray(opt)){
             return opt.map(evaluateObjectProperties.bind(null, context));
         } else if(_.isObject(opt)) {
@@ -161,18 +204,41 @@ const connected = connect((state, ownProps) => {
     });
     const disabled = interpreter.interpret(disabledWhenExpression, context);
     const hidden = interpreter.interpret(hiddenWhenExpression, context);
-    const clickAction = interpreter.interpret(action, context);
+    const actionDefinition = [interpreter.interpret(action, context)].map(opt => {
+        if(_.isArray(opt)){
+            return opt.map(evaluateObjectProperties.bind(null, context));
+        } else if(_.isObject(opt)) {
+            return evaluateObjectProperties(context, opt);
+        } else {
+            return opt;
+        }
+    })[0];
     return {
-        clickAction,
+        context,
+        actionDefinition,
         disabled,
         hidden,
         options,
         maxSelections,
-        boundProperty: interpretedBoundProperty,
+        boundProperty: propertyPathAsString,
         value: _.isNil(value) ? \\"\\" : value
     };
 }, (dispatch) => {
     return {dispatch};
+}, (props, dispatchProps) => {
+    const { dispatch } = dispatchProps;
+    return {...props,
+        performAction: (value) => {
+            const path = props.boundProperty;
+            if (_.isArray(props.actionDefinition)) {
+                props.forEach(action => {
+                    dispatch(_.merge({}, action, {value, path}));
+                })
+            } else {
+                dispatch(_.merge({}, props.actionDefinition, { value, path}));
+            }
+        }
+    };
 })(Component);
 
 function determineValues(expression, state, value){
@@ -186,6 +252,10 @@ function determineValues(expression, state, value){
         case \\"character\\":
             return _.get(state, expression, []);
     }
+}
+
+function evaluateValueExpression(expression, context) {
+
 }
 
 function renderOption(value) {

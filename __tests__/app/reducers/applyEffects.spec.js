@@ -142,7 +142,6 @@ describe("Effect applier", function () {
                 action: "SET",
                 value: {
                     effects: [{
-                        source: "$state.a",
                         path: "$state.b",
                         action: "SET",
                         value: 1

@@ -21,7 +21,8 @@ describe("state reducer", function(){
         };
         const outputState = reducer(initialState, {
             type: "SET",
-            path: "$state.foo"
+            path: "$state.foo",
+            value: 1
         });
         expect(initialState).not.toEqual(outputState);
     });

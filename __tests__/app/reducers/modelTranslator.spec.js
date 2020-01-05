@@ -32,7 +32,7 @@ describe("model translator", function () {
         });
         it("throws an error if the target path does not have a string type", function () {
             expect(() => {
-                ModelTranslator(model, "character.sage", "Damien");
+                ModelTranslator(model, "character.age", "Damien");
             }).toThrowErrorMatchingSnapshot();
         });
         it("creates a new instance if the target path has a model type and the value does not match an instance id", function () {
@@ -45,14 +45,14 @@ describe("model translator", function () {
                 children: [],
                 effects: []
             });
-            expect(model.character.values).toEqual([{
+            expect(model.character.values).toContainEqual({
                 id: "character-1",
                 name: "",
                 age: 0,
                 spouse: null,
                 children: [],
                 effects: []
-            }]);
+            });
         });
         it("performs a lookup if the target path has a model type and the value matches an instance id", function () {
             model.character.values.push({
