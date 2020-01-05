@@ -32,12 +32,13 @@ function applyEffect(state, effect, source, hooks) {
     const interpretedPath = interpreter.interpret(effect.path, context);
     const target = _.isString(interpretedPath) ? interpretedPath.replace("$state.", "") : interpretedPath.map(ip => ip.replace("$state.", ""));
     const willBeApplied = evaluateRequirements(effect.requires, context);
+    const initialValue = _.get(state, interpretedPath);
     if (willBeApplied) {
         const action = effect.action;
         const value = modelTranslator(models, target, interpreter.interpret(effect.value, context));
         switch (action) {
             case 'ADD':
-                _.set(state, target, (_.isNumber(initialValue) ? initialValue : 0) + _.isNumber(value) ? value : 0);
+                _.set(state, target, (_.isNumber(initialValue) ? initialValue : 0) + (_.isNumber(value) ? value : 0));
                 break;
             case 'SUBTRACT':
                 _.set(state, target, initialValue - value);
