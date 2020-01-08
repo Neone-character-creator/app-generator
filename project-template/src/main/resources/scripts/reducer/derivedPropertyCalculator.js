@@ -1,6 +1,6 @@
 import models from "../models";
 import * as _ from "lodash";
-import * as interpreter from "../interpreter";
+import * as interpreter from "../interpreter/index";
 
 function validateArguments(propertyContext, ancestorDefinitions, state, statePath) {
     validatePropertyContext(propertyContext);
@@ -71,7 +71,7 @@ export default class DerivedPropertyCalculator {
                         }).reverse()
                     }
                 };
-                return (interpreter.interpret || interpreter.default.interpret)(nextExpression, localContext);
+                return (interpreter.default.interpret)(nextExpression, localContext);
             }, _.get(state, joinedStatePath));
             _.set(state, joinedStatePath, newValue);
             if (!_.isEqual(valuesCalculatedLastCycle[joinedStatePath], newValue)) {

@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import models from "../models";
-import * as interpreter from "../interpreter";
+import * as interpreter from "../interpreter/index";
 
 function calculateDiff(newValue, oldValue) {
     if (_.isNumber(newValue) && _.isNumber(oldValue)) {
@@ -24,7 +24,7 @@ export default class PropertyBaseValueCalculator {
             const previousBaseValue = _.get(this.lastCycleBaseValues, joinedStatePath) || (propertyContext.type === "number" ? 0 : []);
             const userChanges = calculateDiff(currentValue, previousBaseValue);
             const newBaseValue = propertyContext.baseValue.reduce((accumulator, nextExpression) => {
-                return interpreter.interpret(nextExpression, {$state: state, $models: models, $this: accumulator}, true)
+                return interpreter.default.interpret(nextExpression, {$state: state, $models: models, $this: accumulator}, true)
                     || accumulator;
             }, propertyContext.type === "number" ? 0 : []);
             const newValue = _.isArray(currentValue) ? newBaseValue.concat(userChanges) : newBaseValue + userChanges;
