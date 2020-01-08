@@ -17,8 +17,8 @@ export default class PropertyCalculator{
             if (evaluationCount > 2) {
                 const currentCycleChangedProperties = evaluationCycleProperties[evaluationCount - 1];
                 if (Object.keys(currentCycleChangedProperties).length) {
-                    const message = "Calculated property evaluation took more than 2 iterations. This likely is caused by a circular reference, where properties are causing each other to change in an infinite loop" + "\n" +
-                        "The following properties were modified in the last evaluation cycle: " + Object.keys(currentCycleChangedProperties).join("\n");
+                    const message = "Calculated property evaluation took more than 3 iterations. This likely is caused by a circular reference, where properties are causing each other to change in an infinite loop" + "\n" +
+                        "The following properties were modified in the last evaluation cycle: " + Object.keys(currentCycleChangedProperties).map(k => k + " = " + currentCycleChangedProperties[k]).join("\n");
                     throw new Error(message);
                 }
             }
@@ -28,8 +28,8 @@ export default class PropertyCalculator{
 
             if (Object.keys(derivedPropertiesCalculated).length) {
                 evaluationCycleProperties[evaluationCount] = derivedPropertiesCalculated;
-                this.propertiesEvaluatedLastCycle = derivedPropertiesCalculated;
             }
+            this.propertiesEvaluatedLastCycle = derivedPropertiesCalculated;
             evaluationCount++;
         } while (!_.isEmpty(evaluationCycleProperties[evaluationCount - 1]));
         this.propertyBaseValueCalculator.calculate(modelPrototype, [], state, statePath, this.propertiesEvaluatedLastCycle);
