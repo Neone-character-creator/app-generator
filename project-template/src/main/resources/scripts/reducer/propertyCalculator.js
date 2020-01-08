@@ -32,7 +32,7 @@ export default class PropertyCalculator{
             }
             evaluationCount++;
         } while (!_.isEmpty(evaluationCycleProperties[evaluationCount - 1]));
-        this.propertyBaseValueCalculator.calculate(modelPrototype, [], state, statePath);
+        this.propertyBaseValueCalculator.calculate(modelPrototype, [], state, statePath, this.propertiesEvaluatedLastCycle);
         return evaluationCount;
     }
 }

@@ -9,8 +9,8 @@ function validateArguments(propertyContext, ancestorDefinitions, state, statePat
     validateStatePath(statePath);
 }
 
-function validatePropertyContext(context){
-    if(!_.isObject(context)) {
+function validatePropertyContext(context) {
+    if (!_.isObject(context)) {
         throw new Error("propertyContext must be an object but was " + typeof context);
     }
     if (context.type === undefined) {
@@ -19,23 +19,23 @@ function validatePropertyContext(context){
 }
 
 function validateAncestorDefinitions(ancestorDefinitions) {
-    if(!_.isArray(ancestorDefinitions)) {
+    if (!_.isArray(ancestorDefinitions)) {
         throw new Error("ancestorDefinitions must be an array!");
     }
 }
 
-function validateState(state){
-    if(!_.isObject(state)) {
+function validateState(state) {
+    if (!_.isObject(state)) {
         throw new Error("state must be an object!")
     }
 }
 
-function validateStatePath(statePath){
-    if(!_.isArray(statePath)) {
+function validateStatePath(statePath) {
+    if (!_.isArray(statePath)) {
         throw new Error("statePath must be an array!")
     }
     _.each(statePath, (v, index) => {
-        if(!_.isString(v)) {
+        if (!_.isString(v)) {
             throw new Error("Value at index " + index + " must be a string but was " + typeof v);
         }
     })
@@ -54,8 +54,9 @@ export default class DerivedPropertyCalculator {
         validateArguments(propertyContext, ancestorDefinitions, state, statePath);
         let evaluatedProperties = {};
         const joinedStatePath = statePath[0] + statePath.slice(1).map(element => "[" + element + "]").join("");
+        const currentValue = _.get(state, joinedStatePath);
         if (propertyContext.derivedFrom) {
-            let newValue = propertyContext.derivedFrom.reduce((accumulator, nextExpression) => {
+            let newValue = (_.isArray(propertyContext.derivedFrom) ? propertyContext.derivedFrom : [propertyContext.derivedFrom]).reduce((accumulator, nextExpression) => {
                 const localContext = {
                     $state: state,
                     $models: models,
@@ -63,6 +64,7 @@ export default class DerivedPropertyCalculator {
                         modelDefinition: propertyContext.modelDefinition,
                         path: statePath,
                         accumulator,
+                        parent: _.get(state, statePath.slice(0, -1)),
                         ancestors: statePath.filter((x, i) => i < statePath.length - 1).map((element, index) => {
                             const joined = statePath.filter((x, i) => {
                                 return i <= index;
@@ -73,6 +75,11 @@ export default class DerivedPropertyCalculator {
                 };
                 return (interpreter.default.interpret)(nextExpression, localContext);
             }, _.get(state, joinedStatePath));
+            if(_.isArray(newValue)) {
+                newValue.map((v, i)=>{
+                    this.calculate(propertyContext, ancestorDefinitions, state, [...statePath, i], valuesCalculatedLastCycle);
+                });
+            }
             _.set(state, joinedStatePath, newValue);
             if (!_.isEqual(valuesCalculatedLastCycle[joinedStatePath], newValue)) {
                 evaluatedProperties[joinedStatePath] = newValue;
@@ -80,15 +87,25 @@ export default class DerivedPropertyCalculator {
         }
         // FIXME: Different "definitions" are actually different objects.
         if (_.get(propertyContext, "modelDefinition.properties")) {
-            Object.getOwnPropertyNames(propertyContext.modelDefinition.properties).reduce((updated, nextPropertyName) => {
-                const parentScopes = ancestorDefinitions ? [...ancestorDefinitions, propertyContext.modelDefinition] : [propertyContext.modelDefinition];
-                const nextPropertyContext = propertyContext.modelDefinition.properties[nextPropertyName];
-                nextPropertyContext.modelDefinition = _.get(models, nextPropertyContext.type + ".prototype.definition");
-                const propertyPath = [...statePath, nextPropertyName];
-                const subPropertyCalculationResult = this.calculate(nextPropertyContext, parentScopes, state, propertyPath, valuesCalculatedLastCycle);
-                evaluatedProperties = _.merge(evaluatedProperties, subPropertyCalculationResult);
-            }, state);
+            ancestorDefinitions = [...ancestorDefinitions, propertyContext.modelDefinition];
+            if (!_.isNil(currentValue) && !_.isArray(currentValue)) {
+                this.recursivelyProcessProperties(evaluatedProperties, ancestorDefinitions, propertyContext.modelDefinition, state, statePath, valuesCalculatedLastCycle)(propertyContext.modelDefinition.properties, );
+            }
         }
         return evaluatedProperties;
     };
+
+    recursivelyProcessProperties(propertiesEvaluatedInCycle, ancestorDefinitions, modelDefinition, state, statePath, valuesCalculatedLastCycle) {
+        return (propertiesToProcess) => {
+            Object.getOwnPropertyNames(propertiesToProcess).reduce((updated, nextPropertyName) => {
+                const parentScopes = ancestorDefinitions ? [...ancestorDefinitions, modelDefinition] : [modelDefinition];
+                const nextPropertyContext = modelDefinition.properties[nextPropertyName];
+                nextPropertyContext.isArray = /\[.*?\]/.test(nextPropertyContext.type);
+                nextPropertyContext.modelDefinition = _.get(models, nextPropertyContext.type + ".prototype.definition");
+                const propertyPath = [...statePath, nextPropertyName];
+                const subPropertyCalculationResult = this.calculate(nextPropertyContext, parentScopes, state, propertyPath, valuesCalculatedLastCycle);
+                _.merge(propertiesEvaluatedInCycle, subPropertyCalculationResult);
+            }, state);
+        }
+    }
 }

@@ -123,11 +123,11 @@ export default function (previousState, action) {
                 $state: state,
             })));
         }
-        propertyCalculator.calculate(models.character.prototype, null, state, ["character"]);
+        propertyCalculator.calculate({type: "character", modelDefinition: models.character.prototype.definition},  state, ["character"]);
         return state;
     } else {
         previousState = generateNewState();
-        propertyCalculator.calculate(models.character.prototype, null, previousState, ["character"]);
+        propertyCalculator.calculate({type: "character", modelDefinition: models.character.prototype.definition}, previousState, ["character"]);
     }
 
     return previousState;

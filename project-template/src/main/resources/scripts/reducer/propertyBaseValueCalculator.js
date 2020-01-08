@@ -28,10 +28,9 @@ export default class PropertyBaseValueCalculator {
                     || accumulator;
             }, propertyContext.type === "number" ? 0 : []);
             const newValue = _.isArray(currentValue) ? newBaseValue.concat(userChanges) : newBaseValue + userChanges;
-            const lastCalculatedValue = previousCalculatedValues[joinedStatePath];
+            const lastCalculatedValue = valuesCalculatedLastCycle[joinedStatePath];
             _.set(state, joinedStatePath, newValue);
             if(!_.isEqual(lastCalculatedValue, newValue)) {
-                valuesCalculatedLastCycle[joinedStatePath] = newValue;
                 this.lastCycleBaseValues[joinedStatePath] = newBaseValue;
             }
         }
