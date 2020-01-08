@@ -64,7 +64,7 @@ const generateSetTransformer = function (state, path, value) {
         action: "SET",
         path,
         value,
-        requires: value.requires
+        requires: _.get(value, "requires")
     };
 };
 
