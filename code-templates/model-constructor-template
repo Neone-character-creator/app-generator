@@ -1,6 +1,6 @@
 function ${name}Model(original){
-    Object.getOwnPropertyNames(this.definition).forEach((property)=>{
-        const propertyDef = this.definition[property];
+    Object.getOwnPropertyNames(this.definition.properties).forEach((property)=>{
+        const propertyDef = this.definition.properties[property];
         if(original === undefined || original[property] === undefined) {
             if(propertyDef.default !== undefined) {
                 this[property] = propertyDef.default;
