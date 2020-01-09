@@ -1,5 +1,5 @@
 module.exports = {
-    "presets": [["@babel/env", {
+    "presets": ["@babel/preset-typescript", ["@babel/env" ,{
         "modules": false,
         "targets" :{
             node: 8
