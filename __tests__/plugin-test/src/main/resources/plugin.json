@@ -1,0 +1,13 @@
+{
+  "description":{
+    "author" : "Damien Marble",
+    "system" : "test",
+    "version" : "1.0",
+    "toolVersion": "1.0.0"
+  },
+  "resources" : {
+    "character" : "templates/sheet.html",
+    "description" : "templates/plugin-description.html",
+    "pdf": "sheet.pdf"
+  }
+}

@@ -1,0 +1,49 @@
+group 'io.github.thisisnozaku.charactercreator'
+version 'unspecified'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url "http://dl.bintray.com/twcable/aem"
+        }
+    }
+    dependencies {
+        classpath "com.twcable.gradle:gradle-plugin-scr:1.2.0"
+        classpath "com.moowork.gradle:gradle-node-plugin:1.3.1"
+    }
+}
+
+apply plugin: "java"
+apply plugin: 'osgi'
+apply plugin: 'com.twcable.scr'
+apply plugin: "com.moowork.node"
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile "io.github.thisisnozaku.charactercreator:neone-plugin-api:1.0"
+    compile 'org.apache.felix:org.apache.felix.scr.annotations:1.9.12'
+}
+
+jar {
+    manifest {
+        instruction 'Bundle-Category', 'plugin'
+        instruction 'Bundle-Description', 'API bundle for NEOne character creator plugins.'
+        instructionReplace 'Private-Package', 'io.github.thisisnozaku.*'
+        instructionReplace 'Export-Package', '!*'
+        instruction 'Import-Package', 'io.github.thisisnozaku.charactercreator.plugins; version=1.0.0'
+    }
+    baseName = "test-plugin"
+}
+
+processResources.dependsOn npm_run_build

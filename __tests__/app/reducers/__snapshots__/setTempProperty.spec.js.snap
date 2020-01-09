@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`temp property setter throws an error if trying to push to a value that is already defined buy 1`] = `"Tried to push to $temp.foo but the value already there is not an array!"`;
+
+exports[`temp property setter throws an error if trying to remove from a value that is not an array 1`] = `"arrayForRemove.splice is not a function"`;

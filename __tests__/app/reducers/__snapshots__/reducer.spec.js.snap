@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`state reducer throws an error if an invalid action type is passed with an existing state 1`] = `"Action type FOO is not supported."`;
+
+exports[`state reducer throws an error if the path does not begin with $state 1`] = `"targetPath must not be null or undefined"`;

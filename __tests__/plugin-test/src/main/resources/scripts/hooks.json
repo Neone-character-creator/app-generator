@@ -1,0 +1,1 @@
+[{"after":"ADVANCEMENT","effects":["# $state.selectedAdvancement = undefined"]},{"after":"REMOVE-ADVANCEMENT","effects":["# $state.selectedAdvancement = undefined"]},{"after":"ADD","when":"# $this.action.path === 'character.weapons'","effects":["# $state.selectedWeapon = undefined"]}]

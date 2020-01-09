@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`model translator with a number action value throws an error if the target path does not have a number type 1`] = `"Path character.age has a defined type of number but a string was given."`;
+
+exports[`model translator with a string action value throws an error if the target path does not have a string type 1`] = `"Path character.age has a defined type of number but a string was given."`;
