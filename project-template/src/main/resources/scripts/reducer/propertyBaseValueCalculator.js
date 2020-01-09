@@ -34,7 +34,8 @@ export default class PropertyBaseValueCalculator {
                 this.lastCycleBaseValues[joinedStatePath] = newBaseValue;
             }
         }
-        if(propertyContext.modelDefinition) {
+        const modelDefinitionProperties = _.get(propertyContext, "modelDefinition.properties");
+        if(modelDefinitionProperties) {
             Object.keys(propertyContext.modelDefinition.properties).forEach(nextPropertyName => {
                 const parentScopes = ancestorDefinitions ? [...ancestorDefinitions, propertyContext.modelDefinition] : [propertyContext.modelDefinition];
                 const nextPropertyContext = propertyContext.modelDefinition.properties[nextPropertyName];

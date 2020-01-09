@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`property calculator throws an error if more than 2 iterations are performed 1`] = `
-"Calculated property evaluation took more than 2 iterations. This likely is caused by a circular reference, where properties are causing each other to change in an infinite loop
-The following properties were modified in the last evaluation cycle: character[a]
-character[b]"
+"Calculated property evaluation took more than 3 iterations. This likely is caused by a circular reference, where properties are causing each other to change in an infinite loop
+The following properties were modified in the last evaluation cycle: character[a] = 6
+character[b] = 7"
 `;
