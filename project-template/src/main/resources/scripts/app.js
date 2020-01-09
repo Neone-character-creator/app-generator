@@ -40,8 +40,9 @@ if (process.env.HAS_PDF === true) {
 if (process.env.NODE_ENV === "perf") {
     whyDidYouUpdate(React);
 }
-
-Sentry.init({dsn: "https://b6f08049d093497a9accaa29f5aa5e61@sentry.io/1863711"});
+if(process.env.NODE_ENV === "production") {
+    Sentry.init({dsn: "https://b6f08049d093497a9accaa29f5aa5e61@sentry.io/1863711"});
+}
 
 ReactDOM.render(
     <Provider store={store}>

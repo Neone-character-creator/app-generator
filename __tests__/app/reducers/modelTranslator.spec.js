@@ -1,4 +1,4 @@
-const ModelTranslator = require("../../../project-template/src/main/resources/scripts/reducer/ModelTranslator").default;
+const ModelTranslator = require("../../../project-template/src/main/resources/scripts/reducer/modelTranslator").default;
 describe("model translator", function () {
     let model;
     beforeEach(()=>{
